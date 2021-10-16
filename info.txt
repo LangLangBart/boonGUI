@@ -1,0 +1,25 @@
+CONTRIBUTORS
+This mod is basically a derivative of @ffm2's mod 'ffm_visibility', but with additional changes that I thought would be fitting.
+
+@maroder/marder Created the background screen on the start page. Provided te rank icons for the profile panel. Tested and gave feedback.
+
+@Palaiologos tested and gave feedback.
+
+@nani made the stats overlay work and wrote the code for the last summary button in the lobby
+
+@Nescio provided most of the work for the larger buttons. 
+
+@schweini provided the extra button with "D3958 - Add an extra button for seeing the summary page when quitting a session".
+
+@seeh helped with testing and a found a solution to a problem (see CounterPopulation.js).
+
+@mysticjim tested everything and gave constant feedback
+
+LICENSE
+Files in the art folder within this work are based on work and examples by Wildfire Games (http://www.wildfiregames.com/) and, which are released under the Creative Commons Attribution ShareAlike 3.0 license. Details may be found at http://creativecommons.org/licenses/by-sa/3.0/
+
+The scripting within this work is, similarly, based on work and examples by the same Wildfire Games, released under the GPLv2+ license. Details may be found at https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
+
+BUILD
+~/0ad/binaries/system/pyrogenesis -mod=mod -archivebuild=Library/'Application Support'/0ad/mods/boongui  -archivebuild-output=Library/'Application Support'/0ad/mods/boongui.pyromod -archivebuild-compress
+
