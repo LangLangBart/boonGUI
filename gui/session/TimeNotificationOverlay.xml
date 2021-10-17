@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object name="notificationPanel" type="image" size="0 100%-600 315 100%-335" ghost="true">
+	<object name="notificationText" type="text" style="notificationPanel" ghost="true" z="0"/>
+</object>

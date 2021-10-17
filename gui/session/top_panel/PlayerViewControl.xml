@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object>
+	<object
+		size="85%-262 5 100%-310 31"
+		name="viewPlayer"
+		type="dropdown"
+		hidden="true"
+		z="50"
+		font="mono-stroke-14"
+		style="ModernDropDown"
+		sprite="topPanel"
+		tooltip_style="sessionToolTipBold"
+		dropdown_size="500"
+	>
+		<translatableAttribute id="tooltip">Choose player to view</translatableAttribute>
+	</object>
+	
+
+</object>

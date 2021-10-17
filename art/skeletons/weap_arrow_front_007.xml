@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<skeletons>
+  <standard_skeleton title="weap arrow front 007" id="weap_arrow_front_007" />
+  <skeleton title="weap arrow front 007" target="weap_arrow_front_007">
+    <identifier>
+      <root />
+    </identifier>
+  </skeleton>
+</skeletons>

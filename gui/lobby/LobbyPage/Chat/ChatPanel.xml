@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object name="chatPanel" type="image" sprite="ModernDarkBox">
+
+	<script directory="gui/lobby/LobbyPage/Chat/"/>
+	<script directory="gui/lobby/LobbyPage/Chat/ChatMessages/"/>
+	<script directory="gui/lobby/LobbyPage/Chat/StatusMessages/"/>
+	<script directory="gui/lobby/LobbyPage/Chat/SystemMessages/"/>
+
+	<object name="chatText" size="0 0 100% 100%-31" type="list" style="ChatPanelList" font="sans-stroke-16"/>
+	
+	<object name="chatInput" size="0 100%-29 100%-4 100%-4" type="input" style="ModernInput" sprite_selectarea="color:255 0 0" sprite="color:118 118 118 80" textcolor="white" font="sans-stroke-16" max_length="1024" placeholder_text="Chat Message" placeholder_color="184 184 184 150"/>
+	
+	<object name="chatSubmit" size="100%-72 100%-4 100%-4 100%-4">
+		<translatableAttribute id="caption"></translatableAttribute>
+	</object>
+
+	<!-- Draw the border last so that it will be above all text -->
+	<object type="image" sprite="ModernDarkBoxGoldBorder" ghost="true"/>
+</object>

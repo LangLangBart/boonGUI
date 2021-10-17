@@ -1,0 +1,253 @@
+[font="sans-bold-18"]0 A.D. in-game manual[font="sans-14"]
+Thank you for installing 0 A.D.! This page will give a brief overview of the features available in this incomplete, under-development, alpha version of the game.
+
+[font="sans-bold-16"]Graphics settings[font="sans-14"]
+You can switch between fullscreen and windowed mode by pressing Alt + Enter. In windowed mode, you can resize the window. If the game runs too slowly, you can change some settings in the options window: try disabling the “HQ Water Effects” and “Shadows” options.
+
+[font="sans-bold-16"]Playing the game[font="sans-14"]
+The controls and gameplay should be familiar to players of traditional real-time strategy (RTS) games. There are currently a lot of missing features and poorly-balanced stats – you will probably have to wait until a beta release for it to work well.
+
+Basic controls (by default):
+• Left-click to select units
+• Left-click-and-drag to select groups of units
+• Right-click to order units to the target
+• Arrow keys or WASD keys to move the camera
+• Ctrl + arrow keys, or shift + mouse wheel, to rotate the camera
+• Mouse wheel, or “hotkey.camera.zoom.in” and “hotkey.camera.zoom.out” keys, to zoom
+
+[font="sans-bold-16"]Modes[font="sans-14"]
+The main menu gives access to two game modes:
+• [font="sans-bold-14"]Single-player[font="sans-14"] – Play a sandbox game or against one or more computer players (AI). The default AI (Petra) is under development and may not always be up to date on the new features, but you can play the game with or against it nonetheless.
+• [font="sans-bold-14"]Multiplayer[font="sans-14"] – Play against human opponents over the internet.
+
+To set up a multiplayer game, one player must select the “Host game” option. The game uses UDP port 20595, so the host must configure their NAT/firewall/etc. to allow this. Other players can then select “Join game” and enter the host's IP address.
+
+[font="sans-bold-16"]Game setup[font="sans-14"]
+In a multiplayer game, only the host can alter the game setup options.
+
+First, select what type of map you want to play:
+• [font="sans-bold-14"]Random map[font="sans-14"] – A map created automatically from a script
+• [font="sans-bold-14"]Scenario map[font="sans-14"] – A map created by map designers and with fixed civilizations
+• [font="sans-bold-14"]Skirmish map[font="sans-14"] – A map created by map designers but where the civilizations can be chosen
+
+Then the maps can be further filtered. The default maps are generally playable maps. Naval maps are maps where not all opponents can be reached over land and demo maps are maps used for testing purposes (generally not useful to play on). The “All Maps” filter shows all maps together in one list.
+
+Finally change the settings. For random maps this includes the number of players, the size of a map, etc. For scenarios you can only select who controls which player (decides where you start on the map etc.). The options are either a human player, an AI or no player at all (the opponent will just be idle).
+
+When you are ready to start, click the “Start game” button.
+
+[font="sans-bold-16"]Hotkeys[font="sans-14"]
+You may change hotkeys in [font="sans-bold-14"]Options > Hotkeys[font="sans-14"] to suit your liking.
+
+[font="sans-bold-14"]Program-wide[font="sans-14"]
+  hotkey.exit – Immediately close the game, without asking for confirmation
+  hotkey.togglefullscreen – Toggle between fullscreen and windowed
+  hotkey.console.toggle – Toggle console
+  hotkey.fps.toggle – Toggle frame counter (FPS)
+  hotkey.profile.toggle – Toggle real-time profiler (cycles through the displays of information)
+  hotkey.profile.save – Save current profiler data to “logs/profile.txt”
+  hotkey.screenshot – Take screenshot (in .png format, location is displayed in the top left of the GUI after the file has been saved, and can also be seen in the console/logs if you miss it there)
+  hotkey.bigscreenshot – Take huge screenshot (6400×4800 pixels, in .bmp format, location is displayed in the top left of the GUI after the file has been saved, and can also be seen in the console/logs if you miss it there)
+  hotkey.tab.next – Switch to the next tab
+  hotkey.tab.prev – Switch to the previous tab
+
+[font="sans-bold-14"]In Game[font="sans-14"]
+  Double Left Click \[on unit] – Select all of your units of the same kind on the screen (even if they're different ranks)
+  Triple Left Click \[on unit] – Select all of your units of the same kind and the same rank on the screen
+  Alt + Double Left Click \[on unit] – Select all your units of the same kind on the entire map (even if they have different ranks)
+  Alt + Triple Left Click \[on unit] – Select all your units of the same kind and rank on the entire map
+  hotkey.quicksave – Quicksave
+  hotkey.quickload – Quickload
+  hotkey.session.gui.menu.toggle – Toggle menu
+  hotkey.timeelapsedcounter.toggle – Toggle time elapsed counter
+  hotkey.cancel – Close all dialogs (chat, menu)
+  hotkey.confirm – Open chat or send message
+  hotkey.teamchat – Send team chat
+  hotkey.privatechat – Chat with the previously selected private chat partner
+  hotkey.pause – Pause or resume the game
+  hotkey.session.kill – Delete currently selected unit(s)/structure(s), ask for confirmation
+    • With hotkey.session.noconfirmation – Immediately delete currently selected unit(s)/structure(s), without asking for confirmation
+  hotkey.selection.add – Modifier – add to selection (works with clicking and hotkeys, e.g. the idle hotkeys)
+  hotkey.selection.remove – Modifier – remove from selection (works with clicking and hotkeys, e.g. the idle hotkeys)
+  hotkey.selection.offscreen – Modifier – add all units, including offscreen units, to selection.
+  hotkey.selection.cancel – Unselect all units, cancel building placement.
+  hotkey.selection.idlewarrior – Select idle fighter
+  hotkey.selection.idleworker – Select idle worker (including citizen-soldiers)
+  hotkey.selection.idleunit – Select idle unit
+  hotkey.session.stop – Stop (halt) the currently selected units
+  hotkey.session.backtowork – The unit will go back to work
+  hotkey.session.unload – Unload the garrisoned units of the selected structure(s)
+  hotkey.selection.group.save.1 – Create control group 1 (by default, respectively 2,3, ...) from the selected unit(s)/structure(s)
+  hotkey.selection.group.select.1 – Select the unit(s)/structure(s) in control group 1
+  hotkey.selection.group.add.1 – Add control group 1 (to 0) to the selected unit(s)/structure(s)
+  hotkey.camera.jump.set.1 – Mark the current camera position, for jumping back to later (by default, there are 4 possible positions)
+  hotkey.camera.jump.1 – Move the camera to a marked position. Jump back to the last location if the camera is already over the marked position
+  hotkey.session.queueunit.1, hotkey.session.queueunit.2, hotkey.session.queueunit.3, hotkey.session.queueunit.4, hotkey.session.queueunit.5, hotkey.session.queueunit.6, hotkey.session.queueunit.7 – With training structure selected. Add the 1st, 2nd, … unit shown to the training queue for all the selected structures
+  hotkey.session.highlightguarded with unit(s) selected – Highlight the unit(s)/structure(s) guarded by the selection
+  hotkey.session.highlightguarding with unit(s)/structure(s) selected – Highlight the unit(s) guarding the selection
+  highlightguarding.showstatusbars – See all status bars (which would also show the building progress)
+  hotkey.summary – Toggle summary window
+  hotkey.lobby – Show the multiplayer lobby in a dialog window
+  hotkey.session.gui.diplomacy.toggle – Toggle in-game diplomacy panel
+  hotkey.session.gui.barter.toggle – Toggle in-game barter and trade panel
+  hotkey.session.gui.objectives.toggle – Toggle in-game objectives panel
+  hotkey.session.gui.tutorial.toggle – Toggle in-game tutorial panel
+  hotkey.structree – Toggle structure tree panel
+  hotkey.civinfo – Toggle civilization info panel
+
+[font="sans-bold-14"]Modify mouse action[font="sans-14"]
+  hotkey.session.garrison + Right Click on structure – Garrison
+  hotkey.session.repair + Right Click on structure – Repair
+  hotkey.session.patrol + Right Click – Patrol
+  hotkey.session.queue + Right Click – Queue the move/build/gather/etc. order
+  hotkey.session.orderone + Right Click – Order one unit from the current selection to move/build/gather/etc. and unselect it. Used to quickly dispatch units with specific tasks
+  hotkey.session.batchtrain + Left Click when training units – Add units in batches (the batch size is 5 by default and can be changed in the options)
+  hotkey.selection.add + Left Click or Left Drag over unit on map – Add unit to selection
+  hotkey.selection.remove + Left Click or Left Drag over unit on map – Remove unit from selection
+  hotkey.selection.militaryonly + Left Drag over units on map – Only select military units
+  hotkey.selection.nonmilitaryonly + Left Drag over units on map – Only select non-military units
+  hotkey.selection.idleonly + Left Drag over units on map – Only select idle units
+  hotkey.selection.woundedonly + Left Drag over units on map – Only select wounded units
+  Right Click with a structure(s) selected – Set a rally point for units created/ungarrisoned from that structure
+  hotkey.session.garrison + Right Click with unit(s) selected – Garrison (If the cursor is over an own or allied structure)
+  hotkey.session.attack + Right Click with unit(s) selected – Attack (instead of capture or gather)
+  hotkey.session.attackmove + Right Click with unit(s) selected – Attack move (by default all enemy units and structures along the way are targeted)
+  hotkey.session.attackmoveUnit + Right Click with unit(s) selected – Attack move, only units along the way are targeted
+  hotkey.session.snaptoedges + Mouse Move near structures – Align the new structure with an existing nearby structure
+
+[font="sans-bold-14"]Overlays[font="sans-14"]
+  hotkey.session.gui.toggle – Toggle the GUI
+  hotkey.session.devcommands.toggle – Toggle developer overlay (with developer options)
+  hotkey.wireframe – Toggle wireframe mode (press once to get wireframes overlaid over the textured models, twice to get just the wireframes colored by the textures, thrice to get back to normal textured mode)
+  hotkey.silhouettes – Toggle unit silhouettes (might give a small performance boost)
+  hotkey.session.diplomacycolors – Toggle diplomacy colors
+  hotkey.session.toggleattackrange – Toggle attack range visualizations of selected units and structures
+  hotkey.session.toggleaurasrange – Toggle aura range visualizations of selected units and structures
+  hotkey.session.togglehealrange – Toggle heal range visualizations of selected units
+
+[font="sans-bold-14"]Camera manipulation[font="sans-14"]
+  hotkey.camera.up – Pan screen up
+  hotkey.camera.down – Pan screen down
+  hotkey.camera.left – Pan screen left
+  hotkey.camera.right – Pan screen right
+  hotkey.camera.rotate.up – Rotate camera to look upward
+  hotkey.camera.rotate.down – Rotate camera to look downward
+  hotkey.camera.rotate.cw – Rotate camera clockwise around terrain
+  hotkey.camera.rotate.ccw – Rotate camera counter-clockwise around terrain
+  hotkey.camera.rotate.wheel.cw – Rotate camera clockwise around terrain
+  hotkey.camera.rotate.wheel.ccw – Rotate camera counter-clockwise around terrain
+  hotkey.camera.follow – Follow the selected unit (move the camera to stop following the unit)
+  hotkey.camera.reset – Reset camera zoom and orientation
+  hotkey.camera.zoom.in, hotkey.camera.zoom.wheel.in – Zoom in (keep pressed for continuous zoom)
+  hotkey.camera.zoom.out, hotkey.camera.zoom.wheel.out – Zoom out (keep pressed for continuous zoom)
+  hotkey.camera.pan – Keep pressed and move the mouse to pan
+
+[font="sans-bold-14"]During Structure Placement[font="sans-14"]
+  hotkey.session.rotate.ccw – Rotate structure 15 degrees counter-clockwise
+  hotkey.session.rotate.cw – Rotate structure 15 degrees clockwise
+  Left Drag – Rotate structure using mouse (foundation will be placed on mouse release)
+
+[font="sans-bold-14"]When loading a saved game[font="sans-14"]
+  hotkey.cancel – Cancel
+  hotkey.session.savedgames.delete – Delete the selected saved game, ask for confirmation
+    • With hotkey.session.savedgames.noconfirmation – Don't ask for confirmation
+
+[font="sans-bold-18"]Cheats[font="sans-14"]
+To use these cheats in the game, you need to open the chat and type the text exactly as it appears below, for example, you need to type TARDIS and not Tardis or tardis.
+
+[font="sans-bold-14"]i want pizza[font="sans-14"]
+• Gives you 1000 food or enter a space followed by a number to get this amount.
+[font="sans-bold-14"]bring me my axe[font="sans-14"]
+• Gives you 1000 wood or enter a space followed by a number to get this amount.
+[font="sans-bold-14"]i see a mountain here[font="sans-14"]
+• Gives you 1000 stone or enter a space followed by a number to get this amount.
+[font="sans-bold-14"]your money or your life[font="sans-14"]
+• Gives you 1000 metal or enter a space followed by a number to get this amount.
+
+[font="sans-bold-14"]jame jam[font="sans-14"]
+• Reveals the map.
+[font="sans-bold-14"]back to the future[font="sans-14"]
+• Advances into the next phase.
+[font="sans-bold-14"]the hive master[font="sans-14"]
+• Increases the maximum population you can have without having to build houses by 300 by default, or 800 if you use 'TARDIS'.
+[font="sans-bold-14"]TARDIS[font="sans-14"]
+• Increases the maximum population you can have to 500, requires houses to support them unless the cheat 'the hive master' is used.
+[font="sans-bold-14"]i am too busy[font="sans-14"]
+• Speeds up actions like gathering, building, fighting, but not e.g. walking or running.
+
+[font="sans-bold-14"]gift from the gods[font="sans-14"]
+• Gives you 100 thousand of each resource and advances to city phase.
+• Performs the 'the hive master', 'TARDIS' and 'i am too busy' cheats as well.
+[font="sans-bold-14"]wololo[font="sans-14"]
+• Changes the currently selected unit or building under your control.
+[font="sans-bold-14"]black death[font="sans-14"]
+• Kills the currently selected unit or building.
+[font="sans-bold-14"]exodia[font="sans-14"]
+• Defeats a player, by default player 2.
+• Enter a space and a number to select another player.
+• Note: You can destroy your own player as well, so be careful with this one.
+
+[font="sans-bold-14"]iwanttopwnthem[font="sans-14"]
+• Gives you a random hero, but you need to have a building selected.
+• If you add a space and then enter a number, you can set how many random heroes you want to have created.
+• Note: If you select an enemy building the random hero will belong to that enemy.
+[font="sans-bold-14"]salad bowl[font="sans-14"]
+• Gives you one infantry citizen soldier from every civilization, but you need to have a building selected.
+• If you add a space and then enter a number you can set how many infantry citizen soldiers you want to have created.
+• Note: If you select an enemy building the infantry citizen soldiers will belong to that enemy.
+[font="sans-bold-14"]how do you turn this on?[font="sans-14"]
+• Gives you a fighter plane, but you need to have a building selected.
+• If you add a space and then enter a number you can set how many fighter planes you want to have created.
+• Note: If you select an enemy building the fighter plane will belong to that enemy.
+
+[font="sans-bold-14"]brainiac[font="sans-14"]
+• Can be used to get technologies instantly and without costs.
+• Simple mode: Researches technologies that can be researched by the selected building.
+  - Syntax: 'brainiac number (pair)' The 'number' determines which tech is advanced, starting at 1 and moving from left to right. While 'pair' is only needed if tech is a pair, it can be either 'top' or 'bottom', default value is 'top'.
+  - Example: 'brainiac 1' (researches the 1st tech or the top tech of the 1st pair)
+  - Example: 'brainiac 4 bottom' (researches the bottom tech of the 4th pair)
+• Expert mode: Researches a technology which is selected by its JSON-Filename.
+  - Syntax: 'brainiac filename_of_technology'
+  - Example: 'brainiac health_regen_units'
+
+[font="sans-bold-14"]retro me[font="sans-14"]
+• A 8-bit retro music track will be played.
+• Plays a specific title 'retro me (Filename1.ogg)'
+• Example: 'retro me Tavern_in_the_Mist.ogg'
+• Stops the track again 'retro me off'.
+
+[font="sans-bold-18"]Cheats for Delenda Est[font="sans-14"]
+[font="sans-bold-14"]master of puppets[font="sans-14"]
+• Gives you 1000 metal or enter a space followed by a number to get this amount.
+[font="sans-bold-14"]your money or your life[font="sans-14"]
+• Gives you 1000 coin or enter a space followed by a number to get this amount.
+[font="sans-bold-14"]the check is in the mail[font="sans-14"]
+• Gives you 1000 glory or enter a space followed by a number to get this amount.
+
+[font="sans-bold-18"]Cheats for Hyrule Conquest[font="sans-14"]
+[font="sans-bold-14"]i wonder whats for dinner[font="sans-14"]
+• Gives you 1000 food.
+[font="sans-bold-14"]ill grab my stuff[font="sans-14"]
+• Gives you 1000 wood.
+[font="sans-bold-14"]come back when youre richer[font="sans-14"]
+• Gives you 1000 rupees.
+[font="sans-bold-14"]bomb some dodongos[font="sans-14"]
+• Gives you 1000 stone.
+[font="sans-bold-14"]light in my lair[font="sans-14"]
+• Reveals the map.
+[font="sans-bold-14"]all true warriors[font="sans-14"]
+• Gives you random heroes (while building selected).
+[font="sans-bold-14"]how bout a kiss[font="sans-14"]
+• Converts the currently selected unit to belong to you.
+[font="sans-bold-14"]you must die[font="sans-14"]
+•Kills the currently selected unit.
+[font="sans-bold-14"]sure is boring around here[font="sans-14"]
+• Speeds up action.
+[font="sans-bold-14"]squadalah[font="sans-14"]
+• Spawns Gwonam (currently WW2 plane).
+[font="sans-bold-14"]as it is written[font="sans-14"]
+• Defeats player instantly. The default is player 2.
+[font="sans-bold-14"]scrub all the floors[font="sans-14"]
+• Gives you random citizen soldier (while building selected).
+[font="sans-bold-14"]mah boi[font="sans-14"]
+• Gives you 100 million of each resource. Increases the maximum population to 500. Speeds up actions. Advances to city phase.

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object>
+	<object hotkey="cancel">
+		<action on="Press">closeOpenDialogs();</action>
+	</object>
+
+	<object hotkey="session.gui.toggle">
+		<action on="Press">toggleGUI();</action>
+	</object>
+	
+	<object hotkey="session.gui.tutorial.toggle">
+		<action on="Press">toggleTutorial();</action>
+	</object>
+
+	<object hotkey="silhouettes">
+		<action on="Press">toggleConfigBool("silhouettes");</action>
+	</object>
+
+	<object hotkey="quicksave">
+		<action on="Press">if (!g_IsNetworked) Engine.QuickSave(getSavedGameData());</action>
+	</object>
+
+	<object hotkey="quickload">
+		<action on="Press">if (!g_IsNetworked) Engine.QuickLoad();</action>
+	</object>
+
+	<object hotkey="session.kill">
+		<action on="KeyDown">performCommand(g_Selection.toList().map(ent => GetEntityState(ent)), "delete");</action>
+	</object>
+
+	<object hotkey="session.unload">
+		<action on="KeyDown">unloadAll();</action>
+	</object>
+
+	<object hotkey="session.unloadturrets">
+		<action on="KeyDown">unloadAllTurrets();</action>
+	</object>
+
+	<object hotkey="session.leaveturret">
+		<action on="KeyDown">leaveTurretPoints();</action>
+	</object>
+
+	<object hotkey="session.stop">
+		<action on="KeyDown">stopUnits(g_Selection.toList());</action>
+	</object>
+
+	<object hotkey="session.backtowork">
+		<action on="KeyDown">backToWork();</action>
+	</object>
+
+	<object hotkey="session.batchtrain">
+		<action on="Press">updateSelectionDetails();</action>
+		<action on="Release">updateSelectionDetails();</action>
+	</object>
+
+	<object hotkey="selection.idlebuilder">
+		<action on="KeyDown">findIdleUnit(["Builder"]);</action>
+	</object>
+
+	<!-- Find idle warrior - TODO: Potentially move this to own UI button? -->
+	<object hotkey="selection.idlewarrior">
+		<action on="KeyDown">findIdleUnit(g_MilitaryTypes);</action>
+	</object>
+
+	<object hotkey="selection.idleunit">
+		<action on="KeyDown">findIdleUnit(["!Domestic"]);</action>
+	</object>
+
+	<object hotkey="selection.cancel">
+		<action on="KeyDown">clearSelection();</action>
+	</object>
+
+	<object hotkey="session.showstatusbars">
+		<action on="Press">
+			g_ShowAllStatusBars = !g_ShowAllStatusBars;
+			recalculateStatusBarDisplay();
+		</action>
+	</object>
+
+	<object hotkey="boongui.camera.follow.fps">
+		<action on="Press">setCameraFollowFPS(g_Selection.getFirstSelected());</action>
+	</object>
+
+	<object hotkey="boongui.session.gui.exit">
+		<action on="Press">quitConfirmation();</action>
+	</object>
+</object>

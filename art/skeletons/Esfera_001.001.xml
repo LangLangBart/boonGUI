@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<skeletons>
+  <standard_skeleton title="Esfera 001.001" id="Esfera_001.001" />
+  <skeleton title="Esfera 001.001" target="Esfera_001.001">
+    <identifier>
+      <root />
+    </identifier>
+  </skeleton>
+</skeletons>

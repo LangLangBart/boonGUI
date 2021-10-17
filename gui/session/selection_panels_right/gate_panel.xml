@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object name="unitGatePanel"
+	size="10 10 100% 100%"
+>
+	<object>
+		<repeat count="8">
+			<object name="unitGateButton[n]" hidden="true" style="iconButton" type="button" size="0 0 38 38" tooltip_style="sessionToolTipBottom">
+				<object name="unitGateIcon[n]" type="image" ghost="true" size="3 3 43 43"/>
+				<object name="unitGateSelection[n]" hidden="true" type="image" ghost="true" size="3 3 43 43" sprite="stretched:session/icons/corners.png"/>
+			</object>
+		</repeat>
+	</object>
+</object>

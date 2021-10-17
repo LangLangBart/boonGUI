@@ -1,0 +1,11 @@
+{
+	"name": "boongui",
+	"version": "1.7",
+	"label": "boonGUI",
+	"description": "Larger buttons, colorful fruits, increased projectiles and cheat codes added to the manual. Enhance the observer experience with a stats overlay.",
+	"ignoreInCompatibilityChecks": true,
+	"dependencies": [
+		"0ad>=0.0.25"
+	],
+	"url": "https://wildfiregames.com/forum/topic/37147-boongui-mod-compatible-with-a25"
+}

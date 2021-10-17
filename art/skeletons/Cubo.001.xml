@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<skeletons>
+  <standard_skeleton title="Cubo.001" id="Cubo.001" />
+  <skeleton title="Cubo.001" target="Cubo.001">
+    <identifier>
+      <root />
+    </identifier>
+  </skeleton>
+</skeletons>

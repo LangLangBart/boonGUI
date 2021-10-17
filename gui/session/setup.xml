@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<setup>
+	<icon name="icon_focusattacked"
+		sprite="stretched:session/icons/focus-attacked.png"
+		size="14 14"
+	/>
+
+	<!-- Icons for the map details in observer mode -->
+	<icon name="icon_alpha"
+		sprite="stretched:session/icons/0ad_alpha_logo.png"
+		size="22 22"
+	/>
+	<icon name="icon_map"
+		sprite="stretched:session/icons/objectives.png"
+		size="22 22"
+	/>
+	<icon name="icon_pop"
+		sprite="stretched:session/icons/population_special_adjustment_build_label.png"
+		size="22 22"
+	/>
+	<icon name="icon_rating"
+		sprite="stretched:session/icons/bell_level1.png"
+		size="22 22"
+	/>
+	
+	<!-- Phase icons for the overlay. Slight offset in height and width, it looked better this way. -->
+	<icon name="icon_village_phase"
+		sprite="stretched:session/portraits/technologies/village_phase.png"
+		size="21 20"
+	/>
+	<!-- You begin in village phase, no need to add for a icon_village_phase_started icon-->
+	<icon name="icon_town_phase"
+		sprite="stretched:session/portraits/technologies/town_phase.png"
+		size="21 20"
+	/>
+	<icon name="icon_town_phase_started"
+		sprite="stretched:session/portraits/technologies/town_phase_started.png"
+		size="21 20"
+	/>
+	<icon name="icon_city_phase"
+		sprite="stretched:session/portraits/technologies/city_phase.png"
+		size="21 20"
+	/>
+	<icon name="icon_city_phase_started"
+		sprite="stretched:session/portraits/technologies/city_phase_started.png"
+		size="21 20"
+	/>
+	<!-- This is for Delenda Est, since the "researchTime" from City phase to imperial phase is zero for all Civs, there is no need for a icon_imperial_phase_started icon.-->
+	<icon name="icon_imperial_phase"
+		sprite="stretched:session/portraits/technologies/imperial_phase.png"
+		size="21 20"
+	/>
+</setup>

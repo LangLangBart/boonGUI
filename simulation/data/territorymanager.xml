@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TerritoryManager>
+  <ImpassableCost>4</ImpassableCost>
+  <BorderThickness>1</BorderThickness>
+  <BorderSeparation>1</BorderSeparation>
+</TerritoryManager>

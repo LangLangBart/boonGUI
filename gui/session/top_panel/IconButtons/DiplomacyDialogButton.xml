@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object type="button"
+	name="diplomacyButton"
+	size="100%-255 3 100%-225 33"
+	style="iconButton"
+	tooltip_style="sessionToolTip"
+	hotkey="session.gui.diplomacy.toggle"
+>
+	<!-- TODO make the button less ugly -->
+	<object name="diplomacyButtonImage" type="image" sprite="stretched:session/icons/diplomacy.png" ghost="true"/>
+</object>

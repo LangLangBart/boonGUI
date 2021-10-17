@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object name="gamesBox"
+	style="ModernSortedList"
+	selected_column="gameName"
+	selected_column_order="1"
+	type="olist"
+	sortable="true"
+	font="sans-stroke-16"
+	text_align="left"
+>
+	<column id="buddy" width="20"/>
+	<column id="private" width="20"/>
+	<column id="gameName" color="128 128 128" width="25%">
+		<translatableAttribute id="heading">Name</translatableAttribute>
+	</column>
+	<column id="mapName" color="128 128 128" width="25%">
+		<translatableAttribute id="heading">Map Name</translatableAttribute>
+	</column>
+	<column id="mapSize" color="128 128 128" width="15%">
+		<translatableAttribute id="heading" context="map">Size</translatableAttribute>
+	</column>
+	<column id="mapType" color="0 160 160" width="15%">
+		<translatableAttribute id="heading" context="map">Type</translatableAttribute>
+	</column>
+	<column id="maxnbp" color="0 128 128" width="15%">
+		<translatableAttribute id="heading">Players</translatableAttribute>
+	</column>
+	<column id="gameRating" color="0 160 160" width="15%">
+		<translatableAttribute id="heading">Rating</translatableAttribute>
+	</column>
+		<object name="leaveButton" size="0% 100%+3 18% 100%+33" type="button" style="ModernButtonRed"/>
+		<object name="joinButton" size="64% 100%+3 82% 100%+33" type="button" style="ModernButtonRed"/>
+		<object name="hostButton" size="82% 100%+3 100% 100%+33" type="button" style="ModernButtonRed"/>
+</object>

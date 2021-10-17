@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object name="profilePage" hidden="true">
+
+	<script directory="gui/lobby/ProfilePage/"/>
+
+	<!-- Translucent black background -->
+	<object type="image" z="100" sprite="ModernFade"/>
+
+	<object type="image" style="ModernDialog" size="50%-224 50%-160 50%+224 50%+160" z="102">
+
+		<object style="ModernLabelText" type="text" size="50%-128 -18 50%+128 14">
+			<translatableAttribute id="caption">Player Profile Lookup</translatableAttribute>
+		</object>
+
+		<object name="fetchInput" size="25 27 70%-30 53" type="input" style="ModernInput" font="sans-13">
+			<translatableAttribute id="placeholder_text">Enter playername</translatableAttribute>
+		</object>
+
+		<object name="viewProfileButton" type="button" style="ModernButtonRed" size="70%-25 25 100%-25 55">
+			<translatableAttribute id="caption">View Profile</translatableAttribute>
+		</object>
+
+		<object name="profileWindowPanel" size="25 65 70%-30 100%-60">
+			<object name="profileWindowBox" type="image" sprite="ModernDarkBoxGold">
+				<object name="profileWindowArea" hidden="true">
+					<object name="profileRankIcon" size="0 0 50 70" type="text" text_align="left" style="ModernLabelText" font="sans-bold-14" textcolor="gray" />
+					<object name="profileRoleText" size="50 0 100% 50" type="text" text_align="left" style="ModernLabelText" font="sans-bold-14" textcolor="gray" />
+					<object name="profilePlayernameText" size="50 30 100% 65" type="text" style="ModernLabelText" text_align="left" font="sans-bold-16" />
+					<object size="0 65 40%+40 85" type="text" style="ModernRightLabelText" font="sans-bold-stroke-14">
+						<translatableAttribute id="caption">Current Rank:</translatableAttribute>
+					</object>
+					<object name="profileRankText" size="40%+45 65 100% 85" type="text" style="ModernLeftLabelText" font="sans-stroke-16" />
+					<object size="0 85 40%+40 105" type="text" style="ModernRightLabelText" font="sans-bold-stroke-14" textcolor="255 127 0">
+						<translatableAttribute id="caption">Highest Rating:</translatableAttribute>
+					</object>
+					<object name="profileHighestRatingText" size="40%+45 85 100% 105" type="text" style="ModernLeftLabelText" font="sans-stroke-16" textcolor="255 127 0"/>
+					<object size="0 105 40%+40 125" type="text" style="ModernRightLabelText" font="sans-bold-stroke-14">
+						<translatableAttribute id="caption">Total Games:</translatableAttribute>
+					</object>
+					<object name="profileTotalGamesText" size="40%+45 105 100% 125" type="text" style="ModernLeftLabelText" font="sans-stroke-16" />
+					<object size="0 125 40%+40 145" type="text" style="ModernRightLabelText" font="sans-bold-stroke-14" textcolor="0 219 0">
+						<translatableAttribute id="caption">Wins:</translatableAttribute>
+					</object>
+					<object name="profileWinsText" size="40%+45 125 100% 145" type="text" style="ModernLeftLabelText" font="sans-stroke-16" textcolor="0 219 0"/>
+					<object size="0 145 40%+40 165" type="text" style="ModernRightLabelText" font="sans-bold-stroke-14" textcolor="200 0 0">
+						<translatableAttribute id="caption">Losses:</translatableAttribute>
+					</object>
+					<object name="profileLossesText" size="40%+45 145 100% 165" type="text" style="ModernLeftLabelText" font="sans-stroke-16" textcolor="200 0 0"/>
+					<object size="0 165 40%+40 185" type="text" style="ModernRightLabelText" font="sans-bold-stroke-14">
+						<translatableAttribute id="caption">Win Rate:</translatableAttribute>
+					</object>
+					<object name="profileRatioText" size="40%+45 165 100% 185" type="text" style="ModernLeftLabelText" font="sans-stroke-16" />
+				</object>
+				<object name="profileErrorText" size="25% 25% 75% 75%" type="text" style="ModernLabelText" font="sans-bold-stroke-14">
+					<translatableAttribute id="caption">Please enter a player name.</translatableAttribute>
+				</object>
+			</object>
+		</object>
+
+		<object name="profileRankIconList" size="70%-25 65 100%-25 100%-60">
+			<object name="profileRankIconListWindowBox" type="image" sprite="ModernDarkBoxGold">
+				<object name="profileRankIconListWindowArea" tooltip_style="sessionToolTip" >
+				</object>
+					<object size="50 10 100% 30" type="text" style="ModernRightLabelText" text_align="center" font="sans-stroke-16" textcolor="255 255 255 255">
+						<translatableAttribute id="caption">#1</translatableAttribute>
+						<translatableAttribute id="tooltip">Ruler</translatableAttribute>
+					</object>
+						<!-- #1 -->
+						<object
+						type="image"
+						size="20 5 50 35"
+						sprite="stretched:session/icons_forum_ranks/icon_highest_rank.png"
+						ghost="true"
+						/>
+					<object size="50 40 100% 60" type="text" style="ModernRightLabelText" text_align="center" font="sans-stroke-16" textcolor="255 255 255 220">
+						<translatableAttribute id="caption">>1600</translatableAttribute>
+						<translatableAttribute id="tooltip">Conqueror</translatableAttribute>
+					</object>
+						<!-- above1600 -->
+						<object
+						type="image"
+						size="20 35 50 65"
+						sprite="stretched:session/icons_forum_ranks/icon_above_1600.png"
+						ghost="true"
+						/>
+					<object size="50 70 100% 90" type="text" style="ModernRightLabelText" text_align="center" font="sans-stroke-16" textcolor="255 255 255 190">
+						<translatableAttribute id="caption">>1400</translatableAttribute>
+						<translatableAttribute id="tooltip">Champion</translatableAttribute>
+					</object>
+						<!-- above1400 -->
+						<object
+						type="image"
+						size="20 65 50 95"
+						sprite="stretched:session/icons_forum_ranks/icon_above_1400.png"
+						ghost="true"
+						/>
+					<object size="50 100 100% 120" type="text" style="ModernRightLabelText" text_align="center" font="sans-stroke-16" textcolor="255 255 255 160">
+						<translatableAttribute id="caption">>1200</translatableAttribute>
+						<translatableAttribute id="tooltip">Warrior</translatableAttribute>
+					</object>
+						<!-- above1200 -->
+						<object
+						type="image"
+						size="20 95 50 125"
+						sprite="stretched:session/icons_forum_ranks/icon_above_1200.png"
+						ghost="true"
+						/>
+					<object size="50 130 100% 150" type="text" style="ModernRightLabelText" text_align="center" font="sans-stroke-16" textcolor="255 255 255 130">
+						<translatableAttribute id="caption">>1000</translatableAttribute>
+						<translatableAttribute id="tooltip">Footsoldier</translatableAttribute>
+					</object>
+						<!-- above1000 -->
+						<object
+						type="image"
+						size="20 125 50 155"
+						sprite="stretched:session/icons_forum_ranks/icon_above_1000.png"
+						ghost="true"
+						/>
+					<object size="50 160 100% 180" type="text" style="ModernRightLabelText" text_align="center" font="sans-stroke-16" textcolor="255 255 255 100">
+						<translatableAttribute id="caption">&lt;1000</translatableAttribute>
+						<translatableAttribute id="tooltip">n00b</translatableAttribute>
+					</object>
+						<!-- below1000 -->
+						<object
+						type="image"
+						size="20 155 50 185"
+						sprite="stretched:session/icons_forum_ranks/icon_below_1000.png"
+						ghost="true"
+						/>
+			</object>
+		</object>
+		
+		<object type="button" name="profileBackButton" style="ModernButtonRed" size="50%-65 100%-50 50%+65 100%-20" hotkey="cancel">
+			<translatableAttribute id="caption">Back</translatableAttribute>
+		</object>
+		
+	</object>
+</object>

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<skeletons>
+  <standard_skeleton title="Javelin stave projectile c" id="Javelin_stave_projectile_c" />
+  <skeleton title="Javelin stave projectile c" target="Javelin_stave_projectile_c">
+    <identifier>
+      <root>prop-blade</root>
+    </identifier>
+  </skeleton>
+</skeletons>

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<skeletons>
+  <standard_skeleton title="Sphere01" id="Sphere01" />
+  <skeleton title="Sphere01" target="Sphere01">
+    <identifier>
+      <root />
+    </identifier>
+  </skeleton>
+</skeletons>

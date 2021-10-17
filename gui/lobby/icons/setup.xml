@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<setup>
+
+	<!-- Ranks -->
+	<icon name="icon_highest_rank"
+		sprite="stretched:session/icons_forum_ranks/icon_highest_rank.png"
+		size="45 45"
+	/>
+	<icon name="icon_above_1600"
+		sprite="stretched:session/icons_forum_ranks/icon_above_1600.png"
+		size="45 45"
+	/>
+	<icon name="icon_above_1400"
+		sprite="stretched:session/icons_forum_ranks/icon_above_1400.png"
+		size="45 45"
+	/>
+	<icon name="icon_above_1200"
+		sprite="stretched:session/icons_forum_ranks/icon_above_1200.png"
+		size="45 45"
+	/>
+	<icon name="icon_above_1000"
+		sprite="stretched:session/icons_forum_ranks/icon_above_1000.png"
+		size="45 45"
+	/>
+	<icon name="icon_below_1000"
+		sprite="stretched:session/icons_forum_ranks/icon_below_1000.png"
+		size="45 45"
+	/>
+	
+	<!-- Special icons e.g. Bots, moderators, ... -->
+
+</setup>
