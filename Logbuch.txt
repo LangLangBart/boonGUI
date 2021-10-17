@@ -1,6 +1,6 @@
 # Update summary
             
-   v1.7 
+   v1.7
        'Version number'
             - adjust number to 1.7 (ProjectInformation.js and mod.json), make sure it says "0ad=0.0.25" and not "0ad>=0.0.25" (IMPORTANT)
             - for testing purpose I changed the mod.json file into >=, for release it should just be =
@@ -27,7 +27,7 @@
             - added gui/lobby/LobbyPage/ProfilePanel.js to the mod, to chnage the color and add the rank fo the player name, more consitant to display it in color
             - set the correct "PlayerPresence", when interacting with the replay button and the last score button.
             - Added Engine.LobbySetPlayerPresence("playing"); to the ReplayButton.js file and 		Engine.LobbySetPlayerPresence("available"); to the replay_actions.js file.
-            - Added 	Engine.LobbySetPlayerPresence("playing"); to the LastSummaryButton.js file and 	
+            - Added 	Engine.LobbySetPlayerPresence("playing"); to the LastSummaryButton.js file and
             else if (g_GameData.gui.dialog && Engine.HasXmppClient()) { Engine.LobbySetPlayerPresence("available");
             Engine.PopGuiPage();} to the summary.js file.
             - Adding some icons/role description to the profile panel and also color the name. The icons are stored in gui/lobby/icons/setup.xml and called in ProfilePanel.js, adjusted the position in ProfilePanel.xml. The new icons come from @maroder and are saved under session/icons_forum_ranks. For the "lowest" rank I just took the donkey icon.
@@ -61,7 +61,7 @@
             - changed the name of the "Last Summary" button in "Last Score".
         'Replay'
             - changed the style of the buttons in the replay screen from StoneButton to ModernButtonRed
-            - fixed the correct spacing between the buttons in the replay_menu.xml file 
+            - fixed the correct spacing between the buttons in the replay_menu.xml file
         'Art/flag'
             - reduced the size of the garrison_flag to 0.75 from my previous size. Well visible and the size is not too intrusive (SixWheeler.xml as skelton file was created with @Stan's skeleton generator - python3 skeleton_generator.py; garrison_flag.dae and garrison_flag_idle.dae
             
@@ -100,7 +100,7 @@
         'Lobby'
             - Logging into the lobby, issue when autociv and boongui are enabled, renaming "sgMapTypeAndName" into "sgMapName" (GameDetails.js and GameDetails.xml) solves it.
         'Session'
-            - added a useless function to the session~boongui.js file, the autociv mod crops the pauseoverlay to 30%, but I use the pauseoverlay to show important informations. I just copied his function into my file and increased the number to 100%. 
+            - added a useless function to the session~boongui.js file, the autociv mod crops the pauseoverlay to 30%, but I use the pauseoverlay to show important informations. I just copied his function into my file and increased the number to 100%.
             
    v1.6 (12/Aug/21)
        'Version number'
@@ -110,11 +110,11 @@
    v1.5 (12/Aug/21)
        'Version number'
             - adjust number to 1.5 (ProjectInformation.js and mod.json)
-            - merged boongui txt files with log entires into Logbuch.md, also included possible feature ideas 
+            - merged boongui txt files with log entires into Logbuch.md, also included possible feature ideas
         'Skins'
             - added red texture (animal_fish.dds, animal_fish_generic.png, animal_tuna.png)
         Manual:
-            - Added cheat codes to the games manual for 0AD, Hyrule Conquest and Delenda Est (intro.txt).  
+            - Added cheat codes to the games manual for 0AD, Hyrule Conquest and Delenda Est (intro.txt).
    
    v1.4 (11/Aug/21)
         'Version number'
@@ -189,7 +189,7 @@
             - changed the GUI of the panels in the game window from "0 0 250" to texture="global/modern/background.png" (sprites.xml, MenuButton.xml, PlayerViewControl.xml, overlays)
             - adjusted the shader for chat messages slightly, was not happy about it with 1.1 (item-shading-right.png)
         'MiniMap'
-            - Changed the texture and color of the circle (background_circle.png). I used the official 0ad logo and cut out a ring from it. I also adjusted the position of the objects in the MiniMap.xml file to get the desired layout. 
+            - Changed the texture and color of the circle (background_circle.png). I used the official 0ad logo and cut out a ring from it. I also adjusted the position of the objects in the MiniMap.xml file to get the desired layout.
             - Created a new background (background_black.png), adjusted the overall size in session.xml and changed the background color from "0 0 0" to "transparent" in sprites.xml.
             - I had to recreat the icons, i used a circle of the original background.png from the modern folder and put the icons in it. Made a highlight version of each with modulate -130,100,100 plus a ring around it and a disabled version for flare and idle in a gray tone.
         'Projectiles'
@@ -203,7 +203,7 @@
         'Version number'
             - adjust number to 1.1 (PlayerViewControl.xml, ProjectInformation.js and mod.json)
         'Lobby && Colors'
-            - slightly changed some colors blue and cyan (Player~nroc.js)   
+            - slightly changed some colors blue and cyan (Player~nroc.js)
             - changed the colors in the gamestup as well to be in sync what you see in the game later. The function and colors are stored in common/tooltips~nroc.js and being used PlayerColor.js and ClientChat.js
             - increased the font size for the chatText and chatInput in the lobby and the gamesetup page from sans-13 to sans-stroke-16 (gamesetup/Pages/GameSetupPage/Panels/Chat/ChatPanel.xml, lobby/LobbyPage/Chat/ChatPanel.xml).
             - Increased the username in chat messages from sans-bold-13 to sans-stroke-16 ChatMessageFormatSay.js and ClientChat.js
@@ -225,12 +225,12 @@
             - adjust number to 1.0 (PlayerViewControl.xml, ProjectInformation.js and mod.json)
             - ProjectInformation.js has been added, with a button for YouTube
             - Added "ignoreInCompatibilityChecks" to the mod.json file. This should allow me to play in the lobby with the NROC mod, see rP25634 (2/Jun/21)
-        --> ART 
+        --> ART
         'art/actors/flora/trees'
             - copied over
         'art/actors'
             - Geology and props folder deleted, some maps have these new metal mines, let's see how it goes, we can add it later if needed, we want to make as few changes to the orignal as possible
-            - Unit folder also deleted the files in there were fixed for the projectiles in siege catapults, we only need the bigger .dae file now - Very good, that means less files. 
+            - Unit folder also deleted the files in there were fixed for the projectiles in siege catapults, we only need the bigger .dae file now - Very good, that means less files.
         'art/animation'
             - all copied over
         'art/meshes'
@@ -249,7 +249,7 @@
             - removed metal resources icons, they are now natively integrated into the game
             - copied the minimap buttons over and added the new flare buttons as well
             - applied -modulate 85,100,100 to minimap-flare.png, -modulate 150,100,100 to minimap-flare.png to create a highlight version and -modulate 80,100,100 to minimap-flare-disabled.png
-        --> fonts, nroc_data, simulation copied over 
+        --> fonts, nroc_data, simulation copied over
         --> GUI
         'common'
             - deleted mod~nroc.js file
@@ -264,9 +264,9 @@
             - Updated MainMenuItems.js
             - mainmenu~nroc.js was changed it no longer needs to restart when the mod is enabled for the first time, hotkeys are still written to the user.cfg file (used the autociv file and made changes to it, to fit my purpose)
         'replaymenu'
-            - added the old replay_actions.js file, so that @mysticjim can still play replays via the "Summary" button   
+            - added the old replay_actions.js file, so that @mysticjim can still play replays via the "Summary" button
         'session'
-            - adjusted PauseOverlay.xml and PauseOverlay.js slightly the "pausedByText" in MP mode sits now between "PauseText" and the description of the stats overlay. Also adjusted the height and width to be fixed in terms of pixel length, rather than being defined as relative numbers. 
+            - adjusted PauseOverlay.xml and PauseOverlay.js slightly the "pausedByText" in MP mode sits now between "PauseText" and the description of the stats overlay. Also adjusted the height and width to be fixed in terms of pixel length, rather than being defined as relative numbers.
             - deleted: files OverlayCounterElapsedTime.js, OverlayCounterRemainingCeasefire.js.DELETED
             - updated: selection_panels.js, styles.xml, sprites.xml, session.xml, GameSpeedControl.xml
             - renamed: selection_panels_helpers.js into selection_panels_helpers~nroc.js and included only my functions (easier to maintain this way)
@@ -300,7 +300,7 @@
             
    v0.9.9 (3/Jun/21)
         'Version number'
-            - adjust number to 0.9.9 (PlayerViewControl.xml and mod.json) 
+            - adjust number to 0.9.9 (PlayerViewControl.xml and mod.json)
         'Overlay'
             - changed the position from "Food", "Wood", "Stone" and "Metal" to nroc_statsOverlay.js and "Eco", "Mil" and "Exp" to the nroc_unitsOverlay.js
         'PauseOverlay'
@@ -323,7 +323,7 @@
         'HeroPortraits'
             - reduced the size a bit and increased the number of panel entities from 15 to 17 (PanelEntities.xml)
             
-   v0.9.7 (3/May/21) 
+   v0.9.7 (3/May/21)
         'Version number'
             - adjust number to 0.9.7 (PlayerViewControl.xml and mod.json)
         'TopPanl'
@@ -392,7 +392,7 @@
             - adjust number to 0.9.5 (PlayerViewControl.xml and mod.json)
         'Color'
             - changed the color in MenuButton.xml, nroc_unitsOverlay.xml, TopPanel.xml, nroc_statsOverlay.xml, nroc_basicOverlay.xml, nroc_unitsOverlay.xml and sprites.xml to a dark black ( 	sprite="color: 0 0 0 250") so the ntire UI has a black background, also changed the minimap art file it is now nicely black colored (minimap_circle_modern.png)
-            - adjusted player color from prurple to light purple (Player~nroc.js) 
+            - adjusted player color from prurple to light purple (Player~nroc.js)
         'Top Panel'
             - Counters have be brought back (TopPanel.js) and are viewable when playing
             - NewbieRush logo and NROC version number are turned off while playing and truned on while watching (PlayerViewControl.js)
@@ -410,7 +410,7 @@
             - added new hotky to flip between statsOverlay and unitsOverlay with "Shift+S" (hotkey was specified in nroc_unitsOverlay.xml and nroc_statsOverlay.xml file and the function to trigger it sits in nroc_statsOverlay.js), also added it to the launch, when starting the mod for the first time (mainmenu~nroc.js and default_config.json)
             - added a new colum for FemaleCitizen, popLimit, Traders, Healers, Ranged and Melee
             - "Sie" now only contains Siege units
-            - "Ele" only War elephnats (no worker elephant and no archer elephant) 
+            - "Ele" only War elephnats (no worker elephant and no archer elephant)
         'Pause Overlay'
             - made the background a bit darker (sprites.xml)
             - adjusted the color of the box (styles.xml)
@@ -443,7 +443,7 @@
         'Compatibility'
             - fixed a problem with hosting and othrs joing in whithout having the mod (gamesetup~nroc.js)
         'Summary'
-            - increased the font size from 20 to 22 for the Total number in Team matches 
+            - increased the font size from 20 to 22 for the Total number in Team matches
         'Pause Overlay'
             - added "Cha" and "Rtng" explaination to the overlay (PauseOverlay.xml) added "Alpha XXIV" in there as well
         'Actors'
@@ -494,7 +494,7 @@
         'Stats Overlay'
             - adjusted the pink color slightly from '"b": 0.6' to '"b": 0.8' to make it stand out a bit more against the red color (Player~nroc.js)
             - changed "Kill" to "Kil" and "Deth" to "Dth"
-            - included a new cloumn called "Civ"       
+            - included a new cloumn called "Civ"
         'Hotkey'
             - added a new Hotkey to quickly go to "Quit confirmation" dialog (misc.xml defines the hotkey and  selection_panels_helpers.js includes the function, hotkey string was addded to default.config.json and explained in mainmenu~nroc.js)
             - The files camera.xml and misc.xml have been renamed to camera~nroc.xml and misc~nroc.xml. The reason is to reduce file size and see what I did in those files more easily, in those two cases, I just added a hotkey (explained in wiki/ModdingGuiAndSimulation).
@@ -516,12 +516,12 @@
             - moved 'Follow Player' button to the right side and remove the text (button is enough) (FollowPlayer.xml)
         'Stats Overlay'
             - changed all colors to be more vivid;
-            - @Sayyan (24/Jul/21 Minimap Colours)https://wildfiregames.com/forum/topic/14991-minimap-colours/; 
+            - @Sayyan (24/Jul/21 Minimap Colours)https://wildfiregames.com/forum/topic/14991-minimap-colours/;
             - @Dakara (11/May/21 - Dream of gamers) https://wildfiregames.com/forum/topic/26837-dream-of-gamer-16-players-game/?do=findComment&comment=427862;
             - https://en.wikipedia.org/wiki/List_of_colors_(compact)
 
-            - K/L ratio added, avoiding 'NaN' value by adding >Number((state.killDeathRatio).toFixed(1)) || 0,< 
-            and avoiding 'Infinity' via adding a function and a variable to the statsoverlay.js file 
+            - K/L ratio added, avoiding 'NaN' value by adding >Number((state.killDeathRatio).toFixed(1)) || 0,<
+            and avoiding 'Infinity' via adding a function and a variable to the statsoverlay.js file
         'HUD'
             - Slightly larger icons in the center for multiple selections
         'Chat Notification'
@@ -564,7 +564,7 @@
         'Chat Notification'
             - added a nice shader, so text can be read more easily
         'Game Time'
-            - moved the GameSpeedButton and GameSpeedControl to the GameTime 
+            - moved the GameSpeedButton and GameSpeedControl to the GameTime
             - changed the font to mono-stroke-14
         'Top Panel'
             - made it more dark and changed the font
@@ -590,7 +590,7 @@
             - increased the font size from 'sans-bold-stroke-14' to  'sans-bold-20''
     
     v0.2 (19/Mar/21)
-        'Stats Overlay' 
+        'Stats Overlay'
             - I changed the position to the top right for the 'Stats Overlay', I tried to dock it like for the minimap, but I am not succeeding so far. It works good for 1920x1200, but if the display size is smaller it reaches into the top panel (I need to figure out how to dock it, like @badosu did)
             - changed 'T' --> '#' ; 'P' --> 'Ω' ; 'Tec --> 'Tech' and 'Kil' --> 'Kill'.
             - Charackter for player names increased to 16 
@@ -607,14 +607,14 @@
         'Stats Overlay'
             - added
         'MiniMap'
-            - made bigger 
+            - made bigger
 
 # Miscellaneous
     Installation:
-        Download the pyromod file: (Should work on Windows/ Linux and macOS) 
+        Download the pyromod file: (Should work on Windows/ Linux and macOS)
         - Either double click or
         - Drag and drop the file over the 0 A.D. app icon or
-        - Right click and the pyromod file and open with the 0 A.D. app 
+        - Right click and the pyromod file and open with the 0 A.D. app
         Go to 'Settings' --> 'Mod Selection' and enable the mod.
         
     Compatibility, successfully tested for the following mods in A25:
@@ -625,7 +625,7 @@
         - 0 A.D. A24b including 'Atlas', CotEditor (text editor), Terminal, ImageMagick
         - Patience, Perseverance and Curiosity
         - Forum threads (e.g. How to modify 0 A.D.?) and trac documentation (e.g. 0 A.D. Mod Layout, 0 A.D. Modding Guide, ModdingResources, ModdingGuiAndSimulation)
-         - Using a small existing mod is a good way to start modding the game. 
+         - Using a small existing mod is a good way to start modding the game.
     
     Why the name boonGUI?
         - Obviously I needed a name and ‘Langbart_visibility' wasn't enough for me, but instead of just making up a word, I definitely wanted to include something so people would automatically know what kind of mod it was, so GUI was in and boon was later found via dictionary.
@@ -651,11 +651,11 @@
         - Add some speed hotkey, to increase speed mulitplier
         - Make changes to the loading screen, bigger and different images, do it like you think it should be (D1730)
         https://wildfiregames.com/forum/topic/25204-improving-the-loading-screen/
-        I would like to have different tips, e.g how is the total/ military/ economic score calculated; maybe advice with UDP problem 
+        I would like to have different tips, e.g how is the total/ military/ economic score calculated; maybe advice with UDP problem
         turn off formations via right click
         include GIFS rather than just png files
         - Show biomes in map preview #6017
-        - Make Summary screen scalable #5002 
+        - Make Summary screen scalable #5002
         - add trivia facts & solutions for user problems e.g. udp port (see at zotero) at. the loading page
         - add some useful FAQ advices e.g. right click to disbale formations
         - add a hotkey that brings you home to your CC, Just press "H"
@@ -674,7 +674,7 @@
 (1) The blinking of the pop counter is not in sync with the "Overlay" popLimit, this might be caused by the tick period in the boongui_basicOverlay.js.
 (2) The empty circle in the StatsOverlay remains even if you are the last of your team and have not researched the "Cartography" tech, because it counts also the "defeated" mutual allies, which it should not.
 (3) The way I filter out "AutoResearchedTechs" from "researchedTechs" should be made better (GuiInterface~boongui.js).
-(4) Observer mode now shows the map name and an icon, the icon is the same as the one for the "Objectives" button, make it clickable and only show one of the buttons. 
+(4) Observer mode now shows the map name and an icon, the icon is the same as the one for the "Objectives" button, make it clickable and only show one of the buttons.
 (5) The hero button position should adopt to the length of the stats overlay.
 (6) the phasing up should display the progress, not just a static green icon.
         
