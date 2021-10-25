@@ -6,6 +6,10 @@
             - for testing purpose I changed the mod.json file into >=, for release it should just be =
         'Top Panel'
             - added a new objective for rated games to the top panel (BuildLabel.js) as an icon I used the yellow bell (gui/session/setup.xml)
+        'Diplomacy'
+            - good idea by @kaaduu to disable tribute buttons for enemies (boongui_TributeButton.js)
+        'Atlas'
+            - there are some compatibility issues with Atlas, I think i solved them for now (BuildLabel.js, CounterManager.js)
 
    v1.6.5 (1/Oct/21)
        'Version number'

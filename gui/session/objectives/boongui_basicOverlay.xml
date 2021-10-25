@@ -1,5 +1,5 @@
 <object name="boongui_basicOverlay"
-	size="0 0 100% 100%"
+	size="0 0 10% 10%"
 	sprite="topPanel"
     hidden="true"
     ghost="true"

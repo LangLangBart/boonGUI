@@ -9,7 +9,7 @@ class BuildLabel
 
 		this.viewPlayer = Engine.GetGUIObjectByName("viewPlayer");
 		this.shortGameInfosLabel = Engine.GetGUIObjectByName("shortGameInfosLabel");
-		this.shortGameInfosLabel.caption = sprintf("%(icon_alpha)s Alpha XXV  %(icon_map)s %(mapName)s%(mapSize)s%(biome)s  %(icon_pop)s %(pop)s  %(rating)s", {
+		this.shortGameInfosLabel.caption = Engine.IsAtlasRunning() ? "" : sprintf("%(icon_alpha)s Alpha XXV  %(icon_map)s %(mapName)s%(mapSize)s%(biome)s  %(icon_pop)s %(pop)s  %(rating)s", {
 			"icon_alpha": '[icon="icon_alpha" displace="0 4"]',
 			"icon_map": '[icon="icon_map" displace="2 6"]',
 			"mapName": this.mapCache.translateMapName(this.mapCache.getTranslatableMapName(g_InitAttributes.mapType, g_InitAttributes.map)),
