@@ -4,4 +4,4 @@ DiplomacyDialogPlayerControl.prototype.TributeButtonManager.prototype.TributeBut
 
 	if (!this.button.hidden)
 		this.button.enabled = controlsPlayer(g_ViewedPlayer);
-}
+};
