@@ -7,6 +7,8 @@ This mod is basically a derivative of @ffm2's mod 'ffm_visibility', but with add
 
 @nani made the stats overlay work and wrote the code for the last summary button in the lobby
 
+@kaaduu made a PR on GitHub, "Disable sent resources to enemy to avoid misclicks"
+
 @Nescio provided most of the work for the larger buttons. 
 
 @schweini provided the extra button with "D3958 - Add an extra button for seeing the summary page when quitting a session".
