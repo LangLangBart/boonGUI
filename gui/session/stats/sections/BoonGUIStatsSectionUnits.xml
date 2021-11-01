@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object name="BoonGUIStatsSectionUnits" type="text">
+	<object
+		name="BoonGUIStatsSectionUnitsHeader"
+		type="text"
+		style="overlayHeader"
+		size="330 0 100%-330 25"
+	>
+		<object type="text" style="overlayHeaderCenter" size="0 0 40 100%">Fem</object>		
+		<object type="text" style="overlayHeaderCenter" size="40 0 80 100%">Inf</object>
+		<object type="text" style="overlayHeaderCenter" size="80 0 120 100%">Cav</object>
+		<object type="text" style="overlayHeaderCenter" size="120 0 150 100%">Sg</object>
+		<object type="text" style="overlayHeaderCenter" size="150 0 180 100%">El</object>
+
+		<object type="text" style="overlayHeaderCenter" size="180 0 220 100%">Kil</object>
+		<object type="text" style="overlayHeaderCenter" size="220 0 260 100%">Dth</object>
+		<object type="text" style="overlayHeaderCenter" size="260 0 300 100%">K/D</object>
+
+		<object type="text" style="overlayHeaderCenter" size="300 0 335 100%">Ran</object>
+		<object type="text" style="overlayHeaderCenter" size="335 0 370 100%">Mel</object>
+		<object type="text" style="overlayHeaderCenter" size="370 0 405 100%">Cha</object>
+
+		<object name="BoonGUIStatsSectionUnits_fieldIcon" type="image" size="405+2 2 430-2 22"/>
+		<object name="BoonGUIStatsSectionUnits_barracksIcon" type="image" size="430+2 2 455-2 22"/>
+		<object name="BoonGUIStatsSectionUnits_stableIcon" type="image" size="455+2 2 480-2 22"/>
+
+		<object type="text" style="overlayHeaderCenter" size="480 0 505 100%">T</object>
+	</object>
+	<object
+		name="BoonGUIStatsSectionUnitsRows"
+		type="text"
+		size="330 25 100%-330 100%"
+	>
+		<repeat count="8" var="n">
+			<object name="BoonGUIStatsSectionUnitsRow[n]" type="text">
+				<object name="BoonGUIStatsSectionUnitsRow[n]_FemaleCitizen" type="text" style="overlayDefaultCenter" size="0 0 40 100%" />		
+				<object name="BoonGUIStatsSectionUnitsRow[n]_Infantry" type="text" style="overlayDefaultCenter" size="40 0 80 100%" />
+				<object name="BoonGUIStatsSectionUnitsRow[n]_Cavalry" type="text" style="overlayDefaultCenter" size="80 0 120 100%" />
+				<object name="BoonGUIStatsSectionUnitsRow[n]_Siege" type="text" style="overlayDefaultCenter" size="120 0 150 100%" />
+				<object name="BoonGUIStatsSectionUnitsRow[n]_Elephant" type="text" style="overlayDefaultCenter" size="150 0 180 100%" />
+				
+				<object name="BoonGUIStatsSectionUnitsRow[n]_Kills" type="text" style="overlayDefaultCenter" size="180 0 220 100%" />						
+				<object name="BoonGUIStatsSectionUnitsRow[n]_Deaths" type="text" style="overlayDefaultCenter" size="220 0 260 100%" />
+				<object name="BoonGUIStatsSectionUnitsRow[n]_KD" type="text" style="overlayDefaultCenter" size="260 0 300 100%" />
+
+				<object name="BoonGUIStatsSectionUnitsRow[n]_Ranged" type="text" style="overlayDefaultCenter" size="300 0 335 100%" />
+				<object name="BoonGUIStatsSectionUnitsRow[n]_Melee" type="text" style="overlayDefaultCenter" size="335 0 370 100%" />
+				<object name="BoonGUIStatsSectionUnitsRow[n]_Champion" type="text" style="overlayDefaultCenter" size="370 0 405 100%" />
+
+				<object name="BoonGUIStatsSectionUnitsRow[n]_Field" type="text" style="overlayDefaultCenter" size="405 0 430 100%" />
+				<object name="BoonGUIStatsSectionUnitsRow[n]_Barracks" type="text" style="overlayDefaultCenter" size="430 0 455 100%" />
+				<object name="BoonGUIStatsSectionUnitsRow[n]_Stable" type="text" style="overlayDefaultCenter" size="455 0 480 100%" />
+				<object name="BoonGUIStatsSectionUnitsRow[n]_Forge" type="text" style="overlayDefaultCenter" size="480 0 505 100%" />
+
+				<object name="BoonGUIStatsSectionUnitsRow[n]_queue" type="button" size="510 0 800 20">
+					<repeat count="6" var="k">
+						<object type="text" name="BoonGUIStatsSectionUnitsRow[n]_queue[k]" hidden="true">
+							<object name="BoonGUIStatsSectionUnitsRow[n]_queue[k]_icon" ghost="true" type="image" size="0 0 20 20"/>
+							<object name="BoonGUIStatsSectionUnitsRow[n]_queue[k]_progressSlider" type="image" sprite="queueProgressSlider" ghost="true" size="0 0 20 20" z="20"/>
+							<object name="BoonGUIStatsSectionUnitsRow[n]_queue[k]_count" ghost="true" style="groupIconsTextSmall" type="text" z="20"/>
+						</object>
+					</repeat>
+				</object>
+			</object>
+		</repeat>
+	</object>
+</object>

@@ -1,19 +1,9 @@
-// boonGUI control class with sub classes that will be have an instance at init()
-class BoonGUIControls
-{
-	constructor()
-	{
-		this.controls = {}
-		for (let className of Object.keys(BoonGUIControls))
-			this.controls[className] = new BoonGUIControls[className]()
-	}
-}
-var g_BoonGUIControls; // Created at init
+var g_BoonGUIStats;
 
 autociv_patchApplyN("init", function (target, that, args)
 {
 	let result = target.apply(that, args)
-	g_BoonGUIControls = new BoonGUIControls()
+	g_BoonGUIStats = new BoonGUIStats()
 	return result
 });
 

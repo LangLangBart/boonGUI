@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object name="BoonGUIStatsSectionEco" type="text">
+	<object
+		name="BoonGUIStatsSectionEcoHeader"
+		type="text"
+		style="overlayHeader"
+		size="330 0 100%-330 25"
+	>
+		<object type="text" style="overlayHeaderRight" size="0 0 70 100%">Food</object>		
+		<object type="text" style="overlayHeaderRight" size="120 0 190 100%">Wood</object>
+		<object type="text" style="overlayHeaderRight" size="240 0 310 100%">Stone</object>
+		<object type="text" style="overlayHeaderRight" size="360 0 430 100%">Metal</object>
+		<object type="text" style="overlayHeaderRight" size="470 0 540 100%">Score</object>
+		<object type="text" style="overlayHeaderRight" size="550 0 590 100%">Idle</object>
+		<object type="text" style="overlayHeaderRight" size="590 0 630 100%">Exp</object>
+
+		<object name="BoonGUIStatsSectionEco_foodIcon" type="image" size="90 0 110 20"/>
+		<object name="BoonGUIStatsSectionEco_woodIcon" type="image" size="210 0 230 20"/>
+		<object name="BoonGUIStatsSectionEco_stoneIcon" type="image" size="330 0 350 20"/>
+		<object name="BoonGUIStatsSectionEco_metalIcon" type="image" size="450 0 470 20"/>
+	</object>
+	<object
+		name="BoonGUIStatsSectionEcoRows"
+		type="text"
+		size="330 25 100%-330 100%"
+	>
+		<repeat count="8" var="n">
+			<object name="BoonGUIStatsSectionEcoRow[n]" type="text">
+				<object name="BoonGUIStatsSectionEcoRow[n]_foodCounts" type="text" style="overlayResourceCounts" size="0 0 70 100%" />
+				<object name="BoonGUIStatsSectionEcoRow[n]_woodCounts" type="text" style="overlayResourceCounts" size="120 0 190 100%" />
+				<object name="BoonGUIStatsSectionEcoRow[n]_stoneCounts" type="text" style="overlayResourceCounts" size="240 0 310 100%" />
+				<object name="BoonGUIStatsSectionEcoRow[n]_metalCounts" type="text" style="overlayResourceCounts" size="360 0 430 100%" />
+
+				<object name="BoonGUIStatsSectionEcoRow[n]_foodGatherers" type="text" style="overlayResourceGatherers" size="70 0 120 100%" />
+				<object name="BoonGUIStatsSectionEcoRow[n]_woodGatherers" type="text" style="overlayResourceGatherers" size="190 0 240 100%" />
+				<object name="BoonGUIStatsSectionEcoRow[n]_stoneGatherers" type="text" style="overlayResourceGatherers" size="310 0 360 100%" />
+				<object name="BoonGUIStatsSectionEcoRow[n]_metalGatherers" type="text" style="overlayResourceGatherers" size="430 0 480 100%" />
+
+				<object name="BoonGUIStatsSectionEcoRow[n]_score" type="text" style="overlayResourceCounts" size="470 0 540 100%" />
+				<object name="BoonGUIStatsSectionEcoRow[n]_idle" type="text" style="overlayResourceCounts" size="550 0 590 100%" />
+				<object name="BoonGUIStatsSectionEcoRow[n]_explore" type="text" style="overlayResourceCounts" size="590 0 630 100%" />
+			</object>
+		</repeat>
+	</object>
+</object>

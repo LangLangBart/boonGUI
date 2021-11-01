@@ -16,6 +16,7 @@
 <script directory="gui/session/message_box/"/>
 <script directory="gui/session/minimap/"/>
 <script directory="gui/session/objectives/"/>
+<script directory="gui/session/stats/"/>
 <script directory="gui/session/top_panel/"/>
 <script directory="gui/session/top_panel/IconButtons/"/>
 <script directory="gui/session/trade/"/>
@@ -43,7 +44,7 @@
 	<include file="gui/session/TimeNotificationOverlay.xml"/>
 
 	<!-- Chat messages -->
-	<object name="chatPanel" size="0 283 100% 100%-240" z="0" absolute="true">
+	<object name="chatPanel" size="0 305 100% 100%-240" z="0" absolute="true">
 		<object name="chatLines">
 			<repeat count="6">
 				<object name="chatLine[n]" size="3 0 100% 25" type="button" style="chatPanelOverlay" tooltip_style="sessionToolTipBottomBold" ghost="true" hidden="true"/>
@@ -56,6 +57,7 @@
 	<include directory="gui/session/dialogs/"/>
 	<include directory="gui/session/diplomacy/"/>
 	<include directory="gui/session/objectives/"/>
+	<include directory="gui/session/stats/"/>
 	<include file="gui/session/GameSpeedControl.xml"/>
 	<include file="gui/session/PanelEntities.xml"/>
 	<include file="gui/session/ResearchProgress.xml"/>

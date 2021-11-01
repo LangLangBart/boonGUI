@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object name="BoonGUIStatsSectionTech" type="text">
+	<object
+		name="BoonGUIStatsSectionTechHeader"
+		type="text"
+		style="overlayHeader"
+		size="330 0 100%-330 25"
+	>
+	</object>
+	<object
+		name="BoonGUIStatsSectionTechRows"
+		type="text"
+		size="330 25 100%-330 100%"
+	>
+		<repeat count="8" var="n">
+			<object name="BoonGUIStatsSectionTechRow[n]" type="text">				
+				<object name="BoonGUIStatsSectionTechRow[n]_queue" type="button" size="0 0 200 20">
+					<repeat count="10" var="k">
+						<object type="text" name="BoonGUIStatsSectionTechRow[n]_queue[k]" hidden="true">
+							<object name="BoonGUIStatsSectionTechRow[n]_queue[k]_icon" ghost="true" type="image" size="0 0 20 20"/>
+							<object name="BoonGUIStatsSectionTechRow[n]_queue[k]_progressSlider" type="image" sprite="queueProgressSlider" ghost="true" size="0 0 20 20" z="20"/>
+							<object name="BoonGUIStatsSectionTechRow[n]_queue[k]_count" ghost="true" style="groupIconsTextSmall" type="text" z="20"/>
+						</object>
+					</repeat>
+				</object>				
+			</object>
+		</repeat>
+	</object>
+</object>
