@@ -10,7 +10,7 @@ const BoonGUIUnits = [
     'Ranged',
     'Siege',
     'Stable',
-    'Forge',
+    'Town',
 ]
 
 

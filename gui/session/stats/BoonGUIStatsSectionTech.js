@@ -12,7 +12,18 @@ class BoonGUIStatsSectionTech {
         }
 
         this.stats.hidden = false;
-        const scales = {}
+        const scales = {
+            rG: new BoonGUIColorScale(),
+            rS: new BoonGUIColorScale(),
+            rT: new BoonGUIColorScale(),
+        };
+
+        playersStates.forEach((state) => {
+            scales.rG.addValue(state.researchedGatherTechs);
+            scales.rS.addValue(state.researchedSoldierTechs);
+            scales.rT.addValue(state.researchedOtherTechs);
+        })
+
         this.rows.forEach((row, i) => row.update(playersStates[i], scales))
     }
 }
@@ -24,17 +35,36 @@ class BoonGUIStatsSectionTechRow {
         this.row.size = BoonGUIGetRowSize(index);
         const name = this.row.name;
 
+        this.rG = Engine.GetGUIObjectByName(`${name}_rG`);
+        this.rS = Engine.GetGUIObjectByName(`${name}_rS`);
+        this.rT = Engine.GetGUIObjectByName(`${name}_rT`);
+
+
         const queue = Engine.GetGUIObjectByName(`${name}_queue`).children;
         this.queue = queue.map((obj, idx) => new BoonGUIStatsSectionTechRowQueue(obj, idx));
     }
 
-    update(state) {
+    update(state, scales) {
         if (!state) {
             this.row.hidden = true
             return
         }
 
-        this.row.hidden = false
+        this.row.hidden = false;
+
+        let value, color;
+
+        value = state.researchedGatherTechs;
+        color = color = scales.rG.getColor(value) ?? 'white';
+        this.rG.caption = setStringTags(value, { color: color });
+
+        value = state.researchedSoldierTechs;
+        color = scales.rS.getColor(value) ?? 'white';
+        this.rS.caption = setStringTags(value, { color: color });
+
+        value = state.researchedOtherTechs;
+        color = scales.rT.getColor(value) ?? 'white';
+        this.rT.caption = setStringTags(value, { color: color });
 
         this.queue.forEach((obj, idx) => {
             obj.update(state.technologyTemplateQueue[idx], state.civ)

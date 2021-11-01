@@ -50,7 +50,7 @@
 				<object name="BoonGUIStatsSectionUnitsRow[n]_Field" type="text" style="overlayDefaultCenter" size="405 0 430 100%" />
 				<object name="BoonGUIStatsSectionUnitsRow[n]_Barracks" type="text" style="overlayDefaultCenter" size="430 0 455 100%" />
 				<object name="BoonGUIStatsSectionUnitsRow[n]_Stable" type="text" style="overlayDefaultCenter" size="455 0 480 100%" />
-				<object name="BoonGUIStatsSectionUnitsRow[n]_Forge" type="text" style="overlayDefaultCenter" size="480 0 505 100%" />
+				<object name="BoonGUIStatsSectionUnitsRow[n]_Town" type="text" style="overlayDefaultCenter" size="480 0 505 100%" />
 
 				<object name="BoonGUIStatsSectionUnitsRow[n]_queue" type="button" size="510 0 800 20">
 					<repeat count="6" var="k">

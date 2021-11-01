@@ -6,6 +6,9 @@
 		style="overlayHeader"
 		size="330 0 100%-330 25"
 	>
+		<object type="text" style="overlayHeaderCenter" size="0 0 40 100%">rG</object>		
+		<object type="text" style="overlayHeaderCenter" size="40 0 80 100%">rS</object>
+		<object type="text" style="overlayHeaderCenter" size="80 0 120 100%">rT</object>
 	</object>
 	<object
 		name="BoonGUIStatsSectionTechRows"
@@ -13,8 +16,11 @@
 		size="330 25 100%-330 100%"
 	>
 		<repeat count="8" var="n">
-			<object name="BoonGUIStatsSectionTechRow[n]" type="text">				
-				<object name="BoonGUIStatsSectionTechRow[n]_queue" type="button" size="0 0 200 20">
+			<object name="BoonGUIStatsSectionTechRow[n]" type="text">		
+				<object name="BoonGUIStatsSectionTechRow[n]_rG" type="text" style="overlayDefaultCenter" size="0 0 40 100%" />		
+				<object name="BoonGUIStatsSectionTechRow[n]_rS" type="text" style="overlayDefaultCenter" size="40 0 80 100%" />
+				<object name="BoonGUIStatsSectionTechRow[n]_rT" type="text" style="overlayDefaultCenter" size="80 0 120 100%" />
+				<object name="BoonGUIStatsSectionTechRow[n]_queue" type="button" size="140 0 600 20">
 					<repeat count="10" var="k">
 						<object type="text" name="BoonGUIStatsSectionTechRow[n]_queue[k]" hidden="true">
 							<object name="BoonGUIStatsSectionTechRow[n]_queue[k]_icon" ghost="true" type="image" size="0 0 20 20"/>
