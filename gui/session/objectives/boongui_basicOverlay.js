@@ -74,15 +74,14 @@ BoonGUIControls.basicOverlay = class
         "  ": state => "●", // Player color, full circle when cartography has been researched or without any mutual allies.
     }
     widths = {} // Will be filled on the constructor
-    // lists also all the CIV's and Phases's from Delnda Est
+    // lists also all the CIV's and Phases's from Delenda Est
     civs = {"gaia": "GAI", "athen": "ATH", "brit": "BRI", "cart": "CAR", "epir": "EPR", "gaul": "GAU", "goth": "GOT", "han": "HAN", "huns": "HUN", "iber": "IBE", "imp": "IMP", "kush": "KUS", "mace": "MAC", "maur":"MRY", "noba": "NOB", "pers":"PER", "ptol":"PTO", "rome": "ROM", "scyth": "SCY", "sele": "SEL", "spart": "SPA", "sueb": "SUB", "theb": "TEB", "xion":"XON", "zapo": "ZAP"}
     phases = { "imperial": 4, "city": 3, "town":2, "village":1 }
     tickPeriod = 6 // blinky needs a nice harmonic blink rate, 10 is too high, 1 would be perfect, but a small tickPeriod kills the performance. 6 seemed to be the best compromise
-    configKey_visible = "boongui.session.basicOverlay.visible"
 
     constructor()
     {
-        this.boongui_basicOverlay.hidden = Engine.ConfigDB_GetValue("user", this.configKey_visible) == "false"
+        this.boongui_basicOverlay.hidden = g_IsObserver ? false : true;
 		this.boongui_basicOverlay.onPress = this.toggle.bind(this);
                     
         for (let name in this.teamNumber)
