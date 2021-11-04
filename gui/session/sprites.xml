@@ -397,7 +397,7 @@
 	</sprite>
 
 	<sprite name="healthForeground">
-		<image backcolor="green"/>
+		<image backcolor="20 140 20"/>
 	</sprite>
 
 	<sprite name="resourceBackground">
