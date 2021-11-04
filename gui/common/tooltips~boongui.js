@@ -32,3 +32,13 @@ function makeColorsVivid(oldColor) {
   else 
   return oldColor;
 }
+
+function limitNumber(num)
+{
+        if (num < 10) {
+            return Number(num.toFixed(1))
+        }
+        if (num >= 10) {
+            return Math.floor(num)
+        }
+}

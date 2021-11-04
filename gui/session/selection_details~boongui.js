@@ -289,7 +289,7 @@ function displaySingle(entState)
 	{
 		let attackPower = (template?.attack?.Melee || template?.attack?.Ranged)?.Damage;
 		attackPower = (attackPower?.Hack || 0) + (attackPower?.Pierce || 0) + (attackPower?.Crush || 0);
-		SetupStat("LHS", 0, "session/icons/attackPower.png", (attackPower / (template?.attack?.Melee || template?.attack?.Ranged).repeatTime * 1000).toFixed(1), "Attack per Second");
+		SetupStat("LHS", 0, "session/icons/attackPower.png", (limitNumber(attackPower / (template?.attack?.Melee || template?.attack?.Ranged).repeatTime * 1000)), "Attack per Second");
 	}
 	else
 		SetupStat("LHS", 0, "" , "");
@@ -297,8 +297,8 @@ function displaySingle(entState)
 	// Agility
 	if (!!template?.speed)
 	{
-		let capturePower = template?.speed?.walk || 0;
-		SetupStat("LHS", 1, "session/icons/walk.png", capturePower.toFixed(1), "Walk Speed");
+		let walkSpeed = template?.speed?.walk || 0;
+		SetupStat("LHS", 1, "session/icons/walk.png", (limitNumber(walkSpeed)), "Walk Speed");
 	}
 	else
 		SetupStat("LHS", 1, "", "");

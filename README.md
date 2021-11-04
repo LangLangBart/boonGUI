@@ -9,12 +9,12 @@ GUI mod for the RTS game 0 A.D.
 
 
 Screenshots 
-InGame
-<p align="center"><img src="boongui_ingame.png" height="500" alt="ingame"/></p>
+* InGame
+<p align="center"><img src="boongui_ingame.png" height="400" alt="ingame"/></p>
 
-Lobby
-<p align="center"><img src="boongui_lobby.png" height="500" alt="Lobby"/></p>
+* Lobby
+<p align="center"><img src="boongui_lobby.png" height="400" alt="lobby"/></p>
 
-HUD
+* HUD
 <p align="center"><img src="boongui_unit_hud.png" height="150" alt="unit"/></p>
 <p align="center"><img src="boongui_structure_hud.png" height="150" alt="structure"/></p>

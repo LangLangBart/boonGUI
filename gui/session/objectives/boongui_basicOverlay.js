@@ -7,16 +7,6 @@ function formatStatValue(values)
 	return ret;
 }
 
-function limitKDRatio(num)
-{
-        if (num < 10) {
-            return Number(num.toFixed(1))
-        }
-        if (num >= 10) {
-            return Math.floor(num)
-        }
-}
-
 /**
  * Returns the nickname without the lobby rating. Found in changeset rP19606 - gui/common/gamedescription.js.
  */
@@ -68,7 +58,7 @@ BoonGUIControls.basicOverlay = class
         "  Metal": state => Math.floor(state.resourceCounts["metal"]/10)*10,
         "  Kil": state => state.enemyUnitsKilledTotal ?? 0,
         " Dth": state => state.unitsLostTotal ?? 0,
-        " K/D": state => formatStatValue(limitKDRatio(state.enemyUnitsKilledTotal / state.unitsLostTotal) || 0),
+        " K/D": state => formatStatValue(limitNumber(state.enemyUnitsKilledTotal / state.unitsLostTotal) || 0),
     }
     cartographyCircle = {
         "  ": state => "●", // Player color, full circle when cartography has been researched or without any mutual allies.
