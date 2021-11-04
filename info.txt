@@ -1,7 +1,7 @@
 CONTRIBUTORS
 This mod is basically a derivative of @ffm2's mod 'ffm_visibility', but with additional changes that I thought would be fitting.
 
-@maroder/marder Created the background screen on the start page. Provided te rank icons for the profile panel. Tested and gave feedback.
+@maroder/marder Created the background screen on the start page. Provided the rank icons for the profile panel. Tested and gave feedback.
 
 @Palaiologos tested and gave feedback.
 
@@ -14,6 +14,12 @@ This mod is basically a derivative of @ffm2's mod 'ffm_visibility', but with add
 @schweini provided the extra button with "D3958 - Add an extra button for seeing the summary page when quitting a session".
 
 @seeh helped with testing and a found a solution to a problem (see CounterPopulation.js).
+
+@Stan' provided the stats icons for the HUD in the middle
+https://wildfiregames.com/forum/topic/27738-experimenting-with-icons
+
+@wowgetoffmang provided some stats icon for the HUD in the middle from its Delenda_est mod.
+https://github.com/JustusAvramenko/delenda_est
 
 @mysticjim tested everything and gave constant feedback
 

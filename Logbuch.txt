@@ -10,6 +10,8 @@
             - good idea by @kaaduu to disable tribute buttons for enemies (boongui_TributeButton.js)
         'Atlas'
             - there are some compatibility issues with Atlas, I think i solved them for now (BuildLabel.js, CounterManager.js)
+        'HUD'
+            - adding stats numbers, based on the work from @wraitii (see github.com/wraitii/ui_mod).
 
    v1.6.5 (1/Oct/21)
        'Version number'
