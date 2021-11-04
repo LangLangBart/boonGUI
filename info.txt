@@ -9,6 +9,8 @@ This mod is basically a derivative of @ffm2's mod 'ffm_visibility', but with add
 
 @kaaduu made a PR on GitHub, "Disable sent resources to enemy to avoid misclicks"
 
+@mysticjim tested everything and gave constant feedback
+
 @Nescio provided most of the work for the larger buttons. 
 
 @schweini provided the extra button with "D3958 - Add an extra button for seeing the summary page when quitting a session".
@@ -21,7 +23,8 @@ https://wildfiregames.com/forum/topic/27738-experimenting-with-icons
 @wowgetoffmang provided some stats icon for the HUD in the middle from its Delenda_est mod.
 https://github.com/JustusAvramenko/delenda_est
 
-@mysticjim tested everything and gave constant feedback
+@wraitii created the UI stats mod. 
+https://github.com/wraitii/ui_mod
 
 LICENSE
 Files in the art folder within this work are based on work and examples by Wildfire Games (http://www.wildfiregames.com/) and, which are released under the Creative Commons Attribution ShareAlike 3.0 license. Details may be found at http://creativecommons.org/licenses/by-sa/3.0/
