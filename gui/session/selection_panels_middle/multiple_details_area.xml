@@ -22,14 +22,14 @@
 	<!-- Status bars. -->
 	<object size= "100%-35 40 100%-3 100%" type="image" tooltip_style="sessionToolTip">
 		<!-- Health bar. -->
-		<object size="50%-10 0 50%-2 100%" type="image" name="healthMultiple" tooltip_style="sessionToolTip">
+		<object size="50%-10 0 50%-2 116%" type="image" name="healthMultiple" tooltip_style="sessionToolTip">
 			<object type="image" sprite="barBorder" ghost="true" size="-1 -1 100%+1 100%+1"/>
 			<object type="image" sprite="healthBackground" ghost="true"/>
 			<object type="image" sprite="healthForeground" ghost="true" name="healthBarMultiple"/>
 			<object type="image" sprite="statsBarShaderVertical" ghost="true"/>
 		</object>
 		<!-- Capture bar. -->
-		<object size="50%+2 0 50%+10 100%" type="image" name="captureMultiple" tooltip_style="sessionToolTip">
+		<object size="50%+2 0 50%+10 116%" type="image" name="captureMultiple" tooltip_style="sessionToolTip">
 			<object type="image" sprite="barBorder" ghost="true" size="-1 -1 100%+1 100%+1"/>
 			<repeat count="9">
 				<object type="image" sprite="playerColorBackground" ghost="true" name="captureBarMultiple[n]" hidden="true"/>

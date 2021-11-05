@@ -285,11 +285,14 @@ function displaySingle(entState)
 
 	// Left-hand side of the stats panel
 	// Attack per second
+	let projectiles = 1;
+	if (template.buildingAI)
+		projectiles = template.buildingAI.arrowCount || template.buildingAI.defaultArrowCount;
 	if (!!template?.attack?.Melee || !!template?.attack?.Ranged)
 	{
 		let attackPower = (template?.attack?.Melee || template?.attack?.Ranged)?.Damage;
 		attackPower = (attackPower?.Hack || 0) + (attackPower?.Pierce || 0) + (attackPower?.Crush || 0);
-		SetupStat("LHS", 0, "session/icons/attackPower.png", (limitNumber(attackPower / (template?.attack?.Melee || template?.attack?.Ranged).repeatTime * 1000)), "Attack per Second");
+		SetupStat("LHS", 0, "session/icons/attackPower.png", (limitNumber(attackPower*projectiles / (template?.attack?.Melee || template?.attack?.Ranged).repeatTime * 1000)), "Attack per Second");
 	}
 	else
 		SetupStat("LHS", 0, "" , "");
