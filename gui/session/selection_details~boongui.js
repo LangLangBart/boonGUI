@@ -286,13 +286,14 @@ function displaySingle(entState)
 	// Left-hand side of the stats panel
 	// Attack per second
 	let projectiles = 1;
+	// to calculate the number of projectiles for defensive buildings we can not just rely on the template numbers we need the current entState number
 	if (template.buildingAI)
-		projectiles = template.buildingAI.arrowCount || template.buildingAI.defaultArrowCount;
+		projectiles = entState.buildingAI.arrowCount || template.buildingAI.defaultArrowCount;
 	if (!!template?.attack?.Melee || !!template?.attack?.Ranged)
 	{
 		let attackPower = (template?.attack?.Melee || template?.attack?.Ranged)?.Damage;
 		attackPower = (attackPower?.Hack || 0) + (attackPower?.Pierce || 0) + (attackPower?.Crush || 0);
-		SetupStat("LHS", 0, "session/icons/attackPower.png", (limitNumber(attackPower*projectiles / (template?.attack?.Melee || template?.attack?.Ranged).repeatTime * 1000)), "Attack per Second");
+		SetupStat("LHS", 0, "session/icons/attackPower.png", limitNumber(attackPower*projectiles / (template?.attack?.Melee || template?.attack?.Ranged).repeatTime * 1000), setupStatHUDAttackTooltip(template, projectiles));
 	}
 	else
 		SetupStat("LHS", 0, "" , "");
@@ -301,14 +302,14 @@ function displaySingle(entState)
 	if (!!template?.speed)
 	{
 		let walkSpeed = template?.speed?.walk || 0;
-		SetupStat("LHS", 1, "session/icons/walk.png", (limitNumber(walkSpeed)), "Walk Speed");
+		SetupStat("LHS", 1, "session/icons/walk.png", limitNumber(walkSpeed), setupStatHUDSpeedTooltip(template));
 	}
 	else
 		SetupStat("LHS", 1, "", "");
 
 	// Range
 	if (!!template?.attack?.Ranged)
-		SetupStat("LHS", 2, "session/icons/range.png", template.attack.Ranged.maxRange || 0, "Range Attack");
+		SetupStat("LHS", 2, "session/icons/range.png", template.attack.Ranged.maxRange || 0, "Attack Range");
 	else
 		SetupStat("LHS", 2, "", "");
 
@@ -342,7 +343,7 @@ function displaySingle(entState)
 	].map(func => func(entState)).filter(tip => tip).join("\n");
 	if (detailedTooltip)
 	{
-		Engine.GetGUIObjectByName("attackAndResistanceStats").hidden = true;
+		Engine.GetGUIObjectByName("attackAndResistanceStats").hidden = false;
 		Engine.GetGUIObjectByName("attackAndResistanceStats").tooltip = detailedTooltip;
 	}
 	else

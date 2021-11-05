@@ -33,6 +33,7 @@ function makeColorsVivid(oldColor) {
   return oldColor;
 }
 
+// currently being used in the StatsOverlay for limiting the K/D value and in the HUD for limiting the attack/ speed numbers
 function limitNumber(num)
 {
         if (num < 10) {
@@ -41,4 +42,66 @@ function limitNumber(num)
         if (num >= 10) {
             return Math.floor(num)
         }
+}
+
+function setupStatHUDAttackTooltip(template, projectiles)
+{
+	let tooltips = [];
+	for (let attackType in template.attack)
+	{
+		// Slaughter is used to kill animals, so do not show it.
+		// Capture is not needed here.
+		if (["Slaughter", "Capture"].some((s) => attackType.includes(s)))
+		    continue;
+
+		let attackTypeTemplate = template.attack[attackType];
+		let attackLabel = sprintf(headerFont(translate("%(attackType)s")), {
+			"attackType": translateWithContext(attackTypeTemplate.attackName.context || "Name of an attack, usually the weapon.", attackTypeTemplate.attackName.name)
+		});
+
+		let splashTemplate = attackTypeTemplate.splash;
+
+		// Show the effects of status effects below.
+		let statusEffectsDetails = [];
+		if (attackTypeTemplate.ApplyStatus)
+			for (let status in attackTypeTemplate.ApplyStatus)
+				statusEffectsDetails.push("\n" + g_Indent + g_Indent + getStatusEffectsTooltip(status, attackTypeTemplate.ApplyStatus[status], true));
+		statusEffectsDetails = statusEffectsDetails.join("");
+
+		tooltips.push(sprintf(translate("%(attackLabel)s: %(effects)s, %(rate)s%(statusEffects)s%(splash)s"), {
+			"attackLabel": attackLabel,
+			"effects": attackEffectsDetails(attackTypeTemplate),
+			"rate": attackRateDetails(attackTypeTemplate.repeatTime, projectiles),
+			"splash": splashTemplate ? "\n" + g_Indent + g_Indent + splashDetails(splashTemplate) : "",
+			"statusEffects": statusEffectsDetails
+		}));
+	}
+
+	return sprintf(translate("%(label)s\n%(details)s"), {
+		"label": headerFont(translate("Attack per Second\nDetails:")),
+		"details": g_Indent + tooltips.join("\n" + g_Indent)
+	});
+}
+
+function setupStatHUDSpeedTooltip(template)
+{
+	const walk = template.speed.walk.toFixed(1);
+	const run = template.speed.run.toFixed(1);
+
+	if (walk == 0 && run == 0)
+		return "";
+
+	return sprintf(translate("%(label)s %(speeds)s"), {
+		"label": headerFont(translate("Walk Speed\nDetails:\n"+g_Indent)),
+		"speeds":
+			sprintf(translate("%(speed)s %(movementType)s"), {
+				"speed": walk,
+				"movementType": unitFont(translate("Walk"))
+			}) +
+			commaFont(translate(", ")) +
+			sprintf(translate("%(speed)s %(movementType)s"), {
+				"speed": run,
+				"movementType": unitFont(translate("Run"))
+			})
+	});
 }

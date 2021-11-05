@@ -89,12 +89,12 @@
 		</repeat>
 
 		<!-- Attack and Resistance -->
-		<object size="100 0 128 32" name="attackAndResistanceStats" type="image" sprite="stretched:session/icons/stances/defensive.png" tooltip_style="sessionToolTipInstantly">
+		<object size="0 99 30 129" name="attackAndResistanceStats" type="image" sprite="stretched:session/icons/stances/defensive.png" tooltip_style="sessionToolTipInstantly">
 			<translatableAttribute id="tooltip">Attack and Resistance</translatableAttribute>
 		</object>
 		
 		<!-- Resource carrying icon/counter -->
-		<object size="0 100 100% 100%" type="image"  tooltip_style="sessionToolTip">
+		<object size="40 100 100% 100%" type="image"  tooltip_style="sessionToolTip">
 			<!-- Used also for number of gatherers/builders -->
 			<object size="100%-96 0 100%-36 32" type="text" name="resourceCarryingText" style="StatsTextRight"/>
 			<object size="100%-32 0 100% 32" type="image" name="resourceCarryingIcon" tooltip_style="sessionToolTip"/>
