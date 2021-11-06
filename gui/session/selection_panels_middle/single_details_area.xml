@@ -103,7 +103,7 @@
 
 	
 		<!-- Names and civilization emblem etc. (This must come before the attack and resistance icon to avoid clipping issues.) -->
-	<object size="0 130 100% 100%-22" name="statsArea" type="image" sprite="edgedPanelShader">
+	<object size="0 135 100% 100%" name="statsArea" type="image" sprite="edgedPanelShader">
 	
 		<!-- Primary and secondary names. -->
 		<object size="0 3 100% 37">
