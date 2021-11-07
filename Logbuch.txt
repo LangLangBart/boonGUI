@@ -4,6 +4,8 @@
        'Version number'
             - adjust number to 1.8 (ProjectInformation.js and mod.json), make sure it says "0ad=0.0.25" and not "0ad>=0.0.25" (IMPORTANT)
             - for testing purpose I changed the mod.json file into >=, for release it should just be =
+        'Replay'
+            - adding a button next to the replay file path to quickly open the directory 
             
    v1.7 (7/Nov/21)
        'Version number'
