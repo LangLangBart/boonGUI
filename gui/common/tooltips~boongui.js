@@ -40,7 +40,7 @@ function limitNumber(num)
             return Number(num.toFixed(1))
         }
         if (num >= 10) {
-            return Math.floor(num)
+            return Math.round(num)
         }
 }
 
