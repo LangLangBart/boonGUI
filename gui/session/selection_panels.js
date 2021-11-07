@@ -328,8 +328,7 @@ g_SelectionPanels.Garrison = {
 
 		data.button.enabled = canUngarrison;
 
-		data.button.tooltip = (canUngarrison ?
-			coloredText(sprintf(translate("%(name)s"), { "name": getEntityNames(template) }), "gold") + "\n" + translate("Single-click to unload one.") + "\n" + colorizeHotkey("%(hotkey)s-click" + " ", "selection.add") + translate("to unload all of this type.") + "\n" + colorizeHotkey("%(hotkey)s" + " ", "session.unload") + translate("to unload all units.") :
+		data.button.tooltip = (canUngarrison ? sprintf(translate("%(name)s"), { "name": getEntityNames(template) }) + "\n" + translate("Single-click to unload one.") + "\n" + colorizeHotkey("%(hotkey)s-click" + " ", "selection.add") + translate("to unload all of this type.") + "\n" + colorizeHotkey("%(hotkey)s" + " ", "session.unload") + translate("to unload all units.") :
 			getEntityNames(template)) + "\n" + coloredText(sprintf(translate("%(playername)s"), {
 				"playername": g_Players[entState.player].name
 			}), g_DiplomacyColors.getPlayerColor(entState.player));
@@ -877,7 +876,7 @@ g_SelectionPanels.Selection = {
 		}
 
 		let unitOwner = GetEntityState(data.item.ents[0]).player;
-		let tooltip = coloredText(getEntityNames(template), "gold");
+		let tooltip = getEntityNames(template);
 		if (data.carried)
 			tooltip += "\n" + Object.keys(data.carried).map(res =>
 				resourceIcon(res) + data.carried[res]

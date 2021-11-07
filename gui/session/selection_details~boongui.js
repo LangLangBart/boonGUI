@@ -286,39 +286,38 @@ function displaySingle(entState)
 	// Left-hand side of the stats panel
 	// Attack per second
 	let projectiles = 1;
-	// to calculate the number of projectiles for defensive buildings we can not just rely on the template numbers we need the current entState number
-	if (template.buildingAI)
-		projectiles = entState.buildingAI.arrowCount || template.buildingAI.defaultArrowCount;
-	if (!!template?.attack?.Melee || !!template?.attack?.Ranged)
+	if (entState.buildingAI)
+		projectiles = entState.buildingAI.arrowCount || entState.buildingAI.defaultArrowCount;
+	if (!!entState?.attack?.Melee || !!entState?.attack?.Ranged)
 	{
-		let attackPower = (template?.attack?.Melee || template?.attack?.Ranged)?.Damage;
+		let attackPower = (entState?.attack?.Melee || entState?.attack?.Ranged)?.Damage;
 		attackPower = (attackPower?.Hack || 0) + (attackPower?.Pierce || 0) + (attackPower?.Crush || 0);
-		SetupStat("LHS", 0, "session/icons/attackPower.png", limitNumber(attackPower*projectiles / (template?.attack?.Melee || template?.attack?.Ranged).repeatTime * 1000), setupStatHUDAttackTooltip(template, projectiles));
+		SetupStat("LHS", 0, "session/icons/attackPower.png", limitNumber(attackPower*projectiles / (entState?.attack?.Melee || entState?.attack?.Ranged).repeatTime * 1000), setupStatHUDAttackTooltip(entState, projectiles));
 	}
 	else
 		SetupStat("LHS", 0, "" , "");
 
 	// Agility
-	if (!!template?.speed)
+	if (!!entState?.speed)
 	{
-		let walkSpeed = template?.speed?.walk || 0;
-		SetupStat("LHS", 1, "session/icons/walk.png", limitNumber(walkSpeed), setupStatHUDSpeedTooltip(template));
+		let walkSpeed = entState?.speed?.walk || 0;
+		SetupStat("LHS", 1, "session/icons/walk.png", limitNumber(walkSpeed), setupStatHUDSpeedTooltip(entState));
 	}
 	else
 		SetupStat("LHS", 1, "", "");
 
 	// Range
-	if (!!template?.attack?.Ranged)
-		SetupStat("LHS", 2, "session/icons/range.png", template.attack.Ranged.maxRange || 0, "Attack Range");
+	if (!!entState?.attack?.Ranged)
+		SetupStat("LHS", 2, "session/icons/range.png", entState.attack.Ranged.maxRange || 0, "Attack Range");
 	else
 		SetupStat("LHS", 2, "", "");
 
 	// Right-hand side -> resistances
-	if (!!template?.resistance?.Damage)
+	if (!!entState?.resistance?.Damage)
 	{
-		SetupStat("RHS", 0, "session/icons/res_hack.png", template.resistance.Damage?.Hack || 0, "Hack Resitance");
-		SetupStat("RHS", 1, "session/icons/res_pierce.png", template.resistance.Damage?.Pierce || 0, "Pierce Resitance");
-		SetupStat("RHS", 2, "session/icons/res_crush.png", template.resistance.Damage?.Crush || 0, "Crush Resitance");
+		SetupStat("RHS", 0, "session/icons/res_hack.png", entState.resistance.Damage?.Hack || 0, "Hack Resitance");
+		SetupStat("RHS", 1, "session/icons/res_pierce.png", entState.resistance.Damage?.Pierce || 0, "Pierce Resitance");
+		SetupStat("RHS", 2, "session/icons/res_crush.png", entState.resistance.Damage?.Crush || 0, "Crush Resitance");
 	}
 	else
 	{
