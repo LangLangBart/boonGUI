@@ -51,7 +51,7 @@ autociv_patchApplyN("init", function (target, that, args)
             concat(Array.from(state.reasons).map(v => `  ${v}`)).
             join("");
 
-        messageBox(450, 250, message,
+        messageBox(450, 300, message,
             "[font=\"sans-bold-18\"]" + "boonGUI hotkeys" + "[/font]",
             ["Ok"],
             [() => { }]
