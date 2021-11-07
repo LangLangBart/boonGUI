@@ -16,5 +16,4 @@ Screenshots
 <p align="center"><img src="boongui_lobby.png" height="400" alt="lobby"/></p>
 
 * HUD
-<p align="center"><img src="boongui_unit_hud.png" height="150" alt="unit"/></p>
-<p align="center"><img src="boongui_structure_hud.png" height="150" alt="structure"/></p>
+<p align="center"><img src="boongui_hud.png" height="150" alt="unit"/></p>
