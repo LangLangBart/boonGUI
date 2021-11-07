@@ -10,8 +10,8 @@
 	<object type="image" style="ModernWindow" name="replayWindow">
 
 		<!-- Title -->
-		<object style="ModernLabelText" type="text" size="50%-128 4 50%+128 36">
-			<translatableAttribute id="caption">Replay Games</translatableAttribute>
+		<object style="ModernLabelText" type="text" size="50%-128 4 50%+128 36" font="sans-bold-18">
+			<translatableAttribute id="caption">Replays</translatableAttribute>
 		</object>
 
 		<!-- Left Panel: Filters & Replay List -->
@@ -20,11 +20,11 @@
 			<!-- Filters -->
 			<object name="filterPanel" size="0 0 100%-13 24">
 
-				<object name="dateTimeFilter" type="dropdown" style="ModernDropDown" size="0 0 12%-5 100%" font="sans-bold-13">
+				<object name="dateTimeFilter" type="dropdown" style="ModernDropDown" size="0 0 12%-5 100%" font="sans-bold-16">
 					<action on="SelectionChange">displayReplayList();</action>
 				</object>
 
-				<object name="playersFilter" type="input" style="ModernInput" size="12% 0 56%-5 100%" font="sans-bold-13" buffer_zone="7">
+				<object name="playersFilter" type="input" style="ModernInput" size="12% 0 56%-5 100%" font="sans-bold-16" buffer_zone="7">
 					<action on="Press">displayReplayList();</action>
 					<action on="Tab">
 						autoCompleteText(this, g_Playernames);
@@ -32,19 +32,19 @@
 					<translatableAttribute id="placeholder_text">Search for Player</translatableAttribute>
 				</object>
 
-				<object name="mapNameFilter" type="dropdown" style="ModernDropDown" size="56% 0 70%-5 100%" font="sans-bold-13">
+				<object name="mapNameFilter" type="dropdown" style="ModernDropDown" size="56% 0 70%-5 100%" font="sans-bold-16">
 					<action on="SelectionChange">displayReplayList();</action>
 				</object>
 
-				<object name="mapSizeFilter" type="dropdown" style="ModernDropDown" size="70% 0 80%-5 100%" font="sans-bold-13">
+				<object name="mapSizeFilter" type="dropdown" style="ModernDropDown" size="70% 0 80%-5 100%" font="sans-bold-16">
 					<action on="SelectionChange">displayReplayList();</action>
 				</object>
 
-				<object name="populationFilter" type="dropdown" style="ModernDropDown" size="80% 0 90%-5 100%" font="sans-bold-13">
+				<object name="populationFilter" type="dropdown" style="ModernDropDown" size="80% 0 90%-5 100%" font="sans-bold-16">
 					<action on="SelectionChange">displayReplayList();</action>
 				</object>
 
-				<object name="durationFilter" type="dropdown" style="ModernDropDown" size="90% 0 100% 100%" font="sans-bold-13">
+				<object name="durationFilter" type="dropdown" style="ModernDropDown" size="90% 0 100% 100%" font="sans-bold-16">
 					<action on="SelectionChange">displayReplayList();</action>
 				</object>
 
@@ -58,7 +58,7 @@
 				sortable="true"
 				selected_column="months"
 				selected_column_order="-1"
-				font="sans-stroke-13"
+				font="sans-stroke-16"
 				auto_scroll="true"
 			>
 
@@ -96,15 +96,15 @@
 			<!-- File path and buttons-->
 			<object size="0 100%-31 100% 100%" >
 				<!-- Open button -->
-				<object name="openReplayDirectoryButton" type="button" style="StoneButton" size="0 0 30 100%">
+				<object name="openReplayDirectoryButton" type="button" style="ModernButtonRed" size="0 -2 44 100%+2">
 					<translatableAttribute id="tooltip">Opens the file directory for the currently selected replay.</translatableAttribute>
 					<action on="Press">openReplayDirectory();</action>
-					<object size="4 4 26 26" type="image" sprite="stretched:pregame/icons/folder-simple.png" ghost="true">
+					<object size="9 3 34 30" type="image" sprite="stretched:pregame/icons/folder-simple.png" ghost="true">
 					</object>
 				</object>
 
 				<!-- File path -->
-				<object name="replayFilename" type="input" size="34 3 100% 100%-3" style="ModernInput" readonly="true" font="sans-14" textcolor="208 174 132" sprite="ReplayMenuFilenameBackground">
+				<object name="replayFilename" type="input" size="48 2 100% 100%-2" style="ModernInput" sprite_overlay="ModernDarkBoxGoldBorder" readonly="true" font="sans-stroke-18" textcolor="208 174 132" sprite="ReplayMenuFilenameBackground">
 					<translatableAttribute id="tooltip">File path for the currently selected replay.</translatableAttribute>
 				</object>
 			</object>
@@ -125,17 +125,17 @@
 			</object>
 
 			<!-- Single-player / Multiplayer Filter -->
-			<object name="singleplayerFilter" type="dropdown" style="ModernDropDown" size="0 30 100% 55" font="sans-bold-13">
+			<object name="singleplayerFilter" type="dropdown" style="ModernDropDown" size="0 30 100% 55" font="sans-bold-16">
 				<action on="SelectionChange">displayReplayList();</action>
 			</object>
 
 			<!-- Victory Condition Filter -->
-			<object name="victoryConditionFilter" type="dropdown" style="ModernDropDown" size="0 60 100% 85" font="sans-bold-13">
+			<object name="victoryConditionFilter" type="dropdown" style="ModernDropDown" size="0 60 100% 85" font="sans-bold-16">
 				<action on="SelectionChange">displayReplayList();</action>
 			</object>
 
 			<!-- Rated Games Filter -->
-			<object name="ratedGamesFilter" type="dropdown" style="ModernDropDown" size="0 90 100% 115" font="sans-bold-13">
+			<object name="ratedGamesFilter" type="dropdown" style="ModernDropDown" size="0 90 100% 115" font="sans-bold-16">
 				<action on="SelectionChange">displayReplayList();</action>
 			</object>
 
@@ -206,7 +206,7 @@
 
 				<!-- Map Description Text -->
 				<object type="image" sprite="ModernDarkBoxWhite" size="5 300 100%-5 40%+170">
-					<object name="sgMapDescription" size="0 1 100% 100%-1" type="text" style="ModernText" font="sans-12"/>
+					<object name="sgMapDescription" size="0 1 100% 100%-1" type="text" style="ModernText" font="sans-14"/>
 				</object>
 
 				<object type="image" sprite="ModernDarkBoxWhite" size="5 40%+175 100%-5 100%-30">
