@@ -315,9 +315,9 @@ function displaySingle(entState)
 	// Right-hand side -> resistances
 	if (!!entState?.resistance?.Damage)
 	{
-		SetupStat("RHS", 0, "session/icons/res_hack.png", entState.resistance.Damage?.Hack || 0, "Hack Resitance");
-		SetupStat("RHS", 1, "session/icons/res_pierce.png", entState.resistance.Damage?.Pierce || 0, "Pierce Resitance");
-		SetupStat("RHS", 2, "session/icons/res_crush.png", entState.resistance.Damage?.Crush || 0, "Crush Resitance");
+		SetupStat("RHS", 0, "session/icons/res_hack.png", entState.resistance.Damage?.Hack || 0, setupStatHUDHackResistanceTooltip(entState));
+		SetupStat("RHS", 1, "session/icons/res_pierce.png", entState.resistance.Damage?.Pierce || 0, setupStatHUDPierceResistanceTooltip(entState));
+		SetupStat("RHS", 2, "session/icons/res_crush.png", entState.resistance.Damage?.Crush || 0, setupStatHUDCrushResistanceTooltip(entState));
 	}
 	else
 	{
