@@ -133,11 +133,11 @@
 	/>
 
 	<style name="StatsTextLeft"
-		font="sans-stroke-12"
+		font="sans-stroke-16"
 		textcolor="white"
 		text_align="left"
 		text_valign="center"
-		ghost="true"
+		tooltip_style="sessionToolTipInstantly"
 	/>
 
 	<style name="StatsTextCentered"
@@ -145,7 +145,7 @@
 		textcolor="white"
 		text_align="center"
 		text_valign="center"
-		ghost="true"
+		tooltip_style="sessionToolTipInstantly"
 	/>
 
 	<style name="StatsTextRight"
@@ -153,7 +153,7 @@
 		textcolor="white"
 		text_align="right"
 		text_valign="center"
-		ghost="true"
+		tooltip_style="sessionToolTipInstantly"
 	/>
 
 	<style name="CarryingTextRight"
@@ -165,7 +165,7 @@
 	/>
 
 	<style name="PrimaryNameCentered"
-		font="sans-bold-stroke-13"
+		font="sans-bold-stroke-16"
 		textcolor="gold"
 		text_align="center"
 		text_valign="center"
@@ -173,7 +173,7 @@
 	/>
 
 	<style name="SecondaryNameCentered"
-		font="sans-stroke-12"
+		font="sans-stroke-14"
 		textcolor="white"
 		text_align="center"
 		text_valign="center"

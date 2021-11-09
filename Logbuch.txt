@@ -1,15 +1,25 @@
 # Update summary
-            
-   v1.7
+
+   v1.8
        'Version number'
-            - adjust number to 1.7 (ProjectInformation.js and mod.json), make sure it says "0ad=0.0.25" and not "0ad>=0.0.25" (IMPORTANT)
+            - adjust number to 1.8 (ProjectInformation.js and mod.json), make sure it says "0ad=0.0.25" and not "0ad>=0.0.25" (IMPORTANT)
             - for testing purpose I changed the mod.json file into >=, for release it should just be =
+        'Replay'
+            - adding a button next to the replay file path to quickly open the directory 
+            
+   v1.7 (7/Nov/21)
+       'Version number'
+            - adjust number to 1.7 (ProjectInformation.js and mod.json)
+        'Hotkeys'
+            - Welcome message when activating the mod for the first time with colorized hotkeys and increased font size for the description.
         'Top Panel'
             - added a new objective for rated games to the top panel (BuildLabel.js) as an icon I used the yellow bell (gui/session/setup.xml)
         'Diplomacy'
             - good idea by @kaaduu to disable tribute buttons for enemies (boongui_TributeButton.js)
         'Atlas'
             - there are some compatibility issues with Atlas, I think i solved them for now (BuildLabel.js, CounterManager.js)
+        'HUD'
+            - adding unit stats numbers to the HUD, based on the work from @wraitii (see github.com/wraitii/ui_mod).
 
    v1.6.5 (1/Oct/21)
        'Version number'

@@ -104,8 +104,9 @@ g_SelectionPanels.Barter = {
 g_SelectionPanels.Command = {
 	"getMaxNumberOfItems": function()
 	{
-		return 6;
+		return 10;
 	},
+	"rowLength": 10,
 	"getItems": function(unitEntStates)
 	{
 		let commands = [];
@@ -138,14 +139,7 @@ g_SelectionPanels.Command = {
 
 		data.icon.sprite = "stretched:session/icons/" + data.item.icon;
 
-		let size = data.button.size;
-		// relative to the center ( = 50%)
-		size.rleft = 50;
-		size.rright = 50;
-		// offset from the center calculation, count on square buttons, so size.bottom is the width too
-		size.left = (data.i - data.numberOfItems / 2) * (size.bottom + 1);
-		size.right = size.left + size.bottom;
-		data.button.size = size;
+		setPanelObjectPosition(data.button, data.i + 40, data.rowLength);
 		return true;
 	}
 };
@@ -153,9 +147,9 @@ g_SelectionPanels.Command = {
 g_SelectionPanels.Construction = {
 	"getMaxNumberOfItems": function()
 	{
-		return 32 - getNumberOfRightPanelButtons();
+		return 27 - getNumberOfRightPanelButtons();
 	},
-	"rowLength": 8,
+	"rowLength": 9,
 	"getItems": function()
 	{
 		return getAllBuildableEntitiesFromSelection();
@@ -334,13 +328,10 @@ g_SelectionPanels.Garrison = {
 
 		data.button.enabled = canUngarrison;
 
-		data.button.tooltip = (canUngarrison ?
-			sprintf(translate("Unload %(name)s"), { "name": getEntityNames(template) }) + "\n" +
-			translate("Single-click to unload 1. Shift-click to unload all of this type.") :
-			getEntityNames(template)) + "\n" +
-			sprintf(translate("Player: %(playername)s"), {
+		data.button.tooltip = (canUngarrison ? sprintf(translate("%(name)s"), { "name": getEntityNames(template) }) + "\n" + translate("Single-click to unload one.") + "\n" + colorizeHotkey("%(hotkey)s-click" + " ", "selection.add") + translate("to unload all of this type.") + "\n" + colorizeHotkey("%(hotkey)s" + " ", "session.unload") + translate("to unload all units.") :
+			getEntityNames(template)) + "\n" + coloredText(sprintf(translate("%(playername)s"), {
 				"playername": g_Players[entState.player].name
-			});
+			}), g_DiplomacyColors.getPlayerColor(entState.player));
 
 		data.guiSelection.sprite = "color:" + g_DiplomacyColors.getPlayerColor(entState.player, 160);
 		data.button.sprite_disabled = data.button.sprite;
@@ -360,9 +351,9 @@ g_SelectionPanels.Garrison = {
 g_SelectionPanels.Gate = {
 	"getMaxNumberOfItems": function()
 	{
-		return 32 - getNumberOfRightPanelButtons();
+		return 27 - getNumberOfRightPanelButtons();
 	},
-	"rowLength": 8,
+	"rowLength": 9,
 	"getItems": function(unitEntStates)
 	{
 		let hideLocked = unitEntStates.every(state => !state.gate || !state.gate.locked);
@@ -402,9 +393,9 @@ g_SelectionPanels.Gate = {
 g_SelectionPanels.Pack = {
 	"getMaxNumberOfItems": function()
 	{
-		return 32 - getNumberOfRightPanelButtons();
+		return 27 - getNumberOfRightPanelButtons();
 	},
-	"rowLength": 8,
+	"rowLength": 9,
 	"getItems": function(unitEntStates)
 	{
 		let checks = {};
@@ -608,9 +599,9 @@ g_SelectionPanels.Queue = {
 g_SelectionPanels.Research = {
 	"getMaxNumberOfItems": function()
 	{
-		return 8;
+		return 9;
 	},
-	"rowLength": 8,
+	"rowLength": 9,
 	"getItems": function(unitEntStates)
 	{
 		let ret = [];
@@ -822,7 +813,7 @@ g_SelectionPanels.Research = {
 			if (template.icon)
 				icon.sprite = modifier + "stretched:session/portraits/" + template.icon;
 
-			setPanelObjectPosition(button, position, data.rowLength);
+			setPanelObjectPosition(button, position + data.rowLength, data.rowLength);
 
 			// Prepare to handle the top button (if any)
 			position -= data.rowLength;
@@ -891,13 +882,12 @@ g_SelectionPanels.Selection = {
 				resourceIcon(res) + data.carried[res]
 			).join(" ");
 		if (g_IsObserver)
-			tooltip += "\n" + sprintf(translate("Player: %(playername)s"), {
+			tooltip += "\n" + coloredText(sprintf(translate("%(playername)s"), {
 				"playername": g_Players[unitOwner].name
-			});
+			}), g_DiplomacyColors.getPlayerColor(unitOwner));
 		data.button.tooltip = tooltip;
 
 		data.guiSelection.sprite = "color:" + g_DiplomacyColors.getPlayerColor(unitOwner, 160);
-		data.guiSelection.hidden = !g_IsObserver;
 
 		data.countDisplay.caption = data.item.ents.length || "";
 
@@ -947,9 +937,9 @@ g_SelectionPanels.Stance = {
 g_SelectionPanels.Training = {
 	"getMaxNumberOfItems": function()
 	{
-		return 32 - getNumberOfRightPanelButtons();
+		return 27 - getNumberOfRightPanelButtons();
 	},
-	"rowLength": 8,
+	"rowLength": 9,
 	"getItems": function()
 	{
 		return getAllTrainableEntitiesFromSelection();
@@ -1056,9 +1046,9 @@ g_SelectionPanels.Training = {
 g_SelectionPanels.Upgrade = {
 	"getMaxNumberOfItems": function()
 	{
-		return 32 - getNumberOfRightPanelButtons();
+		return 27 - getNumberOfRightPanelButtons();
 	},
-	"rowLength": 8,
+	"rowLength": 9,
 	"getItems": function(unitEntStates)
 	{
 		// Interface becomes complicated with multiple different units and this is meant per-entity, so prevent it if the selection has multiple different units.

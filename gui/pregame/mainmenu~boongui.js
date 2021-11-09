@@ -33,7 +33,7 @@ function boongui_initCheck()
             if (!allHotkeys.has(key.substring("hotkey.".length)))
                 {
                     configboongui.set(key, settings[key]);
-                    state.reasons.add("Enter the view of a unit with:\nShift+F\n\nToggle the stats overlay with:\nAlt+Shift+F\n\nQuit a game with:\nShift+Escape");
+                    state.reasons.add("[font=\"sans-bold-18\"]" + "Take the view of a unit:\n" + "[/font]" + coloredText("\\[Shift+F]", "255 251 131") + "[font=\"sans-bold-18\"]" + "\n\nToggle the stats overlay:\n" + "[/font]" + coloredText("\\[Alt+Shift+F]", "255 251 131") + "[font=\"sans-bold-18\"]" + "\n\nOpen the quit dialog:\n" + "[/font]" + coloredText("\\[Shift+Escape]", "255 251 131"));
                 }
         }
     }
@@ -51,8 +51,8 @@ autociv_patchApplyN("init", function (target, that, args)
             concat(Array.from(state.reasons).map(v => `  ${v}`)).
             join("");
 
-        messageBox(450, 250, message,
-            "boonGUI hotkeys:",
+        messageBox(450, 300, message,
+            "[font=\"sans-bold-18\"]" + "boonGUI hotkeys" + "[/font]",
             ["Ok"],
             [() => { }]
         );

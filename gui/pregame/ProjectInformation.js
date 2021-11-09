@@ -16,7 +16,7 @@ var g_ProjectInformation = {
 	},
 	"productDescription": {
 		"caption": setStringTags(translate("Alpha XXV: Yaunā"), { "font": "sans-bold-18" }) + "\n" +
-			setStringTags(translate("boonGUI 1.7"), { "font": "sans-16" })
+			setStringTags(translate("boonGUI 1.8"), { "font": "sans-16" })
 	}
 };
 

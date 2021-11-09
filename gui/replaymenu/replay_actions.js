@@ -35,6 +35,18 @@ function createReplaySelectionData(selectedDirectory)
 }
 
 /**
+ * Opens the selected replay in the users preferred application for files.
+ */
+function openReplayDirectory()
+{
+	const selected = Engine.GetGUIObjectByName("replaySelection").selected;
+	if (selected == -1)
+		return;
+
+	Engine.OpenURL(Engine.GetReplayDirectoryName(g_ReplaysFiltered[selected].directory));
+}
+
+/**
  * Starts the selected visual replay, or shows an error message in case of incompatibility.
  */
 function startReplay()

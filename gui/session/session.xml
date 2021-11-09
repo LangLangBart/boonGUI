@@ -83,7 +83,7 @@
 
 	<!-- START of BOTTOM PANEL -->
 	<!-- Limit to the minimal supported width of 1024 pixels. -->
-	<object size="50%-512 0 50%+512 100%">
+	<object size="50%-555 0 50%+512 100%">
 
 		<!-- Supplemental Details Panel (left). -->
 		<object name="supplementalSelectionDetails"
@@ -106,7 +106,7 @@
 
 		<!-- Commands Panel (right). -->
 		<object name="unitCommands"
-			size="50%+110 100%-205 50%+512 100%"
+			size="50%+110 100%-205 50%+572 100%"
 			sprite="unitCommandsPanel"
 			type="image"
 			z="20"
