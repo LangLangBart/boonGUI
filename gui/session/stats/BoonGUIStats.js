@@ -1,7 +1,7 @@
 class BoonGUIStats {
     constructor() {
         this.BoonGUIStats = Engine.GetGUIObjectByName("BoonGUIStats");
-        this.mode = 'eco';
+        this.mode = 'units';
         this.forceRender = false;
         this.sections = {
             base: new BoonGUIStatsSectionBase(),
@@ -9,7 +9,7 @@ class BoonGUIStats {
             units: new BoonGUIStatsSectionUnits(),
             tech: new BoonGUIStatsSectionTech(),
         }
-
+        this.BoonGUIStats.hidden = g_IsObserver ? false : true;
         this.BoonGUIStats.onTick = this.onTick.bind(this)
         this.BoonGUIStats.onPress = this.onPress.bind(this);
     }
@@ -19,13 +19,13 @@ class BoonGUIStats {
     onPress() {
         switch (this.mode) {
             case 'units':
-                this.mode = 'tech';
+                this.mode = 'eco';
                 break;
             case 'eco':
-                this.mode = 'units';
+                this.mode = 'tech';
                 break;
             case 'tech':
-                this.mode = 'eco';
+                this.mode = 'units';
                 break;
         }
         this.forceRender = true;

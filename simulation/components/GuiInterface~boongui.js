@@ -17,11 +17,6 @@ function splitRatingFromNick(playerName) {
     return { nick, rating };
 }
 
-
-function limitKDRatio(num) {
-    return (num < 10) ? Number(num.toFixed(1)) : Math.floor(num);
-}
-
 /**
  * Opimitzed stats function for boonGUI stats overlay
  */
@@ -102,7 +97,7 @@ GuiInterface.prototype.boongui_GetOverlay = function ()
 
         const enemyUnitsKilledTotal = cmpPlayerStatisticsTracker?.enemyUnitsKilled.total ?? 0;
         const unitsLostTotal = cmpPlayerStatisticsTracker?.unitsLost.total ?? 0;
-        const killDeathRatio = limitKDRatio(enemyUnitsKilledTotal / unitsLostTotal);        
+        const killDeathRatio = limitNumber(enemyUnitsKilledTotal / unitsLostTotal);        
 
         for (let ent of cmpRangeManager.GetEntitiesByPlayer(i)) {
             // let cmpIdentity = Engine.QueryInterface(ent, IID_Identity);
