@@ -83,6 +83,33 @@ function setupStatHUDAttackTooltip(template, projectiles)
 	});
 }
 
+function setupStatHUDHackResistanceTooltip(template)
+{
+	return sprintf(translate("%(label)s %(resistance)s %(explaination)s"), {
+		"label": headerFont(translate("Hack Resistance Level\nDetails:\n"+g_Indent)),
+		"resistance": resistanceLevelToPercentageString(template.resistance.Damage["Hack"]),
+		"explaination": unitFont(translate("Resistance against Hack Attacks"))
+	});
+}
+
+function setupStatHUDPierceResistanceTooltip(template)
+{
+	return sprintf(translate("%(label)s %(resistance)s %(explaination)s"), {
+		"label": headerFont(translate("Pierce Resistance Level\nDetails:\n"+g_Indent)),
+		"resistance": resistanceLevelToPercentageString(template.resistance.Damage["Pierce"]),
+		"explaination": unitFont(translate("Resistance against Pierce Attacks"))
+	});
+}
+
+function setupStatHUDCrushResistanceTooltip(template)
+{
+	return sprintf(translate("%(label)s %(resistance)s %(explaination)s"), {
+		"label": headerFont(translate("Crush Resistance Level\nDetails:\n"+g_Indent)),
+		"resistance": resistanceLevelToPercentageString(template.resistance.Damage["Crush"]),
+		"explaination": unitFont(translate("Resistance against Crush Attacks"))
+	});
+}
+
 function setupStatHUDSpeedTooltip(template)
 {
 	const walk = template.speed.walk.toFixed(1);
