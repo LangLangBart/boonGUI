@@ -10,7 +10,7 @@
         <prop actor="props/units/shields/brit_battersea.xml" attachpoint="shield"/>
         <prop actor="props/units/weapons/spear_gold.xml" attachpoint="weapon_R"/>
         <prop actor="props/temp/l_sheath.xml" attachpoint="sheath_L"/>
-		<prop actor="props/hero_selectorA.xml" attachpoint="root"/>
+        <prop actor="props/hero_selectorA.xml" attachpoint="root"/>
       </props>
       <textures>
         <texture file="skeletal/celt_viridomarus.dds" name="baseTex"/>

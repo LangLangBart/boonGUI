@@ -10,7 +10,7 @@
         <prop actor="props/units/weapons/csword.xml" attachpoint="weapon_R"/>
         <prop actor="props/temp/l_sheath.xml" attachpoint="sheath_L"/>
         <prop actor="props/units/capes/cape_med_pelt.xml" attachpoint="root"/>
-		<prop actor="props/hero_selectorA.xml" attachpoint="root"/>
+        <prop actor="props/hero_selectorA.xml" attachpoint="root"/>
       </props>
     </variant>
   </group>

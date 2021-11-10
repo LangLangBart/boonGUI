@@ -12,7 +12,7 @@
         <prop actor="props/units/weapons/bow_recurve.xml" attachpoint="weapon_bow"/>
         <prop actor="props/units/quiver_hip.xml" attachpoint="sheath_L"/>
         <prop actor="props/units/capes/rider/bow_chariot_hip.xml" attachpoint="root"/>
-		<prop actor="props/hero_selectorA.xml" attachpoint="root"/>
+        <prop actor="props/hero_selectorA.xml" attachpoint="root"/>
       </props>
       <textures>
         <texture file="skeletal/pers_champ_cav_r_1.png" name="baseTex"/>

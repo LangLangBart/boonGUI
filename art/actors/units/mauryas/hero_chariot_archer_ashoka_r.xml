@@ -11,7 +11,7 @@
         <prop actor="props/units/weapons/arrow_back.xml" attachpoint="weapon_R"/>
         <prop actor="props/units/weapons/bow_long_indian.xml" attachpoint="weapon_L"/>
         <prop actor="props/units/quiver_back_bamboo.xml" attachpoint="back"/>
-		<prop actor="props/hero_selectorA.xml" attachpoint="root"/>
+        <prop actor="props/hero_selectorA.xml" attachpoint="root"/>
       </props>
       <textures>
         <texture file="skeletal/maur_hero_ashoka.png" name="baseTex"/>

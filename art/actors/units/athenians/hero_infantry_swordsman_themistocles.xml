@@ -12,7 +12,7 @@
         <prop actor="props/units/weapons/sheath_xiphos_e.xml" attachpoint="sheath_01_R"/>
         <prop actor="props/units/armor/greave_02_bronze_r.xml" attachpoint="leg_R"/>
         <prop actor="props/units/armor/greave_02_bronze_l.xml" attachpoint="leg_L"/>
-		<prop actor="props/hero_selectorA.xml" attachpoint="root"/>
+        <prop actor="props/hero_selectorA.xml" attachpoint="root"/>
       </props>
     </variant>
   </group>

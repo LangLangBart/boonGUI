@@ -10,7 +10,7 @@
         <prop actor="props/units/weapons/gladius.xml" attachpoint="weapon_R"/>
         <prop actor="props/units/weapons/gladius.xml" attachpoint="weapon_L"/>
         <prop actor="props/units/shields/iberian_buckler_elite.xml" attachpoint="shield_arm"/>
-		<prop actor="props/hero_selectorA.xml" attachpoint="root"/>
+        <prop actor="props/hero_selectorA.xml" attachpoint="root"/>
       </props>
       <textures>
         <texture file="skeletal/iber_hero_caros.dds" name="baseTex"/>

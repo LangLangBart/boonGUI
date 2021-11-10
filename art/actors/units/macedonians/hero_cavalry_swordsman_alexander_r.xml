@@ -9,7 +9,7 @@
         <prop actor="props/units/heads/new/head_alexander.xml" attachpoint="head"/>
         <prop actor="props/units/weapons/falcata.xml" attachpoint="weapon_R"/>
         <prop actor="props/units/capes/rider/cape_long_beige.xml" attachpoint="root"/>
-		<prop actor="props/hero_selectorA.xml" attachpoint="root"/>
+        <prop actor="props/hero_selectorA.xml" attachpoint="root"/>
       </props>
       <textures>
         <texture file="skeletal/mace_hero_alexander.png" name="baseTex"/>

@@ -10,7 +10,7 @@
         <prop actor="props/units/shields/pelta_thra_basic.xml" attachpoint="shield_arm"/>
         <prop actor="props/units/weapons/spear_reverse.xml" attachpoint="weapon_R"/>
         <prop actor="props/units/weapons/sheath_xiphos.xml" attachpoint="sheath_01_R"/>
-		<prop actor="props/hero_selectorA.xml" attachpoint="root"/>
+        <prop actor="props/hero_selectorA.xml" attachpoint="root"/>
       </props>
     </variant>
   </group>
