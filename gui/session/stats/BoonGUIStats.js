@@ -10,6 +10,8 @@ class BoonGUIStats {
         this.resizeInit();
         this.root.hidden = g_IsObserver ? false : true;
         this.root.onTick = this.onTick.bind(this);
+
+        this.resourcesCache = new Map();
     }
 
     tickPeriod = 6; // blinky needs a nice harmonic blink rate, 10 is too high, 1 would be perfect, but a small tickPeriod kills the performance. 6 seemed to be the best compromise
@@ -94,7 +96,7 @@ class BoonGUIStats {
         const PAD = 5;
         this.lastPlayerLength = length;
 
-        let y = (24 * (length + 1)) + 38;
+        let y = (26 * (length + 1)) + 36;
         this.statsTopPanel.root.size = `0 36 1000 ${y}`
         y = this.statsTopPanel.root.size.bottom + PAD;
 
@@ -117,6 +119,20 @@ class BoonGUIStats {
         for (const state of playersStates) {
             state.teamColor = this.teamColor(state);
             state.playerColor = this.playerColor(state);
+
+            state.resourceRates = {}
+            const now = g_SimState.timeElapsed;
+            const cache = this.resourcesCache.get(state.playerNumber) ?? [[now, state.resourcesGathered]];
+            this.resourcesCache.set(state.playerNumber, cache);
+            const [then, gatheredThen] = cache.length > this.IncomeRateBufferSize ? cache.shift() : cache[0];
+
+            const deltaS = (now - then) / 1000;
+            let gatheredNow = state.resourcesGathered;
+            for (const resType of g_BoonGUIResTypes) {
+                const resGatheredNow = gatheredNow[resType];
+                const rate = Math.round(((resGatheredNow - gatheredThen[resType]) / deltaS) * 10);
+                state.resourceRates[resType] = rate;
+            }
         }
 
         if (this.lastPlayerLength != playersStates.length) {
@@ -128,3 +144,5 @@ class BoonGUIStats {
         Engine.ProfileStop();
     }
 }
+
+BoonGUIStats.prototype.IncomeRateBufferSize = 25;

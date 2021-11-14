@@ -155,7 +155,10 @@ GuiInterface.prototype.boongui_GetOverlay = function () {
 
             if (classes.has('Structure') && !classes.has('Foundation')) {
                 const template = cmpTemplateManager.GetCurrentTemplateName(entity)
-                const mode = "Buildings";
+                let mode = 'Buildings';
+                if (classes.has('Military')) {
+                    mode = "Military Buildings"
+                }
                 const templateType = 'unit';
                 addToQueue({ mode, templateType, entity, template, count: 1, progress: 0 });
             }
@@ -223,6 +226,7 @@ GuiInterface.prototype.boongui_GetOverlay = function () {
 
             "resourceCounts": cmpPlayer.GetResourceCounts(),
             "resourceGatherers": cmpPlayer.GetResourceGatherers(),
+            "resourcesGathered": stats ? stats.resourcesGathered : null,
 
             "enemyUnitsKilledTotal": enemyUnitsKilledTotal,
             "unitsLostTotal": unitsLostTotal,

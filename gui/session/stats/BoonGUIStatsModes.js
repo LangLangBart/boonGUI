@@ -4,6 +4,7 @@ class BoonGUIStatsModes {
         "Production",
         "Units",
         "Buildings",
+        "Military Buildings",
         "Economy Technologies",
         "Military Technologies",
         "Other Technologies",

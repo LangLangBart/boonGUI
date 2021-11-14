@@ -2,7 +2,7 @@ class BoonGUIStatsTopPanelRow {
     constructor(row, index) {
         const PREFIX = row.name;
         this.root = Engine.GetGUIObjectByName(PREFIX);
-        this.root.size = BoonGUIGetRowSize(index, 24);
+        this.root.size = BoonGUIGetRowSize(index, 26);
 
         this.border = Engine.GetGUIObjectByName(`${PREFIX}_border`);
 
@@ -22,12 +22,16 @@ class BoonGUIStatsTopPanelRow {
         this.unitsLostTotal = Engine.GetGUIObjectByName(`${PREFIX}_unitsLostTotal`);
         this.killDeathRatio = Engine.GetGUIObjectByName(`${PREFIX}_killDeathRatio`);
 
-        this.counts = {};
-        this.gatherers = {};
+        this.resource = {
+            counts: {},
+            gatherers: {},
+            rates: {}
+        };        
 
         for (const resType of g_BoonGUIResTypes) {
-            this.counts[resType] = Engine.GetGUIObjectByName(`${PREFIX}_${resType}Counts`);
-            this.gatherers[resType] = Engine.GetGUIObjectByName(`${PREFIX}_${resType}Gatherers`);
+            this.resource.counts[resType] = Engine.GetGUIObjectByName(`${PREFIX}_${resType}Counts`);
+            this.resource.gatherers[resType] = Engine.GetGUIObjectByName(`${PREFIX}_${resType}Gatherers`);
+            this.resource.rates[resType] = Engine.GetGUIObjectByName(`${PREFIX}_${resType}Rates`);
         }
 
         this.los = Engine.GetGUIObjectByName(`${PREFIX}_los`);
@@ -103,15 +107,21 @@ class BoonGUIStatsTopPanelRow {
 
         }
 
-        let value, color;
+        let value, color, caption;
         for (const resType of g_BoonGUIResTypes) {
             value = state.resourceCounts[resType];
-            color = scales.getColor(`${resType}Counts`, value);
-            this.counts[resType].caption = setStringTags(this.normalizeResource(value), { color });
+            color = scales.getColor(`${resType}Counts`, value); 
+            this.resource.counts[resType].caption = setStringTags(this.normalizeResource(value), { color });
 
             value = state.resourceGatherers[resType];
-            color = scales.getColor(`${resType}Gatherers`, value, 170);
-            this.gatherers[resType].caption = setStringTags(`${value}`, { color });
+            color = scales.getColor(`${resType}Gatherers`, value, 180);
+            caption = isNaN(value) || value <= 0 ? '' : value;
+            this.resource.gatherers[resType].caption = setStringTags(caption, { color });
+
+            value = state.resourceRates[resType];
+            color = scales.getColor(`${resType}Rates`, value, 180);
+            caption = isNaN(value) || value <= 0 ? '' : `+${value}`
+            this.resource.rates[resType].caption = setStringTags(caption, { color });            
         }
 
         value = state.economyTechs;
@@ -144,7 +154,7 @@ class BoonGUIStatsTopPanelRow {
 
         value = state.killDeathRatio;
         color = scales.getColor('killDeathRatio', value);
-        let caption = isNaN(value) ? '' : isFinite(value) ? value : translate("\u221E");
+        caption = isNaN(value) ? '' : isFinite(value) ? value : translate("\u221E");
         this.killDeathRatio.caption = setStringTags(caption, { color });
 
         const los = state.hasSharedLos || state.numberAllies == 1 ? "●" : "○";

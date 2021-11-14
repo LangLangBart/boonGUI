@@ -305,7 +305,7 @@
 		text_align="right"
 		text_valign="center"
 	/>
-	<style name="overlayResourceGatherers"
+	<style name="overlayResourceExtra"
 		font="mono-stroke-10"
 		textcolor="250 250 250"
 		text_align="right"

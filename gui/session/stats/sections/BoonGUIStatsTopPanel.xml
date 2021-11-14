@@ -35,10 +35,10 @@
 
 				<object name="StatsTopPanelRow[n]_border" type="image" size="0 100%-3 100% 100%-2" />
 
-				<object name="StatsTopPanelRow[n]_team" type="text" style="overlayDefault" size="0 0 15 100%" />
-				<object name="StatsTopPanelRow[n]_player" type="text" style="overlayDefault" size="20 0 115 100%" />
-				<object name="StatsTopPanelRow[n]_rating" type="text" style="overlayDefault" size="120 0 165 100%" />
-				<object name="StatsTopPanelRow[n]_civ" type="text" style="overlayDefault" size="170 0 210 100%" />
+				<object name="StatsTopPanelRow[n]_team" type="text" style="overlayDefault" size="0 5% 15 95%" />
+				<object name="StatsTopPanelRow[n]_player" type="text" style="overlayDefault" size="20 5% 115 95%" />
+				<object name="StatsTopPanelRow[n]_rating" type="text" style="overlayDefault" size="120 5% 165 95%" />
+				<object name="StatsTopPanelRow[n]_civ" type="text" style="overlayDefault" size="170 5% 210 95%" />
 
 				<object name="StatsTopPanelRow[n]_phase" type="button" size="215 0 235 20">
 					<object name="StatsTopPanelRow[n]_phaseIcon" ghost="true" type="image" size="0 0 20 20"/>
@@ -53,15 +53,20 @@
 				<object name="StatsTopPanelRow[n]_infantry" size="435 0 470 100%" text_align="right" type="text" style="overlayDefault" />
 				<object name="StatsTopPanelRow[n]_cavalry" size="480 0 515 100%" text_align="right" type="text" style="overlayDefault" />
 
-				<object name="StatsTopPanelRow[n]_foodCounts" size="530 0 605 100%" type="text" style="overlayResourceCounts" />
-				<object name="StatsTopPanelRow[n]_woodCounts" size="610 0 685 100%" type="text" style="overlayResourceCounts" />
-				<object name="StatsTopPanelRow[n]_stoneCounts" size="690 0 765 100%" type="text" style="overlayResourceCounts" />
-				<object name="StatsTopPanelRow[n]_metalCounts" size="770 0 845 100%" type="text" style="overlayResourceCounts" />
+				<object name="StatsTopPanelRow[n]_foodCounts" size="530 0 607 100%" type="text" style="overlayResourceCounts" />
+				<object name="StatsTopPanelRow[n]_woodCounts" size="610 0 687 100%" type="text" style="overlayResourceCounts" />
+				<object name="StatsTopPanelRow[n]_stoneCounts" size="690 0 767 100%" type="text" style="overlayResourceCounts" />
+				<object name="StatsTopPanelRow[n]_metalCounts" size="770 0 847 100%" type="text" style="overlayResourceCounts" />
 
-				<object name="StatsTopPanelRow[n]_foodGatherers" size="530 0 555 100%" type="text" style="overlayResourceGatherers" />
-				<object name="StatsTopPanelRow[n]_woodGatherers" size="610 0 635 100%" type="text" style="overlayResourceGatherers" />
-				<object name="StatsTopPanelRow[n]_stoneGatherers" size="690 0 715 100%" type="text" style="overlayResourceGatherers" />
-				<object name="StatsTopPanelRow[n]_metalGatherers" size="770 0 795 100%" type="text" style="overlayResourceGatherers" />
+				<object name="StatsTopPanelRow[n]_foodGatherers" size="530 50% 560 100%" type="text" style="overlayResourceExtra" />
+				<object name="StatsTopPanelRow[n]_woodGatherers" size="610 50% 640 100%" type="text" style="overlayResourceExtra" />
+				<object name="StatsTopPanelRow[n]_stoneGatherers" size="690 50% 720 100%" type="text" style="overlayResourceExtra" />
+				<object name="StatsTopPanelRow[n]_metalGatherers" size="770 50% 800 100%" type="text" style="overlayResourceExtra" />
+
+				<object name="StatsTopPanelRow[n]_foodRates" size="530 0 560 50%" type="text" style="overlayResourceExtra" />
+				<object name="StatsTopPanelRow[n]_woodRates" size="610 0 640 50%" type="text" style="overlayResourceExtra" />
+				<object name="StatsTopPanelRow[n]_stoneRates" size="690 0 720 50%" type="text" style="overlayResourceExtra" />
+				<object name="StatsTopPanelRow[n]_metalRates" size="770 0 800 50%" type="text" style="overlayResourceExtra" />
 
 				<object name="StatsTopPanelRow[n]_enemyUnitsKilledTotal" size="855 0 890 100%" text_align="right" type="text" style="overlayDefault" />
 				<object name="StatsTopPanelRow[n]_unitsLostTotal" size="895 0 930 100%" text_align="right" type="text" style="overlayDefault" />

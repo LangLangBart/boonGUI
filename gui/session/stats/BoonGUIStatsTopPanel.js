@@ -33,6 +33,7 @@ class BoonGUIStatsTopPanel {
             for (const resType of g_BoonGUIResTypes) {
                 this.scales.addValue(`${resType}Counts`, state.resourceCounts[resType]);
                 this.scales.addValue(`${resType}Gatherers`, state.resourceGatherers[resType]);
+                this.scales.addValue(`${resType}Rates`, state.resourceRates[resType]);
             }
         })
         this.rows.forEach((row, i) => row.update(playersStates[i], this.scales))
