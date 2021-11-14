@@ -21,7 +21,7 @@ class BoonGUIStatsModes {
         this.rowsContainer = Engine.GetGUIObjectByName(`${PREFIX}Rows`);
         this.rows = this.rowsContainer.children.map((row, index) => new BoonGUIStatsModesRow(row, index));
 
-        this.root.size = `100%-400 200 100% 500`;
+        
         this.dropdownContainer.size = '0 0 100% 25';
         this.rowsContainer.size = '0 30 100% 200';
 
@@ -30,7 +30,15 @@ class BoonGUIStatsModes {
 
         this.dropdown.onSelectionChange = this.onSelectionChange.bind(this);
         this.forceRender = forceRender;
+        this.root.size = `100%-400 200 100% 500`;
+
+        g_OverlayCounterManager.registerResizeHandler(this.setTopOffset.bind(this));
     }
+
+	setTopOffset(offset)
+	{
+        this.root.size = `100%-400 ${155 + offset} 100% 500`;
+	}
 
     onSelectionChange() {
         this.mode = this.dropdown.selected;
