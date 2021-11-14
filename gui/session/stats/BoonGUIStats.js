@@ -1,23 +1,28 @@
 class BoonGUIStats {
 
+  
     constructor() {
         this.root = Engine.GetGUIObjectByName("Stats");
         this.shouldForceRender = true;
         this.statsTopPanel = new BoonGUIStatsTopPanel(() => this.shouldForceRender = true);
         this.statsModes = new BoonGUIStatsModes(() => this.shouldForceRender = true);
+        this.resourcesCache = new Map();
         this.lastPlayerLength = null;
 
         this.resizeInit();
-        this.root.hidden = g_IsObserver ? false : true;
-        this.root.onTick = this.onTick.bind(this);
 
-        this.resourcesCache = new Map();
+        const key = g_IsObserver ? "boongui.observer.hidden" : "boongui.player.hidden";    
+        const defaultHidden = g_IsObserver ? "false" : "true";
+        this.root.hidden = (Engine.ConfigDB_GetValue("user", key) || defaultHidden) == "true";
+        this.root.onTick = this.onTick.bind(this);
     }
 
     tickPeriod = 6; // blinky needs a nice harmonic blink rate, 10 is too high, 1 would be perfect, but a small tickPeriod kills the performance. 6 seemed to be the best compromise
 
     toggle() {
         this.root.hidden = !this.root.hidden;
+        const key = g_IsObserver ? "boongui.observer.hidden" : "boongui.player.hidden";    
+        Engine.ConfigDB_CreateAndWriteValueToFile("user", key, this.root.hidden ? 'true' : 'false', "config/user.cfg");            
         this.shouldForceRender = true;
     }
 
