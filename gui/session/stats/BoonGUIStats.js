@@ -8,7 +8,7 @@ class BoonGUIStats {
         this.lastPlayerLength = null;
 
         this.resizeInit();
-        this.root.hidden = false; // g_IsObserver ? false : true;
+        this.root.hidden = g_IsObserver ? false : true;
         this.root.onTick = this.onTick.bind(this);
     }
 
