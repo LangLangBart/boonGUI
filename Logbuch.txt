@@ -686,14 +686,3 @@
         - I like the idea of "Taunts", send someone "42" and he sees and hears a message e.g "I need wood" or "On my signal, unleash hell" (more taunts can be found here https://wildfiregames.com/forum/topic/1224-in-game-taunts/ and https://ageofempires.fandom.com/wiki/Taunts#Community_taunts); some useful software for Audio can be found here https://alternativeto.net/software/forvo/
         https://freesound.org/browse/tags/game/
         
-        
-        
-#Some TO-DO stuff, things that work but could be improved:
-(1) The blinking of the pop counter is not in sync with the "Overlay" popLimit, this might be caused by the tick period in the boongui_basicOverlay.js.
-(2) The empty circle in the StatsOverlay remains even if you are the last of your team and have not researched the "Cartography" tech, because it counts also the "defeated" mutual allies, which it should not.
-(3) The way I filter out "AutoResearchedTechs" from "researchedTechs" should be made better (GuiInterface~boongui.js).
-(4) Observer mode now shows the map name and an icon, the icon is the same as the one for the "Objectives" button, make it clickable and only show one of the buttons.
-(5) The hero button position should adopt to the length of the stats overlay.
-(6) the phasing up should display the progress, not just a static green icon.
-        
-        
