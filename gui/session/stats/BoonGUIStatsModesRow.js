@@ -15,11 +15,15 @@ class BoonGUIStatsModesRow {
 
     onPress() {
         if (this.state == null || this.state.civCentres.length <= 0) return;
-        g_Selection.reset();
+		if (!Engine.HotkeyIsPressed("selection.add"))
+			g_Selection.reset();
+
         g_Selection.addList(this.state.civCentres);
-        let entState = GetEntityState(this.state.civCentres[0]);
+    
+        const entState = GetEntityState(this.state.civCentres[0]);
         Engine.CameraMoveTo(entState.position.x, entState.position.z);
     }
+
 
     /**
      * @private

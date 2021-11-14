@@ -19,13 +19,14 @@ class BoonGUIStatsModesRowItem {
 
     onPress() {
         if (this.item == null || this.item.entity.length <= 0) return
-        g_Selection.reset();
-        g_Selection.addList(this.item.entity);
-        
-        let entState = GetEntityState(this.item.entity[0]);
-        if (entState && entState.position) {
-            Engine.CameraMoveTo(entState.position.x, entState.position.z);
-        }
+		if (!Engine.HotkeyIsPressed("selection.add"))
+			g_Selection.reset();
+
+        let entities = [...new Set(this.item.entity.map(e => getEntityOrHolder(e)))];
+        g_Selection.addList(entities);
+
+        const entState = GetEntityState(entities[0]);
+        Engine.CameraMoveTo(entState.position.x, entState.position.z);
     }
 
     onPressRight() {
