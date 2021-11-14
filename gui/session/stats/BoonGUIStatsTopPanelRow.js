@@ -9,7 +9,7 @@ class BoonGUIStatsTopPanelRow {
         this.team = Engine.GetGUIObjectByName(`${PREFIX}_team`);
         this.player = Engine.GetGUIObjectByName(`${PREFIX}_player`);
         this.rating = Engine.GetGUIObjectByName(`${PREFIX}_rating`);
-        this.civ = Engine.GetGUIObjectByName(`${PREFIX}_civ`)      ;
+        this.civ = Engine.GetGUIObjectByName(`${PREFIX}_civ`);
         this.pop = Engine.GetGUIObjectByName(`${PREFIX}_pop`);
 
         this.economyTechs = Engine.GetGUIObjectByName(`${PREFIX}_economyTechs`);
@@ -40,7 +40,7 @@ class BoonGUIStatsTopPanelRow {
 
     normalizeResource(value) {
         if (value >= 10000) {
-            return Math.floor(value / 1000) + setStringTags('k', {font: 'mono-10'});
+            return Math.floor(value / 1000) + setStringTags('k', { font: 'mono-10' });
         } else {
             return Math.floor(value / 10) * 10;
         }
@@ -61,7 +61,7 @@ class BoonGUIStatsTopPanelRow {
         let phase;
         let progress = null;
         const phase_city_generic = state.startedResearch['phase_city_generic'];
-        const phase_town_generic = state.startedResearch['phase_town_generic'];        
+        const phase_town_generic = state.startedResearch['phase_town_generic'];
         if (phase_city_generic) {
             phase = 'phase_city';
             progress = phase_city_generic.progress;
@@ -83,8 +83,8 @@ class BoonGUIStatsTopPanelRow {
         } else {
             this.phaseProgress.hidden = false;
             let size = this.phaseProgress.size;
-		    size.top = this.phaseProgressTop + this.phaseProgressHeight * progress;
-		    this.phaseProgress.size = size;
+            size.top = this.phaseProgressTop + this.phaseProgressHeight * progress;
+            this.phaseProgress.size = size;
         }
 
         const popCount = state.popCount.toString().padStart(3);
@@ -100,7 +100,7 @@ class BoonGUIStatsTopPanelRow {
             this.pop.caption =
                 setStringTags(popCount, { color: popCountColor }) + '/' +
                 setStringTags(popLimit, { color: popLimitColor });
-    
+
         }
 
         let value, color;
@@ -146,8 +146,8 @@ class BoonGUIStatsTopPanelRow {
         color = scales.getColor('killDeathRatio', value);
         let caption = isNaN(value) ? '' : isFinite(value) ? value : translate("\u221E");
         this.killDeathRatio.caption = setStringTags(caption, { color });
-        
+
         const los = state.hasSharedLos || state.numberAllies == 1 ? "●" : "○";
-        this.los.caption = setStringTags(los, {color: state.playerColor});
+        this.los.caption = setStringTags(los, { color: state.playerColor });
     }
 }

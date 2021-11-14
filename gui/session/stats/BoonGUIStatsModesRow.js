@@ -10,16 +10,16 @@ class BoonGUIStatsModesRow {
         this.itemsContainer = Engine.GetGUIObjectByName(`${PREFIX}Items`);
         this.items = this.itemsContainer.children.map((item, index) => new BoonGUIStatsModesRowItem(item, index));
         this.indicator.onPress = this.onPress.bind(this);
-        this.state  = null;        
+        this.state = null;
     }
 
     onPress() {
         if (this.state == null || this.state.civCentres.length <= 0) return;
-		if (!Engine.HotkeyIsPressed("selection.add"))
-			g_Selection.reset();
+        if (!Engine.HotkeyIsPressed("selection.add"))
+            g_Selection.reset();
 
         g_Selection.addList(this.state.civCentres);
-    
+
         const entState = GetEntityState(this.state.civCentres[0]);
         Engine.CameraMoveTo(entState.position.x, entState.position.z);
     }
@@ -30,19 +30,18 @@ class BoonGUIStatsModesRow {
      */
     createTooltip(state) {
         let tooltip = "";
-        const CivName = g_CivData[state.civ].Name;        
+        const CivName = g_CivData[state.civ].Name;
         tooltip += setStringTags(`${state.name}\n`, { color: state.playerColor });
         tooltip += setStringTags(`${CivName}\n`, { color: state.playerColor });
         tooltip += `${headerFont('Economy')} - Phase ${headerFont(state.phase)}\n`;
 
         const resTypes = ['food', 'wood', 'stone', 'metal'];
 
-        
         for (let resType of resTypes) {
             const count = Math.floor(state.resourceCounts[resType])
             tooltip += `${resourceIcon(resType)} ${count} `;
         }
-      
+
         return tooltip;
     }
 
@@ -52,7 +51,7 @@ class BoonGUIStatsModesRow {
         if (!state) return;
         this.indicatorIcon.sprite = `stretched:${g_CivData[state.civ].Emblem}`;
         this.indicator.enabled = state.civCentres.length > 0;
-        this.indicatorColor.sprite = `backcolor: ${state.playerColor}`;        
+        this.indicatorColor.sprite = `backcolor: ${state.playerColor}`;
         this.indicatorLabel.caption = state.team != -1 ? `${state.team + 1}` : "";
         this.indicator.tooltip = this.createTooltip(state);
 

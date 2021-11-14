@@ -2,7 +2,7 @@ class BoonGUIStatsModesRowItem {
     constructor(item, index) {
         const PREFIX = item.name;
         this.root = Engine.GetGUIObjectByName(PREFIX);
-        this.root.size =  BoonGUIGetColSize(index, 40, true);
+        this.root.size = BoonGUIGetColSize(index, 40, true);
 
         this.icon = Engine.GetGUIObjectByName(`${PREFIX}Icon`);
         this.count = Engine.GetGUIObjectByName(`${PREFIX}Count`);
@@ -19,8 +19,8 @@ class BoonGUIStatsModesRowItem {
 
     onPress() {
         if (this.item == null || this.item.entity.length <= 0) return
-		if (!Engine.HotkeyIsPressed("selection.add"))
-			g_Selection.reset();
+        if (!Engine.HotkeyIsPressed("selection.add"))
+            g_Selection.reset();
 
         let entities = [...new Set(this.item.entity.map(e => getEntityOrHolder(e)))];
         g_Selection.addList(entities);
@@ -75,11 +75,11 @@ class BoonGUIStatsModesRowItem {
 
         this.progress.size = size;
         this.progress.hidden = item.mode !== 'Production';
-        
-        this.count.caption = item.count > 1 ? item.count : '';
-        this.icon.sprite =  "stretched:session/portraits/" +  template.icon;
 
-        this.root.tooltip =  [
+        this.count.caption = item.count > 1 ? item.count : '';
+        this.icon.sprite = "stretched:session/portraits/" + template.icon;
+
+        this.root.tooltip = [
             getEntityNames(template),
             showTemplateViewerOnRightClickTooltip()
         ].join('\n');

@@ -1,14 +1,12 @@
 let g_stats;
 
-autociv_patchApplyN("init", function (target, that, args)
-{
+autociv_patchApplyN("init", function (target, that, args) {
 	let result = target.apply(that, args);
 	g_stats = new BoonGUIStats();
 	return result;
 });
 
-function endGame(showSummary)
-{
+function endGame(showSummary) {
 	// Before ending the game
 	let replayDirectory = Engine.GetCurrentReplayDirectory();
 	let simData = Engine.GuiInterfaceCall("GetReplayMetadata");
@@ -36,11 +34,9 @@ function endGame(showSummary)
 		}
 	};
 
-	if (g_InitAttributes.campaignData)
-	{
+	if (g_InitAttributes.campaignData) {
 		let menu = g_CampaignSession.getMenu();
-		if (g_InitAttributes.campaignData.skipSummary)
-		{
+		if (g_InitAttributes.campaignData.skipSummary) {
 			Engine.SwitchGuiPage(menu);
 			return;
 		}
@@ -60,8 +56,7 @@ function endGame(showSummary)
 		Engine.SwitchGuiPage("page_pregame.xml");
 }
 
-function endHome()
-{
+function endHome() {
 	// Before ending the game
 	let replayDirectory = Engine.GetCurrentReplayDirectory();
 	let simData = Engine.GuiInterfaceCall("GetReplayMetadata");
@@ -77,13 +72,12 @@ function endHome()
 	if (g_IsNetworked && Engine.HasXmppClient()) {
 		Engine.SendUnregisterGame();
 		Engine.SwitchGuiPage("page_lobby.xml");
-		} else {
+	} else {
 		Engine.SwitchGuiPage("page_pregame.xml");
-		}		
+	}
 }
 
 // This function is basically useless if you only use this mod, but autociv crops the pause overlay to 30% to get around it and I've added his function here and increased the number to 100%. Now the text information from the pause overlay is still displayed correctly, when boths mods (boongui&autociv) are enabled. Just make sure that autociv is activated first and then boongui.
-function autociv_patchSession()
-{
+function autociv_patchSession() {
 	Engine.GetGUIObjectByName("pauseOverlay").size = "0% 0% 100% 100%"
 }

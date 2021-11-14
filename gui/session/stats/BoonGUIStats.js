@@ -26,7 +26,6 @@ class BoonGUIStats {
             if (this.lastPlayerLength != 0) this.resize(0);
             return;
         }
-            
 
         if (forceRender || g_LastTickTime % this.tickPeriod == 0)
             this.update()
@@ -35,25 +34,25 @@ class BoonGUIStats {
     getPlayersStats() {
         const players = Engine.GuiInterfaceCall("boongui_GetOverlay").players ?? [];
         return players
-        .filter((state, index, playerStates) => {
-            // if (index == 0 && index != g_ViewedPlayer) // Gaia index 0
-            //     return false
-            if (index == 0)  // Gaia index 0
-                return false
+            .filter((state, index, playerStates) => {
+                // if (index == 0 && index != g_ViewedPlayer) // Gaia index 0
+                //     return false
+                if (index == 0)  // Gaia index 0
+                    return false
 
-            if (state.state == "defeated" && index != g_ViewedPlayer)
-                return false
+                if (state.state == "defeated" && index != g_ViewedPlayer)
+                    return false
 
-            state.playerNumber = index
+                state.playerNumber = index
 
-            if (g_IsObserver || !g_Players[g_ViewedPlayer] || index == g_ViewedPlayer)
+                if (g_IsObserver || !g_Players[g_ViewedPlayer] || index == g_ViewedPlayer)
+                    return true
+                if (!playerStates[g_ViewedPlayer].hasSharedLos || !g_Players[g_ViewedPlayer].isMutualAlly[index])
+                    return false
+
                 return true
-            if (!playerStates[g_ViewedPlayer].hasSharedLos || !g_Players[g_ViewedPlayer].isMutualAlly[index])
-                return false
-
-            return true
-        })
-        .sort((a, b) => a.team - b.team);
+            })
+            .sort((a, b) => a.team - b.team);
     }
 
     playerColor(state) {
@@ -62,19 +61,18 @@ class BoonGUIStats {
 
     teamColor(state) {
         let teamRepresentatives = {}
-        for (let i = 1; i < g_Players.length; ++i)
-        {
+        for (let i = 1; i < g_Players.length; ++i) {
             let group = g_Players[i].state == "active" ? g_Players[i].team : "";
             if (group != -1 && !teamRepresentatives[group])
-            teamRepresentatives[group] = i
+                teamRepresentatives[group] = i
         }
         if (g_IsObserver)
-        return rgbToGuiColor(g_Players[teamRepresentatives[state.team] || state.playerNumber].color);
+            return rgbToGuiColor(g_Players[teamRepresentatives[state.team] || state.playerNumber].color);
         else
-        return "white";
+            return "white";
     }
 
-    resizeInit() {        
+    resizeInit() {
         for (let i in Engine.GetGUIObjectByName("unitGroupPanel").children) {
             const button = Engine.GetGUIObjectByName(`unitGroupButton[${i}]`);
             const icon = Engine.GetGUIObjectByName(`unitGroupIcon[${i}]`);
@@ -109,7 +107,7 @@ class BoonGUIStats {
         y = chatPanel.size.bottom + PAD;
 
         const unitGroupPanel = Engine.GetGUIObjectByName("unitGroupPanel");
-        unitGroupPanel.size = `0 ${y} 100% ${y+200}`;        
+        unitGroupPanel.size = `0 ${y} 100% ${y + 200}`;
     }
 
     update() {

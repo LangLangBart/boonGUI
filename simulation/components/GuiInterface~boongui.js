@@ -31,8 +31,7 @@ function limitNumber(num) {
 /**
  * Opimitzed stats function for boonGUI stats overlay
  */
-GuiInterface.prototype.boongui_GetOverlay = function ()
-{
+GuiInterface.prototype.boongui_GetOverlay = function () {
     const ret = {
         "players": []
     };
@@ -42,13 +41,11 @@ GuiInterface.prototype.boongui_GetOverlay = function ()
     const cmpTemplateManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_TemplateManager);
     const numPlayers = cmpPlayerManager.GetNumPlayers();
 
-    for (let i = 0; i < numPlayers; ++i)
-    {
+    for (let i = 0; i < numPlayers; ++i) {
         // Work out which phase we are in.
         let phase = "";
         const cmpTechnologyManager = QueryPlayerIDInterface(i, IID_TechnologyManager);
-        if (cmpTechnologyManager)
-        {
+        if (cmpTechnologyManager) {
             if (cmpTechnologyManager.IsTechnologyResearched("phase_imperial"))
                 phase = "imperial";
             else if (cmpTechnologyManager.IsTechnologyResearched("phase_city"))
@@ -112,25 +109,25 @@ GuiInterface.prototype.boongui_GetOverlay = function ()
                     entity: entity != null ? [entity] : [],
                     templateType
                 });
-            }            
-        }        
+            }
+        }
 
         const researchedTechs = new Set(cmpTechnologyManager?.GetResearchedTechs() ?? []);
         for (let template of researchedTechs) {
-          if (boongui_excluded_techs.some((s) => template.includes(s))) continue;
-          let mode;
-          
-          if (template.startsWith("soldier_")) {
-              militaryTechs++;
-              mode = "Military Technologies";
-          } else if (template.startsWith("gather_")) {
-              economyTechs++;
-              mode = "Economy Technologies";
-          } else {
-              mode = "Other Technologies";
-          }
+            if (boongui_excluded_techs.some((s) => template.includes(s))) continue;
+            let mode;
 
-          addToQueue({ mode, count: 1, template, progress: 1, entity: null, templateType: "technology" });
+            if (template.startsWith("soldier_")) {
+                militaryTechs++;
+                mode = "Military Technologies";
+            } else if (template.startsWith("gather_")) {
+                economyTechs++;
+                mode = "Economy Technologies";
+            } else {
+                mode = "Other Technologies";
+            }
+
+            addToQueue({ mode, count: 1, template, progress: 1, entity: null, templateType: "technology" });
         }
 
         const player = splitRatingFromNick(cmpPlayer.GetName());
@@ -143,12 +140,12 @@ GuiInterface.prototype.boongui_GetOverlay = function ()
 
         const enemyUnitsKilledTotal = cmpPlayerStatisticsTracker?.enemyUnitsKilled.total ?? 0;
         const unitsLostTotal = cmpPlayerStatisticsTracker?.unitsLost.total ?? 0;
-        const killDeathRatio = limitNumber(enemyUnitsKilledTotal / unitsLostTotal);        
+        const killDeathRatio = limitNumber(enemyUnitsKilledTotal / unitsLostTotal);
 
         const civCentres = [];
 
         for (let entity of cmpRangeManager.GetEntitiesByPlayer(i)) {
-            let cmpIdentity = Engine.QueryInterface(entity, IID_Identity);            
+            let cmpIdentity = Engine.QueryInterface(entity, IID_Identity);
             let cmpProductionQueue = Engine.QueryInterface(entity, IID_ProductionQueue);
 
             let classes = new Set(cmpIdentity?.classesList ?? [])
@@ -159,7 +156,7 @@ GuiInterface.prototype.boongui_GetOverlay = function ()
             if (classes.has('Structure') && !classes.has('Foundation')) {
                 const template = cmpTemplateManager.GetCurrentTemplateName(entity)
                 const mode = "Buildings";
-                const templateType = 'unit';                
+                const templateType = 'unit';
                 addToQueue({ mode, templateType, entity, template, count: 1, progress: 0 });
             }
 
@@ -170,10 +167,10 @@ GuiInterface.prototype.boongui_GetOverlay = function ()
                 addToQueue({ mode, templateType, entity, template, count: 1, progress: 0 });
             }
 
-            if (cmpProductionQueue) {                
+            if (cmpProductionQueue) {
                 for (const q of cmpProductionQueue.queue) {
                     if (!q.productionStarted) continue;
-                    const { count, timeRemaining, timeTotal} = q;
+                    const { count, timeRemaining, timeTotal } = q;
                     const progress = (timeRemaining / timeTotal);
 
                     if (q.unitTemplate) {
@@ -194,12 +191,12 @@ GuiInterface.prototype.boongui_GetOverlay = function ()
 
             let cmpFoundation = Engine.QueryInterface(entity, IID_Foundation);
             if (cmpFoundation) {
-                let {hitpoints, maxHitpoints} = Engine.QueryInterface(entity, IID_Health);
+                let { hitpoints, maxHitpoints } = Engine.QueryInterface(entity, IID_Health);
                 const mode = "Production";
                 const templateType = "unit";
                 const count = 1;
                 const template = cmpFoundation.finalTemplateName;
-                const progress =  1 - (hitpoints / maxHitpoints);
+                const progress = 1 - (hitpoints / maxHitpoints);
                 addToQueue({ mode, templateType, entity, template, count, progress });
             }
         }
@@ -213,7 +210,7 @@ GuiInterface.prototype.boongui_GetOverlay = function ()
             "rating": player.rating,
             "civ": civ,
             "team": cmpPlayer.GetTeam(),
-            
+
             "phase": phase,
             "trainingBlocked": cmpPlayer.IsTrainingBlocked(),
             "popCount": cmpPlayer.GetPopulationCount(),
@@ -223,20 +220,20 @@ GuiInterface.prototype.boongui_GetOverlay = function ()
             "militaryTechs": militaryTechs,
             "economyTechs": economyTechs,
             "percentMapExplored": stats?.percentMapExplored,
-                                    
+
             "resourceCounts": cmpPlayer.GetResourceCounts(),
             "resourceGatherers": cmpPlayer.GetResourceGatherers(),
 
             "enemyUnitsKilledTotal": enemyUnitsKilledTotal,
             "unitsLostTotal": unitsLostTotal,
             "killDeathRatio": killDeathRatio,
-            
+
             "startedResearch": this.GetStartedResearch(i),
             "hasSharedLos": cmpPlayer.HasSharedLos(),
             "numberAllies": cmpPlayer.GetMutualAllies().length,
 
             "totalNumberIdleWorkers": totalNumberIdleWorkers,
-            
+
             "totalEconomyScore": totalEconomyScore,
             "totalMilitaryScore": totalMilitaryScore,
             "totalExplorationScore": totalExplorationScore,
@@ -256,8 +253,7 @@ var boongui_exposedFunctions = {
     "boongui_GetOverlay": 1
 };
 
-autociv_patchApplyN(GuiInterface.prototype, "ScriptCall", function (target, that, args)
-{
+autociv_patchApplyN(GuiInterface.prototype, "ScriptCall", function (target, that, args) {
     let [player, name, vargs] = args;
     if (name in boongui_exposedFunctions)
         return that[name](player, vargs);
