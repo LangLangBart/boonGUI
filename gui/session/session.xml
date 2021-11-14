@@ -44,9 +44,9 @@
 	<include file="gui/session/TimeNotificationOverlay.xml"/>
 
 	<!-- Chat messages -->
-	<object name="chatPanel" size="0 305 100% 100%-240" z="0" absolute="true">
+	<object name="chatPanel" size="0 131 100% 100%-240" z="0" absolute="true">
 		<object name="chatLines">
-			<repeat count="6">
+			<repeat count="20">
 				<object name="chatLine[n]" size="3 0 100% 25" type="button" style="chatPanelOverlay" tooltip_style="sessionToolTipBottomBold" ghost="true" hidden="true"/>
 			</repeat>
 		</object>

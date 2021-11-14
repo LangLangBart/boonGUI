@@ -26,19 +26,25 @@ const g_BoonGUICivs = {
     "zapo": "ZAP"
 };
 
-const BoonGUIGetSize = (rows) => {
-    const y = (22 * (rows + 1)) + 4;
-    return`0 36 1000 36+${y}`
-}
+const g_BoonGUIResTypes = ['food', 'wood', 'stone', 'metal'];
 
-const BoonGUIGetRowSize = (index) => {
-    const y1 = 22 * index;
-    const y2 = 22 * (index + 1);
+/**
+ * @param {number} index 
+ * @param {number} height 
+ */
+function BoonGUIGetRowSize(index, height) {
+    const y1 = height * index;
+    const y2 = height * (index + 1);
     return `0 ${y1} 100% ${y2}`;
 }
 
-const BoonGUIGetColSize = (index) => {
-    const x1 = 22 * index;
-    const x2 = 22 * (index + 1);
-    return `${x1} 0 ${x2} 100%`;
+/**
+ * @param {number} index 
+ * @param {number} width 
+ * @param {boolean} rtl 
+ */
+function BoonGUIGetColSize(index, width, rtl = false) {
+    const x1 = width * index;
+    const x2 = width * (index + 1);
+    return rtl ? `100%-${x2} 0 100%-${x1} 100%` : `${x1} 0 ${x2} 100%`;
 }

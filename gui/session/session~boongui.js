@@ -1,10 +1,10 @@
-var g_BoonGUIStats;
+let g_stats;
 
 autociv_patchApplyN("init", function (target, that, args)
 {
-	let result = target.apply(that, args)
-	g_BoonGUIStats = new BoonGUIStats()
-	return result
+	let result = target.apply(that, args);
+	g_stats = new BoonGUIStats();
+	return result;
 });
 
 function endGame(showSummary)

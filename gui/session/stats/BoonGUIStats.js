@@ -1,51 +1,43 @@
 class BoonGUIStats {
+
     constructor() {
-        this.BoonGUIStats = Engine.GetGUIObjectByName("BoonGUIStats");
-        this.mode = 'units';
-        this.forceRender = false;
-        this.sections = {
-            base: new BoonGUIStatsSectionBase(),
-            eco: new BoonGUIStatsSectionEco(),
-            units: new BoonGUIStatsSectionUnits(),
-            tech: new BoonGUIStatsSectionTech(),
-        }
-        this.BoonGUIStats.hidden = g_IsObserver ? false : true;
-        this.BoonGUIStats.onTick = this.onTick.bind(this)
-        this.BoonGUIStats.onPress = this.onPress.bind(this);
+        this.root = Engine.GetGUIObjectByName("Stats");
+        this.shouldForceRender = true;
+        this.statsTopPanel = new BoonGUIStatsTopPanel(() => this.shouldForceRender = true);
+        this.statsModes = new BoonGUIStatsModes(() => this.shouldForceRender = true);
+        this.lastPlayerLength = null;
+
+        this.resizeInit();
+        this.root.hidden = false; // g_IsObserver ? false : true;
+        this.root.onTick = this.onTick.bind(this);
     }
 
-    tickPeriod = 6 // blinky needs a nice harmonic blink rate, 10 is too high, 1 would be perfect, but a small tickPeriod kills the performance. 6 seemed to be the best compromise
+    tickPeriod = 6; // blinky needs a nice harmonic blink rate, 10 is too high, 1 would be perfect, but a small tickPeriod kills the performance. 6 seemed to be the best compromise
 
-    onPress() {
-        switch (this.mode) {
-            case 'units':
-                this.mode = 'eco';
-                break;
-            case 'eco':
-                this.mode = 'tech';
-                break;
-            case 'tech':
-                this.mode = 'units';
-                break;
-        }
-        this.forceRender = true;
+    toggle() {
+        this.root.hidden = !this.root.hidden;
+        this.shouldForceRender = true;
     }
 
     onTick() {
-        const forceRender = this.forceRender;
-        this.forceRender = false;
-        if (this.BoonGUIStats.hidden)
-            return
+        const forceRender = this.shouldForceRender;
+        this.shouldForceRender = false;
+        if (this.root.hidden) {
+            if (this.lastPlayerLength != 0) this.resize(0);
+            return;
+        }
+            
 
         if (forceRender || g_LastTickTime % this.tickPeriod == 0)
             this.update()
     }
 
     getPlayersStats() {
-        return Engine.GuiInterfaceCall("boongui_GetOverlay").players?.filter((state, index, playerStates) =>
-        {
+        const players = Engine.GuiInterfaceCall("boongui_GetOverlay").players ?? [];
+        return players
+        .filter((state, index, playerStates) => {
             // if (index == 0 && index != g_ViewedPlayer) // Gaia index 0
-            //     return false            
+            //     return false
             if (index == 0)  // Gaia index 0
                 return false
 
@@ -53,11 +45,15 @@ class BoonGUIStats {
                 return false
 
             state.playerNumber = index
+
             if (g_IsObserver || !g_Players[g_ViewedPlayer] || index == g_ViewedPlayer)
                 return true
             if (!playerStates[g_ViewedPlayer].hasSharedLos || !g_Players[g_ViewedPlayer].isMutualAlly[index])
                 return false
-        });
+
+            return true
+        })
+        .sort((a, b) => a.team - b.team);
     }
 
     playerColor(state) {
@@ -66,16 +62,54 @@ class BoonGUIStats {
 
     teamColor(state) {
         let teamRepresentatives = {}
-		for (let i = 1; i < g_Players.length; ++i)
-		{
-				let group = g_Players[i].state == "active" ? g_Players[i].team : "";
-				if (group != -1 && !teamRepresentatives[group])
-                teamRepresentatives[group] = i
+        for (let i = 1; i < g_Players.length; ++i)
+        {
+            let group = g_Players[i].state == "active" ? g_Players[i].team : "";
+            if (group != -1 && !teamRepresentatives[group])
+            teamRepresentatives[group] = i
         }
-		if (g_IsObserver)
+        if (g_IsObserver)
         return rgbToGuiColor(g_Players[teamRepresentatives[state.team] || state.playerNumber].color);
         else
         return "white";
+    }
+
+    resizeInit() {        
+        for (let i in Engine.GetGUIObjectByName("unitGroupPanel").children) {
+            const button = Engine.GetGUIObjectByName(`unitGroupButton[${i}]`);
+            const icon = Engine.GetGUIObjectByName(`unitGroupIcon[${i}]`);
+
+            let label = Engine.GetGUIObjectByName(`unitGroupLabel[${i}]`);
+            button.size = '0 0 50 50';
+            icon.size = '3 3 47 47';
+            label.font = 'mono-stroke-20';
+            label.text_valign = 'top';
+            label.text_align = 'right';
+        }
+
+        for (let i in Engine.GetGUIObjectByName("panelEntityButtons").children) {
+            Engine.GetGUIObjectByName(`panelEntityButton[${i}]`).size = '0 0 60 60';
+        }
+    }
+
+    resize(length) {
+        const PAD = 5;
+        this.lastPlayerLength = length;
+
+        let y = (24 * (length + 1)) + 38;
+        this.statsTopPanel.root.size = `0 36 1000 ${y}`
+        y = this.statsTopPanel.root.size.bottom + PAD;
+
+        const panelEntityButtons = Engine.GetGUIObjectByName("panelEntityButtons");
+        panelEntityButtons.size = `2 ${y} 50 ${y + 60}`;
+        y = panelEntityButtons.size.bottom + PAD;
+
+        const chatPanel = Engine.GetGUIObjectByName("chatPanel")
+        chatPanel.size = `0 ${y} 100% ${y + 150}`;
+        y = chatPanel.size.bottom + PAD;
+
+        const unitGroupPanel = Engine.GetGUIObjectByName("unitGroupPanel");
+        unitGroupPanel.size = `0 ${y} 100% ${y+200}`;        
     }
 
     update() {
@@ -87,11 +121,12 @@ class BoonGUIStats {
             state.playerColor = this.playerColor(state);
         }
 
-        this.sections.base.update(playersStates);
-        this.sections.eco.update(playersStates, this.mode == 'eco');
-        this.sections.units.update(playersStates, this.mode == 'units');
-        this.sections.tech.update(playersStates, this.mode == 'tech');
-        this.BoonGUIStats.size = BoonGUIGetSize(playersStates.length);
+        if (this.lastPlayerLength != playersStates.length) {
+            this.resize(playersStates.length);
+        }
+
+        this.statsTopPanel.update(playersStates);
+        this.statsModes.update(playersStates, this.mode);
         Engine.ProfileStop();
     }
 }
