@@ -204,6 +204,10 @@ GuiInterface.prototype.boongui_GetOverlay = function () {
             }
         }
 
+        const numberAllies = cmpPlayer.GetMutualAllies().filter(
+            player => QueryPlayerIDInterface(player).GetState() == "active"
+        ).length;
+
         const queue = Array.from(queueMap.values())
 
         ret.players.push({
@@ -234,7 +238,7 @@ GuiInterface.prototype.boongui_GetOverlay = function () {
 
             "startedResearch": this.GetStartedResearch(i),
             "hasSharedLos": cmpPlayer.HasSharedLos(),
-            "numberAllies": cmpPlayer.GetMutualAllies().length,
+            "numberAllies": numberAllies,
 
             "totalNumberIdleWorkers": totalNumberIdleWorkers,
 
