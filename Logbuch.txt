@@ -6,6 +6,10 @@
             - for testing purpose I changed the mod.json file into >=, for release it should just be =
         'Replay'
             - adding a button next to the replay file path to quickly open the directory 
+        'Hero Selection'
+            - All heroes have a large visible object flowing over their head, making them easier to see on the battlefield.
+        'HUD'
+            - Adding the effective resistance damage to the tooltip.
             
    v1.7 (7/Nov/21)
        'Version number'

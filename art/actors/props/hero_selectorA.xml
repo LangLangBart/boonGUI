@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actor version="1">
+  <float/>
+  <group>
+    <variant>
+		<animations>
+			<animation file="selector/hero_selectorA_rotate.dae" id="rot_idle" name="Idle" speed="50"/>
+			<animation file="selector/hero_selectorA_rotate.dae" id="rot_walk" name="Walk" speed="1"/>	
+			<animation file="selector/hero_selectorA_rotate.dae" id="rot_run" name="Run" speed="1"/>			
+		</animations>
+      <mesh>props/selector/hero_selectorA.dae</mesh>
+	  <props>
+		<prop actor="particle/hero_selector_sparklesA.xml" attachpoint="top_rotator"/>
+      </props>
+    </variant>
+  </group>
+  <group>
+    <variant name="holder">
+      <textures>
+		<texture file="props/hero_selectorA.dds" name="baseTex"/>
+		<texture file="props/hero_selectorA.dds" name="normTex"/>
+		<texture file="props/hero_selectorA.dds" name="specTex"/>
+	  </textures>
+    </variant>
+  </group>
+  <material>basic_glow_nu.xml</material>
+</actor>

@@ -18,7 +18,7 @@ License: none
 URL: https://github.com/JustusAvramenko/delenda_est/tree/master/art/textures
 
 Files:
-  art/textures/ui/pregame/icons/folder-simple.png
+	art/textures/ui/pregame/icons/folder-simple.png
 Name: Phosphor Icons
 License: MIT License (included in the directory as specified in the file)
 URL: https://phosphoricons.com/
@@ -29,6 +29,15 @@ Name: Stan`
 License: none
 URL: https://wildfiregames.com/forum/topic/27738-experimenting-with-icons
 
+Files:
+	art/animation/selector
+	art/meshes/props/selector
+	art/textures/particles
+	art/textures/skins/props
+Name: The Undying Nephalim
+License: Permission granted via private message in the forum to use the hero selector.
+Forum: https://wildfiregames.com/forum/topic/22638-hyrule-conquest/
+Mod: https://www.moddb.com/mods/hyrule-conquest 
 
 
 	SCRIPT
@@ -46,8 +55,6 @@ The scripting within this work is, similarly, based on work and examples by the 
 
 @wraitii created the UI stats mod. 
 https://github.com/wraitii/ui_mod
-
-
 
 
 PYROMOD BUILD

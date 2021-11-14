@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<skeletons>
+  <standard_skeleton title="Armature" id="Armature">
+    <bone name="base_hero_selectorA">
+      <bone name="bot_rotator" />
+      <bone name="top_rotator" />
+    </bone>
+  </standard_skeleton>
+  <skeleton title="Armature" target="Armature">
+    <identifier>
+      <root>base_hero_selectorA</root>
+    </identifier>
+    <bone name="base_hero_selectorA">
+      <target>base_hero_selectorA</target>
+      <bone name="bot_rotator">
+        <target>bot_rotator</target>
+      </bone>
+      <bone name="top_rotator">
+        <target>top_rotator</target>
+      </bone>
+    </bone>
+  </skeleton>
+</skeletons>
