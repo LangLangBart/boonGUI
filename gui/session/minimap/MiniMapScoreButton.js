@@ -1,5 +1,5 @@
 /**
- * Open the Ststs.
+ * Open the Stats.
  */
 class MiniMapScoreButton
 {
@@ -7,21 +7,19 @@ class MiniMapScoreButton
 	{
 		this.scoreButton = Engine.GetGUIObjectByName("scoreButton");
 		this.scoreButton.onMouseLeftPress = this.onKeyDown.bind(this);
-		this.boongui_basicOverlay = Engine.GetGUIObjectByName("boongui_basicOverlay");
 		registerHotkeyChangeHandler(this.onHotkeyChange.bind(this));
-
 	}
 
 	onHotkeyChange()
 	{
 		this.scoreButton.tooltip =
-			colorizeHotkey("%(hotkey)s" + " ", "boongui.session.basicOverlay") +
+			colorizeHotkey("%(hotkey)s" + " ", "boongui.session.stats.toggle") +
 			translate(this.Tooltip);
 	}
 	
 	onKeyDown()
 	{
-		this.boongui_basicOverlay.hidden = !this.boongui_basicOverlay.hidden;
+		g_stats.toggle();
 	}
 }
 

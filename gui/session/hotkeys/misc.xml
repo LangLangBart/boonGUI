@@ -84,4 +84,16 @@
 	<object hotkey="boongui.session.gui.exit">
 		<action on="Press">quitConfirmation();</action>
 	</object>
+
+	<object hotkey="boongui.session.stats.toggle">
+		<action on="Press">g_stats.toggle();</action>
+	</object>
+
+	<object hotkey="boongui.session.stats.tab">
+		<action on="Press">g_stats.tab();</action>
+	</object>
+
+	<object hotkey="boongui.session.stats.toggleMode">
+		<action on="Press">g_stats.statsModes.toggleMode();</action>
+	</object>
 </object>
