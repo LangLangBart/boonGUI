@@ -93,7 +93,40 @@
 		<action on="Press">g_stats.tab();</action>
 	</object>
 
-	<object hotkey="boongui.session.stats.toggleMode">
-		<action on="Press">g_stats.statsModes.toggleMode();</action>
+	<object hotkey="boongui.session.stats.nextMode">
+		<action on="Press">g_stats.statsModes.nextMode();</action>
+	</object>
+	<object hotkey="boongui.session.stats.previousMode">
+		<action on="Press">g_stats.statsModes.previousMode();</action>
+	</object>
+	<object hotkey="boongui.session.stats.mode1">
+		<action on="Press">g_stats.statsModes.selectMode(0);</action>
+	</object>
+	<object hotkey="boongui.session.stats.mode2">
+		<action on="Press">g_stats.statsModes.selectMode(1);</action>
+	</object>
+	<object hotkey="boongui.session.stats.mode3">
+		<action on="Press">g_stats.statsModes.selectMode(2);</action>
+	</object>
+	<object hotkey="boongui.session.stats.mode4">
+		<action on="Press">g_stats.statsModes.selectMode(3);</action>
+	</object>
+	<object hotkey="boongui.session.stats.mode5">
+		<action on="Press">g_stats.statsModes.selectMode(4);</action>
+	</object>
+	<object hotkey="boongui.session.stats.mode6">
+		<action on="Press">g_stats.statsModes.selectMode(5);</action>
+	</object>
+	<object hotkey="boongui.session.stats.mode7">
+		<action on="Press">g_stats.statsModes.selectMode(6);</action>
+	</object>
+	<object hotkey="boongui.session.stats.mode8">
+		<action on="Press">g_stats.statsModes.selectMode(7);</action>
+	</object>					
+	<object hotkey="boongui.session.stats.mode9">
+		<action on="Press">g_stats.statsModes.selectMode(8);</action>
+	</object>
+	<object hotkey="boongui.session.stats.mode10">
+		<action on="Press">g_stats.statsModes.selectMode(9);</action>
 	</object>
 </object>
