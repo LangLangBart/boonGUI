@@ -89,10 +89,6 @@
 		<action on="Press">g_stats.toggle();</action>
 	</object>
 
-	<object hotkey="boongui.session.stats.tab">
-		<action on="Press">g_stats.tab();</action>
-	</object>
-
 	<object hotkey="boongui.session.stats.nextMode">
 		<action on="Press">g_stats.statsModes.nextMode();</action>
 	</object>
