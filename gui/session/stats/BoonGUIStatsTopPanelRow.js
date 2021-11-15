@@ -42,11 +42,21 @@ class BoonGUIStatsTopPanelRow {
         this.phaseProgressHeight = this.phaseProgress.size.bottom - this.phaseProgress.size.top;
     }
 
-    normalizeResource(value) {
+    normalizeResourceCount(value) {
         if (value >= 10000) {
             return Math.floor(value / 1000) + setStringTags('k', { font: 'mono-10' });
         } else {
             return Math.floor(value / 10) * 10;
+        }
+    }
+
+    normalizeResourceRate(value) {
+        if (value >= 10000) {
+            return Math.floor(value / 1000) + setStringTags('k', { font: 'mono-10' });
+        } else if (value >= 1000) {
+            return (value / 1000).toFixed(1) + setStringTags('k', { font: 'mono-10' });
+        } else {
+            return value;
         }
     }
 
@@ -111,7 +121,8 @@ class BoonGUIStatsTopPanelRow {
         for (const resType of g_BoonGUIResTypes) {
             value = state.resourceCounts[resType];
             color = scales.getColor(`${resType}Counts`, value); 
-            this.resource.counts[resType].caption = setStringTags(this.normalizeResource(value), { color });
+            caption = this.normalizeResourceCount(value)
+            this.resource.counts[resType].caption = setStringTags(caption, { color });
 
             value = state.resourceGatherers[resType];
             color = scales.getColor(`${resType}Gatherers`, value, 180);
@@ -120,7 +131,7 @@ class BoonGUIStatsTopPanelRow {
 
             value = state.resourceRates[resType];
             color = scales.getColor(`${resType}Rates`, value, 180);
-            caption = isNaN(value) || value <= 0 ? '' : `+${value}`
+            caption = isNaN(value) || value <= 0 ? '' : `+${this.normalizeResourceRate(value)}`
             this.resource.rates[resType].caption = setStringTags(caption, { color });            
         }
 

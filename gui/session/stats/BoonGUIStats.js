@@ -1,6 +1,5 @@
 class BoonGUIStats {
 
-  
     constructor() {
         this.root = Engine.GetGUIObjectByName("Stats");
         this.shouldForceRender = true;
@@ -117,6 +116,32 @@ class BoonGUIStats {
         unitGroupPanel.size = `0 ${y} 100% ${y + 200}`;
     }
 
+    calculateResourceRates(state) {
+        state.resourceRates = {}
+        
+        const cache = this.resourcesCache.get(state.playerNumber);
+        const now = g_SimState.timeElapsed;
+        const gatheredNow = state.resourcesGathered;
+        
+        if (!cache) {
+            this.resourcesCache.set(state.playerNumber, [[now, gatheredNow]]);
+            return;
+        }
+        
+        const [last] = cache[cache.length - 1];
+        if (now - last > 0) {
+            while (cache.length >= this.IncomeRateBufferSize) cache.shift();
+            cache.push([now, gatheredNow]);
+        }
+
+        const [then, gatheredThen] = cache[0];
+        const deltaS = (now - then) / 1000;
+        for (const resType of g_BoonGUIResTypes) {
+            const rate = Math.round(((gatheredNow[resType] - gatheredThen[resType]) / deltaS) * 10);
+            state.resourceRates[resType] = rate;
+        }
+    }
+
     update() {
         Engine.ProfileStart("BoonGUIStats:update");
         const playersStates = this.getPlayersStats();
@@ -125,19 +150,7 @@ class BoonGUIStats {
             state.teamColor = this.teamColor(state);
             state.playerColor = this.playerColor(state);
 
-            state.resourceRates = {}
-            const now = g_SimState.timeElapsed;
-            const cache = this.resourcesCache.get(state.playerNumber) ?? [[now, state.resourcesGathered]];
-            this.resourcesCache.set(state.playerNumber, cache);
-            const [then, gatheredThen] = cache.length > this.IncomeRateBufferSize ? cache.shift() : cache[0];
-
-            const deltaS = (now - then) / 1000;
-            let gatheredNow = state.resourcesGathered;
-            for (const resType of g_BoonGUIResTypes) {
-                const resGatheredNow = gatheredNow[resType];
-                const rate = Math.round(((resGatheredNow - gatheredThen[resType]) / deltaS) * 10);
-                state.resourceRates[resType] = rate;
-            }
+            this.calculateResourceRates(state);
         }
 
         if (this.lastPlayerLength != playersStates.length) {
@@ -150,4 +163,4 @@ class BoonGUIStats {
     }
 }
 
-BoonGUIStats.prototype.IncomeRateBufferSize = 25;
+BoonGUIStats.prototype.IncomeRateBufferSize = 50;
