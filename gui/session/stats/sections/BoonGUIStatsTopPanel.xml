@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object name="StatsTopPanel" type="image" hidden="true">
+	<object type="image" size="530 0 532 100%" sprite="color:118 118 118 50" />
+	<object type="image" size="610 0 612 100%" sprite="color:118 118 118 50" />
+	<object type="image" size="690 0 692 100%" sprite="color:118 118 118 50" />
+	<object type="image" size="770 0 772 100%" sprite="color:118 118 118 50" />
+	<object type="image" size="850 0 852 100%" sprite="color:118 118 118 50" />
+
+	<object name="StatsTopPanelHeader">
+		<object type="text" style="overlayHeader" size="0 0 15 100%">#</object>
+		<object type="text" style="overlayHeader" size="20 0 115 100%">Player</object>
+		<object type="text" style="overlayHeader" size="120 0 165 100%">Rtng</object>
+		<object type="text" style="overlayHeader" size="170 0 210 100%">Civ</object>
+		<object type="text" style="overlayHeaderCenter" size="240 0 330 100%">POP</object>
+
+		<object type="text" style="overlayHeader" text_align="right" size="330 0 352 100%">eT</object>
+		<object type="text" style="overlayHeader" text_align="right" size="360 0 382 100%">mT</object>
+		<object type="text" style="overlayHeader" text_align="right" size="390 0 425 100%">Fem</object>
+		<object type="text" style="overlayHeader" text_align="right" size="435 0 470 100%">Inf</object>
+		<object type="text" style="overlayHeader" text_align="right" size="480 0 515 100%">Cav</object>
+		<object type="text" style="overlayHeader" text_align="right" size="530 0 605 100%">Food</object>		
+		<object type="text" style="overlayHeader" text_align="right" size="610 0 685 100%">Wood</object>
+		<object type="text" style="overlayHeader" text_align="right" size="690 0 765 100%">Stone</object>
+		<object type="text" style="overlayHeader" text_align="right" size="770 0 845 100%">Metal</object>
+		<object type="text" style="overlayHeader" text_align="right" size="855 0 890 100%">Kil</object>
+		<object type="text" style="overlayHeader" text_align="right" size="895 0 930 100%">Dth</object>
+		<object type="text" style="overlayHeader" text_align="right" size="935 0 970 100%">K/D</object>
+
+		
+
+	</object>
+	<object name="StatsTopPanelRows">
+		<repeat count="8" var="n">
+			<object name="StatsTopPanelRow[n]" size="0 0 100% 100%" hidden="true">
+
+				<object name="StatsTopPanelRow[n]_border" type="image" size="0 100%-3 100% 100%-2" />
+
+				<object name="StatsTopPanelRow[n]_team" type="text" style="overlayDefault" size="0 5% 15 95%" />
+				<object name="StatsTopPanelRow[n]_player" type="text" style="overlayDefault" size="20 5% 115 95%" />
+				<object name="StatsTopPanelRow[n]_rating" type="text" style="overlayDefault" size="120 5% 165 95%" />
+				<object name="StatsTopPanelRow[n]_civ" type="text" style="overlayDefault" size="170 5% 210 95%" />
+
+				<object name="StatsTopPanelRow[n]_phase" type="button" size="215 0 235 20">
+					<object name="StatsTopPanelRow[n]_phaseIcon" ghost="true" type="image" size="0 0 20 20"/>
+					<object name="StatsTopPanelRow[n]_phaseProgressSlider" type="image" sprite="queueProgressSlider" ghost="true" size="0 0 20 20" z="20"/>
+				</object>
+				<object name="StatsTopPanelRow[n]_pop" size="240 0 330 100%" text_align="center" type="text" style="overlayDefault" />
+
+				<object name="StatsTopPanelRow[n]_economyTechs" size="330 0 352 100%" text_align="right" type="text" style="overlayDefault" />
+				<object name="StatsTopPanelRow[n]_militaryTechs"  size="360 0 382 100%" text_align="right" type="text" style="overlayDefault" />
+
+				<object name="StatsTopPanelRow[n]_femaleCitizen" size="390 0 425 100%" text_align="right" type="text" style="overlayDefault" />
+				<object name="StatsTopPanelRow[n]_infantry" size="435 0 470 100%" text_align="right" type="text" style="overlayDefault" />
+				<object name="StatsTopPanelRow[n]_cavalry" size="480 0 515 100%" text_align="right" type="text" style="overlayDefault" />
+
+				<object name="StatsTopPanelRow[n]_foodCounts" size="530 0 607 100%" type="text" style="overlayResourceCounts" />
+				<object name="StatsTopPanelRow[n]_woodCounts" size="610 0 687 100%" type="text" style="overlayResourceCounts" />
+				<object name="StatsTopPanelRow[n]_stoneCounts" size="690 0 767 100%" type="text" style="overlayResourceCounts" />
+				<object name="StatsTopPanelRow[n]_metalCounts" size="770 0 847 100%" type="text" style="overlayResourceCounts" />
+
+				<object name="StatsTopPanelRow[n]_foodGatherers" size="530 50% 560 100%" type="text" style="overlayResourceExtra" />
+				<object name="StatsTopPanelRow[n]_woodGatherers" size="610 50% 640 100%" type="text" style="overlayResourceExtra" />
+				<object name="StatsTopPanelRow[n]_stoneGatherers" size="690 50% 720 100%" type="text" style="overlayResourceExtra" />
+				<object name="StatsTopPanelRow[n]_metalGatherers" size="770 50% 800 100%" type="text" style="overlayResourceExtra" />
+
+				<object name="StatsTopPanelRow[n]_foodRates" size="530 0 560 50%" type="text" style="overlayResourceExtra" />
+				<object name="StatsTopPanelRow[n]_woodRates" size="610 0 640 50%" type="text" style="overlayResourceExtra" />
+				<object name="StatsTopPanelRow[n]_stoneRates" size="690 0 720 50%" type="text" style="overlayResourceExtra" />
+				<object name="StatsTopPanelRow[n]_metalRates" size="770 0 800 50%" type="text" style="overlayResourceExtra" />
+
+				<object name="StatsTopPanelRow[n]_enemyUnitsKilledTotal" size="855 0 890 100%" text_align="right" type="text" style="overlayDefault" />
+				<object name="StatsTopPanelRow[n]_unitsLostTotal" size="895 0 930 100%" text_align="right" type="text" style="overlayDefault" />
+				<object name="StatsTopPanelRow[n]_killDeathRatio" size="935 0 970 100%" text_align="right" type="text" style="overlayDefault" />
+
+				<object name="StatsTopPanelRow[n]_los" type="text" style="overlayDefaultCenter" size="975 0 1000 100%" />
+			</object>
+		</repeat>
+	</object>
+</object>

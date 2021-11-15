@@ -1,8 +1,0 @@
-<object name="boongui_basicOverlay"
-	size="0 0 10% 10%"
-	sprite="topPanel"
-    hidden="true"
-    ghost="true"
-    type="text"
-    z="50"
-    hotkey="boongui.session.basicOverlay"/>

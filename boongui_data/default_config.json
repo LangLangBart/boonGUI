@@ -1,5 +1,7 @@
 {
 	"hotkey.boongui.camera.follow.fps": "Shift+F",
-	"hotkey.boongui.session.basicOverlay" : "Alt+Shift+F",
-	"hotkey.boongui.session.gui.exit": "Shift+Escape"
+	"hotkey.boongui.session.gui.exit": "Shift+Escape",
+
+	"hotkey.boongui.session.stats.toggle" : "Alt+Shift+F",
+	"hotkey.boongui.session.stats.toggleMode": "Z+Tab"
 }

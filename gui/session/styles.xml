@@ -271,4 +271,50 @@
 		text_valign="center"
 		sprite="sessionOverlayBackground"
 	/>
+
+	<style name="overlayHeader"
+		font="mono-stroke-14"
+		textcolor="225 225 225 190"
+		text_align="left"
+		text_valign="top"
+	/>
+
+	<style name="overlayHeaderCenter"
+		font="mono-stroke-14"
+		textcolor="225 225 225 190"
+		text_align="center"
+		text_valign="top"
+	/>
+
+	<style name="overlayDefault"
+		font="mono-stroke-14"
+		textcolor="250 250 250"
+		text_align="left"
+		text_valign="top"
+	/>
+
+	<style name="overlayDefaultCenter"
+		font="mono-stroke-14"
+		textcolor="250 250 250"
+		text_align="center"
+		text_valign="top"
+	/>
+	<style name="overlayResourceCounts"
+		font="mono-stroke-14"
+		textcolor="250 250 250"
+		text_align="right"
+		text_valign="center"
+	/>
+	<style name="overlayResourceExtra"
+		font="mono-stroke-10"
+		textcolor="250 250 250"
+		text_align="right"
+		text_valign="bottom"
+	/>
+	<style name="groupIconsTextSmall"
+		font="sans-bold-stroke-12"
+		textcolor="white"
+		text_align="right"
+		text_valign="bottom"
+	/>
 </styles>
