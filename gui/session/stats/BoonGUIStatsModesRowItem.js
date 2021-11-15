@@ -7,7 +7,6 @@ class BoonGUIStatsModesRowItem {
         this.icon = Engine.GetGUIObjectByName(`${PREFIX}Icon`);
         this.count = Engine.GetGUIObjectByName(`${PREFIX}Count`);
         this.progress = Engine.GetGUIObjectByName(`${PREFIX}Progress`);
-        this.rank = Engine.GetGUIObjectByName(`${PREFIX}Rank`);
 
         this.progressLeft = this.progress.size.left;
         this.progressWidth = this.progress.size.right - this.progress.size.left;
@@ -56,25 +55,12 @@ class BoonGUIStatsModesRowItem {
                 return;
         }
 
-        // if (item.template.endsWith("_b")) {
-        //     this.rank.sprite = 'stretched:session/icons/ranks/Basic.png'
-        //     this.rank.hidden = false;
-        // } else if (item.template.endsWith("_a")) {
-        //     this.rank.sprite = 'stretched:session/icons/ranks/Advanced.png'
-        //     this.rank.hidden = false;
-        // } else if (item.template.endsWith("_e")) {
-        //     this.rank.sprite = 'stretched:session/icons/ranks/Elite.png'
-        //     this.rank.hidden = false;
-        // } else {
-        //     this.rank.hidden = true;
-        // }
-
         let size = this.progress.size;
         size.left = this.progressLeft + this.progressWidth * (item.progress / item.entity.length);
         this.progress.sprite = `backcolor: ${state.playerColor}`;
 
         this.progress.size = size;
-        this.progress.hidden = item.mode !== 'Production';
+        this.progress.hidden = item.mode !== 'production';
 
         this.count.caption = item.count > 1 ? item.count : '';
         this.icon.sprite = "stretched:session/portraits/" + template.icon;

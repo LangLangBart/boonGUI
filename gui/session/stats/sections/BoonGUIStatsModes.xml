@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <object name="StatsModes">
-   <object name="StatsModesDropdownContainer" type="button" sprite="FloatingLabel" sprite_over="FloatingLabelOver" tooltip_style="sessionToolTipBottom" sound_pressed="audio/interface/ui/ui_button_click.ogg">   
-	<object
-		size="0 0 100% 100%"
-		name="StatsModesDropdown"
-		type="dropdown"
-		z="50"
-		font="mono-stroke-14"
-		style="ModernDropDown"
-		sprite="topPanel"
-		tooltip_style="sessionToolTipBold"
-		dropdown_size="500"
-      tooltip="Choose mode to view"
-	/>
-   </object>
+
+   <object name="StatsModesTabButtons" type="image">
+		<repeat count="10">
+			<object name="StatsModesTabButton[n]" type="button" size="0 0 100% 100%" hidden="true" style="ModernButtonRed" tooltip_style="sessionToolTip">
+				<object type="text" name="StatsModesTabButton[n]_Text" style="ModernLabelText" ghost="true"/>
+            <object type="image" name="StatsModesTabButton[n]_Icon" ghost="true" size="10 5 100%-10 100%-5"/>
+				<action on="MouseWheelUp">g_stats.statsModes.previousMode();</action>
+				<action on="MouseWheelDown">g_stats.statsModes.nextMode();</action>
+			</object>
+		</repeat>
+	</object>
+   <object name="StatsModesTitle" type="text" ghost="true" textcolor="white" text_align="center" text_valign="center" font="sans-bold-stroke-18" />
+
    <object name="StatsModesRows">
       <repeat count="8" var="i">
          <object name="StatsModesRow[i]" size="0 0 100% 100%" hidden="true">
@@ -27,8 +26,7 @@
                   <object name="StatsModesRow[i]Item[j]" size="0 0 34 37" type="button" tooltip_style="sessionToolTip" style="iconButton" hidden="true">
                      <object name="StatsModesRow[i]Item[j]Icon" type="image" ghost="true" size="3 3 36 36" />
                      <object name="StatsModesRow[i]Item[j]Count" type="text" ghost="true" size="3 3 30 35" font="sans-bold-stroke-14" textcolor="white" text_align="right" text_valign="bottom" />
-                     <object name="StatsModesRow[i]Item[j]Progress" type="image"  ghost="true" size="3 33 36 36"  />
-                     <object name="StatsModesRow[i]Item[j]Rank" z="20" type="image" ghost="true" size="3 4 13 14"  />
+                     <object name="StatsModesRow[i]Item[j]Progress" type="image"  ghost="true" size="3 33 36 36"  />                     
                   </object>
                </repeat>
             </object>

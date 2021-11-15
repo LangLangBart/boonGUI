@@ -51,14 +51,16 @@ const boongui_resources_techs = {
     ],
 };
 
+const boongui_phases = ['imperial', 'city', 'town', 'village'];
+
 const boongui_building_types = [{
-    mode: 'Civic Buildings', classes: ["Civic", "Dock"],
+    mode: 'civic_buildings', classes: ["Civic", "Dock"],
 },{
-    mode: 'Economic Buildings', classes: ["Economic", "Resource"]
+    mode: 'economic_buildings', classes: ["Economic", "Resource"]
 },{ 
-    mode: 'Military Buildings', classes: ["Military", "Syssiton"],
+    mode: 'military_buildings', classes: ["Military", "Syssiton"],
 },{
-    mode: 'Defensive Buildings', classes: ["Defensive", "Palisade", "Wall"]
+    mode: 'defensive_buildings', classes: ["Defensive", "Palisade", "Wall"]
 }];
 
 function splitRatingFromNick(playerName) {
@@ -85,19 +87,19 @@ GuiInterface.prototype.boongui_GetOverlay = function () {
     const cmpTemplateManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_TemplateManager);
     const numPlayers = cmpPlayerManager.GetNumPlayers();
 
+
+
     for (let i = 0; i < numPlayers; ++i) {
+        const cmpTechnologyManager = QueryPlayerIDInterface(i, IID_TechnologyManager);
         // Work out which phase we are in.
         let phase = "";
-        const cmpTechnologyManager = QueryPlayerIDInterface(i, IID_TechnologyManager);
         if (cmpTechnologyManager) {
-            if (cmpTechnologyManager.IsTechnologyResearched("phase_imperial"))
-                phase = "imperial";
-            else if (cmpTechnologyManager.IsTechnologyResearched("phase_city"))
-                phase = "city";
-            else if (cmpTechnologyManager.IsTechnologyResearched("phase_town"))
-                phase = "town";
-            else if (cmpTechnologyManager.IsTechnologyResearched("phase_village"))
-                phase = "village";
+            for (const _phase of boongui_phases) {
+                if (cmpTechnologyManager.IsTechnologyResearched(`phase_${_phase}`)) {
+                    phase = _phase;
+                    break;
+                }
+            }
         }
 
         const cmpPlayer = QueryPlayerIDInterface(i);
@@ -173,12 +175,12 @@ GuiInterface.prototype.boongui_GetOverlay = function () {
             if (template.startsWith("soldier_")) {
                 militaryTechsCount++;
                 militaryTechs.push(template);
-                mode = "Military Technologies";
+                mode = "military_technologies";
             } else if (template.startsWith("gather_")) {
                 economyTechsCount++;
-                mode = "Economy Technologies";
+                mode = "economy_technologies";
             } else {
-                mode = "Other Technologies";
+                mode = "other_Technologies";
             }
 
             addToQueue({ mode, count: 1, template, progress: 1, entity: null, templateType: "technology" });
@@ -209,7 +211,7 @@ GuiInterface.prototype.boongui_GetOverlay = function () {
 
             if (classes.has('Structure') && !classes.has('Foundation')) {
                 const template = cmpTemplateManager.GetCurrentTemplateName(entity)
-                let mode = 'Civic Buildings';
+                let mode = boongui_building_types[0].mode;
                 for (const type of boongui_building_types) {
                     if (type.classes.some(c => classes.has(c))) {
                         mode = type.mode;
@@ -222,7 +224,7 @@ GuiInterface.prototype.boongui_GetOverlay = function () {
 
             if (classes.has('Unit') && !classes.has('Relic') && !classes.has('Hero')) {
                 const template = cmpTemplateManager.GetCurrentTemplateName(entity)
-                const mode = "Units";
+                const mode = "units";
                 const templateType = 'unit';
                 addToQueue({ mode, templateType, entity, template, count: 1, progress: 0 });
             }
@@ -235,13 +237,13 @@ GuiInterface.prototype.boongui_GetOverlay = function () {
 
                     if (q.unitTemplate) {
                         const template = q.unitTemplate;
-                        const mode = "Production";
+                        const mode = "production";
                         const templateType = "unit";
                         addToQueue({ mode, templateType, entity, template, count, progress });
                     }
 
                     if (q.technologyTemplate) {
-                        const mode = "Production";
+                        const mode = "production";
                         const templateType = "technology";
                         const template = q.technologyTemplate;
                         addToQueue({ mode, templateType, entity, template, count, progress });
@@ -252,7 +254,7 @@ GuiInterface.prototype.boongui_GetOverlay = function () {
             let cmpFoundation = Engine.QueryInterface(entity, IID_Foundation);
             if (cmpFoundation) {
                 let { hitpoints, maxHitpoints } = Engine.QueryInterface(entity, IID_Health);
-                const mode = "Production";
+                const mode = "production";
                 const templateType = "unit";
                 const count = 1;
                 const template = cmpFoundation.finalTemplateName;

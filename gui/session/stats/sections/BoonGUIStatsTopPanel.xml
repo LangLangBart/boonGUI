@@ -29,15 +29,15 @@
 		<repeat count="8" var="n">
 			<object name="StatsTopPanelRow[n]" size="0 0 100% 100%" hidden="true">
 
-				<object name="StatsTopPanelRow[n]_border" type="image" size="0 100%-3 100% 100%-2" />
+				<object name="StatsTopPanelRow[n]_border" type="image" size="0 100%-3 100% 100%" />
 
 				<object name="StatsTopPanelRow[n]_team" type="text" style="overlayDefault" size="0 5% 15 95%" />
 				<object name="StatsTopPanelRow[n]_player" type="text" style="overlayDefault" size="20 5% 115 95%" />
 				<object name="StatsTopPanelRow[n]_rating" type="text" style="overlayDefault" size="120 5% 165 95%" />
 				<object name="StatsTopPanelRow[n]_civ" type="text" style="overlayDefault" size="170 5% 210 95%" />
 
-				<object name="StatsTopPanelRow[n]_phase" type="button" size="215 0 235 20">
-					<object name="StatsTopPanelRow[n]_phaseIcon" ghost="true" type="image" size="0 0 20 20"/>
+				<object name="StatsTopPanelRow[n]_phase" type="button" size="215 0 235 22">
+					<object name="StatsTopPanelRow[n]_phaseIcon" ghost="true" type="image" size="0 2 22 22"/>
 					<object name="StatsTopPanelRow[n]_phaseProgressSlider" type="image" sprite="queueProgressSlider" ghost="true" size="0 0 20 20" z="20"/>
 				</object>
 				<object name="StatsTopPanelRow[n]_pop" size="240 0 330 100%" text_align="center" type="text" style="overlayDefault" />
