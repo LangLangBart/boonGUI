@@ -301,10 +301,83 @@ GuiInterface.prototype.boongui_GetOverlay = function () {
     return ret;
 };
 
+
+
+GuiInterface.prototype.boongui_DisplayRallyPoint = function(player, cmd)
+{
+    let cmpPlayer = QueryPlayerIDInterface(player);
+
+    // If there are some rally points already displayed, first hide them.
+    for (let ent of this.entsRallyPointsDisplayed)
+    {
+        let cmpRallyPointRenderer = Engine.QueryInterface(ent, IID_RallyPointRenderer);
+        if (cmpRallyPointRenderer)
+            cmpRallyPointRenderer.SetDisplayed(false);
+    }
+
+    this.entsRallyPointsDisplayed = [];
+
+    // Show the rally points for the passed entities.
+    for (let ent of cmd.entities)
+    {
+        let cmpRallyPointRenderer = Engine.QueryInterface(ent, IID_RallyPointRenderer);
+        if (!cmpRallyPointRenderer)
+            continue;
+
+        // Entity must have a rally point component to display a rally point marker
+        // (regardless of whether cmd specifies a custom location).
+        let cmpRallyPoint = Engine.QueryInterface(ent, IID_RallyPoint);
+        if (!cmpRallyPoint)
+            continue;
+
+        // Verify the owner.
+        let cmpOwnership = Engine.QueryInterface(ent, IID_Ownership);
+
+        if (cmpPlayer || !cmpOwnership) {
+            if (!cmpPlayer.CanControlAllUnits()) {
+                if (!cmpPlayer.HasSharedLos() || !cmpPlayer.IsMutualAlly(cmpOwnership.GetOwner())) {
+                    continue;
+                }
+            }
+        }
+
+        // If the command was passed an explicit position, use that and
+        // override the real rally point position; otherwise use the real position.
+        let pos;
+        if (cmd.x && cmd.z)
+            pos = cmd;
+        else
+            // May return undefined if no rally point is set.
+            pos = cmpRallyPoint.GetPositions()[0];
+        if (pos)
+        {
+            // Only update the position if we changed it (cmd.queued is set).
+            // Note that Add-/SetPosition take a CFixedVector2D which has X/Y components, not X/Z.
+            if ("queued" in cmd)
+            {
+                if (cmd.queued == true)
+                    cmpRallyPointRenderer.AddPosition(new Vector2D(pos.x, pos.z));
+                else
+                    cmpRallyPointRenderer.SetPosition(new Vector2D(pos.x, pos.z));
+            }
+            else if (!cmpRallyPointRenderer.IsSet())
+                // Rebuild the renderer when not set (when reading saved game or in case of building update).
+                for (let posi of cmpRallyPoint.GetPositions())
+                    cmpRallyPointRenderer.AddPosition(new Vector2D(posi.x, posi.z));
+
+            cmpRallyPointRenderer.SetDisplayed(true);
+
+            // Remember which entities have their rally points displayed so we can hide them again.
+            this.entsRallyPointsDisplayed.push(ent);
+        }
+    }
+};
+
 // Original variable declaration is prefixed with let instead of var so we can't
 // just add new entries directly (global let declaration rules)
 var boongui_exposedFunctions = {
-    "boongui_GetOverlay": 1
+    "boongui_GetOverlay": 1,
+    "boongui_DisplayRallyPoint": 1
 };
 
 autociv_patchApplyN(GuiInterface.prototype, "ScriptCall", function (target, that, args) {
