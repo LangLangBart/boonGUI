@@ -12,8 +12,8 @@ class BoonGUIStatsTopPanelRow {
         this.civ = Engine.GetGUIObjectByName(`${PREFIX}_civ`);
         this.pop = Engine.GetGUIObjectByName(`${PREFIX}_pop`);
 
-        this.economyTechs = Engine.GetGUIObjectByName(`${PREFIX}_economyTechs`);
-        this.militaryTechs = Engine.GetGUIObjectByName(`${PREFIX}_militaryTechs`);
+        this.economyTechsCount = Engine.GetGUIObjectByName(`${PREFIX}_economyTechsCount`);
+        this.militaryTechsCount = Engine.GetGUIObjectByName(`${PREFIX}_militaryTechsCount`);
         this.femaleCitizen = Engine.GetGUIObjectByName(`${PREFIX}_femaleCitizen`);
         this.infantry = Engine.GetGUIObjectByName(`${PREFIX}_infantry`);
         this.cavalry = Engine.GetGUIObjectByName(`${PREFIX}_cavalry`);
@@ -24,13 +24,11 @@ class BoonGUIStatsTopPanelRow {
 
         this.resource = {
             counts: {},
-            gatherers: {},
             rates: {}
         };        
 
         for (const resType of g_BoonGUIResTypes) {
             this.resource.counts[resType] = Engine.GetGUIObjectByName(`${PREFIX}_${resType}Counts`);
-            this.resource.gatherers[resType] = Engine.GetGUIObjectByName(`${PREFIX}_${resType}Gatherers`);
             this.resource.rates[resType] = Engine.GetGUIObjectByName(`${PREFIX}_${resType}Rates`);
         }
 
@@ -117,31 +115,57 @@ class BoonGUIStatsTopPanelRow {
 
         }
 
-        let value, color, caption;
+        let value, color, caption, tooltip;
         for (const resType of g_BoonGUIResTypes) {
             value = state.resourceCounts[resType];
             color = scales.getColor(`${resType}Counts`, value); 
             caption = this.normalizeResourceCount(value)
             this.resource.counts[resType].caption = setStringTags(caption, { color });
 
-            value = state.resourceGatherers[resType];
-            color = scales.getColor(`${resType}Gatherers`, value, 180);
-            caption = isNaN(value) || value <= 0 ? '' : value;
-            this.resource.gatherers[resType].caption = setStringTags(caption, { color });
-
             value = state.resourceRates[resType];
             color = scales.getColor(`${resType}Rates`, value, 180);
             caption = isNaN(value) || value <= 0 ? '' : `+${this.normalizeResourceRate(value)}`
             this.resource.rates[resType].caption = setStringTags(caption, { color });            
+
+            value = state.resourceGatherers[resType];
+            color = scales.getColor(`${resType}Gatherers`, value, 180);
+            caption = isNaN(value) || value <= 0 ? 0 : value;
+            
+            tooltip = "";
+            tooltip += `${headerFont(`Economy (${resType})`)}\n`;
+            tooltip += `Gatherers: ${setStringTags(caption, { color })}\n`;
+            if (state.resourcesTechs[resType].length > 0) {
+                tooltip += "\n";
+                tooltip += state.resourcesTechs[resType].map(tech => `[icon="icon_${tech}" displace="0 0"]`).join(' ');
+            }
+
+            this.resource.counts[resType].tooltip = tooltip;
         }
 
-        value = state.economyTechs;
-        color = scales.getColor('economyTechs', value);
-        this.economyTechs.caption = setStringTags(value, { color });
+        value = state.economyTechsCount;
+        color = scales.getColor('economyTechsCount', value);
+        this.economyTechsCount.caption = setStringTags(value, { color });
+        tooltip = "";
+        for (const resType of g_BoonGUIResTypes) {
+            if (state.resourcesTechs[resType].length > 0) {
+                tooltip += `${headerFont(`Economy (${resType})`)}\n\n`;
+                tooltip += state.resourcesTechs[resType].map(tech => `[icon="icon_${tech}" displace="0 0"]`).join(' ') + '\n';
+            }
+        }
+        this.economyTechsCount.tooltip = tooltip;
 
-        value = state.militaryTechs;
-        color = scales.getColor('militaryTechs', value);
-        this.militaryTechs.caption = setStringTags(value, { color });
+
+        value = state.militaryTechsCount;
+        color = scales.getColor('militaryTechsCount', value);
+        this.militaryTechsCount.caption = setStringTags(value, { color });
+
+        tooltip = "";
+        if (state.militaryTechs.length > 0) {
+            tooltip += `${headerFont(`Military upgrades:`)}\n\n`;
+            tooltip += state.militaryTechs.map(tech => `[icon="icon_${tech}" displace="0 0"]`).join('  ') + '\n';
+            tooltip += '\n';
+        }
+        this.militaryTechsCount.tooltip = tooltip;
 
         value = state.classCounts.FemaleCitizen ?? 0;
         color = scales.getColor('femaleCitizen', value);

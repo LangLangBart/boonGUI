@@ -19,8 +19,8 @@ class BoonGUIStatsTopPanel {
             this.scales.addValue('popCount', state.popCount);
             this.scales.addValue('popLimit', state.popLimit);
 
-            this.scales.addValue('economyTechs', state.economyTechs);
-            this.scales.addValue('militaryTechs', state.militaryTechs);
+            this.scales.addValue('economyTechsCount', state.economyTechsCount);
+            this.scales.addValue('militaryTechsCount', state.militaryTechsCount);
 
             this.scales.addValue('femaleCitizen', state.classCounts.FemaleCitizen ?? 0);
             this.scales.addValue('infantry', state.classCounts.Infantry ?? 0);
