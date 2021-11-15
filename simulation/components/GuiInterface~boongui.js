@@ -17,6 +17,40 @@ const boongui_template_keys = {
     "structures/palisades_gate": "structures/palisades_tower",
 };
 
+const boongui_resources_techs = {
+    food: [
+        "gather_wicker_baskets",
+        "gather_farming_plows",
+        "gather_farming_harvester",
+        "gather_farming_training",
+        "gather_farming_fertilizer",
+        "gather_animals_stockbreeding",
+        "gather_capacity_basket",
+        "gather_capacity_carts",
+    ],
+    wood: [
+        "gather_lumbering_ironaxes",
+        "gather_lumbering_sharpaxes",
+        "gather_lumbering_strongeraxes",
+        "gather_capacity_basket",
+        "gather_capacity_carts",
+    ],
+    stone: [
+        "gather_mining_servants",
+        "gather_mining_serfs",
+        "gather_mining_slaves",
+        "gather_capacity_basket",
+        "gather_capacity_carts",
+    ],
+    metal: [
+        "gather_mining_wedgemallet",
+        "gather_mining_shaftmining",
+        "gather_mining_silvermining",
+        "gather_capacity_basket",
+        "gather_capacity_carts",
+    ],
+};
+
 function splitRatingFromNick(playerName) {
     const result = /^(\S+)\ \((\d+)\)$/g.exec(playerName);
     const nick = (result ? result[1] : playerName).trim();
@@ -61,14 +95,14 @@ GuiInterface.prototype.boongui_GetOverlay = function () {
         const classCounts = cmpTechnologyManager?.GetClassCounts();
         const stats = cmpPlayerStatisticsTracker?.GetStatistics();
 
-        let militaryTechs = 0;
-        let economyTechs = 0;
+        let militaryTechsCount = 0;
+        let economyTechsCount = 0;
         let totalEconomyScore = 0;
         let totalMilitaryScore = 0;
         let totalExplorationScore = 0;
         let totalScore = 0;
 
-        const resTypes = ['food', 'wood', 'stone', 'metal'];
+        const resTypes = Object.keys(boongui_resources_techs)
         if (stats) {
             for (const resType of resTypes) {
                 totalEconomyScore += stats.resourcesGathered[resType];
@@ -112,16 +146,26 @@ GuiInterface.prototype.boongui_GetOverlay = function () {
             }
         }
 
+        const resourcesTechs = {}
+        const militaryTechs = [];
+
+        for (const resType of resTypes) {
+            resourcesTechs[resType] = boongui_resources_techs[resType].filter(tech => 
+                cmpTechnologyManager?.IsTechnologyResearched(tech)
+            );
+        }
+
         const researchedTechs = new Set(cmpTechnologyManager?.GetResearchedTechs() ?? []);
         for (let template of researchedTechs) {
             if (boongui_excluded_techs.some((s) => template.includes(s))) continue;
             let mode;
 
             if (template.startsWith("soldier_")) {
-                militaryTechs++;
+                militaryTechsCount++;
+                militaryTechs.push(template);
                 mode = "Military Technologies";
             } else if (template.startsWith("gather_")) {
-                economyTechs++;
+                economyTechsCount++;
                 mode = "Economy Technologies";
             } else {
                 mode = "Other Technologies";
@@ -225,12 +269,14 @@ GuiInterface.prototype.boongui_GetOverlay = function () {
 
             "classCounts": classCounts,
             "militaryTechs": militaryTechs,
-            "economyTechs": economyTechs,
+            "militaryTechsCount": militaryTechsCount,
+            "economyTechsCount": economyTechsCount,
             "percentMapExplored": stats?.percentMapExplored,
 
             "resourceCounts": cmpPlayer.GetResourceCounts(),
             "resourceGatherers": cmpPlayer.GetResourceGatherers(),
             "resourcesGathered": stats ? stats.resourcesGathered : null,
+            "resourcesTechs": resourcesTechs,
 
             "enemyUnitsKilledTotal": enemyUnitsKilledTotal,
             "unitsLostTotal": unitsLostTotal,
