@@ -10,6 +10,7 @@ class OverlayCounterManager
 	{
 		this.dataCounter = dataCounter;
 		this.counters = [];
+		this.dataCounter.font ="sans-stroke-18";
 		this.enabledCounters = [];
 		this.lastTick = undefined;
 		this.resizeHandlers = [];
@@ -89,7 +90,7 @@ class OverlayCounterManager
 				continue;
 
 			++lineCount;
-			txt += setStringTags(newTxt,this.FontSizeTags) + "\n";
+			txt += newTxt + "\n";
 		}
 
 		let height;
@@ -102,9 +103,8 @@ class OverlayCounterManager
 			this.dataCounter.size = this.initSize;
 			let textSize = this.dataCounter.getTextSize();
 			let size = this.dataCounter.size;
-			// Added for the boonGUI mod, see explanation in v1.6.3 Logbuch.
-			size.bottom = size.top + (lineCount == 1 ?  textSize.height : textSize.height - (lineCount) );
-			size.left = size.right - textSize.width-30;
+			size.bottom = size.top + textSize.height;
+			size.left = size.right - textSize.width;
 			this.dataCounter.size = size;
 			height = textSize.height;
 		}
@@ -127,6 +127,3 @@ class OverlayCounterManager
  * in milliseconds determines how often the caption is rebuilt.
  */
 OverlayCounterManager.prototype.Delay = 250;
-OverlayCounterManager.prototype.FontSizeTags = {
-	"font": "mono-stroke-14"
-};
