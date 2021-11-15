@@ -81,3 +81,47 @@ function endHome() {
 function autociv_patchSession() {
 	Engine.GetGUIObjectByName("pauseOverlay").size = "0% 0% 100% 100%"
 }
+
+
+
+/**
+ * Called every frame.
+ */
+ function onTick()
+ {
+	 if (!g_Settings)
+		 return;
+ 
+	 let now = Date.now();
+	 let tickLength = now - g_LastTickTime;
+	 g_LastTickTime = now;
+ 
+	 handleNetMessages();
+ 
+	 updateCursorAndTooltip();
+
+	 if (g_Selection.dirty)
+	 {
+		
+		g_Selection.dirty = false;
+		// When selection changed, get the entityStates of new entities
+		GetMultipleEntityStates(g_Selection.filter(entId => !g_EntityStates[entId]));
+
+		for (let handler of g_EntitySelectionChangeHandlers)
+			handler();
+
+		updateGUIObjects();
+
+		// Display rally points for selected structures.
+		Engine.GuiInterfaceCall("boongui_DisplayRallyPoint", { "entities": g_Selection.toList() });
+	 }
+	 else if (g_ShowAllStatusBars && now % g_StatusBarUpdate <= tickLength)
+		 recalculateStatusBarDisplay();
+ 
+	 updateTimers();
+	 Engine.GuiInterfaceCall("ClearRenamedEntities");
+ 
+	 let isPlayingCinemaPath = GetSimState().cinemaPlaying && !g_Disconnected;
+	 if (isPlayingCinemaPath)
+		 updateCinemaOverlay();
+ }
