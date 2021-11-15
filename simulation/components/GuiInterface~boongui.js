@@ -51,6 +51,16 @@ const boongui_resources_techs = {
     ],
 };
 
+const boongui_building_types = [{
+    mode: 'Civic Buildings', classes: ["Civic", "Dock"],
+},{
+    mode: 'Economic Buildings', classes: ["Economic", "Resource"]
+},{ 
+    mode: 'Military Buildings', classes: ["Military", "Syssiton"],
+},{
+    mode: 'Defensive Buildings', classes: ["Defensive", "Palisade", "Wall"]
+}];
+
 function splitRatingFromNick(playerName) {
     const result = /^(\S+)\ \((\d+)\)$/g.exec(playerName);
     const nick = (result ? result[1] : playerName).trim();
@@ -199,9 +209,12 @@ GuiInterface.prototype.boongui_GetOverlay = function () {
 
             if (classes.has('Structure') && !classes.has('Foundation')) {
                 const template = cmpTemplateManager.GetCurrentTemplateName(entity)
-                let mode = 'Buildings';
-                if (classes.has('Military')) {
-                    mode = "Military Buildings"
+                let mode = 'Civic Buildings';
+                for (const type of boongui_building_types) {
+                    if (type.classes.some(c => classes.has(c))) {
+                        mode = type.mode;
+                        break;
+                    }
                 }
                 const templateType = 'unit';
                 addToQueue({ mode, templateType, entity, template, count: 1, progress: 0 });

@@ -3,7 +3,9 @@ class BoonGUIStatsModes {
     static Modes = [
         "Production",
         "Units",
-        "Buildings",
+        "Civic Buildings",
+        "Economic Buildings",
+        "Defensive Buildings",
         "Military Buildings",
         "Economy Technologies",
         "Military Technologies",
