@@ -20,6 +20,7 @@ function boongui_initCheck()
     let state = {
         "needsRestart": false,
         "reasons": [],
+        "showMessage": false
     };
 
     // Check settings
@@ -28,38 +29,39 @@ function boongui_initCheck()
 
         const allHotkeys = new Set(Object.keys(Engine.GetHotkeyMap()))
         // Normal check. Check for entries missing
-        let changed = false;
         
         for (let key in settings) {
             if (!allHotkeys.has(key.substring("hotkey.".length))) {
                 configboongui.set(key, settings[key]);
-                changed = true;
+                state.showMessage = true;
             }
         }
 
-        if (changed) {
-            function addReason(title, hotkey) {
-                state.reasons.push(setStringTags(`${title}:`, { font: 'sans-bold-18' }));
-                state.reasons.push(colorizeHotkey(`%(hotkey)s`, hotkey));
-                state.reasons.push("")
-            }
+        configboongui.save()
 
-            addReason("Take the view of a unit", "boongui.camera.follow.fps");
-            addReason("Toggle the stats overlay", "boongui.session.stats.toggle");
-            addReason("Popup the quit dialog", "boongui.session.gui.exit");
-            addReason("Next stats tab", "boongui.session.stats.nextMode");
-            addReason("Previous stats tab", "boongui.session.stats.previousMode");
-        }
+
     }
 
-    configboongui.save()
+    if (state.showMessage) {
+        function addReason(title, hotkey) {
+            state.reasons.push(setStringTags(`${title}:`, { font: 'sans-bold-18' }));
+            state.reasons.push(colorizeHotkey(`%(hotkey)s`, hotkey));
+            state.reasons.push("")
+        }
+
+        addReason("Take the view of a unit", "boongui.camera.follow.fps");
+        addReason("Toggle the stats overlay", "boongui.session.stats.toggle");
+        addReason("Popup the quit dialog", "boongui.session.gui.exit");
+        addReason("Next stats tab", "boongui.session.stats.nextMode");
+        addReason("Previous stats tab", "boongui.session.stats.previousMode");
+    }    
     return state;
 };
 
 autociv_patchApplyN("init", function (target, that, args)
 {
     let state = boongui_initCheck();
-    if (state.reasons.length > 0) {
+    if (state.showMessage) {
         const message = state.reasons.join("\n")
         const title = setStringTags("boonGUI hotkeys", { font: "sans-bold-18" });
         messageBox(450, 400, message, title , ["Ok"], [() => { }]);
