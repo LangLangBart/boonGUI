@@ -67,8 +67,10 @@ class BoonGUIStatsTopPanelRow {
         this.border.sprite = `backcolor: ${state.playerColor} 70`;
         this.team.caption = setStringTags(state.team != -1 ? `${state.team + 1}` : "", { color: state.teamColor });
         this.player.caption = setStringTags(state.nick, { color: state.playerColor });
+        this.player.tooltip = this.player.caption;
         this.rating.caption = setStringTags(state.rating, { color: state.playerColor });
         this.civ.caption = setStringTags(g_BoonGUICivs[state.civ], { color: state.playerColor });
+        this.civ.tooltip = setStringTags(g_CivData[state.civ].Name, { color: state.playerColor });
 
         let phase;
         let progress = null;
