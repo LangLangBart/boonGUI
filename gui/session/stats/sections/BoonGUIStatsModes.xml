@@ -17,16 +17,16 @@
    <object name="StatsModesRows">
       <repeat count="8" var="i">
          <object name="StatsModesRow[i]" size="0 0 100% 100%" hidden="true">
-            <object name="StatsModesRow[i]Indicator" type="button" size="100%-40 0 100%-2 40" style="iconButton" tooltip_style="sessionToolTip"> 
-               <object name="StatsModesRow[i]IndicatorLabel" type="text" size="3 5 18 18" ghost="true" font="sans-bold-stroke-16" textcolor="255 255 255 220" text_align="center" text_valign="center" z="20" />
-               <object name="StatsModesRow[i]IndicatorIcon" type="image" size="12 16 36 40" ghost="true" z="15" /> 
-               <object name="StatsModesRow[i]IndicatorColor" type="image" size="4 5 100%-4 100%-5" ghost="true" z="10" /> 
+            <object name="StatsModesRow[i]Indicator" type="button" size="100%-40 0 100% 40" style="iconButton" tooltip_style="sessionToolTip">
+               <object name="StatsModesRow[i]IndicatorLabel" type="text" size="3 3 100%-6 100%-2" ghost="true" font="sans-bold-stroke-16" textcolor="255 255 255" text_align="right" text_valign="bottom" z="20" />
+               <object name="StatsModesRow[i]IndicatorIcon" type="image" size="3 3 100%-4 100%-4" ghost="true" z="15" /> 
+               <object name="StatsModesRow[i]IndicatorColor" type="image" size="3 3 100%-4 100%-4" ghost="true" z="10" /> 
             </object>
             <object name="StatsModesRow[i]Items" size="0 0 100%-40 40">
                <repeat count="20" var="j">
                   <object name="StatsModesRow[i]Item[j]" size="0 0 34 37" type="button" tooltip_style="sessionToolTip" style="iconButton" hidden="true">
                      <object name="StatsModesRow[i]Item[j]Icon" type="image" ghost="true" size="3 3 36 36" />
-                     <object name="StatsModesRow[i]Item[j]Count" type="text" ghost="true" size="3 3 30 35" font="sans-bold-stroke-14" textcolor="white" text_align="right" text_valign="bottom" />
+                     <object name="StatsModesRow[i]Item[j]Count" type="text" ghost="true" size="3 3 34 35" font="sans-bold-stroke-14" textcolor="255 255 255" text_align="right" text_valign="bottom" z="20" />
                      <object name="StatsModesRow[i]Item[j]Progress" type="image"  ghost="true" size="3 33 36 36"  />                     
                   </object>
                </repeat>
