@@ -56,7 +56,7 @@ const boongui_phases = ['imperial', 'city', 'town', 'village'];
 const boongui_building_types = [
     { mode: 'civic_buildings', classes: ["Civic", "Dock"] },
     { mode: 'economic_buildings', classes: ["Economic", "Resource"] },
-    { mode: 'military_buildings', classes: ["Military", "Syssiton", "Council"] },
+    { mode: 'military_buildings', classes: ["Military", "Syssiton", "Council", "Gymnasium"] },
     { mode: 'defensive_buildings', classes: ["Defensive", "Palisade", "Wall"] }
 ];
 
@@ -174,7 +174,7 @@ GuiInterface.prototype.boongui_GetOverlay = function () {
                 economyTechsCount++;
                 mode = "economy_technologies";
             } else {
-                mode = "other_Technologies";
+                mode = "other_technologies";
             }
 
             addToQueue({ mode, count: 1, template, progress: 1, entity: null, templateType: "technology" });
