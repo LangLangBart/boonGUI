@@ -82,8 +82,6 @@ function autociv_patchSession() {
 	Engine.GetGUIObjectByName("pauseOverlay").size = "0% 0% 100% 100%"
 }
 
-
-
 /**
  * Called every frame.
  */
@@ -113,10 +111,15 @@ function autociv_patchSession() {
 		updateGUIObjects();
 
 		// Display rally points for selected structures.
-		Engine.GuiInterfaceCall("boongui_DisplayRallyPoint", { "entities": g_Selection.toList() });
+		Engine.GuiInterfaceCall("DisplayRallyPoint", { "entities": g_Selection.toList() });
 	 }
-	 else if (g_ShowAllStatusBars && now % g_StatusBarUpdate <= tickLength)
-		 recalculateStatusBarDisplay();
+	 else
+	 {
+		if (g_ShowAllStatusBars && now % g_StatusBarUpdate <= tickLength)
+		 	recalculateStatusBarDisplay();
+
+		Engine.GuiInterfaceCall("DisplayRallyPoint", { "entities": g_Selection.toList(), skip: true });
+	 }
  
 	 updateTimers();
 	 Engine.GuiInterfaceCall("ClearRenamedEntities");

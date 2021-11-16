@@ -316,10 +316,9 @@ GuiInterface.prototype.boongui_GetOverlay = function () {
     return ret;
 };
 
-
-
-GuiInterface.prototype.boongui_DisplayRallyPoint = function(player, cmd)
+GuiInterface.prototype.DisplayRallyPoint = function(player, cmd)
 {
+    if (cmd.skip && this.ChangedRallyPoints.size == 0) return;
     let cmpPlayer = QueryPlayerIDInterface(player);
 
     // If there are some rally points already displayed, first hide them.
@@ -345,12 +344,17 @@ GuiInterface.prototype.boongui_DisplayRallyPoint = function(player, cmd)
         if (!cmpRallyPoint)
             continue;
 
-        // Verify the owner.
         let cmpOwnership = Engine.QueryInterface(ent, IID_Ownership);
 
-        if (cmpPlayer || !cmpOwnership) {
-            if (!cmpPlayer.CanControlAllUnits()) {
-                if (!cmpPlayer.HasSharedLos() || !cmpPlayer.IsMutualAlly(cmpOwnership.GetOwner())) {
+        // Rally point should be displayed if one of the following is true:
+        // 1) It is owned by the player
+        // 2) The player is an observer
+        // 3) The player is a a mutual ally with shared LOS
+
+        if (cmpPlayer && cmpOwnership) {
+            const owner = cmpOwnership.GetOwner();
+            if (owner != player) {
+                if (!cmpPlayer.IsMutualAlly(owner) || !cmpPlayer.HasSharedLos()) {
                     continue;
                 }
             }
@@ -364,6 +368,7 @@ GuiInterface.prototype.boongui_DisplayRallyPoint = function(player, cmd)
         else
             // May return undefined if no rally point is set.
             pos = cmpRallyPoint.GetPositions()[0];
+
         if (pos)
         {
             // Only update the position if we changed it (cmd.queued is set).
@@ -374,17 +379,26 @@ GuiInterface.prototype.boongui_DisplayRallyPoint = function(player, cmd)
                     cmpRallyPointRenderer.AddPosition(new Vector2D(pos.x, pos.z));
                 else
                     cmpRallyPointRenderer.SetPosition(new Vector2D(pos.x, pos.z));
+
+                this.LocalRallyPoints.add(ent);
             }
-            else if (!cmpRallyPointRenderer.IsSet())
+            else if (!cmpRallyPointRenderer.IsSet()) {
                 // Rebuild the renderer when not set (when reading saved game or in case of building update).
                 for (let posi of cmpRallyPoint.GetPositions())
                     cmpRallyPointRenderer.AddPosition(new Vector2D(posi.x, posi.z));
+            } else if (!this.LocalRallyPoints.has(ent) && this.ChangedRallyPoints.has(ent)) {
+                cmpRallyPointRenderer.SetPosition(new Vector2D(pos.x, pos.z));
+                for (let posi of cmpRallyPoint.GetPositions())
+                    cmpRallyPointRenderer.AddPosition(new Vector2D(posi.x, posi.z));
+            }
 
             cmpRallyPointRenderer.SetDisplayed(true);
 
             // Remember which entities have their rally points displayed so we can hide them again.
             this.entsRallyPointsDisplayed.push(ent);
         }
+
+        this.ChangedRallyPoints.clear();
     }
 };
 
@@ -392,8 +406,11 @@ GuiInterface.prototype.boongui_DisplayRallyPoint = function(player, cmd)
 // just add new entries directly (global let declaration rules)
 var boongui_exposedFunctions = {
     "boongui_GetOverlay": 1,
-    "boongui_DisplayRallyPoint": 1
+    "DisplayRallyPoint": 1
 };
+
+GuiInterface.prototype.LocalRallyPoints = new Set();
+GuiInterface.prototype.ChangedRallyPoints = new Set();
 
 autociv_patchApplyN(GuiInterface.prototype, "ScriptCall", function (target, that, args) {
     let [player, name, vargs] = args;
