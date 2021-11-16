@@ -58,7 +58,7 @@ const boongui_building_types = [{
 },{
     mode: 'economic_buildings', classes: ["Economic", "Resource"]
 },{ 
-    mode: 'military_buildings', classes: ["Military", "Syssiton"],
+    mode: 'military_buildings', classes: ["Military", "Syssiton", "Council"],
 },{
     mode: 'defensive_buildings', classes: ["Defensive", "Palisade", "Wall"]
 }];
