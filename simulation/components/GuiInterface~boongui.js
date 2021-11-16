@@ -264,7 +264,7 @@ GuiInterface.prototype.boongui_GetOverlay = function () {
         }
 
         const numberAllies = cmpPlayer.GetMutualAllies().filter(
-            player => QueryPlayerIDInterface(player).GetState() == "active"
+            player => QueryPlayerIDInterface(player).GetState() != "defeated"
         ).length;
 
         const queue = Array.from(queueMap.values())

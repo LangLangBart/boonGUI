@@ -62,7 +62,7 @@
 				<object name="StatsTopPanelRow[n]_enemyUnitsKilledTotal" size="855 0 890 100%" text_align="right" type="text" style="overlayDefault" />
 				<object name="StatsTopPanelRow[n]_unitsLostTotal" size="895 0 930 100%" text_align="right" type="text" style="overlayDefault" />
 				<object name="StatsTopPanelRow[n]_killDeathRatio" size="935 0 970 100%" text_align="right" type="text" style="overlayDefault" />
-				<object name="StatsTopPanelRow[n]_los" text_align="center" type="text" size="975 0 1000 100%" />
+				<object name="StatsTopPanelRow[n]_los" text_align="center" font="mono-stroke-14" type="text" size="975 0 1000 100%" />
 			</object>
 		</repeat>
 	</object>
