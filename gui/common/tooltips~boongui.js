@@ -33,15 +33,21 @@ function makeColorsVivid(oldColor) {
   return oldColor;
 }
 
+function formatKD(num)
+{
+    const fractionDigits = num < 1 ? 2 : num < 10 ? 1 : 0;
+    return num.toFixed(fractionDigits);
+}
+
 // currently being used in the StatsOverlay for limiting the K/D value and in the HUD for limiting the attack/ speed numbers
 function limitNumber(num)
 {
-        if (num < 10) {
-            return Number(num.toFixed(1))
-        }
-        if (num >= 10) {
-            return Math.round(num)
-        }
+    if (num < 10) {
+        return Number(num.toFixed(1))
+    }
+    if (num >= 10) {
+        return Math.round(num)
+    }
 }
 
 function setupStatHUDAttackTooltip(template, projectiles)

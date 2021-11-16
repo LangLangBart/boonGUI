@@ -67,10 +67,6 @@ function splitRatingFromNick(playerName) {
     return { nick, rating };
 }
 
-function limitNumber(num) {
-    return num < 10 ? Number(num.toFixed(1)) : Math.round(num);
-}
-
 /**
  * Opimitzed stats function for boonGUI stats overlay
  */
@@ -194,7 +190,7 @@ GuiInterface.prototype.boongui_GetOverlay = function () {
 
         const enemyUnitsKilledTotal = cmpPlayerStatisticsTracker?.enemyUnitsKilled.total ?? 0;
         const unitsLostTotal = cmpPlayerStatisticsTracker?.unitsLost.total ?? 0;
-        const killDeathRatio = limitNumber(enemyUnitsKilledTotal / unitsLostTotal);
+        const killDeathRatio = enemyUnitsKilledTotal / unitsLostTotal;
 
         const civCentres = [];
 

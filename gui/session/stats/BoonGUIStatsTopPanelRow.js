@@ -191,8 +191,9 @@ class BoonGUIStatsTopPanelRow {
 
         value = state.killDeathRatio;
         color = scales.getColor('killDeathRatio', value);
-        caption = isNaN(value) ? '' : isFinite(value) ? value : translate("\u221E");
-        this.killDeathRatio.caption = setStringTags(caption, { color });
+        caption = isNaN(value) ? '' : isFinite(value) ? formatKD(value) : translate("\u221E");
+        const font = caption.length >= 4 ? "mono-stroke-12" : "mono-stroke-14";
+        this.killDeathRatio.caption = setStringTags(caption, { color, font });
 
         const los = state.hasSharedLos || state.numberAllies == 1 ? "●" : "○";
         this.los.caption = setStringTags(los, { color: state.playerColor });
