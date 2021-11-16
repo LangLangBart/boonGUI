@@ -39,7 +39,21 @@ function formatKD(num)
     return num.toFixed(fractionDigits);
 }
 
-// currently being used in the StatsOverlay for limiting the K/D value and in the HUD for limiting the attack/ speed numbers
+//boonGUI: Colored Right-Click
+function showTemplateViewerOnRightClickTooltip()
+{
+	// Translation: Appears in a tooltip to indicate that right-clicking the corresponding GUI element will open the Template Details GUI page.
+	return translate(setStringTags("\\[Right-Click]", g_HotkeyTags) + " " + "to view more information.");
+}
+
+//boonGUI: Colored Click
+function showTemplateViewerOnClickTooltip()
+{
+	// Translation: Appears in a tooltip to indicate that clicking the corresponding GUI element will open the Template Details GUI page.
+	return translate(setStringTags("\\[Click]", g_HotkeyTags) + " " + "to view more information.");
+}
+
+// currently being used for limiting the attack/ speed numbers in the HUD
 function limitNumber(num)
 {
     if (num < 10) {

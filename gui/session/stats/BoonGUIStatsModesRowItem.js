@@ -66,7 +66,7 @@ class BoonGUIStatsModesRowItem {
         this.icon.sprite = "stretched:session/portraits/" + template.icon;
 
         this.root.tooltip = [
-            getEntityNames(template),
+            getEntityNamesFormatted(template),
             showTemplateViewerOnRightClickTooltip()
         ].join('\n');
     }
