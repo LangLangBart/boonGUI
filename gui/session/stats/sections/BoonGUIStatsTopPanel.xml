@@ -22,7 +22,7 @@
 		<object type="text" style="overlayHeader" text_align="right"  size="690 0 766 100%" tooltip="Stone economy">Stone</object>
 		<object type="text" style="overlayHeader" text_align="right"  size="770 0 846 100%" tooltip="Metal economy">Metal</object>
 		<object type="text" style="overlayHeader" text_align="right"  size="855 0 890 100%" tooltip="Enemy units killed">Kil</object>
-		<object type="text" style="overlayHeader" text_align="right"  size="895 0 930 100%" tooltip="Lost Units">Dth</object>
+		<object type="text" style="overlayHeader" text_align="right"  size="895 0 930 100%" tooltip="Lost units">Dth</object>
 		<object type="text" style="overlayHeader" text_align="right"  size="935 0 970 100%" tooltip="Kill/Death ratio">K/D</object>
 	</object>
 	<object name="StatsTopPanelRows">

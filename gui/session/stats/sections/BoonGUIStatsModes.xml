@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <object name="StatsModes">
 
+   <object name="StatsModesTitle" type="text" ghost="true" textcolor="white" text_align="center" text_valign="center" font="sans-bold-stroke-16" />
+
    <object name="StatsModesTabButtons" type="image">
 		<repeat count="10">
 			<object name="StatsModesTabButton[n]" type="button" size="0 0 100% 100%" hidden="true" style="ModernButtonRed" tooltip_style="sessionToolTip">
 				<object type="text" name="StatsModesTabButton[n]_Text" style="ModernLabelText" ghost="true"/>
             <object type="image" name="StatsModesTabButton[n]_Icon" ghost="true" size="10 5 100%-10 100%-5"/>
-				<action on="MouseWheelUp">g_stats.statsModes.previousMode();</action>
-				<action on="MouseWheelDown">g_stats.statsModes.nextMode();</action>
+				<action on="MouseWheelUp">g_stats.statsModes.previousMode(true);</action>
+				<action on="MouseWheelDown">g_stats.statsModes.nextMode(true);</action>
 			</object>
 		</repeat>
 	</object>
-   <object name="StatsModesTitle" type="text" ghost="true" textcolor="white" text_align="center" text_valign="center" font="sans-bold-stroke-18" />
 
    <object name="StatsModesRows">
       <repeat count="8" var="i">

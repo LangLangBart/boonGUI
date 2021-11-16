@@ -25,24 +25,24 @@ class BoonGUIStatsModes {
 
         this.rowsContainer = Engine.GetGUIObjectByName(`${PREFIX}Rows`);
         this.rows = this.rowsContainer.children.map((row, index) => new BoonGUIStatsModesRow(row, index));
+
+        this.title.size = '0 0 100%-3 28';
+        this.title.sprite = "backcolor: 38 38 38 150";
         
-        this.tabButtons.size = '100%-50 0 100% 100%';
-        this.rowsContainer.size = '0 40 100%-55 100%';
-        this.title.size = '0 0 100%-55 38';
-        this.title.sprite = "backcolor: 38 38 38 200";
+        this.tabButtons.size = '100%-50 30 100% 100%';
+        this.rowsContainer.size = '0 30 100%-55 100%';
 
         this.forceRender = forceRender;
-        this.root.size = `100%-400 200 100% 500`;
-
-        g_OverlayCounterManager.registerResizeHandler(this.setTopOffset.bind(this));
-
+        
         // initate selected tabz1
         this.selectMode(0);
+        this.setTopOffset(0);
+        g_OverlayCounterManager.registerResizeHandler(this.setTopOffset.bind(this));
     }
 
 	setTopOffset(offset)
 	{
-        this.root.size = `100%-400 ${155 + offset} 100% 500`;
+        this.root.size = `100%-214 ${155 + offset} 100% 500`;
 	}
 
     selectMode(modeIndex) {
@@ -54,14 +54,18 @@ class BoonGUIStatsModes {
         this.forceRender();
     }
 
-    previousMode() {
+    previousMode(limit = false) {
         const next = this.modeIndex - 1;
-        this.selectMode(next < 0 ? BoonGUIStatsModes.Modes.length - 1 : next);
+        const outOfLimit = next < 0; 
+        if (outOfLimit && limit) return;
+        this.selectMode(outOfLimit? BoonGUIStatsModes.Modes.length - 1 : next);
     }
 
-    nextMode() {
+    nextMode(limit = false) {
         const next = this.modeIndex + 1;
-        this.selectMode(next >= BoonGUIStatsModes.Modes.length ? 0 : next);
+        const outOfLimit = next >= BoonGUIStatsModes.Modes.length;
+        if (outOfLimit && limit) return;
+        this.selectMode(outOfLimit ? 0 : next);
     }
 
     update(playersStates) {        
