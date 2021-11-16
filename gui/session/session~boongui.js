@@ -118,7 +118,7 @@ function autociv_patchSession() {
 		if (g_ShowAllStatusBars && now % g_StatusBarUpdate <= tickLength)
 		 	recalculateStatusBarDisplay();
 
-		Engine.GuiInterfaceCall("DisplayRallyPoint", { "entities": g_Selection.toList(), skip: true });
+		Engine.GuiInterfaceCall("DisplayRallyPoint", { "entities": g_Selection.toList(), watch: true });
 	 }
  
 	 updateTimers();

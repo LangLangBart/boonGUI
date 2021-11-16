@@ -318,7 +318,12 @@ GuiInterface.prototype.boongui_GetOverlay = function () {
 
 GuiInterface.prototype.DisplayRallyPoint = function(player, cmd)
 {
-    if (cmd.skip && this.ChangedRallyPoints.size == 0) return;
+    // if selection did not change (cmd.watch == true)
+    // we need to update only remote rally points
+
+    if (cmd.watch && this.ChangedRallyPoints.size == 0) return;
+    if (!cmd.watch) this.LocalRallyPoints.clear();
+
     let cmpPlayer = QueryPlayerIDInterface(player);
 
     // If there are some rally points already displayed, first hide them.
