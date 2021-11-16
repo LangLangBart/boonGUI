@@ -44,6 +44,7 @@ class PanelEntity
 				captureSection.size = Engine.GetGUIObjectByName("panelEntitySectionPosTop[" + buttonID + "]").size;
 		}
 
+		// Added for boonGUI mod, unclear why this is not part of the main game.
 		Engine.GetGUIObjectByName("panelEntityBackground[" + buttonID + "]").sprite =
 			"color:" + g_DiplomacyColors.getPlayerColor(entityState.player, 128);
 			

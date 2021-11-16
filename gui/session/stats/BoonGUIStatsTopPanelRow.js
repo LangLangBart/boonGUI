@@ -25,7 +25,7 @@ class BoonGUIStatsTopPanelRow {
         this.resource = {
             counts: {},
             rates: {}
-        };        
+        };
 
         for (const resType of g_BoonGUIResTypes) {
             this.resource.counts[resType] = Engine.GetGUIObjectByName(`${PREFIX}_${resType}Counts`);
@@ -120,14 +120,14 @@ class BoonGUIStatsTopPanelRow {
         let value, color, caption, tooltip;
         for (const resType of g_BoonGUIResTypes) {
             value = state.resourceCounts[resType];
-            color = scales.getColor(`${resType}Counts`, value); 
+            color = scales.getColor(`${resType}Counts`, value);
             caption = this.normalizeResourceCount(value)
             this.resource.counts[resType].caption = setStringTags(caption, { color });
 
             value = state.resourceRates[resType];
             color = scales.getColor(`${resType}Rates`, value, 180);
             caption = isNaN(value) || value <= 0 ? '' : `+${this.normalizeResourceRate(value)}`
-            this.resource.rates[resType].caption = setStringTags(caption, { color });            
+            this.resource.rates[resType].caption =  setStringTags(caption, g_IsObserver ? { color } : { color: state.playerColor });
 
             value = state.resourceGatherers[resType];
             color = scales.getColor(`${resType}Gatherers`, value, 180);
