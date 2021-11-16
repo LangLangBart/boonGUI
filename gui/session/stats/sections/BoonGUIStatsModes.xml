@@ -26,7 +26,7 @@
                <repeat count="20" var="j">
                   <object name="StatsModesRow[i]Item[j]" size="0 0 34 37" type="button" tooltip_style="sessionToolTip" style="iconButton" hidden="true">
                      <object name="StatsModesRow[i]Item[j]Icon" type="image" ghost="true" size="3 3 36 36" />
-                     <object name="StatsModesRow[i]Item[j]Count" type="text" ghost="true" size="3 3 34 35" font="sans-bold-stroke-14" textcolor="255 255 255" text_align="right" text_valign="bottom" z="20" />
+                     <object name="StatsModesRow[i]Item[j]Count" type="text" ghost="true" size="3 3 34 35" font="sans-bold-stroke-14" textcolor="255 255 255" text_align="right" text_valign="bottom" z="10" />
                      <object name="StatsModesRow[i]Item[j]Progress" type="image"  ghost="true" size="3 33 36 36"  />                     
                   </object>
                </repeat>
