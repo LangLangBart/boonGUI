@@ -53,15 +53,12 @@ const boongui_resources_techs = {
 
 const boongui_phases = ['imperial', 'city', 'town', 'village'];
 
-const boongui_building_types = [{
-    mode: 'civic_buildings', classes: ["Civic", "Dock"],
-},{
-    mode: 'economic_buildings', classes: ["Economic", "Resource"]
-},{ 
-    mode: 'military_buildings', classes: ["Military", "Syssiton", "Council"],
-},{
-    mode: 'defensive_buildings', classes: ["Defensive", "Palisade", "Wall"]
-}];
+const boongui_building_types = [
+    { mode: 'civic_buildings', classes: ["Civic", "Dock"] },
+    { mode: 'economic_buildings', classes: ["Economic", "Resource"] },
+    { mode: 'military_buildings', classes: ["Military", "Syssiton", "Council"] },
+    { mode: 'defensive_buildings', classes: ["Defensive", "Palisade", "Wall"] }
+];
 
 function splitRatingFromNick(playerName) {
     const result = /^(\S+)\ \((\d+)\)$/g.exec(playerName);
@@ -139,8 +136,9 @@ GuiInterface.prototype.boongui_GetOverlay = function () {
             template = template
                 .replace(/_[ae]$/, '_b')
                 .replace(/^(units\/.+)_house$/, '$1');
+            
+            const key = `${mode}:${template.replace(/^(structures\/)(.+\/)/, '$1')}`;
 
-            const key = `${mode}:${template}`;
             let obj = queueMap.get(key);
             if (obj) {
                 obj.count += count;
@@ -211,6 +209,7 @@ GuiInterface.prototype.boongui_GetOverlay = function () {
 
             if (classes.has('Structure') && !classes.has('Foundation')) {
                 const template = cmpTemplateManager.GetCurrentTemplateName(entity)
+
                 let mode = boongui_building_types[0].mode;
                 for (const type of boongui_building_types) {
                     if (type.classes.some(c => classes.has(c))) {
