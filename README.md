@@ -73,7 +73,7 @@ User interface **mod** for the RTS game **0 A.D.**
 ```
 git clone https://github.com/LangLangBart/boonGUI.git
 ```
-  * Place it in your `/0ad/mods/` folder:
+* Place it in your `/0ad/mods/` folder:
   * Linux: `~/.local/share/0ad/mods/`
   * macOS: `~/Library/Application\Support/0ad/mods/`
   * Windows: `~\Documents\My Games\0ad\mods\`
