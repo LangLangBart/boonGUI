@@ -67,11 +67,22 @@ User interface **mod** for the RTS game **0 A.D.**
 * Launch 0 A.D., click `Settings` and `Mod Selection`.
 * Double-click `boonGUI`, click `Save Configuration` and `Start Mods`.
 
+## Compatibility
+Compatible with 0 A.D. Alpha 25
+
 ## Contributors
 Motivation for this mod was the desire to learn javascript and create a tool for @mysticjim to help him create his YouTube videos. Since then many people have contributed to this mod, to all of those I wanted to say thank you.
 * A complete makeover of the stats overlay was done thanks to @Islan.
 * Thanks to @mysticjim, @Palaiologos and @seeh for constanely  testing and giving feedback.
-* Providing code and helping with problems: @maroder, @Nescio and @Schweini.
+* Providing code and helping with problems: @kaaduu, @maroder, @Nescio and @Schweini.
 * Thanks to @badosu, @ffffff, @ffm2, @nani, @The Undying Nephalim and @wowgetoffyourcellphone for creating the following mods: Prodmod, fGod, ffm_visibility, Autociv, Hyrule Conquest and Delenda Est.
 * As good guys @Imarok, @wraitii, @Freagarach, @vladislavbelov, @Angen and @Stan` pointed me in the right direction in IRC when I was stuck.
-* If you want to contribute, give feedback or make suggestions, go ahead. 
+
+<br>
+
+<div align="center">
+
+### If you want to contribute, give feedback or make suggestions, go ahead. 
+### ❤️
+
+</div>
