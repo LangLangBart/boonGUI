@@ -67,7 +67,10 @@ class BoonGUIStatsModesRowItem {
 
         this.root.tooltip = [
             getEntityNamesFormatted(template),
+            getVisibleEntityClassesFormatted(template),
+            getEntityTooltip(template),
+            getAurasTooltip(template),
             showTemplateViewerOnRightClickTooltip()
-        ].join('\n');
+        ].join('\n').replace(/(^[ \t]*\n)/gm, "");
     }
 }

@@ -127,7 +127,7 @@ class BoonGUIStatsTopPanelRow {
             value = state.resourceRates[resType];
             color = scales.getColor(`${resType}Rates`, value, 180);
             caption = isNaN(value) || value <= 0 ? '' : `+${this.normalizeResourceRate(value)}`
-            this.resource.rates[resType].caption =  setStringTags(caption, g_IsObserver ? { color } : { color: state.playerColor });
+            this.resource.rates[resType].caption = setStringTags(caption, g_IsObserver ? { color } : { color: state.playerColor });
 
             value = state.resourceGatherers[resType];
             color = scales.getColor(`${resType}Gatherers`, value, 180);
