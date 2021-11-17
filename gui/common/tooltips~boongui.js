@@ -29,14 +29,42 @@ function makeColorsVivid(oldColor) {
       return g_vividColorsGamesetup.vividOrange;
   if (oldColor == g_Settings.PlayerDefaults[8].Color)
       return g_vividColorsGamesetup.vividPink;
-  else 
+  else
   return oldColor;
 }
 
+// is used to format the K/D value
 function formatKD(num)
 {
-    const fractionDigits = num < 1 ? 2 : num < 10 ? 1 : 0;
-    return num.toFixed(fractionDigits);
+switch (true) {
+	case (isNaN(num)):
+		return '';
+    	break;
+	case (num == 1/0):
+		return translate("\u221E");
+    	break;
+	case (num == 0 || num >= 10):
+		return num.toFixed(0);
+    	break;
+	case (num < 1):
+		return num.toFixed(2);
+    	break;
+    default:
+    	// avoid trailing zeros
+    	return Number(num.toFixed(1));
+    	break;
+   }
+}
+
+// currently being used for limiting the attack/ speed numbers in the HUD
+function limitNumber(num)
+{
+    if (num < 10) {
+        return Number(num.toFixed(1))
+    }
+    if (num >= 10) {
+        return Math.round(num)
+    }
 }
 
 //boonGUI: Colored Right-Click
@@ -51,17 +79,6 @@ function showTemplateViewerOnClickTooltip()
 {
 	// Translation: Appears in a tooltip to indicate that clicking the corresponding GUI element will open the Template Details GUI page.
 	return translate(setStringTags("\\[Click]", g_HotkeyTags) + " " + "to view more information.");
-}
-
-// currently being used for limiting the attack/ speed numbers in the HUD
-function limitNumber(num)
-{
-    if (num < 10) {
-        return Number(num.toFixed(1))
-    }
-    if (num >= 10) {
-        return Math.round(num)
-    }
 }
 
 function setupStatHUDAttackTooltip(template, projectiles)

@@ -191,7 +191,7 @@ class BoonGUIStatsTopPanelRow {
 
         value = state.killDeathRatio;
         color = scales.getColor('killDeathRatio', value);
-        caption = isNaN(value) ? '' : isFinite(value) ? formatKD(value) : translate("\u221E");
+        caption = formatKD(value);
         const font = caption.length >= 4 ? "mono-stroke-12" : "mono-stroke-14";
         this.killDeathRatio.caption = setStringTags(caption, { color, font });
 
