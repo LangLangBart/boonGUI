@@ -40,7 +40,7 @@ switch (true) {
 	case (isNaN(num)):
 		return '';
     	break;
-	case (isFinite(num)):
+	case (!isFinite(num)):
 		return translate("\u221E");
     	break;
 	case (num == 0 || num >= 10):
