@@ -117,7 +117,7 @@ ChatMessageFormatSimulation.phase = class
 			"text": sprintf(message, {
 				"time": Engine.FormatMillisecondsIntoDateStringLocal(g_SimState.timeElapsed, translate("m:ss")),
 				"player": colorizePlayernameByID(msg.player),
-				"phaseName": getEntityNames(GetTechnologyData(msg.phaseName, g_Players[msg.player].civ))
+				"phaseName": getEntityNames(GetTechnologyData(msg.phaseName, g_Players[msg.player]))
 			})
 		};
 	}
