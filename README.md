@@ -9,7 +9,7 @@ User interface **mod** for the RTS game **0 A.D.**
 <!-- 0 A.D. logo -->
 <div align="center">
 <p align="center">
-<a href="https://play0ad.com"><img src="https://user-images.githubusercontent.com/92653266/142162743-47df8876-c680-4659-98cf-b0635f3b0969.png" width="300">
+<a href="https://play0ad.com"><img src="boongui_data/0ad_logo.png" width="300">
 </p>
   
 <p>
