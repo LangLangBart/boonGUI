@@ -11,7 +11,7 @@ User interface **mod** for the RTS game **0 A.D.**
 <p align="center">
 <a href="https://play0ad.com"><img src="boongui_data/0ad_logo.png" width="300">
 </p>
-  
+
 <p>
 <a href="https://play0ad.com/re-release-of-0-a-d-alpha-25-yauna/">Website</a> ·
 <a href="https://github.com/0ad/0ad">GitHub</a> ·
@@ -31,7 +31,7 @@ User interface **mod** for the RTS game **0 A.D.**
 
 ## Features
 * **Main menu**
-  * Cheat codes accesible through the game manual.
+  * Cheat codes accessible through the game manual.
   * New background image
 * **Camera**
   * Enter the view of a unit via a hotkey.
@@ -51,7 +51,7 @@ User interface **mod** for the RTS game **0 A.D.**
 * **Lobby**
   * Quick access buttons below the chat input.
   * Rating dependent icon & title for the profile.
-  * Layout rearangements to improve the overall experience.
+  * Layout rearrangements to improve the overall experience.
 * **Replay screen**
   * Adding a button next to the replay file path to quickly open the directory.
 * **Summary screen**
@@ -61,11 +61,11 @@ User interface **mod** for the RTS game **0 A.D.**
 ### Version 1.6.5 featured on YouTube (6/Oct/21)
 
 <div>
-  
+
 <p align="center">
 <a href="http://www.youtube.com/watch?v=vua47INwBb0"><img src="http://img.youtube.com/vi/vua47INwBb0/0.jpg" width="500"</a>
 </p>
-  
+
 </div>
 
 ## Installation
@@ -86,7 +86,7 @@ Compatible with 0 A.D. Alpha 25
 ## Contributors
 Motivation for this mod was the desire to learn javascript and create a tool for @mysticjim to help him create his YouTube videos. Since then many people have contributed to this mod, to all of those I wanted to say thank you.
 * A complete makeover of the stats overlay was done thanks to @Islan.
-* Thanks to @mysticjim, @Palaiologos and @seeh for constanely  testing and giving feedback.
+* Thanks to @mysticjim, @Palaiologos and @seeh for constantly testing and giving feedback.
 * Providing code and helping with problems: @kaaduu, @maroder, @Nescio and @Schweini.
 * Thanks to @badosu, @ffffff, @ffm2, @nani, @The Undying Nephalim and @wowgetoffyourcellphone for creating the following mods: Prodmod, fGod, ffm_visibility, Autociv, Hyrule Conquest and Delenda Est.
 * Being good lads @Imarok, @wraitii, @Freagarach, @vladislavbelov, @Angen and @Stan` pointed me in the right direction on the IRC #0ad channel when I got stuck.
@@ -95,7 +95,7 @@ Motivation for this mod was the desire to learn javascript and create a tool for
 
 <div align="center">
 
-### If you want to contribute, give feedback or make suggestions, go ahead. 
+### If you want to contribute, give feedback or make suggestions, go ahead.
 ### ❤️
 
 </div>
