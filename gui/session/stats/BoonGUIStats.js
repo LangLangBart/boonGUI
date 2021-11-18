@@ -16,7 +16,7 @@ class BoonGUIStats {
         this.root.onTick = this.onTick.bind(this);
     }
 
-    tickPeriod = 6; // blinky needs a nice harmonic blink rate, 10 is too high, 1 would be perfect, but a small tickPeriod kills the performance. 6 seemed to be the best compromise
+    lastTick = 0;
 
     toggle() {
         this.root.hidden = !this.root.hidden;
@@ -32,37 +32,15 @@ class BoonGUIStats {
             if (this.lastPlayerLength != 0) this.resize(0);
             return;
         }
-
-        if (forceRender || g_LastTickTime % this.tickPeriod == 0)
+        
+        if (forceRender || g_LastTickTime - this.lastTick >= g_StatusBarUpdate) {
             this.update()
-    }
-
-    getPlayersStats() {
-        const players = Engine.GuiInterfaceCall("boongui_GetOverlay").players ?? [];
-        return players
-            .filter((state, index, playerStates) => {
-                // if (index == 0 && index != g_ViewedPlayer) // Gaia index 0
-                //     return false
-                if (index == 0)  // Gaia index 0
-                    return false
-
-                if (state.state == "defeated" && index != g_ViewedPlayer)
-                    return false
-
-                state.playerNumber = index
-
-                if (g_IsObserver || !g_Players[g_ViewedPlayer] || index == g_ViewedPlayer)
-                    return true
-                if (!playerStates[g_ViewedPlayer].hasSharedLos || !g_Players[g_ViewedPlayer].isMutualAlly[index])
-                    return false
-
-                return true
-            })
-            .sort((a, b) => a.team - b.team);
+            this.lastTick = g_LastTickTime;
+        }
     }
 
     playerColor(state) {
-        return rgbToGuiColor(g_DiplomacyColors.displayedPlayerColors[state.playerNumber])
+        return rgbToGuiColor(g_DiplomacyColors.displayedPlayerColors[state.index])
     }
 
     teamColor(state) {
@@ -73,7 +51,7 @@ class BoonGUIStats {
                 teamRepresentatives[group] = i
         }
         if (g_IsObserver)
-            return rgbToGuiColor(g_Players[teamRepresentatives[state.team] || state.playerNumber].color);
+            return rgbToGuiColor(g_Players[teamRepresentatives[state.team] || state.index].color);
         else
             return "white";
     }
@@ -119,12 +97,12 @@ class BoonGUIStats {
     calculateResourceRates(state) {
         state.resourceRates = {}
         
-        const cache = this.resourcesCache.get(state.playerNumber);
+        const cache = this.resourcesCache.get(state.index);
         const now = g_SimState.timeElapsed;
         const gatheredNow = state.resourcesGathered;
-        
+
         if (!cache) {
-            this.resourcesCache.set(state.playerNumber, [[now, gatheredNow]]);
+            this.resourcesCache.set(state.index, [[now, gatheredNow]]);
             return;
         }
         
@@ -142,10 +120,20 @@ class BoonGUIStats {
         }
     }
 
+    getPlayersStates() {
+        return Engine.GuiInterfaceCall("boongui_GetOverlay", {
+            g_IsObserver, g_ViewedPlayer
+        }).players ?? [];        
+    }
+
     update() {
         Engine.ProfileStart("BoonGUIStats:update");
-        const playersStates = this.getPlayersStats();
 
+        Engine.ProfileStart("BoonGUIStats:update:GuiInterfaceCall");
+        const playersStates = this.getPlayersStates();
+        Engine.ProfileStop();
+
+        Engine.ProfileStart("BoonGUIStats:update:Calculations");
         for (const state of playersStates) {
             state.teamColor = this.teamColor(state);
             state.playerColor = this.playerColor(state);
@@ -156,9 +144,16 @@ class BoonGUIStats {
         if (this.lastPlayerLength != playersStates.length) {
             this.resize(playersStates.length);
         }
+        Engine.ProfileStop();
 
+        Engine.ProfileStart("BoonGUIStats:update:TopPanel");
         this.statsTopPanel.update(playersStates);
+        Engine.ProfileStop();
+
+        Engine.ProfileStart("BoonGUIStats:update:StatsModes");
         this.statsModes.update(playersStates, this.mode);
+        Engine.ProfileStop();
+
         Engine.ProfileStop();
     }
 }
