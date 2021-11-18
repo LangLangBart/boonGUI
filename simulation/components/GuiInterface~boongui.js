@@ -75,11 +75,10 @@ class CustomQueue extends Map {
     static RegexStructures = /^(structures\/)(.+\/)/
 
     add({ mode, templateType, entity, template, count, progress }) {
-        template = boongui_template_keys[template] ?? template;        
+        template = boongui_template_keys[template] ?? template;
         template = template
             .replace(CustomQueue.RegexRank, '_b')
             .replace(CustomQueue.RegexHouse, '$1');
-        
         const key = `${mode}:${template.replace(CustomQueue.RegexStructures, '$1')}`;
 
         let obj = this.get(key);
@@ -104,14 +103,23 @@ class CustomQueue extends Map {
     }
 }
 
+const boongui_players_weakmap = new WeakMap();
+const boongui_fullupdate_interval = 1000;
+let boongui_fullupdate_last = 0;
+
 /**
  * Opimitzed stats function for boonGUI stats overlay
  */
-GuiInterface.prototype.boongui_GetOverlay = function (_,{ g_IsObserver, g_ViewedPlayer }) {
-
+GuiInterface.prototype.boongui_GetOverlay = function (_, { g_IsObserver, g_ViewedPlayer, g_LastTickTime }) {
     const ret = {
         "players": []
     };
+
+    let isFullUpdate = false;
+    if (g_LastTickTime - boongui_fullupdate_last >= boongui_fullupdate_interval) {
+        isFullUpdate = true;
+        boongui_fullupdate_last = g_LastTickTime;
+    }
 
     const cmpPlayerManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_PlayerManager);
     const cmpRangeManager = Engine.QueryInterface(SYSTEM_ENTITY, IID_RangeManager);
@@ -155,18 +163,32 @@ GuiInterface.prototype.boongui_GetOverlay = function (_,{ g_IsObserver, g_Viewed
             popLimit: cmpPlayer.GetPopulationLimit(),
             resourceCounts: cmpPlayer.GetResourceCounts(),
             resourceGatherers: cmpPlayer.GetResourceGatherers(),
-            
+
             // @cmpTechnologyManager
             classCounts: cmpTechnologyManager?.GetClassCounts() ?? {},
-
-            // @cmpPlayerStatisticsTracker
-            resourcesGathered: cmpPlayerStatisticsTracker?.resourcesGathered || {},
-            percentMapExplored: cmpPlayerStatisticsTracker?.GetPercentMapExplored() ?? 0,
-            enemyUnitsKilledTotal: cmpPlayerStatisticsTracker?.enemyUnitsKilled.total ?? 0,
-            unitsLostTotal: cmpPlayerStatisticsTracker?.unitsLost.total ?? 0,
         };
 
-        const queue = new CustomQueue();
+        let cached = boongui_players_weakmap.get(cmpPlayer);
+        let updateCache = isFullUpdate;
+
+        if (!cached) {
+            cached = {};
+            updateCache = true;
+            boongui_players_weakmap.set(cmpPlayer, cached);
+        }
+
+        if (updateCache) {
+            cached.civCentres = [];
+            cached.queue = new CustomQueue();
+            cached.resourcesGathered = cmpPlayerStatisticsTracker?.resourcesGathered || {};
+            cached.percentMapExplored = cmpPlayerStatisticsTracker?.GetPercentMapExplored() ?? 0;
+            cached.enemyUnitsKilledTotal = cmpPlayerStatisticsTracker?.enemyUnitsKilled.total ?? 0;
+            cached.unitsLostTotal = cmpPlayerStatisticsTracker?.unitsLost.total ?? 0;
+            cached.totalEconomyScore = 0;
+            cached.totalMilitaryScore = 0;
+            cached.totalExplorationScore = 0;
+            cached.totalScore = 0;
+        }
 
         // (1) Get Nickname and Rating
         const { nick, rating } = splitRatingFromNick(player.name);
@@ -188,31 +210,34 @@ GuiInterface.prototype.boongui_GetOverlay = function (_,{ g_IsObserver, g_Viewed
         }
         player.phase = phase;
 
-        // (4) Get Scores
-        let totalEconomyScore = 0;
-        let totalMilitaryScore = 0;
-        let totalExplorationScore = 0;
-        let totalScore = 0;        
-        if (cmpPlayerStatisticsTracker) {
-            for (const resType of boongui_resources_types) {
-                totalEconomyScore += player.resourcesGathered[resType];
+        // (4) Get Statistics
+        if (updateCache) {
+            if (cmpPlayerStatisticsTracker) {
+                for (const resType of boongui_resources_types) {
+                    cached.totalEconomyScore += cached.resourcesGathered[resType];
+                }
+                cached.totalEconomyScore += cmpPlayerStatisticsTracker.tradeIncome;
+                cached.totalEconomyScore = Math.round(cached.totalEconomyScore / 10);
+                cached.totalMilitaryScore += cmpPlayerStatisticsTracker.enemyUnitsKilledValue;
+                cached.totalMilitaryScore += cmpPlayerStatisticsTracker.enemyBuildingsDestroyedValue;
+                cached.totalMilitaryScore += cmpPlayerStatisticsTracker.unitsCapturedValue;
+                cached.totalMilitaryScore += cmpPlayerStatisticsTracker.buildingsCapturedValue;
+                cached.totalMilitaryScore = Math.round(cached.totalMilitaryScore / 10);
+                cached.totalExplorationScore += cached.percentMapExplored;
+                cached.totalExplorationScore = cached.totalExplorationScore * 10;
+                cached.totalScore = cached.totalEconomyScore + cached.totalMilitaryScore + cached.totalExplorationScore;
             }
-            totalEconomyScore += cmpPlayerStatisticsTracker.tradeIncome;
-            totalEconomyScore = Math.round(totalEconomyScore / 10);
-            totalMilitaryScore += cmpPlayerStatisticsTracker.enemyUnitsKilledValue;
-            totalMilitaryScore += cmpPlayerStatisticsTracker.enemyBuildingsDestroyedValue;
-            totalMilitaryScore += cmpPlayerStatisticsTracker.unitsCapturedValue;
-            totalMilitaryScore += cmpPlayerStatisticsTracker.buildingsCapturedValue;
-            totalMilitaryScore = Math.round(totalMilitaryScore / 10);
-            totalExplorationScore += player.percentMapExplored;
-            totalExplorationScore = totalExplorationScore * 10;
-            totalScore = totalEconomyScore + totalMilitaryScore + totalExplorationScore;
         }
-        player.totalEconomyScore = totalEconomyScore;
-        player.totalMilitaryScore = totalMilitaryScore;
-        player.totalExplorationScore = totalExplorationScore;
-        player.totalScore = totalScore;
-        
+
+        player.resourcesGathered = cached.resourcesGathered;
+        player.percentMapExplored = cached.percentMapExplored;
+        player.enemyUnitsKilledTotal = cached.enemyUnitsKilledTotal;
+        player.unitsLostTotal = cached.unitsLostTotal;
+        player.totalEconomyScore = cached.totalEconomyScore;
+        player.totalMilitaryScore = cached.totalMilitaryScore;
+        player.totalExplorationScore = cached.totalExplorationScore;
+        player.totalScore = cached.totalScore;
+
         // (5) Get Number of allies
         player.numberAllies = cmpPlayer.GetMutualAllies().filter(player => {
             return cmpPlayers[player].state != "defeated"
@@ -220,14 +245,14 @@ GuiInterface.prototype.boongui_GetOverlay = function (_,{ g_IsObserver, g_Viewed
 
         // (6) Get Researched technologies set
         player.researchedTechs = new Set(cmpTechnologyManager?.GetResearchedTechs() ?? []);
-        
+
         // (7) Get StartedResearch technologies
         player.startedResearch = this.GetStartedResearch(index);
 
         // (8) Get Resources related technologies
         const resourcesTechs = {}
         for (const resType of boongui_resources_types) {
-            resourcesTechs[resType] = boongui_resources_techs[resType].filter(tech => 
+            resourcesTechs[resType] = boongui_resources_techs[resType].filter(tech =>
                 cmpTechnologyManager?.IsTechnologyResearched(tech)
             );
         }
@@ -251,86 +276,88 @@ GuiInterface.prototype.boongui_GetOverlay = function (_,{ g_IsObserver, g_Viewed
                 mode = "other_technologies";
             }
 
-            queue.add({ mode, count: 1, template, progress: 1, entity: null, templateType: "technology" });
+            if (updateCache) {
+                cached.queue.add({ mode, count: 1, template, progress: 1, entity: null, templateType: "technology" });
+            }
         }
 
         player.militaryTechsCount = militaryTechsCount;
         player.economyTechsCount = economyTechsCount;
         player.militaryTechs = militaryTechs;
 
-
         // (10) Get all entities
-        const civCentres = [];
-        for (let entity of cmpRangeManager.GetEntitiesByPlayer(index)) {
-            const cmpIdentity = Engine.QueryInterface(entity, IID_Identity);
-            const cmpProductionQueue = Engine.QueryInterface(entity, IID_ProductionQueue);
+        if (updateCache) {
+            for (let entity of cmpRangeManager.GetEntitiesByPlayer(index)) {
+                const cmpIdentity = Engine.QueryInterface(entity, IID_Identity);
+                const cmpProductionQueue = Engine.QueryInterface(entity, IID_ProductionQueue);
 
-            const classesList = cmpIdentity?.classesList;
-            if (classesList && !classesList.includes('Foundation')) {
-                if (classesList.includes('CivCentre')) {
-                    civCentres.push(entity);
+                const classesList = cmpIdentity?.classesList;
+                if (classesList && !classesList.includes('Foundation')) {
+                    if (classesList.includes('CivCentre')) {
+                        cached.civCentres.push(entity);
+                    }
+
+                    if (classesList.includes('Structure')) {
+                        const template = cmpTemplateManager.GetCurrentTemplateName(entity)
+
+                        let mode = boongui_building_types[0].mode;
+                        for (const type of boongui_building_types) {
+                            if (type.classes.some(c => classesList.includes(c))) {
+                                mode = type.mode;
+                                break;
+                            }
+                        }
+                        const templateType = 'unit';
+                        cached.queue.add({ mode, templateType, entity, template, count: 1, progress: 0 });
+                    }
+
+                    if (classesList.includes('Unit') && !classesList.includes('Relic') && !classesList.includes('Hero')) {
+                        const template = cmpTemplateManager.GetCurrentTemplateName(entity)
+                        const mode = "units";
+                        const templateType = 'unit';
+                        cached.queue.add({ mode, templateType, entity, template, count: 1, progress: 0 });
+                    }
+
                 }
 
-                if (classesList.includes('Structure')) {
-                    const template = cmpTemplateManager.GetCurrentTemplateName(entity)
-    
-                    let mode = boongui_building_types[0].mode;
-                    for (const type of boongui_building_types) {
-                        if (type.classes.some(c => classesList.includes(c))) {
-                            mode = type.mode;
-                            break;
+                if (cmpProductionQueue) {
+                    for (const q of cmpProductionQueue.queue) {
+                        if (!q.productionStarted) continue;
+                        const { count, timeRemaining, timeTotal } = q;
+                        const progress = (timeRemaining / timeTotal);
+
+                        if (q.unitTemplate) {
+                            const template = q.unitTemplate;
+                            const mode = "production";
+                            const templateType = "unit";
+                            cached.queue.add({ mode, templateType, entity, template, count, progress });
+                        }
+
+                        if (q.technologyTemplate) {
+                            const mode = "production";
+                            const templateType = "technology";
+                            const template = q.technologyTemplate;
+                            cached.queue.add({ mode, templateType, entity, template, count, progress });
                         }
                     }
-                    const templateType = 'unit';
-                    queue.add({ mode, templateType, entity, template, count: 1, progress: 0 });
                 }
 
-                if (classesList.includes('Unit') && !classesList.includes('Relic') && !classesList.includes('Hero')) {
-                    const template = cmpTemplateManager.GetCurrentTemplateName(entity)
-                    const mode = "units";
-                    const templateType = 'unit';
-                    queue.add({ mode, templateType, entity, template, count: 1, progress: 0 });
+                const cmpFoundation = Engine.QueryInterface(entity, IID_Foundation);
+                if (cmpFoundation) {
+                    let { hitpoints, maxHitpoints } = Engine.QueryInterface(entity, IID_Health);
+                    const mode = "production";
+                    const templateType = "unit";
+                    const count = 1;
+                    const template = cmpFoundation.finalTemplateName;
+                    const progress = 1 - (hitpoints / maxHitpoints);
+                    cached.queue.add({ mode, templateType, entity, template, count, progress });
                 }
-
-            }
-
-            if (cmpProductionQueue) {
-                for (const q of cmpProductionQueue.queue) {
-                    if (!q.productionStarted) continue;
-                    const { count, timeRemaining, timeTotal } = q;
-                    const progress = (timeRemaining / timeTotal);
-
-                    if (q.unitTemplate) {
-                        const template = q.unitTemplate;
-                        const mode = "production";
-                        const templateType = "unit";
-                        queue.add({ mode, templateType, entity, template, count, progress });
-                    }
-
-                    if (q.technologyTemplate) {
-                        const mode = "production";
-                        const templateType = "technology";
-                        const template = q.technologyTemplate;
-                        queue.add({ mode, templateType, entity, template, count, progress });
-                    }
-                }
-            }
-
-            let cmpFoundation = Engine.QueryInterface(entity, IID_Foundation);
-            if (cmpFoundation) {
-                let { hitpoints, maxHitpoints } = Engine.QueryInterface(entity, IID_Health);
-                const mode = "production";
-                const templateType = "unit";
-                const count = 1;
-                const template = cmpFoundation.finalTemplateName;
-                const progress = 1 - (hitpoints / maxHitpoints);
-                queue.add({ mode, templateType, entity, template, count, progress });
             }
         }
 
-        player.civCentres = civCentres;
-        player.queue = queue.toArray();
-        
+        player.civCentres = cached.civCentres;
+        player.queue = cached.queue.toArray();
+
         // 11) Get idle units
         // state.totalNumberIdleWorkers = this.FindIdleUnits(index, {
         //     idleClasses: ["FemaleCitizen", "Trader", "FishingBoat", "Citizen"],
@@ -343,8 +370,7 @@ GuiInterface.prototype.boongui_GetOverlay = function (_,{ g_IsObserver, g_Viewed
     return ret;
 };
 
-GuiInterface.prototype.DisplayRallyPoint = function(player, cmd)
-{
+GuiInterface.prototype.DisplayRallyPoint = function (player, cmd) {
     // if selection did not change (cmd.watch == true)
     // we need to update only remote rally points
 
@@ -354,8 +380,7 @@ GuiInterface.prototype.DisplayRallyPoint = function(player, cmd)
     let cmpPlayer = QueryPlayerIDInterface(player);
 
     // If there are some rally points already displayed, first hide them.
-    for (let ent of this.entsRallyPointsDisplayed)
-    {
+    for (let ent of this.entsRallyPointsDisplayed) {
         let cmpRallyPointRenderer = Engine.QueryInterface(ent, IID_RallyPointRenderer);
         if (cmpRallyPointRenderer)
             cmpRallyPointRenderer.SetDisplayed(false);
@@ -364,8 +389,7 @@ GuiInterface.prototype.DisplayRallyPoint = function(player, cmd)
     this.entsRallyPointsDisplayed = [];
 
     // Show the rally points for the passed entities.
-    for (let ent of cmd.entities)
-    {
+    for (let ent of cmd.entities) {
         let cmpRallyPointRenderer = Engine.QueryInterface(ent, IID_RallyPointRenderer);
         if (!cmpRallyPointRenderer)
             continue;
@@ -401,12 +425,10 @@ GuiInterface.prototype.DisplayRallyPoint = function(player, cmd)
             // May return undefined if no rally point is set.
             pos = cmpRallyPoint.GetPositions()[0];
 
-        if (pos)
-        {
+        if (pos) {
             // Only update the position if we changed it (cmd.queued is set).
             // Note that Add-/SetPosition take a CFixedVector2D which has X/Y components, not X/Z.
-            if ("queued" in cmd)
-            {
+            if ("queued" in cmd) {
                 if (cmd.queued == true)
                     cmpRallyPointRenderer.AddPosition(new Vector2D(pos.x, pos.z));
                 else

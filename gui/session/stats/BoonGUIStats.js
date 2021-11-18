@@ -5,12 +5,12 @@ class BoonGUIStats {
         this.shouldForceRender = true;
         this.statsTopPanel = new BoonGUIStatsTopPanel(() => this.shouldForceRender = true);
         this.statsModes = new BoonGUIStatsModes(() => this.shouldForceRender = true);
-        this.resourcesCache = new Map();
+        this.resourcesBuffer = new Map();
         this.lastPlayerLength = null;
 
         this.resizeInit();
 
-        const key = g_IsObserver ? "boongui.observer.hidden" : "boongui.player.hidden";    
+        const key = g_IsObserver ? "boongui.observer.hidden" : "boongui.player.hidden";
         const defaultHidden = g_IsObserver ? "false" : "true";
         this.root.hidden = (Engine.ConfigDB_GetValue("user", key) || defaultHidden) == "true";
         this.root.onTick = this.onTick.bind(this);
@@ -20,8 +20,8 @@ class BoonGUIStats {
 
     toggle() {
         this.root.hidden = !this.root.hidden;
-        const key = g_IsObserver ? "boongui.observer.hidden" : "boongui.player.hidden";    
-        Engine.ConfigDB_CreateAndWriteValueToFile("user", key, this.root.hidden ? 'true' : 'false', "config/user.cfg");            
+        const key = g_IsObserver ? "boongui.observer.hidden" : "boongui.player.hidden";
+        Engine.ConfigDB_CreateAndWriteValueToFile("user", key, this.root.hidden ? 'true' : 'false', "config/user.cfg");
         this.shouldForceRender = true;
     }
 
@@ -32,7 +32,7 @@ class BoonGUIStats {
             if (this.lastPlayerLength != 0) this.resize(0);
             return;
         }
-        
+
         if (forceRender || g_LastTickTime - this.lastTick >= g_StatusBarUpdate) {
             this.update()
             this.lastTick = g_LastTickTime;
@@ -96,34 +96,34 @@ class BoonGUIStats {
 
     calculateResourceRates(state) {
         state.resourceRates = {}
-        
-        const cache = this.resourcesCache.get(state.index);
+
+        const buffer = this.resourcesBuffer.get(state.index);
         const now = g_SimState.timeElapsed;
         const gatheredNow = state.resourcesGathered;
 
-        if (!cache) {
-            this.resourcesCache.set(state.index, [[now, gatheredNow]]);
+        if (!buffer) {
+            this.resourcesBuffer.set(state.index, [[now, gatheredNow]]);
             return;
         }
-        
-        const [last] = cache[cache.length - 1];
+
+        const [last] = buffer[buffer.length - 1];
         if (now - last > 0) {
-            while (cache.length >= this.IncomeRateBufferSize) cache.shift();
-            cache.push([now, gatheredNow]);
+            while (buffer.length >= this.IncomeRateBufferSize) buffer.shift();
+            buffer.push([now, gatheredNow]);
         }
 
-        const [then, gatheredThen] = cache[0];
+        const [then, gatheredThen] = buffer[0];
         const deltaS = (now - then) / 1000;
         for (const resType of g_BoonGUIResTypes) {
             const rate = Math.round(((gatheredNow[resType] - gatheredThen[resType]) / deltaS) * 10);
-            state.resourceRates[resType] = rate;
+            state.resourceRates[resType] = Math.floor(rate / 5) * 5;
         }
     }
 
     getPlayersStates() {
         return Engine.GuiInterfaceCall("boongui_GetOverlay", {
-            g_IsObserver, g_ViewedPlayer
-        }).players ?? [];        
+            g_IsObserver, g_ViewedPlayer, g_LastTickTime
+        }).players ?? [];
     }
 
     update() {
