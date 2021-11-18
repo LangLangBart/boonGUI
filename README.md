@@ -80,6 +80,8 @@ git clone https://github.com/LangLangBart/boonGUI.git
 * Launch 0 A.D., click `Settings` and `Mod Selection`.
 * Double-click `boonGUI`, click `Save Configuration` and `Start Mods`.
 
+Note: Arch and Manjaro Linux users may skip the steps above and install the [boongui package from the AUR](https://aur.archlinux.org/packages/0ad-boongui/).
+
 ## Compatibility
 Compatible with 0 A.D. Alpha 25
 
