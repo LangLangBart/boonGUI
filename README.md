@@ -63,7 +63,7 @@ User interface **mod** for the RTS game **0 A.D.**
 <div>
   
 <p align="center">
-<a href="http://www.youtube.com/watch?v=vua47INwBb0"><img src="http://img.youtube.com/vi/vua47INwBb0/0.jpg" width="500"</a>
+<a href="http://www.youtube.com/watch?v=vua47INwBb0"><img src="http://img.youtube.com/vi/vua47INwBb0/0.jpg" width="500"></a>
 </p>
   
 </div>
