@@ -10,20 +10,37 @@ class BoonGUIStatsModesRow {
         this.itemsContainer = Engine.GetGUIObjectByName(`${PREFIX}Items`);
         this.items = this.itemsContainer.children.map((item, index) => new BoonGUIStatsModesRowItem(item, index));
         this.indicator.onPress = this.onPress.bind(this);
+        this.indicator.onDoublePress = this.onDoublePress.bind(this);
+
         this.state = null;
     }
 
-    onPress() {
+    /**
+     * @private
+     * @param {boolean} move
+     */
+    press(move) {
         if (this.state == null || this.state.civCentres.length <= 0) return;
         if (!Engine.HotkeyIsPressed("selection.add"))
             g_Selection.reset();
 
         g_Selection.addList(this.state.civCentres);
 
-        const entState = GetEntityState(this.state.civCentres[0]);
-        Engine.CameraMoveTo(entState.position.x, entState.position.z);
+        if (move) {
+            const entState = GetEntityState(this.state.civCentres[0]);
+            Engine.CameraMoveTo(entState.position.x, entState.position.z);
+        }
     }
 
+    onPress() {
+        // let append = Engine.HotkeyIsPressed("selection.add");
+        // let selectall = Engine.HotkeyIsPressed("selection.offscreen");
+        this.press(false);
+    }
+
+    onDoublePress() {
+        this.press(true);
+    }
 
     /**
      * @private

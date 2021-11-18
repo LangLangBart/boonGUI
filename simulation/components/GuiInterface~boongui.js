@@ -195,10 +195,7 @@ GuiInterface.prototype.boongui_GetOverlay = function (_, { g_IsObserver, g_Viewe
         player.nick = nick;
         player.rating = rating;
 
-        // (2) Get Kill Death Ratio
-        player.killDeathRatio = player.enemyUnitsKilledTotal / player.unitsLostTotal;
-
-        // (3) Get Phase
+        // (2) Get Phase
         let phase = '';
         if (cmpTechnologyManager) {
             for (const _phase of boongui_phases) {
@@ -210,7 +207,7 @@ GuiInterface.prototype.boongui_GetOverlay = function (_, { g_IsObserver, g_Viewe
         }
         player.phase = phase;
 
-        // (4) Get Statistics
+        // (3) Get Statistics
         if (updateCache) {
             if (cmpPlayerStatisticsTracker) {
                 for (const resType of boongui_resources_types) {
@@ -237,6 +234,7 @@ GuiInterface.prototype.boongui_GetOverlay = function (_, { g_IsObserver, g_Viewe
         player.totalMilitaryScore = cached.totalMilitaryScore;
         player.totalExplorationScore = cached.totalExplorationScore;
         player.totalScore = cached.totalScore;
+        player.killDeathRatio = cached.enemyUnitsKilledTotal / cached.unitsLostTotal;
 
         // (5) Get Number of allies
         player.numberAllies = cmpPlayer.GetMutualAllies().filter(player => {
@@ -290,7 +288,6 @@ GuiInterface.prototype.boongui_GetOverlay = function (_, { g_IsObserver, g_Viewe
             for (let entity of cmpRangeManager.GetEntitiesByPlayer(index)) {
                 const cmpIdentity = Engine.QueryInterface(entity, IID_Identity);
                 const cmpProductionQueue = Engine.QueryInterface(entity, IID_ProductionQueue);
-
                 const classesList = cmpIdentity?.classesList;
                 if (classesList && !classesList.includes('Foundation')) {
                     if (classesList.includes('CivCentre')) {
@@ -352,17 +349,13 @@ GuiInterface.prototype.boongui_GetOverlay = function (_, { g_IsObserver, g_Viewe
                     const progress = 1 - (hitpoints / maxHitpoints);
                     cached.queue.add({ mode, templateType, entity, template, count, progress });
                 }
+
+                // const cmpUnitAI = Engine.QueryInterface(entity, IID_UnitAI);
             }
         }
 
         player.civCentres = cached.civCentres;
         player.queue = cached.queue.toArray();
-
-        // 11) Get idle units
-        // state.totalNumberIdleWorkers = this.FindIdleUnits(index, {
-        //     idleClasses: ["FemaleCitizen", "Trader", "FishingBoat", "Citizen"],
-        //     excludeUnits: [],
-        // }).length;
 
         return player;
     });

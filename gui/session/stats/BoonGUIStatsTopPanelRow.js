@@ -1,4 +1,7 @@
 class BoonGUIStatsTopPanelRow {
+
+    static Regex_Emblem = /^.+\/(.+)\.png$/;
+
     constructor(row, index) {
         const PREFIX = row.name;
         this.root = Engine.GetGUIObjectByName(PREFIX);
@@ -63,14 +66,32 @@ class BoonGUIStatsTopPanelRow {
         this.state = state;
         if (!state) return;
 
+        let value, color, caption, tooltip, font;
+
         const shouldBlink = (Date.now() % 1000 < 500);
         this.border.sprite = `backcolor: ${state.playerColor} 70`;
         this.team.caption = setStringTags(state.team != -1 ? `${state.team + 1}` : "", { color: state.teamColor });
-        this.player.caption = setStringTags(state.nick, { color: state.playerColor });
-        this.player.tooltip = this.player.caption;
+
+        const playerNick = setStringTags(state.nick, { color: state.playerColor });
+        caption = state.nick.length <= 9 ? state.nick : state.nick.substr(0, 8) + "…";
+        this.player.caption = setStringTags(caption, { color: state.playerColor });
+        this.player.tooltip = setStringTags(state.nick, { color: state.playerColor, font: 'mono-stroke-14' });
+
         this.rating.caption = setStringTags(state.rating, { color: state.playerColor });
         this.civ.caption = setStringTags(g_BoonGUICivs[state.civ], { color: state.playerColor });
-        this.civ.tooltip = setStringTags(g_CivData[state.civ].Name, { color: state.playerColor });
+
+        const civ = g_CivData[state.civ];
+        const Emblem = civ.Emblem.replace(BoonGUIStatsTopPanelRow.Regex_Emblem, "$1");
+
+        tooltip = '';
+        tooltip += setStringTags(civ.Name.padEnd(8), {
+            color: state.playerColor,
+            font: 'mono-stroke-14'
+        });
+        tooltip += "\n\n";
+        tooltip += `[icon="${Emblem}" displace="12 0"] \n`;
+        tooltip += civ.History + '\n';
+        this.civ.tooltip = tooltip;
 
         let phase;
         let progress = null;
@@ -117,8 +138,16 @@ class BoonGUIStatsTopPanelRow {
 
         }
 
-        let value, color, caption, tooltip;
         for (const resType of g_BoonGUIResTypes) {
+            tooltip = "";
+            tooltip += `${headerFont(`${resourceNameFirstWord(resType)}`)}\n`;
+            tooltip += `${playerNick}\n`;
+
+            if (state.resourcesTechs[resType].length > 0) {
+                tooltip += state.resourcesTechs[resType].map(tech => `[icon="icon_${tech}" displace="0 5"]`).join(' ');
+                tooltip += "\n";
+            }
+
             value = state.resourceCounts[resType];
             color = scales.getColor(`${resType}Counts`, value);
             caption = this.normalizeResourceCount(value)
@@ -129,17 +158,13 @@ class BoonGUIStatsTopPanelRow {
             caption = isNaN(value) || value <= 0 ? '' : `+${this.normalizeResourceRate(value)}`
             this.resource.rates[resType].caption = setStringTags(caption, g_IsObserver ? { color } : { color: state.playerColor });
 
+            if (caption)
+                tooltip += `Rate: ${setStringTags(caption, { color })} ${setStringTags('(Amount/10s)', { font: 'sans-12' })} \n`;
+
             value = state.resourceGatherers[resType];
             color = scales.getColor(`${resType}Gatherers`, value, 180);
             caption = isNaN(value) || value <= 0 ? 0 : value;
-            
-            tooltip = "";
-            tooltip += `${headerFont(`Economy (${resType})`)}\n`;
             tooltip += `Gatherers: ${setStringTags(caption, { color })}\n`;
-            if (state.resourcesTechs[resType].length > 0) {
-                tooltip += "\n";
-                tooltip += state.resourcesTechs[resType].map(tech => `[icon="icon_${tech}" displace="0 0"]`).join(' ');
-            }
 
             this.resource.counts[resType].tooltip = tooltip;
         }
@@ -150,10 +175,13 @@ class BoonGUIStatsTopPanelRow {
         tooltip = "";
         for (const resType of g_BoonGUIResTypes) {
             if (state.resourcesTechs[resType].length > 0) {
-                tooltip += `${headerFont(`Economy (${resType})`)}\n\n`;
-                tooltip += state.resourcesTechs[resType].map(tech => `[icon="icon_${tech}" displace="0 0"]`).join(' ') + '\n';
+                tooltip += `${headerFont(`${resourceNameFirstWord(resType)}`)}\n`;
+                tooltip += state.resourcesTechs[resType].map(tech => `[icon="icon_${tech}" displace="0 5"]`).join(' ') + " "
+                tooltip += "\n";
             }
         }
+
+        tooltip = tooltip ? `${playerNick}\n${tooltip}` : '';
         this.economyTechsCount.tooltip = tooltip;
 
 
@@ -163,8 +191,12 @@ class BoonGUIStatsTopPanelRow {
 
         tooltip = "";
         if (state.militaryTechs.length > 0) {
-            tooltip += `${headerFont(`Military upgrades:`)}\n\n`;
-            tooltip += state.militaryTechs.map(tech => `[icon="icon_${tech}" displace="0 0"]`).join('  ') + '\n';
+            tooltip += `${headerFont(`Military techs:`)}\n`;
+            tooltip += `${playerNick}\n`;
+            for (let i = 0; i < state.militaryTechs.length; i += 4) {
+                tooltip += state.militaryTechs.slice(i, i + 4)
+                    .map(tech => `[icon="icon_${tech}" displace="0 5"]`).join('  ') + " \n";
+            }
             tooltip += '\n';
         }
         this.militaryTechsCount.tooltip = tooltip;
@@ -192,10 +224,16 @@ class BoonGUIStatsTopPanelRow {
         value = state.killDeathRatio;
         color = scales.getColor('killDeathRatio', value);
         caption = formatKD(value);
-        const font = caption.length >= 4 ? "mono-stroke-12" : "mono-stroke-14";
+        font = caption.length >= 4 ? "mono-stroke-12" : "mono-stroke-14";
         this.killDeathRatio.caption = setStringTags(caption, { color, font });
 
         const los = state.hasSharedLos || state.numberAllies == 1 ? "●" : "○";
         this.los.caption = setStringTags(los, { color: state.playerColor });
+        color = state.playerColor;
+        font = 'mono-stroke-14';
+        tooltip = "";
+        tooltip += `${setStringTags('○', { color, font })} / ${setStringTags('●', { color, font })}\n`;
+        tooltip += `Full circle when cartography has been researched or when you are without mutual allies`;
+        this.los.tooltip = tooltip;
     }
 }
