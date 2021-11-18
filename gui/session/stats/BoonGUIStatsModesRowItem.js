@@ -11,12 +11,17 @@ class BoonGUIStatsModesRowItem {
         this.progressLeft = this.progress.size.left;
         this.progressWidth = this.progress.size.right - this.progress.size.left;
         this.root.onPress = this.onPress.bind(this);
+        this.root.onDoublePress = this.onDoublePress.bind(this);
         this.root.onPressRight = this.onPressRight.bind(this);
         this.item = null;
         this.state = null;
     }
 
-    onPress() {
+    /**
+     * @private
+     * @param {boolean} move
+     */
+    press(move) {
         if (this.item == null || this.item.entity.length <= 0) return
         if (!Engine.HotkeyIsPressed("selection.add"))
             g_Selection.reset();
@@ -24,8 +29,18 @@ class BoonGUIStatsModesRowItem {
         let entities = [...new Set(this.item.entity.map(e => getEntityOrHolder(e)))];
         g_Selection.addList(entities);
 
-        const entState = GetEntityState(entities[0]);
-        Engine.CameraMoveTo(entState.position.x, entState.position.z);
+        if (move) {
+            const entState = GetEntityState(entities[0]);
+            Engine.CameraMoveTo(entState.position.x, entState.position.z);
+        }
+    }
+
+    onDoublePress() {
+        this.press(true);
+    }
+
+    onPress() {
+        this.press(false);
     }
 
     onPressRight() {
@@ -39,7 +54,6 @@ class BoonGUIStatsModesRowItem {
         this.root.hidden = !item;
 
         if (!item) return;
-
         this.icon.hidden = false;
 
         let template;
@@ -51,7 +65,7 @@ class BoonGUIStatsModesRowItem {
                 template = GetTemplateData(item.template);
                 break;
             default:
-                this.icon.hidden = true;
+                this.root.hidden = true;
                 return;
         }
 

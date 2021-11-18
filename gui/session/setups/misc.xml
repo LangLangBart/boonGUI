@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<setup>
+	<icon name="icon_focusattacked"
+		sprite="stretched:session/icons/focus-attacked.png"
+		size="14 14"
+	/>
+	<!-- Icons for the map details in observer mode -->
+	<icon name="icon_alpha"
+		sprite="stretched:session/icons/0ad_alpha_logo.png"
+		size="22 22"
+	/>
+	<icon name="icon_map"
+		sprite="stretched:session/icons/objectives.png"
+		size="22 22"
+	/>
+	<icon name="icon_pop"
+		sprite="stretched:session/icons/population_special_adjustment_build_label.png"
+		size="22 22"
+	/>
+	<icon name="icon_rating"
+		sprite="stretched:session/icons/bell_level1.png"
+		size="22 22"
+	/>
+
+	<tooltip name="sessionToolTipWide"
+		anchor="top"
+		buffer_zone="8"
+		delay="100"
+		font="sans-14"
+		maxwidth="400"
+		offset="16 32"
+		sprite="BackgroundSessionTooltip"
+		textcolor="255 255 255"
+	/>
+
+	<tooltip name="sessionToolTipCircle"
+		anchor="top"
+		buffer_zone="4"
+		delay="100"
+		font="sans-14"
+		maxwidth="200"
+		offset="16 32"
+		sprite="BackgroundSessionTooltip"
+		textcolor="255 255 255"
+	/>	
+</setup>

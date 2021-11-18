@@ -1,0 +1,72 @@
+{
+  "categories": {
+    "BoonGUI": {
+      "name": "BoonGUI",
+      "desc": "BoonGUI related hotkeys."
+    }
+  },
+  "mapped_hotkeys": {
+    "BoonGUI": {
+      "boongui.camera.follow.fps": {
+        "name": "BoonGUI Camera follow FPS",
+        "desc": "BoonGUI Camera follow FPS."
+      },
+      "boongui.session.gui.exit": {
+        "name": "BoonGUI Session GUI exit",
+        "desc": "BoonGUI Session GUI exit."
+      },
+      "boongui.session.stats.toggle": {
+        "name": "BoonGUI Session stats toggle",
+        "desc": "BoonGUI Session stats toggle."
+      },
+      "boongui.session.stats.nextMode": {
+        "name": "BoonGUI Session stats next mode",
+        "desc": "BoonGUI Session stats next mode."
+      },
+      "boongui.session.stats.previousMode": {
+        "name": "BoonGUI Session stats previous mode",
+        "desc": "BoonGUI Session stats previous mode."
+      },
+      "boongui.session.stats.mode.1": {
+        "name": "BoonGUI Session stats mode 1",
+        "desc": "BoonGUI Session stats mode 1."
+      },
+      "boongui.session.stats.mode.2": {
+        "name": "BoonGUI Session stats mode 2",
+        "desc": "BoonGUI Session stats mode 2."
+      },
+      "boongui.session.stats.mode.3": {
+        "name": "BoonGUI Session stats mode 3",
+        "desc": "BoonGUI Session stats mode 3."
+      },
+      "boongui.session.stats.mode.4": {
+        "name": "BoonGUI Session stats mode 4",
+        "desc": "BoonGUI Session stats mode 4."
+      },
+      "boongui.session.stats.mode.5": {
+        "name": "BoonGUI Session stats mode 5",
+        "desc": "BoonGUI Session stats mode 5."
+      },
+      "boongui.session.stats.mode.6": {
+        "name": "BoonGUI Session stats mode 6",
+        "desc": "BoonGUI Session stats mode 6."
+      },
+      "boongui.session.stats.mode.7": {
+        "name": "BoonGUI Session stats mode 7",
+        "desc": "BoonGUI Session stats mode 7."
+      },
+      "boongui.session.stats.mode.8": {
+        "name": "BoonGUI Session stats mode 8",
+        "desc": "BoonGUI Session stats mode 8."
+      },
+      "boongui.session.stats.mode.9": {
+        "name": "BoonGUI Session stats mode 9",
+        "desc": "BoonGUI Session stats mode 9."
+      },
+      "boongui.session.stats.mode.10": {
+        "name": "BoonGUI Session stats mode 10",
+        "desc": "BoonGUI Session stats mode 10."
+      }
+    }
+  }
+}
