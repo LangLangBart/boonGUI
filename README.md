@@ -63,7 +63,7 @@ User interface **mod** for the RTS game **0 A.D.**
 <div>
 
 <p align="center">
-<a href="http://www.youtube.com/watch?v=vua47INwBb0"><img src="http://img.youtube.com/vi/vua47INwBb0/0.jpg" width="500"</a>
+<a href="http://www.youtube.com/watch?v=vua47INwBb0"><img src="http://img.youtube.com/vi/vua47INwBb0/0.jpg" width="500"></a>
 </p>
 
 </div>
@@ -79,6 +79,8 @@ git clone https://github.com/LangLangBart/boonGUI.git
   * Windows: `~\Documents\My Games\0ad\mods\`
 * Launch 0 A.D., click `Settings` and `Mod Selection`.
 * Double-click `boonGUI`, click `Save Configuration` and `Start Mods`.
+
+Note: Arch and Manjaro Linux users may skip the steps above and install the [boongui package from the AUR](https://aur.archlinux.org/packages/0ad-boongui/).
 
 ## Compatibility
 Compatible with 0 A.D. Alpha 25
