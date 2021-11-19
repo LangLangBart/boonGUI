@@ -199,7 +199,7 @@ GuiInterface.prototype.boongui_GetOverlay = function (_, { g_IsObserver, g_Viewe
         let phase = '';
         if (cmpTechnologyManager) {
             for (const _phase of boongui_phases) {
-                if (cmpTechnologyManager.IsTechnologyResearched(`phase_${phase}`)) {
+                if (cmpTechnologyManager.IsTechnologyResearched(`phase_${_phase}`)) {
                     phase = _phase;
                     break;
                 }
