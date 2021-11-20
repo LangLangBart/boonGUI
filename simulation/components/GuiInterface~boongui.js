@@ -142,7 +142,7 @@ GuiInterface.prototype.boongui_GetOverlay = function (_, { g_IsObserver, g_Viewe
             return false;
         if (g_IsObserver || !cmpPlayerViewed || index == g_ViewedPlayer)
             return true
-        if (!cmpPlayerViewed.hasSharedLos || !cmpPlayer.isMutualAlly(cmpPlayerViewed.index))
+        if (!cmpPlayerViewed.hasSharedLos || !cmpPlayer.IsMutualAlly(cmpPlayerViewed.index))
             return false;
         return true;
     }).map(({ index, cmpPlayer, state, hasSharedLos }) => {
