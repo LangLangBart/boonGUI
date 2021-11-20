@@ -32,6 +32,7 @@ class PanelEntity
 		let entityState = GetEntityState(entityID);
 		let template = GetTemplateData(entityState.template);
 		this.nameTooltip = setStringTags(g_SpecificNamesPrimary ? template.name.specific : template.name.generic, this.NameTags) + "\n";
+		this.auraTooltip = "\n" + getAurasTooltip(template);
 
 		Engine.GetGUIObjectByName("panelEntityHealthSection[" + buttonID + "]").hidden = !entityState.hitpoints;
 
@@ -70,7 +71,7 @@ class PanelEntity
 
 		this.panelEntButton.tooltip =
 			this.nameTooltip +
-			this.Tooltips.map(tooltip => tooltip(entityState)).filter(tip => tip).join("\n");
+			this.Tooltips.map(tooltip => tooltip(entityState)).filter(tip => tip).join("\n") + this.auraTooltip;
 	}
 
 	updateHitpointsBar(entityState)
