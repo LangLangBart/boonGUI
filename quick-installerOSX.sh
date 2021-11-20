@@ -1,4 +1,5 @@
-!/bin/bash
+#!/bin/zsh
+
 
 
 echo "Running Installation Script"
