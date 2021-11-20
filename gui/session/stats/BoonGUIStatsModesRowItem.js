@@ -85,6 +85,6 @@ class BoonGUIStatsModesRowItem {
             getEntityTooltip(template),
             getAurasTooltip(template),
             showTemplateViewerOnRightClickTooltip()
-        ].join('\n').replace(/(^[ \t]*\n)/gm, "");
+        ].filter(tip => tip).join('\n');
     }
 }

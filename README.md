@@ -4,7 +4,7 @@
 <div align="center">
  
 # boonGUI <br> 
-[![GitHub release](https://img.shields.io/github/release/LangLangBart/boonGUI.svg?style=flat-square&color=gold&label=Latest%20Release)](https://github.com/LangLangBart/boonGUI/releases/latest) [![Link to the forum thread](https://img.shields.io/badge/Discussion-Forum-green?style=flat-square)](https://wildfiregames.com/forum/topic/37147-boongui-mod-compatible-with-a25) [![Compatibility with 0AD](https://img.shields.io/badge/dynamic/json?color=brightgreen&label=Compatibility&query=dependencies&url=https%3A%2F%2Fraw.githubusercontent.com%2FLangLangBart%2FboonGUI%2Fmain%2Fmod.json)](https://play0ad.com/download/)
+[![GitHub release](https://img.shields.io/github/release/LangLangBart/boonGUI.svg?style=flat-square&color=gold&label=Latest%20Release)](https://github.com/LangLangBart/boonGUI/releases/latest) [![Link to the forum thread](https://img.shields.io/badge/Discussion-Forum-green?style=flat-square)](https://wildfiregames.com/forum/topic/37147-boongui-mod-compatible-with-a25) [![Compatibility with 0AD](https://img.shields.io/badge/dynamic/json?style=flat-square&color=brightgreen&label=Compatibility&query=dependencies&url=https%3A%2F%2Fraw.githubusercontent.com%2FLangLangBart%2FboonGUI%2Fmain%2Fmod.json)](https://play0ad.com/download/)
  
 User interface **mod** for the RTS game **0 A.D.**
 </div>
