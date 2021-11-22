@@ -4,7 +4,7 @@
 <div align="center">
  
 # boonGUI <br> 
-[![GitHub release](https://img.shields.io/github/release/LangLangBart/boonGUI.svg?style=flat-square&color=gold&label=Latest%20Release)](https://github.com/LangLangBart/boonGUI/releases/latest) [![Link to the forum thread](https://img.shields.io/badge/Discussion-Forum-green?style=flat-square)](https://wildfiregames.com/forum/topic/37147-boongui-mod-compatible-with-a25) [![Compatibility with 0AD](https://img.shields.io/badge/dynamic/json?style=flat-square&color=brightgreen&label=Compatibility&query=dependencies&url=https%3A%2F%2Fraw.githubusercontent.com%2FLangLangBart%2FboonGUI%2Fmain%2Fmod.json)](https://play0ad.com/download/)
+[![GitHub release](https://img.shields.io/github/release/LangLangBart/boonGUI.svg?style=flat-square&color=gold&label=Latest%20Release)](https://github.com/LangLangBart/boonGUI/releases/latest) [![Link to the forum thread](https://img.shields.io/badge/Discussion-Forum-orange?style=flat-square)](https://wildfiregames.com/forum/topic/37147-boongui-mod-compatible-with-a25) [![Compatibility with 0AD](https://img.shields.io/badge/dynamic/json?style=flat-square&color=green&label=Compatibility&query=dependencies&url=https%3A%2F%2Fraw.githubusercontent.com%2FLangLangBart%2FboonGUI%2Fmain%2Fmod.json)](https://play0ad.com/download/)
  
 User interface **mod** for the RTS game **0 A.D.**
 </div>
@@ -35,15 +35,6 @@ User interface **mod** for the RTS game **0 A.D.**
 <img src="boongui_data/boongui_ingame.png" width=500> <img src="boongui_data/boongui_stats_panel.png" width=250><br>
 <img src="boongui_data/boongui_hud.png" width=500>
 
- ### Featured v1.6.5
-<p>
-<a href="https://www.youtube.com/channel/UC5Sf1aQufzzWATg9TJzg7mQ"><img src="https://img.shields.io/badge/Channel-0AD%20Newbie%20Rush-green?logo=youtube&style=social" height="20"></a>
- <a href="https://www.youtube.com/watch?v=vua47INwBb0"><img src="https://img.shields.io/youtube/views/vua47INwBb0?style=social" height="20"></a>
-</p>
- <p align="center">
-<a href="http://www.youtube.com/watch?v=vua47INwBb0"><img src="http://img.youtube.com/vi/vua47INwBb0/0.jpg" width="500"></a>
-</p>
- 
  ### Featured v2.0.0
 <p>
 <a href="https://www.youtube.com/channel/UCnpCp_OvNm0_FgD_5rSrxbw"><img src="https://img.shields.io/badge/Channel-Plan&Go:%200%20A.D.-green?logo=youtube&style=social" height="20"></a>
@@ -54,6 +45,14 @@ User interface **mod** for the RTS game **0 A.D.**
 </p>
 
 </div>
+ ### Featured v1.6.5
+<p>
+<a href="https://www.youtube.com/channel/UC5Sf1aQufzzWATg9TJzg7mQ"><img src="https://img.shields.io/badge/Channel-0AD%20Newbie%20Rush-green?logo=youtube&style=social" height="20"></a>
+ <a href="https://www.youtube.com/watch?v=vua47INwBb0"><img src="https://img.shields.io/youtube/views/vua47INwBb0?style=social" height="20"></a>
+</p>
+ <p align="center">
+<a href="http://www.youtube.com/watch?v=vua47INwBb0"><img src="http://img.youtube.com/vi/vua47INwBb0/0.jpg" width="500"></a>
+</p>
 
 ## Features
 * **Main menu**
@@ -90,7 +89,7 @@ git clone https://github.com/LangLangBart/boonGUI.git
 ```
 * Place it in your `/0ad/mods/` folder:
   * Linux: `~/.local/share/0ad/mods/`
-  * macOS: `~/Library/Application\Support/0ad/mods/`
+  * macOS: `~/Library/Application\ Support/0ad/mods/`
   * Windows: `~\Documents\My Games\0ad\mods\`
 * Launch 0 A.D., click `Settings` and `Mod Selection`.
 * Double-click `boonGUI`, click `Save Configuration` and `Start Mods`.
@@ -103,7 +102,7 @@ Motivation for this mod was the desire to learn javascript and create a tool for
 * Thanks to @mysticjim, @Palaiologos and @seeh for constantly testing and giving feedback.
 * Providing code and helping with problems: @andy5995, @kaaduu, @maroder, @Nescio and @Schweini.
 * Thanks to @badosu, @ffffff, @ffm2, @nani, @The Undying Nephalim and @wowgetoffyourcellphone for creating the following mods: Prodmod, fGod, ffm_visibility, Autociv, Hyrule Conquest and Delenda Est.
-* Being good lads @elexis, @bb, @Imarok, @wraitii, @Freagarach, @vladislavbelov, @Angen and @Stan` pointed me in the right direction on the IRC #0ad channel when I got stuck.
+* Being good lads @elexis, @bb, @Imarok, @wraitii, @Freagarach, @vladislavbelov, @Silier and @Stan` pointed me in the right direction on the IRC #0ad channel when I got stuck.
 
 <br>
 

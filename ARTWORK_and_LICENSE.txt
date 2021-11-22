@@ -67,8 +67,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-
-PYROMOD BUILD
-~/0ad/binaries/system/pyrogenesis -mod=mod -archivebuild=Library/'Application Support'/0ad/mods/boongui  -archivebuild-output=Library/'Application Support'/0ad/mods/boongui.pyromod -archivebuild-compress
-
