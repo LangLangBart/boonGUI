@@ -9,10 +9,8 @@ class BoonGUIStats {
         this.lastPlayerLength = null;
 
         this.resizeInit();
-
-        const key = g_IsObserver ? "boongui.observer.hidden" : "boongui.player.hidden";
-        const defaultHidden = g_IsObserver ? "false" : "true";
-        this.root.hidden = (Engine.ConfigDB_GetValue("user", key) || defaultHidden) == "true";
+        registerPlayersFinishedHandler(this.onPlayersFinished.bind(this));
+        this.root.hidden = g_IsObserver ? false : true;
         this.root.onTick = this.onTick.bind(this);
     }
 
@@ -20,8 +18,6 @@ class BoonGUIStats {
 
     toggle() {
         this.root.hidden = !this.root.hidden;
-        const key = g_IsObserver ? "boongui.observer.hidden" : "boongui.player.hidden";
-        Engine.ConfigDB_CreateAndWriteValueToFile("user", key, this.root.hidden ? 'true' : 'false', "config/user.cfg");
         this.shouldForceRender = true;
     }
 
@@ -38,6 +34,11 @@ class BoonGUIStats {
             this.lastTick = g_LastTickTime;
         }
     }
+    
+	onPlayersFinished()
+	{
+		this.root.hidden = false;
+	}
 
     playerColor(state) {
         return rgbToGuiColor(g_DiplomacyColors.displayedPlayerColors[state.index])
