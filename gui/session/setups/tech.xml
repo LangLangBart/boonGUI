@@ -121,4 +121,19 @@
         sprite="stretched:session/portraits/technologies/shields_generic_silver.png"
         size="25 25"
     />
+
+    <icon name="icon_attack_soldiers_will"
+        sprite="stretched:session/portraits/technologies/clenched_fist.png"
+        size="25 25"
+    />
+
+    <icon name="icon_archery_tradition"
+        sprite="stretched:session/portraits/technologies/archery_tradition.png"
+        size="25 25"
+    />
+
+    <icon name="icon_archer_attack_spread"
+        sprite="stretched:session/portraits/technologies/archery_tradition.png"
+        size="25 25"
+    />    
 </setup>

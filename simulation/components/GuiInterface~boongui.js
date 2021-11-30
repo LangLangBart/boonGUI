@@ -17,6 +17,12 @@ const boongui_template_keys = {
     "structures/palisades_gate": "structures/palisades_tower",
 };
 
+const boongui_more_military_techs = [
+    "archer_attack_spread",
+    "archery_tradition",
+    "attack_soldiers_will"
+];
+
 const boongui_resources_techs = {
     food: [
         "gather_wicker_baskets",
@@ -263,7 +269,7 @@ GuiInterface.prototype.boongui_GetOverlay = function (_, { g_IsObserver, g_Viewe
         for (let template of player.researchedTechs) {
             if (boongui_excluded_techs.some((s) => template.includes(s))) continue;
             let mode;
-            if (template.startsWith("soldier_")) {
+            if (template.startsWith("soldier_") || boongui_more_military_techs.includes(template)) {
                 militaryTechsCount++;
                 militaryTechs.push(template);
                 mode = "military_technologies";
@@ -308,7 +314,10 @@ GuiInterface.prototype.boongui_GetOverlay = function (_, { g_IsObserver, g_Viewe
                         cached.queue.add({ mode, templateType, entity, template, count: 1, progress: 0 });
                     }
 
-                    if (classesList.includes('Unit') && !classesList.includes('Relic') && !classesList.includes('Hero')) {
+                    if (classesList.includes('Unit') &&
+                        !classesList.includes('Relic') &&
+                        !classesList.includes('Hero') &&
+                        !classesList.includes('Domestic')) {
                         const template = cmpTemplateManager.GetCurrentTemplateName(entity)
                         const mode = "units";
                         const templateType = 'unit';
@@ -360,6 +369,7 @@ GuiInterface.prototype.boongui_GetOverlay = function (_, { g_IsObserver, g_Viewe
         return player;
     });
 
+    ret.players.sort((a, b) => a.team - b.team);
     return ret;
 };
 
