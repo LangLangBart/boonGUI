@@ -63,6 +63,7 @@ User interface **mod** for the RTS game **0 A.D.**
   * New background image
 * **Camera**
   * Enter the view of a unit via a hotkey.
+  * Change the camera settings in the options.
 * **In-Game**
   * All fruits are more vivid and easier to see due to the increased saturation and brightness, some have also had their hue changed.
   * Chicken are 50% larger and fish were colored red.
