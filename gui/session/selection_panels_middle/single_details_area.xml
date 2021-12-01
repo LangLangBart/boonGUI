@@ -20,7 +20,7 @@
 		</object>
 
 		<!-- Status Effects icons -->
-		<object  name="statusEffectsIcons" size="100%-20 4 100%-4 100%">
+		<object name="statusEffectsIcons" size="100%-20 4 100%-4 100%">
 			<repeat count="5">
 				<object type="image" size="0 0 16 16" z="200" tooltip_style="sessionToolTip"/>
 			</repeat>
@@ -68,7 +68,7 @@
 			</object>
 		</object>
 	</object>
-	
+
 	<!-- Stats panel-->
 	<object size= "100 2 100% 100%-64" type="image">
 		<!-- Attack: Left-hand side -->
@@ -92,25 +92,25 @@
 		<object size="0 99 30 129" name="attackAndResistanceStats" type="image" sprite="stretched:session/icons/stances/defensive.png" tooltip_style="sessionToolTipInstantly">
 			<translatableAttribute id="tooltip">Attack and Resistance</translatableAttribute>
 		</object>
-		
+
 		<!-- Resource carrying icon/counter -->
-		<object size="40 100 100% 100%" type="image"  tooltip_style="sessionToolTip">
+		<object size="40 100 100% 100%" type="image" tooltip_style="sessionToolTip">
 			<!-- Used also for number of gatherers/builders -->
 			<object size="100%-96 0 100%-36 32" type="text" name="resourceCarryingText" style="StatsTextRight"/>
 			<object size="100%-32 0 100% 32" type="image" name="resourceCarryingIcon" tooltip_style="sessionToolTip"/>
 		</object>
 	</object>
 
-	
-		<!-- Names and civilization emblem etc. (This must come before the attack and resistance icon to avoid clipping issues.) -->
+
+	<!-- Names and civilization emblem etc. (This must come before the attack and resistance icon to avoid clipping issues.) -->
 	<object size="0 135 100% 100%" name="statsArea" type="image" sprite="edgedPanelShader">
-	
+
 		<!-- Primary and secondary names. -->
 		<object size="0 3 100% 37">
 			<object size="0 0 100% 50%" name="primary" ghost="true" type="text" style="PrimaryNameCentered"/>
 			<object size="0 50%-1 100% 100%" name="secondary" ghost="true" type="text" style="SecondaryNameCentered"/>
 		</object>
-		
+
 		<!-- Civilization tooltip. -->
 		<object size="0 38 100% 62">
 			<!-- Civilization emblem. -->
@@ -119,7 +119,7 @@
 			<object name="playerColorBackground" type="image" sprite="playerColorBackground" ghost="true"/>
 			<object type="image" sprite="bottomEdgedPanelShader" ghost="true"/>
 			<!-- Player name. -->
-			<object size="0 50%-10 100% 50%+10" name="player" type="text" style="largeCenteredOutlinedText" tooltip_style="sessionToolTip"/>
+			<object size="0 50%-10 100% 50%+10" name="player" type="text" style="largeCenteredOutlinedText" tooltip_style="sessionToolTipBottomBold"/>
 		</object>
 	</object>
 </object>
