@@ -2,10 +2,10 @@
 
 <!-- Title -->
 <div align="center">
- 
-# boonGUI <br> 
+
+# boonGUI <br>
 [![GitHub release](https://img.shields.io/github/release/LangLangBart/boonGUI.svg?style=flat-square&color=gold&label=Latest%20Release)](https://github.com/LangLangBart/boonGUI/releases/latest) [![Compatibility with 0AD](https://img.shields.io/badge/dynamic/json?style=flat-square&color=green&label=Compatibility&query=dependencies&url=https%3A%2F%2Fraw.githubusercontent.com%2FLangLangBart%2FboonGUI%2Fmain%2Fmod.json)](https://play0ad.com/download/) [![Link to the forum thread](https://img.shields.io/badge/Discussion-Forum-orange?style=flat-square)](https://wildfiregames.com/forum/topic/37147-boongui-mod-compatible-with-a25)
- 
+
 User interface **mod** for the RTS game **0 A.D.**
 </div>
 
@@ -14,7 +14,7 @@ User interface **mod** for the RTS game **0 A.D.**
 <p align="center">
 <a href="https://play0ad.com"><img src="boongui_data/0ad_logo.png" width="300">
 </p>
- 
+
 <a name="menu"></a>
   <h4>
     <a href="https://play0ad.com/re-release-of-0-a-d-alpha-25-yauna/">Website</a>
@@ -30,13 +30,13 @@ User interface **mod** for the RTS game **0 A.D.**
 ---
 
 <div align="center">
- 
+
 ### Screenshots
- 
+
 <img src="boongui_data/boongui_stats_toppanel.png" width=500> <br>
 <img src="boongui_data/boongui_ingame.png" width=500> <img src="boongui_data/boongui_stats_panel.png" width=250><br>
 <img src="boongui_data/boongui_hud.png" width=500>
- 
+
 ### Featured v2.0.0
 <p>
 <a href="https://www.youtube.com/channel/UCnpCp_OvNm0_FgD_5rSrxbw"><img src="https://img.shields.io/badge/Channel-Plan&Go:%200%20A.D.-green?logo=youtube&style=social" height="20"></a>
@@ -56,7 +56,7 @@ User interface **mod** for the RTS game **0 A.D.**
 </p>
 
 </div>
-  
+
 ## Features
 * **Main menu**
   * Cheat codes accessible through the game manual.
@@ -76,6 +76,7 @@ User interface **mod** for the RTS game **0 A.D.**
   * Timestamp notifications for players moving up a phase or completing one.
   * The HUD in the middle shows individual unit stats.
   * Option to skip the summary screen after a game ends.
+  * All civilian houses/apartments have a garrison flag.
 * **Lobby**
   * Quick access buttons below the chat input.
   * Rating dependent icon & title for the profile.
@@ -101,7 +102,7 @@ git clone https://github.com/LangLangBart/boonGUI.git
 <details>
  <summary><b>Arch and Manjaro Linux users</b></summary>
 <p>
- 
+
 You can skip the above steps and install the <a href="https://aur.archlinux.org/packages/0ad-boongui/">boonGUI package from the AUR</a>.
 </p>
 </details>
