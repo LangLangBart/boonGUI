@@ -77,30 +77,23 @@ function endHome() {
 	}
 }
 
-// This function is basically useless if you only use this mod, but autociv crops the pause overlay to 30% to get around it and I've added his function here and increased the number to 100%. Now the text information from the pause overlay is still displayed correctly, when boths mods (boongui&autociv) are enabled. Just make sure that autociv is activated first and then boongui.
-function autociv_patchSession() {
-	Engine.GetGUIObjectByName("pauseOverlay").size = "0% 0% 100% 100%"
-}
-
 /**
  * Called every frame.
  */
- function onTick()
- {
-	 if (!g_Settings)
-		 return;
- 
-	 let now = Date.now();
-	 let tickLength = now - g_LastTickTime;
-	 g_LastTickTime = now;
- 
-	 handleNetMessages();
- 
-	 updateCursorAndTooltip();
+function onTick() {
+	if (!g_Settings)
+		return;
 
-	 if (g_Selection.dirty)
-	 {
-		
+	let now = Date.now();
+	let tickLength = now - g_LastTickTime;
+	g_LastTickTime = now;
+
+	handleNetMessages();
+
+	updateCursorAndTooltip();
+
+	if (g_Selection.dirty) {
+
 		g_Selection.dirty = false;
 		// When selection changed, get the entityStates of new entities
 		GetMultipleEntityStates(g_Selection.filter(entId => !g_EntityStates[entId]));
@@ -112,19 +105,18 @@ function autociv_patchSession() {
 
 		// Display rally points for selected structures.
 		Engine.GuiInterfaceCall("DisplayRallyPoint", { "entities": g_Selection.toList() });
-	 }
-	 else
-	 {
+	}
+	else {
 		if (g_ShowAllStatusBars && now % g_StatusBarUpdate <= tickLength)
-		 	recalculateStatusBarDisplay();
+			recalculateStatusBarDisplay();
 
 		Engine.GuiInterfaceCall("DisplayRallyPoint", { "entities": g_Selection.toList(), watch: true });
-	 }
- 
-	 updateTimers();
-	 Engine.GuiInterfaceCall("ClearRenamedEntities");
- 
-	 let isPlayingCinemaPath = GetSimState().cinemaPlaying && !g_Disconnected;
-	 if (isPlayingCinemaPath)
-		 updateCinemaOverlay();
- }
+	}
+
+	updateTimers();
+	Engine.GuiInterfaceCall("ClearRenamedEntities");
+
+	let isPlayingCinemaPath = GetSimState().cinemaPlaying && !g_Disconnected;
+	if (isPlayingCinemaPath)
+		updateCinemaOverlay();
+}
