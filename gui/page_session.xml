@@ -16,7 +16,6 @@
 	<include>session/styles.xml</include>
 	<include>session/session.xml</include>
 
-	<include>session/setups/emblem.xml</include>
 	<include>session/setups/tech.xml</include>
 	<include>session/setups/misc.xml</include>
 </page>

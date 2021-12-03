@@ -40,7 +40,7 @@ class BoonGUIStatsModes {
     }
 
     setTopOffset(offset) {
-        this.root.size = `100%-214 ${155 + offset} 100% 500`;
+        this.root.size = `100%-199 ${155 + offset} 100% 500`;
     }
 
     selectMode(modeIndex) {

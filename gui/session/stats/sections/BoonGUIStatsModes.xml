@@ -17,12 +17,10 @@
    <object name="StatsModesRows">
       <repeat count="8" var="i">
          <object name="StatsModesRow[i]" size="0 0 100% 100%" hidden="true">
-            <object name="StatsModesRow[i]Indicator" type="button" size="100%-40 0 100% 40" style="iconButton" tooltip_style="sessionToolTip">
-               <object name="StatsModesRow[i]IndicatorLabel" type="text" size="3 3 100%-6 100%-2" ghost="true" font="sans-bold-stroke-16" textcolor="255 255 255" text_align="right" text_valign="bottom" z="20" />
-               <object name="StatsModesRow[i]IndicatorIcon" type="image" size="3 3 100%-4 100%-4" ghost="true" z="15" /> 
-               <object name="StatsModesRow[i]IndicatorColor" type="image" size="3 3 100%-4 100%-4" ghost="true" z="10" /> 
+            <object name="StatsModesRow[i]Indicator" type="button" size="100%-20 0 100% 40" tooltip_style="sessionToolTip">
+               <object name="StatsModesRow[i]IndicatorColor" type="image" size="3 3 100%-4 100%-4" ghost="true" z="10" />
             </object>
-            <object name="StatsModesRow[i]Items" size="0 0 100%-40 40">
+            <object name="StatsModesRow[i]Items" size="0 0 100%-25 40">
                <repeat count="20" var="j">
                   <object name="StatsModesRow[i]Item[j]" size="0 0 34 37" type="button" tooltip_style="sessionToolTip" style="iconButton" hidden="true">
                      <object name="StatsModesRow[i]Item[j]Icon" type="image" ghost="true" size="3 3 36 36" />
