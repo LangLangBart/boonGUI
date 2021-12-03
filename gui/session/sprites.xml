@@ -95,10 +95,8 @@
 
 	<!-- Map Panel -->
 	<sprite name="mapPanel">
-		<image backcolor="transparent"
-			size="0 0 100% 100%"
-		/>
-			</sprite>
+		<image backcolor="transparent" size="0 0 100% 100%" />
+	</sprite>
 
 	<!-- Bottom Left Panel -->
 	<sprite name="supplementalDetailsPanel">

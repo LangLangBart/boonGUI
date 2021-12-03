@@ -2,12 +2,12 @@
 <object name="minimapPanel"
 	size="0 0 100% 100%"
 	sprite="mapPanel"
-	type="image"
 >
 	<!-- Black background circle-->
 	<object
 		type="image"
-		size="10 24 100%-47 100%-33"		sprite="stretched:session/background_circle.png"
+		size="10 24 100%-47 100%-33"
+		sprite="stretched:session/background_circle.png"
 		ghost="true"
 	/>
 	<!-- Background hover panel below the minimap -->
