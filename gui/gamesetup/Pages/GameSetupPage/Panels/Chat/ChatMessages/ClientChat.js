@@ -24,8 +24,8 @@ ChatMessageEvents.ClientChat = class
 	colorizePlayernameByGUID(guid)
 	{
 		// TODO: Controllers should have the moderator-prefix
-		let username = g_PlayerAssignments[guid] ? escapeText(g_PlayerAssignments[guid].name) : translate("Unknown Player");
-		let playerID = g_PlayerAssignments[guid] ? g_PlayerAssignments[guid].player : -1;
+		const username = g_PlayerAssignments[guid] ? escapeText(g_PlayerAssignments[guid].name) : translate("Unknown Player");
+		const playerID = g_PlayerAssignments[guid] ? g_PlayerAssignments[guid].player : -1;
 
 		let color = "white";
 		if (playerID > 0)
@@ -33,8 +33,8 @@ ChatMessageEvents.ClientChat = class
 			color = makeColorsVivid(g_GameSettings.playerColor.values[playerID - 1]);
 
 			// Enlighten playercolor to improve readability
-			let [h, s, l] = rgbToHsl(color.r, color.g, color.b);
-			let [r, g, b] = hslToRgb(h, s, Math.max(0.6, l));
+			const [h, s, l] = rgbToHsl(color.r, color.g, color.b);
+			const [r, g, b] = hslToRgb(h, s, Math.max(0.6, l));
 
 			color = rgbToGuiColor({ "r": r, "g": g, "b": b });
 		}

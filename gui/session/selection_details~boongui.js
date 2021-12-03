@@ -1,9 +1,9 @@
 // Fills out information that most entities have
 function displaySingle(entState)
 {
-	let template = GetTemplateData(entState.template);
+	const template = GetTemplateData(entState.template);
 
-	let primaryName = g_SpecificNamesPrimary ? template.name.specific : template.name.generic;
+	const primaryName = g_SpecificNamesPrimary ? template.name.specific : template.name.generic;
 	let secondaryName;
 	if (g_ShowSecondaryNames)
 		secondaryName = g_SpecificNamesPrimary ? template.name.generic : template.name.specific;
@@ -16,10 +16,10 @@ function displaySingle(entState)
 		else
 			secondaryName = sprintf(translate("Packed"));
 	}
-	let playerState = g_Players[entState.player];
+	const playerState = g_Players[entState.player];
 
-	let civName = g_CivData[playerState.civ].Name;
-	let civEmblem = g_CivData[playerState.civ].Emblem;
+	const civName = g_CivData[playerState.civ].Name;
+	const civEmblem = g_CivData[playerState.civ].Emblem;
 
 	let playerName = playerState.name;
 
@@ -44,17 +44,17 @@ function displaySingle(entState)
 
 	if (entState.statusEffects)
 	{
-		let statusEffectsSection = Engine.GetGUIObjectByName("statusEffectsIcons");
+		const statusEffectsSection = Engine.GetGUIObjectByName("statusEffectsIcons");
 		statusEffectsSection.hidden = false;
-		let statusIcons = statusEffectsSection.children;
+		const statusIcons = statusEffectsSection.children;
 		let i = 0;
-		for (let effectCode in entState.statusEffects)
+		for (const effectCode in entState.statusEffects)
 		{
-			let effect = entState.statusEffects[effectCode];
+			const effect = entState.statusEffects[effectCode];
 			statusIcons[i].hidden = false;
 			statusIcons[i].sprite = "stretched:session/icons/status_effects/" + g_StatusEffectsMetadata.getIcon(effect.baseCode) + ".png";
 			statusIcons[i].tooltip = getStatusEffectsTooltip(effect.baseCode, effect, false);
-			let size = statusIcons[i].size;
+			const size = statusIcons[i].size;
 			size.top = i * 18;
 			size.bottom = i * 18 + 16;
 			statusIcons[i].size = size;
@@ -68,23 +68,23 @@ function displaySingle(entState)
 	else
 		Engine.GetGUIObjectByName("statusEffectsIcons").hidden = true;
 
-	let showHealth = entState.hitpoints;
-	let showResource = entState.resourceSupply;
-	let showCapture = entState.capturePoints;
+	const showHealth = entState.hitpoints;
+	const showResource = entState.resourceSupply;
+	const showCapture = entState.capturePoints;
 
-	let healthSection = Engine.GetGUIObjectByName("healthSection");
-	let captureSection = Engine.GetGUIObjectByName("captureSection");
-	let resourceSection = Engine.GetGUIObjectByName("resourceSection");
-	let sectionPosTop = Engine.GetGUIObjectByName("sectionPosTop");
-	let sectionPosMiddle = Engine.GetGUIObjectByName("sectionPosMiddle");
-	let sectionPosBottom = Engine.GetGUIObjectByName("sectionPosBottom");
+	const healthSection = Engine.GetGUIObjectByName("healthSection");
+	const captureSection = Engine.GetGUIObjectByName("captureSection");
+	const resourceSection = Engine.GetGUIObjectByName("resourceSection");
+	const sectionPosTop = Engine.GetGUIObjectByName("sectionPosTop");
+	const sectionPosMiddle = Engine.GetGUIObjectByName("sectionPosMiddle");
+	const sectionPosBottom = Engine.GetGUIObjectByName("sectionPosBottom");
 
 	// Hitpoints
 	healthSection.hidden = !showHealth;
 	if (showHealth)
 	{
-		let unitHealthBar = Engine.GetGUIObjectByName("healthBar");
-		let healthSize = unitHealthBar.size;
+		const unitHealthBar = Engine.GetGUIObjectByName("healthBar");
+		const healthSize = unitHealthBar.size;
 		healthSize.rright = 100 * Math.max(0, Math.min(1, entState.hitpoints / entState.maxHitpoints));
 		unitHealthBar.size = healthSize;
 		Engine.GetGUIObjectByName("healthStats").caption = sprintf(translate("%(hitpoints)s / %(maxHitpoints)s"), {
@@ -98,12 +98,12 @@ function displaySingle(entState)
 	captureSection.hidden = !entState.capturePoints;
 	if (entState.capturePoints)
 	{
-		let setCaptureBarPart = function(playerID, startSize) {
-			let unitCaptureBar = Engine.GetGUIObjectByName("captureBar[" + playerID + "]");
-			let sizeObj = unitCaptureBar.size;
+		const setCaptureBarPart = function(playerID, startSize) {
+			const unitCaptureBar = Engine.GetGUIObjectByName("captureBar[" + playerID + "]");
+			const sizeObj = unitCaptureBar.size;
 			sizeObj.rleft = startSize;
 
-			let size = 100 * Math.max(0, Math.min(1, entState.capturePoints[playerID] / entState.maxCapturePoints));
+			const size = 100 * Math.max(0, Math.min(1, entState.capturePoints[playerID] / entState.maxCapturePoints));
 			sizeObj.rright = startSize + size;
 			unitCaptureBar.size = sizeObj;
 			unitCaptureBar.sprite = "color:" + g_DiplomacyColors.getPlayerColor(playerID, 200);
@@ -114,11 +114,11 @@ function displaySingle(entState)
 		// first handle the owner's points, to keep those points on the left for clarity
 		let size = setCaptureBarPart(entState.player, 0);
 
-		for (let i in entState.capturePoints)
+		for (const i in entState.capturePoints)
 			if (i != entState.player)
 				size = setCaptureBarPart(i, size);
 
-		let captureText = sprintf(translate("%(capturePoints)s / %(maxCapturePoints)s"), {
+		const captureText = sprintf(translate("%(capturePoints)s / %(maxCapturePoints)s"), {
 			"capturePoints": Math.ceil(entState.capturePoints[entState.player]),
 			"maxCapturePoints": Math.ceil(entState.maxCapturePoints)
 		});
@@ -130,8 +130,8 @@ function displaySingle(entState)
 	Engine.GetGUIObjectByName("experience").hidden = !entState.promotion;
 	if (entState.promotion)
 	{
-		let experienceBar = Engine.GetGUIObjectByName("experienceBar");
-		let experienceSize = experienceBar.size;
+		const experienceBar = Engine.GetGUIObjectByName("experienceBar");
+		const experienceSize = experienceBar.size;
 		experienceSize.rtop = 100 - (100 * Math.max(0, Math.min(1, 1.0 * +entState.promotion.curr / (+entState.promotion.req || 1))));
 		experienceBar.size = experienceSize;
 
@@ -152,14 +152,14 @@ function displaySingle(entState)
 	resourceSection.hidden = !showResource;
 	if (entState.resourceSupply)
 	{
-		let resources = entState.resourceSupply.isInfinite ? translate("∞") :  // Infinity symbol
+		const resources = entState.resourceSupply.isInfinite ? translate("∞") :  // Infinity symbol
 			sprintf(translate("%(amount)s / %(max)s"), {
 				"amount": Math.ceil(+entState.resourceSupply.amount),
 				"max": entState.resourceSupply.max
 			});
 
-		let unitResourceBar = Engine.GetGUIObjectByName("resourceBar");
-		let resourceSize = unitResourceBar.size;
+		const unitResourceBar = Engine.GetGUIObjectByName("resourceBar");
+		const resourceSize = unitResourceBar.size;
 
 		resourceSize.rright = entState.resourceSupply.isInfinite ? 100 :
 			100 * Math.max(0, Math.min(1, +entState.resourceSupply.amount / +entState.resourceSupply.max));
@@ -169,8 +169,8 @@ function displaySingle(entState)
 		Engine.GetGUIObjectByName("resourceStats").tooltip = resourceNameFirstWord(entState.resourceSupply.type.generic);
 	}
 
-	let resourceCarryingIcon = Engine.GetGUIObjectByName("resourceCarryingIcon");
-	let resourceCarryingText = Engine.GetGUIObjectByName("resourceCarryingText");
+	const resourceCarryingIcon = Engine.GetGUIObjectByName("resourceCarryingIcon");
+	const resourceCarryingText = Engine.GetGUIObjectByName("resourceCarryingText");
 	resourceCarryingIcon.hidden = false;
 	resourceCarryingText.hidden = false;
 
@@ -178,7 +178,7 @@ function displaySingle(entState)
 	if (entState.resourceCarrying && entState.resourceCarrying.length)
 	{
 		// We should only be carrying one resource type at once, so just display the first
-		let carried = entState.resourceCarrying[0];
+		const carried = entState.resourceCarrying[0];
 		resourceCarryingIcon.sprite = "stretched:session/icons/resources/" + carried.type + ".png";
 		resourceCarryingText.caption = sprintf(translate("%(amount)s / %(max)s"), { "amount": carried.amount, "max": carried.max });
 		resourceCarryingIcon.tooltip = "";
@@ -251,7 +251,7 @@ function displaySingle(entState)
 		});
 	secondaryObject.hidden = hideSecondary;
 
-	let isGaia = playerState.civ == "gaia";
+	const isGaia = playerState.civ == "gaia";
 	Engine.GetGUIObjectByName("playerCivIcon").sprite = isGaia ? "" : "cropped:1.0, 0.15625 center:grayscale:" + civEmblem;
 	Engine.GetGUIObjectByName("player").tooltip = isGaia ? "" : civName;
 
@@ -261,12 +261,12 @@ function displaySingle(entState)
 		Engine.GetGUIObjectByName("iconBorder").onPressRight = () => {
 			showTemplateDetails(entState.template, playerState.civ);
 		};
-	
-	// wraitii's code for SetupStat 
-	let SetupStat = (panel, i, icon, text, tooltip) => {
+
+	// wraitii's code for SetupStat
+	const SetupStat = (panel, i, icon, text, tooltip) => {
 		const panelItem = Engine.GetGUIObjectByName(`${panel}[${i}]`);
-		const panelIcon = Engine.GetGUIObjectByName(`${panel}Icon[${i}]`); 
-		const panelText = Engine.GetGUIObjectByName(`${panel}Text[${i}]`); 
+		const panelIcon = Engine.GetGUIObjectByName(`${panel}Icon[${i}]`);
+		const panelText = Engine.GetGUIObjectByName(`${panel}Text[${i}]`);
 		if (!text)
 		{
 			panelItem.hidden = true;
@@ -274,7 +274,7 @@ function displaySingle(entState)
 		}
 		panelItem.hidden = false;
 		panelIcon.sprite = "stretched:color:0 0 0 20:textureAsMask:" + icon;
-		let size = panelItem.size;
+		const size = panelItem.size;
 		size.top = 35*i;
 		size.bottom = 35*i+24;
 		panelItem.size = size;
@@ -295,12 +295,12 @@ function displaySingle(entState)
 		SetupStat("LHS", 0, "session/icons/attackPower.png", limitNumber(attackPower*projectiles / (entState?.attack?.Melee || entState?.attack?.Ranged).repeatTime * 1000), setupStatHUDAttackTooltip(entState, projectiles));
 	}
 	else
-		SetupStat("LHS", 0, "" , "");
+		SetupStat("LHS", 0, "", "");
 
 	// Agility
 	if (!!entState?.speed)
 	{
-		let walkSpeed = entState?.speed?.walk || 0;
+		const walkSpeed = entState?.speed?.walk || 0;
 		SetupStat("LHS", 1, "session/icons/walk.png", limitNumber(walkSpeed), setupStatHUDSpeedTooltip(entState));
 	}
 	else
@@ -326,7 +326,7 @@ function displaySingle(entState)
 		SetupStat("RHS", 2, "", "");
 	}
 
-	let detailedTooltip = [
+	const detailedTooltip = [
 		getAttackTooltip,
 		getHealerTooltip,
 		getResistanceTooltip,

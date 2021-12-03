@@ -15,13 +15,13 @@ class ReplayButton
 	{
 		Engine.LobbySetPlayerPresence("playing");
 		Engine.PushGuiPage("page_replaymenu.xml",
-		{
-			"replaySelectionData": {
-				"filters": {
-					"compatibility": false,
-					"singleplayer": "Multiplayer"
+			{
+				"replaySelectionData": {
+					"filters": {
+						"compatibility": false,
+						"singleplayer": "Multiplayer"
 					}
 				}
-		});
+			});
 	}
 }

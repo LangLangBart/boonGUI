@@ -17,13 +17,13 @@ class OverlayCounterManager
 		this.lastHeight = undefined;
 		this.initSize = this.dataCounter.size;
 
-		for (let name of this.availableCounterNames())
+		for (const name of this.availableCounterNames())
 		{
-			let counterType = OverlayCounterTypes.prototype[name];
+			const counterType = OverlayCounterTypes.prototype[name];
 			if (counterType.IsAvailable && !counterType.IsAvailable())
 				continue;
 
-			let counter = new counterType(this);
+			const counter = new counterType(this);
 			this.counters.push(counter);
 			counter.updateEnabled();
 		}
@@ -41,7 +41,7 @@ class OverlayCounterManager
 
 	deleteCounter(counter)
 	{
-		let filter = count => count != counter;
+		const filter = count => count != counter;
 		this.counters = this.counters.filter(filter);
 		this.enabledCounters = this.enabledCounters.filter(filter);
 	}
@@ -74,7 +74,7 @@ class OverlayCounterManager
 	onTick()
 	{
 		// Don't rebuild the caption every frame
-		let now = Date.now();
+		const now = Date.now();
 		if (now < this.lastTick + this.Delay)
 			return;
 
@@ -83,9 +83,9 @@ class OverlayCounterManager
 		let lineCount = 0;
 		let txt = "";
 
-		for (let counter of this.enabledCounters)
+		for (const counter of this.enabledCounters)
 		{
-			let newTxt = counter.get();
+			const newTxt = counter.get();
 			if (!newTxt)
 				continue;
 
@@ -101,8 +101,8 @@ class OverlayCounterManager
 			// could lead to unneeded linebreaks.
 			// Therefore we set the overlay to the maximum size before reading the text size.
 			this.dataCounter.size = this.initSize;
-			let textSize = this.dataCounter.getTextSize();
-			let size = this.dataCounter.size;
+			const textSize = this.dataCounter.getTextSize();
+			const size = this.dataCounter.size;
 			size.bottom = size.top + textSize.height;
 			size.left = size.right - textSize.width;
 			this.dataCounter.size = size;
@@ -116,7 +116,7 @@ class OverlayCounterManager
 		if (this.lastHeight != height)
 		{
 			this.lastHeight = height;
-			for (let handler of this.resizeHandlers)
+			for (const handler of this.resizeHandlers)
 				handler(height);
 		}
 	}

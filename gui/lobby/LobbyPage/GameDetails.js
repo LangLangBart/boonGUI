@@ -28,8 +28,8 @@ class GameDetails
 
 	resize(dialog)
 	{
-		let bottom = Engine.GetGUIObjectByName(dialog ? "leaveButton" : "joinButton").size.top - 5;
-		let size = this.gameDetails.size;
+		const bottom = Engine.GetGUIObjectByName(dialog ? "leaveButton" : "joinButton").size.top - 5;
+		const size = this.gameDetails.size;
 		size.bottom = bottom;
 		this.gameDetails.size = size;
 	}
@@ -45,8 +45,8 @@ class GameDetails
 
 		Engine.ProfileStart("GameDetails");
 
-		let stanza = game.stanza;
-		let displayData = game.displayData;
+		const stanza = game.stanza;
+		const displayData = game.displayData;
 
 		if (stanza.mapType != this.lastGame.mapType || stanza.mapName != this.lastGame.mapName)
 		{
@@ -64,7 +64,7 @@ class GameDetails
 
 			if (stanza.startTime)
 			{
-				this.gameStartArgs.time = 
+				this.gameStartArgs.time =
 				Math.round((Date.now() - stanza.startTime*1000)/(1000*60));
 				txt += sprintf(this.GameStartFormat, this.gameStartArgs);
 			}
@@ -87,7 +87,7 @@ class GameDetails
 
 			txt +=
 				"\n" + setStringTags(this.MapSizeFormat, this.CaptionTags) + " " + displayData.mapSize;
-				
+
 			// Player information
 			txt += "\n\n";
 			this.playerCountArgs.current = escapeText(stanza.nbp);
@@ -118,7 +118,7 @@ class GameDetails
 					});
 				txt += "\n" + modStr;
 			}
-			
+
 			// Map description
 			txt += "\n\n" + setStringTags(this.MapDescriptionFormat, this.CaptionTags) + "\n" + displayData.mapDescription;
 

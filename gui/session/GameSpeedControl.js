@@ -17,18 +17,18 @@ class GameSpeedControl
 
 	rebuild()
 	{
-		let player = g_Players[Engine.GetPlayerID()];
+		const player = g_Players[Engine.GetPlayerID()];
 
-		let gameSpeeds = prepareForDropdown(g_Settings.GameSpeeds.filter(speed =>
+		const gameSpeeds = prepareForDropdown(g_Settings.GameSpeeds.filter(speed =>
 			!speed.FastForward || !player || player.state != "active"));
 
 		this.gameSpeed.list = gameSpeeds.Title;
 		this.gameSpeed.list_data = gameSpeeds.Speed;
 
-		let simRate = Engine.GetSimRate();
+		const simRate = Engine.GetSimRate();
 
 		// If the game speed is something like 0.100001 from the game setup, set it to 0.1
-		let gameSpeedIdx = gameSpeeds.Speed.indexOf(+simRate.toFixed(2));
+		const gameSpeedIdx = gameSpeeds.Speed.indexOf(+simRate.toFixed(2));
 		this.gameSpeed.selected = gameSpeedIdx != -1 ? gameSpeedIdx : gameSpeeds.Default;
 	}
 

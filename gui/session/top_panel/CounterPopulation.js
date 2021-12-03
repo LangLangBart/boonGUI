@@ -20,7 +20,7 @@ class CounterPopulation
 	{
 		this.count.caption = sprintf(translate(this.CounterCaption), playerState);
 		let total = 0;
-		for (let resCode of g_ResourceData.GetCodes())
+		for (const resCode of g_ResourceData.GetCodes())
 			total += playerState.resourceGatherers[resCode];
 
 		this.stats.caption = total ? coloredText(total, rgbToGuiColor(g_DiplomacyColors.displayedPlayerColors[g_ViewedPlayer])) : 0;
@@ -46,7 +46,7 @@ class CounterPopulation
 		if (this.panel.hidden)
 			return;
 
-		let newColor = this.isTrainingBlocked && Date.now() % 1000 < 500 ?
+		const newColor = this.isTrainingBlocked && Date.now() % 1000 < 500 ?
 			this.PopulationAlertColor :
 			this.DefaultPopulationColor;
 
@@ -67,7 +67,7 @@ CounterPopulation.prototype.AllyPopulationTooltip = markForTranslation("%(popCou
 /**
  * Storing the translated and formatted gatherer string in the prototype.
  */
-CounterPopulation.prototype.CurrentGatherersTooltip = setStringTags(translate("Gatherers: current"), {"font": "sans-bold-16"});
+CounterPopulation.prototype.CurrentGatherersTooltip = setStringTags(translate("Gatherers: current"), { "font": "sans-bold-16" });
 /**
  * Color to highlight the total gatherers.
  */

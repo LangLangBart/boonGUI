@@ -18,13 +18,13 @@ class BuildLabel
 			"icon_pop": '[icon="icon_pop" displace="3 5"]',
 			"pop": g_InitAttributes.settings.PopulationCap !== undefined ? g_PopulationCapacities.Title[g_PopulationCapacities.Population.indexOf(g_InitAttributes.settings.PopulationCap)] : g_WorldPopulationCapacities.Title[g_WorldPopulationCapacities.Population.indexOf(g_InitAttributes.settings.WorldPopulationCap)] + " (WP)",
 			"rating": g_InitAttributes.settings.RatingEnabled === true ? '[icon="icon_rating" displace="-3 5"]' + coloredText("Rated game", "red") : ""
-			});
+		});
 		playerViewControl.registerViewedPlayerChangeHandler(this.onViewedPlayerChange.bind(this));
 	}
-	
+
 	onViewedPlayerChange()
 	{
 		// Following gaia can be interesting on scripted maps
 		this.shortGameInfosLabel.hidden = !g_IsObserver || g_ViewedPlayer > 0;
-	}		
+	}
 }

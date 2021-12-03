@@ -3,8 +3,8 @@
  */
 function displayReplayDetails()
 {
-	let selected = Engine.GetGUIObjectByName("replaySelection").selected;
-	let replaySelected = selected > -1;
+	const selected = Engine.GetGUIObjectByName("replaySelection").selected;
+	const replaySelected = selected > -1;
 
 	Engine.GetGUIObjectByName("replayInfo").hidden = !replaySelected;
 	Engine.GetGUIObjectByName("replayInfoEmpty").hidden = replaySelected;
@@ -17,7 +17,7 @@ function displayReplayDetails()
 	if (!replaySelected)
 		return;
 
-	let replay = g_ReplaysFiltered[selected];
+	const replay = g_ReplaysFiltered[selected];
 
 	Engine.GetGUIObjectByName("sgMapName").caption = translate(replay.attribs.settings.Name);
 	Engine.GetGUIObjectByName("sgMapSize").caption = translateMapSize(replay.attribs.settings.Size);
@@ -28,7 +28,7 @@ function displayReplayDetails()
 		{ "numberOfPlayers": replay.attribs.settings.PlayerData.length });
 	Engine.GetGUIObjectByName("replayFilename").caption = Engine.GetReplayDirectoryName(replay.directory);
 
-	let metadata = Engine.GetReplayMetadata(replay.directory);
+	const metadata = Engine.GetReplayMetadata(replay.directory);
 	Engine.GetGUIObjectByName("sgPlayersNames").caption =
 		formatPlayerInfo(
 			replay.attribs.settings.PlayerData,

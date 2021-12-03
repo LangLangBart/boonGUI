@@ -2,7 +2,7 @@ class QuitConfirmation extends SessionMessageBox
 {
 }
 
-QuitConfirmation.prototype.Title = setStringTags("Game Finished", { "font": "sans-bold-16"})
+QuitConfirmation.prototype.Title = setStringTags("Game Finished", { "font": "sans-bold-16" });
 
 QuitConfirmation.prototype.Caption = "";
 

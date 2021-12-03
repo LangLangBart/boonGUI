@@ -3,7 +3,7 @@ const g_CivData = loadCivData(false, false);
 var g_ScorePanelsData;
 
 // g_TeamTwoBox offsets the teams a bit from each other
-var g_TeamTwoBox = 45
+var g_TeamTwoBox = 45;
 var g_MaxHeadingTitle = 9;
 var g_LongHeadingWidth = 250;
 var g_PlayerBoxYSize = 70;
@@ -175,7 +175,7 @@ function initGUISummary()
  */
 function initGUIWindow()
 {
-	let summaryWindow = Engine.GetGUIObjectByName("summaryWindow");
+	const summaryWindow = Engine.GetGUIObjectByName("summaryWindow");
 	summaryWindow.sprite = g_GameData.gui.dialog ? "ModernDialog" : "ModernWindow";
 	summaryWindow.size = g_GameData.gui.dialog ? "16 24 100%-16 100%-24" : "0 0 100% 100%";
 	Engine.GetGUIObjectByName("summaryWindowTitle").size = g_GameData.gui.dialog ? "50%-128 -16 50%+128 16" : "50%-128 4 50%+128 36";
@@ -185,11 +185,11 @@ function selectPanelGUI(panel)
 {
 	adjustTabDividers(Engine.GetGUIObjectByName("tabButton[" + panel + "]").size);
 
-	let generalPanel = Engine.GetGUIObjectByName("generalPanel");
-	let chartsPanel = Engine.GetGUIObjectByName("chartsPanel");
+	const generalPanel = Engine.GetGUIObjectByName("generalPanel");
+	const chartsPanel = Engine.GetGUIObjectByName("chartsPanel");
 
 	// We assume all scorePanels come before the charts.
-	let chartsHidden = panel < g_ScorePanelsData.length;
+	const chartsHidden = panel < g_ScorePanelsData.length;
 	generalPanel.hidden = !chartsHidden;
 	chartsPanel.hidden = chartsHidden;
 	if (chartsHidden)
@@ -211,10 +211,10 @@ function constructPlayersWithColor(color, playerListing)
 
 function updateChartColorAndLegend()
 {
-	let playerColors = [];
+	const playerColors = [];
 	for (let i = 1; i <= g_PlayerCount; ++i)
 	{
-		let playerState = g_GameData.sim.playerStates[i];
+		const playerState = g_GameData.sim.playerStates[i];
 		playerColors.push(
 			Math.floor(playerState.color.r * 255) + " " +
 			Math.floor(playerState.color.g * 255) + " " +
@@ -228,7 +228,7 @@ function updateChartColorAndLegend()
 				g_Teams.filter(el => el !== null).map(players => playerColors[players[0] - 1]) :
 				playerColors;
 
-	let chartLegend = Engine.GetGUIObjectByName("chartLegend");
+	const chartLegend = Engine.GetGUIObjectByName("chartLegend");
 	chartLegend.caption = (Engine.GetGUIObjectByName("toggleTeamBox").checked ?
 		g_Teams.filter(el => el !== null).map(players =>
 			constructPlayersWithColor(playerColors[players[0] - 1],	players.map(player =>
@@ -243,8 +243,8 @@ function updateChartColorAndLegend()
 function initGUICharts()
 {
 	updateChartColorAndLegend();
-	let chart1Part = Engine.GetGUIObjectByName("chart[1]Part");
-	let chart1PartSize = chart1Part.size;
+	const chart1Part = Engine.GetGUIObjectByName("chart[1]Part");
+	const chart1PartSize = chart1Part.size;
 	chart1PartSize.rright += 50;
 	chart1PartSize.rleft += 50;
 	chart1PartSize.right -= 5;
@@ -255,7 +255,7 @@ function initGUICharts()
 
 function resizeDropdown(dropdown)
 {
-	let size = dropdown.size;
+	const size = dropdown.size;
 	size.bottom = dropdown.size.top +
 		(Engine.GetTextWidth(dropdown.font, dropdown.list[dropdown.selected]) >
 			dropdown.size.right - dropdown.size.left - 32 ? 42 : 27);
@@ -264,7 +264,7 @@ function resizeDropdown(dropdown)
 
 function updateCategoryDropdown(number)
 {
-	let chartCategory = Engine.GetGUIObjectByName("chart[" + number + "]CategorySelection");
+	const chartCategory = Engine.GetGUIObjectByName("chart[" + number + "]CategorySelection");
 	chartCategory.list_data = g_ScorePanelsData.map((panel, idx) => idx);
 	chartCategory.list = g_ScorePanelsData.map(panel => panel.label);
 	chartCategory.onSelectionChange = function() {
@@ -285,11 +285,11 @@ function updateCategoryDropdown(number)
 
 function updateValueDropdown(number, category)
 {
-	let chartValue = Engine.GetGUIObjectByName("chart[" + number + "]ValueSelection");
-	let list = g_ScorePanelsData[category].headings.map(heading => heading.caption);
+	const chartValue = Engine.GetGUIObjectByName("chart[" + number + "]ValueSelection");
+	const list = g_ScorePanelsData[category].headings.map(heading => heading.caption);
 	list.shift();
 	chartValue.list = list;
-	let list_data = g_ScorePanelsData[category].headings.map(heading => heading.identifier);
+	const list_data = g_ScorePanelsData[category].headings.map(heading => heading.identifier);
 	list_data.shift();
 	chartValue.list_data = list_data;
 	chartValue.onSelectionChange = function() {
@@ -309,11 +309,11 @@ function updateValueDropdown(number, category)
 
 function updateTypeDropdown(number, category, item, itemNumber)
 {
-	let testValue = g_ScorePanelsData[category].counters[itemNumber].fn(g_GameData.sim.playerStates[1], 0, item);
-	let hide = !g_ScorePanelsData[category].counters[itemNumber].fn ||
+	const testValue = g_ScorePanelsData[category].counters[itemNumber].fn(g_GameData.sim.playerStates[1], 0, item);
+	const hide = !g_ScorePanelsData[category].counters[itemNumber].fn ||
 		typeof testValue != "object" || Object.keys(testValue).length < 2;
 	Engine.GetGUIObjectByName("chart[" + number + "]TypeLabel").hidden = hide;
-	let chartType = Engine.GetGUIObjectByName("chart[" + number + "]TypeSelection");
+	const chartType = Engine.GetGUIObjectByName("chart[" + number + "]TypeSelection");
 	chartType.hidden = hide;
 	if (hide)
 	{
@@ -337,16 +337,16 @@ function updateChart(number, category, item, itemNumber, type)
 {
 	if (!g_ScorePanelsData[category].counters[itemNumber].fn)
 		return;
-	let chart = Engine.GetGUIObjectByName("chart[" + number + "]");
+	const chart = Engine.GetGUIObjectByName("chart[" + number + "]");
 	chart.format_y = g_ScorePanelsData[category].headings[itemNumber + 1].format || "INTEGER";
 	Engine.GetGUIObjectByName("chart[" + number + "]XAxisLabel").caption = translate("Time elapsed");
 
-	let series = [];
+	const series = [];
 	if (Engine.GetGUIObjectByName("toggleTeamBox").checked)
-		for (let team in g_Teams)
+		for (const team in g_Teams)
 		{
-			let data = [];
-			for (let index in g_GameData.sim.playerStates[1].sequences.time)
+			const data = [];
+			for (const index in g_GameData.sim.playerStates[1].sequences.time)
 			{
 				let value = g_ScorePanelsData[category].teamCounterFn(team, index, item,
 					g_ScorePanelsData[category].counters, g_ScorePanelsData[category].headings);
@@ -359,9 +359,9 @@ function updateChart(number, category, item, itemNumber, type)
 	else
 		for (let j = 1; j <= g_PlayerCount; ++j)
 		{
-			let playerState = g_GameData.sim.playerStates[j];
-			let data = [];
-			for (let index in playerState.sequences.time)
+			const playerState = g_GameData.sim.playerStates[j];
+			const data = [];
+			for (const index in playerState.sequences.time)
 			{
 				let value = g_ScorePanelsData[category].counters[itemNumber].fn(playerState, index, item);
 				if (type)
@@ -376,15 +376,15 @@ function updateChart(number, category, item, itemNumber, type)
 
 function adjustTabDividers(tabSize)
 {
-	let tabButtonsLeft = Engine.GetGUIObjectByName("tabButtonsFrame").size.left;
+	const tabButtonsLeft = Engine.GetGUIObjectByName("tabButtonsFrame").size.left;
 
-	let leftSpacer = Engine.GetGUIObjectByName("tabDividerLeft");
-	let leftSpacerSize = leftSpacer.size;
+	const leftSpacer = Engine.GetGUIObjectByName("tabDividerLeft");
+	const leftSpacerSize = leftSpacer.size;
 	leftSpacerSize.right = tabSize.left + tabButtonsLeft + 2;
 	leftSpacer.size = leftSpacerSize;
 
-	let rightSpacer = Engine.GetGUIObjectByName("tabDividerRight");
-	let rightSpacerSize = rightSpacer.size;
+	const rightSpacer = Engine.GetGUIObjectByName("tabDividerRight");
+	const rightSpacerSize = rightSpacer.size;
 	rightSpacerSize.left = tabSize.right + tabButtonsLeft - 2;
 	rightSpacer.size = rightSpacerSize;
 }
@@ -394,21 +394,21 @@ function updatePanelData(panelInfo)
 	resetGeneralPanel();
 	updateGeneralPanelHeadings(panelInfo.headings);
 	updateGeneralPanelTitles(panelInfo.titleHeadings);
-	let rowPlayerObjectWidth = updateGeneralPanelCounter(panelInfo.counters);
+	const rowPlayerObjectWidth = updateGeneralPanelCounter(panelInfo.counters);
 	updateGeneralPanelTeams();
 
-	let index = g_GameData.sim.playerStates[1].sequences.time.length - 1;
-	let playerBoxesCounts = [];
+	const index = g_GameData.sim.playerStates[1].sequences.time.length - 1;
+	const playerBoxesCounts = [];
 	for (let i = 0; i < g_PlayerCount; ++i)
 	{
-		let playerState = g_GameData.sim.playerStates[i + 1];
+		const playerState = g_GameData.sim.playerStates[i + 1];
 
 		if (!playerBoxesCounts[playerState.team + 1])
 			playerBoxesCounts[playerState.team + 1] = 1;
 		else
 			playerBoxesCounts[playerState.team + 1] += 1;
 
-		let positionObject = playerBoxesCounts[playerState.team + 1] - 1;
+		const positionObject = playerBoxesCounts[playerState.team + 1] - 1;
 		let rowPlayer = "playerBox[" + positionObject + "]";
 		let playerOutcome = "playerOutcome[" + positionObject + "]";
 		let playerNameColumn = "playerName[" + positionObject + "]";
@@ -424,16 +424,16 @@ function updatePanelData(panelInfo)
 			playerCounterValue = "valueDataTeam[" + playerState.team + "][" + positionObject + "]";
 		}
 
-		let colorString = "color: " +
+		const colorString = "color: " +
 			Math.floor(playerState.color.r * 255) + " " +
 			Math.floor(playerState.color.g * 255) + " " +
 			Math.floor(playerState.color.b * 255);
 
-		let rowPlayerObject = Engine.GetGUIObjectByName(rowPlayer);
+		const rowPlayerObject = Engine.GetGUIObjectByName(rowPlayer);
 		rowPlayerObject.hidden = false;
 		rowPlayerObject.sprite = colorString + " " + g_PlayerBoxAlpha;
 
-		let boxSize = rowPlayerObject.size;
+		const boxSize = rowPlayerObject.size;
 		boxSize.right = rowPlayerObjectWidth;
 		rowPlayerObject.size = boxSize;
 
@@ -443,21 +443,21 @@ function updatePanelData(panelInfo)
 		playerNameColumn.caption = g_GameData.sim.playerStates[i + 1].name;
 		playerNameColumn.tooltip = translateAISettings(g_GameData.sim.mapSettings.PlayerData[i + 1]);
 
-		let civIcon = Engine.GetGUIObjectByName(playerCivicBoxColumn);
+		const civIcon = Engine.GetGUIObjectByName(playerCivicBoxColumn);
 		civIcon.sprite = "stretched:" + g_CivData[playerState.civ].Emblem;
 		civIcon.tooltip = g_CivData[playerState.civ].Name;
 
 		updateCountersPlayer(playerState, panelInfo.counters, panelInfo.headings, playerCounterValue, index);
 	}
 
-	let teamCounterFn = panelInfo.teamCounterFn;
+	const teamCounterFn = panelInfo.teamCounterFn;
 	if (g_Teams && teamCounterFn)
 		updateCountersTeam(teamCounterFn, panelInfo.counters, panelInfo.headings, index);
 }
 
 function continueButton()
 {
-	let summarySelection = {
+	const summarySelection = {
 		"panel": g_TabCategorySelected,
 		"charts": g_SelectedChart,
 		"teamCharts": Engine.GetGUIObjectByName("toggleTeamBox").checked
@@ -466,10 +466,11 @@ function continueButton()
 		Engine.PopGuiPage({
 			"summarySelection": summarySelection
 		});
-	else if (g_GameData.gui.dialog && Engine.HasXmppClient()) {
+	else if (g_GameData.gui.dialog && Engine.HasXmppClient())
+	{
 		Engine.LobbySetPlayerPresence("available");
 		Engine.PopGuiPage();
-		}
+	}
 	else if (g_GameData.gui.dialog)
 		Engine.PopGuiPage();
 	else if (Engine.HasXmppClient())
@@ -509,30 +510,30 @@ function startReplay()
 
 function initGUILabels()
 {
-	let assignedState = g_GameData.sim.playerStates[g_GameData.gui.assignedPlayer || -1];
+	const assignedState = g_GameData.sim.playerStates[g_GameData.gui.assignedPlayer || -1];
 
 	Engine.GetGUIObjectByName("summaryText").caption =
 		g_GameData.gui.isInGame ?
 			translate("Current Scores") :
-		g_GameData.gui.isReplay ?
-			translate("Scores at the end of the game.") :
-		g_GameData.gui.disconnected ?
-			translate("You have been disconnected.") :
-		!assignedState ?
-			translate("You have left the game.") :
-		assignedState.state == "won" ?
-			translate("You have won the battle!") :
-		assignedState.state == "defeated" ?
-			translate("You have been defeated…") :
-			translate("You have abandoned the game.");
+			g_GameData.gui.isReplay ?
+				translate("Scores at the end of the game.") :
+				g_GameData.gui.disconnected ?
+					translate("You have been disconnected.") :
+					!assignedState ?
+						translate("You have left the game.") :
+						assignedState.state == "won" ?
+							translate("You have won the battle!") :
+							assignedState.state == "defeated" ?
+								translate("You have been defeated…") :
+								translate("You have abandoned the game.");
 
 	Engine.GetGUIObjectByName("timeElapsed").caption = sprintf(
 		translate("Game time elapsed: %(time)s"), {
 			"time": timeToString(g_GameData.sim.timeElapsed)
-	});
+		});
 
-	let mapType = g_Settings.MapTypes.find(type => type.Name == g_GameData.sim.mapSettings.mapType);
-	let mapSize = g_Settings.MapSizes.find(size => size.Tiles == g_GameData.sim.mapSettings.Size || 0);
+	const mapType = g_Settings.MapTypes.find(type => type.Name == g_GameData.sim.mapSettings.mapType);
+	const mapSize = g_Settings.MapSizes.find(size => size.Tiles == g_GameData.sim.mapSettings.Size || 0);
 
 	Engine.GetGUIObjectByName("mapName").caption = sprintf(
 		translate("%(mapName)s - %(mapType)s"), {
@@ -543,24 +544,24 @@ function initGUILabels()
 
 function initGUIButtons()
 {
-	let replayButton = Engine.GetGUIObjectByName("replayButton");
+	const replayButton = Engine.GetGUIObjectByName("replayButton");
 	replayButton.hidden = g_GameData.gui.isInGame || !g_GameData.gui.replayDirectory;
 
-	let lobbyButton = Engine.GetGUIObjectByName("lobbyButton");
+	const lobbyButton = Engine.GetGUIObjectByName("lobbyButton");
 	lobbyButton.tooltip = colorizeHotkey(translate("%(hotkey)s: Toggle the multiplayer lobby in a dialog window."), "lobby");
 	lobbyButton.hidden = g_GameData.gui.isInGame || !Engine.HasXmppClient();
 
 	// Right-align lobby button
-	let lobbyButtonSize = lobbyButton.size;
-	let lobbyButtonWidth = lobbyButtonSize.right - lobbyButtonSize.left;
+	const lobbyButtonSize = lobbyButton.size;
+	const lobbyButtonWidth = lobbyButtonSize.right - lobbyButtonSize.left;
 	lobbyButtonSize.right = (replayButton.hidden ? Engine.GetGUIObjectByName("continueButton").size.left : replayButton.size.left) - 10;
 	lobbyButtonSize.left = lobbyButtonSize.right - lobbyButtonWidth;
 	lobbyButton.size = lobbyButtonSize;
 
-	let allPanelsData = g_ScorePanelsData.concat(g_ChartPanelsData);
-	
-// Tooltip turned off, I found it annoying
-/**	for (let tab in allPanelsData)
+	const allPanelsData = g_ScorePanelsData.concat(g_ChartPanelsData);
+
+	// Tooltip turned off, I found it annoying
+	/**	for (let tab in allPanelsData)
 		allPanelsData[tab].tooltip =
 			sprintf(translate("Toggle the %(name)s summary tab."), { "name": allPanelsData[tab].label }) +
 			colorizeHotkey("\n" + translate("Use %(hotkey)s to move a summary tab right."), "tab.next") +
@@ -585,7 +586,7 @@ function initTeamData()
 		// Count teams
 		for (let player = 1; player <= g_PlayerCount; ++player)
 		{
-			let playerTeam = g_GameData.sim.playerStates[player].team;
+			const playerTeam = g_GameData.sim.playerStates[player].team;
 			if (!g_Teams[playerTeam])
 				g_Teams[playerTeam] = [];
 			g_Teams[playerTeam].push(player);

@@ -1,4 +1,4 @@
-//keep this in sync with Player~boongui.js
+// keep this in sync with Player~boongui.js
 // used in Gamesetup to have the same colors as in the game
 var g_vividColorsGamesetup = {
 	"vividBlue": { "r": 0, "g": 160, "b": 255 },
@@ -12,7 +12,8 @@ var g_vividColorsGamesetup = {
 };
 
 // It compares the old color with the  g_vividColorsGamesetup colors
-function makeColorsVivid(oldColor) {
+function makeColorsVivid(oldColor)
+{
 	if (oldColor == g_Settings.PlayerDefaults[1].Color)
 		return g_vividColorsGamesetup.vividBlue;
 	if (oldColor == g_Settings.PlayerDefaults[2].Color)
@@ -29,68 +30,73 @@ function makeColorsVivid(oldColor) {
 		return g_vividColorsGamesetup.vividOrange;
 	if (oldColor == g_Settings.PlayerDefaults[8].Color)
 		return g_vividColorsGamesetup.vividPink;
-	else
-		return oldColor;
+	return oldColor;
 }
 
 // is used to format the K/D value
-function formatKD(num) {
-	switch (true) {
-		case (isNaN(num)):
-			return '';
-		case (!isFinite(num)):
-			return translate("\u221E");
-		case (num == 0 || num >= 10):
-			return num.toFixed(0);
-		case (num < 1):
-			return num.toFixed(2);
-		default:
-			// avoid trailing zeros
-			return Number(num.toFixed(1));
+function formatKD(num)
+{
+	switch (true)
+	{
+	case (isNaN(num)):
+		return '';
+	case (!isFinite(num)):
+		return translate("\u221E");
+	case (num == 0 || num >= 10):
+		return num.toFixed(0);
+	case (num < 1):
+		return num.toFixed(2);
+	default:
+		// avoid trailing zeros
+		return Number(num.toFixed(1));
 	}
 }
 
 // currently being used for limiting the attack/ speed numbers in the HUD
-function limitNumber(num) {
-	if (num < 10) {
-		return Number(num.toFixed(1))
+function limitNumber(num)
+{
+	if (num < 10)
+	{
+		return Number(num.toFixed(1));
 	}
-	if (num >= 10) {
-		return Math.round(num)
-	}
+	return Math.round(num);
 }
 
-//boonGUI: Colored Right-Click
-function showTemplateViewerOnRightClickTooltip() {
+// boonGUI: Colored Right-Click
+function showTemplateViewerOnRightClickTooltip()
+{
 	// Translation: Appears in a tooltip to indicate that right-clicking the corresponding GUI element will open the Template Details GUI page.
 	return translate(setStringTags("\\[Right-Click]", g_HotkeyTags) + " " + "to view more information.");
 }
 
-//boonGUI: Colored Click
-function showTemplateViewerOnClickTooltip() {
+// boonGUI: Colored Click
+function showTemplateViewerOnClickTooltip()
+{
 	// Translation: Appears in a tooltip to indicate that clicking the corresponding GUI element will open the Template Details GUI page.
 	return translate(setStringTags("\\[Click]", g_HotkeyTags) + " " + "to view more information.");
 }
 
-function setupStatHUDAttackTooltip(template, projectiles) {
-	let tooltips = [];
-	for (let attackType in template.attack) {
+function setupStatHUDAttackTooltip(template, projectiles)
+{
+	const tooltips = [];
+	for (const attackType in template.attack)
+	{
 		// Slaughter is used to kill animals, so do not show it.
 		// Capture is not needed here.
 		if (["Slaughter", "Capture"].some((s) => attackType.includes(s)))
 			continue;
 
-		let attackTypeTemplate = template.attack[attackType];
-		let attackLabel = sprintf(headerFont(translate("%(attackType)s")), {
+		const attackTypeTemplate = template.attack[attackType];
+		const attackLabel = sprintf(headerFont(translate("%(attackType)s")), {
 			"attackType": translateWithContext(attackTypeTemplate.attackName.context || "Name of an attack, usually the weapon.", attackTypeTemplate.attackName.name)
 		});
 
-		let splashTemplate = attackTypeTemplate.splash;
+		const splashTemplate = attackTypeTemplate.splash;
 
 		// Show the effects of status effects below.
 		let statusEffectsDetails = [];
 		if (attackTypeTemplate.ApplyStatus)
-			for (let status in attackTypeTemplate.ApplyStatus)
+			for (const status in attackTypeTemplate.ApplyStatus)
 				statusEffectsDetails.push("\n" + g_Indent + g_Indent + getStatusEffectsTooltip(status, attackTypeTemplate.ApplyStatus[status], true));
 		statusEffectsDetails = statusEffectsDetails.join("");
 
@@ -109,31 +115,35 @@ function setupStatHUDAttackTooltip(template, projectiles) {
 	});
 }
 
-function setupStatHUDHackResistanceTooltip(template) {
+function setupStatHUDHackResistanceTooltip(template)
+{
 	return sprintf(translate("%(label)s %(resistance)s %(explaination)s"), {
 		"label": headerFont(translate("Hack Resistance Level\nDetails:\n" + g_Indent)),
-		"resistance": resistanceLevelToPercentageString(template.resistance.Damage["Hack"]),
+		"resistance": resistanceLevelToPercentageString(template.resistance.Damage.Hack),
 		"explaination": unitFont(translate("Resistance against Hack Attacks"))
 	});
 }
 
-function setupStatHUDPierceResistanceTooltip(template) {
+function setupStatHUDPierceResistanceTooltip(template)
+{
 	return sprintf(translate("%(label)s %(resistance)s %(explaination)s"), {
 		"label": headerFont(translate("Pierce Resistance Level\nDetails:\n" + g_Indent)),
-		"resistance": resistanceLevelToPercentageString(template.resistance.Damage["Pierce"]),
+		"resistance": resistanceLevelToPercentageString(template.resistance.Damage.Pierce),
 		"explaination": unitFont(translate("Resistance against Pierce Attacks"))
 	});
 }
 
-function setupStatHUDCrushResistanceTooltip(template) {
+function setupStatHUDCrushResistanceTooltip(template)
+{
 	return sprintf(translate("%(label)s %(resistance)s %(explaination)s"), {
 		"label": headerFont(translate("Crush Resistance Level\nDetails:\n" + g_Indent)),
-		"resistance": resistanceLevelToPercentageString(template.resistance.Damage["Crush"]),
+		"resistance": resistanceLevelToPercentageString(template.resistance.Damage.Crush),
 		"explaination": unitFont(translate("Resistance against Crush Attacks"))
 	});
 }
 
-function setupStatHUDSpeedTooltip(template) {
+function setupStatHUDSpeedTooltip(template)
+{
 	const walk = template.speed.walk.toFixed(1);
 	const run = template.speed.run.toFixed(1);
 

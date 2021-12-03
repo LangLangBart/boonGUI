@@ -63,18 +63,19 @@ class ProfilePanel
 
 	updatePlayerRoleText(playerName)
 	{
-		switch (playerName) {
-			case "Ratings":
-			case "WFGBot":
-			case "WFGbot":
-				return this.roleText.caption = "Beep Boop";
-				break;
-			case "Stan`":
-				return this.roleText.caption = "Project manager"
-				break;
-			default:
-				this.roleText.caption = this.RoleNames[Engine.LobbyGetPlayerRole(playerName) || "participant"];
-				break;
+		switch (playerName)
+		{
+		case "Ratings":
+		case "WFGBot":
+		case "WFGbot":
+			this.roleText.caption = "Beep Boop";
+			return;
+		case "Stan`":
+			this.roleText.caption = "Project manager";
+			return;
+		default:
+			this.roleText.caption = this.RoleNames[Engine.LobbyGetPlayerRole(playerName) || "participant"];
+			return;
 		}
 	}
 
@@ -101,7 +102,7 @@ class ProfilePanel
 
 	onProfile()
 	{
-		let attributes = Engine.GetProfile()[0];
+		const attributes = Engine.GetProfile()[0];
 		if (attributes.rating == "-2" || attributes.player != this.requestedPlayer)
 			return;
 
@@ -114,26 +115,38 @@ class ProfilePanel
 		this.winsText.caption = attributes.wins;
 		this.lossesText.caption = attributes.losses;
 		this.ratioText.caption = ProfilePanel.FormatWinRate(attributes);
-		let ratingNumberIcon = parseInt(attributes.rating, 10);
-			if (attributes.rank == "1") {
-				this.roleText.caption = "Ruler";
-				return this.rankIcon.caption = sprintf("%(icon_highest_rank)s", {"icon_highest_rank": '[icon="icon_highest_rank" displace="0 3"]'}); 
-			} else if (ratingNumberIcon > 1600) {
-				this.roleText.caption = "Conqueror";
-				return this.rankIcon.caption = sprintf("%(icon_above_1600)s", {"icon_above_1600": '[icon="icon_above_1600" displace="0 3"]'}); 
-			} else if (ratingNumberIcon > 1400) {
-				this.roleText.caption = "Champion";
-				return this.rankIcon.caption = sprintf("%(icon_above_1400)s", {"icon_above_1400": '[icon="icon_above_1400" displace="0 3"]'}); 
-			} else if (ratingNumberIcon > 1200) {
-				this.roleText.caption = "Warrior";
-				return this.rankIcon.caption = sprintf("%(icon_above_1200)s", {"icon_above_1200": '[icon="icon_above_1200" displace="0 3"]'}); 
-			} else if (ratingNumberIcon > 1000) {
-				this.roleText.caption = "Footsoldier";
-				return this.rankIcon.caption = sprintf("%(icon_above_1000)s", {"icon_above_1000": '[icon="icon_above_1000" displace="0 3"]'}); 
-			} else if (ratingNumberIcon <= 1000) {
-				this.roleText.caption = "n00b";
-				return this.rankIcon.caption = sprintf("%(icon_below_1000)s", {"icon_below_1000": '[icon="icon_below_1000" displace="0 3"]'}); 
-			} else {return this.rankIcon.caption = ""};
+		const ratingNumberIcon = parseInt(attributes.rating, 10);
+
+		switch (true)
+		{
+		case (attributes.rank == "1"):
+			this.roleText.caption = "Ruler";
+			this.rankIcon.caption = sprintf("%(icon_highest_rank)s", { "icon_highest_rank": '[icon="icon_highest_rank" displace="0 3"]' });
+			return;
+		case (ratingNumberIcon > 1600):
+			this.roleText.caption = "Conqueror";
+			this.rankIcon.caption = sprintf("%(icon_above_1600)s", { "icon_above_1600": '[icon="icon_above_1600" displace="0 3"]' });
+			return;
+		case (ratingNumberIcon > 1400):
+			this.roleText.caption = "Champion";
+			this.rankIcon.caption = sprintf("%(icon_above_1400)s", { "icon_above_1400": '[icon="icon_above_1400" displace="0 3"]' });
+			return;
+		case (ratingNumberIcon > 1200):
+			this.roleText.caption = "Warrior";
+			this.rankIcon.caption = sprintf("%(icon_above_1200)s", { "icon_above_1200": '[icon="icon_above_1200" displace="0 3"]' });
+			return;
+		case (ratingNumberIcon > 1000):
+			this.roleText.caption = "Footsoldier";
+			this.rankIcon.caption = sprintf("%(icon_above_1000)s", { "icon_above_1000": '[icon="icon_above_1000" displace="0 3"]' });
+			return;
+		case (ratingNumberIcon <= 1000):
+			this.roleText.caption = "n00b";
+			this.rankIcon.caption = sprintf("%(icon_below_1000)s", { "icon_below_1000": '[icon="icon_below_1000" displace="0 3"]' });
+			return;
+		default:
+			this.rankIcon.caption = "";
+			return;
+		}
 	}
 }
 

@@ -1,6 +1,6 @@
 function setCameraFollowFPS(entity)
 {
-	let entState = entity && GetEntityState(entity);
+	const entState = entity && GetEntityState(entity);
 	if (entState && hasClass(entState, "Unit"))
 		Engine.CameraFollowFPS(entity);
 	else
@@ -9,11 +9,11 @@ function setCameraFollowFPS(entity)
 
 function quitConfirmation()
 {
-		for (let name in QuitConfirmationMenu.prototype)
-		{
-			let quitConfirmation = new QuitConfirmationMenu.prototype[name]();
-			if (quitConfirmation.enabled())
-				quitConfirmation.display();
-		}
-		return true;
+	for (const name in QuitConfirmationMenu.prototype)
+	{
+		const quitConfirmationCheck = new QuitConfirmationMenu.prototype[name]();
+		if (quitConfirmationCheck.enabled())
+			quitConfirmationCheck.display();
+	}
+	return true;
 }

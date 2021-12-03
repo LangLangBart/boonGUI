@@ -1,7 +1,7 @@
 g_BackgroundLayerData.push(
 	[
 		{
-			"offset": (time, width) => 0.08 * width * - Math.cos(0.07 * time),
+			"offset": (time, width) => 0.08 * width * -Math.cos(0.07 * time),
 			"sprite": "background-vesta-1",
 			"tiling": true,
 		},

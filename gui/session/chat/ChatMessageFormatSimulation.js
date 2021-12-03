@@ -12,7 +12,7 @@ ChatMessageFormatSimulation.attack = class
 		if (msg.player != g_ViewedPlayer)
 			return "";
 
-		let message = msg.targetIsDomesticAnimal ?
+		const message = msg.targetIsDomesticAnimal ?
 			translate("%(icon)s Livestock attacked by %(attacker)s!") :
 			translate("%(icon)s Attacked by %(attacker)s!");
 
@@ -36,10 +36,10 @@ ChatMessageFormatSimulation.barter = class
 		if (!g_IsObserver || Engine.ConfigDB_GetValue("user", "gui.session.notifications.barter") != "true")
 			return "";
 
-		let amountGiven = {};
+		const amountGiven = {};
 		amountGiven[msg.resourceGiven] = msg.amountGiven;
 
-		let amountGained = {};
+		const amountGained = {};
 		amountGained[msg.resourceGained] = msg.amountGained;
 
 		return {
@@ -98,7 +98,7 @@ ChatMessageFormatSimulation.phase = class
 {
 	parse(msg)
 	{
-		let notifyPhase = Engine.ConfigDB_GetValue("user", "gui.session.notifications.phase");
+		const notifyPhase = Engine.ConfigDB_GetValue("user", "gui.session.notifications.phase");
 		if (notifyPhase == "none" || msg.player != g_ViewedPlayer && !g_IsObserver && !g_Players[msg.player].isMutualAlly[g_ViewedPlayer])
 			return "";
 
@@ -134,8 +134,8 @@ ChatMessageFormatSimulation.playerstate = class
 				})
 			};
 
-		let mPlayers = msg.players.map(playerID => colorizePlayernameByID(playerID));
-		let lastPlayer = mPlayers.pop();
+		const mPlayers = msg.players.map(playerID => colorizePlayernameByID(playerID));
+		const lastPlayer = mPlayers.pop();
 
 		return {
 			"text": sprintf(translatePlural(msg.message.message, msg.message.pluralMessage, msg.message.pluralCount), {

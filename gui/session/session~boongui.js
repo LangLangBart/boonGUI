@@ -1,16 +1,17 @@
 let g_stats;
 
-autociv_patchApplyN("init", function (target, that, args) {
-	let result = target.apply(that, args);
+autociv_patchApplyN("init", function(target, that, args) {
+	const result = target.apply(that, args);
 	g_stats = new BoonGUIStats();
 	return result;
 });
 
-function endGame(showSummary) {
+function endGame(showSummary)
+{
 	// Before ending the game
-	let replayDirectory = Engine.GetCurrentReplayDirectory();
-	let simData = Engine.GuiInterfaceCall("GetReplayMetadata");
-	let playerID = Engine.GetPlayerID();
+	const replayDirectory = Engine.GetCurrentReplayDirectory();
+	const simData = Engine.GuiInterfaceCall("GetReplayMetadata");
+	const playerID = Engine.GetPlayerID();
 
 	Engine.EndGame();
 
@@ -22,7 +23,7 @@ function endGame(showSummary) {
 	if (g_IsController && Engine.HasXmppClient())
 		Engine.SendUnregisterGame();
 
-	let summaryData = {
+	const summaryData = {
 		"sim": simData,
 		"gui": {
 			"dialog": false,
@@ -34,9 +35,11 @@ function endGame(showSummary) {
 		}
 	};
 
-	if (g_InitAttributes.campaignData) {
-		let menu = g_CampaignSession.getMenu();
-		if (g_InitAttributes.campaignData.skipSummary) {
+	if (g_InitAttributes.campaignData)
+	{
+		const menu = g_CampaignSession.getMenu();
+		if (g_InitAttributes.campaignData.skipSummary)
+		{
 			Engine.SwitchGuiPage(menu);
 			return;
 		}
@@ -56,11 +59,12 @@ function endGame(showSummary) {
 		Engine.SwitchGuiPage("page_pregame.xml");
 }
 
-function endHome() {
+function endHome()
+{
 	// Before ending the game
-	let replayDirectory = Engine.GetCurrentReplayDirectory();
-	let simData = Engine.GuiInterfaceCall("GetReplayMetadata");
-	let playerID = Engine.GetPlayerID();
+	const replayDirectory = Engine.GetCurrentReplayDirectory();
+	const simData = Engine.GuiInterfaceCall("GetReplayMetadata");
+	const playerID = Engine.GetPlayerID();
 
 	Engine.EndGame();
 
@@ -69,10 +73,13 @@ function endHome() {
 	if (!g_IsReplay)
 		Engine.AddReplayToCache(replayDirectory);
 	// There are 'g_IsController' for when your are the host, 'g_IsObserver' for just watching and 'g_IsNetworked' when connected via Multiplayer. This function is only for when connected to Multiplayer to properly quit the XmppClient and return to the MainPage.
-	if (g_IsNetworked && Engine.HasXmppClient()) {
+	if (g_IsNetworked && Engine.HasXmppClient())
+	{
 		Engine.SendUnregisterGame();
 		Engine.SwitchGuiPage("page_lobby.xml");
-	} else {
+	}
+	else
+	{
 		Engine.SwitchGuiPage("page_pregame.xml");
 	}
 }
@@ -80,25 +87,27 @@ function endHome() {
 /**
  * Called every frame.
  */
-function onTick() {
+function onTick()
+{
 	if (!g_Settings)
 		return;
 
-	let now = Date.now();
-	let tickLength = now - g_LastTickTime;
+	const now = Date.now();
+	const tickLength = now - g_LastTickTime;
 	g_LastTickTime = now;
 
 	handleNetMessages();
 
 	updateCursorAndTooltip();
 
-	if (g_Selection.dirty) {
+	if (g_Selection.dirty)
+	{
 
 		g_Selection.dirty = false;
 		// When selection changed, get the entityStates of new entities
 		GetMultipleEntityStates(g_Selection.filter(entId => !g_EntityStates[entId]));
 
-		for (let handler of g_EntitySelectionChangeHandlers)
+		for (const handler of g_EntitySelectionChangeHandlers)
 			handler();
 
 		updateGUIObjects();
@@ -106,17 +115,18 @@ function onTick() {
 		// Display rally points for selected structures.
 		Engine.GuiInterfaceCall("DisplayRallyPoint", { "entities": g_Selection.toList() });
 	}
-	else {
+	else
+	{
 		if (g_ShowAllStatusBars && now % g_StatusBarUpdate <= tickLength)
 			recalculateStatusBarDisplay();
 
-		Engine.GuiInterfaceCall("DisplayRallyPoint", { "entities": g_Selection.toList(), watch: true });
+		Engine.GuiInterfaceCall("DisplayRallyPoint", { "entities": g_Selection.toList(), "watch": true });
 	}
 
 	updateTimers();
 	Engine.GuiInterfaceCall("ClearRenamedEntities");
 
-	let isPlayingCinemaPath = GetSimState().cinemaPlaying && !g_Disconnected;
+	const isPlayingCinemaPath = GetSimState().cinemaPlaying && !g_Disconnected;
 	if (isPlayingCinemaPath)
 		updateCinemaOverlay();
 }

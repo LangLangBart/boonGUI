@@ -4,7 +4,7 @@
 var g_TabButtonWidth = 180;
 
 /**
- * Easily adjust all your layout settings, g_PlayerNameWidth moves the TitelHeadings (e.g. "Resoucres", g_multiplierWidths allows you to adjust the width of all columns and g_yStartHeightHead is useful for adjusting the heaadline for multiple columns in "Units, Structures and Resources". g_verticalOffsetAdjustCounters is used for adjusting the position of Counters and 
+ * Easily adjust all your layout settings, g_PlayerNameWidth moves the TitelHeadings (e.g. "Resoucres", g_multiplierWidths allows you to adjust the width of all columns and g_yStartHeightHead is useful for adjusting the heaadline for multiple columns in "Units, Structures and Resources". g_verticalOffsetAdjustCounters is used for adjusting the position of Counters and
  */
 var g_PlayerNameWidth = 232;
 var g_multiplierWidths = 1.83;
@@ -23,16 +23,16 @@ var getScorePanelsData = () => [
 		"headings": [
 			{ "identifier": "playername", "caption": translate("Player name"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": g_PlayerNameWidth },
 			{ "identifier": "totalScore", "caption": translate("Total score"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": 100 * g_multiplierWidths },
-			{ "identifier": "economyScore", "caption": translate("Economy score"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": 100 * g_multiplierWidths},
-			{ "identifier": "militaryScore", "caption": translate("Military score"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": 100 * g_multiplierWidths},
+			{ "identifier": "economyScore", "caption": translate("Economy score"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": 100 * g_multiplierWidths },
+			{ "identifier": "militaryScore", "caption": translate("Military score"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": 100 * g_multiplierWidths },
 			{ "identifier": "explorationScore", "caption": translate("Exploration score"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": 100 * g_multiplierWidths }
 		],
 		"titleHeadings": [],
 		"counters": [
-			{ "width": 100 * g_multiplierWidths, "fn": calculateScoreTotal, "verticalOffset": 12 + g_verticalOffsetAdjustCounters},
-			{ "width": 100 * g_multiplierWidths, "fn": calculateEconomyScore, "verticalOffset": 12 + g_verticalOffsetAdjustCounters},
-			{ "width": 100 * g_multiplierWidths, "fn": calculateMilitaryScore, "verticalOffset": 12 + g_verticalOffsetAdjustCounters},
-			{ "width": 100 * g_multiplierWidths, "fn": calculateExplorationScore, "verticalOffset": 12 + g_verticalOffsetAdjustCounters}
+			{ "width": 100 * g_multiplierWidths, "fn": calculateScoreTotal, "verticalOffset": 12 + g_verticalOffsetAdjustCounters },
+			{ "width": 100 * g_multiplierWidths, "fn": calculateEconomyScore, "verticalOffset": 12 + g_verticalOffsetAdjustCounters },
+			{ "width": 100 * g_multiplierWidths, "fn": calculateMilitaryScore, "verticalOffset": 12 + g_verticalOffsetAdjustCounters },
+			{ "width": 100 * g_multiplierWidths, "fn": calculateExplorationScore, "verticalOffset": 12 + g_verticalOffsetAdjustCounters }
 		],
 		"teamCounterFn": calculateScoreTeam
 	},
@@ -40,14 +40,14 @@ var getScorePanelsData = () => [
 		"label": translate("Structures"),
 		"headings": [
 			{ "identifier": "playername", "caption": translate("Player name"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": g_PlayerNameWidth },
-			{ "identifier": "total", "caption": translate("Total"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 105 * g_multiplierWidths},
-			{ "identifier": "House", "caption": translate("Houses"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths},
-			{ "identifier": "Economic", "caption": translate("Economic"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths},
-			{ "identifier": "Outpost", "caption": translate("Outposts"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths},
-			{ "identifier": "Military", "caption": translate("Military"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths},
-			{ "identifier": "Fortress", "caption": translate("Fortresses"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths},
-			{ "identifier": "CivCentre", "caption": translate("Civ centers"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths},
-			{ "identifier": "Wonder", "caption": translate("Wonders"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths}
+			{ "identifier": "total", "caption": translate("Total"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 105 * g_multiplierWidths },
+			{ "identifier": "House", "caption": translate("Houses"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths },
+			{ "identifier": "Economic", "caption": translate("Economic"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths },
+			{ "identifier": "Outpost", "caption": translate("Outposts"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths },
+			{ "identifier": "Military", "caption": translate("Military"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths },
+			{ "identifier": "Fortress", "caption": translate("Fortresses"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths },
+			{ "identifier": "CivCentre", "caption": translate("Civ centers"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths },
+			{ "identifier": "Wonder", "caption": translate("Wonders"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths }
 		],
 		"titleHeadings": [
 			{
@@ -63,14 +63,14 @@ var getScorePanelsData = () => [
 			},	// width = 700
 		],
 		"counters": [
-			{ "width": 105 * g_multiplierWidths, "fn": calculateBuildings, "verticalOffset": 3 + g_verticalOffsetAdjustCounters},
-			{ "width": 85 * g_multiplierWidths, "fn": calculateBuildings, "verticalOffset": 3 + g_verticalOffsetAdjustCounters},
-			{ "width": 85 * g_multiplierWidths, "fn": calculateBuildings, "verticalOffset": 3 + g_verticalOffsetAdjustCounters},
-			{ "width": 85 * g_multiplierWidths, "fn": calculateBuildings, "verticalOffset": 3 + g_verticalOffsetAdjustCounters},
-			{ "width": 85 * g_multiplierWidths, "fn": calculateBuildings, "verticalOffset": 3 + g_verticalOffsetAdjustCounters},
-			{ "width": 85 * g_multiplierWidths, "fn": calculateBuildings, "verticalOffset": 3 + g_verticalOffsetAdjustCounters},
-			{ "width": 85 * g_multiplierWidths, "fn": calculateBuildings, "verticalOffset": 3 + g_verticalOffsetAdjustCounters},
-			{ "width": 85 * g_multiplierWidths, "fn": calculateBuildings, "verticalOffset": 3 + g_verticalOffsetAdjustCounters}
+			{ "width": 105 * g_multiplierWidths, "fn": calculateBuildings, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
+			{ "width": 85 * g_multiplierWidths, "fn": calculateBuildings, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
+			{ "width": 85 * g_multiplierWidths, "fn": calculateBuildings, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
+			{ "width": 85 * g_multiplierWidths, "fn": calculateBuildings, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
+			{ "width": 85 * g_multiplierWidths, "fn": calculateBuildings, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
+			{ "width": 85 * g_multiplierWidths, "fn": calculateBuildings, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
+			{ "width": 85 * g_multiplierWidths, "fn": calculateBuildings, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
+			{ "width": 85 * g_multiplierWidths, "fn": calculateBuildings, "verticalOffset": 3 + g_verticalOffsetAdjustCounters }
 		],
 		"teamCounterFn": calculateBuildingsTeam
 	},
@@ -78,15 +78,15 @@ var getScorePanelsData = () => [
 		"label": translate("Units"),
 		"headings": [
 			{ "identifier": "playername", "caption": translate("Player name"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": g_PlayerNameWidth },
-			{ "identifier": "total", "caption": translate("Total"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 105 * g_multiplierWidths},
-			{ "identifier": "Infantry", "caption": translate("Infantry"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 95 * g_multiplierWidths},
-			{ "identifier": "Worker", "caption": translate("Worker"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 95 * g_multiplierWidths},
-			{ "identifier": "Cavalry", "caption": translate("Cavalry"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths},
-			{ "identifier": "Champion", "caption": translate("Champion"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths},
-			{ "identifier": "Hero", "caption": translate("Heroes"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths},
-			{ "identifier": "Siege", "caption": translate("Siege"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths},
-			{ "identifier": "Ship", "caption": translate("Navy"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths},
-			{ "identifier": "Trader", "caption": translate("Traders"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths}
+			{ "identifier": "total", "caption": translate("Total"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 105 * g_multiplierWidths },
+			{ "identifier": "Infantry", "caption": translate("Infantry"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 95 * g_multiplierWidths },
+			{ "identifier": "Worker", "caption": translate("Worker"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 95 * g_multiplierWidths },
+			{ "identifier": "Cavalry", "caption": translate("Cavalry"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths },
+			{ "identifier": "Champion", "caption": translate("Champion"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths },
+			{ "identifier": "Hero", "caption": translate("Heroes"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths },
+			{ "identifier": "Siege", "caption": translate("Siege"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths },
+			{ "identifier": "Ship", "caption": translate("Navy"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths },
+			{ "identifier": "Trader", "caption": translate("Traders"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 85 * g_multiplierWidths }
 		],
 		"titleHeadings": [
 			{
@@ -102,15 +102,15 @@ var getScorePanelsData = () => [
 			},	// width = 785
 		],
 		"counters": [
-			{ "width": 105 * g_multiplierWidths, "fn": calculateUnitsWithCaptured, "verticalOffset": 3 + g_verticalOffsetAdjustCounters},
-			{ "width": 95 * g_multiplierWidths, "fn": calculateUnits, "verticalOffset": 3 + g_verticalOffsetAdjustCounters},
-			{ "width": 95 * g_multiplierWidths, "fn": calculateUnits, "verticalOffset": 3 + g_verticalOffsetAdjustCounters},
-			{ "width": 85 * g_multiplierWidths, "fn": calculateUnits, "verticalOffset": 3 + g_verticalOffsetAdjustCounters},
-			{ "width": 85 * g_multiplierWidths, "fn": calculateUnits, "verticalOffset": 3 + g_verticalOffsetAdjustCounters},
-			{ "width": 85 * g_multiplierWidths, "fn": calculateUnits, "verticalOffset": 3 + g_verticalOffsetAdjustCounters},
-			{ "width": 85 * g_multiplierWidths, "fn": calculateUnitsWithCaptured, "verticalOffset": 3 + g_verticalOffsetAdjustCounters},
-			{ "width": 85 * g_multiplierWidths, "fn": calculateUnits, "verticalOffset": 3 + g_verticalOffsetAdjustCounters},
-			{ "width": 85 * g_multiplierWidths, "fn": calculateUnits, "verticalOffset": 3 + g_verticalOffsetAdjustCounters}
+			{ "width": 105 * g_multiplierWidths, "fn": calculateUnitsWithCaptured, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
+			{ "width": 95 * g_multiplierWidths, "fn": calculateUnits, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
+			{ "width": 95 * g_multiplierWidths, "fn": calculateUnits, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
+			{ "width": 85 * g_multiplierWidths, "fn": calculateUnits, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
+			{ "width": 85 * g_multiplierWidths, "fn": calculateUnits, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
+			{ "width": 85 * g_multiplierWidths, "fn": calculateUnits, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
+			{ "width": 85 * g_multiplierWidths, "fn": calculateUnitsWithCaptured, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
+			{ "width": 85 * g_multiplierWidths, "fn": calculateUnits, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
+			{ "width": 85 * g_multiplierWidths, "fn": calculateUnits, "verticalOffset": 3 + g_verticalOffsetAdjustCounters }
 		],
 		"teamCounterFn": calculateUnitsTeam
 	},
@@ -118,7 +118,7 @@ var getScorePanelsData = () => [
 		"label": translate("Resources"),
 		"headings": [
 			{ "identifier": "playername", "caption": translate("Player name"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": g_PlayerNameWidth },
-			{ "identifier": "total", "caption": translate("Total"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 125 * g_multiplierWidths},
+			{ "identifier": "total", "caption": translate("Total"), "yStart": 34 + g_verticalOffsetAdjustHeadings, "width": 125 * g_multiplierWidths },
 			...g_ResourceData.GetResources().map(res => ({
 				"identifier": res.code,
 				"caption": resourceNameFirstWord(res.code),
@@ -136,8 +136,8 @@ var getScorePanelsData = () => [
 				"yStart": 16 + g_verticalOffsetAdjustHeadings,
 				"width": 115 * g_multiplierWidths
 			},
-			{ "identifier": "loot", "caption": translate("Loot"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": 75 * g_multiplierWidths},
-			{ "identifier": "livestock", "caption": translate("Livestock bred"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": 65 * g_multiplierWidths}
+			{ "identifier": "loot", "caption": translate("Loot"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": 75 * g_multiplierWidths },
+			{ "identifier": "livestock", "caption": translate("Livestock bred"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": 65 * g_multiplierWidths }
 		],
 		"titleHeadings": [
 			{
@@ -151,15 +151,15 @@ var getScorePanelsData = () => [
 			},
 		],
 		"counters": [
-			{ "width": 125 * g_multiplierWidths, "fn": calculateTotalResources, "verticalOffset": 12 + g_verticalOffsetAdjustCounters},
+			{ "width": 125 * g_multiplierWidths, "fn": calculateTotalResources, "verticalOffset": 12 + g_verticalOffsetAdjustCounters },
 			...g_ResourceData.GetCodes().map(code => ({
 				"fn": calculateResources,
 				"verticalOffset": 12 + g_verticalOffsetAdjustCounters,
 				"width": 120 * g_multiplierWidths
 			})),
-			{ "width": 115 * g_multiplierWidths, "fn": calculateTributeSent, "verticalOffset": 12 + g_verticalOffsetAdjustCounters},
-			{ "width": 75 * g_multiplierWidths, "fn": calculateLootCollected, "verticalOffset": 12 + g_verticalOffsetAdjustCounters},
-			{ "width": 65 * g_multiplierWidths, "fn": calculateLivestockTrained, "verticalOffset": 12 + g_verticalOffsetAdjustCounters}
+			{ "width": 115 * g_multiplierWidths, "fn": calculateTributeSent, "verticalOffset": 12 + g_verticalOffsetAdjustCounters },
+			{ "width": 75 * g_multiplierWidths, "fn": calculateLootCollected, "verticalOffset": 12 + g_verticalOffsetAdjustCounters },
+			{ "width": 65 * g_multiplierWidths, "fn": calculateLivestockTrained, "verticalOffset": 12 + g_verticalOffsetAdjustCounters }
 		],
 		"teamCounterFn": calculateResourcesTeam
 	},
@@ -167,7 +167,7 @@ var getScorePanelsData = () => [
 		"label": translate("Market"),
 		"headings": [
 			{ "identifier": "playername", "caption": translate("Player name"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": g_PlayerNameWidth },
-			{ "identifier": "tradeIncome", "caption": translate("Trade income"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": 100 * g_multiplierWidths},
+			{ "identifier": "tradeIncome", "caption": translate("Trade income"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": 100 * g_multiplierWidths },
 			{ "identifier": "barterEfficency", "caption": translate("Barter efficiency"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": 100 * g_multiplierWidths, "format": "PERCENTAGE" },
 			...g_ResourceData.GetResources().map(res => {
 				return {
@@ -182,18 +182,18 @@ var getScorePanelsData = () => [
 					"width": 100 * g_multiplierWidths
 				};
 			}),
-			{ "identifier": "treasuresCollected", "caption": translate("Treasures collected"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": 100 * g_multiplierWidths}
+			{ "identifier": "treasuresCollected", "caption": translate("Treasures collected"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": 100 * g_multiplierWidths }
 		],
 		"titleHeadings": [],
 		"counters": [
-			{ "width": 100 * g_multiplierWidths, "fn": calculateTradeIncome, "verticalOffset": 12 + g_verticalOffsetAdjustCounters},
-			{ "width": 100 * g_multiplierWidths, "fn": calculateBarterEfficiency, "verticalOffset": 12 + g_verticalOffsetAdjustCounters},
+			{ "width": 100 * g_multiplierWidths, "fn": calculateTradeIncome, "verticalOffset": 12 + g_verticalOffsetAdjustCounters },
+			{ "width": 100 * g_multiplierWidths, "fn": calculateBarterEfficiency, "verticalOffset": 12 + g_verticalOffsetAdjustCounters },
 			...g_ResourceData.GetCodes().map(code => ({
 				"width": 100 * g_multiplierWidths,
 				"fn": calculateResourceExchanged,
 				"verticalOffset": 12 + g_verticalOffsetAdjustCounters
 			})),
-			{ "width": 100 * g_multiplierWidths, "fn": calculateTreasureCollected, "verticalOffset": 12 + g_verticalOffsetAdjustCounters}
+			{ "width": 100 * g_multiplierWidths, "fn": calculateTreasureCollected, "verticalOffset": 12 + g_verticalOffsetAdjustCounters }
 		],
 		"teamCounterFn": calculateMarketTeam
 	},
@@ -222,14 +222,14 @@ var getScorePanelsData = () => [
 		],
 		"titleHeadings": [],
 		"counters": [
-			{ "width": 100 * g_multiplierWidths, "fn": calculateKillDeathRatio, "verticalOffset": 12 + g_verticalOffsetAdjustCounters},
+			{ "width": 100 * g_multiplierWidths, "fn": calculateKillDeathRatio, "verticalOffset": 12 + g_verticalOffsetAdjustCounters },
 			{ "width": 100 * g_multiplierWidths, "fn": calculatePopulationCount, "verticalOffset": 12 + g_verticalOffsetAdjustCounters, "hideInSummary": true },
-			{ "width": 100 * g_multiplierWidths, "fn": calculateMapPeakControl, "verticalOffset": 12 + g_verticalOffsetAdjustCounters},
-			{ "width": 100 * g_multiplierWidths, "fn": calculateMapFinalControl, "verticalOffset": 12 + g_verticalOffsetAdjustCounters},
-			{ "width": 100 * g_multiplierWidths, "fn": calculateMapExploration, "verticalOffset": 12 + g_verticalOffsetAdjustCounters},
-			{ "width": 100 * g_multiplierWidths, "fn": calculateVegetarianRatio, "verticalOffset": 12 + g_verticalOffsetAdjustCounters},
-			{ "width": 100 * g_multiplierWidths, "fn": calculateFeminization, "verticalOffset": 12 + g_verticalOffsetAdjustCounters},
-			{ "width": 139 * g_multiplierWidths, "fn": calculateBribes, "verticalOffset": 12 + g_verticalOffsetAdjustCounters}
+			{ "width": 100 * g_multiplierWidths, "fn": calculateMapPeakControl, "verticalOffset": 12 + g_verticalOffsetAdjustCounters },
+			{ "width": 100 * g_multiplierWidths, "fn": calculateMapFinalControl, "verticalOffset": 12 + g_verticalOffsetAdjustCounters },
+			{ "width": 100 * g_multiplierWidths, "fn": calculateMapExploration, "verticalOffset": 12 + g_verticalOffsetAdjustCounters },
+			{ "width": 100 * g_multiplierWidths, "fn": calculateVegetarianRatio, "verticalOffset": 12 + g_verticalOffsetAdjustCounters },
+			{ "width": 100 * g_multiplierWidths, "fn": calculateFeminization, "verticalOffset": 12 + g_verticalOffsetAdjustCounters },
+			{ "width": 139 * g_multiplierWidths, "fn": calculateBribes, "verticalOffset": 12 + g_verticalOffsetAdjustCounters }
 		],
 		"teamCounterFn": calculateMiscellaneousTeam
 	}
@@ -268,18 +268,18 @@ function resetGeneralPanel()
 
 function updateGeneralPanelHeadings(allHeadings)
 {
-	let headings = allHeadings.filter(heading => !heading.hideInSummary);
+	const headings = allHeadings.filter(heading => !heading.hideInSummary);
 
 	let left = 31;
-	for (let h in headings)
+	for (const h in headings)
 	{
 		let headerGUIName = "playerNameHeading";
 		if (h > 0)
 			headerGUIName = "Heading[" + (h - 1) + "]";
 
-		let headerGUI = Engine.GetGUIObjectByName(headerGUIName);
+		const headerGUI = Engine.GetGUIObjectByName(headerGUIName);
 		headerGUI.caption = headings[h].headerCaption || headings[h].caption;
-		headerGUI.size = left + " " + (headings[h].yStart - 15) + " " + (left + headings[h].width + 19 ) + " 130%";
+		headerGUI.size = left + " " + (headings[h].yStart - 15) + " " + (left + headings[h].width + 19) + " 130%";
 		headerGUI.hidden = false;
 
 		if (headings[h].width < g_LongHeadingWidth)
@@ -290,7 +290,7 @@ function updateGeneralPanelHeadings(allHeadings)
 function updateGeneralPanelTitles(titleHeadings)
 {
 	let left = 250;
-	for (let th in titleHeadings)
+	for (const th in titleHeadings)
 	{
 		if (th >= g_MaxHeadingTitle)
 			break;
@@ -298,7 +298,7 @@ function updateGeneralPanelTitles(titleHeadings)
 		if (titleHeadings[th].xOffset)
 			left += titleHeadings[th].xOffset;
 
-		let headerGUI = Engine.GetGUIObjectByName("titleHeading[" + th + "]");
+		const headerGUI = Engine.GetGUIObjectByName("titleHeading[" + th + "]");
 		headerGUI.caption = titleHeadings[th].caption;
 		headerGUI.size = left + " " + (titleHeadings[th].yStart - 15) + " " + (left + titleHeadings[th].width) + " 100%";
 		headerGUI.hidden = false;
@@ -310,7 +310,7 @@ function updateGeneralPanelTitles(titleHeadings)
 
 function updateGeneralPanelCounter(allCounters)
 {
-	let counters = allCounters.filter(counter => !counter.hideInSummary);
+	const counters = allCounters.filter(counter => !counter.hideInSummary);
 	let rowPlayerObjectWidth = 0;
 	let left = 0;
 
@@ -319,7 +319,7 @@ function updateGeneralPanelCounter(allCounters)
 		left = 247;
 		let counterObject;
 
-		for (let w in counters)
+		for (const w in counters)
 		{
 			counterObject = Engine.GetGUIObjectByName("valueData[" + p + "][" + w + "]");
 			counterObject.size = left + " " + counters[w].verticalOffset + " " + (left + counters[w].width) + " 100%";
@@ -334,7 +334,7 @@ function updateGeneralPanelCounter(allCounters)
 		for (let t = 0; t < g_MaxTeams; ++t)
 		{
 			left = 240;
-			for (let w in counters)
+			for (const w in counters)
 			{
 				counterObject = Engine.GetGUIObjectByName("valueDataTeam[" + t + "][" + p + "][" + w + "]");
 				counterObject.size = left + 40 + " " + counters[w].verticalOffset + " " + (left + counters[w].width + 11) + " 100%";
@@ -342,9 +342,9 @@ function updateGeneralPanelCounter(allCounters)
 
 				if (g_Teams[t])
 				{
-					let yStart = 25 + g_Teams[t].length * (g_PlayerBoxYSize + g_PlayerBoxGap) + 3 + counters[w].verticalOffset;
+					const yStart = 25 + g_Teams[t].length * (g_PlayerBoxYSize + g_PlayerBoxGap) + 3 + counters[w].verticalOffset;
 					counterTotalObject = Engine.GetGUIObjectByName("valueDataTeam[" + t + "][" + w + "]");
-					counterTotalObject.size = (left + 45) + " " + (yStart - 5) + " " + (left + counters[w].width + 25 ) + " 100%";
+					counterTotalObject.size = (left + 45) + " " + (yStart - 5) + " " + (left + counters[w].width + 25) + " 100%";
 					counterTotalObject.hidden = false;
 				}
 
@@ -357,7 +357,7 @@ function updateGeneralPanelCounter(allCounters)
 
 function updateGeneralPanelTeams()
 {
-	let withoutTeam = !g_Teams[-1] ? 0 : g_Teams[-1].length;
+	const withoutTeam = !g_Teams[-1] ? 0 : g_Teams[-1].length;
 
 	if (!g_Teams || withoutTeam > 0)
 		Engine.GetGUIObjectByName("noTeamsBox").hidden = false;
@@ -366,14 +366,14 @@ function updateGeneralPanelTeams()
 		return;
 
 	let yStart = g_TeamsBoxYStart + withoutTeam * (g_PlayerBoxYSize + g_PlayerBoxGap) + (withoutTeam ? 30 : 0);
-	for (let i in g_Teams)
+	for (const i in g_Teams)
 	{
 		if (i == -1)
 			continue;
 
-		let teamBox = Engine.GetGUIObjectByName("teamBoxt["+i+"]");
+		const teamBox = Engine.GetGUIObjectByName("teamBoxt["+i+"]");
 		teamBox.hidden = false;
-		let teamBoxSize = teamBox.size;
+		const teamBoxSize = teamBox.size;
 		teamBoxSize.top = yStart;
 		teamBox.size = teamBoxSize;
 
@@ -381,8 +381,8 @@ function updateGeneralPanelTeams()
 
 		Engine.GetGUIObjectByName("teamNameHeadingt[" + i + "]").caption = "Team " + (+i + 1);
 
-		let teamHeading = Engine.GetGUIObjectByName("teamHeadingt[" + i + "]");
-		let yStartTotal = 30 + g_Teams[i].length * (g_PlayerBoxYSize + g_PlayerBoxGap) + 10;
+		const teamHeading = Engine.GetGUIObjectByName("teamHeadingt[" + i + "]");
+		const yStartTotal = 30 + g_Teams[i].length * (g_PlayerBoxYSize + g_PlayerBoxGap) + 10;
 		teamHeading.size = "50 " + yStartTotal + " 100% " + (yStartTotal + 20);
 		teamHeading.caption = translate("");
 	}
@@ -396,7 +396,7 @@ function initPlayerBoxPositions()
 {
 	for (let h = 0; h < g_MaxPlayers; ++h)
 	{
-		let playerBox = Engine.GetGUIObjectByName("playerBox[" + h + "]");
+		const playerBox = Engine.GetGUIObjectByName("playerBox[" + h + "]");
 		let boxSize = playerBox.size;
 		boxSize.top += h * (g_PlayerBoxYSize + g_PlayerBoxGap);
 		boxSize.bottom = boxSize.top + g_PlayerBoxYSize;
@@ -404,7 +404,7 @@ function initPlayerBoxPositions()
 
 		for (let i = 0; i < g_MaxTeams; ++i)
 		{
-			let playerBoxt = Engine.GetGUIObjectByName("playerBoxt[" + i + "][" + h + "]");
+			const playerBoxt = Engine.GetGUIObjectByName("playerBoxt[" + i + "][" + h + "]");
 			boxSize = playerBoxt.size;
 			boxSize.top += h * (g_PlayerBoxYSize + g_PlayerBoxGap);
 			boxSize.bottom = boxSize.top + g_PlayerBoxYSize;

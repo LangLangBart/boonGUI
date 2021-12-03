@@ -10,7 +10,7 @@ class QuitConfirmationReplay extends SessionMessageBox
 	}
 }
 
-QuitConfirmationReplay.prototype.Title = setStringTags("Replay Finished", { "font": "sans-bold-16"});
+QuitConfirmationReplay.prototype.Title = setStringTags("Replay Finished", { "font": "sans-bold-16" });
 
 QuitConfirmationReplay.prototype.Caption = "";
 

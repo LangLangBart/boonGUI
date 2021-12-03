@@ -16,7 +16,7 @@ class CounterResource
 	{
 		this.count.caption = abbreviateLargeNumbers(Math.floor(playerState.resourceCounts[this.resCode]));
 
-		let gatherers = playerState.resourceGatherers[this.resCode];
+		const gatherers = playerState.resourceGatherers[this.resCode];
 		this.stats.caption = gatherers ? coloredText(gatherers, rgbToGuiColor(g_DiplomacyColors.displayedPlayerColors[g_ViewedPlayer])) : 0;
 
 		// TODO: Set the tooltip only if hovered?
@@ -35,7 +35,7 @@ class CounterResource
 		return {
 			"playername": playername,
 			"statValue": Math.round(playerState.resourceCounts[this.resCode]),
-			"orderValue":  Math.round(playerState.resourceCounts[this.resCode])
+			"orderValue": Math.round(playerState.resourceCounts[this.resCode])
 		};
 	}
 }

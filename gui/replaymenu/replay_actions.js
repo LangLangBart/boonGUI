@@ -3,17 +3,17 @@
  */
 function createReplaySelectionData(selectedDirectory)
 {
-	let replaySelection = Engine.GetGUIObjectByName("replaySelection");
-	let dateTimeFilter = Engine.GetGUIObjectByName("dateTimeFilter");
-	let playersFilter = Engine.GetGUIObjectByName("playersFilter");
-	let mapNameFilter = Engine.GetGUIObjectByName("mapNameFilter");
-	let mapSizeFilter = Engine.GetGUIObjectByName("mapSizeFilter");
-	let populationFilter = Engine.GetGUIObjectByName("populationFilter");
-	let durationFilter = Engine.GetGUIObjectByName("durationFilter");
-	let compatibilityFilter = Engine.GetGUIObjectByName("compatibilityFilter");
-	let singleplayerFilter = Engine.GetGUIObjectByName("singleplayerFilter");
-	let victoryConFilter = Engine.GetGUIObjectByName("victoryConditionFilter");
-	let ratedGamesFilter = Engine.GetGUIObjectByName("ratedGamesFilter");
+	const replaySelection = Engine.GetGUIObjectByName("replaySelection");
+	const dateTimeFilter = Engine.GetGUIObjectByName("dateTimeFilter");
+	const playersFilter = Engine.GetGUIObjectByName("playersFilter");
+	const mapNameFilter = Engine.GetGUIObjectByName("mapNameFilter");
+	const mapSizeFilter = Engine.GetGUIObjectByName("mapSizeFilter");
+	const populationFilter = Engine.GetGUIObjectByName("populationFilter");
+	const durationFilter = Engine.GetGUIObjectByName("durationFilter");
+	const compatibilityFilter = Engine.GetGUIObjectByName("compatibilityFilter");
+	const singleplayerFilter = Engine.GetGUIObjectByName("singleplayerFilter");
+	const victoryConFilter = Engine.GetGUIObjectByName("victoryConditionFilter");
+	const ratedGamesFilter = Engine.GetGUIObjectByName("ratedGamesFilter");
 
 	return {
 		"directory": selectedDirectory,
@@ -98,7 +98,7 @@ function displayReplayCompatibilityError(replay)
 	var errMsg;
 	if (replayHasSameEngineVersion(replay))
 	{
-		let gameMods = replay.attribs.mods || [];
+		const gameMods = replay.attribs.mods || [];
 		errMsg = translate("This replay needs a different sequence of mods:") + "\n" +
 			comparedModsString(gameMods, g_EngineInfo.mods);
 	}
@@ -122,7 +122,7 @@ function showReplaySummary()
 		return;
 
 	// Load summary screen data from the selected replay directory
-	let simData = Engine.GetReplayMetadata(g_ReplaysFiltered[selected].directory);
+	const simData = Engine.GetReplayMetadata(g_ReplaysFiltered[selected].directory);
 
 	if (!simData)
 	{
@@ -144,7 +144,7 @@ function showReplaySummary()
 
 function reloadCache()
 {
-	let selected = Engine.GetGUIObjectByName("replaySelection").selected;
+	const selected = Engine.GetGUIObjectByName("replaySelection").selected;
 	loadReplays(selected > -1 ? createReplaySelectionData(g_ReplaysFiltered[selected].directory) : "", true);
 }
 
@@ -171,7 +171,7 @@ function closeReplay()
 		Engine.LobbySetPlayerPresence("available");
 		return Engine.PopGuiPage();
 	}
-		return Engine.SwitchGuiPage("page_pregame.xml");
+	return Engine.SwitchGuiPage("page_pregame.xml");
 }
 /**
  * Shows a confirmation dialog and deletes the selected replay from the disk in case.

@@ -11,11 +11,11 @@ ChatMessageEvents.ClientReady = class
 
 	onReadyMessage(message)
 	{
-		let playerAssignment = g_PlayerAssignments[message.guid];
+		const playerAssignment = g_PlayerAssignments[message.guid];
 		if (!playerAssignment || playerAssignment.player == -1)
 			return;
 
-		let text = this.ReadyMessage[message.status] || undefined;
+		const text = this.ReadyMessage[message.status] || undefined;
 		if (!text)
 			return;
 

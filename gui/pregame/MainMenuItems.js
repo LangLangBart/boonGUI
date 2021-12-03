@@ -42,7 +42,7 @@ var g_MainMenuItems = [
 				"tooltip": colorizeHotkey(translate("%(hotkey)s: View the structure tree of civilizations featured in 0 A.D."), "structree"),
 				"hotkey": "structree",
 				"onPress": () => {
-					let callback = data => {
+					const callback = data => {
 						if (data.nextPage)
 							Engine.PushGuiPage(data.nextPage, { "civ": data.civ }, callback);
 					};
@@ -54,7 +54,7 @@ var g_MainMenuItems = [
 				"tooltip": colorizeHotkey(translate("%(hotkey)s: Learn about the civilizations featured in 0 A.D."), "civinfo"),
 				"hotkey": "civinfo",
 				"onPress": () => {
-					let callback = data => {
+					const callback = data => {
 						if (data.nextPage)
 							Engine.PushGuiPage(data.nextPage, { "civ": data.civ }, callback);
 					};
@@ -133,14 +133,14 @@ var g_MainMenuItems = [
 		"tooltip": translate("Playback previous games."),
 		"onPress": () => {
 			Engine.PushGuiPage("page_replaymenu.xml",
-		{
-				"replaySelectionData": {
+				{
+					"replaySelectionData": {
 						"filters": {
 							"compatibility": false,
 							"singleplayer": "Single-player and Multiplayer"
-							}
+						}
 					}
-			});
+				});
 		}
 	},
 	{
@@ -148,23 +148,23 @@ var g_MainMenuItems = [
 		"tooltip": translate("Select and download mods for the game."),
 		"onPress": () => {
 			Engine.SwitchGuiPage("page_modmod.xml");
-							}
+		}
 	},
 	{
 		"caption": translate("Options"),
 		"tooltip": translate("Adjust game settings."),
 		"onPress": () => {
-					Engine.PushGuiPage(
-						"page_options.xml",
-						{},
-						fireConfigChangeHandlers);
+			Engine.PushGuiPage(
+				"page_options.xml",
+				{},
+				fireConfigChangeHandlers);
 		}
 	},
 	{
 		"caption": translate("Rest"),
 		"tooltip": translate("Change game options."),
 		"submenu": [
-				{
+			{
 				"caption": translate("Scenario Editor"),
 				"tooltip": translate('Open the Atlas Scenario Editor in a new window. You can run this more reliably by starting the game with the command-line argument "-editor".'),
 				"onPress": () => {
@@ -180,7 +180,7 @@ var g_MainMenuItems = [
 							400, 200,
 							translate("The scenario editor is not available or failed to load. See the game logs for additional information."),
 							translate("Error"));
-					}
+				}
 			},
 			{
 				"caption": translate("Hotkeys"),

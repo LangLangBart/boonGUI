@@ -9,7 +9,7 @@ init = function(data, hotloadData)
 
 	// CHANGES START /////////////////////////
 	g_Options = [];
-	for (let options of g_autociv_optionsFiles)
+	for (const options of g_autociv_optionsFiles)
 		Array.prototype.push.apply(g_Options, Engine.ReadJSONFile(options));
 	// CHANGES END /////////////////////////
 

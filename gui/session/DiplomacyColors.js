@@ -44,7 +44,7 @@ class DiplomacyColors
 
 	onConfigChange(changes)
 	{
-		for (let change of changes)
+		for (const change of changes)
 			if (change.startsWith("gui.session.diplomacycolors."))
 			{
 				this.updateDisplayedPlayerColors();
@@ -82,7 +82,7 @@ class DiplomacyColors
 			"selected": g_Selection.toList()
 		});
 
-		for (let handler of this.diplomacyColorsChangeHandlers)
+		for (const handler of this.diplomacyColorsChangeHandlers)
 			handler(this.enabled);
 	}
 
@@ -94,12 +94,12 @@ class DiplomacyColors
 			return;
 		}
 
-		let teamRepresentatives = {};
+		const teamRepresentatives = {};
 		for (let i = 1; i < g_Players.length; ++i)
 			if (g_ViewedPlayer <= 0)
 			{
 				// Observers and gaia see team colors
-				let team = g_Players[i].state == "active" ? g_Players[i].team : "";
+				const team = g_Players[i].state == "active" ? g_Players[i].team : "";
 				this.displayedPlayerColors[i] = g_Players[teamRepresentatives[team] || i].color;
 				if (team != -1 && !teamRepresentatives[team])
 					teamRepresentatives[team] = i;
@@ -108,9 +108,9 @@ class DiplomacyColors
 				// Players see colors depending on diplomacy
 				this.displayedPlayerColors[i] =
 					g_ViewedPlayer == i ? g_vividColorsGamesetup.vividBlue :
-					g_Players[g_ViewedPlayer].isAlly[i] ? g_vividColorsGamesetup.vividGreen :
-					g_Players[g_ViewedPlayer].isNeutral[i] ? g_vividColorsGamesetup.vividYellow :
-					g_vividColorsGamesetup.vividRed;
+						g_Players[g_ViewedPlayer].isAlly[i] ? g_vividColorsGamesetup.vividGreen :
+							g_Players[g_ViewedPlayer].isNeutral[i] ? g_vividColorsGamesetup.vividYellow :
+								g_vividColorsGamesetup.vividRed;
 
 		this.displayedPlayerColors[0] = g_Players[0].color;
 	}
