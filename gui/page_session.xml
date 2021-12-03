@@ -18,4 +18,5 @@
 
 	<include>session/setups/tech.xml</include>
 	<include>session/setups/misc.xml</include>
+	<include>session/setups/emblem.xml</include>
 </page>
