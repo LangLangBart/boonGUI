@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<object name="minimapPanel"
-	size="0 0 100% 100%"
-	sprite="mapPanel"
->
+<object name="minimapPanel" size="0 0 100% 100%">
 	<!-- Black background circle-->
 	<object
 		type="image"
