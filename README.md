@@ -1,4 +1,4 @@
----
+
 
 <!-- Title -->
 <div align="center">
@@ -31,7 +31,6 @@ User interface **mod** for the RTS game **0 A.D.**
 
 <div align="center">
 
-### Screenshots
 
 <img src="boongui_data/boongui_stats_toppanel.png" width=500> <br>
 <img src="boongui_data/boongui_ingame.png" width=500> <img src="boongui_data/boongui_stats_panel.png" width=250><br>
@@ -56,6 +55,8 @@ User interface **mod** for the RTS game **0 A.D.**
 </p>
 
 </div>
+
+---
 
 ## Features
 * **Main menu**
@@ -87,6 +88,8 @@ User interface **mod** for the RTS game **0 A.D.**
 * **Summary screen**
   * Increased the size, recommend to use a 1920x1080 display.
 
+---
+
 ## Installation
 * Download the `zip file` or `git clone` this repo.
 ```
@@ -99,7 +102,7 @@ git clone https://github.com/LangLangBart/boonGUI.git
 * Launch 0 A.D., click `Settings` and `Mod Selection`.
 * Double-click `boonGUI`, click `Save Configuration` and `Start Mods`.
 
-#### Convenient installation
+### Convenient installation
 <details>
  <summary><b>Arch and Manjaro Linux users</b></summary>
 <p>
@@ -119,7 +122,36 @@ zsh -c "$(curl -fsSL https://raw.githubusercontent.com/LangLangBart/boonGUI/main
 </p>
 </details>
 
-## Contributors
+---
+
+## Contributing
+### Linting
+
+<details>
+ <summary><b>Set up for VS Code</b></summary>
+<p>
+Linting is done via ESLint: https://eslint.org
+
+* Install `node.js` and the `ESLint` extension for VS Code.
+* Git clone this repo.
+* Install the dependencies and add the newly created `node_modules` folder to your `.gitignore_global`.
+
+```zsh
+npm install -g eslint eslint-plugin-brace-rules @typescript-eslint/parser @typescript-eslint/eslint-plugin
+
+npm i -D eslint eslint-plugin-brace-rules @typescript-eslint/parser @typescript-eslint/eslint-plugin
+```
+
+* Done. You can check your repository with the following command.
+
+```zsh
+eslint .
+```
+
+</p>
+</details>
+
+### Contributors
 Motivation for this mod was the desire to learn javascript and create a tool for @mysticjim to help him create his YouTube videos. Since then many people have contributed to this mod, to all of those I wanted to say thank you.
 * A complete makeover of the stats overlay was done thanks to @Islan.
 * Thanks to @mysticjim, @Palaiologos and @seeh for constantly testing and giving feedback.
