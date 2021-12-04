@@ -33,4 +33,6 @@ jobs:
         uses: wearerequired/lint-action@v1
         with:
           eslint: true
+          #Whether the workflow run should also fail when linter failures are detected.
+          continue_on_error: false
 

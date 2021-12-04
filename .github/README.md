@@ -1,10 +1,30 @@
-
-
 <!-- Title -->
 <div align="center">
 
 # boonGUI <br>
-[![GitHub release](https://img.shields.io/github/release/LangLangBart/boonGUI.svg?style=flat-square&color=gold&label=Latest%20Release)](https://github.com/LangLangBart/boonGUI/releases/latest) [![Compatibility with 0AD](https://img.shields.io/badge/dynamic/json?style=flat-square&color=green&label=Compatibility&query=dependencies&url=https%3A%2F%2Fraw.githubusercontent.com%2FLangLangBart%2FboonGUI%2Fmain%2Fmod.json)](https://play0ad.com/download/) [![Link to the forum thread](https://img.shields.io/badge/Discussion-Forum-orange?style=flat-square)](https://wildfiregames.com/forum/topic/37147-boongui-mod-compatible-with-a25)
+<!-- Development badges -->
+[![commits][commits-image]][commits-url]
+[![maintained][maintained-image]][commits-url]
+[![lint][lint-image]][lint-url]
+
+
+[commits-image]: https://img.shields.io/github/commits-since/LangLangBart/boonGUI/latest/main?label=Commits%20ahead%20of%20Release&style=flat-square
+[commits-url]: https://github.com/LangLangBart/boonGUI
+[maintained-image]: https://img.shields.io/maintenance/yes/2021?label=Maintained&style=flat-square
+[lint-image]: https://img.shields.io/github/workflow/status/LangLangBart/boonGUI/Lint/main?label=ESLint&style=flat-square
+[lint-url]: https://github.com/LangLangBart/boonGUI/actions/workflows/lint.yml
+
+<!-- General badges -->
+[![release][release-image]][release-url]
+[![compatibility][compatibility-image]][compatibility-url]
+[![forum][forum-image]][forum-url]
+
+[release-image]: https://img.shields.io/github/release/LangLangBart/boonGUI.svg?style=flat-square&color=gold&label=Latest%20Release
+[release-url]: https://github.com/LangLangBart/boonGUI/releases/latest
+[compatibility-image]: https://img.shields.io/badge/dynamic/json?style=flat-square&color=green&label=Compatibility&query=dependencies&url=https%3A%2F%2Fraw.githubusercontent.com%2FLangLangBart%2FboonGUI%2Fmain%2Fmod.json
+[compatibility-url]: https://play0ad.com/download/
+[forum-image]: https://img.shields.io/badge/Discussion-Forum-orange?style=flat-square
+[forum-url]: https://wildfiregames.com/forum/topic/37147-boongui-mod-compatible-with-a25
 
 User interface **mod** for the RTS game **0 A.D.**
 </div>
@@ -125,7 +145,7 @@ zsh -c "$(curl -fsSL https://raw.githubusercontent.com/LangLangBart/boonGUI/main
 ---
 
 ## Contributing
-###
+### Linting
 
 <details>
  <summary><b>Set up for VS Code</b></summary>
