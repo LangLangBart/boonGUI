@@ -12,7 +12,7 @@ User interface **mod** for the RTS game **0 A.D.**
 <!-- 0 A.D. logo -->
 <div align="center">
 <p align="center">
-<a href="https://play0ad.com"><img src="boongui_data/0ad_logo.png" width="300">
+<a href="https://play0ad.com"><img src="Screenshots/0ad_logo.png" width="300">
 </p>
 
 <a name="menu"></a>
@@ -32,9 +32,9 @@ User interface **mod** for the RTS game **0 A.D.**
 <div align="center">
 
 
-<img src="boongui_data/boongui_stats_toppanel.png" width=500> <br>
-<img src="boongui_data/boongui_ingame.png" width=500> <img src="boongui_data/boongui_stats_panel.png" width=250><br>
-<img src="boongui_data/boongui_hud.png" width=500>
+<img src="Screenshots/boongui_stats_toppanel.png" width=500> <br>
+<img src="Screenshots/boongui_ingame.png" width=500> <img src="Screenshots/boongui_stats_panel.png" width=250><br>
+<img src="Screenshots/boongui_hud.png" width=500>
 
 ### Featured v2.0.0
 <p>
@@ -117,7 +117,7 @@ You can skip the above steps and install the <a href="https://aur.archlinux.org/
 
 Paste it into your macOS terminal and press enter. The mod will be downloaded and placed in the correct 0ad mods folder.
 ```zsh
-zsh -c "$(curl -fsSL https://raw.githubusercontent.com/LangLangBart/boonGUI/main/boongui_data/macOS_installer.sh)"
+zsh -c "$(curl -fsSL https://raw.githubusercontent.com/LangLangBart/boonGUI/main/.github/build_scripts/macOS_installer.sh)"
 ```
 </p>
 </details>
@@ -125,7 +125,7 @@ zsh -c "$(curl -fsSL https://raw.githubusercontent.com/LangLangBart/boonGUI/main
 ---
 
 ## Contributing
-### Linting
+###
 
 <details>
  <summary><b>Set up for VS Code</b></summary>

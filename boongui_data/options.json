@@ -47,7 +47,7 @@
 			{
 				"type": "dropdown",
 				"label": "[color=\"220 185 70\"]Zoom[/color] speed: Hotkey",
-				"tooltip": "Set the speed at which you move in/out with your hotkeys.[color=\"255 0 0\"]\nRESTART NECESSARY\nThese values are kept even if you disable the boonGUI mod.[/color][color=\"220 185 70\"]\nNormal represents 0 A.D.'s default value.[/color]",
+				"tooltip": "Set the speed at which you zoom in/out with your hotkeys.[color=\"255 0 0\"]\nRESTART NECESSARY\nThese values are kept even if you disable the boonGUI mod.[/color][color=\"220 185 70\"]\nNormal represents 0 A.D.'s default value.[/color]",
 				"config": "view.zoom.speed",
 				"list": [
 					{ "value": 150, "label": "150 - Very Slow" },

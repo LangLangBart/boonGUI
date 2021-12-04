@@ -1,4 +1,6 @@
+/.eslintrc.json
 /.git
-/.vscode
+/.github
 /.pyromodignore
-/boongui_data/*.png
+/package.json
+/package-lock.json

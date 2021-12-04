@@ -117,7 +117,7 @@
     "eslint-plugin-brace-rules": "^0.1.6"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint ."
   },
   "repository": {
     "type": "git",

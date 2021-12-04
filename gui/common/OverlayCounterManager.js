@@ -10,7 +10,7 @@ class OverlayCounterManager
 	{
 		this.dataCounter = dataCounter;
 		this.counters = [];
-		this.dataCounter.font ="sans-stroke-18";
+		this.dataCounter.font ="sans-stroke-20";
 		this.enabledCounters = [];
 		this.lastTick = undefined;
 		this.resizeHandlers = [];
