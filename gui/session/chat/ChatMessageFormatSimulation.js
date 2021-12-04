@@ -19,9 +19,10 @@ ChatMessageFormatSimulation.attack = class
 		return {
 			"text": sprintf(message, {
 				"icon": '[icon="icon_focusattacked" displace="0 1"]',
-				"attacker": colorizePlayernameByID(msg.attacker)
+				"attacker": colorizePlayernameByIDReturnNick(msg.attacker)
 			}),
-			"callback": ((target, position) => function() {
+			"callback": ((target, position) => function()
+			{
 				focusAttack({ "target": target, "position": position });
 			})(msg.target, msg.position),
 			"tooltip": translate("Click to focus on the attacked unit.")
@@ -44,7 +45,7 @@ ChatMessageFormatSimulation.barter = class
 
 		return {
 			"text": sprintf(translate("%(player)s bartered %(amountGiven)s for %(amountGained)s"), {
-				"player": colorizePlayernameByID(msg.player),
+				"player": colorizePlayernameByIDReturnNick(msg.player),
 				"amountGiven": getLocalizedResourceAmounts(amountGiven),
 				"amountGained": getLocalizedResourceAmounts(amountGained)
 			})
@@ -69,8 +70,8 @@ ChatMessageFormatSimulation.diplomacy = class
 
 		return {
 			"text": sprintf(translate(this.strings[messageType][msg.status]), {
-				"player": colorizePlayernameByID(messageType == "active" ? msg.targetPlayer : msg.sourcePlayer),
-				"player2": colorizePlayernameByID(messageType == "active" ? msg.sourcePlayer : msg.targetPlayer)
+				"player": colorizePlayernameByIDReturnNick(messageType == "active" ? msg.targetPlayer : msg.sourcePlayer),
+				"player2": colorizePlayernameByIDReturnNick(messageType == "active" ? msg.sourcePlayer : msg.targetPlayer)
 			})
 		};
 	}
@@ -116,7 +117,7 @@ ChatMessageFormatSimulation.phase = class
 		return {
 			"text": sprintf(message, {
 				"time": Engine.FormatMillisecondsIntoDateStringLocal(g_SimState.timeElapsed, translate("m:ss")),
-				"player": colorizePlayernameByID(msg.player),
+				"player": colorizePlayernameByIDReturnNick(msg.player),
 				"phaseName": getEntityNames(GetTechnologyData(msg.phaseName, g_Players[msg.player]))
 			})
 		};
@@ -130,11 +131,11 @@ ChatMessageFormatSimulation.playerstate = class
 		if (!msg.message.pluralMessage)
 			return {
 				"text": sprintf(translate(msg.message), {
-					"player": colorizePlayernameByID(msg.players[0])
+					"player": colorizePlayernameByIDReturnNick(msg.players[0])
 				})
 			};
 
-		const mPlayers = msg.players.map(playerID => colorizePlayernameByID(playerID));
+		const mPlayers = msg.players.map(playerID => colorizePlayernameByIDReturnNick(playerID));
 		const lastPlayer = mPlayers.pop();
 
 		return {
@@ -161,15 +162,15 @@ ChatMessageFormatSimulation.tribute = class
 		else if (msg.sourcePlayer == Engine.GetPlayerID())
 			message = translate("You have sent %(player2)s %(amounts)s");
 		else if (Engine.ConfigDB_GetValue("user", "gui.session.notifications.tribute") == "true" &&
-		        (g_IsObserver || g_InitAttributes.settings.LockTeams &&
-		           g_Players[msg.sourcePlayer].isMutualAlly[Engine.GetPlayerID()] &&
-		           g_Players[msg.targetPlayer].isMutualAlly[Engine.GetPlayerID()]))
+			(g_IsObserver || g_InitAttributes.settings.LockTeams &&
+				g_Players[msg.sourcePlayer].isMutualAlly[Engine.GetPlayerID()] &&
+				g_Players[msg.targetPlayer].isMutualAlly[Engine.GetPlayerID()]))
 			message = translate("%(player)s has sent %(player2)s %(amounts)s");
 
 		return {
 			"text": sprintf(message, {
-				"player": colorizePlayernameByID(msg.sourcePlayer),
-				"player2": colorizePlayernameByID(msg.targetPlayer),
+				"player": colorizePlayernameByIDReturnNick(msg.sourcePlayer),
+				"player2": colorizePlayernameByIDReturnNick(msg.targetPlayer),
 				"amounts": getLocalizedResourceAmounts(msg.amounts)
 			})
 		};
