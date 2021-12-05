@@ -1,35 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <object name="StatsModes">
 
-   <object name="StatsModesTitle" type="text" ghost="true" textcolor="white" text_align="center" text_valign="center" font="sans-bold-stroke-16" />
+	<object name="StatsModesTitle"
+		type="text"
+		ghost="true"
+		textcolor="white"
+		text_align="center"
+		text_valign="center"
+		font="sans-bold-stroke-16" />
 
-   <object name="StatsModesTabButtons" type="image">
+	<object name="StatsModesTabButtons"
+		type="image">
 		<repeat count="10">
-			<object name="StatsModesTabButton[n]" type="button" size="0 0 100% 100%" hidden="true" style="ModernButtonRed" tooltip_style="sessionToolTip">
-				<object type="text" name="StatsModesTabButton[n]_Text" style="ModernLabelText" ghost="true"/>
-            <object type="image" name="StatsModesTabButton[n]_Icon" ghost="true" size="10 5 100%-10 100%-5"/>
+			<object name="StatsModesTabButton[n]"
+				type="button"
+				size="0 0 100% 100%"
+				hidden="true"
+				style="TabButton"
+				tooltip_style="sessionToolTip">
+				<object type="text"
+					name="StatsModesTabButton[n]_Text"
+					style="ModernLabelText"
+					ghost="true"/>
+				<object type="image"
+					name="StatsModesTabButton[n]_Icon"
+					ghost="true"
+					size="10 5 100%-10 100%-5"/>
 				<action on="MouseWheelUp">g_stats.statsModes.previousMode(true);</action>
 				<action on="MouseWheelDown">g_stats.statsModes.nextMode(true);</action>
 			</object>
 		</repeat>
 	</object>
 
-   <object name="StatsModesRows">
-      <repeat count="8" var="i">
-         <object name="StatsModesRow[i]" size="0 0 100% 100%" hidden="true">
-            <object name="StatsModesRow[i]Indicator" type="button" size="100%-20 0 100% 40" tooltip_style="sessionToolTip">
-               <object name="StatsModesRow[i]IndicatorColor" type="image" size="3 3 100%-4 100%-4" ghost="true" z="10" />
-            </object>
-            <object name="StatsModesRow[i]Items" size="0 0 100%-25 40">
-               <repeat count="20" var="j">
-                  <object name="StatsModesRow[i]Item[j]" size="0 0 34 37" type="button" tooltip_style="sessionToolTip" style="iconButton" hidden="true">
-                     <object name="StatsModesRow[i]Item[j]Icon" type="image" ghost="true" size="3 3 36 36" />
-                     <object name="StatsModesRow[i]Item[j]Count" type="text" ghost="true" size="3 3 34 35" font="sans-bold-stroke-14" textcolor="255 255 255" text_align="right" text_valign="bottom" z="10" />
-                     <object name="StatsModesRow[i]Item[j]Progress" type="image"  ghost="true" size="3 33 36 36"  />                     
-                  </object>
-               </repeat>
-            </object>
-         </object>
-      </repeat>
-   </object>
+	<object name="StatsModesRows">
+		<repeat count="8"
+			var="i">
+			<object name="StatsModesRow[i]"
+				size="0 0 100% 100%"
+				hidden="true">
+				<object name="StatsModesRow[i]Indicator"
+					type="button"
+					size="100%-10 0 100%+10 40"
+					tooltip_style="sessionToolTip">
+					<object name="StatsModesRow[i]IndicatorColor"
+						type="image"
+						size="3 3 100%-4 100%-4"
+						ghost="true"
+						z="10" />
+				</object>
+				<object name="StatsModesRow[i]Items"
+					size="0 0 100%-10 40">
+					<repeat count="20"
+						var="j">
+						<object name="StatsModesRow[i]Item[j]"
+							size="0 0 34 37"
+							type="button"
+							tooltip_style="sessionToolTip"
+							style="iconButton"
+							hidden="true">
+							<object name="StatsModesRow[i]Item[j]Icon"
+								type="image"
+								ghost="true"
+								size="3 3 36 36" />
+							<object name="StatsModesRow[i]Item[j]Count"
+								type="text"
+								ghost="true"
+								size="3 3 34 35"
+								font="sans-bold-stroke-14"
+								textcolor="255 255 255"
+								text_align="right"
+								text_valign="bottom"
+								z="10" />
+							<object name="StatsModesRow[i]Item[j]Progress"
+								type="image"
+								ghost="true"
+								size="3 33 36 36" />
+						</object>
+					</repeat>
+				</object>
+			</object>
+		</repeat>
+	</object>
 </object>

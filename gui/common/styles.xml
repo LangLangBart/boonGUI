@@ -2,38 +2,27 @@
 
 <styles>
 
-	<!--
-	==========================================
-	MENU TEXT STYLES
-	==========================================
-	-->
+	<!--MENU TEXT STYLES-->
 
 	<style name="TitleText"
 		font="sans-bold-stroke-14"
 		textcolor="white"
 		text_align="center"
-		text_valign="center"
-	/>
+		text_valign="center" />
 
 	<style name="LargeTitleText"
 		font="sans-bold-24"
 		textcolor="white"
 		text_align="center"
-		text_valign="center"
-	/>
+		text_valign="center" />
 
 	<style name="MediumTitleText"
 		font="sans-bold-12"
 		textcolor="white"
 		text_align="center"
-		text_valign="center"
-	/>
+		text_valign="center" />
 
-	<!--
-	==========================================
-	MENU WINDOW STYLES
-	==========================================
-	-->
+	<!--MENU WINDOW STYLES-->
 
 	<style name="TranslucentPanel"
 		sprite="BackgroundTranslucent"
@@ -41,22 +30,15 @@
 		font="sans-bold-stroke-14"
 		textcolor="white"
 		text_align="left"
-		text_valign="top"
-	/>
+		text_valign="top" />
 
 	<style name="TranslucentPanelThinBorder"
-		sprite="TranslucentPanelThinBorder"
-	/>
+		sprite="TranslucentPanelThinBorder" />
 
 	<style name="StonePanelThinBorder"
-		sprite="StonePanelThinBorder"
-	/>
+		sprite="StonePanelThinBorder" />
 
-	<!--
-	==========================================
-	MENU CONTROL ELEMENT STYLES
-	==========================================
-	-->
+	<!--MENU CONTROL ELEMENT STYLES-->
 
 	<style name="StoneButtonFancy"
 		sprite="StoneButton"
@@ -68,8 +50,7 @@
 		textcolor_disabled="210 210 210 160"
 		text_align="center"
 		text_valign="center"
-		sound_pressed="audio/interface/ui/ui_button_click.ogg"
-	/>
+		sound_pressed="audio/interface/ui/ui_button_click.ogg" />
 
 	<style name="StoneButton"
 		sprite="StoneButton"
@@ -80,8 +61,7 @@
 		textcolor="white"
 		text_align="center"
 		text_valign="center"
-		sound_pressed="audio/interface/ui/ui_button_click.ogg"
-	/>
+		sound_pressed="audio/interface/ui/ui_button_click.ogg" />
 
 	<style name="MapPlayerList"
 		buffer_zone="8"
@@ -91,8 +71,7 @@
 		scroll_bottom="false"
 		textcolor="white"
 		text_align="left"
-		text_valign="top"
-	/>
+		text_valign="top" />
 
 	<style name="ChatPanel"
 		buffer_zone="5"
@@ -101,8 +80,7 @@
 		scrollbar_style="ModernScrollBar"
 		scroll_bottom="true"
 		textcolor="white"
-		text_align="left"
-	/>
+		text_align="left" />
 
 	<style name="ChatPanelList"
 		buffer_zone="2"
@@ -111,8 +89,7 @@
 		scrollbar_style="ModernScrollBar"
 		scroll_bottom="true"
 		textcolor="white"
-		text_align="left"
-	/>
+		text_align="left" />
 
 	<style name="TutorialPanel"
 		buffer_zone="8"
@@ -124,7 +101,12 @@
 		text_align="left"
 		text_valign="center"
 		sprite="ModernDarkBox"
-		sprite_overlay="ModernDarkBoxGoldBorder"
-	/>
+		sprite_overlay="ModernDarkBoxGoldBorder" />
 
+	<!--BUTTON boonGUI STATS-->
+
+	<style name="TabButton"
+		sprite_disabled="ModernButtonRed"
+		sprite_over="ModernButtonRedOver"
+		sound_pressed="audio/interface/ui/ui_button_click.ogg" />
 </styles>
