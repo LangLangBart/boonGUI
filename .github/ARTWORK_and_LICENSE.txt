@@ -1,48 +1,55 @@
 ARTWORK & LICENSE
 
-	ART
-Files in the art folder within this work are based on work and examples by Wildfire Games (http://www.wildfiregames.com/) and, which are released under the Creative Commons Attribution ShareAlike 3.0 license. Details may be found at http://creativecommons.org/licenses/by-sa/3.0/
-Exceptions are listed below. For ease of review, files without licenses are also listed so I know where I got them from.
+<!-- ART -->
+	Files in the art folder within this work are based on work and examples by Wildfire Games (http://www.wildfiregames.com/) and, which are released under the Creative Commons Attribution ShareAlike 3.0 license. Details may be found at http://creativecommons.org/licenses/by-sa/3.0/
+	Exceptions are listed below. For ease of review, files without licenses are also listed so I know where I got them from.
 
-Files:
-	art/textures/ui/session/icons_forum_ranks
-	art/textures/ui/pregame/backgrounds
-Name: maroder
-License: CC-BY-SA-3.0
-URL: https://wildfiregames.com/forum/topic/45576-forum-changes/?tab=comments#comment-438350
+	Files:
+		art/textures/ui/session/icons_forum_ranks
+		art/textures/ui/pregame/backgrounds
+	Name: maroder
+	License: CC-BY-SA-3.0
+	URL: https://wildfiregames.com/forum/topic/45576-forum-changes/?tab=comments#comment-438350
 
-Files:
-	art/textures/ui/session/icons
-Name: JustusAvramenko 
-License: none 
-URL: https://github.com/JustusAvramenko/delenda_est/tree/master/art/textures
+	Files:
+		art/textures/ui/session/icons
+	Name: JustusAvramenko
+	License: none
+	URL: https://github.com/JustusAvramenko/delenda_est/tree/master/art/textures
 
-Files:
-	art/textures/ui/pregame/icons/folder-simple.png
-	art/textures/ui/session/phosphor/
-Name: Phosphor Icons
-License: MIT License (included below)
-URL: https://phosphoricons.com/
+	Files:
+		art/textures/ui/pregame/icons/folder-simple.png
+		art/textures/ui/session/phosphor/
+	Name: Phosphor Icons
+	License: MIT License (included below)
+	URL: https://phosphoricons.com/
 
-Files:
-	art/textures/ui/session/icons
-Name: Stan`
-License: none
-URL: https://wildfiregames.com/forum/topic/27738-experimenting-with-icons
+	Files:
+		art/textures/ui/session/icons
+	Name: Stan`
+	License: none
+	URL: https://wildfiregames.com/forum/topic/27738-experimenting-with-icons
 
-Files:
-	art/animation/selector
-	art/meshes/props/selector
-	art/textures/particles
-	art/textures/skins/props
-Name: The Undying Nephalim
-License: Permission granted via private message in the forum to use the hero selector.
-Forum: https://wildfiregames.com/forum/topic/22638-hyrule-conquest/
-Mod: https://www.moddb.com/mods/hyrule-conquest 
+	Files:
+		art/animation/selector
+		art/meshes/props/selector
+		art/textures/particles
+		art/textures/skins/props
+	Name: The Undying Nephalim
+	License: Permission granted via private message in the forum to use the hero selector.
+	Forum: https://wildfiregames.com/forum/topic/22638-hyrule-conquest/
+	Mod: https://www.moddb.com/mods/hyrule-conquest
 
+<!-- AUDIO/ SOUNDS-->
+	File:
+		audio/interface/ui/switchToLoadingPage.ogg
+	Name: space sysstart
+	License: none
+	URL: http://thestablesbb.powweb.com/WAV%20FILES/wav_to_the_horse2.htm
+	Mod: https://www.findsounds.com/ISAPI/search.dll?start=1&keywords=alert%20start&seed=49
 
-	SCRIPT
-The scripting within this work is, similarly, based on work and examples by the same Wildfire Games, released under the GPLv2+ license. Details may be found at https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
+<!-- SCRIPTING -->
+	The scripting within this work is, similarly, based on work and examples by the same Wildfire Games, released under the GPLv2+ license. Details may be found at https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
 
 
 <!-- Additional license(s) -->
