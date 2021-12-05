@@ -3,8 +3,8 @@ class BoonGUIStats {
 	constructor() {
 		this.root = Engine.GetGUIObjectByName("Stats");
 		this.shouldForceRender = true;
-		this.statsTopPanel = new BoonGUIStatsTopPanel(() => this.shouldForceRender = true);
-		this.statsModes = new BoonGUIStatsModes(() => this.shouldForceRender = true);
+		this.statsTopPanel = new BoonGUIStatsTopPanel(() => this.shouldForceRender);
+		this.statsModes = new BoonGUIStatsModes(() => this.shouldForceRender);
 		this.resourcesBuffer = new Map();
 		this.lastPlayerLength = null;
 
@@ -39,7 +39,8 @@ class BoonGUIStats {
 
 	onPlayersFinished()
 	{
-		this.root.hidden = false;
+		if (g_ViewedPlayer == -1)
+			this.root.hidden = false;
 	}
 
 	playerColor(state) {

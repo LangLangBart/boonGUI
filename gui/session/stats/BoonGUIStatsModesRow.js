@@ -6,7 +6,7 @@ class BoonGUIStatsModesRow {
 		this.indicator = Engine.GetGUIObjectByName(`${PREFIX}Indicator`);
 		this.indicatorColor = Engine.GetGUIObjectByName(`${PREFIX}IndicatorColor`);
 		this.itemsContainer = Engine.GetGUIObjectByName(`${PREFIX}Items`);
-		this.items = this.itemsContainer.children.map((item, index) => new BoonGUIStatsModesRowItem(item, index));
+		this.items = this.itemsContainer.children.map((item, indexNumber) => new BoonGUIStatsModesRowItem(item, indexNumber));
 		this.indicator.onPress = this.onPress.bind(this);
 		this.indicator.onDoublePress = this.onDoublePress.bind(this);
 

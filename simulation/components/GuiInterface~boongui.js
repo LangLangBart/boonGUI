@@ -257,9 +257,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 		player.killDeathRatio = cached.enemyUnitsKilledTotal / cached.unitsLostTotal;
 
 		// (5) Get Number of allies
-		player.numberAllies = cmpPlayer.GetMutualAllies().filter(player => {
-			return cmpPlayers[player].state != "defeated";
-		}).length;
+		player.numberAllies = cmpPlayer.GetMutualAllies().filter(playerNumber => cmpPlayers[playerNumber].state != "defeated").length;
 
 		// (6) Get Researched technologies set
 		player.researchedTechs = new Set(cmpTechnologyManager?.GetResearchedTechs() ?? []);

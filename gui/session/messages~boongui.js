@@ -1,11 +1,3 @@
-function splitRatingFromNick(playerName)
-{
-	const result = /^(\S+)\ \((\d+)\)$/g.exec(playerName);
-	const nick = (result ? result[1] : playerName).trim();
-	const rating = result ? result[2] : "";
-	return { nick, rating };
-}
-
 function colorizePlayernameByIDReturnNick(playerID)
 {
 	const username = splitRatingFromNick(g_Players[playerID] && escapeText(g_Players[playerID].name)).nick;
