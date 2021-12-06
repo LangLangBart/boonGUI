@@ -30,7 +30,7 @@ class BoonGUIStatsModes
 		this.title.size = '10 0 100% 28';
 		this.title.sprite = "backcolor: 38 38 38 150";
 
-		this.tabButtons.size = '100%-47 28 100% 121%';
+		this.tabButtons.size = '100%-47 28 100% 361';
 		this.tabButtons.sprite = "backcolor: 38 38 38 150";
 		this.rowsContainer.size = '0 30 100%-55 100%';
 

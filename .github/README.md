@@ -51,27 +51,23 @@ User interface **mod** for the RTS game **0 A.D.**
 
 <div align="center">
 
+### Featured v2.1
 
-<img src="Screenshots/boongui_stats_toppanel.png" width=500> <br>
-<img src="Screenshots/boongui_ingame.png" width=500> <img src="Screenshots/boongui_stats_panel.png" width=250><br>
-<img src="Screenshots/boongui_hud.png" width=500>
-
-### Featured v2.0.0
 <p>
 <a href="https://www.youtube.com/channel/UCnpCp_OvNm0_FgD_5rSrxbw"><img src="https://img.shields.io/badge/Channel-Plan&Go:%200%20A.D.-green?logo=youtube&style=social" height="20"></a>
- <a href="https://www.youtube.com/watch?v=fYFOZ2D28rM"><img src="https://img.shields.io/youtube/views/fYFOZ2D28rM?style=social" height="20"></a>
+ <a href="https://www.youtube.com/watch?v=dmhxQuZcjDA"><img src="https://img.shields.io/youtube/views/dmhxQuZcjDA?style=social" height="20"></a>
 </p>
  <p align="center">
-<a href="https://www.youtube.com/watch?v=fYFOZ2D28rM"><img src="http://img.youtube.com/vi/fYFOZ2D28rM/0.jpg" width="500"></a>
+<a href="https://www.youtube.com/watch?v=dmhxQuZcjDA"><img src="http://img.youtube.com/vi/dmhxQuZcjDA/0.jpg" width="500"></a>
 </p>
 
-### Featured v1.6.5
+### Featured v2.0.2
 <p>
 <a href="https://www.youtube.com/channel/UC5Sf1aQufzzWATg9TJzg7mQ"><img src="https://img.shields.io/badge/Channel-0AD%20Newbie%20Rush-green?logo=youtube&style=social" height="20"></a>
- <a href="https://www.youtube.com/watch?v=vua47INwBb0"><img src="https://img.shields.io/youtube/views/vua47INwBb0?style=social" height="20"></a>
+ <a href="https://www.youtube.com/watch?v=nt3HSmRc7ss"><img src="https://img.shields.io/youtube/views/nt3HSmRc7ss?style=social" height="20"></a>
 </p>
  <p align="center">
-<a href="http://www.youtube.com/watch?v=vua47INwBb0"><img src="http://img.youtube.com/vi/vua47INwBb0/0.jpg" width="500"></a>
+<a href="http://www.youtube.com/watch?v=nt3HSmRc7ss"><img src="http://img.youtube.com/vi/nt3HSmRc7ss/0.jpg" width="500"></a>
 </p>
 
 </div>
@@ -167,6 +163,9 @@ npm i -D eslint eslint-plugin-brace-rules @typescript-eslint/parser @typescript-
 ```zsh
 eslint .
 ```
+
+* It is not necessary to set up a linter when you make a pull request. A GitHub action has been set up that automatically adapts your code to the rules.
+
 
 </p>
 </details>
