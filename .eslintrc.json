@@ -82,6 +82,7 @@
         "no-dupe-class-members" : 1,
         "prefer-const": 1,
 
+        "@typescript-eslint/no-unused-vars": 0,
         "brace-rules/brace-on-same-line": ["warn", {
             "FunctionDeclaration": "never",
             "FunctionExpression": "ignore",
