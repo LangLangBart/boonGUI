@@ -1,0 +1,48 @@
+# This workflow warns and then closes issues and pull-requests that have had no activity for a specified amount of time.
+#
+# You can adjust the behavior by modifying this file.
+# For more information, see:
+# https://github.com/actions/stale
+name: Stale issues/ pull-requests
+
+on:
+  schedule:
+  # Cron syntax has five fields separated by a space, and each field represents a unit of time.
+  - cron: '0 7 * * *'
+
+jobs:
+  stale:
+
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/stale@v4
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+          # Settings for issues
+          stale-issue-message: |
+            A `stale` label has been added to this issue because it has been open 21 days with no activity. To keep this issue open, add a comment within 7 days.
+          close-issue-message: |
+            This issue was closed because it has been stalled for 28 days with no activity.
+          stale-issue-label: "Stale"
+          # Keep the stale label for closed issues
+          remove-issue-stale-when-updated: false
+          exempt-issue-labels: "Bug,Critical,Nice to have,Should have"
+          days-before-issue-stale: 21
+          days-before-issue-close: 7
+
+          # Settings for pull-request
+          stale-pr-message: |
+            Thank you for your contribution to this project!
+            A `stale` label has been added to this pull-request because it has been open 14 days with no activity. To keep this pull-request open, add a comment or push a commit within 14 days.
+          close-pr-message: This pull-request was closed because it has been stalled for 28 days with no activity.
+          stale-pr-label: "Stale"
+          # Keep the stale label for closed pull-requests
+          remove-pr-stale-when-updated: false
+          exempt-pr-labels: "Waiting for review"
+          days-before-pr-stale: 14
+          days-before-pr-close: 14
