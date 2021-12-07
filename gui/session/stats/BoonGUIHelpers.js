@@ -50,3 +50,27 @@ function BoonGUIGetColSize(index, width, rtl = false)
 	const x2 = width * (index + 1);
 	return rtl ? `100%-${x2} 0 100%-${x1} 100%` : `${x1} 0 ${x2} 100%`;
 }
+
+/**
+ * When a fully constructed civic center (CC) exits, the camera is focused at it. If no CC is present, a sound is played.
+ * @param  {boolean} move
+ * @param  {Object} state
+ */
+function focusCC(move, state)
+{
+	if (state == null || state.civCentres.length <= 0)
+	{
+		Engine.PlayUISound("audio/interface/alarm/alarm_invalid_building_placement_01.ogg", false);
+		return;
+	}
+	if (!Engine.HotkeyIsPressed("selection.add"))
+		g_Selection.reset();
+
+	g_Selection.addList(state.civCentres);
+
+	if (move)
+	{
+		const entState = GetEntityState(state.civCentres[0]);
+		Engine.CameraMoveTo(entState.position.x, entState.position.z);
+	}
+}

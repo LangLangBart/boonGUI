@@ -17,7 +17,7 @@
 		<object type="text" style="overlayHeader" text_align="right"  size="390 0 425 100%" tooltip="Female citizens">Fem</object>
 		<object type="text" style="overlayHeader" text_align="right"  size="435 0 470 100%" tooltip="Infantry">Inf</object>
 		<object type="text" style="overlayHeader" text_align="right"  size="480 0 515 100%" tooltip="Cavalry">Cav</object>
-		<object type="text" style="overlayHeader" text_align="right"  size="530 0 606 100%" tooltip="Food economy">Food</object>		
+		<object type="text" style="overlayHeader" text_align="right"  size="530 0 606 100%" tooltip="Food economy">Food</object>
 		<object type="text" style="overlayHeader" text_align="right"  size="610 0 686 100%" tooltip="Wood economy">Wood</object>
 		<object type="text" style="overlayHeader" text_align="right"  size="690 0 766 100%" tooltip="Stone economy">Stone</object>
 		<object type="text" style="overlayHeader" text_align="right"  size="770 0 846 100%" tooltip="Metal economy">Metal</object>
@@ -37,7 +37,7 @@
 				<object name="StatsTopPanelRow[n]_civ" type="text" style="overlayDefault" size="170 5% 210 95%" tooltip_style="sessionToolTipWide" />
 
 				<object name="StatsTopPanelRow[n]_phase" type="button" size="215 0 235 22">
-					<object name="StatsTopPanelRow[n]_phaseIcon" ghost="true" type="image" size="0 2 22 22"/>
+					<object name="StatsTopPanelRow[n]_phaseIcon" type="button" size="0 2 22 22" tooltip_style="sessionToolTipWide"/>
 					<object name="StatsTopPanelRow[n]_phaseProgressSlider" type="image" sprite="queueProgressSlider" ghost="true" size="0 0 20 20" z="20"/>
 				</object>
 				<object name="StatsTopPanelRow[n]_pop" size="240 0 330 100%" text_align="center" type="text" style="overlayDefault" />

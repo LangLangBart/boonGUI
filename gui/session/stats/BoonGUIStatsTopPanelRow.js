@@ -1,8 +1,10 @@
-class BoonGUIStatsTopPanelRow {
+class BoonGUIStatsTopPanelRow
+{
 
 	static Regex_Emblem = /^.+\/(.+)\.png$/;
 
-	constructor(row, index) {
+	constructor(row, index)
+	{
 		const PREFIX = row.name;
 		this.root = Engine.GetGUIObjectByName(PREFIX);
 		this.root.size = BoonGUIGetRowSize(index, 26);
@@ -38,13 +40,15 @@ class BoonGUIStatsTopPanelRow {
 
 		this.los = Engine.GetGUIObjectByName(`${PREFIX}_los`);
 		this.phaseIcon = Engine.GetGUIObjectByName(`${PREFIX}_phaseIcon`);
+		this.phaseIcon.onPress = () => focusCC(true, this.state);
 		this.phaseProgress = Engine.GetGUIObjectByName(`${PREFIX}_phaseProgressSlider`);
 
 		this.phaseProgressTop = this.phaseProgress.size.top;
 		this.phaseProgressHeight = this.phaseProgress.size.bottom - this.phaseProgress.size.top;
 	}
 
-	normalizeResourceCount(value) {
+	normalizeResourceCount(value)
+	{
 		if (value >= 10000)
 		{
 			return Math.floor(value / 1000) + setStringTags('k', { "font": 'mono-10' });
@@ -53,7 +57,8 @@ class BoonGUIStatsTopPanelRow {
 
 	}
 
-	normalizeResourceRate(value) {
+	normalizeResourceRate(value)
+	{
 		if (value >= 10000)
 		{
 			return Math.floor(value / 1000) + setStringTags('k', { "font": 'mono-10' });
@@ -66,7 +71,8 @@ class BoonGUIStatsTopPanelRow {
 
 	}
 
-	update(state, scales) {
+	update(state, scales)
+	{
 		this.root.hidden = !state;
 		this.state = state;
 		if (!state) return;
@@ -153,8 +159,8 @@ class BoonGUIStatsTopPanelRow {
 			const popLimitColor = scales.getColor('popLimit', state.popLimit);
 			const popCountColor = scales.getColor('popCount', state.popCount);
 			this.pop.caption =
-                setStringTags(popCount, { "color": popCountColor }) + '/' +
-                setStringTags(popLimit, { "color": popLimitColor });
+				setStringTags(popCount, { "color": popCountColor }) + '/' +
+				setStringTags(popLimit, { "color": popLimitColor });
 
 		}
 

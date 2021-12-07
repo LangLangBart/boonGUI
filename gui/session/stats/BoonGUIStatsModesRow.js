@@ -1,5 +1,7 @@
-class BoonGUIStatsModesRow {
-	constructor(row, index) {
+class BoonGUIStatsModesRow
+{
+	constructor(row, index)
+	{
 		const PREFIX = row.name;
 		this.root = Engine.GetGUIObjectByName(PREFIX);
 		this.root.size = BoonGUIGetRowSize(index, 40);
@@ -7,44 +9,14 @@ class BoonGUIStatsModesRow {
 		this.indicatorColor = Engine.GetGUIObjectByName(`${PREFIX}IndicatorColor`);
 		this.itemsContainer = Engine.GetGUIObjectByName(`${PREFIX}Items`);
 		this.items = this.itemsContainer.children.map((item, indexNumber) => new BoonGUIStatsModesRowItem(item, indexNumber));
-		this.indicator.onPress = this.onPress.bind(this);
-		this.indicator.onDoublePress = this.onDoublePress.bind(this);
-
-		this.state = null;
+		this.indicator.onPress = () => focusCC(true, this.state);
 	}
 
 	/**
-     * @private
-     * @param {boolean} move
-     */
-	press(move) {
-		if (this.state == null || this.state.civCentres.length <= 0) return;
-		if (!Engine.HotkeyIsPressed("selection.add"))
-			g_Selection.reset();
-
-		g_Selection.addList(this.state.civCentres);
-
-		if (move)
-		{
-			const entState = GetEntityState(this.state.civCentres[0]);
-			Engine.CameraMoveTo(entState.position.x, entState.position.z);
-		}
-	}
-
-	onPress() {
-		// let append = Engine.HotkeyIsPressed("selection.add");
-		// let selectall = Engine.HotkeyIsPressed("selection.offscreen");
-		this.press(false);
-	}
-
-	onDoublePress() {
-		this.press(true);
-	}
-
-	/**
-     * @private
-     */
-	createTooltip(state) {
+	 * @private
+	 */
+	createTooltip(state)
+	{
 		let tooltip = "";
 		const CivName = g_CivData[state.civ].Name;
 		tooltip += setStringTags(`${state.name}\n`, { "color": state.playerColor });
@@ -68,11 +40,11 @@ class BoonGUIStatsModesRow {
 		return tooltip;
 	}
 
-	update(state, mode) {
+	update(state, mode)
+	{
 		this.root.hidden = !state;
 		this.state = state;
 		if (!state) return;
-		this.indicator.enabled = state.civCentres.length > 0;
 		this.indicator.tooltip = this.createTooltip(state);
 		this.indicatorColor.sprite = `backcolor: ${state.playerColor}`;
 
