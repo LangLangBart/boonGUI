@@ -33,13 +33,13 @@ jobs:
         uses: wearerequired/lint-action@v1
         with:
           eslint: true
+          # ESLint checks should fail even if there are no errors and only warnings.
+          eslint_args: "--max-warnings 0"
           # Normally Prettier is for formatting and Linters is for tracking down errors, but I use the .eslintrc.json file from 0ad and don't want to set up an extra format configuration for Prettier. Therefore it is off for now, might change it in the future.
           prettier: false
           # Whether the workflow run should also fail when linter failures are detected.
           continue_on_error: false
           # Whether linters should try to fix code style issues automatically. If some issues can be fixed, the action will commit and push the changes to the corresponding branch.
           auto_fix: true
-          # Whether the check run should conclude with a neutral status instead of success when the linter finds only warnings.
-          neutral_check_on_warning: true
 
 
