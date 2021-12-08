@@ -7,7 +7,6 @@
 [![maintained][maintained-image]][commits-url]
 [![lint][lint-image]][lint-url]
 
-
 [commits-image]: https://img.shields.io/github/commits-since/LangLangBart/boonGUI/latest/main?label=Commits%20ahead%20of%20Release&style=flat-square
 [commits-url]: https://github.com/LangLangBart/boonGUI
 [maintained-image]: https://img.shields.io/maintenance/yes/2021?label=Maintained&style=flat-square
@@ -27,29 +26,22 @@
 [forum-url]: https://wildfiregames.com/forum/topic/37147-boongui-mod-compatible-with-a25
 
 User interface **mod** for the RTS game **0 A.D.**
-</div>
 
 <!-- 0 A.D. logo -->
-<div align="center">
-<p align="center">
 <a href="https://play0ad.com"><img src="Screenshots/0ad_logo.png" width="300">
-</p>
 
-<a name="menu"></a>
-  <h4>
-    <a href="https://play0ad.com/re-release-of-0-a-d-alpha-25-yauna/">Website</a>
-    <span> | </span>
-    <a href="https://github.com/0ad/0ad">GitHub</a>
-    <span> | </span>
-    <a href="https://peertube.debian.social/videos/watch/7d134d11-0b25-42bc-92dd-13c496863e8e">Project Overview</a>
-    <span> | </span>
-    <a href="https://trac.wildfiregames.com/wiki/FAQ">FAQ</a>
-  </h4>
-</div>
+<h4>
+  <a href="https://play0ad.com/re-release-of-0-a-d-alpha-25-yauna/">Website</a>
+  <span> | </span>
+  <a href="https://github.com/0ad/0ad">GitHub</a>
+  <span> | </span>
+  <a href="https://peertube.debian.social/videos/watch/7d134d11-0b25-42bc-92dd-13c496863e8e">Project Overview</a>
+  <span> | </span>
+  <a href="https://trac.wildfiregames.com/wiki/FAQ">FAQ</a>
+</h4>
 
 ---
 
-<div align="center">
 
 ### Featured v2.1
 
@@ -107,7 +99,6 @@ User interface **mod** for the RTS game **0 A.D.**
 ---
 
 ## Installation
-* Download the `zip file` or `git clone` this repo.
 ```
 git clone https://github.com/LangLangBart/boonGUI.git
 ```
@@ -141,7 +132,14 @@ zsh -c "$(curl -fsSL https://raw.githubusercontent.com/LangLangBart/boonGUI/main
 ---
 
 ## Contributing
+1. Fork it.
+2. Create a new feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git add .` and `git commit -m 'Add some feature'`
+4. Push it to the branch: `git push origin my-new-feature`
+5. Submit a pull request.
+
 ### Linting
+* It is not necessary to set up a linter when you make a pull request. A GitHub action has been set up to automatically adjust your code to the rules. You can also check your code locally, see instructions below.
 
 <details>
  <summary><b>Set up for VS Code</b></summary>
@@ -149,7 +147,6 @@ zsh -c "$(curl -fsSL https://raw.githubusercontent.com/LangLangBart/boonGUI/main
 Linting is done via ESLint: https://eslint.org
 
 * Install `node.js` and the `ESLint` extension for VS Code.
-* Git clone this repo.
 * Install the dependencies and add the newly created `node_modules` folder to your `.gitignore_global`.
 
 ```zsh
@@ -164,9 +161,6 @@ npm i -D eslint eslint-plugin-brace-rules @typescript-eslint/parser @typescript-
 eslint .
 ```
 
-* It is not necessary to set up a linter when you make a pull request. A GitHub action has been set up that automatically adapts your code to the rules.
-
-
 </p>
 </details>
 
@@ -176,6 +170,7 @@ Motivation for this mod was the desire to learn javascript and create a tool for
 * Thanks to @mysticjim, @Palaiologos and @seeh for constantly testing and giving feedback.
 * Providing code and helping with problems: @andy5995, @kaaduu, @maroder, @Nescio, @Pretuer and @Schweini.
 * Thanks to @badosu, @ffffff, @ffm2, @nani, @The Undying Nephalim and @wowgetoffyourcellphone for creating the following mods: Prodmod, fGod, ffm_visibility, Autociv, Hyrule Conquest and Delenda Est.
+
 * Being good lads @elexis, @bb, @Imarok, @wraitii, @Freagarach, @vladislavbelov, @Silier and @Stan` pointed me in the right direction on the IRC #0ad channel when I got stuck.
 
 <br>
