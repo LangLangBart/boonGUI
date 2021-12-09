@@ -76,7 +76,9 @@ class BoonGUIStats {
 
 		for (const i in Engine.GetGUIObjectByName("panelEntityButtons").children)
 		{
-			Engine.GetGUIObjectByName(`panelEntityButton[${i}]`).size = '0 0 60 60';
+			const panelEntButton = Engine.GetGUIObjectByName(`panelEntityButton[${i}]`);
+			panelEntButton.size = '0 0 60 60';
+			setPanelObjectPosition(panelEntButton, i, Infinity);
 		}
 	}
 
