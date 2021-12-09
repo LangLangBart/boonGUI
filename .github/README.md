@@ -139,26 +139,26 @@ zsh -c "$(curl -fsSL https://raw.githubusercontent.com/LangLangBart/boonGUI/main
 5. Submit a pull request.
 
 ### Linting
-* It is not necessary to set up a linter when you make a pull request. A GitHub action has been set up to automatically adjust your code to the rules. You can also check your code locally, see instructions below.
+It is not necessary to set up a linter when you make a pull request. A GitHub action has been set up to automatically adjust your code to the rules. You can also lint your code locally, see instructions below.
 
 <details>
  <summary><b>Set up for VS Code</b></summary>
 <p>
 Linting is done via ESLint: https://eslint.org
 
-* Install `node.js` and the `ESLint` extension for VS Code.
-* Install the dependencies and add the newly created `node_modules` folder to your `.gitignore_global`.
+* Install `node.js`, the `ESLint` extension for VS Code and the dependencies below.
 
 ```zsh
-npm install -g eslint eslint-plugin-brace-rules @typescript-eslint/parser @typescript-eslint/eslint-plugin
-
-npm i -D eslint eslint-plugin-brace-rules @typescript-eslint/parser @typescript-eslint/eslint-plugin
+npm install -g eslint
+npm install eslint-plugin-brace-rules @typescript-eslint/parser @typescript-eslint/eslint-plugin typescript
 ```
 
-* Done. You can check your repository with the following command.
+* The `.vscode` settings have been set up to automatically adjust your code to the rules when you save the document.
+* You can also lint and correct your entire repository with the following commands.
 
 ```zsh
 eslint .
+eslint . --fix
 ```
 
 </p>
