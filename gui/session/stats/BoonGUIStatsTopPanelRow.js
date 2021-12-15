@@ -107,11 +107,18 @@ class BoonGUIStatsTopPanelRow
 		let phase;
 		let progress = null;
 		const phase_city_generic = state.startedResearch.phase_city_generic;
+		const phase_city_athen = state.startedResearch.phase_city_athen;
 		const phase_town_generic = state.startedResearch.phase_town_generic;
+		const phase_town_athen = state.startedResearch.phase_town_athen;
 		if (phase_city_generic)
 		{
-			phase = 'phase_city';
 			progress = phase_city_generic.progress;
+			phase = 'phase_city';
+		}
+		else if (phase_city_athen)
+		{
+			progress = phase_city_athen.progress;
+			phase = 'phase_city';
 		}
 		else if (state.phase == 'city')
 		{
@@ -120,6 +127,11 @@ class BoonGUIStatsTopPanelRow
 		else if (phase_town_generic)
 		{
 			progress = phase_town_generic.progress;
+			phase = 'phase_town';
+		}
+		else if (phase_town_athen)
+		{
+			progress = phase_town_athen.progress;
 			phase = 'phase_town';
 		}
 		else if (state.phase == 'town')
