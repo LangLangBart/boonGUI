@@ -9,7 +9,7 @@
 
 [commits-image]: https://img.shields.io/github/commits-since/LangLangBart/boonGUI/latest/main?label=Commits%20ahead%20of%20Release&style=flat-square
 [commits-url]: https://github.com/LangLangBart/boonGUI
-[maintained-image]: https://img.shields.io/maintenance/yes/2021?label=Maintained&style=flat-square
+[maintained-image]: https://img.shields.io/maintenance/yes/2022?label=Maintained&style=flat-square
 [lint-image]: https://img.shields.io/github/workflow/status/LangLangBart/boonGUI/Lint/main?label=ESLint&style=flat-square
 [lint-url]: https://github.com/LangLangBart/boonGUI/actions/workflows/lint.yml
 
@@ -47,16 +47,18 @@ User interface **mod** for the RTS game **0 A.D.**
 
 <p>
 <a href="https://www.youtube.com/channel/UCnpCp_OvNm0_FgD_5rSrxbw"><img src="https://img.shields.io/badge/Channel-Plan&Go:%200%20A.D.-green?logo=youtube&style=social" height="20"></a>
+ <a href="https://www.youtube.com/watch?v=I9uZexRMtFA"><img src="https://img.shields.io/youtube/views/I9uZexRMtFA?style=social" height="20"></a>
 </p>
- <p align="center">
-<a href="https://www.youtube.com/watch?v=wndXsJLLLq8"><img src="http://img.youtube.com/vi/wndXsJLLLq8/0.jpg" width="500"></a>
+<p align="center">
+<a href="https://www.youtube.com/watch?v=I9uZexRMtFA"><img src="http://img.youtube.com/vi/I9uZexRMtFA/0.jpg" width="500"></a>
 </p>
 
 ### Featured v2.0.2
 <p>
 <a href="https://www.youtube.com/channel/UC5Sf1aQufzzWATg9TJzg7mQ"><img src="https://img.shields.io/badge/Channel-0AD%20Newbie%20Rush-green?logo=youtube&style=social" height="20"></a>
+<a href="https://www.youtube.com/watch?v=nt3HSmRc7ss"><img src="https://img.shields.io/youtube/views/nt3HSmRc7ss?style=social" height="20"></a>
 </p>
- <p align="center">
+<p align="center">
 <a href="http://www.youtube.com/watch?v=nt3HSmRc7ss"><img src="http://img.youtube.com/vi/nt3HSmRc7ss/0.jpg" width="500"></a>
 </p>
 
