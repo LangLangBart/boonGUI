@@ -87,6 +87,7 @@ User interface **mod** for the RTS game **0 A.D.**
   * The HUD in the middle shows individual unit stats.
   * Option to skip the summary screen after a game ends.
   * All civilian houses/apartments have a garrison flag.
+  * Voice notification tt the hero's death.
 * **Lobby**
   * Quick access buttons below the chat input.
   * Rating dependent icon & title for the profile.

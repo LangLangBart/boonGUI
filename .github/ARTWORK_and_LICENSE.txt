@@ -45,8 +45,17 @@ ARTWORK & LICENSE
 		audio/interface/ui/switchToLoadingPage.ogg
 	Name: space sysstart
 	License: none
-	URL: http://thestablesbb.powweb.com/WAV%20FILES/wav_to_the_horse2.htm
-	Mod: https://www.findsounds.com/ISAPI/search.dll?start=1&keywords=alert%20start&seed=49
+	URL1: http://thestablesbb.powweb.com/WAV%20FILES/wav_to_the_horse2.htm
+	URL2: https://www.findsounds.com/ISAPI/search.dll?start=1&keywords=alert%20start&seed=49
+
+	File:
+		(1) audio/actor/hero/death/15_ai_The_Stanley_Parable_The_Narrator_Hero_died.ogg
+		(2) audio/actor/hero/death/15_ai_Portal_Sentry_Turret.ogg
+	Name: Made with 15.ai
+		(1) Source: The Stanley Parable, Character: The Narrator
+		(2) Source: Portal, Character: Sentry Turret
+	License: It requires two things: display of the URL and no use of another TTS service for another part of this project. I did both, now everything should be fine.
+	URL: https://15.ai/
 
 <!-- SCRIPTING -->
 	The scripting within this work is, similarly, based on work and examples by the same Wildfire Games, released under the GPLv2+ license. Details may be found at https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html

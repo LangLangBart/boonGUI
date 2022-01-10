@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<SoundGroup>
+	<Omnipresent>1</Omnipresent>
+	<Distanceless>1</Distanceless>
+	<HeardBy>owner</HeardBy>
+	<Gain>1</Gain>
+	<Priority>100</Priority>
+	<ConeGain>1</ConeGain>
+	<Looping>0</Looping>
+	<RandOrder>1</RandOrder>
+	<RandGain>1</RandGain>
+	<GainUpper>1</GainUpper>
+	<GainLower>1</GainLower>
+	<RandPitch>1</RandPitch>
+	<Threshold>1</Threshold>
+	<Path>audio/actor/hero/death/</Path>
+	<Sound>15_ai_Portal_Sentry_Turret.ogg</Sound>
+</SoundGroup>
