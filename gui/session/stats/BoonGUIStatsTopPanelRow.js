@@ -75,10 +75,10 @@ class BoonGUIStatsTopPanelRow
 	{
 		if (value >= 1000)
 		{
-			return (value / 1000).toFixed(1) + setStringTags('k', { "font": 'mono-10' });
+			// avoid trailing zeros
+			return Number((value / 1000).toFixed(1)) + setStringTags('k', { "font": 'mono-10' });
 		}
 		return value;
-
 	}
 
 	update(state, scales)
