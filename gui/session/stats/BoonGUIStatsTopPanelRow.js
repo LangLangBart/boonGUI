@@ -71,6 +71,16 @@ class BoonGUIStatsTopPanelRow
 
 	}
 
+	normalizeKillLost(value)
+	{
+		if (value >= 1000)
+		{
+			return (value / 1000).toFixed(1) + setStringTags('k', { "font": 'mono-10' });
+		}
+		return value;
+
+	}
+
 	update(state, scales)
 	{
 		this.root.hidden = !state;
@@ -253,11 +263,12 @@ class BoonGUIStatsTopPanelRow
 
 		value = state.enemyUnitsKilledTotal;
 		color = scales.getColor('enemyUnitsKilledTotal', value);
-		this.enemyUnitsKilledTotal.caption = setStringTags(value, { color });
+		this.enemyUnitsKilledTotal.caption = setStringTags(this.normalizeKillLost(value), { color });
 
 		value = state.unitsLostTotal;
 		color = scales.getColor('unitsLostTotal', value);
-		this.unitsLostTotal.caption = setStringTags(value, { color });
+		this.unitsLostTotal.caption = setStringTags(this.normalizeKillLost(value), { color });
+
 
 		value = state.killDeathRatio;
 		color = scales.getColor('killDeathRatio', value);

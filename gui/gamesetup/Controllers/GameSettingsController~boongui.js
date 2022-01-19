@@ -4,7 +4,6 @@ GameSettingsController.prototype.switchToLoadingPage = function(attributes)
 		"attribs": attributes?.initAttributes || g_GameSettings.toInitAttributes(),
 		"playerAssignments": g_PlayerAssignments
 	});
-	if (g_IsNetworked)
-		Engine.PlayUISound("audio/interface/ui/switchToLoadingPage.ogg", false);
+	Engine.PlayUISound("audio/interface/ui/switchToLoadingPage.ogg", false);
 };
 

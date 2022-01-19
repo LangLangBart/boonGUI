@@ -77,7 +77,6 @@ User interface **mod** for the RTS game **0 A.D.**
   * All fruits are more vivid and easier to see due to the increased saturation and brightness, some have also had their hue changed.
   * Chicken are 50% larger and fish were colored red.
   * Increased the size of weapon projectiles and the garrison flag on buildings.
-  * All heroes have a large visible object flowing over their head, making them easier to see on the battlefield.
   * All player colors are more vivid and easier to see on the minimap.
   * Larger buttons in the selection panel.
   * Larger and redesigned round minimap. The idle button displays the total number of idle workers.
@@ -87,7 +86,8 @@ User interface **mod** for the RTS game **0 A.D.**
   * The HUD in the middle shows individual unit stats.
   * Option to skip the summary screen after a game ends.
   * All civilian houses/apartments have a garrison flag.
-  * Voice notification tt the hero's death.
+  * All heroes have a large visible object flowing over their head, making them easier to see on the battlefield.
+  * Sound notification for the death of a hero.
 * **Lobby**
   * Quick access buttons below the chat input.
   * Rating dependent icon & title for the profile.

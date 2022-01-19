@@ -24,6 +24,7 @@ class PanelEntity
 		this.overlayName = "panelEntityHitOverlay[" + buttonID + "]";
 		this.panelEntityHealthBar = Engine.GetGUIObjectByName("panelEntityHealthBar[" + buttonID + "]");
 		this.panelEntityCaptureBar = Engine.GetGUIObjectByName("panelEntityCapture[" + buttonID + "]");
+		this.panelEntityBackground = Engine.GetGUIObjectByName("panelEntityBackground[" + buttonID + "]");
 		this.panelEntButton = Engine.GetGUIObjectByName("panelEntityButton[" + buttonID + "]");
 		this.panelEntButton.onPress = this.onPress.bind(this);
 		this.panelEntButton.onDoublePress = this.onDoublePress.bind(this);
@@ -45,10 +46,6 @@ class PanelEntity
 				captureSection.size = Engine.GetGUIObjectByName("panelEntitySectionPosTop[" + buttonID + "]").size;
 		}
 
-		// Added for boonGUI mod, unclear why this is not part of the main game.
-		Engine.GetGUIObjectByName("panelEntityBackground[" + buttonID + "]").sprite =
-			"color:" + g_DiplomacyColors.getPlayerColor(entityState.player, 128);
-
 		Engine.GetGUIObjectByName("panelEntityImage[" + buttonID + "]").sprite =
 			"stretched:" + this.PortraitDirectory + template.icon;
 	}
@@ -68,6 +65,7 @@ class PanelEntity
 		const entityState = GetEntityState(this.entityID);
 		this.updateHitpointsBar(entityState);
 		this.updateCapturePointsBar(entityState);
+		this.updateEntityBackground(entityState);
 
 		this.panelEntButton.tooltip =
 			this.nameTooltip +
@@ -96,7 +94,8 @@ class PanelEntity
 			return;
 
 		const playerParts = this.panelEntityCaptureBar.children;
-		const setCaptureBarPart = function(player, startSize) {
+		const setCaptureBarPart = function(player, startSize)
+		{
 			const captureBar = playerParts[player];
 			const size = captureBar.size;
 			size.rleft = startSize;
@@ -116,6 +115,13 @@ class PanelEntity
 			this.onAttacked();
 
 		this.capturePoints = entityState.capturePoints;
+	}
+
+	// Added for boonGUI mod, unclear why this is not part of the main game.
+	updateEntityBackground(entityState)
+	{
+		this.panelEntityBackground.sprite =
+			"color:" + g_DiplomacyColors.getPlayerColor(entityState.player, 128);
 	}
 
 	onAttacked()
