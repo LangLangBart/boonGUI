@@ -3,9 +3,9 @@
 		name="shortGameInfosLabel"
 		type="text"
 		ghost="true"
-		size="20 0 60% 30"
-		font="mono-stroke-14"
+		size="5 0 60% 28"
+		font="mono-stroke-12"
 		text_align="left"
-		text_valign="center"
+		text_valign="bottom"
 		textcolor="255 255 255"
 />
