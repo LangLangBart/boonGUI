@@ -40,8 +40,17 @@
 				hidden="true">
 				<object name="StatsModesRow[i]Indicator"
 					type="button"
-					size="100%-10 0 100%+10 40"
+					size="100%-13 0 100%+10 40"
 					tooltip_style="sessionToolTip">
+					<object name="StatsModesRow[i]IndicatorLabel"
+						type="text"
+						size="3 3 100%-6 100%-2"
+						ghost="true"
+						font="mono-stroke-16"
+						textcolor="255 255 255"
+						text_align="right"
+						text_valign="center"
+						z="20" />
 					<object name="StatsModesRow[i]IndicatorColor"
 						type="image"
 						size="3 3 100%-4 100%-4"
@@ -49,7 +58,7 @@
 						z="10" />
 				</object>
 				<object name="StatsModesRow[i]Items"
-					size="0 0 100%-10 40">
+					size="0 0 100%-13 40">
 					<repeat count="20"
 						var="j">
 						<object name="StatsModesRow[i]Item[j]"

@@ -6,6 +6,7 @@ class BoonGUIStatsModesRow
 		this.root = Engine.GetGUIObjectByName(PREFIX);
 		this.root.size = BoonGUIGetRowSize(index, 40);
 		this.indicator = Engine.GetGUIObjectByName(`${PREFIX}Indicator`);
+		this.indicatorLabel = Engine.GetGUIObjectByName(`${PREFIX}IndicatorLabel`);
 		this.indicatorColor = Engine.GetGUIObjectByName(`${PREFIX}IndicatorColor`);
 		this.itemsContainer = Engine.GetGUIObjectByName(`${PREFIX}Items`);
 		this.items = this.itemsContainer.children.map((item, indexNumber) => new BoonGUIStatsModesRowItem(item, indexNumber));
@@ -47,7 +48,8 @@ class BoonGUIStatsModesRow
 		if (!state) return;
 		this.indicator.tooltip = this.createTooltip(state);
 		this.indicatorColor.sprite = `backcolor: ${state.playerColor}`;
-
+		this.indicatorLabel.caption = state.team != -1 ? setStringTags(`${state.team + 1}`, { "color": state.playerColor }) : "";
+		this.indicator.tooltip = this.createTooltip(state);
 		const items = state.queue.filter(d => d.mode === mode);
 		this.items.forEach((item, idx) => {
 			item.update(items[idx], state);
