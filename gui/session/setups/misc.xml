@@ -23,7 +23,7 @@
 	/>
 	<icon name="icon_duration"
 		sprite="stretched:session/icons/icon_duration.png"
-		size="20 20"
+		size="22 22"
 	/>
 
 	<tooltip name="sessionToolTipWide"

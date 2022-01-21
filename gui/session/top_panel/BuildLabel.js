@@ -26,7 +26,7 @@ class BuildLabel
 	durationReplay()
 	{
 		const directory = Engine.GetCurrentReplayDirectory();
-		return Engine.HasReplayMetadata(directory) ? '[icon="icon_duration" displace="0 5"]' + timeToString(Engine.GetReplayMetadata(directory).timeElapsed) : "";
+		return Engine.HasReplayMetadata(directory) ? '[icon="icon_duration" displace="-3 4"]' + timeToString(Engine.GetReplayMetadata(directory).timeElapsed) : "";
 	}
 
 	onViewedPlayerChange()

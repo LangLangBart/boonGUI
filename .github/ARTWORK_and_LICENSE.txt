@@ -12,6 +12,14 @@ ARTWORK & LICENSE
 	URL: https://wildfiregames.com/forum/topic/45576-forum-changes/?tab=comments#comment-438350
 
 	Files:
+		art/textures/ui/session/icons/icon_duration.png
+	Name: Emoji Two
+	License: Creative Commons Attribution International 4.0 (CC-BY 4.0)
+	License-URL: https://creativecommons.org/licenses/by/4.0/legalcode
+	URL1: https://www.emojione.com
+	URL2: https://github.com/EmojiTwo/emojitwo/blob/e70ce2293af88c316640af010a5f5529a3ffac6a/svg/23f1.svg
+
+	Files:
 		art/textures/ui/session/icons
 	Name: JustusAvramenko
 	License: none
