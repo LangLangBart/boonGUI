@@ -164,3 +164,21 @@ function setupStatHUDSpeedTooltip(template)
 			})
 	});
 }
+
+function setupStatHUDTreasureInfo(template)
+{
+	const resources = {};
+	for (const resource of g_ResourceData.GetResources())
+	{
+		const type = resource.code;
+		if (template.treasure.resources[type])
+			resources[type] = template.treasure.resources[type];
+	}
+
+	const resourceName = Object.keys(resources);
+	if (!resourceName.length)
+		return "";
+
+	const resourceAmount = resourceName.map(type => resources[type]);
+	return { resourceName, resourceAmount };
+}

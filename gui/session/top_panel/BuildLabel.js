@@ -9,7 +9,7 @@ class BuildLabel
 
 		this.viewPlayer = Engine.GetGUIObjectByName("viewPlayer");
 		this.shortGameInfosLabel = Engine.GetGUIObjectByName("shortGameInfosLabel");
-		this.shortGameInfosLabel.caption = Engine.IsAtlasRunning() ? "" : sprintf("%(icon_alpha)s A25  %(icon_map)s %(mapName)s%(mapSize)s%(biome)s  %(icon_pop)s %(pop)s  %(duration)s  %(rating)s", {
+		this.shortGameInfosLabel.caption = Engine.IsAtlasRunning() ? "" : sprintf("%(icon_alpha)s A25  %(icon_map)s %(mapName)s%(mapSize)s%(biome)s  %(icon_pop)s %(pop)s%(duration)s%(rating)s", {
 			"icon_alpha": '[icon="icon_alpha" displace="1 5"]',
 			"icon_map": '[icon="icon_map" displace="2 6"]',
 			"mapName": this.mapCache.translateMapName(this.mapCache.getTranslatableMapName(g_InitAttributes.mapType, g_InitAttributes.map)),
@@ -17,7 +17,7 @@ class BuildLabel
 			"biome": g_InitAttributes.settings.Biome ? " - " + g_Settings.Biomes.find(b => b.Id == g_InitAttributes.settings.Biome).Title : "",
 			"icon_pop": '[icon="icon_pop" displace="3 5"]',
 			"pop": g_InitAttributes.settings.PopulationCap !== undefined ? g_PopulationCapacities.Title[g_PopulationCapacities.Population.indexOf(g_InitAttributes.settings.PopulationCap)] : g_WorldPopulationCapacities.Title[g_WorldPopulationCapacities.Population.indexOf(g_InitAttributes.settings.WorldPopulationCap)] + " (WP)",
-			"rating": g_InitAttributes.settings.RatingEnabled === true ? '[icon="icon_rating" displace="-3 5"]' + coloredText("Rated", "red") : "",
+			"rating": g_InitAttributes.settings.RatingEnabled === true ? '  [icon="icon_rating" displace="-3 5"]' + coloredText("Rated", "red") : "",
 			"duration": this.durationReplay()
 		});
 		playerViewControl.registerViewedPlayerChangeHandler(this.onViewedPlayerChange.bind(this));
@@ -26,7 +26,7 @@ class BuildLabel
 	durationReplay()
 	{
 		const directory = Engine.GetCurrentReplayDirectory();
-		return Engine.HasReplayMetadata(directory) ? '[icon="icon_duration" displace="-3 4"]' + timeToString(Engine.GetReplayMetadata(directory).timeElapsed) : "";
+		return Engine.HasReplayMetadata(directory) ? '  [icon="icon_duration" displace="-3 4"]' + timeToString(Engine.GetReplayMetadata(directory).timeElapsed) : "";
 	}
 
 	onViewedPlayerChange()

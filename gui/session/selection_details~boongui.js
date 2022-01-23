@@ -98,7 +98,8 @@ function displaySingle(entState)
 	captureSection.hidden = !entState.capturePoints;
 	if (entState.capturePoints)
 	{
-		const setCaptureBarPart = function(playerID, startSize) {
+		const setCaptureBarPart = function(playerID, startSize)
+		{
 			const unitCaptureBar = Engine.GetGUIObjectByName("captureBar[" + playerID + "]");
 			const sizeObj = unitCaptureBar.size;
 			sizeObj.rleft = startSize;
@@ -275,8 +276,8 @@ function displaySingle(entState)
 		panelItem.hidden = false;
 		panelIcon.sprite = "stretched:color:0 0 0 20:textureAsMask:" + icon;
 		const size = panelItem.size;
-		size.top = 35*i;
-		size.bottom = 35*i+24;
+		size.top = 35 * i;
+		size.bottom = 35 * i + 24;
 		panelItem.size = size;
 		panelText.tooltip = tooltip;
 		panelIcon.tooltip = tooltip;
@@ -292,7 +293,12 @@ function displaySingle(entState)
 	{
 		let attackPower = (entState?.attack?.Melee || entState?.attack?.Ranged)?.Damage;
 		attackPower = (attackPower?.Hack || 0) + (attackPower?.Pierce || 0) + (attackPower?.Crush || 0);
-		SetupStat("LHS", 0, "session/icons/attackPower.png", limitNumber(attackPower*projectiles / (entState?.attack?.Melee || entState?.attack?.Ranged).repeatTime * 1000), setupStatHUDAttackTooltip(entState, projectiles));
+		SetupStat("LHS", 0, "session/icons/attackPower.png", limitNumber(attackPower * projectiles / (entState?.attack?.Melee || entState?.attack?.Ranged).repeatTime * 1000), setupStatHUDAttackTooltip(entState, projectiles));
+	}
+	else if (!!template?.treasure)
+	{
+		const treasureInfo = setupStatHUDTreasureInfo(template);
+		SetupStat("LHS", 0, `session/icons/resources/${treasureInfo.resourceName}_small.png`, `${treasureInfo.resourceAmount}`, getTreasureTooltip(template));
 	}
 	else
 		SetupStat("LHS", 0, "", "");
