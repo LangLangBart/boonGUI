@@ -3,7 +3,7 @@
 <object name="detailsAreaSingle" size="4 4 100%-4 100%-2" type="image" sprite="edgedPanelShader">
 
 	<!-- Big unit icon -->
-	<object size="0 0 100 100" type="button" name="iconBorder" sprite="iconBorder" tooltip_style="sessionToolTip">
+	<object size="0 0 100 100" type="button" name="iconBorder" sprite="iconBorder" tooltip_style="sessionToolTipLargerOffset">
 		<object size="1 1 100%-1 100%-1" type="image" name="icon" ghost="true"/>
 
 		<!-- Experience bar -->
@@ -88,8 +88,17 @@
 			</object>
 		</repeat>
 
+		<!-- Full space for text based info e.g. Relics -->
+		<repeat count="1">
+			<object name="FullSpace[n]" size="0 0 100% 80%">
+				<object size="0 0 0 0" name="FullSpaceIcon[n]" type="image" sprite="stretched:session/icons/stances/defensive.png" tooltip_style="sessionToolTipInstantly"/>
+				<object size="5 -2 100% 100%" name="FullSpaceText[n]" type="text" style="StatsTextLeft" text_valign="top">
+				</object>
+			</object>
+		</repeat>
+
 		<!-- Attack and Resistance -->
-		<object size="0 99 30 129" name="attackAndResistanceStats" type="image" sprite="stretched:session/icons/stances/defensive.png" tooltip_style="sessionToolTipInstantly">
+		<object size="0 99 30 129" name="attackAndResistanceStats" type="image" sprite="stretched:session/icons/stances/defensive.png" tooltip_style="sessionToolTipLargerOffset">
 			<translatableAttribute id="tooltip">Attack and Resistance</translatableAttribute>
 		</object>
 

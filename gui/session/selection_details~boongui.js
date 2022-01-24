@@ -294,17 +294,39 @@ function displaySingle(entState)
 		let attackPower = (entState?.attack?.Melee || entState?.attack?.Ranged)?.Damage;
 		attackPower = (attackPower?.Hack || 0) + (attackPower?.Pierce || 0) + (attackPower?.Crush || 0);
 		SetupStat("LHS", 0, "session/icons/attackPower.png", limitNumber(attackPower * projectiles / (entState?.attack?.Melee || entState?.attack?.Ranged).repeatTime * 1000), setupStatHUDAttackTooltip(entState, projectiles));
+		SetupStat("FullSpace", 0, "", "");
 	}
 	else if (!!template?.treasure)
 	{
 		const treasureInfo = setupStatHUDTreasureInfo(template);
 		SetupStat("LHS", 0, `session/icons/resources/${treasureInfo.resourceName}_small.png`, `${treasureInfo.resourceAmount}`, getTreasureTooltip(template));
+		SetupStat("FullSpace", 0, "", "");
 	}
-	else
+
+	else if (template?.visibleIdentityClasses.includes("Relic"))
+	{
+		let text = [];
+		for (const nameOfAuras in template.auras)
+		{
+			// we take the aura description and make an arry of sentences
+			const auraDescriptionCutInSentences = template.auras[nameOfAuras].description.match(/[^\.!\?]+[\.!\?]+/g);
+			// the last sentence containts the important stuff we would like to display
+			const auraSnippet = auraDescriptionCutInSentences.pop();
+			// some of the description contains line breaks, we get rid of it here.
+			text += unitFont("●") + auraSnippet.replace(/(\r\n|\n|\r)/gm, " ") + "\n";
+		}
 		SetupStat("LHS", 0, "", "");
+		SetupStat("FullSpace", 0, "", text.length < 250 ? setStringTags(text, { "font": 'sans-13' }) : setStringTags(text, { "font": 'sans-12' }), "");
+	}
+
+	else
+	{
+		SetupStat("LHS", 0, "", "");
+		SetupStat("FullSpace", 0, "", "");
+	}
 
 	// Agility
-	if (!!entState?.speed)
+	if (!!entState?.speed && !template?.visibleIdentityClasses.includes("Relic"))
 	{
 		const walkSpeed = entState?.speed?.walk || 0;
 		SetupStat("LHS", 1, "session/icons/walk.png", limitNumber(walkSpeed), setupStatHUDSpeedTooltip(entState));
@@ -348,9 +370,11 @@ function displaySingle(entState)
 	].map(func => func(entState)).filter(tip => tip).join("\n");
 	if (detailedTooltip)
 	{
-		Engine.GetGUIObjectByName("attackAndResistanceStats").hidden = false;
+		// for the relic we need the space to display text in the HUD and therefore it should be hidden.
+		Engine.GetGUIObjectByName("attackAndResistanceStats").hidden = !!template?.visibleIdentityClasses.includes("Relic");
 		Engine.GetGUIObjectByName("attackAndResistanceStats").tooltip = detailedTooltip;
 	}
+
 	else
 		Engine.GetGUIObjectByName("attackAndResistanceStats").hidden = true;
 
