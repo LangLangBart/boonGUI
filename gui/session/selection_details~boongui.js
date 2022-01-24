@@ -313,10 +313,20 @@ function displaySingle(entState)
 			// the last sentence containts the important stuff we would like to display
 			const auraSnippet = auraDescriptionCutInSentences.pop();
 			// some of the description contains line breaks, we get rid of it here.
-			text += unitFont("●") + auraSnippet.replace(/(\r\n|\n|\r)/gm, " ") + "\n";
+			text += coloredText("●", "orange") + auraSnippet.replace(/(\r\n|\n|\r)/gm, " ") + "\n";
+
+			const radius = +template.auras[nameOfAuras].radius;
+			if (radius)
+				text += sprintf("%(label)s %(val)s %(unit)s", {
+					"label": "Range:",
+					"val": radius,
+					"unit": unitFont("m")
+				}) + "\n";
+
 		}
+		const font = text.length < 280 ? "sans-13" : "sans-12";
 		SetupStat("LHS", 0, "", "");
-		SetupStat("FullSpace", 0, "", text.length < 250 ? setStringTags(text, { "font": 'sans-13' }) : setStringTags(text, { "font": 'sans-12' }), "");
+		SetupStat("FullSpace", 0, "", setStringTags(text, { font }), "");
 	}
 
 	else
