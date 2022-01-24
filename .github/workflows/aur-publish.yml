@@ -1,4 +1,4 @@
-name: aur-publish
+name: AUR Release
 
 on:
   release:

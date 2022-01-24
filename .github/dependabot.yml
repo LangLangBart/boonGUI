@@ -14,7 +14,7 @@ updates:
     open-pull-requests-limit: 1000000
     target-branch: "main"
     labels:
-      - "dependencies"
+      - "Dependencies"
 
       
   # Configuration for npm
@@ -27,4 +27,4 @@ updates:
     open-pull-requests-limit: 1000000
     target-branch: "main"
     labels:
-      - "dependencies"
+      - "Dependencies"
