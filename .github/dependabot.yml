@@ -1,0 +1,30 @@
+# dependabot.yml file with updates
+# You enable DependaBot version updates by checking a dependabot.yml configuration file in to your repository's .github directory. 
+# https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  # Configuration for github-actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      day: 'monday'
+      interval: 'weekly'
+      time: '06:00'
+    open-pull-requests-limit: 1000000
+    target-branch: "main"
+    labels:
+      - "dependencies"
+
+      
+  # Configuration for npm
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      day: 'monday'
+      interval: 'weekly'
+      time: '06:00'
+    open-pull-requests-limit: 1000000
+    target-branch: "main"
+    labels:
+      - "dependencies"
