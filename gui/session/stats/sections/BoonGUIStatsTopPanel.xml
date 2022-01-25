@@ -66,4 +66,12 @@
 			</object>
 		</repeat>
 	</object>
+	<object name="visibilityStatsModesPanel"
+		type="checkbox"
+		checked="false"
+		style="ModernTickBox"
+		size="100%-24 1 100% 100%"
+		tooltip_style="sessionToolTipCircle"/>
 </object>
+
+

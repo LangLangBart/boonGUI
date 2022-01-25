@@ -4,7 +4,7 @@
 		type="text"
 		ghost="true"
 		size="5 0 60% 28"
-		font="mono-stroke-12"
+		font="mono-stroke-14"
 		text_align="left"
 		text_valign="bottom"
 		textcolor="255 255 255"

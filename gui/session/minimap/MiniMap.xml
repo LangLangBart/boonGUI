@@ -14,7 +14,7 @@
 		sprite="stretched:session/background_hover_panel.png"
 		ghost="true"
 	/>
-	
+
 	<!-- MiniMap -->
 	<object
 		name="minimap"
@@ -35,7 +35,7 @@
 		size="7 20 100%-42 100%-29"
 		ghost="true"
 	/>
-	
+
 	<!-- Idle Worker Button -->
 	<object name="idleWorkerButton"
 		type="button"
@@ -58,12 +58,12 @@
 		text_valign="center"
 		z="100"
 	/>
-	
+
 	<!-- Flare Button -->
 	<object
 		name="flareButton"
 		type="button"
-		size="62%+9 85%+8 77%-3 100%-4"	
+		size="62%+9 85%+8 77%-3 100%-4"
 		tooltip_style="sessionToolTipBottomBold"
 		hotkey="session.flareactivate"
 		sprite="stretched:session/minimap-flare.png"
@@ -72,7 +72,7 @@
 		sprite_disabled="stretched:session/minimap-flare-disabled.png"
 		sound_pressed="audio/interface/ui/ui_button_click.ogg"
 	/>
-	
+
 	<!-- Score Button -->
 	<object name="scoreButton"
 		type="button"
