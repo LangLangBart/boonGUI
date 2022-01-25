@@ -83,7 +83,7 @@ User interface **mod** for the RTS game **0 A.D.**
   * Additional ingame stats about the players.
   * Rally points are displayed for observers.
   * Timestamp notifications for players moving up a phase or completing one.
-  * The HUD in the middle shows individual unit stats.
+  * The HUD in the centre shows the values of the individual units. Relics show their auras and treasures their contents.
   * Option to skip the summary screen after a game ends.
   * All civilian houses/apartments have a garrison flag.
   * All heroes have a large visible object flowing over their head, making them easier to see on the battlefield.
@@ -145,21 +145,27 @@ It is not necessary to set up a linter when you make a pull request. A GitHub ac
 <details>
  <summary><b>Set up for VS Code</b></summary>
 <p>
-Linting is done via ESLint: https://eslint.org
 
-* Install `node.js`, the `ESLint` extension for VS Code and the dependencies below.
+Linting is done with ESLint: https://eslint.org
+
+* (1/2) install `node.js` e.g. via Homebrew
 
 ```zsh
-npm install -g eslint
-npm install eslint-plugin-brace-rules @typescript-eslint/parser @typescript-eslint/eslint-plugin typescript
+brew install node
+```
+
+* (2/2) Install the following dependencies
+
+```zsh
+npm install eslint eslint-plugin-brace-rules @typescript-eslint/parser @typescript-eslint/eslint-plugin typescript
 ```
 
 * The `.vscode` settings have been set up to automatically adjust your code to the rules when you save the document.
 * You can also lint and correct your entire repository with the following commands.
 
 ```zsh
-eslint .
-eslint . --fix
+npx eslint .
+npx eslint . --fix
 ```
 
 </p>
