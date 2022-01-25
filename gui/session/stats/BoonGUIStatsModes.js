@@ -81,6 +81,6 @@ class BoonGUIStatsModes
 	{
 		this.rows.forEach((row, i) => row.update(playersStates[i], BoonGUIStatsModes.Modes[this.modeIndex].type));
 		Engine.ConfigDB_CreateAndWriteValueToFile("user", "boongui.statsmode.checkbox", this.root.hidden ? 'true' : 'false', "config/user.cfg");
-		this.root.hidden = !this.checkbox.checked ;
+		this.root.hidden = !this.checkbox.checked;
 	}
 }
