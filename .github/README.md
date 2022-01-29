@@ -148,17 +148,18 @@ It is not necessary to set up a linter when you make a pull request. A GitHub ac
 
 Linting is done with ESLint: https://eslint.org
 
-* (1/2) install `node.js` e.g. via Homebrew
+* (1/3) install `node.js` e.g. via Homebrew
 
 ```zsh
 brew install node
 ```
 
-* (2/2) Install the following dependencies
+* (2/3) Install the following dependencies
 
 ```zsh
 npm install eslint eslint-plugin-brace-rules @typescript-eslint/parser @typescript-eslint/eslint-plugin typescript
 ```
+* (3/3) Add `node_modules` to your `.gitignore_global`
 
 * The `.vscode` settings have been set up to automatically adjust your code to the rules when you save the document.
 * You can also lint and correct your entire repository with the following commands.

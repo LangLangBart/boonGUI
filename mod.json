@@ -1,6 +1,6 @@
 {
   "name": "boonGUI",
-  "version": "2.1",
+  "version": "2.2",
   "label": "boonGUI",
   "description": "Larger buttons, colorful fruits, increased projectiles and cheat codes added to the manual. Enhance the observer experience with a stats overlay and stats in the HUD.",
   "ignoreInCompatibilityChecks": true,
