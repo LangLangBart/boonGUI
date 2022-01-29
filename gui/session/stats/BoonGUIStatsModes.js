@@ -30,10 +30,6 @@ class BoonGUIStatsModes
 		this.title.size = '10 0 100% 28';
 		this.title.sprite = "backcolor: 38 38 38 150";
 
-		this.checkbox = Engine.GetGUIObjectByName(`visibility${PREFIX}Panel`);
-		this.checkbox.checked = Engine.ConfigDB_GetValue("user", "boongui.statsmode.checkbox") === "false";
-		this.checkbox.tooltip = "Toggle the stats panel on the right side." + setStringTags("\nHide to boost performance", { "color": "red", "font": "sans-bold-stroke-14" });
-
 		this.tabButtons.size = '100%-47 28 100% 361';
 		this.tabButtons.sprite = "backcolor: 38 38 38 150";
 		this.rowsContainer.size = '0 30 100%-55 100%';
@@ -80,7 +76,5 @@ class BoonGUIStatsModes
 	update(playersStates)
 	{
 		this.rows.forEach((row, i) => row.update(playersStates[i], BoonGUIStatsModes.Modes[this.modeIndex].type));
-		Engine.ConfigDB_CreateAndWriteValueToFile("user", "boongui.statsmode.checkbox", this.root.hidden ? 'true' : 'false', "config/user.cfg");
-		this.root.hidden = !this.checkbox.checked;
 	}
 }

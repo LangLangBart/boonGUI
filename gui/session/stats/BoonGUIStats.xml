@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<object name="Stats" hidden="true" size="0 0 100% 100%">
-	<include directory="gui/session/stats/sections/"/>
+<object name="Stats"
+	hidden="true"
+	size="0 0 100% 100%">
+	<include directory="gui/session/stats/sections/" />
+	<object name="shortGameInfosLabels"
+		type="text"
+		ghost="true"
+		size="0 -10 1000 30"
+		sprite="backcolor: 38 38 38 225"
+		font="mono-stroke-12"
+		text_align="left"
+		text_valign="center"
+		textcolor="255 255 255">
+	</object>
 </object>

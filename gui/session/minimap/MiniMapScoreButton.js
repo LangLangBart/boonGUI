@@ -14,7 +14,7 @@ class MiniMapScoreButton
 	{
 		this.scoreButton.tooltip =
 			colorizeHotkey("%(hotkey)s" + " ", "boongui.session.stats.toggle") +
-			translate(this.Tooltip) + "\n" + setStringTags("Hide to boost performance", { "color": "red", "font": "sans-bold-16" });
+			translate(this.Tooltip) + setStringTags("\nLow performance gain when hidden.", { "color": "red", "font": "sans-bold-stroke-13" });
 	}
 
 	onKeyDown()

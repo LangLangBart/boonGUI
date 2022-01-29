@@ -2,7 +2,7 @@ let g_stats;
 
 autociv_patchApplyN("init", function(target, that, args) {
 	const result = target.apply(that, args);
-	g_stats = new BoonGUIStats();
+	g_stats = new BoonGUIStats(g_PlayerViewControl);
 	return result;
 });
 
