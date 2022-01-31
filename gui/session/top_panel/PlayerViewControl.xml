@@ -8,7 +8,7 @@
 		z="50"
 		font="mono-stroke-14"
 		style="ModernDropDown"
-		sprite="topPanel"
+		sprite="prettyBackgroundColor"
 		tooltip_style="sessionToolTipBold"
 		dropdown_size="500"
 	>

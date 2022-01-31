@@ -57,9 +57,13 @@
 
 	<!-- Top Panel -->
 	<sprite name="topPanel">
+		<image backcolor="transparent"
+			size="0 0 100% 100%" />
+	</sprite>
+
+	<sprite name="prettyBackgroundColor">
 		<image backcolor="38 38 38 225"
 			size="0 0 100% 100%" />
-
 	</sprite>
 
 	<sprite name="CivIconOver">

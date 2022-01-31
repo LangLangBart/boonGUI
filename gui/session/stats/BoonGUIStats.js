@@ -218,7 +218,6 @@ class BoonGUIStats
 		optionFollowPlayer.hidden = !(g_IsObserver && isPlayer);
 
 		// Nice future project to show the menuButton only upon hovering over it and hide it otherwise
-		// const placeHoldermenuButton = Engine.GetGUIObjectByName("placeHoldermenuButton");
 		// placeHoldermenuButton.onMouseEnter = function()
 		// {
 		// 	placeHoldermenuButton.hidden = true;
@@ -239,7 +238,7 @@ class BoonGUIStats
 
 		let remainingWidth = buttonName.reduce((v, c) => v + (c[0].hidden ? 0 : c[1]), 0);
 
-		topPanel.size = "100%-" + remainingWidth + " 0 100%+3 34";
+		topPanel.size = "100%-" + remainingWidth + " -3 100% 34";
 
 		for (const els of buttonName)
 		{
