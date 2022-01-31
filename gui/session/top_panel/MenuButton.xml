@@ -2,19 +2,26 @@
 <!-- This object covers up the text on the menu
 buttons as they slide by so that you don't see
 them on top of the main menu button -->
-<object type="button"
-	name="menuButton"
-	hotkey="session.gui.menu.toggle"
-	size="100%-164 4 100%-8 32"
-	font="mono-stroke-16"
-	sprite="topPanel"
-	style="StoneButtonFancy"
-	tooltip_style="sessionToolTip"
-	z="100"
->
-	<object size="0 -4 100% 0" type="image" ghost="true"/>
-
-	<translatableAttribute id="caption">Menu</translatableAttribute>
-
+<object>
+	<object type="button"
+		name="menuButton"
+		hotkey="session.gui.menu.toggle"
+		size="100%-164 0 100% 32"
+		font="mono-stroke-16"
+		sprite="topPanel"
+		style="StoneButtonFancy"
+		tooltip_style="sessionToolTip"
+		z="100">
+		<object size="0 0 100% 0"
+			type="image"
+			ghost="true" />
+		<translatableAttribute id="caption">Menu</translatableAttribute>
+	</object>
+	<!-- Not yet used button, see BoonGUIStats.js -->
+	<object type="button"
+		name="placeHoldermenuButton"
+		style="StoneButtonFancy"
+		hidden="true"
+		size="100%-16 0 100% 32">
+	</object>
 </object>
-

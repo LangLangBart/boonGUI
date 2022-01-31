@@ -20,11 +20,12 @@ class BoonGUIStats
 		this.playerViewControl = playerViewControl;
 		this.updateLayout();
 		this.updateShortGameInfosLabels();
-		playerViewControl.registerPlayerIDChangeHandler(this.updateLayout.bind(this));
-		playerViewControl.registerViewedPlayerChangeHandler(this.updateLayout.bind(this));
 
+		playerViewControl.registerPlayerIDChangeHandler(this.updateLayout.bind(this));
+		playerViewControl.registerViewedPlayerChangeHandler(this.adoptLayout.bind(this));
 		this.resizeInit();
-		registerPlayersFinishedHandler(this.onPlayersFinished.bind(this));
+		registerPlayersFinishedHandler(this.adoptLayout.bind(this));
+
 		this.root.hidden = false;
 		this.root.onTick = this.onTick.bind(this);
 	}
@@ -54,10 +55,9 @@ class BoonGUIStats
 		}
 	}
 
-	onPlayersFinished()
+	adoptLayout()
 	{
 		this.updateLayout();
-		this.updateShortGameInfosLabels();
 		this.resize(this.lastPlayerLength);
 	}
 
@@ -107,7 +107,8 @@ class BoonGUIStats
 	{
 		const PAD = 5;
 		this.lastPlayerLength = length;
-		const shortGameInfosLabelsPAD = g_IsObserver ? this.shortGameInfosLabels.size.bottom : "";
+		this.shortGameInfosLabels.hidden = !g_IsObserver && !this.playerViewControl.changePerspective;
+		const shortGameInfosLabelsPAD = this.shortGameInfosLabels.hidden ? "" : this.shortGameInfosLabels.size.bottom;
 		let y = (26 * (length + 1) + shortGameInfosLabelsPAD);
 		this.statsTopPanel.root.size = `0 ${shortGameInfosLabelsPAD} 1000 ${y}`;
 		y = this.statsTopPanel.root.size.bottom + PAD;
@@ -216,18 +217,17 @@ class BoonGUIStats
 		trade.hidden = !isPlayer;
 		optionFollowPlayer.hidden = !(g_IsObserver && isPlayer);
 
-		// Future Project make the menu button only visible when you move the mouse to the top right corner
-		// const gameSpeed = Engine.GetGUIObjectByName("gameSpeedButton");
-		// const menuButton = Engine.GetGUIObjectByName("menuButton");
-		// gameSpeed.onMouseEnter = function()
+		// Nice future project to show the menuButton only upon hovering over it and hide it otherwise
+		// const placeHoldermenuButton = Engine.GetGUIObjectByName("placeHoldermenuButton");
+		// placeHoldermenuButton.onMouseEnter = function()
 		// {
+		// 	placeHoldermenuButton.hidden = true;
 		// 	menuButton.hidden = false;
 		// };
 		// menuButton.onMouseLeave = function()
 		// {
+		// 	placeHoldermenuButton.hidden = false;
 		// 	menuButton.hidden = true;
-		// 	// const firstElement = buttonName.map((x) => x[0]);
-		// 	// const indexNumberMenuButton = firstElement.findIndex((x) => x == menuButton);
 		// };
 
 		const buttonName = [[trade], [diplomacy], [objectives], [optionFollowPlayer], [viewPlayer], [gameSpeed], [menuButton]];
@@ -260,7 +260,6 @@ class BoonGUIStats
 	updateShortGameInfosLabels()
 	{
 		this.mapCache = new MapCache();
-		this.shortGameInfosLabels.hidden = !g_IsObserver || g_ViewedPlayer > 0;
 		this.shortGameInfosLabels.caption = Engine.IsAtlasRunning() ? "" : sprintf("%(icon_alpha)s A25  %(icon_map)s %(mapName)s%(mapSize)s%(biome)s  %(icon_pop)s %(pop)s%(duration)s%(rating)s", {
 			"icon_alpha": '[icon="icon_alpha" displace="1 5"]',
 			"icon_map": '[icon="icon_map" displace="2 6"]',
