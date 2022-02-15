@@ -8,6 +8,7 @@
 <script directory="gui/session/"/>
 <script directory="gui/session/campaigns/"/>
 <script directory="gui/session/chat/"/>
+<script directory="gui/session/counters/"/>
 <script directory="gui/session/developer_overlay/"/>
 <script directory="gui/session/diplomacy/"/>
 <script directory="gui/session/diplomacy/playercontrols/"/>
@@ -53,9 +54,11 @@
 	</object>
 
 	<include directory="gui/session/chat/"/>
+	<include directory="gui/session/counters/"/>
 	<include directory="gui/session/developer_overlay/"/>
 	<include directory="gui/session/dialogs/"/>
 	<include directory="gui/session/diplomacy/"/>
+	<include directory="gui/session/minimap/"/>
 	<include directory="gui/session/objectives/"/>
 	<include directory="gui/session/stats/"/>
 	<include file="gui/session/GameSpeedControl.xml"/>
@@ -77,13 +80,9 @@
 	<!-- Structure placement info tooltip -->
 	<object name="placementTooltip" type="tooltip" independent="true" style="informationTooltip"/>
 
-	<object size="-7 100%-350 350 100%">
-		<include directory="gui/session/minimap/"/>
-	</object>
-
 	<!-- START of BOTTOM PANEL -->
 	<!-- Limit to the minimal supported width of 1024 pixels. -->
-	<object size="50%-555 0 50%+512 100%">
+	<object size="50%-375 0 50%+512 100%">
 
 		<!-- Supplemental Details Panel (left). -->
 		<object name="supplementalSelectionDetails"

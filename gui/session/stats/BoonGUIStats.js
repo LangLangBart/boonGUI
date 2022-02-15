@@ -26,7 +26,9 @@ class BoonGUIStats
 		this.resizeInit();
 		registerPlayersFinishedHandler(this.adoptLayout.bind(this));
 
-		this.root.hidden = false;
+		const key = g_IsObserver ? "boongui.observer.hidden" : "boongui.player.hidden";
+		const defaultHidden = g_IsObserver ? "false" : "true";
+		this.root.hidden = (Engine.ConfigDB_GetValue("user", key) || defaultHidden) == "true";
 		this.root.onTick = this.onTick.bind(this);
 	}
 
@@ -42,6 +44,8 @@ class BoonGUIStats
 	{
 		const forceRender = this.shouldForceRender;
 		this.shouldForceRender = false;
+		const key = g_IsObserver ? "boongui.observer.hidden" : "boongui.player.hidden";
+		Engine.ConfigDB_CreateAndWriteValueToFile("user", key, this.root.hidden ? 'true' : 'false', "config/user.cfg");
 		if (this.root.hidden)
 		{
 			if (this.lastPlayerLength != 0) this.resize(0);

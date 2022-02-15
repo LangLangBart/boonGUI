@@ -1,8 +1,10 @@
 let g_stats;
+let g_resStats;
 
 autociv_patchApplyN("init", function(target, that, args) {
 	const result = target.apply(that, args);
 	g_stats = new BoonGUIStats(g_PlayerViewControl);
+	g_resStats = new BoonGUICounterManager(g_PlayerViewControl);
 	return result;
 });
 

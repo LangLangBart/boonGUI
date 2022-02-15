@@ -115,10 +115,10 @@
 		text_align="left"
 		text_valign="center"
 	/>
-	
+
 	<style name="resourceTextCounter"
 		textcolor="white"
-		font="mono-stroke-18"
+		font="mono-stroke-12"
 		ghost="true"
 		text_align="left"
 		text_valign="center"
@@ -126,9 +126,9 @@
 
 	<style name="gathererCounts"
 		textcolor="200 200 200"
-		font="mono-stroke-14"
+		font="mono-stroke-12"
 		ghost="true"
-		text_align="left"
+		text_align="center"
 		text_valign="center"
 	/>
 
