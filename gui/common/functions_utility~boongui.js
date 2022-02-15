@@ -57,7 +57,9 @@ function brightenedColor(color)
 		const total = r + g + b;
 		if (total >= 3 * threshold)
 		{
-			r = g = b = threshold;
+			r = threshold;
+			g = threshold;
+			b = threshold;
 		}
 		else
 		{
