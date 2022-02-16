@@ -6,11 +6,11 @@
 	<object name="shortGameInfosLabels"
 		type="text"
 		ghost="true"
-		size="0 -10 1000 30"
-		sprite="backcolor: 38 38 38 225"
+		size="0 -10 1000 25"
+		sprite="prettyBackgroundColor"
 		font="mono-stroke-12"
 		text_align="left"
 		text_valign="center"
-		textcolor="255 255 255">
+		textcolor="225 225 225 190">
 	</object>
 </object>

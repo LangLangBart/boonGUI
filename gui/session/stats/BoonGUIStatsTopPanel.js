@@ -9,7 +9,7 @@ class BoonGUIStatsTopPanel {
 		this.headerContainer.size = "0 0 100% 25";
 		this.rowsContainer.size = "0 25 100% 100%";
 		this.scales = new BoonGUIColorScales();
-		this.root.sprite = "backcolor: 38 38 38 225";
+		this.root.sprite = "prettyBackgroundColor";
 	}
 
 	update(playersStates) {

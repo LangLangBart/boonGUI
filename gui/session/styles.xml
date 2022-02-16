@@ -273,7 +273,7 @@
 	/>
 	<style name="overlayHeader"
 		font="mono-stroke-14"
-		textcolor="225 225 225 190"
+		textcolor="white"
 		text_align="left"
 		text_valign="top"
 		tooltip_style="sessionToolTip"
