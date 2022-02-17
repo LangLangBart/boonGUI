@@ -152,7 +152,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 			return false; // Gaia index 0
 		if (state == "defeated" && index != g_ViewedPlayer)
 			return false;
-		if (g_IsObserver || !cmpPlayerViewed || index == g_ViewedPlayer)
+		if (!cmpPlayerViewed || index == g_ViewedPlayer)
 			return true;
 		if (!cmpPlayerViewed.hasSharedLos || !cmpPlayer.IsMutualAlly(cmpPlayerViewed.index))
 			return false;

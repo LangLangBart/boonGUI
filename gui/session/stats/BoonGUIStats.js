@@ -61,6 +61,7 @@ class BoonGUIStats
 
 	adoptLayout()
 	{
+		this.root.hidden = false;
 		this.updateLayout();
 		this.resize(this.lastPlayerLength);
 	}
@@ -79,9 +80,7 @@ class BoonGUIStats
 			if (group != -1 && !teamRepresentatives[group])
 				teamRepresentatives[group] = i;
 		}
-		if (g_IsObserver)
-			return rgbToGuiColor(g_Players[teamRepresentatives[state.team] || state.index].color);
-		return "white";
+		return rgbToGuiColor(g_Players[teamRepresentatives[state.team] || state.index].color);
 	}
 
 	resizeInit()
