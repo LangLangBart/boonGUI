@@ -200,7 +200,7 @@ class BoonGUIStatsTopPanelRow
 			value = state.resourceRates[resType];
 			color = scales.getColor(`${resType}Rates`, value, 180);
 			caption = isNaN(value) || value <= 0 ? '' : `+${this.normalizeResourceRate(value)}`;
-			this.resource.rates[resType].caption = setStringTags(caption, g_IsObserver ? { color } : { "color": state.playerColor });
+			this.resource.rates[resType].caption = setStringTags(caption, (g_ViewedPlayer < 0) ? { color } : { "color": state.playerColor });
 
 			if (caption)
 				tooltip += `Rate: ${setStringTags(caption, { color })} ${setStringTags('(Amount/10s)', { "font": 'sans-12' })} \n`;
