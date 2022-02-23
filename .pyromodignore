@@ -1,4 +1,5 @@
 /.eslintrc.json
+/.eslintignore
 /.git
 /.github
 /.pyromodignore
