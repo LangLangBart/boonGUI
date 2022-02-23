@@ -146,7 +146,7 @@ It is not necessary to set up a linter when you make a pull request. A GitHub ac
  <summary><b>Set up for VS Code</b></summary>
 <p>
 
-Mirroring the linting process from 0 A.D. by using [ESLint](https://eslint.org) and an adopted set of rules defined in the [eslintrc.json](.eslintrc.json) file.
+Mirroring the linting process from 0 A.D. by using [ESLint](https://eslint.org) and an adopted set of rules defined in the [eslintrc.json](../.eslintrc.json) file.
 
 * (1/3) install `node.js` e.g. via Homebrew
 
@@ -164,6 +164,7 @@ npm install
 ```zsh
 git config --global core.excludesfile ~/.gitignore_global
 nano ~/.gitignore_global
+node_modules
 ```
 * The `.vscode` settings have been set up to automatically adjust your code to the rules when you save the document.
 * You can also lint and correct your entire repository with the following commands.
