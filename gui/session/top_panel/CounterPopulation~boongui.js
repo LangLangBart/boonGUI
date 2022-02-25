@@ -1,4 +1,4 @@
-CounterPopulation.prototype.rebuild = function(playerState, getAllyStatTooltip)
+CounterPopulation.prototype.rebuild = function(playerState, diploColor)
 {
 	this.count.caption = sprintf(translate(this.CounterCaption), playerState);
 	let total = 0;
@@ -6,11 +6,10 @@ CounterPopulation.prototype.rebuild = function(playerState, getAllyStatTooltip)
 		total += playerState.resourceGatherers[resCode];
 
 	this.stats.caption = total ? setStringTags(total,
-		{ "color": brightenedColor(playerState.color) }) : 0;
+		{ "color": diploColor }) : 0;
 
 	this.isTrainingBlocked = playerState.trainingBlocked;
 
-	this.panel.tooltip =
-		setStringTags(translate(this.PopulationTooltip), CounterManager.ResourceTitleTags) +
-		getAllyStatTooltip(this.getTooltipData.bind(this)) + "\n" + this.CurrentGatherersTooltip;
+	this.panel.tooltip = setStringTags(translate(this.PopulationTooltip), CounterManager.ResourceTitleTags);
+	this.panel.tooltip += setStringTags("\nTotal Gatherers", { "color": total ? diploColor : "200 200 200" });
 };

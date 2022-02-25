@@ -139,12 +139,12 @@ zsh -c "$(curl -fsSL https://raw.githubusercontent.com/LangLangBart/boonGUI/main
 4. Push it to the branch: `git push origin my-new-feature`
 5. Submit a pull request.
 
-### Linting
-It is not necessary to set up a linter when you make a pull request. A GitHub action has been set up to automatically adjust your code to the rules. You can also lint your code locally, see instructions below.
-
 <details>
- <summary><b>Set up for VS Code</b></summary>
+ <summary><b>Setup for VSCode</b></summary>
 <p>
+
+#### Javacript
+It is not necessary to set up a linter when you make a pull request. A GitHub action has been set up to automatically adjust your code to the rules. You can also lint your code locally, see instructions below.
 
 Mirroring the linting process from 0 A.D. by using [ESLint](https://eslint.org) and an adopted set of rules defined in the [eslintrc.json](../.eslintrc.json) file.
 
@@ -167,12 +167,16 @@ nano ~/.gitignore_global
 node_modules
 ```
 * The `.vscode` settings have been set up to automatically adjust your code to the rules when you save the document.
+* An optional installation of the [VSCode ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) will run eslint on each file and display warnings/errors immediately.
 * You can also lint and correct your entire repository with the following commands.
 
 ```zsh
 npx eslint .
 npx eslint . --fix
 ```
+
+#### XML
+When working with XML files, I use the default settings of the [VSCode XML Tools extension](https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml).
 
 </p>
 </details>
@@ -183,7 +187,6 @@ Motivation for this mod was the desire to learn javascript and create a tool for
 * Thanks to @mysticjim, @Palaiologos and @seeh for constantly testing and giving feedback.
 * Providing code and helping with problems: @andy5995, @kaaduu, @maroder, @Nescio, @Pretuer and @Schweini.
 * Thanks to @badosu, @ffffff, @ffm2, @nani, @The Undying Nephalim and @wowgetoffyourcellphone for creating the following mods: Prodmod, fGod, ffm_visibility, Autociv, Hyrule Conquest and Delenda Est.
-
 * Being good lads @elexis, @bb, @Imarok, @wraitii, @Freagarach, @vladislavbelov, @Silier and @Stan` pointed me in the right direction on the IRC #0ad channel when I got stuck.
 
 <br>
@@ -191,6 +194,6 @@ Motivation for this mod was the desire to learn javascript and create a tool for
 <div align="center">
 
 ### If you want to contribute, give feedback or make suggestions, go ahead.
-### ❤️
+# ❤️
 
 </div>

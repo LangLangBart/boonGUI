@@ -9,17 +9,17 @@ class BoonGUIStats
 		this.statsModes = new BoonGUIStatsModes(() => this.shouldForceRender);
 		this.resourcesBuffer = new Map();
 		this.lastPlayerLength = null;
-		this.shortGameInfosLabels = Engine.GetGUIObjectByName("shortGameInfosLabels");
+		this.shortGameInfoLabel = Engine.GetGUIObjectByName("shortGameInfoLabel");
 		this.resourceCounts = Engine.GetGUIObjectByName("resourceCounts");
 
 
 		this.checkbox = Engine.GetGUIObjectByName("visibilityStatsModesPanel");
 		this.checkbox.checked = Engine.ConfigDB_GetValue("user", "boongui.statsmode.checkbox") === "false";
-		this.checkbox.tooltip = "Toggle the stats panel on the right side." + setStringTags("\nLow performance gain when hidden.", { "color": "red", "font": "sans-bold-stroke-13" });
+		this.checkbox.tooltip = "Toggle the stats panel on the right side." + coloredText("\nLow performance gain when hidden.", "red");
 
 		this.playerViewControl = playerViewControl;
 		this.updateLayout();
-		this.updateShortGameInfosLabels();
+		this.updateShortGameInfoLabel();
 
 		playerViewControl.registerPlayerIDChangeHandler(this.updateLayout.bind(this));
 		playerViewControl.registerViewedPlayerChangeHandler(this.adoptLayout.bind(this));
@@ -68,7 +68,7 @@ class BoonGUIStats
 
 	playerColor(state)
 	{
-		return rgbToGuiColor(g_DiplomacyColors.displayedPlayerColors[state.index]);
+		return g_DiplomacyColors.getPlayerColor(state.index);
 	}
 
 	teamColor(state)
@@ -80,7 +80,7 @@ class BoonGUIStats
 			if (group != -1 && !teamRepresentatives[group])
 				teamRepresentatives[group] = i;
 		}
-		return rgbToGuiColor(g_Players[teamRepresentatives[state.team] || state.index].color);
+		return g_DiplomacyColors.getPlayerColor([teamRepresentatives[state.team] || state.index]);
 	}
 
 	resizeInit()
@@ -110,10 +110,10 @@ class BoonGUIStats
 	{
 		const PAD = 5;
 		this.lastPlayerLength = length;
-		this.shortGameInfosLabels.hidden = !g_IsObserver && !this.playerViewControl.changePerspective;
-		const shortGameInfosLabelsPAD = this.shortGameInfosLabels.hidden ? "" : this.shortGameInfosLabels.size.bottom;
-		let y = (26 * (length + 1) + shortGameInfosLabelsPAD);
-		this.statsTopPanel.root.size = `0 ${shortGameInfosLabelsPAD} 1000 ${y}`;
+		this.shortGameInfoLabel.hidden = !g_IsObserver && !this.playerViewControl.changePerspective;
+		const shortGameInfoLabelPAD = this.shortGameInfoLabel.hidden ? "" : this.shortGameInfoLabel.size.bottom;
+		let y = (26 * (length + 1) + shortGameInfoLabelPAD);
+		this.statsTopPanel.root.size = `0 ${shortGameInfoLabelPAD} 1000 ${y}`;
 		y = this.statsTopPanel.root.size.bottom + PAD;
 
 		const panelEntityButtons = Engine.GetGUIObjectByName("panelEntityButtons");
@@ -259,11 +259,12 @@ class BoonGUIStats
 		Engine.GetGUIObjectByName("buildLabel").hidden = true;
 	}
 
-	updateShortGameInfosLabels()
+	updateShortGameInfoLabel()
 	{
 		this.mapCache = new MapCache();
-		this.shortGameInfosLabels.caption = Engine.IsAtlasRunning() ? "" : sprintf("%(icon_alpha)s A25  %(icon_map)s %(mapName)s%(mapSize)s%(biome)s  %(icon_pop)s %(pop)s%(duration)s%(rating)s", {
+		this.shortGameInfoLabel.caption = Engine.IsAtlasRunning() ? "" : sprintf("%(icon_alpha)s %(AlphaText)s  %(icon_map)s %(mapName)s%(mapSize)s%(biome)s  %(icon_pop)s %(pop)s%(duration)s%(rating)s", {
 			"icon_alpha": '[icon="icon_alpha" displace="1 5"]',
+			"AlphaText": "Alpha25",
 			"icon_map": '[icon="icon_map" displace="2 6"]',
 			"mapName": this.mapCache.translateMapName(this.mapCache.getTranslatableMapName(g_InitAttributes.mapType, g_InitAttributes.map)),
 			"mapSize": g_InitAttributes.mapType == "random" ? " - " + g_MapSizes.Name[g_MapSizes.Tiles.indexOf(g_InitAttributes.settings.Size)] : "",

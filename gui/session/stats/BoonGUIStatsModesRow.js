@@ -19,24 +19,17 @@ class BoonGUIStatsModesRow
 	createTooltip(state)
 	{
 		let tooltip = "";
-		const CivName = g_CivData[state.civ].Name;
-		tooltip += setStringTags(`${state.name}\n`, { "color": state.playerColor });
-		tooltip += setStringTags(`${CivName}\n`, { "color": state.playerColor });
+		const civ = g_CivData[state.civ];
+		const Emblem = civ.Emblem.replace(BoonGUIStatsTopPanelRow.Regex_Emblem, "$1");
 
+		tooltip = '';
+		tooltip += setStringTags(`${state.name.padEnd(8)}\n`, { "color": state.playerColor });
 		if (state.team != -1)
 		{
 			tooltip += setStringTags(`Team ${state.team + 1}\n`, { "color": state.teamColor });
 		}
-
-		tooltip += `${headerFont('Economy')} - Phase ${headerFont(state.phase)}\n`;
-
-		const resTypes = ['food', 'wood', 'stone', 'metal'];
-
-		for (const resType of resTypes)
-		{
-			const count = Math.floor(state.resourceCounts[resType]);
-			tooltip += `${resourceIcon(resType)} ${count} `;
-		}
+		tooltip += `[icon="${Emblem}" displace="2 5"] \n`;
+		tooltip += `${civ.Name}\n`;
 
 		return tooltip;
 	}

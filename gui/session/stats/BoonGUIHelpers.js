@@ -74,3 +74,20 @@ function focusCC(move, state)
 		Engine.CameraMoveTo(entState.position.x, entState.position.z);
 	}
 }
+
+/**
+ * Vertically spaces objects within a parent
+ * @param margin The gap, in px, between the objects
+ */
+function verticallySpaceObjects(parentName, margin = 0)
+{
+	 const objects = Engine.GetGUIObjectByName(parentName).children;
+	 for (let i = 0; i < objects.length; ++i)
+	 {
+		 const size = objects[i].size;
+		 const height = size.top - size.bottom;
+		 size.bottom = i * (height + margin) + margin;
+		 size.top = i * (height + margin);
+		 objects[i].size = size;
+	 }
+}

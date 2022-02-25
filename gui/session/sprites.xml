@@ -66,6 +66,11 @@
 			size="0 0 100% 100%" />
 	</sprite>
 
+	<sprite name="prettyBackgroundColorStatsMode">
+		<image backcolor="38 38 38 150"
+			size="0 0 100% 100%" />
+	</sprite>
+
 	<sprite name="CivIconOver">
 		<image texture="session/portraits/emblems/states/hover.png"
 			size="0 0 100% 100%" />
