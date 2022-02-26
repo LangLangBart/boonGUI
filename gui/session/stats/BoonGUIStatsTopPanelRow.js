@@ -51,7 +51,7 @@ class BoonGUIStatsTopPanelRow
 	{
 		if (value >= 10000)
 		{
-			return Math.floor(value / 1000) + setStringTags('k', { "font": 'mono-10' });
+			return Math.floor(value / 1000) + setStringTags("k", { "font": "mono-10" });
 		}
 		return Math.floor(value / 10) * 10;
 
@@ -61,11 +61,11 @@ class BoonGUIStatsTopPanelRow
 	{
 		if (value >= 10000)
 		{
-			return Math.floor(value / 1000) + setStringTags('k', { "font": 'mono-10' });
+			return Math.floor(value / 1000) + setStringTags("k", { "font": "mono-10" });
 		}
 		else if (value >= 1000)
 		{
-			return (value / 1000).toFixed(1) + setStringTags('k', { "font": 'mono-10' });
+			return (value / 1000).toFixed(1) + setStringTags("k", { "font": "mono-10" });
 		}
 		return value;
 
@@ -76,7 +76,7 @@ class BoonGUIStatsTopPanelRow
 		if (value >= 1000)
 		{
 			// avoid trailing zeros
-			return Number((value / 1000).toFixed(1)) + setStringTags('k', { "font": 'mono-10' });
+			return Number((value / 1000).toFixed(1)) + setStringTags("k", { "font": "mono-10" });
 		}
 		return value;
 	}
@@ -104,12 +104,12 @@ class BoonGUIStatsTopPanelRow
 		const civ = g_CivData[state.civ];
 		const Emblem = civ.Emblem.replace(BoonGUIStatsTopPanelRow.Regex_Emblem, "$1");
 
-		tooltip = '';
+		tooltip = "";
 		tooltip += playerNick + "\n\n";
 		tooltip += `[icon="${Emblem}" displace="12 0"] \n`;
 		tooltip += `History of the ${civ.Name.padEnd(8)}\n`;
 		font = "sans-stroke-14";
-		tooltip += ' ' + setStringTags(civ.History + '\n', { font });
+		tooltip += " " + setStringTags(civ.History + "\n", { font });
 		this.civ.tooltip = tooltip;
 
 		let phase;
@@ -125,28 +125,28 @@ class BoonGUIStatsTopPanelRow
 
 		if (phase_city)
 		{
-			phase = 'phase_city';
+			phase = "phase_city";
 			progress = phase_city.progress;
 		}
-		else if (state.phase == 'city')
+		else if (state.phase == "city")
 		{
-			phase = 'phase_city';
+			phase = "phase_city";
 		}
 		else if (phase_town)
 		{
 			progress = phase_town.progress;
-			phase = 'phase_town';
+			phase = "phase_town";
 		}
-		else if (state.phase == 'town')
+		else if (state.phase == "town")
 		{
-			phase = 'phase_town';
+			phase = "phase_town";
 		}
 		else
 		{
-			phase = 'phase_village';
+			phase = "phase_village";
 		}
 
-		this.phaseIcon.sprite = 'stretched:session/portraits/' + GetTechnologyData(phase, state.civ).icon;
+		this.phaseIcon.sprite = "stretched:session/portraits/" + GetTechnologyData(phase, state.civ).icon;
 		if (progress == null)
 		{
 			this.phaseProgress.hidden = true;
@@ -170,10 +170,10 @@ class BoonGUIStatsTopPanelRow
 		}
 		else
 		{
-			const popLimitColor = scales.getColor('popLimit', state.popLimit);
-			const popCountColor = scales.getColor('popCount', state.popCount);
+			const popLimitColor = scales.getColor("popLimit", state.popLimit);
+			const popCountColor = scales.getColor("popCount", state.popCount);
 			this.pop.caption =
-				setStringTags(popCount, { "color": popCountColor }) + '/' +
+				setStringTags(popCount, { "color": popCountColor }) + "/" +
 				setStringTags(popLimit, { "color": popLimitColor });
 
 		}
@@ -188,7 +188,7 @@ class BoonGUIStatsTopPanelRow
 			{
 				for (let i = 0; i < state.resourcesTechs[resType].length; i += 4)
 				{
-					tooltip += state.resourcesTechs[resType].slice(i, i + 4).map(tech => `[icon="icon_${tech}" displace="0 5"]`).join(' ') + "\n";
+					tooltip += state.resourcesTechs[resType].slice(i, i + 4).map(tech => `[icon="icon_${tech}" displace="0 5"]`).join(" ") + "\n";
 				}
 			}
 
@@ -216,7 +216,7 @@ class BoonGUIStatsTopPanelRow
 		}
 
 		value = state.economyTechsCount;
-		color = scales.getColor('economyTechsCount', value);
+		color = scales.getColor("economyTechsCount", value);
 		this.economyTechsCount.caption = setStringTags(value, { color });
 		tooltip = "";
 
@@ -227,17 +227,17 @@ class BoonGUIStatsTopPanelRow
 				tooltip += resourceNameFirstWord(resType) + "\n";
 				for (let i = 0; i < state.resourcesTechs[resType].length; i += 4)
 				{
-					tooltip += state.resourcesTechs[resType].slice(i, i + 4).map(tech => `[icon="icon_${tech}" displace="0 5"]`).join(' ') + "\n";
+					tooltip += state.resourcesTechs[resType].slice(i, i + 4).map(tech => `[icon="icon_${tech}" displace="0 5"]`).join(" ") + "\n";
 				}
 			}
 		}
 
-		tooltip = tooltip ? playerNick.padEnd(50) + "\n" + tooltip + "\n" : '';
+		tooltip = tooltip ? playerNick.padEnd(50) + "\n" + tooltip + "\n" : "";
 		this.economyTechsCount.tooltip = tooltip;
 
 
 		value = state.militaryTechsCount;
-		color = scales.getColor('militaryTechsCount', value);
+		color = scales.getColor("militaryTechsCount", value);
 		this.militaryTechsCount.caption = setStringTags(value, { color });
 		tooltip = "";
 
@@ -247,35 +247,35 @@ class BoonGUIStatsTopPanelRow
 			tooltip += "Military techs\n";
 			for (let i = 0; i < state.militaryTechs.length; i += 4)
 			{
-				tooltip += state.militaryTechs.slice(i, i + 4).map(tech => `[icon="icon_${tech}" displace="0 5"]`).join('  ') + " \n";
+				tooltip += state.militaryTechs.slice(i, i + 4).map(tech => `[icon="icon_${tech}" displace="0 5"]`).join("  ") + " \n";
 			}
-			tooltip += '\n';
+			tooltip += "\n";
 		}
 		this.militaryTechsCount.tooltip = tooltip;
 
 		value = state.classCounts.FemaleCitizen ?? 0;
-		color = scales.getColor('femaleCitizen', value);
+		color = scales.getColor("femaleCitizen", value);
 		this.femaleCitizen.caption = setStringTags(value, { color });
 
 		value = state.classCounts.Infantry ?? 0;
-		color = scales.getColor('infantry', value);
+		color = scales.getColor("infantry", value);
 		this.infantry.caption = setStringTags(value, { color });
 
 		value = state.classCounts.Cavalry ?? 0;
-		color = scales.getColor('cavalry', value);
+		color = scales.getColor("cavalry", value);
 		this.cavalry.caption = setStringTags(value, { color });
 
 		value = state.enemyUnitsKilledTotal;
-		color = scales.getColor('enemyUnitsKilledTotal', value);
+		color = scales.getColor("enemyUnitsKilledTotal", value);
 		this.enemyUnitsKilledTotal.caption = setStringTags(this.normalizeKillLost(value), { color });
 
 		value = state.unitsLostTotal;
-		color = scales.getColor('unitsLostTotal', value);
+		color = scales.getColor("unitsLostTotal", value);
 		this.unitsLostTotal.caption = setStringTags(this.normalizeKillLost(value), { color });
 
 
 		value = state.killDeathRatio;
-		color = scales.getColor('killDeathRatio', value);
+		color = scales.getColor("killDeathRatio", value);
 		caption = formatKD(value);
 		font = caption.length >= 4 ? "mono-stroke-12" : "mono-stroke-14";
 		this.killDeathRatio.caption = setStringTags(caption, { color, font });
@@ -285,7 +285,7 @@ class BoonGUIStatsTopPanelRow
 		color = state.playerColor;
 		tooltip = "";
 		font = "sans-stroke-20";
-		tooltip += `${setStringTags('○', { color, font })} / ${setStringTags('●', { color, font })}\n`;
+		tooltip += `${setStringTags("○", { color, font })} / ${setStringTags("●", { color, font })}\n`;
 		tooltip += "Full circle when cartography has been researched or when you are without mutual allies";
 		this.los.tooltip = tooltip;
 	}

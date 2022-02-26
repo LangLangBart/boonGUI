@@ -16,19 +16,19 @@ class BoonGUIStatsTopPanel {
 		this.root.hidden = false;
 		this.scales.reset();
 		playersStates.forEach((state) => {
-			this.scales.addValue('popCount', state.popCount);
-			this.scales.addValue('popLimit', state.popLimit);
+			this.scales.addValue("popCount", state.popCount);
+			this.scales.addValue("popLimit", state.popLimit);
 
-			this.scales.addValue('economyTechsCount', state.economyTechsCount);
-			this.scales.addValue('militaryTechsCount', state.militaryTechsCount);
+			this.scales.addValue("economyTechsCount", state.economyTechsCount);
+			this.scales.addValue("militaryTechsCount", state.militaryTechsCount);
 
-			this.scales.addValue('femaleCitizen', state.classCounts.FemaleCitizen ?? 0);
-			this.scales.addValue('infantry', state.classCounts.Infantry ?? 0);
-			this.scales.addValue('cavalry', state.classCounts.Cavalry ?? 0);
+			this.scales.addValue("femaleCitizen", state.classCounts.FemaleCitizen ?? 0);
+			this.scales.addValue("infantry", state.classCounts.Infantry ?? 0);
+			this.scales.addValue("cavalry", state.classCounts.Cavalry ?? 0);
 
-			this.scales.addValue('enemyUnitsKilledTotal', state.enemyUnitsKilledTotal);
-			this.scales.addValue('unitsLostTotal', state.unitsLostTotal);
-			this.scales.addValue('killDeathRatio', state.killDeathRatio);
+			this.scales.addValue("enemyUnitsKilledTotal", state.enemyUnitsKilledTotal);
+			this.scales.addValue("unitsLostTotal", state.unitsLostTotal);
+			this.scales.addValue("killDeathRatio", state.killDeathRatio);
 
 			for (const resType of g_BoonGUIResTypes)
 			{

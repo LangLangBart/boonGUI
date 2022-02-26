@@ -22,7 +22,7 @@ class BoonGUIStatsModesRow
 		const civ = g_CivData[state.civ];
 		const Emblem = civ.Emblem.replace(BoonGUIStatsTopPanelRow.Regex_Emblem, "$1");
 
-		tooltip = '';
+		tooltip = "";
 		tooltip += setStringTags(`${state.name.padEnd(8)}\n`, { "color": state.playerColor });
 		if (state.team != -1)
 		{

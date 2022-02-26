@@ -76,9 +76,9 @@ class BoonGUIStatsModesRowItem {
 		this.progress.sprite = `backcolor: ${state.playerColor}`;
 
 		this.progress.size = size;
-		this.progress.hidden = item.mode !== 'production';
+		this.progress.hidden = item.mode !== "production";
 
-		this.count.caption = item.count > 1 ? item.count : '';
+		this.count.caption = item.count > 1 ? item.count : "";
 		this.icon.sprite = "stretched:session/portraits/" + template.icon;
 
 		this.root.tooltip = [
@@ -87,6 +87,6 @@ class BoonGUIStatsModesRowItem {
 			getEntityTooltip(template),
 			getAurasTooltip(template),
 			showTemplateViewerOnRightClickTooltip()
-		].filter(tip => tip).join('\n');
+		].filter(tip => tip).join("\n");
 	}
 }

@@ -26,7 +26,7 @@ const g_BoonGUICivs = {
 	"zapo": "ZAP"
 };
 
-const g_BoonGUIResTypes = ['food', 'wood', 'stone', 'metal'];
+const g_BoonGUIResTypes = ["food", "wood", "stone", "metal"];
 
 /**
  * @param {number} index

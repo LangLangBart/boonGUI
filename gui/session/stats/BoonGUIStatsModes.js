@@ -27,12 +27,12 @@ class BoonGUIStatsModes
 		this.rowsContainer = Engine.GetGUIObjectByName(`${PREFIX}Rows`);
 		this.rows = this.rowsContainer.children.map((row, index) => new BoonGUIStatsModesRow(row, index));
 
-		this.title.size = '10 0 100% 28';
+		this.title.size = "10 0 100% 28";
 		this.title.sprite = "prettyBackgroundColorStatsMode";
 
-		this.tabButtons.size = '100%-47 28 100% 361';
+		this.tabButtons.size = "100%-47 28 100% 361";
 		this.tabButtons.sprite = "prettyBackgroundColorStatsMode";
-		this.rowsContainer.size = '0 30 100%-55 100%';
+		this.rowsContainer.size = "0 30 100%-55 100%";
 
 		this.forceRender = forceRender;
 

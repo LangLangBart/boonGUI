@@ -59,13 +59,13 @@ const boongui_resources_techs = {
 
 const boongui_resources_types = Object.keys(boongui_resources_techs);
 
-const boongui_phases = ['imperial', 'city', 'town', 'village'];
+const boongui_phases = ["imperial", "city", "town", "village"];
 
 const boongui_building_types = [
-	{ "mode": 'civic_buildings', "classes": ["Civic", "Dock"] },
-	{ "mode": 'economic_buildings', "classes": ["Economic", "Resource"] },
-	{ "mode": 'military_buildings', "classes": ["Military", "Syssiton", "Council", "Gymnasium"] },
-	{ "mode": 'defensive_buildings', "classes": ["Defensive", "Palisade", "Wall"] }
+	{ "mode": "civic_buildings", "classes": ["Civic", "Dock"] },
+	{ "mode": "economic_buildings", "classes": ["Economic", "Resource"] },
+	{ "mode": "military_buildings", "classes": ["Military", "Syssiton", "Council", "Gymnasium"] },
+	{ "mode": "defensive_buildings", "classes": ["Defensive", "Palisade", "Wall"] }
 ];
 
 function splitRatingFromNick(playerName)
@@ -84,9 +84,9 @@ class CustomQueue extends Map {
 	add({ mode, templateType, entity, template, count, progress }) {
 		template = boongui_template_keys[template] ?? template;
 		template = template
-			.replace(CustomQueue.RegexRank, '_b')
-			.replace(CustomQueue.RegexHouse, '$1');
-		const key = `${mode}:${template.replace(CustomQueue.RegexStructures, '$1')}`;
+			.replace(CustomQueue.RegexRank, "_b")
+			.replace(CustomQueue.RegexHouse, "$1");
+		const key = `${mode}:${template.replace(CustomQueue.RegexStructures, "$1")}`;
 
 		const obj = this.get(key);
 		if (obj)
@@ -210,7 +210,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 		player.rating = rating;
 
 		// (2) Get Phase
-		let phase = '';
+		let phase = "";
 		if (cmpTechnologyManager)
 		{
 			for (const _phase of boongui_phases)
@@ -317,14 +317,14 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 				const cmpIdentity = Engine.QueryInterface(entity, IID_Identity);
 				const cmpProductionQueue = Engine.QueryInterface(entity, IID_ProductionQueue);
 				const classesList = cmpIdentity?.classesList;
-				if (classesList && !classesList.includes('Foundation'))
+				if (classesList && !classesList.includes("Foundation"))
 				{
-					if (classesList.includes('CivCentre'))
+					if (classesList.includes("CivCentre"))
 					{
 						cached.civCentres.push(entity);
 					}
 
-					if (classesList.includes('Structure'))
+					if (classesList.includes("Structure"))
 					{
 						const template = cmpTemplateManager.GetCurrentTemplateName(entity);
 
@@ -337,18 +337,18 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 								break;
 							}
 						}
-						const templateType = 'unit';
+						const templateType = "unit";
 						cached.queue.add({ mode, templateType, entity, template, "count": 1, "progress": 0 });
 					}
 
-					if (classesList.includes('Unit') &&
-                        !classesList.includes('Relic') &&
-                        !classesList.includes('Hero') &&
-                        !classesList.includes('Domestic'))
+					if (classesList.includes("Unit") &&
+                        !classesList.includes("Relic") &&
+                        !classesList.includes("Hero") &&
+                        !classesList.includes("Domestic"))
 					{
 						const template = cmpTemplateManager.GetCurrentTemplateName(entity);
 						const mode = "units";
-						const templateType = 'unit';
+						const templateType = "unit";
 						cached.queue.add({ mode, templateType, entity, template, "count": 1, "progress": 0 });
 					}
 

@@ -45,7 +45,7 @@ class BoonGUIStats
 		const forceRender = this.shouldForceRender;
 		this.shouldForceRender = false;
 		const key = g_IsObserver ? "boongui.observer.hidden" : "boongui.player.hidden";
-		Engine.ConfigDB_CreateAndWriteValueToFile("user", key, this.root.hidden ? 'true' : 'false', "config/user.cfg");
+		Engine.ConfigDB_CreateAndWriteValueToFile("user", key, this.root.hidden ? "true" : "false", "config/user.cfg");
 		if (this.root.hidden)
 		{
 			if (this.lastPlayerLength != 0) this.resize(0);
@@ -91,17 +91,17 @@ class BoonGUIStats
 			const icon = Engine.GetGUIObjectByName(`unitGroupIcon[${i}]`);
 
 			const label = Engine.GetGUIObjectByName(`unitGroupLabel[${i}]`);
-			button.size = '0 0 50 50';
-			icon.size = '3 3 47 47';
-			label.font = 'mono-stroke-20';
-			label.text_valign = 'top';
-			label.text_align = 'right';
+			button.size = "0 0 50 50";
+			icon.size = "3 3 47 47";
+			label.font = "mono-stroke-20";
+			label.text_valign = "top";
+			label.text_align = "right";
 		}
 
 		for (const i in Engine.GetGUIObjectByName("panelEntityButtons").children)
 		{
 			const panelEntButton = Engine.GetGUIObjectByName(`panelEntityButton[${i}]`);
-			panelEntButton.size = '0 0 60 60';
+			panelEntButton.size = "0 0 60 60";
 			setPanelObjectPosition(panelEntButton, i, Infinity);
 		}
 	}
@@ -167,7 +167,7 @@ class BoonGUIStats
 
 	update()
 	{
-		Engine.ConfigDB_CreateAndWriteValueToFile("user", "boongui.statsmode.checkbox", this.statsModes.root.hidden ? 'true' : 'false', "config/user.cfg");
+		Engine.ConfigDB_CreateAndWriteValueToFile("user", "boongui.statsmode.checkbox", this.statsModes.root.hidden ? "true" : "false", "config/user.cfg");
 		this.statsModes.root.hidden = !this.checkbox.checked;
 		Engine.ProfileStart("BoonGUIStats:update");
 

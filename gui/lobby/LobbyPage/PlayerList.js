@@ -81,16 +81,16 @@ class PlayerList
 
 		switch (sortKey)
 		{
-		case 'buddy':
+		case "buddy":
 			player.sortValue = (player.isBuddy ? 1 : 2) + this.statusOrder.indexOf(player.presence) + player.name.toLowerCase();
 			break;
-		case 'rating':
+		case "rating":
 			player.sortValue = +player.rating;
 			break;
-		case 'status':
+		case "status":
 			player.sortValue = this.statusOrder.indexOf(player.presence) + player.name.toLowerCase();
 			break;
-		case 'name':
+		case "name":
 		default:
 			player.sortValue = player.name.toLowerCase();
 			break;

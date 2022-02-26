@@ -39,7 +39,7 @@ function formatKD(num)
 	switch (true)
 	{
 	case (isNaN(num)):
-		return '';
+		return "";
 	case (!isFinite(num)):
 		return translate("\u221E");
 	case (num == 0 || num >= 10):

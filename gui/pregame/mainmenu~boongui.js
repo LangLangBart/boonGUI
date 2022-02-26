@@ -48,7 +48,7 @@ function boongui_initCheck()
 	{
 		function addReason(title, hotkey)
 		{
-			state.reasons.push(setStringTags(`${title}:`, { "font": 'sans-bold-18' }));
+			state.reasons.push(setStringTags(`${title}:`, { "font": "sans-bold-18" }));
 			state.reasons.push(colorizeHotkey(`%(hotkey)s`, hotkey));
 			state.reasons.push("");
 		}
