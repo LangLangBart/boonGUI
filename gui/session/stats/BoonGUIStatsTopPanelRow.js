@@ -186,9 +186,9 @@ class BoonGUIStatsTopPanelRow
 
 			if (state.resourcesTechs[resType].length > 0)
 			{
-				for (let i = 0; i < state.resourcesTechs[resType].length; i += 4)
+				for (let i = 0; i < state.resourcesTechs[resType].length; i += 3)
 				{
-					tooltip += state.resourcesTechs[resType].slice(i, i + 4).map(tech => `[icon="icon_${tech}" displace="0 5"]`).join(" ") + "\n";
+					tooltip += state.resourcesTechs[resType].slice(i, i + 3).map(tech => `[icon="icon_${tech}" displace="0 5"]`).join(" ") + "\n";
 				}
 			}
 
@@ -203,14 +203,14 @@ class BoonGUIStatsTopPanelRow
 			viewedPlayerColor = setStringTags(caption, (g_ViewedPlayer < 0) ? { color } : { "color": state.playerColor });
 			this.resource.rates[resType].caption = viewedPlayerColor;
 
-			tooltip += `Amount/10s:${g_Indent}${viewedPlayerColor}\n`;
+			tooltip += setStringTags("Amount/10s", { "color": caption ? "white" : "200 200 200" }) + `${g_Indent}${viewedPlayerColor}\n`;
 
 			value = state.resourceGatherers[resType];
 			color = scales.getColor(`${resType}Gatherers`, value, 180);
 			caption = isNaN(value) || value <= 0 ? "" : value;
 			viewedPlayerColor = setStringTags(caption, (g_ViewedPlayer < 0) ? { color } : { "color": state.playerColor });
 
-			tooltip += `Gatherers:${g_Indent}${g_Indent}${viewedPlayerColor}\n`;
+			tooltip += setStringTags("Gatherers", { "color": caption ? "white" : "200 200 200" }) + `${g_Indent}${g_Indent}${viewedPlayerColor}\n`;
 
 			this.resource.counts[resType].tooltip = tooltip;
 		}
