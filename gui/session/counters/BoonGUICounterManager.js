@@ -45,8 +45,9 @@ class BoonGUICounterManager
 
 	onWindowResized()
 	{
-		const dimensionsCounterPanel = "0 100%-550 140 100%-350";
 		const widthMinimap = this.minimapPanel.getComputedSize().right;
+		const heightMinimap = this.minimapPanel.getComputedSize().top;
+		const dimensionsCounterPanel = `0 ${heightMinimap - 180} 140 ${heightMinimap+20}`;
 
 		if (Math.abs(widthMinimap - this.supplementalSelectionDetails.getComputedSize().left) >= 100)
 			this.resourceCountsBoon.size = `${widthMinimap - 42} 100%-200 ${widthMinimap + 98} 100%`;

@@ -74,10 +74,10 @@ function focusCC(move, state)
 		Engine.CameraMoveTo(entState.position.x, entState.position.z);
 	}
 }
-
 /**
- * Vertically spaces objects within a parent
- * @param margin The gap, in px, between the objects
+ *
+ * @param {string} parentName
+ * @param {number} margin
  */
 function verticallySpaceObjects(parentName, margin = 0)
 {
@@ -85,9 +85,28 @@ function verticallySpaceObjects(parentName, margin = 0)
 	 for (let i = 0; i < objects.length; ++i)
 	 {
 		 const size = objects[i].size;
-		 const height = size.top - size.bottom;
-		 size.bottom = i * (height + margin) + margin;
+		 const height = size.bottom - size.top;
 		 size.top = i * (height + margin);
+		 size.bottom = i * height;
 		 objects[i].size = size;
 	 }
+}
+/**
+ *
+ * @param {number} number
+ * @returns {number}
+ */
+function shortResNum(number)
+{
+	const style = { "font": "mono-10", "color": "white" };
+	if (number >= 1e6)
+		return Math.floor(number / 1e6) + setStringTags("M", style);
+
+	if (number >= 1e5)
+		return Math.floor(number / 1e3) + setStringTags("k", style);
+
+	if (number >= 1e4)
+		return (number / 1e3).toFixed(1).replace(/\.0$/, "") + setStringTags("k", style);
+
+	return number;
 }

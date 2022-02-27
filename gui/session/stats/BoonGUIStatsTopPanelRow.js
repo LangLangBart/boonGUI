@@ -47,17 +47,7 @@ class BoonGUIStatsTopPanelRow
 		this.phaseProgressHeight = this.phaseProgress.size.bottom - this.phaseProgress.size.top;
 	}
 
-	normalizeResourceCount(value)
-	{
-		if (value >= 10000)
-		{
-			return Math.floor(value / 1000) + setStringTags("k", { "font": "mono-10" });
-		}
-		return Math.floor(value / 10) * 10;
-
-	}
-
-	normalizeResourceRate(value)
+	normalizeValue(value)
 	{
 		if (value >= 10000)
 		{
@@ -69,16 +59,6 @@ class BoonGUIStatsTopPanelRow
 		}
 		return value;
 
-	}
-
-	normalizeKillLost(value)
-	{
-		if (value >= 1000)
-		{
-			// avoid trailing zeros
-			return Number((value / 1000).toFixed(1)) + setStringTags("k", { "font": "mono-10" });
-		}
-		return value;
 	}
 
 	update(state, scales)
@@ -194,12 +174,12 @@ class BoonGUIStatsTopPanelRow
 
 			value = state.resourceCounts[resType];
 			color = scales.getColor(`${resType}Counts`, value);
-			caption = this.normalizeResourceCount(value);
+			caption = shortResNum(value);
 			this.resource.counts[resType].caption = setStringTags(caption, { color });
 
 			value = state.resourceRates[resType];
 			color = scales.getColor(`${resType}Rates`, value, 180);
-			caption = isNaN(value) || value <= 0 ? "" : `+${this.normalizeResourceRate(value)}`;
+			caption = isNaN(value) || value <= 0 ? "" : `+${this.normalizeValue(value)}`;
 			viewedPlayerColor = setStringTags(caption, (g_ViewedPlayer < 0) ? { color } : { "color": state.playerColor });
 			this.resource.rates[resType].caption = viewedPlayerColor;
 
@@ -267,11 +247,11 @@ class BoonGUIStatsTopPanelRow
 
 		value = state.enemyUnitsKilledTotal;
 		color = scales.getColor("enemyUnitsKilledTotal", value);
-		this.enemyUnitsKilledTotal.caption = setStringTags(this.normalizeKillLost(value), { color });
+		this.enemyUnitsKilledTotal.caption = setStringTags(this.normalizeValue(value), { color });
 
 		value = state.unitsLostTotal;
 		color = scales.getColor("unitsLostTotal", value);
-		this.unitsLostTotal.caption = setStringTags(this.normalizeKillLost(value), { color });
+		this.unitsLostTotal.caption = setStringTags(this.normalizeValue(value), { color });
 
 
 		value = state.killDeathRatio;

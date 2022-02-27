@@ -129,7 +129,8 @@
 		font="sans-stroke-18"
 		ghost="true"
 		text_align="center"
-		text_valign="center"
+		text_valign="bottom"
+		sprite="backcolor: 0 0 0 195"
 	/>
 
 	<style name="StatsTextLeft"

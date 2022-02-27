@@ -4,9 +4,9 @@
 <object name="resourceCountsBoon" type="image" sprite="genericPanel">
 	<repeat count="5">
 		<object name="resourceBoon[n]" type="button" style="resourceCounter" tooltip_style="sessionToolTipCircleBottom">
-			<object size="2 0 38 38" type="image" name="resourceBoon[n]_icon" ghost="true" />
+			<object size="5 2 40 40" type="image" name="resourceBoon[n]_icon" ghost="true" />
 			<object size="40 0 100 40" type="text" style="resourceTextCounter" name="resourceBoon[n]_count" />
-			<object size="110 8 135 30" type="text" style="gathererCounts" sprite="backcolor: 0 0 0 195" name="resourceBoon[n]_stats" />
+			<object size="107 8 132 30" type="text" style="gathererCounts" name="resourceBoon[n]_stats" />
 			<object size="0 0 100% 1" type="image" sprite="color:118 118 118 50" name="resourceBoon[n]_line" />
 		</object>
 	</repeat>
