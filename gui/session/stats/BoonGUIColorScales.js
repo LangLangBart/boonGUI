@@ -34,11 +34,11 @@ class BoonGUIColorScales {
      * @param {number} value
      * @param {number} alpha
      */
-	getColor(key, value, alpha = 255, alternativeColor = "white") {
+	getColor(key, value, alpha = 255) {
 		const scale = this.scales.get(key);
-		if (!scale) return alternativeColor;
+		if (!scale) return "white";
 		const range = scale.max - scale.min;
-		if (range === 0 || !isFinite(range) || value == null) return alternativeColor;
+		if (range === 0 || !isFinite(range) || value == null) return "white";
 		let percent = (value - scale.min) / range;
 		if (isNaN(percent)) return null;
 		percent = percent < 0 ? 0 : percent > 1 ? 1 : percent;

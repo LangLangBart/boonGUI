@@ -87,7 +87,7 @@ class BoonGUIStatsTopPanelRow
 		this.state = state;
 		if (!state) return;
 
-		let value, color, caption, tooltip, font;
+		let value, color, caption, tooltip, font, viewedPlayerColor;
 
 		const shouldBlink = (Date.now() % 1000 < 500);
 		this.border.sprite = `backcolor: ${state.playerColor} 70`;
@@ -198,19 +198,19 @@ class BoonGUIStatsTopPanelRow
 			this.resource.counts[resType].caption = setStringTags(caption, { color });
 
 			value = state.resourceRates[resType];
-			color = scales.getColor(`${resType}Rates`, value, 180, state.playerColor);
+			color = scales.getColor(`${resType}Rates`, value, 180);
 			caption = isNaN(value) || value <= 0 ? "" : `+${this.normalizeResourceRate(value)}`;
-			this.resource.rates[resType].caption = setStringTags(caption, { color });
+			viewedPlayerColor = setStringTags(caption, (g_ViewedPlayer < 0) ? { color } : { "color": state.playerColor });
+			this.resource.rates[resType].caption = viewedPlayerColor;
 
-			tooltip += setStringTags("Amount/10s", { "color": caption ? "white" : "200 200 200" });
-			tooltip += g_Indent + setStringTags(caption, { color }) + "\n";
+			tooltip += setStringTags("Amount/10s", { "color": caption ? "white" : "200 200 200" }) + `${g_Indent}${viewedPlayerColor}\n`;
 
 			value = state.resourceGatherers[resType];
-			color = scales.getColor(`${resType}Gatherers`, value, 180, state.playerColor);
+			color = scales.getColor(`${resType}Gatherers`, value, 180);
 			caption = isNaN(value) || value <= 0 ? "" : value;
+			viewedPlayerColor = setStringTags(caption, (g_ViewedPlayer < 0) ? { color } : { "color": state.playerColor });
 
-			tooltip += setStringTags("Gatherers", { "color": caption ? "white" : "200 200 200" });
-			tooltip += g_Indent + g_Indent + setStringTags(caption, { color }) + "\n";
+			tooltip += setStringTags("Gatherers", { "color": caption ? "white" : "200 200 200" }) + `${g_Indent}${g_Indent}${viewedPlayerColor}\n`;
 
 			this.resource.counts[resType].tooltip = tooltip;
 		}
