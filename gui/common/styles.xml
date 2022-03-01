@@ -106,7 +106,13 @@
 	<!--BUTTON boonGUI STATS-->
 
 	<style name="TabButton"
-		sprite_disabled="ModernButtonRed"
-		sprite_over="ModernButtonRedOver"
+		sprite="snIconPortrait"
+		sprite_disabled="snIconPortraitEnabled"
+		sprite_over="snIconPortraitOver"
+		sound_pressed="audio/interface/ui/ui_button_click.ogg" />
+
+	<style name="TabButtonIndicator"
+		sprite="resourceBackground"
+		sprite_over="snIconPortraitOver"
 		sound_pressed="audio/interface/ui/ui_button_click.ogg" />
 </styles>

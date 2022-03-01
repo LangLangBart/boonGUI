@@ -8,7 +8,7 @@ class BoonGUIStatsModesTab
 		if (mode)
 		{
 			tab.hidden = false;
-			tab.size = BoonGUIGetRowSize(index, 37);
+			tab.size = BoonGUIGetRowSize(index, 40);
 			const text = Engine.GetGUIObjectByName(`${tab.name}_Text`);
 			const icon = Engine.GetGUIObjectByName(`${tab.name}_Icon`);
 			icon.sprite = `stretched:session/phosphor/${mode.icon}.png`;

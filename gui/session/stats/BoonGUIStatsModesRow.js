@@ -23,13 +23,15 @@ class BoonGUIStatsModesRow
 		const Emblem = civ.Emblem.replace(BoonGUIStatsTopPanelRow.Regex_Emblem, "$1");
 
 		tooltip = "";
-		tooltip += setStringTags(`${state.name.padEnd(8)}\n`, { "color": state.playerColor });
+		const font = state.name.length >= 16 ? "sans-stroke-16" : "sans-stroke-18";
+		tooltip += setStringTags(`${state.name}\n`, { "color": state.playerColor, font });
 		if (state.team != -1)
 		{
 			tooltip += setStringTags(`Team ${state.team + 1}\n`, { "color": state.teamColor });
 		}
 		tooltip += `[icon="${Emblem}" displace="2 5"] \n`;
 		tooltip += `${civ.Name}\n`;
+		tooltip += setStringTags("\\[Click]", g_HotkeyTags) + " " + "focus CC";
 
 		return tooltip;
 	}

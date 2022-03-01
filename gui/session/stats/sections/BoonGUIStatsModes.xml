@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <object name="StatsModes">
 
-	<object name="StatsModesTitle" type="text" ghost="true" textcolor="white" text_align="center" text_valign="center" font="sans-bold-stroke-16" />
+	<object name="StatsModesTitle" type="text" size="10 -15 100% 28" ghost="true" textcolor="white" text_align="center" text_valign="center" sprite="prettyBackgroundColor" font="sans-bold-stroke-16" />
 	<!-- Special objects for creating special tooltips -->
-	<object name="fixedTooltipStatsModeDefault" type="text" text_align="center" text_valign="center" sprite="prettyBackgroundColor" font="sans-bold-16" textcolor="white" size="100%-480 0 100%-190 28" hidden="true" ghost="true" />
-	<object name="fixedTooltipStatsModeIndicator" type="text" text_align="center" text_valign="center" sprite="prettyBackgroundColor" font="sans-stroke-16" textcolor="white" size="100%-350 -100 100%-190 28" hidden="true" ghost="true" />
-	<object name="fixedTooltipStatsModeItem" type="text" text_valign="bottom" font="sans-stroke-16" sprite="prettyBackgroundColor" textcolor="white"  size="100%-480 -120 100%-190 28" hidden="true" ghost="true" />
+	<object name="fixedTooltipStatsModeDefault" type="text" text_align="center" text_valign="center" sprite="BackgroundSessionTooltip" font="sans-bold-stroke-16" textcolor="white" size="10 -15 100% 28" hidden="true" ghost="true" />
+	<object name="fixedTooltipStatsModeIndicator" type="text" text_align="center" text_valign="center" sprite="BackgroundSessionTooltip" font="sans-stroke-16" textcolor="white" size="100%-350 -120 100%-190 28" hidden="true" ghost="true" />
+	<object name="fixedTooltipStatsModeItem" type="text" text_valign="bottom" font="sans-stroke-16" sprite="BackgroundSessionTooltip" textcolor="white" size="100%-480 -120 100%-190 28" hidden="true" ghost="true" />
 
 
 	<object name="StatsModesTabButtons" type="image">
@@ -22,7 +22,7 @@
 	<object name="StatsModesRows">
 		<repeat count="8" var="i">
 			<object name="StatsModesRow[i]" size="0 0 100% 100%" hidden="true">
-				<object name="StatsModesRow[i]Indicator" type="button" size="100%-13 0 100%+10 40" tooltip_style="fixedTooltipStatsModeIndicator">
+				<object name="StatsModesRow[i]Indicator" type="button" style="TabButtonIndicator" size="100%-13 0 100%+10 40" tooltip_style="fixedTooltipStatsModeIndicator">
 					<object name="StatsModesRow[i]IndicatorLabel" type="text" size="3 3 100%-6 100%-2" ghost="true" font="mono-stroke-16" textcolor="255 255 255" text_align="right" text_valign="center" z="20" />
 					<object name="StatsModesRow[i]IndicatorColor" type="image" size="3 3 100%-4 100%-4" ghost="true" z="10" />
 				</object>
