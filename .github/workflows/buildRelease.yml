@@ -17,7 +17,7 @@ jobs: # A workflow run is made up of one or more jobs that can run sequentially 
         uses: actions/checkout@v2
 
       - name: Setup Python enviroment
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
           python-version: 3.8.5
 
