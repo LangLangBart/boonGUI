@@ -91,22 +91,27 @@ function verticallySpaceObjects(parentName, margin = 0)
 		 objects[i].size = size;
 	 }
 }
-/**
- *
- * @param {number} number
- * @returns {number}
- */
-function shortResNum(number)
+
+function normalizeResourceCount(value)
 {
-	const style = { "font": "mono-10", "color": "white" };
-	if (number >= 1e6)
-		return Math.floor(number / 1e6) + setStringTags("M", style);
+	if (value >= 10000)
+	{
+		return Math.floor(value / 1000) + setStringTags("k", { "font": "sans-stroke-12" });
+	}
+	return Math.floor(value / 10) * 10;
 
-	if (number >= 1e5)
-		return Math.floor(number / 1e3) + setStringTags("k", style);
+}
 
-	if (number >= 1e4)
-		return (number / 1e3).toFixed(1).replace(/\.0$/, "") + setStringTags("k", style);
+function normalizeValue(value)
+{
+	if (value >= 10000)
+	{
+		return Math.floor(value / 1000) + setStringTags("k", { "font": "mono-10" });
+	}
+	else if (value >= 1000)
+	{
+		return (value / 1000).toFixed(1) + setStringTags("k", { "font": "mono-10" });
+	}
+	return value;
 
-	return number;
 }

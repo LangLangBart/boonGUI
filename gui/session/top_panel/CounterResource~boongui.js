@@ -1,6 +1,6 @@
 CounterResource.prototype.rebuild = function(playerState, diploColor)
 {
-	this.count.caption = shortResNum(playerState.resourceCounts[this.resCode]);
+	this.count.caption = normalizeResourceCount(playerState.resourceCounts[this.resCode]);
 
 	const gatherers = playerState.resourceGatherers[this.resCode];
 	this.stats.caption = gatherers ? setStringTags(gatherers, { "color": diploColor }) : 0;

@@ -47,20 +47,6 @@ class BoonGUIStatsTopPanelRow
 		this.phaseProgressHeight = this.phaseProgress.size.bottom - this.phaseProgress.size.top;
 	}
 
-	normalizeValue(value)
-	{
-		if (value >= 10000)
-		{
-			return Math.floor(value / 1000) + setStringTags("k", { "font": "mono-10" });
-		}
-		else if (value >= 1000)
-		{
-			return (value / 1000).toFixed(1) + setStringTags("k", { "font": "mono-10" });
-		}
-		return value;
-
-	}
-
 	update(state, scales)
 	{
 		this.root.hidden = !state;
@@ -174,12 +160,12 @@ class BoonGUIStatsTopPanelRow
 
 			value = state.resourceCounts[resType];
 			color = scales.getColor(`${resType}Counts`, value);
-			caption = shortResNum(value);
+			caption = normalizeResourceCount(value);
 			this.resource.counts[resType].caption = setStringTags(caption, { color });
 
 			value = state.resourceRates[resType];
 			color = scales.getColor(`${resType}Rates`, value, 180);
-			caption = isNaN(value) || value <= 0 ? "" : `+${this.normalizeValue(value)}`;
+			caption = isNaN(value) || value <= 0 ? "" : `+${normalizeValue(value)}`;
 			viewedPlayerColor = setStringTags(caption, (g_ViewedPlayer < 0) ? { color } : { "color": state.playerColor });
 			this.resource.rates[resType].caption = viewedPlayerColor;
 
@@ -247,11 +233,11 @@ class BoonGUIStatsTopPanelRow
 
 		value = state.enemyUnitsKilledTotal;
 		color = scales.getColor("enemyUnitsKilledTotal", value);
-		this.enemyUnitsKilledTotal.caption = setStringTags(this.normalizeValue(value), { color });
+		this.enemyUnitsKilledTotal.caption = setStringTags(normalizeValue(value), { color });
 
 		value = state.unitsLostTotal;
 		color = scales.getColor("unitsLostTotal", value);
-		this.unitsLostTotal.caption = setStringTags(this.normalizeValue(value), { color });
+		this.unitsLostTotal.caption = setStringTags(normalizeValue(value), { color });
 
 
 		value = state.killDeathRatio;

@@ -15,4 +15,4 @@ CounterPopulation.prototype.rebuild = function(playerState, diploColor)
 	this.panel.tooltip += setStringTags("\nTotal Gatherers", { "color": total ? "white" : "200 200 200" }) + `${g_Indent}` + this.stats.caption;
 };
 
-CounterPopulation.prototype.CounterCaption = "%(popCount)s/%(popLimit)s\n(%(popMax)s)";
+CounterPopulation.prototype.CounterCaption = "%(popCount)s/%(popLimit)s\n" + setStringTags("(%(popMax)s)", { "font": "sans-stroke-14" });
