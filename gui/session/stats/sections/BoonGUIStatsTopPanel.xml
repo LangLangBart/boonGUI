@@ -50,9 +50,9 @@
 				<object name="StatsTopPanelRow[n]_rating" type="text" style="overlayDefault" size="120 5% 165 95%" />
 				<object name="StatsTopPanelRow[n]_civ" type="text" style="overlayDefault" size="170 5% 210 95%" tooltip_style="sessionToolTipWideCircle"/>
 
-				<object name="StatsTopPanelRow[n]_phase" type="button" size="215 0 235 22">
-					<object name="StatsTopPanelRow[n]_phaseIcon" type="button" size="0 2 22 22" />
-					<object name="StatsTopPanelRow[n]_phaseProgressSlider" type="image" sprite="queueProgressSlider" ghost="true" size="0 0 20 20" z="20" />
+				<object name="StatsTopPanelRow[n]_phase" type="button" size="213 0 237 24" style="iconButtonPhase" >
+					<object name="StatsTopPanelRow[n]_phaseIcon" type="button" size="2 2 22 22" ghost="true" />
+					<object name="StatsTopPanelRow[n]_phaseProgressSlider" type="image" sprite="queueProgressSlider" ghost="true" size="2 2 22 21" z="20" />
 				</object>
 				<object name="StatsTopPanelRow[n]_pop" size="240 0 330 100%" text_align="center" type="text" style="overlayDefault" />
 				<object name="StatsTopPanelRow[n]_economyTechsCount" size="330 0 352 100%" text_align="right" type="text" style="overlayDefault" />

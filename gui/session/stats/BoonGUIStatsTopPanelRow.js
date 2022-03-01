@@ -39,8 +39,9 @@ class BoonGUIStatsTopPanelRow
 		}
 
 		this.los = Engine.GetGUIObjectByName(`${PREFIX}_los`);
+		this.phase = Engine.GetGUIObjectByName(`${PREFIX}_phase`);
 		this.phaseIcon = Engine.GetGUIObjectByName(`${PREFIX}_phaseIcon`);
-		this.phaseIcon.onPress = () => focusCC(true, this.state);
+		this.phase.onPress = () => focusCC(true, this.state);
 		this.phaseProgress = Engine.GetGUIObjectByName(`${PREFIX}_phaseProgressSlider`);
 
 		this.phaseProgressTop = this.phaseProgress.size.top;

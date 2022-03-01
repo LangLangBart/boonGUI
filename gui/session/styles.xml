@@ -217,6 +217,12 @@
 		sound_pressed="audio/interface/ui/ui_button_click.ogg"
 	/>
 
+	<style name="iconButtonPhase"
+		sprite_over="snIconPortraitOver"
+		tooltip_style="sessionToolTipCircle"
+		sound_pressed="audio/interface/ui/ui_button_click.ogg"
+	/>
+
 	<!-- ================================  ================================ -->
 	<!-- Tooltip Styles -->
 	<!-- ================================  ================================ -->
