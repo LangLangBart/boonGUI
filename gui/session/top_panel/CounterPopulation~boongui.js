@@ -7,12 +7,14 @@ CounterPopulation.prototype.rebuild = function(playerState, diploColor)
 	for (const resCode of g_ResourceData.GetCodes())
 		total += playerState.resourceGatherers[resCode];
 
-	this.stats.caption = total ? setStringTags(total, { "color": diploColor }) : 0;
+	this.stats.caption = total ? setStringTags(total, { "color": diploColor }) : coloredText("0", this.DimmedWhite);
 
 	this.isTrainingBlocked = playerState.trainingBlocked;
 
 	this.panel.tooltip = translate(this.PopulationTooltip);
-	this.panel.tooltip += setStringTags("\nTotal Gatherers", { "color": total ? "white" : "200 200 200" }) + `${g_Indent}` + this.stats.caption;
+	this.panel.tooltip += setStringTags("\nTotal Gatherers", { "color": total ? "white" : this.DimmedWhite }) + `${g_Indent}` + this.stats.caption;
 };
 
 CounterPopulation.prototype.CounterCaption = "%(popCount)s/%(popLimit)s\n" + setStringTags("(%(popMax)s)", { "font": "sans-stroke-14" });
+CounterPopulation.prototype.DimmedWhite = "200 200 200";
+

@@ -54,7 +54,7 @@ class BoonGUIStatsTopPanelRow
 		this.state = state;
 		if (!state) return;
 
-		let value, color, caption, tooltip, font, viewedPlayerColor;
+		let value, color, caption, tooltip, font, colorSingleRow;
 
 		const shouldBlink = (Date.now() % 1000 < 500);
 		this.border.sprite = `backcolor: ${state.playerColor} 70`;
@@ -172,17 +172,18 @@ class BoonGUIStatsTopPanelRow
 			value = state.resourceRates[resType];
 			color = scales.getColor(`${resType}Rates`, value, 180);
 			caption = isNaN(value) || value <= 0 ? "" : `+${normalizeValue(value)}`;
-			viewedPlayerColor = setStringTags(caption, (g_ViewedPlayer < 0) ? { color } : { "color": state.playerColor });
-			this.resource.rates[resType].caption = viewedPlayerColor;
+			// For single lines, the gathering rates are displayed in the player color.
+			colorSingleRow = setStringTags(caption, (g_stats.lastPlayerLength > 1) ? { color } : { "color": state.playerColor });
+			this.resource.rates[resType].caption = colorSingleRow;
 
-			tooltip += setStringTags("Amount/10s", { "color": caption ? "white" : "200 200 200" }) + `${g_Indent}${viewedPlayerColor}\n`;
+			tooltip += setStringTags("Amount/10s", { "color": caption ? "white" : CounterPopulation.prototype.DimmedWhite }) + `${g_Indent}${colorSingleRow}\n`;
 
 			value = state.resourceGatherers[resType];
 			color = scales.getColor(`${resType}Gatherers`, value, 180);
 			caption = isNaN(value) || value <= 0 ? "" : value;
-			viewedPlayerColor = setStringTags(caption, (g_ViewedPlayer < 0) ? { color } : { "color": state.playerColor });
+			colorSingleRow = setStringTags(caption, (g_ViewedPlayer < 0) ? { color } : { "color": state.playerColor });
 
-			tooltip += setStringTags("Gatherers", { "color": caption ? "white" : "200 200 200" }) + `${g_Indent}${g_Indent}${viewedPlayerColor}\n`;
+			tooltip += setStringTags("Gatherers", { "color": caption ? "white" : CounterPopulation.prototype.DimmedWhite }) + `${g_Indent}${g_Indent}${colorSingleRow}\n`;
 
 			this.resource.counts[resType].tooltip = tooltip;
 		}

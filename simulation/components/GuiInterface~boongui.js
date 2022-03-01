@@ -32,6 +32,7 @@ const boongui_resources_techs = {
 		"gather_farming_fertilizer",
 		"gather_animals_stockbreeding",
 		"gather_capacity_basket",
+		"gather_capacity_wheelbarrow",
 		"gather_capacity_carts",
 	],
 	"wood": [
@@ -39,6 +40,7 @@ const boongui_resources_techs = {
 		"gather_lumbering_sharpaxes",
 		"gather_lumbering_strongeraxes",
 		"gather_capacity_basket",
+		"gather_capacity_wheelbarrow",
 		"gather_capacity_carts",
 	],
 	"stone": [
@@ -46,6 +48,7 @@ const boongui_resources_techs = {
 		"gather_mining_serfs",
 		"gather_mining_slaves",
 		"gather_capacity_basket",
+		"gather_capacity_wheelbarrow",
 		"gather_capacity_carts",
 	],
 	"metal": [
@@ -53,6 +56,7 @@ const boongui_resources_techs = {
 		"gather_mining_shaftmining",
 		"gather_mining_silvermining",
 		"gather_capacity_basket",
+		"gather_capacity_wheelbarrow",
 		"gather_capacity_carts",
 	],
 };

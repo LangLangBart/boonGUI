@@ -1,139 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <setup>
-    <icon name="icon_gather_wicker_baskets"
-        sprite="stretched:session/portraits/technologies/gather_basket.png"
-        size="25 25"
-    />
-    <icon name="icon_gather_farming_training"
-        sprite="stretched:session/portraits/technologies/farming_training.png"
-        size="25 25"
-    />
-    <icon name="icon_gather_farming_plows"
-        sprite="stretched:session/portraits/technologies/plow.png"
-        size="25 25"
-    />
-    <icon name="icon_gather_farming_harvester"
-        sprite="stretched:session/portraits/technologies/gallic_plow.png"
-        size="25 25"
-    />
-    <icon name="icon_gather_farming_fertilizer"
-        sprite="stretched:session/portraits/technologies/olives.png"
-        size="25 25"
-    />
-    <icon name="icon_gather_animals_stockbreeding"
-        sprite="stretched:session/portraits/technologies/meat.png"
-        size="25 25"
-    />
-    <icon name="icon_gather_capacity_basket"
-        sprite="stretched:session/portraits/technologies/gather_basket_empty.png"
-        size="25 25"
-    />
-    <icon name="icon_gather_capacity_carts"
-        sprite="stretched:session/portraits/technologies/handcart_empty.png"
-        size="25 25"
-    />
-    <icon name="icon_gather_lumbering_ironaxes"
-        sprite="stretched:session/portraits/technologies/wood_axe_01.png"
-        size="25 25"
-    />
-    <icon name="icon_gather_lumbering_strongeraxes"
-        sprite="stretched:session/portraits/technologies/wood_axe_02.png"
-        size="25 25"
-    />
-    <icon name="icon_gather_lumbering_sharpaxes"
-        sprite="stretched:session/portraits/technologies/wood_axe_03.png"
-        size="25 25"
-    />
-    <icon name="icon_gather_mining_servants"
-        sprite="stretched:session/portraits/technologies/mining_stone_01.png"
-        size="25 25"
-    />
-    <icon name="icon_gather_mining_serfs"
-        sprite="stretched:session/portraits/technologies/mining_stone_02.png"
-        size="25 25"
-    />
-    <icon name="icon_gather_mining_slaves"
-        sprite="stretched:session/portraits/technologies/mining_stone_03.png"
-        size="25 25"
-    />
-    <icon name="icon_gather_mining_wedgemallet"    
-        sprite="stretched:session/portraits/technologies/mining_metal_01.png"
-        size="25 25"
-    />    
-    <icon name="icon_gather_mining_shaftmining"
-        sprite="stretched:session/portraits/technologies/mining_metal_02.png"
-        size="25 25"
-    />
-    <icon name="icon_gather_mining_silvermining"
-        sprite="stretched:session/portraits/technologies/mining_metal_03.png"
-        size="25 25"
-    />
+	<icon name="icon_gather_wicker_baskets" sprite="stretched:session/portraits/technologies/gather_basket.png" size="25 25" />
+	<icon name="icon_gather_farming_training" sprite="stretched:session/portraits/technologies/farming_training.png" size="25 25" />
+	<icon name="icon_gather_farming_plows" sprite="stretched:session/portraits/technologies/plow.png" size="25 25" />
 
-    <icon name="icon_soldier_attack_melee_01"
-        sprite="stretched:session/portraits/technologies/sword_01.png"
-        size="25 25"
-    />
-    <icon name="icon_soldier_attack_melee_02"
-        sprite="stretched:session/portraits/technologies/sword_02.png"
-        size="25 25"
-    />
-    <icon name="icon_soldier_attack_melee_03"
-        sprite="stretched:session/portraits/technologies/sword_03.png"
-        size="25 25"
-    />		
-    <icon name="icon_soldier_attack_melee_03_variant"
-        sprite="stretched:session/portraits/technologies/metalworker.png"
-        size="25 25"
-    />
-    <icon name="icon_soldier_attack_ranged_01"
-        sprite="stretched:session/portraits/technologies/arrow_01.png"
-        size="25 25"
-    />
-    <icon name="icon_soldier_attack_ranged_02"
-        sprite="stretched:session/portraits/technologies/arrow_02.png"
-        size="25 25"
-    />
-    <icon name="icon_soldier_attack_ranged_03"
-        sprite="stretched:session/portraits/technologies/arrow_03.png"
-        size="25 25"
-    />
-    <icon name="icon_soldier_resistance_hack_01"
-        sprite="stretched:session/portraits/technologies/armor_leather.png"
-        size="25 25"
-    />
-    <icon name="icon_soldier_resistance_hack_02"
-        sprite="stretched:session/portraits/technologies/armor_pteruges.png"
-        size="25 25"
-    />
-    <icon name="icon_soldier_resistance_hack_03"
-        sprite="stretched:session/portraits/technologies/armor_chain.png"
-        size="25 25"
-    />
-    <icon name="icon_soldier_resistance_pierce_01"
-        sprite="stretched:session/portraits/technologies/shields_generic_wood.png"
-        size="25 25"
-    />
-    <icon name="icon_soldier_resistance_pierce_02"
-        sprite="stretched:session/portraits/technologies/shields_generic_bronze.png"
-        size="25 25"
-    />
-    <icon name="icon_soldier_resistance_pierce_03"
-        sprite="stretched:session/portraits/technologies/shields_generic_silver.png"
-        size="25 25"
-    />
+	<icon name="icon_gather_farming_harvester" sprite="stretched:session/portraits/technologies/gallic_plow.png" size="25 25" />
+	<icon name="icon_gather_farming_fertilizer" sprite="stretched:session/portraits/technologies/olives.png" size="25 25" />
+	<icon name="icon_gather_animals_stockbreeding" sprite="stretched:session/portraits/technologies/meat.png" size="25 25" />
 
-    <icon name="icon_attack_soldiers_will"
-        sprite="stretched:session/portraits/technologies/clenched_fist.png"
-        size="25 25"
-    />
+	<icon name="icon_gather_capacity_basket" sprite="stretched:session/portraits/technologies/gather_basket_empty.png" size="25 25" />
+	<icon name="icon_gather_capacity_wheelbarrow" sprite="stretched:session/portraits/technologies/wheelbarrow_empty.png" size="25 25" />
+	<icon name="icon_gather_capacity_carts" sprite="stretched:session/portraits/technologies/handcart_empty.png" size="25 25" />
 
-    <icon name="icon_archery_tradition"
-        sprite="stretched:session/portraits/technologies/archery_tradition.png"
-        size="25 25"
-    />
+	<icon name="icon_gather_lumbering_ironaxes" sprite="stretched:session/portraits/technologies/wood_axe_01.png" size="25 25" />
+	<icon name="icon_gather_lumbering_strongeraxes" sprite="stretched:session/portraits/technologies/wood_axe_02.png" size="25 25" />
+	<icon name="icon_gather_lumbering_sharpaxes" sprite="stretched:session/portraits/technologies/wood_axe_03.png" size="25 25" />
 
-    <icon name="icon_archer_attack_spread"
-        sprite="stretched:session/portraits/technologies/archery_tradition.png"
-        size="25 25"
-    />    
+	<icon name="icon_gather_mining_servants" sprite="stretched:session/portraits/technologies/mining_stone_01.png" size="25 25" />
+	<icon name="icon_gather_mining_serfs" sprite="stretched:session/portraits/technologies/mining_stone_02.png" size="25 25" />
+	<icon name="icon_gather_mining_slaves" sprite="stretched:session/portraits/technologies/mining_stone_03.png" size="25 25" />
+
+	<icon name="icon_gather_mining_wedgemallet" sprite="stretched:session/portraits/technologies/mining_metal_01.png" size="25 25" />
+	<icon name="icon_gather_mining_shaftmining" sprite="stretched:session/portraits/technologies/mining_metal_02.png" size="25 25" />
+	<icon name="icon_gather_mining_silvermining" sprite="stretched:session/portraits/technologies/mining_metal_03.png" size="25 25" />
+
+	<icon name="icon_soldier_attack_melee_01" sprite="stretched:session/portraits/technologies/sword_01.png" size="25 25" />
+	<icon name="icon_soldier_attack_melee_02" sprite="stretched:session/portraits/technologies/sword_02.png" size="25 25" />
+	<icon name="icon_soldier_attack_melee_03" sprite="stretched:session/portraits/technologies/sword_03.png" size="25 25" />
+	<icon name="icon_soldier_attack_melee_03_variant" sprite="stretched:session/portraits/technologies/metalworker.png" size="25 25" />
+
+	<icon name="icon_soldier_attack_ranged_01" sprite="stretched:session/portraits/technologies/arrow_01.png" size="25 25" />
+	<icon name="icon_soldier_attack_ranged_02" sprite="stretched:session/portraits/technologies/arrow_02.png" size="25 25" />
+	<icon name="icon_soldier_attack_ranged_03" sprite="stretched:session/portraits/technologies/arrow_03.png" size="25 25" />
+
+	<icon name="icon_soldier_resistance_hack_01" sprite="stretched:session/portraits/technologies/armor_leather.png" size="25 25" />
+	<icon name="icon_soldier_resistance_hack_02" sprite="stretched:session/portraits/technologies/armor_pteruges.png" size="25 25" />
+	<icon name="icon_soldier_resistance_hack_03" sprite="stretched:session/portraits/technologies/armor_chain.png" size="25 25" />
+
+	<icon name="icon_soldier_resistance_pierce_01" sprite="stretched:session/portraits/technologies/shields_generic_wood.png" size="25 25" />
+	<icon name="icon_soldier_resistance_pierce_02" sprite="stretched:session/portraits/technologies/shields_generic_bronze.png" size="25 25" />
+	<icon name="icon_soldier_resistance_pierce_03" sprite="stretched:session/portraits/technologies/shields_generic_silver.png" size="25 25" />
+
+	<icon name="icon_attack_soldiers_will" sprite="stretched:session/portraits/technologies/clenched_fist.png" size="25 25" />
+	<icon name="icon_archery_tradition" sprite="stretched:session/portraits/technologies/archery_tradition.png" size="25 25" />
+	<icon name="icon_archer_attack_spread" sprite="stretched:session/portraits/technologies/archery_tradition.png" size="25 25" />
 </setup>
