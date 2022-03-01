@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <object name="StatsModes">
 
-	<object name="StatsModesTitle" type="text" size="10 -15 100% 28" ghost="true" textcolor="white" text_align="center" text_valign="center" sprite="prettyBackgroundColor" font="sans-bold-stroke-16" />
+	<object name="StatsModesTitle" type="text" size="10 0 100% 26" ghost="true" textcolor="white" text_align="center" text_valign="center" sprite="prettyBackgroundColor" font="sans-bold-stroke-16" />
 	<!-- Special objects for creating special tooltips -->
-	<object name="fixedTooltipStatsModeDefault" type="text" text_align="center" text_valign="center" sprite="BackgroundSessionTooltip" font="sans-bold-stroke-16" textcolor="white" size="10 -15 100% 28" hidden="true" ghost="true" />
-	<object name="fixedTooltipStatsModeIndicator" type="text" text_align="center" text_valign="center" sprite="BackgroundSessionTooltip" font="sans-stroke-16" textcolor="white" size="100%-350 -120 100%-190 28" hidden="true" ghost="true" />
-	<object name="fixedTooltipStatsModeItem" type="text" text_valign="bottom" font="sans-stroke-16" sprite="BackgroundSessionTooltip" textcolor="white" size="100%-480 -120 100%-190 28" hidden="true" ghost="true" />
-
+	<object name="fixedTooltipStatsModeDefault" type="text" text_align="center" text_valign="center" sprite="BackgroundSessionTooltip" font="sans-stroke-16" textcolor="white" size="100%-420 0 100%-190 26" hidden="true" ghost="true" z="100" />
+	<object name="fixedTooltipStatsModeIndicator" type="text" text_align="center" text_valign="center" sprite="BackgroundSessionTooltip" font="sans-stroke-16" textcolor="white" size="100%-350 -120 100%-190 26" hidden="true" ghost="true" z="100"/>
+	<object name="fixedTooltipStatsModeItem" type="text" text_align="left" text_valign="bottom" font="sans-stroke-16" sprite="BackgroundSessionTooltip" textcolor="white" size="100%-480 -120 100%-190 26" hidden="true" ghost="true" z="100"/>
 
 	<object name="StatsModesTabButtons" type="image">
 		<repeat count="10">
@@ -22,13 +21,16 @@
 	<object name="StatsModesRows">
 		<repeat count="8" var="i">
 			<object name="StatsModesRow[i]" size="0 0 100% 100%" hidden="true">
-				<object name="StatsModesRow[i]Indicator" type="button" style="TabButtonIndicator" size="100%-13 0 100%+10 40" tooltip_style="fixedTooltipStatsModeIndicator">
-					<object name="StatsModesRow[i]IndicatorLabel" type="text" size="3 3 100%-6 100%-2" ghost="true" font="mono-stroke-16" textcolor="255 255 255" text_align="right" text_valign="center" z="20" />
-					<object name="StatsModesRow[i]IndicatorColor" type="image" size="3 3 100%-4 100%-4" ghost="true" z="10" />
+				<object name="StatsModesRow[i]Indicator" type="button" style="TabButtonIndicator" size="100%-24 1 100% 39" tooltip_style="fixedTooltipStatsModeIndicator">
+					<object name="StatsModesRow[i]IndicatorColor" type="image" size="3 3 21 100%-4" ghost="true" z="10" />
+					<object name="StatsModesRow[i]IndicatorTeamColor" type="image" size="12 3 21 100%-4" ghost="true" z="10">
+						<object name="StatsModesRow[i]IndicatorLabel" type="text" size="0 3 100% 100%-3" ghost="true" font="sans-bold-stroke-18" textcolor="255 255 255" text_align="right" text_valign="center" z="20" />
+						<object name="StatsModesRow[i]IndicatorColorDivide" type="image" size="-1 0 1 100%" sprite="color:38 38 38 115" />
+					</object>
 				</object>
-				<object name="StatsModesRow[i]Items" size="0 0 100%-13 40">
+				<object name="StatsModesRow[i]Items" size="0 1 100%-25 39">
 					<repeat count="20" var="j">
-						<object name="StatsModesRow[i]Item[j]" size="0 0 34 37" type="button" tooltip_style="fixedTooltipStatsModeItem" style="iconButton" hidden="true">
+						<object name="StatsModesRow[i]Item[j]" size="0 0 37 37" type="button" tooltip_style="fixedTooltipStatsModeItem" style="iconButton" hidden="true">
 							<object name="StatsModesRow[i]Item[j]Icon" type="image" ghost="true" size="3 3 36 36" />
 							<object name="StatsModesRow[i]Item[j]Count" type="text" ghost="true" size="3 3 34 35" font="sans-bold-stroke-14" textcolor="255 255 255" text_align="right" text_valign="bottom" z="10" />
 							<object name="StatsModesRow[i]Item[j]Progress" type="image" ghost="true" size="3 33 36 36" />

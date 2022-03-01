@@ -28,8 +28,7 @@ class BoonGUIStatsModes
 		this.rows = this.rowsContainer.children.map((row, index) => new BoonGUIStatsModesRow(row, index));
 
 		this.tabButtons.size = "100%-47 28 100% 361";
-		this.tabButtons.sprite = "prettyBackgroundColor";
-		this.rowsContainer.size = "0 30 100%-55 100%";
+		this.rowsContainer.size = "0 28 100%-50 100%";
 
 		this.forceRender = forceRender;
 
