@@ -64,6 +64,11 @@ class BoonGUIStatsTopPanelRow
 		caption = state.nick.length <= 9 ? state.nick : state.nick.substr(0, 8) + "…";
 		this.player.caption = setStringTags(caption, { "color": state.playerColor });
 		this.player.tooltip = setStringTags(state.nick, { "color": state.playerColor });
+		caption = `${translateAISettings(g_InitAttributes.settings.PlayerData[state.index])}`;
+		if (caption)
+		{
+			this.player.tooltip += setStringTags(`\n${caption}`, { "color": "190 190 190", "font": "sans-stroke-14" });
+		}
 
 		this.rating.caption = setStringTags(state.rating, { "color": state.playerColor });
 		this.civ.caption = setStringTags(g_BoonGUICivs[state.civ], { "color": state.playerColor });

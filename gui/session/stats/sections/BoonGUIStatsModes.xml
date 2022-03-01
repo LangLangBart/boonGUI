@@ -24,7 +24,7 @@
 				<object name="StatsModesRow[i]Indicator" type="button" style="TabButtonIndicator" size="100%-24 1 100% 39" tooltip_style="fixedTooltipStatsModeIndicator">
 					<object name="StatsModesRow[i]IndicatorColor" type="image" size="3 3 21 100%-4" ghost="true" z="10" />
 					<object name="StatsModesRow[i]IndicatorTeamColor" type="image" size="12 3 21 100%-4" ghost="true" z="10">
-						<object name="StatsModesRow[i]IndicatorLabel" type="text" size="0 3 100% 100%-3" ghost="true" font="sans-bold-stroke-18" textcolor="255 255 255" text_align="right" text_valign="center" z="20" />
+						<object name="StatsModesRow[i]IndicatorLabel" type="text" size="0 3 100% 100%-3" ghost="true" font="sans-bold-stroke-18" textcolor="255 255 255" text_align="center" text_valign="center" z="20" />
 						<object name="StatsModesRow[i]IndicatorColorDivide" type="image" size="-1 0 1 100%" sprite="color:38 38 38 115" />
 					</object>
 				</object>

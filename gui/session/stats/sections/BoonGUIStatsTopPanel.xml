@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<object name="StatsTopPanel" type="image" hidden="true">
+<object name="StatsTopPanel" type="image" hidden="true" z="100">
 	<object type="image" size="0 -1 100% 0" sprite="color:118 118 118 50" />
 	<object type="image" size="529 0 530 100%" sprite="color:118 118 118 50" />
 	<object type="image" size="609 0 610 100%" sprite="color:118 118 118 50" />

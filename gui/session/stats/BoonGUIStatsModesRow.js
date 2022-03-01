@@ -32,9 +32,12 @@ class BoonGUIStatsModesRow
 			tooltip += setStringTags(`Team ${state.team + 1}\n`, { "color": state.teamColor });
 		}
 		tooltip += `[icon="${Emblem}" displace="2 5"] \n`;
-		tooltip += `${civ.Name}\n`;
-		tooltip += setStringTags("\\[Click]", g_HotkeyTags) + " " + "to focus";
-
+		tooltip += `${civ.Name}`;
+		const caption = `${translateAISettings(g_InitAttributes.settings.PlayerData[state.index])}`;
+		if (caption)
+		{
+			tooltip += setStringTags(`\n${caption}`, { "color": "190 190 190", "font": "sans-stroke-14" });
+		}
 		return tooltip;
 	}
 
@@ -53,7 +56,10 @@ class BoonGUIStatsModesRow
 		else
 			this.indicatorTeamColor.hidden = true;
 		if (state.playerColor == state.teamColor)
+		{
 			this.indicatorColorDivide.hidden = true;
+			this.indicatorTeamColor.size = this.indicatorColor.size;
+		}
 		this.indicator.tooltip = this.createTooltip(state);
 		const items = state.queue.filter(d => d.mode === mode);
 		this.items.forEach((item, idx) => {
