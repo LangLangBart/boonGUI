@@ -296,6 +296,16 @@
 		<image backcolor="0 0 0 215" />
 	</sprite>
 
+	<sprite name="statModeIndicatorFrame">
+		<image backcolor="38 38 38 120" size="-1 0 1 100%" />
+		<image backcolor="38 38 38 120" size="0 100%-1 100% 100%+1" />
+		<image backcolor="38 38 38 120" size="100%-1 0 100%+1 100%" />
+		<image backcolor="38 38 38 120" size="0 -1 100% 1" />
+	</sprite>
+
+	<sprite name="statModeIndicatorHighlight">
+		<image backcolor="255 255 255 80" size="0 0 100% 100%" />
+	</sprite>
 	<!-- ================================  ================================ -->
 	<!-- Unit portrait -->
 	<!-- ================================  ================================ -->

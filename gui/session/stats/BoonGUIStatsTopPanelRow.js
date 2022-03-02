@@ -67,7 +67,7 @@ class BoonGUIStatsTopPanelRow
 		caption = `${translateAISettings(g_InitAttributes.settings.PlayerData[state.index])}`;
 		if (caption)
 		{
-			this.player.tooltip += setStringTags(`\n${caption}`, { "color": "190 190 190", "font": "sans-stroke-14" });
+			this.player.tooltip += setStringTags(`\n${caption}`, { "color": "210 210 210", "font": "sans-stroke-14" });
 		}
 
 		this.rating.caption = setStringTags(state.rating, { "color": state.playerColor });
@@ -118,7 +118,14 @@ class BoonGUIStatsTopPanelRow
 			phase = "phase_village";
 		}
 
-		this.phaseIcon.sprite = "stretched:session/portraits/" + GetTechnologyData(phase, state.civ).icon;
+		const techData = GetTechnologyData(phase, state.civ);
+		tooltip = "";
+		tooltip += playerNick + "\n";
+		tooltip += progress ? g_Indent + Engine.FormatMillisecondsIntoDateStringGMT((phase_town || phase_city).timeRemaining, "m:ss") + g_Indent : "";
+		tooltip += techData.name.generic;
+		this.phase.tooltip = tooltip;
+
+		this.phaseIcon.sprite = "stretched:session/portraits/" + techData.icon;
 		if (progress == null)
 		{
 			this.phaseProgress.hidden = true;

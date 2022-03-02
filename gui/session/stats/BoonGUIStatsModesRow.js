@@ -6,10 +6,8 @@ class BoonGUIStatsModesRow
 		this.root = Engine.GetGUIObjectByName(PREFIX);
 		this.root.size = BoonGUIGetRowSize(index, 40);
 		this.indicator = Engine.GetGUIObjectByName(`${PREFIX}Indicator`);
-		this.indicatorLabel = Engine.GetGUIObjectByName(`${PREFIX}IndicatorLabel`);
 		this.indicatorColor = Engine.GetGUIObjectByName(`${PREFIX}IndicatorColor`);
 		this.indicatorTeamColor = Engine.GetGUIObjectByName(`${PREFIX}IndicatorTeamColor`);
-		this.indicatorColorDivide = Engine.GetGUIObjectByName(`${PREFIX}IndicatorColorDivide`);
 		this.itemsContainer = Engine.GetGUIObjectByName(`${PREFIX}Items`);
 		this.items = this.itemsContainer.children.map((item, indexNumber) => new BoonGUIStatsModesRowItem(item, indexNumber));
 		this.indicator.onPress = () => focusCC(true, this.state);
@@ -25,7 +23,7 @@ class BoonGUIStatsModesRow
 		const Emblem = civ.Emblem.replace(BoonGUIStatsTopPanelRow.Regex_Emblem, "$1");
 
 		tooltip = "";
-		const font = state.name.length >= 16 ? "sans-stroke-16" : "sans-stroke-18";
+		const font = state.name.length >= 18 ? "sans-stroke-14" : "sans-stroke-18";
 		tooltip += setStringTags(`${state.name}\n`, { "color": state.playerColor, font });
 		if (state.team != -1)
 		{
@@ -36,7 +34,7 @@ class BoonGUIStatsModesRow
 		const caption = `${translateAISettings(g_InitAttributes.settings.PlayerData[state.index])}`;
 		if (caption)
 		{
-			tooltip += setStringTags(`\n${caption}`, { "color": "190 190 190", "font": "sans-stroke-14" });
+			tooltip += setStringTags(`\n${caption}`, { "color": "210 210 210", "font": "sans-stroke-14" });
 		}
 		return tooltip;
 	}
@@ -48,18 +46,9 @@ class BoonGUIStatsModesRow
 		if (!state) return;
 		this.indicator.tooltip = this.createTooltip(state);
 		this.indicatorColor.sprite = `backcolor: ${state.playerColor}`;
-		if (state.team != -1)
-		{
-			this.indicatorTeamColor.sprite = `backcolor: ${state.teamColor}`;
-			this.indicatorLabel.caption = state.team + 1;
-		}
-		else
-			this.indicatorTeamColor.hidden = true;
-		if (state.playerColor == state.teamColor)
-		{
-			this.indicatorColorDivide.hidden = true;
-			this.indicatorTeamColor.size = this.indicatorColor.size;
-		}
+		this.indicatorTeamColor.sprite = `backcolor: ${state.teamColor} 170`;
+		this.indicatorTeamColor.hidden = state.team == -1;
+
 		this.indicator.tooltip = this.createTooltip(state);
 		const items = state.queue.filter(d => d.mode === mode);
 		this.items.forEach((item, idx) => {
