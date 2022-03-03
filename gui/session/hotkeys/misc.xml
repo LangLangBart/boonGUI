@@ -118,7 +118,7 @@
 	</object>
 	<object hotkey="boongui.session.stats.mode.8">
 		<action on="Press">g_stats.statsModes.selectMode(7);</action>
-	</object>					
+	</object>
 	<object hotkey="boongui.session.stats.mode.9">
 		<action on="Press">g_stats.statsModes.selectMode(8);</action>
 	</object>

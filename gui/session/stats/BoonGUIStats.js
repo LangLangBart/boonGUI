@@ -4,6 +4,7 @@ class BoonGUIStats
 	constructor(playerViewControl)
 	{
 		this.root = Engine.GetGUIObjectByName("Stats");
+
 		this.shouldForceRender = true;
 		this.statsTopPanel = new BoonGUIStatsTopPanel(() => this.shouldForceRender);
 		this.statsModes = new BoonGUIStatsModes(() => this.shouldForceRender);
@@ -12,31 +13,47 @@ class BoonGUIStats
 		this.shortGameInfoLabel = Engine.GetGUIObjectByName("shortGameInfoLabel");
 		this.resourceCounts = Engine.GetGUIObjectByName("resourceCounts");
 
-
-		this.checkbox = Engine.GetGUIObjectByName("visibilityStatsModesPanel");
-		this.checkbox.checked = Engine.ConfigDB_GetValue("user", "boongui.statsmode.checkbox") === "false";
-		this.checkbox.tooltip = "Toggle the stats panel on the right side." + coloredText("\nLow performance gain when hidden.", "red");
-
 		this.playerViewControl = playerViewControl;
+		this.configValues();
 		this.updateLayout();
 		this.updateShortGameInfoLabel();
 
-		playerViewControl.registerPlayerIDChangeHandler(this.updateLayout.bind(this));
-		playerViewControl.registerViewedPlayerChangeHandler(this.adoptLayout.bind(this));
-		this.resizeInit();
-		registerPlayersFinishedHandler(this.adoptLayout.bind(this));
+		this.checkbox = Engine.GetGUIObjectByName("visibilityStatsModesPanel");
+		this.checkbox.tooltip = "Toggle the stats panel on the right side." + coloredText("\nLow performance gain when hidden.", "red");
+		this.checkbox.checked = Engine.ConfigDB_GetValue("user", this.configName[2]) == "true";
 
-		const key = g_IsObserver ? "boongui.observer.hidden" : "boongui.player.hidden";
-		const defaultHidden = g_IsObserver ? "false" : "true";
-		this.root.hidden = (Engine.ConfigDB_GetValue("user", key) || defaultHidden) == "true";
+		playerViewControl.registerPlayerIDChangeHandler(this.updateLayout.bind(this));
+		playerViewControl.registerViewedPlayerChangeHandler(this.onViewedPlayerChange.bind(this));
+		this.resizeInit();
+		registerPlayersFinishedHandler(this.presentStatsTopPanel.bind(this));
+
 		this.root.onTick = this.onTick.bind(this);
 	}
 
 	lastTick = 0;
 
+	configValues()
+	{
+		for (let i = 0; i < this.configName.length; i++)
+		{
+			if (Engine.ConfigDB_GetValue("user", this.configName[i]) === "")
+				Engine.ConfigDB_CreateAndWriteValueToFile("user", this.configName[i], "true", "config/user.cfg");
+		}
+		this.root.hidden = Engine.ConfigDB_GetValue("user", g_IsObserver ? this.configName[0] : this.configName[1]) == "false";
+		this.statsModes.root.hidden = Engine.ConfigDB_GetValue("user", this.configName[2]) == "false";
+	}
+
 	toggle()
 	{
 		this.root.hidden = !this.root.hidden;
+		toggleConfigBool(g_IsObserver ? BoonGUIStats.prototype.configName[0] : BoonGUIStats.prototype.configName[1]);
+		this.shouldForceRender = true;
+	}
+
+	toggleCheckbox()
+	{
+		this.statsModes.root.hidden = !this.statsModes.root.hidden;
+		toggleConfigBool(this.configName[2]);
 		this.shouldForceRender = true;
 	}
 
@@ -44,8 +61,6 @@ class BoonGUIStats
 	{
 		const forceRender = this.shouldForceRender;
 		this.shouldForceRender = false;
-		const key = g_IsObserver ? "boongui.observer.hidden" : "boongui.player.hidden";
-		Engine.ConfigDB_CreateAndWriteValueToFile("user", key, this.root.hidden ? "true" : "false", "config/user.cfg");
 		if (this.root.hidden)
 		{
 			if (this.lastPlayerLength != 0) this.resize(0);
@@ -59,11 +74,19 @@ class BoonGUIStats
 		}
 	}
 
-	adoptLayout()
+	onViewedPlayerChange()
 	{
-		this.root.hidden = false;
+		this.configValues();
 		this.updateLayout();
 		this.resize(this.lastPlayerLength);
+	}
+
+	presentStatsTopPanel()
+	{
+		// if a player resigns always show it
+		this.root.hidden = false;
+		Engine.ConfigDB_CreateAndWriteValueToFile("user", this.configName[0], "true", "config/user.cfg");
+		this.onViewedPlayerChange();
 	}
 
 	playerColor(state)
@@ -167,8 +190,6 @@ class BoonGUIStats
 
 	update()
 	{
-		Engine.ConfigDB_CreateAndWriteValueToFile("user", "boongui.statsmode.checkbox", this.statsModes.root.hidden ? "true" : "false", "config/user.cfg");
-		this.statsModes.root.hidden = !this.checkbox.checked;
 		Engine.ProfileStart("BoonGUIStats:update");
 
 		Engine.ProfileStart("BoonGUIStats:update:GuiInterfaceCall");
@@ -197,6 +218,7 @@ class BoonGUIStats
 		Engine.ProfileStart("BoonGUIStats:update:StatsModes");
 		if (this.checkbox.checked)
 			this.statsModes.update(playersStates, this.mode);
+
 		Engine.ProfileStop();
 
 		Engine.ProfileStop();
@@ -284,4 +306,5 @@ class BoonGUIStats
 }
 
 BoonGUIStats.prototype.IncomeRateBufferSize = 50;
+BoonGUIStats.prototype.configName = ["boongui.observer.toppanel", "boongui.player.toppanel", "boongui.statsmode"];
 

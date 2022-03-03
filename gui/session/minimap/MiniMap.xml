@@ -40,7 +40,7 @@
 	<object name="idleWorkerButton"
 		type="button"
 		size="74%+4 75%+19 89%-8 90%+7"
-		tooltip_style="sessionToolTipBottomBold"
+		tooltip_style="sessionToolTipCircleBottom"
 		hotkey="selection.idleworker"
 		sprite="stretched:session/minimap-idle.png"
 		sprite_over="stretched:session/minimap-idle-highlight.png"
@@ -64,7 +64,7 @@
 		name="flareButton"
 		type="button"
 		size="62%+9 85%+8 77%-3 100%-4"
-		tooltip_style="sessionToolTipBottomBold"
+		tooltip_style="sessionToolTipCircleBottom"
 		hotkey="session.flareactivate"
 		sprite="stretched:session/minimap-flare.png"
 		sprite_over="stretched:session/minimap-flare-highlight.png"
@@ -77,18 +77,20 @@
 	<object name="scoreButton"
 		type="button"
 		size="1%+8 75%+19 16%-4 90%+7"
-		tooltip_style="sessionToolTipBottomBold"
+		tooltip_style="sessionToolTipCircleBottom"
 		sprite="stretched:session/minimap-score.png"
 		sprite_over="stretched:session/minimap-score-highlight.png"
 		mouse_event_mask="texture:session/minimap-score.png"
-		sound_pressed="audio/interface/ui/ui_button_click.ogg"
-	/>
+		sound_pressed="audio/interface/ui/ui_button_click.ogg">
+			<action on="Press">g_stats.toggle();</action>
+	</object>
+
 
 	<!-- Diplomacy Colors Button -->
 	<object name="diplomacyColorsButton"
 		type="button"
 		size="13%+3 85%+8 28%-9 100%-4"
-		tooltip_style="sessionToolTipBottomBold"
+		tooltip_style="sessionToolTipCircleBottom"
 		hotkey="session.diplomacycolors"
 		sound_pressed="audio/interface/ui/ui_button_click.ogg"
 	/>
