@@ -21,7 +21,7 @@
 	https://trac.wildfiregames.com/wiki/GUI_-_XML_Files
 	-->
 	<include>session/boonGUI_XML/setups_icons.xml</include>
-	<include>session/boonGUI_XML/setups_tooltip.xml</include>
+	<include>session/boonGUI_XML/setups_misc.xml</include>
 	<include>session/boonGUI_XML/sprites.xml</include>
 	<!-- styles must come before session.xml -->
 	<include>session/boonGUI_XML/styles.xml</include>

@@ -98,8 +98,8 @@ function normalizeResourceCount(value)
 	{
 		return Math.floor(value / 1000) + setStringTags("k", { "font": "sans-stroke-12" });
 	}
+	// for rounding number to its tenth
 	return Math.floor(value / 10) * 10;
-
 }
 
 function normalizeValue(value)

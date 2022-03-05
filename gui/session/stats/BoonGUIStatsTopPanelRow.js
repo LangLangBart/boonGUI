@@ -9,12 +9,15 @@ class BoonGUIStatsTopPanelRow
 		this.root = Engine.GetGUIObjectByName(PREFIX);
 		this.root.size = BoonGUIGetRowSize(index, 26);
 
+		this.coloredTeamBackground = Engine.GetGUIObjectByName(`${PREFIX}_coloredTeamBackground`);
+		this.coloredBackground = Engine.GetGUIObjectByName(`${PREFIX}_coloredBackground`);
 		this.border = Engine.GetGUIObjectByName(`${PREFIX}_border`);
 
 		this.team = Engine.GetGUIObjectByName(`${PREFIX}_team`);
 		this.player = Engine.GetGUIObjectByName(`${PREFIX}_player`);
 		this.rating = Engine.GetGUIObjectByName(`${PREFIX}_rating`);
 		this.civ = Engine.GetGUIObjectByName(`${PREFIX}_civ`);
+		this.civIcon = Engine.GetGUIObjectByName(`${PREFIX}_civIcon`);
 		this.pop = Engine.GetGUIObjectByName(`${PREFIX}_pop`);
 
 		this.techCount = Engine.GetGUIObjectByName(`${PREFIX}_techCount`);
@@ -56,31 +59,41 @@ class BoonGUIStatsTopPanelRow
 		let value, color, caption, tooltip, font, colorSingleRow;
 
 		const shouldBlink = (Date.now() % 1000 < 500);
-		this.border.sprite = `backcolor: ${state.playerColor} 70`;
-		this.team.caption = setStringTags(state.team != -1 ? `${state.team + 1}` : "", { "color": state.teamColor });
+		this.coloredTeamBackground.sprite = `backcolor: ${state.teamColor} 80`;
+		this.coloredBackground.sprite = `backcolor: ${state.playerColor} 80`;
+		this.border.sprite = `backcolor: ${state.playerColor} 80`;
 
+		if (state.team != -1)
+		{
+			this.coloredTeamBackground.hidden = false;
+			this.coloredBackground.size = "18 0 235 100%";
+			this.team.caption = `${state.team + 1}`;
+		}
 		const playerNick = setStringTags(state.nick, { "color": state.playerColor });
-		caption = state.nick.length <= 9 ? state.nick : state.nick.substr(0, 8) + "…";
-		this.player.caption = setStringTags(caption, { "color": state.playerColor });
-		this.player.tooltip = setStringTags(state.nick, { "color": state.playerColor });
+		caption = state.nick.length <= 8 ? state.nick : state.nick.substr(0, 7) + "…";
+		this.player.caption = caption;
+		this.player.tooltip = playerNick;
+		this.player.tooltip += state.team != -1 ? setStringTags("\nTeam " + this.team.caption, { "color": state.teamColor }) : "";
 		caption = `${translateAISettings(g_InitAttributes.settings.PlayerData[state.index])}`;
 		if (caption)
 		{
 			this.player.tooltip += setStringTags(`\n${caption}`, { "color": "210 210 210", "font": "sans-stroke-14" });
 		}
+		this.team.tooltip = this.player.tooltip;
 
-		this.rating.caption = setStringTags(state.rating, { "color": state.playerColor });
-		this.civ.caption = setStringTags(g_BoonGUICivs[state.civ], { "color": state.playerColor });
+		this.rating.caption = state.rating;
 
 		const civ = g_CivData[state.civ];
 		const Emblem = civ.Emblem.replace(BoonGUIStatsTopPanelRow.Regex_Emblem, "$1");
 
+		this.civ.sprite_over = "cropped:1.03,0.6506:" + "session/portraits/emblems/states/hover.png";
+		this.civIcon.sprite = "cropped:1.03,0.6506:" + civ.Emblem;
 		tooltip = "";
 		tooltip += playerNick + "\n\n";
 		tooltip += `[icon="${Emblem}" displace="12 0"] \n`;
-		tooltip += `History of the ${civ.Name.padEnd(8)}\n`;
+		tooltip += " " + `${civ.Name.padEnd(8)}\n`;
 		font = "sans-stroke-14";
-		tooltip += " " + setStringTags(civ.History + "\n", { font });
+		tooltip += setStringTags(civ.History + "\n", { font });
 		this.civ.tooltip = tooltip;
 
 		let phase;
@@ -136,8 +149,8 @@ class BoonGUIStatsTopPanelRow
 			size.top = this.phaseProgressTop + this.phaseProgressHeight * progress;
 			this.phaseProgress.size = size;
 		}
-
-		const popCount = state.popCount.toString().padStart(3);
+		font = "sans-bold-stroke-20";
+		const popCount = setStringTags(state.popCount.toString().padStart(3), { font });
 		const popLimit = state.popLimit.toString().padStart(3);
 
 		if (state.trainingBlocked && shouldBlink)
@@ -177,21 +190,21 @@ class BoonGUIStatsTopPanelRow
 
 			value = state.resourceRates[resType];
 			color = scales.getColor(`${resType}Rates`, value, 180);
-			caption = isNaN(value) || value <= 0 ? "" : `+${normalizeValue(value)}`;
+			caption = isNaN(value) || value <= 0 ? setStringTags("+0", { "color": "dimmedWhite" }) : `+${normalizeValue(value)}`;
 			// For single lines, the gathering rates are displayed in the player color.
 			colorSingleRow = setStringTags(caption, (g_stats.lastPlayerLength > 1) ? { color } : { "color": state.playerColor });
 			this.resource.rates[resType].caption = colorSingleRow;
 
-			tooltip += setStringTags("Amount/10s", { "color": caption ? "white" : CounterPopulation.prototype.DimmedWhite }) + `${g_Indent}${colorSingleRow}\n`;
+			tooltip += setStringTags("Income/10s", { "color": (typeof caption === "number") ? "white" : "dimmedWhite" }) + `${g_Indent}${colorSingleRow}\n`;
 
 			value = state.resourceGatherers[resType];
 			color = scales.getColor(`${resType}Gatherers`, value, 180);
-			caption = isNaN(value) || value <= 0 ? "" : value;
-			colorSingleRow = setStringTags(caption, (g_ViewedPlayer < 0) ? { color } : { "color": state.playerColor });
+			caption = isNaN(value) || value <= 0 ? setStringTags("0", { "color": "dimmedWhite" }) : value;
+			colorSingleRow = setStringTags(caption, (g_stats.lastPlayerLength > 1) ? { color } : { "color": state.playerColor });
 
-			tooltip += setStringTags("Gatherers", { "color": caption ? "white" : CounterPopulation.prototype.DimmedWhite }) + `${g_Indent}${g_Indent}${colorSingleRow}\n`;
+			tooltip += setStringTags("Gatherers", { "color": (typeof caption === "number") ? "white" : "dimmedWhite" }) + `${g_Indent}${g_Indent}${colorSingleRow}\n`;
 
-			this.resource.counts[resType].tooltip = tooltip;
+			this.resource.rates[resType].tooltip = tooltip;
 		}
 
 		const techArrayCount = [state.economyTechsCount, state.militaryTechsCount];
