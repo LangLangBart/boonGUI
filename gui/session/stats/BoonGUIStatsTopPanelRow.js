@@ -59,9 +59,9 @@ class BoonGUIStatsTopPanelRow
 		let value, color, caption, tooltip, font, colorSingleRow;
 
 		const shouldBlink = (Date.now() % 1000 < 500);
-		this.coloredTeamBackground.sprite = `backcolor: ${state.teamColor} 80`;
-		this.coloredBackground.sprite = `backcolor: ${state.playerColor} 80`;
-		this.border.sprite = `backcolor: ${state.playerColor} 80`;
+		this.coloredTeamBackground.sprite = `backcolor: ${state.teamColor} 95`;
+		this.coloredBackground.sprite = `backcolor: ${state.playerColor} 95`;
+		this.border.sprite = `backcolor: ${state.playerColor} 95`;
 
 		if (state.team != -1)
 		{
@@ -195,14 +195,14 @@ class BoonGUIStatsTopPanelRow
 			colorSingleRow = setStringTags(caption, (g_stats.lastPlayerLength > 1) ? { color } : { "color": state.playerColor });
 			this.resource.rates[resType].caption = colorSingleRow;
 
-			tooltip += setStringTags("Income/10s", { "color": (typeof caption === "number") ? "white" : "dimmedWhite" }) + `${g_Indent}${colorSingleRow}\n`;
+			tooltip += setStringTags("Income/10s", { "color": value > 0 ? "white" : "dimmedWhite" }) + `${g_Indent}${colorSingleRow}\n`;
 
 			value = state.resourceGatherers[resType];
 			color = scales.getColor(`${resType}Gatherers`, value, 180);
 			caption = isNaN(value) || value <= 0 ? setStringTags("0", { "color": "dimmedWhite" }) : value;
 			colorSingleRow = setStringTags(caption, (g_stats.lastPlayerLength > 1) ? { color } : { "color": state.playerColor });
 
-			tooltip += setStringTags("Gatherers", { "color": (typeof caption === "number") ? "white" : "dimmedWhite" }) + `${g_Indent}${g_Indent}${colorSingleRow}\n`;
+			tooltip += setStringTags("Gatherers", { "color": value > 0 ? "white" : "dimmedWhite" }) + `${g_Indent}${g_Indent}${colorSingleRow}\n`;
 
 			this.resource.rates[resType].tooltip = tooltip;
 		}
@@ -211,7 +211,7 @@ class BoonGUIStatsTopPanelRow
 		const ecoTechColor = scales.getColor("economyTechsCount", techArrayCount[0]);
 		const milTechColor = scales.getColor("militaryTechsCount", techArrayCount[1]);
 		this.techCount.caption =
-		setStringTags(techArrayCount[0], { "color": ecoTechColor }) + "/" + (techArrayCount[0] < 10 ? " " : "") +
+		setStringTags(techArrayCount[0], { "color": ecoTechColor }) + "/" + (techArrayCount[1] < 10 ? " " : "") +
 		setStringTags(techArrayCount[1], { "color": milTechColor });
 
 		tooltip = "";
