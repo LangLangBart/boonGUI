@@ -14,9 +14,17 @@
 	<include>session/setup.xml</include>
 	<include>session/sprites.xml</include>
 	<include>session/styles.xml</include>
-	<include>session/session.xml</include>
 
-	<include>session/setups/tech.xml</include>
-	<include>session/setups/misc.xml</include>
-	<include>session/setups/emblem.xml</include>
+	<!--
+	boonGUI's GUI_-_XML_Files
+	Try to put as much as possible in here and avoid adding the default XML files to the mod, makes it easier to maintain
+	https://trac.wildfiregames.com/wiki/GUI_-_XML_Files
+	-->
+	<include>session/boonGUI_XML/setups_icons.xml</include>
+	<include>session/boonGUI_XML/setups_tooltip.xml</include>
+	<include>session/boonGUI_XML/sprites.xml</include>
+	<!-- styles must come before session.xml -->
+	<include>session/boonGUI_XML/styles.xml</include>
+
+	<include>session/session.xml</include>
 </page>

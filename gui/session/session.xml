@@ -48,7 +48,7 @@
 	<object name="chatPanel" size="0 131 100% 100%-240" z="0" absolute="true">
 		<object name="chatLines">
 			<repeat count="20">
-				<object name="chatLine[n]" size="3 0 100% 25" type="button" style="chatPanelOverlay" tooltip_style="sessionToolTipBottomBold" ghost="true" hidden="true"/>
+				<object name="chatLine[n]" size="3 0 100% 25" type="button" style="chatPanelStyle" tooltip_style="sessionToolTipBottomBold" ghost="true" hidden="true"/>
 			</repeat>
 		</object>
 	</object>
@@ -87,7 +87,7 @@
 		<!-- Supplemental Details Panel (left). -->
 		<object name="supplementalSelectionDetails"
 			size="50%-316 100%-166 50%-110 100%"
-			sprite="supplementalDetailsPanel"
+			sprite="supplementalDetailsPanelAdjusted"
 			type="image"
 			z="200"
 		>
@@ -97,7 +97,7 @@
 		<!-- Selection Details Panel (middle). -->
 		<object name="selectionDetails"
 			size="50%-114 100%-205 50%+114 100%"
-			sprite="selectionDetailsPanel"
+			sprite="selectionDetailsPanelAdjusted"
 			type="image"
 		>
 			<include directory="gui/session/selection_panels_middle/"/>
@@ -106,7 +106,7 @@
 		<!-- Commands Panel (right). -->
 		<object name="unitCommands"
 			size="50%+110 100%-205 50%+572 100%"
-			sprite="unitCommandsPanel"
+			sprite="unitCommandsPanelAdjusted"
 			type="image"
 			z="20"
 		>

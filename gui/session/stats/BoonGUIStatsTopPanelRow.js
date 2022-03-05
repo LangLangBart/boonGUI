@@ -17,8 +17,7 @@ class BoonGUIStatsTopPanelRow
 		this.civ = Engine.GetGUIObjectByName(`${PREFIX}_civ`);
 		this.pop = Engine.GetGUIObjectByName(`${PREFIX}_pop`);
 
-		this.economyTechsCount = Engine.GetGUIObjectByName(`${PREFIX}_economyTechsCount`);
-		this.militaryTechsCount = Engine.GetGUIObjectByName(`${PREFIX}_militaryTechsCount`);
+		this.techCount = Engine.GetGUIObjectByName(`${PREFIX}_techCount`);
 		this.femaleCitizen = Engine.GetGUIObjectByName(`${PREFIX}_femaleCitizen`);
 		this.infantry = Engine.GetGUIObjectByName(`${PREFIX}_infantry`);
 		this.cavalry = Engine.GetGUIObjectByName(`${PREFIX}_cavalry`);
@@ -149,8 +148,8 @@ class BoonGUIStatsTopPanelRow
 		}
 		else
 		{
-			const popLimitColor = scales.getColor("popLimit", state.popLimit);
 			const popCountColor = scales.getColor("popCount", state.popCount);
+			const popLimitColor = scales.getColor("popLimit", state.popLimit);
 			this.pop.caption =
 				setStringTags(popCount, { "color": popCountColor }) + "/" +
 				setStringTags(popLimit, { "color": popLimitColor });
@@ -195,11 +194,15 @@ class BoonGUIStatsTopPanelRow
 			this.resource.counts[resType].tooltip = tooltip;
 		}
 
-		value = state.economyTechsCount;
-		color = scales.getColor("economyTechsCount", value);
-		this.economyTechsCount.caption = setStringTags(value, { color });
-		tooltip = "";
+		const techArrayCount = [state.economyTechsCount, state.militaryTechsCount];
+		const ecoTechColor = scales.getColor("economyTechsCount", techArrayCount[0]);
+		const milTechColor = scales.getColor("militaryTechsCount", techArrayCount[1]);
+		this.techCount.caption =
+		setStringTags(techArrayCount[0], { "color": ecoTechColor }) + "/" + (techArrayCount[0] < 10 ? " " : "") +
+		setStringTags(techArrayCount[1], { "color": milTechColor });
 
+		tooltip = "";
+		tooltip += techArrayCount[0] + techArrayCount[1] > 0 ? playerNick.padEnd(50) + "\n" : "";
 		for (const resType of g_BoonGUIResTypes)
 		{
 			if (state.resourcesTechs[resType].length > 0)
@@ -212,26 +215,16 @@ class BoonGUIStatsTopPanelRow
 			}
 		}
 
-		tooltip = tooltip ? playerNick.padEnd(50) + "\n" + tooltip + "\n" : "";
-		this.economyTechsCount.tooltip = tooltip;
-
-
-		value = state.militaryTechsCount;
-		color = scales.getColor("militaryTechsCount", value);
-		this.militaryTechsCount.caption = setStringTags(value, { color });
-		tooltip = "";
-
 		if (state.militaryTechs.length > 0)
 		{
-			tooltip += playerNick + "\n";
-			tooltip += "Military techs\n";
+			tooltip += "\nMilitary Technologies\n";
 			for (let i = 0; i < state.militaryTechs.length; i += 4)
 			{
 				tooltip += state.militaryTechs.slice(i, i + 4).map(tech => `[icon="icon_${tech}" displace="0 5"]`).join("  ") + " \n";
 			}
 			tooltip += "\n";
 		}
-		this.militaryTechsCount.tooltip = tooltip;
+		this.techCount.tooltip = tooltip;
 
 		value = state.classCounts.FemaleCitizen ?? 0;
 		color = scales.getColor("femaleCitizen", value);
@@ -257,8 +250,7 @@ class BoonGUIStatsTopPanelRow
 		value = state.killDeathRatio;
 		color = scales.getColor("killDeathRatio", value);
 		caption = formatKD(value);
-		font = caption.length >= 4 ? "mono-stroke-12" : "mono-stroke-14";
-		this.killDeathRatio.caption = setStringTags(caption, { color, font });
+		this.killDeathRatio.caption = setStringTags(caption, { color });
 
 		const los = state.hasSharedLos || state.numberAllies == 1 ? "●" : "○";
 		this.los.caption = setStringTags(los, { "color": state.playerColor });

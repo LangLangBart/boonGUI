@@ -116,7 +116,7 @@ class BoonGUIStats
 			const label = Engine.GetGUIObjectByName(`unitGroupLabel[${i}]`);
 			button.size = "0 0 50 50";
 			icon.size = "3 3 47 47";
-			label.font = "mono-stroke-20";
+			label.font = "sans-bold-stroke-22";
 			label.text_valign = "top";
 			label.text_align = "right";
 		}
@@ -236,11 +236,13 @@ class BoonGUIStats
 		const viewPlayer = Engine.GetGUIObjectByName("viewPlayer");
 		const menuButton = Engine.GetGUIObjectByName("menuButton");
 		const topPanel = Engine.GetGUIObjectByName("topPanel");
+		topPanel.sprite = "topPanelTransparent";
 
 		viewPlayer.hidden = !g_IsObserver && !this.playerViewControl.changePerspective;
 		diplomacy.hidden = !isPlayer;
 		trade.hidden = !isPlayer;
 		optionFollowPlayer.hidden = !(g_IsObserver && isPlayer);
+		optionFollowPlayer.size = "0 4 20 100%";
 
 		// Nice future project to show the menuButton only upon hovering over it and hide it otherwise
 		// placeHoldermenuButton.onMouseEnter = function()
@@ -255,7 +257,7 @@ class BoonGUIStats
 		// };
 
 		const buttonName = [[trade], [diplomacy], [objectives], [optionFollowPlayer], [viewPlayer], [gameSpeed], [menuButton]];
-		for (var i = 0; i < buttonName.length; i++)
+		for (let i = 0; i < buttonName.length; i++)
 		{
 			const widthButton = buttonName[i][0].size.right - buttonName[i][0].size.left;
 			buttonName[i].push(Math.abs(widthButton));
@@ -279,6 +281,23 @@ class BoonGUIStats
 		Engine.GetGUIObjectByName("resourceCounts").hidden = true;
 		Engine.GetGUIObjectByName("civIcon").hidden = true;
 		Engine.GetGUIObjectByName("buildLabel").hidden = true;
+
+		// some tiny adjustments that are so trivial, it would be wasteful to add the entire file
+		// top right corner for timer
+		Engine.GetGUIObjectByName("dataCounter").font = "sans-stroke-20";
+
+		// The history backlog of text in the chat panel
+		Engine.GetGUIObjectByName("chatHistoryText").font = "sans-stroke-16";
+
+		// The dev overlay should stay above the stats mode overlay
+		Engine.GetGUIObjectByName("devCommandsOverlay").z = 100;
+
+		// Game objectives panel
+		Engine.GetGUIObjectByName("objectivesPanel").z = 150;
+		Engine.GetGUIObjectByName("objectivesTitle").font = "sans-bold-16";
+		Engine.GetGUIObjectByName("gameDescriptionText").font = "sans-stroke-16";
+		for (let i = 0; i < 18; i++)
+			Engine.GetGUIObjectByName("dev_command_label[" + i + "]").font = "sans-stroke-18";
 	}
 
 	updateShortGameInfoLabel()

@@ -31,20 +31,20 @@
 
 			<!-- Health bar -->
 			<object name="healthSection">
-				<object size="2 2 100%-1 13" name="healthStats" type="text" style="StatsTextCentered" z="50">
+				<object size="2 2 100%-1 13" name="healthStats" type="text" style="statsTextCentered" z="50">
 					<translatableAttribute id="tooltip">Health</translatableAttribute>
 				</object>
 				<object size="2 2 100%-1 14" name="health" type="image" tooltip_style="sessionToolTip">
 					<object type="image" sprite="barBorder" ghost="true" size="-1 -1 100%+1 100%+1"/>
 					<object type="image" sprite="healthBackground" ghost="true"/>
-					<object type="image" sprite="healthForeground" ghost="true" name="healthBar"/>
+					<object type="image" sprite="healthForegroundDarker" ghost="true" name="healthBar"/>
 					<object type="image" sprite="statsBarShaderHorizontal" ghost="true"/>
 				</object>
 			</object>
 
 			<!-- Capture bar -->
 			<object name="captureSection">
-				<object size="2 16 100%-1 27" name="captureStats" type="text" style="StatsTextCentered" z="50">
+				<object size="2 16 100%-1 27" name="captureStats" type="text" style="statsTextCentered" z="50">
 					<translatableAttribute id="tooltip">Capture points</translatableAttribute>
 				</object>
 				<object size="2 16 100%-1 28" name="capture" type="image" tooltip_style="sessionToolTip">
@@ -58,7 +58,7 @@
 
 			<!-- Resource bar -->
 			<object name="resourceSection">
-				<object size="2 -13 100%-1 -3" name="resourceStats" type="text" style="StatsTextCentered" z="50"/>
+				<object size="2 -13 100%-1 -3" name="resourceStats" type="text" style="statsTextCentered" z="50"/>
 				<object size="2 -14 100%-1 -3" name="resources" type="image">
 					<object type="image" sprite="barBorder" ghost="true" size="-1 -1 100%+1 100%+1"/>
 					<object type="image" sprite="resourceBackground" ghost="true"/>
@@ -75,7 +75,7 @@
 		<repeat count="3">
 			<object name="LHS[n]" size="5 60 50% 88">
 				<object size="0 0 23 25" name="LHSIcon[n]" type="image" sprite="stretched:session/icons/stances/defensive.png" tooltip_style="sessionToolTipInstantly"/>
-				<object size="21 2 100% 100%" name="LHSText[n]" type="text" style="StatsTextLeft"/>
+				<object size="21 2 100% 100%" name="LHSText[n]" type="text" style="statsTextLeft"/>
 			</object>
 		</repeat>
 
@@ -83,7 +83,7 @@
 		<repeat count="3">
 			<object name="RHS[n]" size="50%+10 60 100% 88">
 				<object size="0 0 23 25" name="RHSIcon[n]" type="image" sprite="stretched:session/icons/stances/defensive.png" tooltip_style="sessionToolTipInstantly"/>
-				<object size="21 0 100% 100%" name="RHSText[n]" type="text" style="StatsTextLeft">
+				<object size="21 0 100% 100%" name="RHSText[n]" type="text" style="statsTextLeft">
 				</object>
 			</object>
 		</repeat>
@@ -92,7 +92,7 @@
 		<repeat count="1">
 			<object name="FullSpace[n]" size="0 0 100% 80%">
 				<object size="0 0 0 0" name="FullSpaceIcon[n]" type="image" sprite="stretched:session/icons/stances/defensive.png" tooltip_style="sessionToolTipInstantly"/>
-				<object size="5 -2 100% 100%" name="FullSpaceText[n]" type="text" style="StatsTextLeft" text_valign="top">
+				<object size="5 -2 100% 100%" name="FullSpaceText[n]" type="text" style="statsTextLeft" text_valign="top">
 				</object>
 			</object>
 		</repeat>
@@ -105,7 +105,7 @@
 		<!-- Resource carrying icon/counter -->
 		<object size="40 100 100% 100%" type="image" tooltip_style="sessionToolTip">
 			<!-- Used also for number of gatherers/builders -->
-			<object size="100%-96 0 100%-36 32" type="text" name="resourceCarryingText" style="StatsTextRight"/>
+			<object size="100%-96 0 100%-36 32" type="text" name="resourceCarryingText" style="statsTextRight"/>
 			<object size="100%-32 0 100% 32" type="image" name="resourceCarryingIcon" tooltip_style="sessionToolTip"/>
 		</object>
 	</object>
@@ -116,8 +116,8 @@
 
 		<!-- Primary and secondary names. -->
 		<object size="0 3 100% 37">
-			<object size="0 0 100% 50%" name="primary" ghost="true" type="text" style="PrimaryNameCentered"/>
-			<object size="0 50%-1 100% 100%" name="secondary" ghost="true" type="text" style="SecondaryNameCentered"/>
+			<object size="0 0 100% 50%" name="primary" ghost="true" type="text" style="primaryNameCentered"/>
+			<object size="0 50%-1 100% 100%" name="secondary" ghost="true" type="text" style="secondaryNameCentered"/>
 		</object>
 
 		<!-- Civilization tooltip. -->

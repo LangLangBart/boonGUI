@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <object name="StatsModes">
 
-	<object name="StatsModesTitle" type="text" size="10 0 100% 26" ghost="true" textcolor="white" text_align="center" text_valign="center" sprite="prettyBackgroundColor" font="sans-bold-stroke-16" />
+	<object name="StatsModesTitle" type="text" size="10 0 100% 26" ghost="true" textcolor="white" text_align="center" text_valign="center" sprite="prettyBackgroundColorLight" font="sans-bold-stroke-16" />
 	<!-- Special objects for creating special tooltips -->
 	<object name="fixedTooltipStatsModeDefault" type="text" text_align="center" text_valign="center" sprite="BackgroundSessionTooltip" font="sans-stroke-16" textcolor="white" size="100%-420 0 100%-190 26" hidden="true" ghost="true" z="150" />
 	<object name="fixedTooltipStatsModeIndicator" type="text" text_align="center" text_valign="center" sprite="BackgroundSessionTooltip" font="sans-stroke-16" textcolor="white" size="100%-350 -120 100%-190 26" hidden="true" ghost="true" z="150"/>
@@ -9,7 +9,7 @@
 
 	<object name="StatsModesTabButtons" type="image">
 		<repeat count="10">
-			<object name="StatsModesTabButton[n]" type="button" size="0 0 100% 100%" hidden="true" style="TabButton" tooltip_style="fixedTooltipStatsModeDefault">
+			<object name="StatsModesTabButton[n]" type="button" size="0 0 100% 100%" hidden="true" style="tabButtons" tooltip_style="fixedTooltipStatsModeDefault">
 				<object type="text" name="StatsModesTabButton[n]_Text" style="ModernLabelText" ghost="true"/>
 				<object type="image" name="StatsModesTabButton[n]_Icon" ghost="true" size="10 5 100%-10 100%-5"/>
 				<action on="MouseWheelUp">g_stats.statsModes.previousMode(true);</action>
@@ -21,7 +21,7 @@
 	<object name="StatsModesRows">
 		<repeat count="8" var="i">
 			<object name="StatsModesRow[i]" size="0 0 100% 100%" hidden="true">
-				<object name="StatsModesRow[i]Indicator" type="button" style="TabButtonIndicator" size="100%-20 1 100% 39" tooltip_style="fixedTooltipStatsModeIndicator">
+				<object name="StatsModesRow[i]Indicator" type="button" style="tabButtonIndicator" size="100%-20 1 100% 39" tooltip_style="fixedTooltipStatsModeIndicator">
 					<object name="StatsModesRow[i]IndicatorTeamColor" type="image" size="8 0 100% 38" ghost="true" z="10">
 						<object type="image" sprite="statModeIndicatorFrame" />
 					</object>

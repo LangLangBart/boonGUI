@@ -27,7 +27,7 @@ class BoonGUIStatsModes
 		this.rowsContainer = Engine.GetGUIObjectByName(`${PREFIX}Rows`);
 		this.rows = this.rowsContainer.children.map((row, index) => new BoonGUIStatsModesRow(row, index));
 
-		this.tabButtons.size = "100%-47 28 100% 361";
+		this.tabButtons.size = "100%-47 26 100% 361";
 		this.rowsContainer.size = "0 28 100%-50 100%";
 
 		this.forceRender = forceRender;

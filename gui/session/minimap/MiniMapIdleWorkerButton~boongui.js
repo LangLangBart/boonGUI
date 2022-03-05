@@ -6,5 +6,5 @@ MiniMapIdleWorkerButton.prototype.rebuild = function()
 		"excludeUnits": []
 	}).length;
 	this.idleWorkerButton.enabled = totalNumberIdleWorkers > 0;
-	Engine.GetGUIObjectByName("totalNumberIdleWorkers").caption = totalNumberIdleWorkers ? coloredText(totalNumberIdleWorkers, "red") : "";
+	Engine.GetGUIObjectByName("totalNumberIdleWorkers").caption = this.idleWorkerButton.enabled ? totalNumberIdleWorkers : "";
 };
