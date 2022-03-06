@@ -23,8 +23,8 @@ class BoonGUIStatsModesRow
 		const Emblem = civ.Emblem.replace(BoonGUIStatsTopPanelRow.Regex_Emblem, "$1");
 
 		tooltip = "";
-		const font = state.name.length >= 18 ? "sans-stroke-14" : "sans-stroke-18";
-		tooltip += setStringTags(`${state.name}\n`, { "color": state.playerColor, font });
+		const font = state.nick.length >= 18 ? "sans-stroke-14" : "sans-stroke-18";
+		tooltip += setStringTags(`${state.nick}\n`, { "color": state.playerColor, font });
 		if (state.team != -1)
 		{
 			tooltip += setStringTags(`Team ${state.team + 1}\n`, { "color": state.teamColor });

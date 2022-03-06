@@ -6,7 +6,8 @@
 		<image backcolor="transparent" size="0 0 100% 100%" />
 	</sprite>
 	<sprite name="shaderLooksNice">
-		<image texture="session/panel_shader_top_edge.png" real_texture_placement="0 0 206 1" size="0 100% 100% 100%-1" />
+		<image texture="session/panel_shader_top_edge.png" size="0 0 100% 1" />
+		<image texture="session/panel_shader_light.png" size="0 0 100% 100%" />
 	</sprite>
 
 	<!-- Bottom Left Panel -->
@@ -74,10 +75,16 @@
 		<image backcolor="38 38 38 120" size="0 100%-1 100% 100%+1" />
 		<image backcolor="38 38 38 120" size="100%-1 0 100%+1 100%" />
 		<image backcolor="38 38 38 120" size="0 -1 100% 1" />
+		<image texture="session/panel_shader_light.png" size="0 0 100% 100%" />
 	</sprite>
 
 	<sprite name="statModeIndicatorHighlight">
 		<image backcolor="255 255 255 80" size="0 0 100% 100%" />
+	</sprite>
+
+	<sprite name="simpleHighlighter">
+		<image texture="session/panel_shader_top_edge.png" size="0 0 110% 3" />
+		<image texture="session/panel_shader_top_edge.png" size="0 100%-3 120% 100%" />
 	</sprite>
 
 	<sprite name="snIconPortraitStrongerHighlight">

@@ -177,6 +177,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 			"trainingBlocked": cmpPlayer.IsTrainingBlocked(),
 			"popCount": cmpPlayer.GetPopulationCount(),
 			"popLimit": cmpPlayer.GetPopulationLimit(),
+			"popMax": cmpPlayer.GetMaxPopulation(),
 			"resourceCounts": cmpPlayer.GetResourceCounts(),
 			"resourceGatherers": cmpPlayer.GetResourceGatherers(),
 

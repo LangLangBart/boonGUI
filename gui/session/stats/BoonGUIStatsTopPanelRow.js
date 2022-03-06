@@ -13,11 +13,16 @@ class BoonGUIStatsTopPanelRow
 		this.coloredBackground = Engine.GetGUIObjectByName(`${PREFIX}_coloredBackground`);
 		this.border = Engine.GetGUIObjectByName(`${PREFIX}_border`);
 
+		this.playerHomeButton = Engine.GetGUIObjectByName(`${PREFIX}_playerHomeButton`);
+		this.playerHomeButton.onPress = () => focusCC(true, this.state);
+
 		this.team = Engine.GetGUIObjectByName(`${PREFIX}_team`);
 		this.player = Engine.GetGUIObjectByName(`${PREFIX}_player`);
 		this.rating = Engine.GetGUIObjectByName(`${PREFIX}_rating`);
 		this.civ = Engine.GetGUIObjectByName(`${PREFIX}_civ`);
 		this.civIcon = Engine.GetGUIObjectByName(`${PREFIX}_civIcon`);
+		// Does not work. ↓
+		// this.civ.onPress = () => CivIcon.prototype.openPage("page_structree.xml");
 		this.pop = Engine.GetGUIObjectByName(`${PREFIX}_pop`);
 
 		this.techCount = Engine.GetGUIObjectByName(`${PREFIX}_techCount`);
@@ -59,9 +64,9 @@ class BoonGUIStatsTopPanelRow
 		let value, color, caption, tooltip, font, colorSingleRow;
 
 		const shouldBlink = (Date.now() % 1000 < 500);
-		this.coloredTeamBackground.sprite = `backcolor: ${state.teamColor} 95`;
-		this.coloredBackground.sprite = `backcolor: ${state.playerColor} 95`;
-		this.border.sprite = `backcolor: ${state.playerColor} 95`;
+		this.coloredTeamBackground.sprite = `backcolor: ${state.teamColor} 115`;
+		this.coloredBackground.sprite = `backcolor: ${state.playerColor} 115`;
+		this.border.sprite = `backcolor: ${state.playerColor} 85`;
 
 		if (state.team != -1)
 		{
@@ -70,17 +75,18 @@ class BoonGUIStatsTopPanelRow
 			this.team.caption = `${state.team + 1}`;
 		}
 		const playerNick = setStringTags(state.nick, { "color": state.playerColor });
-		caption = state.nick.length <= 8 ? state.nick : state.nick.substr(0, 7) + "…";
+		caption = state.nick.length <= 11 ? state.nick : state.nick.substr(0, 10) + "…";
 		this.player.caption = caption;
-		this.player.tooltip = playerNick;
-		this.player.tooltip += state.team != -1 ? setStringTags("\nTeam " + this.team.caption, { "color": state.teamColor }) : "";
+		this.playerHomeButton.tooltip = setStringTags(state.name, { "color": state.playerColor });
+		this.playerHomeButton.tooltip += state.team != -1 ? setStringTags("\nTeam " + this.team.caption, { "color": state.teamColor }) : "";
 		caption = `${translateAISettings(g_InitAttributes.settings.PlayerData[state.index])}`;
 		if (caption)
 		{
-			this.player.tooltip += setStringTags(`\n${caption}`, { "color": "210 210 210", "font": "sans-stroke-14" });
+			this.playerHomeButton.tooltip += setStringTags(`\n${caption}`, { "color": "210 210 210", "font": "sans-stroke-14" });
 		}
-		this.team.tooltip = this.player.tooltip;
 
+		this.team.tooltip = this.playerHomeButton.tooltip;
+		this.rating.tooltip = this.playerHomeButton.tooltip;
 		this.rating.caption = state.rating;
 
 		const civ = g_CivData[state.civ];
@@ -152,7 +158,11 @@ class BoonGUIStatsTopPanelRow
 		font = "sans-bold-stroke-20";
 		const popCount = setStringTags(state.popCount.toString().padStart(3), { font });
 		const popLimit = state.popLimit.toString().padStart(3);
-
+		const popMax = state.popMax;
+		tooltip = "";
+		tooltip += playerNick + "\n";
+		tooltip += "Population" + "\n";
+		tooltip += state.trainingBlocked ? coloredText("Training blocked\n", CounterPopulation.prototype.PopulationAlertColor) : "";
 		if (state.trainingBlocked && shouldBlink)
 		{
 			this.pop.caption = setStringTags(`${popCount}/${popLimit}`, {
@@ -166,8 +176,12 @@ class BoonGUIStatsTopPanelRow
 			this.pop.caption =
 				setStringTags(popCount, { "color": popCountColor }) + "/" +
 				setStringTags(popLimit, { "color": popLimitColor });
-
 		}
+		tooltip += "Current" + `${popCount}\n`;
+		tooltip += "Limit" + g_Indent + `${popLimit}\n`;
+		tooltip += "Max" + g_Indent + "  " + `${popMax}`;
+
+		this.pop.tooltip = tooltip;
 
 		for (const resType of g_BoonGUIResTypes)
 		{
@@ -215,7 +229,7 @@ class BoonGUIStatsTopPanelRow
 		setStringTags(techArrayCount[1], { "color": milTechColor });
 
 		tooltip = "";
-		tooltip += techArrayCount[0] + techArrayCount[1] > 0 ? playerNick.padEnd(50) + "\n" : "";
+		tooltip += techArrayCount[0] + techArrayCount[1] > 0 ? playerNick.padEnd(10) + "\n" : "";
 		for (const resType of g_BoonGUIResTypes)
 		{
 			if (state.resourcesTechs[resType].length > 0)
