@@ -34,9 +34,7 @@ class BoonGUICounterManager
 
 	init()
 	{
-		verticallySpaceObjects("resourceCountsBoon", this.counters.length * 8);
-		hideRemaining("resourceCountsBoon", this.counters.length);
-
+		verticallySpaceObjects("resourceCountsBoon", 40);
 		for (const counter of this.counters)
 		{
 			counter.icon.sprite = "stretched:session/icons/resources/" + counter.resCode + ".png";

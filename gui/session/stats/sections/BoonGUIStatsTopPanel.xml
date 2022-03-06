@@ -53,9 +53,8 @@
 					<object name="StatsTopPanelRow[n]_rating" type="text" text_align="center" style="overlayDefaultBold" ghost="true" size="127 0% 162 100%"/>
 				</object>
 				<object name="StatsTopPanelRow[n]_civ" type="button" size="167 -2 212 100%" style="iconButtonPhase" tooltip_style="sessionToolTipWideCircle">
-					<object name="StatsTopPanelRow[n]_civIcon" size="2 2 100%-2 100%-2" type="button" ghost="true" tooltip_style="sessionToolTipWideCircle"/>
+					<object name="StatsTopPanelRow[n]_civIcon" size="2 2 100%-2 100%-2" type="image" ghost="true" />
 				</object>
-
 				<object name="StatsTopPanelRow[n]_phase" type="button" size="213 2 237 26" style="iconButtonPhase">
 					<object name="StatsTopPanelRow[n]_phaseIcon" type="button" size="2 2 22 22" ghost="true" />
 					<object name="StatsTopPanelRow[n]_phaseProgressSlider" type="image" sprite="queueProgressSlider" ghost="true" size="2 2 22 21" z="20" />

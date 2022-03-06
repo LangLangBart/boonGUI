@@ -21,7 +21,7 @@
 	<!-- STATS TOP PANEL -->
 	<style name="overlayHeader" font="sans-bold-stroke-16" textcolor="white" text_align="right" text_valign="top" tooltip_style="sessionToolTipCircle" />
 	<style name="overlayDefault" font="sans-stroke-20" textcolor="250 250 250" text_align="right" text_valign="top" tooltip_style="sessionToolTipCircle" />
-	<style name="overlayDefaultBold" font="sans-bold-stroke-16" textcolor="250 250 250" text_align="left" text_valign="bottom" tooltip_style="sessionToolTipCircle" />
+	<style name="overlayDefaultBold" font="sans-bold-stroke-18" textcolor="250 250 250" text_align="left" text_valign="bottom" tooltip_style="sessionToolTipCircle" />
 	<style name="overlayResourceCounts" font="sans-stroke-20" textcolor="250 250 250" text_align="right" text_valign="top" tooltip_style="sessionToolTipCircle" ghost="true"/>
 	<style name="overlayResourceExtra" font="sans-stroke-14" textcolor="250 250 250" text_align="right" text_valign="bottom" tooltip_style="sessionToolTipCircle"/>
 	<style name="playerInfoButton" sprite_over="simpleHighlighter" tooltip_style="sessionToolTipWideCircle" sound_pressed="audio/interface/ui/ui_button_click.ogg" />

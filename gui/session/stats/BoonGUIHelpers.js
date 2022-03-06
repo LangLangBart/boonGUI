@@ -85,9 +85,7 @@ function verticallySpaceObjects(parentName, margin = 0)
 	 for (let i = 0; i < objects.length; ++i)
 	 {
 		 const size = objects[i].size;
-		 const height = size.bottom - size.top;
-		 size.top = i * (height + margin);
-		 size.bottom = i * height;
+		 size.top = i * margin;
 		 objects[i].size = size;
 	 }
 }

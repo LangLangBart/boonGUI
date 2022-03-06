@@ -75,7 +75,7 @@ class BoonGUIStatsTopPanelRow
 			this.team.caption = `${state.team + 1}`;
 		}
 		const playerNick = setStringTags(state.nick, { "color": state.playerColor });
-		caption = state.nick.length <= 11 ? state.nick : state.nick.substr(0, 10) + "…";
+		caption = state.nick.length <= 9 ? state.nick : state.nick.substr(0, 8) + "…";
 		this.player.caption = caption;
 		this.playerHomeButton.tooltip = setStringTags(state.name, { "color": state.playerColor });
 		this.playerHomeButton.tooltip += state.team != -1 ? setStringTags("\nTeam " + this.team.caption, { "color": state.teamColor }) : "";
@@ -155,8 +155,7 @@ class BoonGUIStatsTopPanelRow
 			size.top = this.phaseProgressTop + this.phaseProgressHeight * progress;
 			this.phaseProgress.size = size;
 		}
-		font = "sans-bold-stroke-20";
-		const popCount = setStringTags(state.popCount.toString().padStart(3), { font });
+		const popCount = state.popCount.toString().padStart(3);
 		const popLimit = state.popLimit.toString().padStart(3);
 		const popMax = state.popMax;
 		tooltip = "";
