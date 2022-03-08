@@ -176,9 +176,9 @@ class BoonGUIStatsTopPanelRow
 				setStringTags(popCount, { "color": popCountColor }) + "/" +
 				setStringTags(popLimit, { "color": popLimitColor });
 		}
-		tooltip += "Current" + `${popCount}\n`;
-		tooltip += "Limit" + g_Indent + `${popLimit}\n`;
-		tooltip += "Max" + g_Indent + "  " + `${popMax}`;
+		tooltip += "Current" + g_Indent + `${popCount}\n`;
+		tooltip += "Limit" + g_Indent + g_Indent + `${popLimit}\n`;
+		tooltip += "Max" + g_Indent + g_Indent + " " + `${popMax}`;
 
 		this.pop.tooltip = tooltip;
 

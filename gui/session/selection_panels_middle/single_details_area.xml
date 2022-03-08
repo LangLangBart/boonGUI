@@ -82,7 +82,7 @@
 		<!-- Resitance: Right-hand side -->
 		<repeat count="3">
 			<object name="RHS[n]" size="50%+10 60 100% 88">
-				<object size="0 0 23 25" name="RHSIcon[n]" type="image" sprite="stretched:session/icons/stances/defensive.png" tooltip_style="sessionToolTipInstantly"/>
+				<object size="1 0 22 25" name="RHSIcon[n]" type="image" sprite="stretched:session/icons/stances/defensive.png" tooltip_style="sessionToolTipInstantly"/>
 				<object size="21 0 100% 100%" name="RHSText[n]" type="text" style="statsTextLeft">
 				</object>
 			</object>
