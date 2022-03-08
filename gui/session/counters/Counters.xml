@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!-- This list encompasses resources and population -->
-<object name="resourceCountsBoon" type="image" sprite="genericPanel">
+<object name="resourceCountsBoon" z="50" type="image" sprite="genericPanel">
 	<repeat count="5">
 		<object name="resourceBoon[n]" type="button" style="resourceCounter" tooltip_style="sessionToolTipCircleBottom">
 			<object size="5 2 40 40" type="image" name="resourceBoon[n]_icon" ghost="true" />

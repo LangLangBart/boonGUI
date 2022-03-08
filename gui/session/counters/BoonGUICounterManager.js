@@ -5,13 +5,15 @@ class BoonGUICounterManager
 	{
 		this.counters = [];
 		this.minimapPanel = Engine.GetGUIObjectByName("minimapPanel");
-		this.supplementalSelectionDetails = Engine.GetGUIObjectByName("supplementalSelectionDetails");
+		this.hoverPanel = Engine.GetGUIObjectByName("hoverPanel");
 		this.resourceCountsBoon = Engine.GetGUIObjectByName("resourceCountsBoon");
+		// bandbox has no size defined, it serves to get the screen size, maybe there is a better way.
+		this.bandbox = Engine.GetGUIObjectByName("bandbox");
 
 		this.addCounter("population", CounterPopulation);
 		for (const resCode of g_ResourceData.GetCodes())
 			this.addCounter(resCode, CounterResource);
-		this.resourceCountsBoon.onWindowResized = this.onWindowResized.bind(this);
+		this.minimapPanel.onWindowResized = this.onWindowResized.bind(this);
 
 		this.init();
 
@@ -34,7 +36,7 @@ class BoonGUICounterManager
 
 	init()
 	{
-		verticallySpaceObjects("resourceCountsBoon", 40);
+		verticallySpaceObjects("resourceCountsBoon", 41);
 		for (const counter of this.counters)
 		{
 			counter.icon.sprite = "stretched:session/icons/resources/" + counter.resCode + ".png";
@@ -43,14 +45,32 @@ class BoonGUICounterManager
 
 	onWindowResized()
 	{
-		const widthMinimap = this.minimapPanel.getComputedSize().right;
-		const heightMinimap = this.minimapPanel.getComputedSize().top;
-		const dimensionsCounterPanel = `0 ${heightMinimap - 180} 140 ${heightMinimap+20}`;
-
-		if (Math.abs(widthMinimap - this.supplementalSelectionDetails.getComputedSize().left) >= 100)
-			this.resourceCountsBoon.size = `${widthMinimap - 42} 100%-200 ${widthMinimap + 98} 100%`;
+		const dimensionsMiniPanel = "0 100%-276 250 100%-26";
+		const dimensionsHoverPanel = "0 100%-63 251 100%";
+		const screenSize = this.bandbox.getComputedSize().right;
+		// arbitrarily set to 1600, just felt right
+		if (screenSize >= 1600)
+		{
+			this.minimapPanel.size = "0 100%-332 300 100%-32";
+			this.hoverPanel.size = "0 100%-76 301 100%";
+		}
 		else
-			this.resourceCountsBoon.size = dimensionsCounterPanel;
+		{
+			this.minimapPanel.size = dimensionsMiniPanel;
+			this.hoverPanel.size = dimensionsHoverPanel;
+		}
+		const widthMinimap = this.minimapPanel.getComputedSize().right;
+		this.resourceCountsBoon.size = `${widthMinimap} 100%-205 ${widthMinimap + 144} 100%`;
+		// Testing for good dimensions, width&height should be the same or very close
+		// const testSizes = ["idleWorkerButton", "minimapPanel"];
+		// for (let i = 0; i < testSizes.length; i++)
+		// {
+		// 	const objects = Engine.GetGUIObjectByName(testSizes[i]).getComputedSize();
+		// 	const width = objects.right - objects.left;
+		// 	const height = objects.bottom - objects.top;
+		// 	warn(uneval(`${testSizes[i]}` + "width" + width));
+		// 	warn(uneval(`${testSizes[i]}` + "height" + height));
+		// }
 	}
 
 	rebuild()

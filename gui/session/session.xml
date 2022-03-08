@@ -89,7 +89,6 @@
 			size="50%-316 100%-166 50%-110 100%"
 			sprite="supplementalDetailsPanelAdjusted"
 			type="image"
-			z="200"
 		>
 			<include directory="gui/session/selection_panels_left/"/>
 		</object>
