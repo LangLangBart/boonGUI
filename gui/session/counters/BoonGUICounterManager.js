@@ -7,19 +7,18 @@ class BoonGUICounterManager
 		this.minimapPanel = Engine.GetGUIObjectByName("minimapPanel");
 		this.hoverPanel = Engine.GetGUIObjectByName("hoverPanel");
 		this.resourceCountsBoon = Engine.GetGUIObjectByName("resourceCountsBoon");
-		// bandbox has no size defined, it serves to get the screen size, maybe there is a better way.
-		this.bandbox = Engine.GetGUIObjectByName("bandbox");
+		// StatsOverlay has no size defined, it serves to get the screen size, maybe there is a better way.
+		this.stats = Engine.GetGUIObjectByName("Stats");
 
 		this.addCounter("population", CounterPopulation);
 		for (const resCode of g_ResourceData.GetCodes())
 			this.addCounter(resCode, CounterResource);
-		this.minimapPanel.onWindowResized = this.onWindowResized.bind(this);
+		this.minimapPanel.onWindowResized = this.panelSize.bind(this);
 
 		this.init();
 
 		registerSimulationUpdateHandler(this.rebuild.bind(this));
 		playerViewControl.registerViewedPlayerChangeHandler(this.rebuild.bind(this));
-		this.onWindowResized();
 	}
 
 	addCounter(resCode, type)
@@ -36,6 +35,7 @@ class BoonGUICounterManager
 
 	init()
 	{
+		this.panelSize();
 		verticallySpaceObjects("resourceCountsBoon", 41);
 		for (const counter of this.counters)
 		{
@@ -43,13 +43,13 @@ class BoonGUICounterManager
 		}
 	}
 
-	onWindowResized()
+	panelSize()
 	{
 		const dimensionsMiniPanel = "0 100%-276 250 100%-26";
 		const dimensionsHoverPanel = "0 100%-63 251 100%";
-		const screenSize = this.bandbox.getComputedSize().right;
+		const screenSizeWidth = this.stats.getComputedSize().right;
 		// arbitrarily set to 1600, just felt right
-		if (screenSize >= 1600)
+		if (screenSizeWidth >= 1600)
 		{
 			this.minimapPanel.size = "0 100%-332 300 100%-32";
 			this.hoverPanel.size = "0 100%-76 301 100%";

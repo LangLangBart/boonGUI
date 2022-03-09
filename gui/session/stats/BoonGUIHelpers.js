@@ -76,6 +76,39 @@ function focusCC(move, state)
 }
 /**
  *
+ * @param {string} civName
+ */
+function openStrucTree(civName)
+{
+	closeOpenDialogs();
+	g_PauseControl.implicitPause();
+
+	Engine.PushGuiPage(
+		BoonGUIStatsTopPanelRow.prototype.civInfo.page,
+		{
+			"civ": civName || g_Players[Math.max(g_ViewedPlayer, 1)].civ
+		},
+		storeCivInfoPage);
+}
+/**
+ *
+ * @param {object} data
+ */
+function storeCivInfoPage(data)
+{
+	if (data.nextPage)
+		Engine.PushGuiPage(
+			data.nextPage,
+			{ "civ": data.civ },
+			storeCivInfoPage);
+	else
+	{
+		BoonGUIStatsTopPanelRow.prototype.civInfo = data;
+		resumeGame();
+	}
+}
+/**
+ *
  * @param {string} parentName
  * @param {number} margin
  */
@@ -111,5 +144,5 @@ function normalizeValue(value)
 		return (value / 1000).toFixed(1) + setStringTags("k", { "font": "mono-10" });
 	}
 	return value;
-
 }
+

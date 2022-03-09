@@ -52,7 +52,7 @@
 					<object name="StatsTopPanelRow[n]_player" type="text" ghost="true" style="overlayDefaultBold" size="18 0% 127 100%"/>
 					<object name="StatsTopPanelRow[n]_rating" type="text" text_align="center" style="overlayDefaultBold" ghost="true" size="127 0% 162 100%"/>
 				</object>
-				<object name="StatsTopPanelRow[n]_civ" type="button" size="167 -2 212 100%" style="iconButtonPhase" tooltip_style="sessionToolTipWideCircle">
+				<object name="StatsTopPanelRow[n]_civ" type="button" size="167 -2 212 100%" style="iconButtonPhase">
 					<object name="StatsTopPanelRow[n]_civIcon" size="2 2 100%-2 100%-2" type="image" ghost="true" />
 				</object>
 				<object name="StatsTopPanelRow[n]_phase" type="button" size="213 2 237 26" style="iconButtonPhase">

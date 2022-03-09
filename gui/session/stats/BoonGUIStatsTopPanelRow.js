@@ -20,9 +20,9 @@ class BoonGUIStatsTopPanelRow
 		this.player = Engine.GetGUIObjectByName(`${PREFIX}_player`);
 		this.rating = Engine.GetGUIObjectByName(`${PREFIX}_rating`);
 		this.civ = Engine.GetGUIObjectByName(`${PREFIX}_civ`);
+		this.civ.onPress = () => openStrucTree(g_CivData[this.state.civ].Code);
 		this.civIcon = Engine.GetGUIObjectByName(`${PREFIX}_civIcon`);
-		// Does not work. ↓
-		// this.civ.onPress = () => CivIcon.prototype.openPage("page_structree.xml");
+
 		this.pop = Engine.GetGUIObjectByName(`${PREFIX}_pop`);
 
 		this.techCount = Engine.GetGUIObjectByName(`${PREFIX}_techCount`);
@@ -53,6 +53,8 @@ class BoonGUIStatsTopPanelRow
 
 		this.phaseProgressTop = this.phaseProgress.size.top;
 		this.phaseProgressHeight = this.phaseProgress.size.bottom - this.phaseProgress.size.top;
+		Engine.SetGlobalHotkey("structree", "Press", openStrucTree);
+		Engine.SetGlobalHotkey("civinfo", "Press", openStrucTree);
 	}
 
 	update(state, scales)
@@ -97,9 +99,9 @@ class BoonGUIStatsTopPanelRow
 		tooltip = "";
 		tooltip += playerNick + "\n\n";
 		tooltip += `[icon="${Emblem}" displace="12 0"] \n`;
-		tooltip += " " + `${civ.Name.padEnd(8)}\n`;
+		tooltip += `${civ.Name.padEnd(8)}\n`;
 		font = "sans-stroke-14";
-		tooltip += setStringTags(civ.History + "\n", { font });
+		tooltip += setStringTags("\nView Civilization Overview / Structure Tree\n" + colorizeHotkey("%(hotkey)s", "civinfo") + colorizeHotkey("%(hotkey)s", "structree"), { font });
 		this.civ.tooltip = tooltip;
 
 		let phase;
@@ -288,3 +290,7 @@ class BoonGUIStatsTopPanelRow
 		this.los.tooltip = tooltip;
 	}
 }
+BoonGUIStatsTopPanelRow.prototype.civInfo = {
+	"civ": "",
+	"page": "page_structree.xml"
+};
