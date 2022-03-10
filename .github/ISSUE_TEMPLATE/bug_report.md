@@ -6,6 +6,7 @@ labels: bug
 assignees: ''
 
 ---
+<!-- Troubleshooting: If you receive errors/warnings after the upgrade, delete the existing boonGUI folder and reinstall the mod. If the problem persists, continue below. -->
 
 **Describe the bug**
 <!-- Short description -->
@@ -21,4 +22,4 @@ assignees: ''
 <!-- If applicable, add screenshots to help explain your problem. -->
 
 **Mod version**
- <!-- boonGUI x.x -->
+ <!-- Are you using the latest GitHub version or an official release version? If the latter, please add the boonGUI version number (x.x).

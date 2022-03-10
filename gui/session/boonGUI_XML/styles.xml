@@ -19,12 +19,13 @@
 	<style name="notifiyPanel" buffer_zone="5" font="sans-bold-16" textcolor="white" text_align="center" text_valign="bottom" />
 
 	<!-- STATS TOP PANEL -->
-	<style name="overlayHeader" font="sans-bold-stroke-16" textcolor="white" text_align="right" text_valign="top" tooltip_style="sessionToolTipCircle" />
-	<style name="overlayDefault" font="sans-stroke-20" textcolor="250 250 250" text_align="right" text_valign="top" tooltip_style="sessionToolTipCircle" />
-	<style name="overlayDefaultBold" font="sans-bold-stroke-18" textcolor="250 250 250" text_align="left" text_valign="bottom" tooltip_style="sessionToolTipCircle" />
-	<style name="overlayResourceCounts" font="sans-stroke-20" textcolor="250 250 250" text_align="right" text_valign="top" tooltip_style="sessionToolTipCircle" ghost="true"/>
-	<style name="overlayResourceExtra" font="sans-stroke-14" textcolor="250 250 250" text_align="right" text_valign="bottom" tooltip_style="sessionToolTipCircle"/>
-	<style name="playerInfoButton" sprite_over="simpleHighlighter" tooltip_style="sessionToolTipWideCircle" sound_pressed="audio/interface/ui/ui_button_click.ogg" />
+	<style name="overlayHeader" font="sans-bold-stroke-16" textcolor="white" text_align="right" text_valign="bottom" tooltip_style="sessionToolTipCircle" />
+	<style name="overlayBold" font="sans-bold-stroke-18" ghost="true" textcolor="250 250 250" text_align="left" text_valign="center" tooltip_style="sessionToolTipCircle" />
+	<style name="overlayDefault" font="sans-stroke-20" ghost="true" textcolor="250 250 250" text_align="right" text_valign="center" tooltip_style="sessionToolTipCircle" />
+	<style name="overlayMedium" font="sans-stroke-16" ghost="true" textcolor="250 250 250" text_align="right" text_valign="center" tooltip_style="sessionToolTipCircle"/>
+	<style name="overlaySmall" font="sans-stroke-14" ghost="true" textcolor="250 250 250" text_align="right" text_valign="center" tooltip_style="sessionToolTipCircle"/>
+	<style name="playerInfoButton" sprite_over="simpleHighlighter" tooltip_style="sessionToolTipCircleWide" sound_pressed="audio/interface/ui/ui_button_click.ogg" />
+	<style name="statsHighlighter" sprite_over="simpleHighlighterBackground" tooltip_style="sessionToolTipCircle" />
 	<style name="iconButtonPhase" sprite_over="snIconPortraitOver" tooltip_style="sessionToolTipCircle" sound_pressed="audio/interface/ui/ui_button_click.ogg" />
 	<style name="infoGameLabels" textcolor="200 200 200" font="sans-stroke-18" ghost="true" text_align="center" text_valign="center"/>
 

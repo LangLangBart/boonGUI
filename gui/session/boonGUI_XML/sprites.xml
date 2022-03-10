@@ -25,7 +25,7 @@
 		<image texture="global/border/line_corner_bottom_left.png" texture_size="0 0 4 4" size="0 100%-4 4 100%" />
 		<image texture="global/border/line_corner_top_left.png" texture_size="0 0 4 4" size="0 0 4 4" />
 		<!-- background -->
-		<image texture="session/background_hover_panel_black.png"  texture_size="0 0 100% 100%" size="4 4 100%-4 100%-4" />
+		<image texture="session/background_hover_panel_black.png" texture_size="0 0 100% 100%" size="4 4 100%-4 100%-4" />
 	</sprite>
 
 	<!-- Bottom Left Panel -->
@@ -100,9 +100,19 @@
 		<image backcolor="255 255 255 80" size="0 0 100% 100%" />
 	</sprite>
 
+	<sprite name="statTopPanelDivide">
+		<image backcolor="120 120 120 80" size="0 0 100% 100%" />
+	</sprite>
+
 	<sprite name="simpleHighlighter">
-		<image texture="session/panel_shader_top_edge.png" size="0 0 110% 3" />
-		<image texture="session/panel_shader_top_edge.png" size="0 100%-3 120% 100%" />
+		<image texture="session/panel_shader_top_edge.png" size="0 0 110% 2" />
+		<image texture="session/panel_shader_top_edge.png" size="0 100%-2 120% 100%" />
+	</sprite>
+
+	<sprite name="simpleHighlighterBackground">
+		<image texture="session/panel_shader_top_edge.png" size="0 0 100% 2" />
+		<image backcolor="255 255 255 40" size="0 2 100% 100%-2" />
+		<image texture="session/panel_shader_top_edge.png" size="0 100%-2 100% 100%" />
 	</sprite>
 
 	<sprite name="snIconPortraitStrongerHighlight">

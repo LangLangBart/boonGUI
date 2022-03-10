@@ -6,8 +6,8 @@ class BoonGUIStatsTopPanel {
 		this.headerContainer = Engine.GetGUIObjectByName(`${PREFIX}Header`);
 		this.rowsContainer = Engine.GetGUIObjectByName(`${PREFIX}Rows`);
 		this.rows = this.rowsContainer.children.map((row, index) => new BoonGUIStatsTopPanelRow(row, index));
-		this.headerContainer.size = "0 0 100% 25";
-		this.rowsContainer.size = "0 25 100% 100%";
+		this.headerContainer.size = "0 0 100% 26";
+		this.rowsContainer.size = "0 26 100% 100%";
 		this.scales = new BoonGUIColorScales();
 		this.root.sprite = "prettyBackgroundColor";
 	}

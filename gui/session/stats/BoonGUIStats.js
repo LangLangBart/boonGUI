@@ -136,7 +136,7 @@ class BoonGUIStats
 		this.shortGameInfoLabel.hidden = !g_IsObserver && !this.playerViewControl.changePerspective;
 		const shortGameInfoLabelPAD = this.shortGameInfoLabel.hidden ? "" : this.shortGameInfoLabel.size.bottom;
 		let y = (26 * (length + 1) + shortGameInfoLabelPAD);
-		this.statsTopPanel.root.size = `0 ${shortGameInfoLabelPAD} 1000 ${y}`;
+		this.statsTopPanel.root.size = `0 ${shortGameInfoLabelPAD} 935 ${y}`;
 		y = this.statsTopPanel.root.size.bottom + PAD;
 
 		const panelEntityButtons = Engine.GetGUIObjectByName("panelEntityButtons");
