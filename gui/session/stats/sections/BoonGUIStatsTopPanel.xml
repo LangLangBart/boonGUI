@@ -9,26 +9,26 @@
 
 	<object name="StatsTopPanelHeader">
 		<object type="text" style="overlayHeader" text_align="left" size="0 0 20 100%" tooltip="Team number">#</object>
-		<object type="text" style="overlayHeader" text_align="left" size="20 0 160 100%" tooltip="Player's nickname (Rating)\nTeam">Player</object >
+		<object type="text" style="overlayHeader" text_align="left" size="20 0 237 100%" tooltip="Player's nickname (Rating)\nTeam">Player</object >
 
-		<object type="text" style="overlayHeader" size="237 0 312 100%" tooltip="Food economy">
+		<object type="text" style="overlayHeader" size="237 0 312 100%" tooltip="Food">
 			<object size="27%+3 -4 77%+1 30" type="image"
 				sprite ="stretched:session/icons/resources/food.png" ghost="true" />
 		</object>
-		<object type="text" style="overlayHeader" size="318 0 393 100%" tooltip="Wood economy">
+		<object type="text" style="overlayHeader" size="318 0 393 100%" tooltip="Wood">
 			<object size="27%+3 -5 77%+2 30" type="image"
 				sprite ="stretched:session/icons/resources/wood.png" ghost="true" />
 		</object>
-		<object type="text" style="overlayHeader" size="399 0 474 100%" tooltip="Stone economy">
+		<object type="text" style="overlayHeader" size="399 0 474 100%" tooltip="Stone">
 			<object size="27%+3 -2 77% 30" type="image"
 				sprite ="stretched:session/icons/resources/stone.png" ghost="true" />
 		</object>
-		<object type="text" style="overlayHeader" size="480 0 555 100%" tooltip="Metal economy">
+		<object type="text" style="overlayHeader" size="480 0 555 100%" tooltip="Metal">
 			<object size="27%+3 -4 77%+1 30" type="image"
 				sprite ="stretched:session/icons/resources/metal.png" ghost="true" />
 		</object>
 
-		<object type="text" style="overlayHeader" size="561 0 633 100%" tooltip="Population: current/limit">
+		<object type="text" style="overlayHeader" size="561 0 633 100%" tooltip="Population current/limit">
 			<object size="24 -5 59 28" type="image"
 				sprite ="stretched:session/icons/resources/population.png" ghost="true" />
 		</object>
@@ -40,9 +40,13 @@
 		<object type="text" style="overlayHeader" size="714 0 747 100%" tooltip="Cavalry">Cav</object>
 
 		<object type="text" style="overlayHeader" size="754 0 820 100%" text_align="center" tooltip="Economy | Military upgrades">
-			<object size="27%-5 -2 77%-7 29" type="image"
+			<object size="0 -2 50%-2 29" type="image"
 				sprite ="stretched:session/icons/repair.png" ghost="true" />
-			<object size="27%+13 0 77%-4 17" type="image"
+			<object size="17 0 50%-2 15" type="image"
+				sprite ="stretched:session/icons/promote.png" ghost="true" />
+			<object size="50%+2 -2 100%+1 29" type="image"
+				sprite ="stretched:session/icons/stances/defensive.png" ghost="true" />
+			<object size="50%+20 0 100%+1 15" type="image"
 				sprite ="stretched:session/icons/promote.png" ghost="true" />
 		</object>
 
@@ -119,10 +123,11 @@
 					<object name="StatsTopPanelRow[n]_cavalry" type="text" style="overlayDefault" />
 				</object>
 
-				<object name="StatsTopPanelRow[n]_techHighlight" size="754 0 820 100%" type="button" style="statsHighlighter">
-					<object name="StatsTopPanelRow[n]_ecoTechCount" size="0 0 50%-4 100%" type="text" text_align="right" style="overlayDefault"/>
-					<object name="StatsTopPanelRow[n]_verticalLine" size="50% 0 50%+3 100%" type="text" text_valign="center" text_align="center" hidden="true" style="overlayMedium">|</object>
-					<object name="StatsTopPanelRow[n]_milTechCount" size="50%+2 0 100% 100%" type="text" text_align="left" style="overlayDefault"/>
+				<object name="StatsTopPanelRow[n]_ecoTechHighlight" size="754 0 784 100%" type="button" style="statsHighlighter">
+					<object name="StatsTopPanelRow[n]_ecoTechCount"  type="text" style="overlayDefault"/>
+				</object>
+				<object name="StatsTopPanelRow[n]_milTechHighlight" size="787 0 817 100%" type="button" style="statsHighlighter">
+					<object name="StatsTopPanelRow[n]_milTechCount" type="text" style="overlayDefault"/>
 				</object>
 
 				<object name="StatsTopPanelRow[n]_killDeathRatioHighlight" size="826 0 915 100%" type="button" style="statsHighlighter">

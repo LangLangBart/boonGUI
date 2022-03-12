@@ -56,9 +56,9 @@ class BoonGUIStatsTopPanelRow
 		this.cavalryHighlight = Engine.GetGUIObjectByName(`${PREFIX}_cavalryHighlight`);
 		this.cavalry = Engine.GetGUIObjectByName(`${PREFIX}_cavalry`);
 
-		this.techHighlight = Engine.GetGUIObjectByName(`${PREFIX}_techHighlight`);
+		this.ecoTechHighlight = Engine.GetGUIObjectByName(`${PREFIX}_ecoTechHighlight`);
 		this.ecoTechCount = Engine.GetGUIObjectByName(`${PREFIX}_ecoTechCount`);
-		this.verticalLine = Engine.GetGUIObjectByName(`${PREFIX}_verticalLine`);
+		this.milTechHighlight = Engine.GetGUIObjectByName(`${PREFIX}_milTechHighlight`);
 		this.milTechCount = Engine.GetGUIObjectByName(`${PREFIX}_milTechCount`);
 
 		this.killDeathRatioHighlight = Engine.GetGUIObjectByName(`${PREFIX}_killDeathRatioHighlight`);
@@ -175,7 +175,7 @@ class BoonGUIStatsTopPanelRow
 		value = "boongui.toppanel.coloredPlayerStatsBackground";
 		const configColoredPlayerStatsBackground = Math.floor(Engine.ConfigDB_GetValue("user", value));
 		if (!configColoredPlayerStatsBackground)
-			Engine.ConfigDB_CreateAndWriteValueToFile("user", value, "15", "config/user.cfg");
+			Engine.ConfigDB_CreateAndWriteValueToFile("user", value, "10", "config/user.cfg");
 
 		this.coloredPlayerStatsBackground.sprite = `backcolor: ${state.playerColor} ${configColoredPlayerStatsBackground}`;
 		this.coloredPlayerStatsBorder.sprite = `backcolor: ${state.playerColor} 85`;
@@ -283,11 +283,6 @@ class BoonGUIStatsTopPanelRow
 
 		tooltip = "";
 		tooltip += playerNick + "\n";
-		if (techArrayCount.reduce((a, b) => {return a + b;}) > 0)
-			this.verticalLine.hidden = false;
-		else
-			tooltip += "No Uprades";
-
 		tooltip += techArrayCount[0] > 0 ? `Economy upgrades${g_Indent}${this.ecoTechCount.caption}\n` : "";
 		for (const resType of g_BoonGUIResTypes)
 		{
@@ -300,15 +295,20 @@ class BoonGUIStatsTopPanelRow
 				}
 			}
 		}
+		this.ecoTechHighlight.tooltip = tooltip;
 
-		tooltip += techArrayCount[1] > 0 ? `\nMilitary upgrades${g_Indent}${this.ecoTechCount.caption}\n` : "";
-
-		for (let i = 0; i < state.militaryTechs.length; i += 4)
+		tooltip = "";
+		tooltip += playerNick + "\n";
+		if (state.militaryTechs.length > 0)
 		{
-			tooltip += state.militaryTechs.slice(i, i + 4).map(tech => `[icon="icon_${tech}" displace="0 5"]`).join("  ") + " \n";
+			tooltip += `Military upgrades${g_Indent}${this.milTechCount.caption}\n`;
+			for (let i = 0; i < state.militaryTechs.length; i += 4)
+			{
+				tooltip += state.militaryTechs.slice(i, i + 4).map(tech => `[icon="icon_${tech}" displace="0 5"]`).join("  ") + " \n";
+			}
+			tooltip += "\n";
 		}
-		tooltip += "\n";
-		this.techHighlight.tooltip = tooltip;
+		this.milTechHighlight.tooltip = tooltip;
 
 		tooltip = "";
 		tooltip += playerNick + "\n";
