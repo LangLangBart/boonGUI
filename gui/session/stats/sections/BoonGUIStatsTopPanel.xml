@@ -9,27 +9,27 @@
 
 	<object name="StatsTopPanelHeader">
 		<object type="text" style="overlayHeader" text_align="left" size="0 0 20 100%" tooltip="Team number">#</object>
-		<object type="text" style="overlayHeader" text_align="left" size="20 0 160 100%" tooltip="Player's nickname (Rating)\nTeam" tooltip_style="sessionToolTipCircleWide">Player</object >
+		<object type="text" style="overlayHeader" text_align="left" size="20 0 160 100%" tooltip="Player's nickname (Rating)\nTeam">Player</object >
 
 		<object type="text" style="overlayHeader" size="237 0 312 100%" tooltip="Food economy">
-			<object size="27%+3 -1 77% 29" type="image"
+			<object size="27%+3 -4 77%+1 30" type="image"
 				sprite ="stretched:session/icons/resources/food.png" ghost="true" />
 		</object>
 		<object type="text" style="overlayHeader" size="318 0 393 100%" tooltip="Wood economy">
-			<object size="27%+3 -1 77% 29" type="image"
+			<object size="27%+3 -5 77%+2 30" type="image"
 				sprite ="stretched:session/icons/resources/wood.png" ghost="true" />
 		</object>
 		<object type="text" style="overlayHeader" size="399 0 474 100%" tooltip="Stone economy">
-			<object size="27%+3 -1 77% 29" type="image"
+			<object size="27%+3 -2 77% 30" type="image"
 				sprite ="stretched:session/icons/resources/stone.png" ghost="true" />
 		</object>
 		<object type="text" style="overlayHeader" size="480 0 555 100%" tooltip="Metal economy">
-			<object size="27%+3 -1 77% 29" type="image"
+			<object size="27%+3 -4 77%+1 30" type="image"
 				sprite ="stretched:session/icons/resources/metal.png" ghost="true" />
 		</object>
 
 		<object type="text" style="overlayHeader" size="561 0 633 100%" tooltip="Population: current/limit">
-			<object size="23 -2 59 28" type="image"
+			<object size="24 -5 59 28" type="image"
 				sprite ="stretched:session/icons/resources/population.png" ghost="true" />
 		</object>
 
@@ -39,8 +39,17 @@
 
 		<object type="text" style="overlayHeader" size="714 0 747 100%" tooltip="Cavalry">Cav</object>
 
-		<object type="text" style="overlayHeader" size="754 0 820 100%" text_align="center" tooltip="Economy/ Military Technologies">Tech</object>
-		<object type="text" style="overlayHeader" text_align="center" size="826 0 915 100%" tooltip_style="sessionToolTipCircleWide" tooltip="Kill/Death ratio \nKilled enemy units divided by fallen units.">K/D</object>
+		<object type="text" style="overlayHeader" size="754 0 820 100%" text_align="center" tooltip="Economy | Military upgrades">
+			<object size="27%-5 -2 77%-7 29" type="image"
+				sprite ="stretched:session/icons/repair.png" ghost="true" />
+			<object size="27%+13 0 77%-4 17" type="image"
+				sprite ="stretched:session/icons/promote.png" ghost="true" />
+		</object>
+
+		<object type="text" style="overlayHeader" text_align="center" size="826 0 915 100%" tooltip="Kill/Death ratio">
+			<object size="27%+4 -4 77%-3 29" type="image"
+				sprite ="stretched:session/icons/kill.png" ghost="true" />
+		</object>
 	</object>
 	<object name="StatsTopPanelRows">
 		<repeat count="8" var="n">
@@ -48,7 +57,7 @@
 				<object name="StatsTopPanelRow[n]_coloredTeamBackground" hidden="true" type="image" size="0 0 18 100%">
 					<object type="image" sprite="shaderLooksNice" ghost="true"/>
 				</object>
-				<object name="StatsTopPanelRow[n]_coloredBackground" type="image" size="0 0 235 100%">
+				<object name="StatsTopPanelRow[n]_coloredPlayerInfoBackground" type="image" size="0 0 235 100%">
 					<object type="image" sprite="shaderLooksNice" ghost="true"/>
 				</object>
 				<object name="StatsTopPanelRow[n]_playerHighlight" type="button" size="0 5% 162 95%" style="playerInfoButton">
@@ -56,7 +65,6 @@
 					<object name="StatsTopPanelRow[n]_player" type="text" style="overlayBold" size="18 0% 127 100%"/>
 					<object name="StatsTopPanelRow[n]_rating" type="text" text_align="center" style="overlayBold" size="127 0% 162 100%"/>
 				</object>
-				<object name="StatsTopPanelRow[n]_border" type="image" size="235 100%-2 100% 100%" />
 				<object name="StatsTopPanelRow[n]_civHighlight" type="button" size="167 -2 212 100%" style="iconButtonPhase">
 					<object name="StatsTopPanelRow[n]_civIcon" size="2 2 100%-2 100%-2" type="image" ghost="true" />
 				</object>
@@ -65,21 +73,36 @@
 					<object name="StatsTopPanelRow[n]_phaseProgressSlider" type="image" sprite="queueProgressSlider" ghost="true" size="2 2 22 21" z="20" />
 				</object>
 
+				<object name="StatsTopPanelRow[n]_coloredPlayerStatsBackground" type="image" size="235 0 100% 100%-2" />
+				<object name="StatsTopPanelRow[n]_coloredPlayerStatsBorder" type="image" size="235 100%-2 100% 100%" />
+
 				<object name="StatsTopPanelRow[n]_foodHighlight" size="237 0 312 100%" type="button" style="statsHighlighter">
 					<object name="StatsTopPanelRow[n]_foodCounts" size="0 0 58% 100%" type="text" style="overlayDefault"/>
-					<object name="StatsTopPanelRow[n]_foodRates" size="58% 0 100% 95%" type="text" style="overlaySmall"/>
+					<object type="text" size="58% 0 98% 95%" ghost="true">
+						<object name="StatsTopPanelRow[n]_foodGatherers" type="text" style="overlayMedium"/>
+						<object name="StatsTopPanelRow[n]_foodRates" type="text" style="overlaySmall"/>
+					</object>
 				</object>
 				<object name="StatsTopPanelRow[n]_woodHighlight" size="318 0 393 100%" type="button" style="statsHighlighter">
 					<object name="StatsTopPanelRow[n]_woodCounts" size="0 0 58% 100%" type="text" style="overlayDefault"/>
-					<object name="StatsTopPanelRow[n]_woodRates" size="58% 0 100% 95%" type="text" style="overlaySmall"/>
+					<object type="text" size="58% 0 98% 95%" ghost="true">
+						<object name="StatsTopPanelRow[n]_woodGatherers" type="text" style="overlayMedium"/>
+						<object name="StatsTopPanelRow[n]_woodRates" type="text" style="overlaySmall"/>
+					</object>
 				</object>
 				<object name="StatsTopPanelRow[n]_stoneHighlight" size="399 0 474 100%" type="button" style="statsHighlighter">
 					<object name="StatsTopPanelRow[n]_stoneCounts" size="0 0 58% 100%" type="text" style="overlayDefault"/>
-					<object name="StatsTopPanelRow[n]_stoneRates" size="58% 0 100% 95%" type="text" style="overlaySmall"/>
+					<object type="text" size="58% 0 98% 95%" ghost="true">
+						<object name="StatsTopPanelRow[n]_stoneGatherers" type="text" style="overlayMedium"/>
+						<object name="StatsTopPanelRow[n]_stoneRates" type="text" style="overlaySmall"/>
+					</object>
 				</object>
 				<object name="StatsTopPanelRow[n]_metalHighlight" size="480 0 555 100%" type="button" style="statsHighlighter">
 					<object name="StatsTopPanelRow[n]_metalCounts" size="0 0 58% 100%" type="text" style="overlayDefault"/>
-					<object name="StatsTopPanelRow[n]_metalRates" size="58% 0 100% 95%" type="text" style="overlaySmall"/>
+					<object type="text" size="58% 0 98% 95%" ghost="true">
+						<object name="StatsTopPanelRow[n]_metalGatherers" type="text" style="overlayMedium"/>
+						<object name="StatsTopPanelRow[n]_metalRates" type="text" style="overlaySmall"/>
+					</object>
 				</object>
 
 				<object name="StatsTopPanelRow[n]_popHighlight" size="561 0 633 100%" type="button" style="statsHighlighter">
@@ -93,17 +116,19 @@
 					<object name="StatsTopPanelRow[n]_infantry" type="text" style="overlayDefault" />
 				</object>
 				<object name="StatsTopPanelRow[n]_cavalryHighlight" size="714 0 747 100%" type="button" style="statsHighlighter">
-					<object name="StatsTopPanelRow[n]_cavalry"  type="text" style="overlayDefault" />
+					<object name="StatsTopPanelRow[n]_cavalry" type="text" style="overlayDefault" />
 				</object>
 
 				<object name="StatsTopPanelRow[n]_techHighlight" size="754 0 820 100%" type="button" style="statsHighlighter">
-					<object name="StatsTopPanelRow[n]_techCount" type="text" size="0 0 100% 100%" text_align="center" style="overlayDefault"/>
+					<object name="StatsTopPanelRow[n]_ecoTechCount" size="0 0 50%-4 100%" type="text" text_align="right" style="overlayDefault"/>
+					<object name="StatsTopPanelRow[n]_verticalLine" size="50% 0 50%+3 100%" type="text" text_valign="center" text_align="center" hidden="true" style="overlayMedium">|</object>
+					<object name="StatsTopPanelRow[n]_milTechCount" size="50%+2 0 100% 100%" type="text" text_align="left" style="overlayDefault"/>
 				</object>
 
 				<object name="StatsTopPanelRow[n]_killDeathRatioHighlight" size="826 0 915 100%" type="button" style="statsHighlighter">
 					<object name="StatsTopPanelRow[n]_killDeathRatio" size="0 0 38% 100%" type="text" style="overlayDefault" />
 					<object name="StatsTopPanelRow[n]_enemyUnitsKilledTotal" size="40% 0 70% 55%" type="text" style="overlaySmall" text_align="right" />
-					<object name="StatsTopPanelRow[n]_slashSign" type="text" font="sans-bold-stroke-16" textcolor="white" ghost="true" text_align="center" text_valign="center" size="66% 0% 81% 100%">/</object>
+					<object name="StatsTopPanelRow[n]_slashSign" type="text" font="sans-bold-stroke-16" textcolor="white" ghost="true" text_align="center" text_valign="center" size="66% 0% 81% 100%"/>
 					<object name="StatsTopPanelRow[n]_unitsLostTotal" size="69% 30% 100% 100%" type="text" style="overlaySmall" text_align="left" />
 				</object>
 

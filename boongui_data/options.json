@@ -93,6 +93,24 @@
 					{ "value": 30, "label": "30 - Close" },
 					{ "value": 50, "label": "50 - Normal" }
 				]
+			},
+			{
+				"type": "dropdown",
+				"label": "[color=\"220 185 70\"]Top Panel[/color] Gatheres or Income/10s",
+				"tooltip": "Set up what to display next to the resource count.",
+				"config": "boongui.toppanel.resourceGatherersRates",
+				"list": [
+					{ "value": "Gatherers", "label": "Gatherers" },
+					{ "value": "Rates", "label": "Income/10s"}
+				]
+			},
+			{
+				"type": "slider",
+				"label": "[color=\"220 185 70\"]Top Panel[/color] colored lines",
+				"tooltip": "Choose the color intensity for the rows.",
+				"config": "boongui.toppanel.coloredPlayerStatsBackground",
+				"min": 0,
+				"max": 100
 			}
 		]
 	}

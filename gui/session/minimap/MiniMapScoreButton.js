@@ -12,6 +12,6 @@ class MiniMapScoreButton
 	onHotkeyChange()
 	{
 		this.scoreButton.tooltip =
-			colorizeHotkey("%(hotkey)s" + " ", "boongui.session.stats.toggle") + "Toggle the stats top panel." + coloredText("\nLow performance gain when hidden.", "red");
+			colorizeHotkey("%(hotkey)s" + " ", "boongui.session.stats.toggle") + "Toggle the top panel." + coloredText("\nLow performance gain when hidden.", "red");
 	}
 }

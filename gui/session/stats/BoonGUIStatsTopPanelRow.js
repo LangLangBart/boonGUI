@@ -10,15 +10,13 @@ class BoonGUIStatsTopPanelRow
 		this.root.size = BoonGUIGetRowSize(index, 26);
 
 		this.coloredTeamBackground = Engine.GetGUIObjectByName(`${PREFIX}_coloredTeamBackground`);
-		this.coloredBackground = Engine.GetGUIObjectByName(`${PREFIX}_coloredBackground`);
+		this.coloredPlayerInfoBackground = Engine.GetGUIObjectByName(`${PREFIX}_coloredPlayerInfoBackground`);
 
 		this.playerHighlight = Engine.GetGUIObjectByName(`${PREFIX}_playerHighlight`);
 		this.playerHighlight.onPress = () => focusCC(true, this.state);
 		this.team = Engine.GetGUIObjectByName(`${PREFIX}_team`);
 		this.player = Engine.GetGUIObjectByName(`${PREFIX}_player`);
 		this.rating = Engine.GetGUIObjectByName(`${PREFIX}_rating`);
-
-		this.border = Engine.GetGUIObjectByName(`${PREFIX}_border`);
 
 		this.civHighlight = Engine.GetGUIObjectByName(`${PREFIX}_civHighlight`);
 		this.civHighlight.onPress = () => openStrucTree(g_CivData[this.state.civ].Code);
@@ -28,12 +26,15 @@ class BoonGUIStatsTopPanelRow
 		this.phaseIcon = Engine.GetGUIObjectByName(`${PREFIX}_phaseIcon`);
 		this.phaseHighlight.onPress = () => focusCC(true, this.state);
 		this.phaseProgress = Engine.GetGUIObjectByName(`${PREFIX}_phaseProgressSlider`);
-
 		this.phaseProgressTop = this.phaseProgress.size.top;
 		this.phaseProgressHeight = this.phaseProgress.size.bottom - this.phaseProgress.size.top;
 
+		this.coloredPlayerStatsBackground = Engine.GetGUIObjectByName(`${PREFIX}_coloredPlayerStatsBackground`);
+		this.coloredPlayerStatsBorder = Engine.GetGUIObjectByName(`${PREFIX}_coloredPlayerStatsBorder`);
+
 		this.resource = {
 			"counts": {},
+			"gatherers": {},
 			"rates": {}
 		};
 
@@ -41,6 +42,7 @@ class BoonGUIStatsTopPanelRow
 		{
 			this.resource[resType] = Engine.GetGUIObjectByName(`${PREFIX}_${resType}Highlight`);
 			this.resource.counts[resType] = Engine.GetGUIObjectByName(`${PREFIX}_${resType}Counts`);
+			this.resource.gatherers[resType] = Engine.GetGUIObjectByName(`${PREFIX}_${resType}Gatherers`);
 			this.resource.rates[resType] = Engine.GetGUIObjectByName(`${PREFIX}_${resType}Rates`);
 		}
 
@@ -55,7 +57,9 @@ class BoonGUIStatsTopPanelRow
 		this.cavalry = Engine.GetGUIObjectByName(`${PREFIX}_cavalry`);
 
 		this.techHighlight = Engine.GetGUIObjectByName(`${PREFIX}_techHighlight`);
-		this.techCount = Engine.GetGUIObjectByName(`${PREFIX}_techCount`);
+		this.ecoTechCount = Engine.GetGUIObjectByName(`${PREFIX}_ecoTechCount`);
+		this.verticalLine = Engine.GetGUIObjectByName(`${PREFIX}_verticalLine`);
+		this.milTechCount = Engine.GetGUIObjectByName(`${PREFIX}_milTechCount`);
 
 		this.killDeathRatioHighlight = Engine.GetGUIObjectByName(`${PREFIX}_killDeathRatioHighlight`);
 		this.killDeathRatio = Engine.GetGUIObjectByName(`${PREFIX}_killDeathRatio`);
@@ -79,11 +83,11 @@ class BoonGUIStatsTopPanelRow
 
 		const shouldBlink = (Date.now() % 1000 < 500);
 		this.coloredTeamBackground.sprite = `backcolor: ${state.teamColor} 115`;
-		this.coloredBackground.sprite = `backcolor: ${state.playerColor} 115`;
+		this.coloredPlayerInfoBackground.sprite = `backcolor: ${state.playerColor} 115`;
 		if (state.team != -1)
 		{
 			this.coloredTeamBackground.hidden = false;
-			this.coloredBackground.size = "18 0 235 100%";
+			this.coloredPlayerInfoBackground.size = "18 0 235 100%";
 			this.team.caption = `${state.team + 1}`;
 		}
 		const playerNick = setStringTags(state.nick, { "color": state.playerColor });
@@ -100,8 +104,6 @@ class BoonGUIStatsTopPanelRow
 		this.team.tooltip = this.playerHighlight.tooltip;
 		this.rating.tooltip = this.playerHighlight.tooltip;
 		this.rating.caption = state.rating;
-
-		this.border.sprite = `backcolor: ${state.playerColor} 85`;
 
 		const civ = g_CivData[state.civ];
 		const Emblem = civ.Emblem.replace(BoonGUIStatsTopPanelRow.Regex_Emblem, "$1");
@@ -170,6 +172,11 @@ class BoonGUIStatsTopPanelRow
 			this.phaseProgress.size = size;
 		}
 
+		const configColoredPlayerStatsBackground = Math.floor(Engine.ConfigDB_GetValue("user", "boongui.toppanel.coloredPlayerStatsBackground")) || "10";
+
+		this.coloredPlayerStatsBackground.sprite = `backcolor: ${state.playerColor} ${configColoredPlayerStatsBackground}`;
+		this.coloredPlayerStatsBorder.sprite = `backcolor: ${state.playerColor} 85`;
+
 		for (const resType of g_BoonGUIResTypes)
 		{
 			tooltip = "";
@@ -190,19 +197,22 @@ class BoonGUIStatsTopPanelRow
 			this.resource.counts[resType].caption = setStringTags(caption, { color });
 			tooltip += setStringTags("Amount", { "color": value > 0 ? "white" : "dimmedWhite" }) + `${g_Indent}${g_Indent} ${this.resource.counts[resType].caption}\n`;
 
-			value = state.resourceRates[resType];
-			color = scales.getColor(`${resType}Rates`, value, 180);
-			caption = isNaN(value) || value <= 0 ? setStringTags("+0", { "color": "dimmedWhite" }) : `+${normalizeValue(value)}`;
-			// For single lines, the gathering rates are displayed in the player color.
-			colorSingleRow = setStringTags(caption, (g_stats.lastPlayerLength > 1) ? { color } : { "color": state.playerColor });
-			this.resource.rates[resType].caption = colorSingleRow;
-			tooltip += setStringTags("Income/10s", { "color": value > 0 ? "white" : "dimmedWhite" }) + `${g_Indent}${colorSingleRow}\n`;
+			const configResourceGatherersRates = Engine.ConfigDB_GetValue("user", "boongui.toppanel.resourceGatherersRates") || "Gatherers";
 
 			value = state.resourceGatherers[resType];
 			color = scales.getColor(`${resType}Gatherers`, value, 180);
 			caption = isNaN(value) || value <= 0 ? setStringTags("0", { "color": "dimmedWhite" }) : value;
+			// For single lines, the gathering rates are displayed in the player color.
 			colorSingleRow = setStringTags(caption, (g_stats.lastPlayerLength > 1) ? { color } : { "color": state.playerColor });
-			tooltip += setStringTags("Gatherers", { "color": value > 0 ? "white" : "dimmedWhite" }) + `${g_Indent}${g_Indent}${colorSingleRow}\n`;
+			this.resource.gatherers[resType].caption = configResourceGatherersRates === "Gatherers" ? colorSingleRow : "";
+			tooltip += setStringTags("∑ Gatherers", { "color": value > 0 ? "white" : "dimmedWhite" }) + `${g_Indent}${colorSingleRow}\n`;
+
+			value = state.resourceRates[resType];
+			color = scales.getColor(`${resType}Rates`, value, 180);
+			caption = isNaN(value) || value <= 0 ? setStringTags("+0", { "color": "dimmedWhite" }) : `+${normalizeValue(value)}`;
+			colorSingleRow = setStringTags(caption, (g_stats.lastPlayerLength > 1) ? { color } : { "color": state.playerColor });
+			this.resource.rates[resType].caption = configResourceGatherersRates === "Rates" ? colorSingleRow : "";
+			tooltip += setStringTags("Income/10s", { "color": value > 0 ? "white" : "dimmedWhite" }) + `${g_Indent}${colorSingleRow}\n`;
 
 			this.resource[resType].tooltip = tooltip;
 		}
@@ -262,12 +272,17 @@ class BoonGUIStatsTopPanelRow
 		const techArrayCount = [state.economyTechsCount, state.militaryTechsCount];
 		const ecoTechColor = scales.getColor("economyTechsCount", techArrayCount[0]);
 		const milTechColor = scales.getColor("militaryTechsCount", techArrayCount[1]);
-		this.techCount.caption =
-		setStringTags(techArrayCount[0], { "color": ecoTechColor }) + "/" + (techArrayCount[1] < 10 ? " " : "") +
-		setStringTags(techArrayCount[1], { "color": milTechColor });
+		this.ecoTechCount.caption = techArrayCount[0] > 0 ? setStringTags(techArrayCount[0], { "color": ecoTechColor }) : "";
+		this.milTechCount.caption = techArrayCount[1] > 0 ? setStringTags(techArrayCount[1], { "color": milTechColor }) : "";
 
 		tooltip = "";
-		tooltip += playerNick.padEnd(46) + "\n";
+		tooltip += playerNick + "\n";
+		if (techArrayCount.reduce((a, b) => {return a + b;}) > 0)
+			this.verticalLine.hidden = false;
+		else
+			tooltip += "No Uprades";
+
+		tooltip += techArrayCount[0] > 0 ? `Economy upgrades${g_Indent}${this.ecoTechCount.caption}\n` : "";
 		for (const resType of g_BoonGUIResTypes)
 		{
 			if (state.resourcesTechs[resType].length > 0)
@@ -280,39 +295,41 @@ class BoonGUIStatsTopPanelRow
 			}
 		}
 
-		if (state.militaryTechs.length > 0)
+		tooltip += techArrayCount[1] > 0 ? `\nMilitary upgrades${g_Indent}${this.ecoTechCount.caption}\n` : "";
+
+		for (let i = 0; i < state.militaryTechs.length; i += 4)
 		{
-			tooltip += "\nMilitary Tech\n";
-			for (let i = 0; i < state.militaryTechs.length; i += 4)
-			{
-				tooltip += state.militaryTechs.slice(i, i + 4).map(tech => `[icon="icon_${tech}" displace="0 5"]`).join("  ") + " \n";
-			}
-			tooltip += "\n";
+			tooltip += state.militaryTechs.slice(i, i + 4).map(tech => `[icon="icon_${tech}" displace="0 5"]`).join("  ") + " \n";
 		}
+		tooltip += "\n";
 		this.techHighlight.tooltip = tooltip;
 
 		tooltip = "";
+		tooltip += playerNick + "\n";
 		value = state.killDeathRatio;
 		color = scales.getColor("killDeathRatio", value);
 		caption = formatKD(value);
 		font = caption.length >= 4 ? "sans-stroke-18" : "sans-stroke-20";
 		this.killDeathRatio.caption = setStringTags(caption, { color, font });
+		this.enemyUnitsKilledTotal.caption = "";
+		this.unitsLostTotal.caption = "";
+		this.slashSign.caption = "";
 		if (caption)
 		{
-			tooltip += playerNick + "\n";
 			value = state.enemyUnitsKilledTotal;
 			color = scales.getColor("enemyUnitsKilledTotal", value);
 			this.enemyUnitsKilledTotal.caption = setStringTags(normalizeValue(value), { color });
 			value = state.unitsLostTotal;
 			color = scales.getColor("unitsLostTotal", value);
 			this.unitsLostTotal.caption = setStringTags(normalizeValue(value), { color });
+			this.slashSign.caption = "/";
 
-			tooltip += "K/D" + "\n";
-			tooltip += "Ratio" + g_Indent + g_Indent +`${this.killDeathRatio.caption}\n`;
-			tooltip += "Total" + g_Indent + g_Indent + `${this.enemyUnitsKilledTotal.caption}/ ${this.unitsLostTotal.caption}\n`;
+			tooltip += "K/D Ratio" + g_Indent +`${this.killDeathRatio.caption}\n`;
+			tooltip += "∑ Kills " + g_Indent + g_Indent + `${this.enemyUnitsKilledTotal.caption}\n`;
+			tooltip += "∑ Deaths " + g_Indent + `${this.unitsLostTotal.caption}`;
 		}
+
 		this.killDeathRatioHighlight.tooltip = tooltip;
-		this.slashSign.hidden = !caption;
 
 		const los = state.hasSharedLos || state.numberAllies == 1 ? "●" : "○";
 		this.los.caption = setStringTags(los, { "color": state.playerColor });
