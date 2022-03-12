@@ -106,7 +106,7 @@
 			},
 			{
 				"type": "slider",
-				"label": "[color=\"220 185 70\"]Top Panel[/color] colored lines",
+				"label": "[color=\"220 185 70\"]Top Panel[/color] row color intensity",
 				"tooltip": "Choose the color intensity for the rows.",
 				"config": "boongui.toppanel.coloredPlayerStatsBackground",
 				"min": 0,
