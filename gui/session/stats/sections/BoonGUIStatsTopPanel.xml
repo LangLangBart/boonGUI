@@ -4,6 +4,7 @@
 	<object type="image" size="395 0 397 100%" sprite="statTopPanelDivide" />
 	<object type="image" size="476 0 478 100%" sprite="statTopPanelDivide" />
 	<object type="image" size="557 0 559 100%" sprite="statTopPanelDivide" />
+	<object type="image" size="559 0 633 100%" sprite="statTopPanelDivideLight" />
 	<object type="image" size="750 0 752 100%" sprite="statTopPanelDivide" />
 	<object type="image" size="822 0 824 100%" sprite="statTopPanelDivide" />
 
@@ -28,8 +29,8 @@
 				sprite ="stretched:session/icons/resources/metal.png" ghost="true" />
 		</object>
 
-		<object type="text" style="overlayHeader" size="561 0 633 100%" tooltip="Population current/limit">
-			<object size="24 -5 59 28" type="image"
+		<object type="text" style="overlayHeader" size="559 0 633 100%" tooltip="Population current/limit">
+			<object size="50%-17 -4 50%+18 28" type="image"
 				sprite ="stretched:session/icons/resources/population.png" ghost="true" />
 		</object>
 
@@ -40,14 +41,12 @@
 		<object type="text" style="overlayHeader" size="714 0 747 100%" tooltip="Cavalry">Cav</object>
 
 		<object type="text" style="overlayHeader" size="754 0 820 100%" text_align="center" tooltip="Economy | Military upgrades">
-			<object size="0 -2 50%-2 29" type="image"
+			<object size="4 -2 50%+1 29" type="image"
 				sprite ="stretched:session/icons/repair.png" ghost="true" />
-			<object size="17 0 50%-2 15" type="image"
+			<object size="50%-8 0 50%+8 15" type="image"
 				sprite ="stretched:session/icons/promote.png" ghost="true" />
 			<object size="50%+2 -2 100%+1 29" type="image"
 				sprite ="stretched:session/icons/stances/defensive.png" ghost="true" />
-			<object size="50%+20 0 100%+1 15" type="image"
-				sprite ="stretched:session/icons/promote.png" ghost="true" />
 		</object>
 
 		<object type="text" style="overlayHeader" text_align="center" size="826 0 915 100%" tooltip="Kill/Death ratio">
@@ -109,9 +108,9 @@
 					</object>
 				</object>
 
-				<object name="StatsTopPanelRow[n]_popHighlight" size="561 0 633 100%" type="button" style="statsHighlighter">
-					<object name="StatsTopPanelRow[n]_popCount" type="text" size="0 0 57% 100%" text_align="right" style="overlayDefault"/>
-					<object name="StatsTopPanelRow[n]_popLimit" type="text" size="57%-2 0 100% 85%" text_align="left" style="overlayMedium"/>
+				<object name="StatsTopPanelRow[n]_popHighlight" size="559 0 633 100%" type="button" style="statsHighlighter">
+					<object name="StatsTopPanelRow[n]_popCount" type="text" size="0 0 57% 100%" text_align="right" style="overlayBoldBig"/>
+					<object name="StatsTopPanelRow[n]_popLimit" type="text" size="57%-4 0 100% 85%" text_align="left" style="overlayMedium"/>
 				</object>
 				<object name="StatsTopPanelRow[n]_femaleCitizenHighlight" size="638 0 671 100%" type="button" style="statsHighlighter">
 					<object name="StatsTopPanelRow[n]_femaleCitizen" type="text" style="overlayDefault" />
@@ -131,10 +130,10 @@
 				</object>
 
 				<object name="StatsTopPanelRow[n]_killDeathRatioHighlight" size="826 0 915 100%" type="button" style="statsHighlighter">
-					<object name="StatsTopPanelRow[n]_killDeathRatio" size="0 0 38% 100%" type="text" style="overlayDefault" />
-					<object name="StatsTopPanelRow[n]_enemyUnitsKilledTotal" size="40% 0 70% 55%" type="text" style="overlaySmall" text_align="right" />
-					<object name="StatsTopPanelRow[n]_slashSign" type="text" font="sans-bold-stroke-16" textcolor="white" ghost="true" text_align="center" text_valign="center" size="66% 0% 81% 100%"/>
-					<object name="StatsTopPanelRow[n]_unitsLostTotal" size="69% 30% 100% 100%" type="text" style="overlaySmall" text_align="left" />
+					<object name="StatsTopPanelRow[n]_enemyUnitsKilledTotal" size="0% 0 30% 70%"  type="text" style="overlaySmall" text_align="right" />
+					<object name="StatsTopPanelRow[n]_divideSign" type="text" style="overlaySmall"  size="24% 0% 33% 88%"/>
+					<object name="StatsTopPanelRow[n]_unitsLostTotal" size="29% 10% 61% 100%" type="text" style="overlaySmall" text_align="left" />
+					<object name="StatsTopPanelRow[n]_killDeathRatio" size="63% 0 98% 100%" type="text" style="overlayDefault" />
 				</object>
 
 				<object name="StatsTopPanelRow[n]_los" text_align="center" font="sans-bold-20" type="text" size="920 0 930 100%" tooltip_style="sessionToolTipCircle" />

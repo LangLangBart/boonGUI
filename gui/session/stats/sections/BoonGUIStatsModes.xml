@@ -3,7 +3,7 @@
 
 	<object name="StatsModesTitle" type="text" size="10 0 100% 26" ghost="true" textcolor="white" text_align="center" text_valign="center" sprite="prettyBackgroundColorLight" font="sans-bold-stroke-16" />
 	<!-- Special objects for creating special tooltips -->
-	<object name="fixedTooltipStatsModeDefault" type="text" text_align="center" text_valign="center" sprite="BackgroundSessionTooltip" font="sans-stroke-16" textcolor="white" size="100%-420 0 100%-190 26" hidden="true" ghost="true" z="150" />
+	<object name="fixedTooltipStatsModeDefault" type="text" text_align="center" text_valign="center" sprite="BackgroundSessionTooltip" font="sans-stroke-16" textcolor="white" size="100%-390 0 100%-190 26" hidden="true" ghost="true" z="150" />
 	<object name="fixedTooltipStatsModeIndicator" type="text" text_align="center" text_valign="center" sprite="BackgroundSessionTooltip" font="sans-stroke-16" textcolor="white" size="100%-350 -120 100%-190 26" hidden="true" ghost="true" z="150"/>
 	<object name="fixedTooltipStatsModeItem" type="text" text_align="left" text_valign="bottom" font="sans-stroke-16" sprite="BackgroundSessionTooltip" textcolor="white" size="100%-480 -120 100%-190 26" hidden="true" ghost="true" z="150"/>
 

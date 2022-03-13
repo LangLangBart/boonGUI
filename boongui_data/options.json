@@ -109,8 +109,8 @@
 				"label": "[color=\"220 185 70\"]Top Panel[/color] row color intensity",
 				"tooltip": "Choose the color intensity for the rows.",
 				"config": "boongui.toppanel.coloredPlayerStatsBackground",
-				"min": 0,
-				"max": 100
+				"min": 5,
+				"max": 50
 			}
 		]
 	}

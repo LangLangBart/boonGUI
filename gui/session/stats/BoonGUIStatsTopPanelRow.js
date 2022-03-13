@@ -62,10 +62,10 @@ class BoonGUIStatsTopPanelRow
 		this.milTechCount = Engine.GetGUIObjectByName(`${PREFIX}_milTechCount`);
 
 		this.killDeathRatioHighlight = Engine.GetGUIObjectByName(`${PREFIX}_killDeathRatioHighlight`);
-		this.killDeathRatio = Engine.GetGUIObjectByName(`${PREFIX}_killDeathRatio`);
 		this.enemyUnitsKilledTotal = Engine.GetGUIObjectByName(`${PREFIX}_enemyUnitsKilledTotal`);
-		this.slashSign = Engine.GetGUIObjectByName(`${PREFIX}_slashSign`);
+		this.divideSign = Engine.GetGUIObjectByName(`${PREFIX}_divideSign`);
 		this.unitsLostTotal = Engine.GetGUIObjectByName(`${PREFIX}_unitsLostTotal`);
+		this.killDeathRatio = Engine.GetGUIObjectByName(`${PREFIX}_killDeathRatio`);
 
 		this.los = Engine.GetGUIObjectByName(`${PREFIX}_los`);
 
@@ -175,7 +175,7 @@ class BoonGUIStatsTopPanelRow
 		value = "boongui.toppanel.coloredPlayerStatsBackground";
 		const configColoredPlayerStatsBackground = Math.floor(Engine.ConfigDB_GetValue("user", value));
 		if (!configColoredPlayerStatsBackground)
-			Engine.ConfigDB_CreateAndWriteValueToFile("user", value, "10", "config/user.cfg");
+			Engine.ConfigDB_CreateAndWriteValueToFile("user", value, "5", "config/user.cfg");
 
 		this.coloredPlayerStatsBackground.sprite = `backcolor: ${state.playerColor} ${configColoredPlayerStatsBackground}`;
 		this.coloredPlayerStatsBorder.sprite = `backcolor: ${state.playerColor} 85`;
@@ -211,7 +211,7 @@ class BoonGUIStatsTopPanelRow
 			// For single lines, the gathering rates are displayed in the player color.
 			colorSingleRow = setStringTags(caption, (g_stats.lastPlayerLength > 1) ? { color } : { "color": state.playerColor });
 			this.resource.gatherers[resType].caption = configResourceGatherersRates === "Gatherers" ? colorSingleRow : "";
-			tooltip += setStringTags("∑ Gatherers", { "color": value > 0 ? "white" : "dimmedWhite" }) + `${g_Indent}${colorSingleRow}\n`;
+			tooltip += setStringTags("Gatherers", { "color": value > 0 ? "white" : "dimmedWhite" }) + `${g_Indent}${g_Indent}${colorSingleRow}\n`;
 
 			value = state.resourceRates[resType];
 			color = scales.getColor(`${resType}Rates`, value, 180);
@@ -319,7 +319,7 @@ class BoonGUIStatsTopPanelRow
 		this.killDeathRatio.caption = setStringTags(caption, { color, font });
 		this.enemyUnitsKilledTotal.caption = "";
 		this.unitsLostTotal.caption = "";
-		this.slashSign.caption = "";
+		this.divideSign.caption = "";
 		if (caption)
 		{
 			value = state.enemyUnitsKilledTotal;
@@ -328,11 +328,11 @@ class BoonGUIStatsTopPanelRow
 			value = state.unitsLostTotal;
 			color = scales.getColor("unitsLostTotal", value);
 			this.unitsLostTotal.caption = setStringTags(normalizeValue(value), { color });
-			this.slashSign.caption = "/";
+			this.divideSign.caption = "|";
 
-			tooltip += "K/D Ratio" + g_Indent +`${this.killDeathRatio.caption}\n`;
-			tooltip += "∑ Kills " + g_Indent + g_Indent + `${this.enemyUnitsKilledTotal.caption}\n`;
-			tooltip += "∑ Deaths " + g_Indent + `${this.unitsLostTotal.caption}`;
+			tooltip += "Kills " + g_Indent + g_Indent + g_Indent + `${this.enemyUnitsKilledTotal.caption}\n`;
+			tooltip += "Deaths " + g_Indent + g_Indent + `${this.unitsLostTotal.caption}\n`;
+			tooltip += "K/D Ratio" + g_Indent +`${this.killDeathRatio.caption}`;
 		}
 
 		this.killDeathRatioHighlight.tooltip = tooltip;

@@ -116,7 +116,7 @@ class BoonGUIStats
 			const label = Engine.GetGUIObjectByName(`unitGroupLabel[${i}]`);
 			button.size = "0 0 50 50";
 			icon.size = "3 3 47 47";
-			label.font = "sans-bold-stroke-22";
+			label.font = "sans-bold-stroke-20";
 			label.text_valign = "top";
 			label.text_align = "right";
 		}
