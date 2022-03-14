@@ -114,7 +114,7 @@ class BoonGUIStatsTopPanelRow
 		tooltip += `[icon="${Emblem}" displace="12 0"] \n`;
 		tooltip += `${civ.Name.padEnd(8)}\n`;
 		font = "sans-stroke-14";
-		tooltip += setStringTags("\nView Civilization Overview / Structure Tree\n" + colorizeHotkey("%(hotkey)s", "civinfo") + colorizeHotkey("%(hotkey)s", "structree"), { font });
+		tooltip += setStringTags(this.civIconHotkeyTooltip, { font });
 		this.civHighlight.tooltip = tooltip;
 
 		let phase;
@@ -347,6 +347,9 @@ class BoonGUIStatsTopPanelRow
 		this.los.tooltip = tooltip;
 	}
 }
+
+BoonGUIStatsTopPanelRow.prototype.civIconHotkeyTooltip = "\nView Civilization Overview / Structure Tree\n" + colorizeHotkey("%(hotkey)s", "civinfo") + colorizeHotkey("%(hotkey)s", "structree");
+
 BoonGUIStatsTopPanelRow.prototype.civInfo = {
 	"civ": "",
 	"page": "page_structree.xml"
