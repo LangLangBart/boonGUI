@@ -84,12 +84,11 @@ class BoonGUIStatsTopPanelRow
 		const shouldBlink = (Date.now() % 1000 < 500);
 		this.coloredTeamBackground.sprite = `backcolor: ${state.teamColor} 115`;
 		this.coloredPlayerInfoBackground.sprite = `backcolor: ${state.playerColor} 115`;
-		if (state.team != -1)
-		{
-			this.coloredTeamBackground.hidden = false;
-			this.coloredPlayerInfoBackground.size = "18 0 235 100%";
-			this.team.caption = `${state.team + 1}`;
-		}
+		this.coloredTeamBackground.hidden = state.team == -1;
+		// why doesn't this.coloredPlayerInfoBackground.size.left work ?
+		this.coloredPlayerInfoBackground.size = state.team != -1 ? "18 0 235 100%" : "0 0 235 100%";
+		this.team.caption = state.team != -1 ? `${state.team + 1}` : "";
+
 		const playerNick = setStringTags(state.nick, { "color": state.playerColor });
 		caption = state.nick.length <= 9 ? state.nick : state.nick.substr(0, 8) + "…";
 		this.player.caption = caption;

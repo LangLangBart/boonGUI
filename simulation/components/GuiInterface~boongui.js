@@ -407,6 +407,16 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 		return player;
 	});
 
+	// If the view is set to the player, the line moves to the top.
+	if (cmpPlayers[g_ViewedPlayer])
+	{
+		const sortedViewedPlayerAtTop = function(a, b) {
+			if ((a.name === cmpPlayerViewed.cmpPlayer.name) != (b.name === cmpPlayerViewed.cmpPlayer.name))
+				return a.name === cmpPlayerViewed.cmpPlayer.name ? -1 : 1;
+			return a.team - b.team;
+		};
+		ret.players.sort(sortedViewedPlayerAtTop);
+	}
 	ret.players.sort((a, b) => a.team - b.team);
 	return ret;
 };
