@@ -8,7 +8,6 @@
 <script directory="gui/session/"/>
 <script directory="gui/session/campaigns/"/>
 <script directory="gui/session/chat/"/>
-<script directory="gui/session/counters/"/>
 <script directory="gui/session/developer_overlay/"/>
 <script directory="gui/session/diplomacy/"/>
 <script directory="gui/session/diplomacy/playercontrols/"/>
@@ -54,7 +53,6 @@
 	</object>
 
 	<include directory="gui/session/chat/"/>
-	<include directory="gui/session/counters/"/>
 	<include directory="gui/session/developer_overlay/"/>
 	<include directory="gui/session/dialogs/"/>
 	<include directory="gui/session/diplomacy/"/>
@@ -82,7 +80,7 @@
 
 	<!-- START of BOTTOM PANEL -->
 	<!-- Limit to the minimal supported width of 1024 pixels. -->
-	<object size="50%-375 0 50%+512 100%">
+	<object size="50%-512 0 50%+512 100%">
 
 		<!-- Supplemental Details Panel (left). -->
 		<object name="supplementalSelectionDetails"

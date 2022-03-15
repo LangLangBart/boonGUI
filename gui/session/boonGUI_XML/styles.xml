@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <styles>
-	<!-- RESOURCE PANEL -->
-	<style name="resourceTextCounter" textcolor="white" font="sans-stroke-18" ghost="true" text_align="center" text_valign="center" />
-	<style name="resourceGathererCounts" textcolor="200 200 200" font="sans-stroke-18" ghost="true" text_align="center" text_valign="bottom" sprite="backcolor: 0 0 0 195" />
-	<style name="resourceTimeCounter" textcolor="white" font="sans-bold-stroke-18" ghost="true" text_align="center" text_valign="center" />
+	<!--  -->
+	<style name="researchTimeCounter" textcolor="white" font="sans-bold-stroke-18" ghost="true" text_align="center" text_valign="center" />
 	<style name="resourceIdleWorker" textcolor="red" font="sans-bold-stroke-20" ghost="true" text_align="center" text_valign="center" />
 
 	<!-- SINGLE DETAILS PANEL (middle) -->

@@ -107,21 +107,6 @@ function storeCivInfoPage(data)
 		resumeGame();
 	}
 }
-/**
- *
- * @param {string} parentName
- * @param {number} margin
- */
-function verticallySpaceObjects(parentName, margin = 0)
-{
-	 const objects = Engine.GetGUIObjectByName(parentName).children;
-	 for (let i = 0; i < objects.length; ++i)
-	 {
-		 const size = objects[i].size;
-		 size.top = i * margin;
-		 objects[i].size = size;
-	 }
-}
 
 function normalizeResourceCount(value)
 {
