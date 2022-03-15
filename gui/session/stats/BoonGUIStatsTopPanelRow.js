@@ -32,6 +32,10 @@ class BoonGUIStatsTopPanelRow
 		this.coloredPlayerStatsBackground = Engine.GetGUIObjectByName(`${PREFIX}_coloredPlayerStatsBackground`);
 		this.coloredPlayerStatsBorder = Engine.GetGUIObjectByName(`${PREFIX}_coloredPlayerStatsBorder`);
 
+		this.popHighlight = Engine.GetGUIObjectByName(`${PREFIX}_popHighlight`);
+		this.popCount = Engine.GetGUIObjectByName(`${PREFIX}_popCount`);
+		this.popLimit = Engine.GetGUIObjectByName(`${PREFIX}_popLimit`);
+
 		this.resource = {
 			"counts": {},
 			"gatherers": {},
@@ -46,9 +50,6 @@ class BoonGUIStatsTopPanelRow
 			this.resource.rates[resType] = Engine.GetGUIObjectByName(`${PREFIX}_${resType}Rates`);
 		}
 
-		this.popHighlight = Engine.GetGUIObjectByName(`${PREFIX}_popHighlight`);
-		this.popCount = Engine.GetGUIObjectByName(`${PREFIX}_popCount`);
-		this.popLimit = Engine.GetGUIObjectByName(`${PREFIX}_popLimit`);
 		this.femaleCitizenHighlight = Engine.GetGUIObjectByName(`${PREFIX}_femaleCitizenHighlight`);
 		this.femaleCitizen = Engine.GetGUIObjectByName(`${PREFIX}_femaleCitizen`);
 		this.infantryHighlight = Engine.GetGUIObjectByName(`${PREFIX}_infantryHighlight`);
@@ -107,8 +108,8 @@ class BoonGUIStatsTopPanelRow
 		const civ = g_CivData[state.civ];
 		const Emblem = civ.Emblem.replace(BoonGUIStatsTopPanelRow.Regex_Emblem, "$1");
 
-		this.civHighlight.sprite_over = "cropped:1.03,0.6506:" + "session/portraits/emblems/states/hover.png";
-		this.civIcon.sprite = "cropped:1.03,0.6506:" + civ.Emblem;
+		this.civHighlight.sprite_over = "cropped:1,0.6506:" + "session/portraits/emblems/states/hover.png";
+		this.civIcon.sprite = "cropped:1,0.6506:" + civ.Emblem;
 		tooltip = "";
 		tooltip += playerNick + "\n\n";
 		tooltip += `[icon="${Emblem}" displace="12 0"] \n`;
@@ -179,6 +180,34 @@ class BoonGUIStatsTopPanelRow
 		this.coloredPlayerStatsBackground.sprite = `backcolor: ${state.playerColor} ${configColoredPlayerStatsBackground}`;
 		this.coloredPlayerStatsBorder.sprite = `backcolor: ${state.playerColor} 85`;
 
+		tooltip = "";
+		tooltip += playerNick + "\n";
+		tooltip += state.trainingBlocked ? coloredText("Training blocked\n", CounterPopulation.prototype.PopulationAlertColor) : "";
+		if (state.trainingBlocked && shouldBlink)
+		{
+			value = state.popCount;
+			this.popCount.caption = setStringTags(value + "/", {
+				"color": CounterPopulation.prototype.PopulationAlertColor,
+			});
+			value = state.popLimit;
+			this.popLimit.caption = setStringTags(value, {
+				"color": CounterPopulation.prototype.PopulationAlertColor,
+			});
+		}
+		else
+		{
+			value = state.popCount;
+			color = scales.getColor("popCount", state.popCount);
+			this.popCount.caption = setStringTags(value, { "color": color }) + "/";
+			value = state.popLimit;
+			color = scales.getColor("popLimit", state.popCount);
+			this.popLimit.caption = setStringTags(value, { "color": color });
+		}
+		tooltip += "Pop" + g_Indent + g_Indent + " " +`${this.popCount.caption} ${this.popLimit.caption}\n`;
+		tooltip += "Max" + g_Indent + g_Indent + state.popMax;
+
+		this.popHighlight.tooltip = tooltip;
+
 		for (const resType of g_BoonGUIResTypes)
 		{
 			tooltip = "";
@@ -222,34 +251,6 @@ class BoonGUIStatsTopPanelRow
 			this.resource[resType].tooltip = tooltip;
 		}
 
-		tooltip = "";
-		tooltip += playerNick + "\n";
-		tooltip += state.trainingBlocked ? coloredText("Training blocked\n", CounterPopulation.prototype.PopulationAlertColor) : "";
-		if (state.trainingBlocked && shouldBlink)
-		{
-			value = state.popCount;
-			this.popCount.caption = setStringTags(value + "/", {
-				"color": CounterPopulation.prototype.PopulationAlertColor,
-			});
-			value = state.popLimit;
-			this.popLimit.caption = setStringTags(value, {
-				"color": CounterPopulation.prototype.PopulationAlertColor,
-			});
-		}
-		else
-		{
-			value = state.popCount;
-			color = scales.getColor("popCount", state.popCount);
-			this.popCount.caption = setStringTags(value, { "color": color }) + "/";
-			value = state.popLimit;
-			color = scales.getColor("popLimit", state.popCount);
-			this.popLimit.caption = setStringTags(value, { "color": color });
-		}
-		tooltip += "Pop" + g_Indent + g_Indent + " " +`${this.popCount.caption} ${this.popLimit.caption}\n`;
-		tooltip += "Max" + g_Indent + g_Indent + state.popMax;
-
-		this.popHighlight.tooltip = tooltip;
-
 		value = state.classCounts.FemaleCitizen ?? 0;
 		color = scales.getColor("femaleCitizen", value);
 		this.femaleCitizen.caption = setStringTags(value, { color });
@@ -282,12 +283,12 @@ class BoonGUIStatsTopPanelRow
 
 		tooltip = "";
 		tooltip += playerNick + "\n";
-		tooltip += techArrayCount[0] > 0 ? `Economy upgrades${g_Indent}${this.ecoTechCount.caption}\n` : "";
+		tooltip += techArrayCount[0] > 0 ? `Economy Upgrades${g_Indent}${this.ecoTechCount.caption}\n` : "No Economy Upgrades";
 		for (const resType of g_BoonGUIResTypes)
 		{
 			if (state.resourcesTechs[resType].length > 0)
 			{
-				tooltip += resourceNameFirstWord(resType) + "\n";
+				tooltip += resourceNameFirstWord(resType) + " " + resourceIcon(resType) + "\n";
 				for (let i = 0; i < state.resourcesTechs[resType].length; i += 4)
 				{
 					tooltip += state.resourcesTechs[resType].slice(i, i + 4).map(tech => `[icon="icon_${tech}" displace="0 5"]`).join(" ") + "\n";
@@ -300,13 +301,16 @@ class BoonGUIStatsTopPanelRow
 		tooltip += playerNick + "\n";
 		if (state.militaryTechs.length > 0)
 		{
-			tooltip += `Military upgrades${g_Indent}${this.milTechCount.caption}\n`;
+			tooltip += `Military Upgrades${g_Indent}${this.milTechCount.caption}\n`;
 			for (let i = 0; i < state.militaryTechs.length; i += 4)
 			{
 				tooltip += state.militaryTechs.slice(i, i + 4).map(tech => `[icon="icon_${tech}" displace="0 5"]`).join("  ") + " \n";
 			}
 			tooltip += "\n";
 		}
+		else
+			tooltip += "No Military Upgrades";
+
 		this.milTechHighlight.tooltip = tooltip;
 
 		tooltip = "";
@@ -333,6 +337,8 @@ class BoonGUIStatsTopPanelRow
 			tooltip += "Deaths " + g_Indent + g_Indent + `${this.unitsLostTotal.caption}\n`;
 			tooltip += "K/D Ratio" + g_Indent +`${this.killDeathRatio.caption}`;
 		}
+		else
+			tooltip += "Cowards do not count in battle; they are there, but not in it. Euripides";
 
 		this.killDeathRatioHighlight.tooltip = tooltip;
 

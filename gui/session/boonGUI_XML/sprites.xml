@@ -104,10 +104,6 @@
 		<image backcolor="120 120 120 80" size="0 0 100% 100%" />
 	</sprite>
 
-	<sprite name="statTopPanelDivideLight">
-		<image backcolor="120 120 120 50" size="0 0 100% 100%" />
-	</sprite>
-
 	<sprite name="simpleHighlighter">
 		<image texture="session/panel_shader_top_edge.png" size="0 0 110% 2" />
 		<image texture="session/panel_shader_top_edge.png" size="0 100%-2 120% 100%" />
