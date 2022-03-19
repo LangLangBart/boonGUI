@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <object name="StatsTopPanel" type="image" hidden="true" z="100">
+	<object type="image" size="236 0 314 100%" sprite="statTopPanelDivideLight" />
 	<object type="image" size="314 0 316 100%" sprite="statTopPanelDivide" />
 	<object type="image" size="395 0 397 100%" sprite="statTopPanelDivide" />
 	<object type="image" size="476 0 478 100%" sprite="statTopPanelDivide" />
@@ -65,8 +66,8 @@
 				</object>
 				<object name="StatsTopPanelRow[n]_playerHighlight" type="button" size="0 5% 162 95%" style="playerInfoButton">
 					<object name="StatsTopPanelRow[n]_team" type="text" text_align="center" style="overlayBold" size="0 0% 18 100%"/>
-					<object name="StatsTopPanelRow[n]_player" type="text" style="overlayBold" size="18 0% 127 100%"/>
-					<object name="StatsTopPanelRow[n]_rating" type="text" text_align="center" style="overlayBold" size="127 0% 162 100%"/>
+					<object name="StatsTopPanelRow[n]_player" type="text" style="overlayBold" size="18 0% 162 100%"/>
+					<object name="StatsTopPanelRow[n]_rating" type="text" text_align="center" style="overlayBold" size="133 0% 164 100%"/>
 				</object>
 				<object name="StatsTopPanelRow[n]_civHighlight" type="button" size="167 -2 212 100%-2" style="iconButtonPhase">
 					<object name="StatsTopPanelRow[n]_civIcon" size="2 2 100%-2 100%" type="image" ghost="true" />
@@ -80,8 +81,8 @@
 				<object name="StatsTopPanelRow[n]_coloredPlayerStatsBorder" type="image" size="235 100%-2 100% 100%" />
 
 				<object name="StatsTopPanelRow[n]_popHighlight" size="237 0 312 100%" type="button" style="statsHighlighter">
-					<object name="StatsTopPanelRow[n]_popCount" type="text" size="0 0 62% 100%" text_align="right" style="overlayBoldBig"/>
-					<object name="StatsTopPanelRow[n]_popLimit" type="text" size="62%-4 0 100% 85%" text_align="left" style="overlayMedium"/>
+					<object name="StatsTopPanelRow[n]_popCount" type="text" size="0 0 59% 100%" text_align="right" style="overlayBoldBig"/>
+					<object name="StatsTopPanelRow[n]_popLimit" type="text" size="59%-4 0 100% 85%" text_align="left" style="overlayBold"/>
 				</object>
 
 				<object name="StatsTopPanelRow[n]_foodHighlight" size="318 0 393 100%" type="button" style="statsHighlighter">
@@ -131,9 +132,9 @@
 				</object>
 
 				<object name="StatsTopPanelRow[n]_killDeathRatioHighlight" size="825 0 915 100%" type="button" style="statsHighlighter">
-					<object name="StatsTopPanelRow[n]_enemyUnitsKilledTotal" size="0% 0 30% 70%" type="text" style="overlaySmall" text_align="right" />
+					<object name="StatsTopPanelRow[n]_enemyUnitsKilledTotal" size="0% 0 30%-1 70%" type="text" style="overlaySmall" text_align="right" />
 					<object name="StatsTopPanelRow[n]_divideSign" type="text" style="overlaySmall" size="25% 0% 34% 88%"/>
-					<object name="StatsTopPanelRow[n]_unitsLostTotal" size="29% 10% 61% 100%" type="text" style="overlaySmall" text_align="left" />
+					<object name="StatsTopPanelRow[n]_unitsLostTotal" size="29%+1 10% 61% 100%" type="text" style="overlaySmall" text_align="left" />
 					<object name="StatsTopPanelRow[n]_killDeathRatio" size="63% 0 98% 100%" type="text" style="overlayDefault" />
 				</object>
 

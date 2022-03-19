@@ -107,6 +107,19 @@ function storeCivInfoPage(data)
 		resumeGame();
 	}
 }
+/**
+ *
+ * @param {String} name Name of the player
+ * @param {Number} limit1 shorter limit, uppercase letters need more space
+ * @param {Number} limit2
+ * @returns {String}
+ */
+function limitPlayerName(name, limit1 = 1, limit2 = 2)
+{
+	const isUpperCase = (name.match(/[A-Z]/g) || []).length;
+	const limit = isUpperCase > 3 ? limit1 : limit2;
+	return 	name.length <= limit ? name : name.substr(0, limit-1) + "…";
+}
 
 function normalizeResourceCount(value)
 {

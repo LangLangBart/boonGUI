@@ -18,7 +18,7 @@
 
 	<!-- STATS TOP PANEL -->
 	<style name="overlayHeader" font="sans-bold-stroke-16" textcolor="white" text_align="right" text_valign="bottom" tooltip_style="sessionToolTipCircleWide" />
-	<style name="overlayBold" font="sans-bold-stroke-18" ghost="true" textcolor="230 230 230" text_align="left" text_valign="center" tooltip_style="sessionToolTipCircle" />
+	<style name="overlayBold" font="sans-bold-stroke-16" ghost="true" textcolor="230 230 230" text_align="left" text_valign="bottom" tooltip_style="sessionToolTipCircle" />
 	<style name="overlayBoldBig" font="sans-bold-stroke-19" ghost="true" textcolor="250 250 250" text_align="left" text_valign="center" tooltip_style="sessionToolTipCircle" />
 	<style name="overlayDefault" font="sans-stroke-20" ghost="true" textcolor="250 250 250" text_align="right" text_valign="center" tooltip_style="sessionToolTipCircle" />
 	<style name="overlayMedium" font="sans-stroke-16" ghost="true" textcolor="250 250 250" text_align="right" text_valign="center" tooltip_style="sessionToolTipCircle"/>
