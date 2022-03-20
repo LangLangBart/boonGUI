@@ -117,28 +117,33 @@ function setupStatHUDAttackTooltip(template, projectiles)
 
 function setupStatHUDHackResistanceTooltip(template)
 {
-	return sprintf(translate("%(label)s %(resistance)s %(explaination)s"), {
+	return sprintf(translate("%(label)s %(resistance)s %(explaination)s\n%(info)s"), {
 		"label": headerFont(translate("Hack Resistance Level\nDetails:\n" + g_Indent)),
 		"resistance": resistanceLevelToPercentageString(template.resistance.Damage.Hack),
-		"explaination": unitFont(translate("Resistance against Hack Attacks"))
+		"explaination": unitFont(translate("Resistance against Hack Attacks")),
+		"info": "Hack damage is usually inflicted in close combat by infantry or cavalry units."
 	});
 }
 
 function setupStatHUDPierceResistanceTooltip(template)
 {
-	return sprintf(translate("%(label)s %(resistance)s %(explaination)s"), {
+	return sprintf(translate("%(label)s %(resistance)s %(explaination)s\n%(info)s"), {
 		"label": headerFont(translate("Pierce Resistance Level\nDetails:\n" + g_Indent)),
 		"resistance": resistanceLevelToPercentageString(template.resistance.Damage.Pierce),
-		"explaination": unitFont(translate("Resistance against Pierce Attacks"))
+		"explaination": unitFont(translate("Resistance against Pierce Attacks")),
+		"info": "Pierce damage is dealt by ranged units e.g. archers, skirmishers or even special siege units such as bolt shooters."
+
 	});
 }
 
 function setupStatHUDCrushResistanceTooltip(template)
 {
-	return sprintf(translate("%(label)s %(resistance)s %(explaination)s"), {
+	return sprintf(translate("%(label)s %(resistance)s %(explaination)s\n%(info)s"), {
 		"label": headerFont(translate("Crush Resistance Level\nDetails:\n" + g_Indent)),
 		"resistance": resistanceLevelToPercentageString(template.resistance.Damage.Crush),
-		"explaination": unitFont(translate("Resistance against Crush Attacks"))
+		"explaination": unitFont(translate("Resistance against Crush Attacks")),
+		"info": "Crush damage is mostly caused by siege units such as catapults or rams."
+
 	});
 }
 

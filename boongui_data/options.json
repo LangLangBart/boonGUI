@@ -119,7 +119,7 @@
 			{
 				"type": "dropdown",
 				"label": "[color=\"220 185 70\"]Top Panel[/color] Gatheres or Income/10s",
-				"tooltip": "Set up what to display next to the resource count.",
+				"tooltip": "Specify what to display next to the resource count.\n\n[color=\"220 185 70\"]Gatherers:[/color] Total number of units currently gathering or on their way to gather this resource.\n[color=\"220 185 70\"]Income/10s:[/color] Total number of resources income over 10 seconds.",
 				"config": "boongui.toppanel.resourceGatherersRates",
 				"list": [
 					{ "value": "Gatherers", "label": "Gatherers" },
