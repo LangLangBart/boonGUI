@@ -29,10 +29,6 @@
 		"no-negated-in-lhs": 1,
 		"no-obj-calls": 1,
 		"no-unreachable": 1,
-		"no-use-before-define": [
-			"error",
-			"nofunc"
-		],
 		"use-isnan": 1,
 		"valid-jsdoc": 0,
 		"valid-typeof": 1,
@@ -118,9 +114,17 @@
 		"no-const-assign": 1,
 		"no-dupe-class-members": 1,
 		"prefer-const": 1,
-		// https://typescript-eslint.io/rules/no-shadow/#how-to-use
+		// https://typescript-eslint.io/rules/no-use-before-define/
+		"no-use-before-define": "off",
+		"@typescript-eslint/no-use-before-define": [
+			"error",
+			"nofunc"
+		],
+		// https://typescript-eslint.io/rules/no-shadow/
 		"no-shadow": "off",
-		"@typescript-eslint/no-shadow": ["error"],
+		"@typescript-eslint/no-shadow": [
+			"error"
+		],
 		"@typescript-eslint/no-unused-vars": 0,
 		"brace-rules/brace-on-same-line": [
 			"warn",

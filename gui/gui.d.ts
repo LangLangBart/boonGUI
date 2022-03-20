@@ -179,7 +179,11 @@ declare namespace Engine {
 	 */
 	function PopGuiPageCB(data: any): void
 
-
+	/**
+	 * Get the GUIObject instance of with said name.
+	 * @param name - GUI object name
+	 */
+	function GetGUIObjectByName(name: string): GUIObject
 
 	/**
 	 * Set cursor (representation).
@@ -988,6 +992,14 @@ declare namespace Engine {
 
 }
 
+declare class GUIObject {
+	hidden: boolean;
+	caption: string;
+	children: GUIObject[];
+	size: GUISize;
+	getComputedSize(): GUISize
+}
+
 declare enum GUISizeSide {
 	left = "left",
 	right = "right",
@@ -1011,20 +1023,6 @@ declare class GUISize {
 	width: number;
 	height: number;
 }
-
-declare class GUIObject {
-	hidden: boolean;
-	caption: string;
-	children: GUIObjects[];
-	size: GUISize;
-	getComputedSize(): GUISize
-}
-
-/**
-	 * Get the GUIObject instance of with said name.
-	 * @param name - GUI object name
-	 */
-function GetGUIObjectByName(name: string): GUIObject
 
 declare function setTimeout(callback: Function, time: number): void
 declare function saveSettingAndWriteToUserConfig(key: string, value: string): void
