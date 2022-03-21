@@ -60,7 +60,7 @@ var getScorePanelsData = () => [
 					}),
 				"yStart": 16 + g_yStartHeightHead,
 				"width": (85 * 7 + 105) * g_multiplierWidths
-			},	// width = 700
+			}	// width = 700
 		],
 		"counters": [
 			{ "width": 105 * g_multiplierWidths, "fn": calculateBuildings, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
@@ -99,7 +99,7 @@ var getScorePanelsData = () => [
 					}),
 				"yStart": 16 + g_yStartHeightHead,
 				"width": (85 * 8 + 105) * g_multiplierWidths
-			},	// width = 785
+			}	// width = 785
 		],
 		"counters": [
 			{ "width": 105 * g_multiplierWidths, "fn": calculateUnitsWithCaptured, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
@@ -148,7 +148,7 @@ var getScorePanelsData = () => [
 					}),
 				"yStart": 16 + g_yStartHeightHead,
 				"width": (100 * g_ResourceData.GetCodes().length + 225) * g_multiplierWidths
-			},
+			}
 		],
 		"counters": [
 			{ "width": 125 * g_multiplierWidths, "fn": calculateTotalResources, "verticalOffset": 12 + g_verticalOffsetAdjustCounters },

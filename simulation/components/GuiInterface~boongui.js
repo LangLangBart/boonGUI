@@ -7,14 +7,14 @@ const boongui_excluded_techs = [
 	"unit_elephant_african",
 	"unit_elephant_indian",
 	"unit_elite",
-	"upgrade_rank_advanced_mercenary",
+	"upgrade_rank_advanced_mercenary"
 ];
 
 const boongui_template_keys = {
 	"structures/palisades_tower": "structures/palisades_tower",
 	"structures/palisades_medium": "structures/palisades_tower",
 	"structures/palisades_long": "structures/palisades_tower",
-	"structures/palisades_gate": "structures/palisades_tower",
+	"structures/palisades_gate": "structures/palisades_tower"
 };
 
 const boongui_more_military_techs = [
@@ -33,7 +33,7 @@ const boongui_resources_techs = {
 		"gather_animals_stockbreeding",
 		"gather_capacity_basket",
 		"gather_capacity_wheelbarrow",
-		"gather_capacity_carts",
+		"gather_capacity_carts"
 	],
 	"wood": [
 		"gather_lumbering_ironaxes",
@@ -41,7 +41,7 @@ const boongui_resources_techs = {
 		"gather_lumbering_strongeraxes",
 		"gather_capacity_basket",
 		"gather_capacity_wheelbarrow",
-		"gather_capacity_carts",
+		"gather_capacity_carts"
 	],
 	"stone": [
 		"gather_mining_servants",
@@ -49,7 +49,7 @@ const boongui_resources_techs = {
 		"gather_mining_slaves",
 		"gather_capacity_basket",
 		"gather_capacity_wheelbarrow",
-		"gather_capacity_carts",
+		"gather_capacity_carts"
 	],
 	"metal": [
 		"gather_mining_wedgemallet",
@@ -57,8 +57,8 @@ const boongui_resources_techs = {
 		"gather_mining_silvermining",
 		"gather_capacity_basket",
 		"gather_capacity_wheelbarrow",
-		"gather_capacity_carts",
-	],
+		"gather_capacity_carts"
+	]
 };
 
 const boongui_resources_types = Object.keys(boongui_resources_techs);
@@ -182,7 +182,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 			"resourceGatherers": cmpPlayer.GetResourceGatherers(),
 
 			// @cmpTechnologyManager
-			"classCounts": cmpTechnologyManager?.GetClassCounts() ?? {},
+			"classCounts": cmpTechnologyManager?.GetClassCounts() ?? {}
 		};
 
 		let cached = boongui_players_weakmap.get(cmpPlayer);
@@ -286,7 +286,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 		let economyTechsCount = 0;
 		for (const template of player.researchedTechs)
 		{
-			if (boongui_excluded_techs.some((s) => template.includes(s))) continue;
+			if (boongui_excluded_techs.some(s => template.includes(s))) continue;
 			let mode;
 			if (template.startsWith("soldier_") || boongui_more_military_techs.includes(template))
 			{

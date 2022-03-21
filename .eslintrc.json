@@ -90,14 +90,6 @@
 			"after"
 		],
 		"quote-props": 1,
-		"quotes": [
-			"warn",
-			"double",
-			{
-				"avoidEscape": true,
-				"allowTemplateLiterals": true
-			}
-		],
 		"semi": 1,
 		"semi-spacing": 1,
 		"space-before-function-paren": [
@@ -114,6 +106,20 @@
 		"no-const-assign": 1,
 		"no-dupe-class-members": 1,
 		"prefer-const": 1,
+
+		"quotes": [
+			"warn",
+			"double",
+			{
+				"avoidEscape": true,
+				"allowTemplateLiterals": true
+			}
+		],
+		"comma-dangle": 1,
+		"arrow-parens": [
+			"warn",
+			"as-needed"
+		],
 		// https://typescript-eslint.io/rules/no-use-before-define/
 		"no-use-before-define": "off",
 		"@typescript-eslint/no-use-before-define": [

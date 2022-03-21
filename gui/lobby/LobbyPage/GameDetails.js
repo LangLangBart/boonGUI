@@ -101,8 +101,8 @@ class GameDetails
 			if (!game.isCompatible)
 				txt += setStringTags(coloredText(setStringTags(this.IncompatibleModsFormat, this.CaptionTags), "red"), {
 					"tooltip": sprintf(translate("You have some incompatible mods:\n%(details)s"), {
-						"details": comparedModsString(game.mods, Engine.GetEngineInfo().mods),
-					}),
+						"details": comparedModsString(game.mods, Engine.GetEngineInfo().mods)
+					})
 				});
 			else
 				txt += setStringTags(this.ModsFormat, this.CaptionTags);
@@ -114,7 +114,7 @@ class GameDetails
 				let modStr = escapeText(modToString(mod));
 				if (mod.ignoreInCompatibilityChecks)
 					modStr = setStringTags(coloredText(modStr, "180 180 180"), {
-						"tooltip": translate("This mod does not affect MP compatibility"),
+						"tooltip": translate("This mod does not affect MP compatibility")
 					});
 				txt += "\n" + modStr;
 			}

@@ -83,7 +83,7 @@ function setupStatHUDAttackTooltip(template, projectiles)
 	{
 		// Slaughter is used to kill animals, so do not show it.
 		// Capture is not needed here.
-		if (["Slaughter", "Capture"].some((s) => attackType.includes(s)))
+		if (["Slaughter", "Capture"].some(s => attackType.includes(s)))
 			continue;
 
 		const attackTypeTemplate = template.attack[attackType];

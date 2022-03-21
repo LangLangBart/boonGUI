@@ -47,7 +47,7 @@ var g_MainMenuItems = [
 							Engine.PushGuiPage(data.nextPage, { "civ": data.civ }, callback);
 					};
 					Engine.PushGuiPage("page_structree.xml", {}, callback);
-				},
+				}
 			},
 			{
 				"caption": translate("Civilization Overview"),
@@ -113,7 +113,7 @@ var g_MainMenuItems = [
 					// TODO: find a better solution.
 					Engine.SwitchGuiPage("campaigns/load_modal/page.xml");
 				}
-			},
+			}
 		]
 	},
 	{

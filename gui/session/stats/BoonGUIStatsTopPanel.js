@@ -15,7 +15,7 @@ class BoonGUIStatsTopPanel {
 	update(playersStates) {
 		this.root.hidden = false;
 		this.scales.reset();
-		playersStates.forEach((state) => {
+		playersStates.forEach(state => {
 			this.scales.addValue("popCount", state.popCount);
 			this.scales.addValue("popLimit", state.popLimit);
 

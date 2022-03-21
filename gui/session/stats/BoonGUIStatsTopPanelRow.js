@@ -187,11 +187,11 @@ class BoonGUIStatsTopPanelRow
 		{
 			value = state.popCount;
 			this.popCount.caption = setStringTags(value + "/", {
-				"color": CounterPopulation.prototype.PopulationAlertColor,
+				"color": CounterPopulation.prototype.PopulationAlertColor
 			});
 			value = state.popLimit;
 			this.popLimit.caption = setStringTags(value, {
-				"color": CounterPopulation.prototype.PopulationAlertColor,
+				"color": CounterPopulation.prototype.PopulationAlertColor
 			});
 		}
 		else

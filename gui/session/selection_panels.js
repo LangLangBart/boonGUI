@@ -500,7 +500,7 @@ g_SelectionPanels.Queue = {
 				queue.push({
 					"producingEnt": state.id,
 					"queuedItem": state.production.queue[i],
-					"autoqueue": state.production.autoqueue && state.production.queue[i].unitTemplate,
+					"autoqueue": state.production.autoqueue && state.production.queue[i].unitTemplate
 				});
 				foundNew = true;
 			}
@@ -1257,5 +1257,5 @@ const g_PanelsOrder = [
 	// UNIQUE PANES (importance doesn't matter)
 	"Command",
 	"Queue",
-	"Selection",
+	"Selection"
 ];
