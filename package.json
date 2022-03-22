@@ -11,7 +11,7 @@
     "typescript": "^4.6.2"
   },
   "scripts": {
-    "test": "eslint . --fix"
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",

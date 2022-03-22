@@ -8,5 +8,10 @@
 	],
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": true
+	},
+	"files.exclude": {
+		"maps": true,
+		"node_modules": true,
+		"yarn.lock": true
 	}
 }

@@ -4,4 +4,5 @@
 /.github
 /.pyromodignore
 /package.json
-/package-lock.json
+*.ts
+/tsconfig.json
