@@ -170,13 +170,12 @@ npm install -g yarn
 yarn
 ```
 
-* (3/3) Create a `.gitignore_global` and add `node_modules` and `yarn.lock` to it.
+* (3/3) Create a `.gitignore_global` and add `node_modules` to it.
 
 ```zsh
 git config --global core.excludesfile ~/.gitignore_global
 nano ~/.gitignore_global
 node_modules
-yarn.lock
 ```
 
 * The `.vscode` settings have been set up to automatically adjust your code to the rules when you save the document.
