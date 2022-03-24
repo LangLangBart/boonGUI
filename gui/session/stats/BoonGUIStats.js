@@ -26,6 +26,7 @@ class BoonGUIStats
 		playerViewControl.registerViewedPlayerChangeHandler(this.onViewedPlayerChange.bind(this));
 		this.resizeInit();
 		registerPlayersFinishedHandler(this.presentStatsTopPanel.bind(this));
+		registerConfigChangeHandler(this.updateShortGameInfoLabel.bind(this));
 
 		this.root.onTick = this.onTick.bind(this);
 	}
@@ -313,7 +314,7 @@ class BoonGUIStats
 			"icon_pop": '[icon="icon_pop" displace="3 5"]',
 			"pop": g_InitAttributes.settings.PopulationCap !== undefined ? g_PopulationCapacities.Title[g_PopulationCapacities.Population.indexOf(g_InitAttributes.settings.PopulationCap)] : g_WorldPopulationCapacities.Title[g_WorldPopulationCapacities.Population.indexOf(g_InitAttributes.settings.WorldPopulationCap)] + " (WP)",
 			"rating": g_InitAttributes.settings.RatingEnabled === true ? '  [icon="icon_rating" displace="-3 5"]' + coloredText("Rated", "red") : "",
-			"duration": this.durationReplay()
+			"duration": Engine.ConfigDB_GetValue("user", "boongui.showduration") == "true" ? this.durationReplay() : ""
 		});
 	}
 
