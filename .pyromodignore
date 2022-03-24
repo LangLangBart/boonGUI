@@ -6,3 +6,6 @@
 /package.json
 *.ts
 /tsconfig.json
+/gui/tsconfig.json
+/simulation/tsconfig.json
+/yarn.lock
