@@ -167,7 +167,12 @@ npm install -g yarn
 * (2/3) The dependencies are defined in the `package.json` file and can be simply installed by running:
 
 ```zsh
-yarn
+yarn install
+# [Optional] A pre-commit hook to check your working copy for lint problems and fix them if possible is defined in the package.json file. To use it, run the following command once. If you make changes to the hook, run the command again.
+npx simple-git-hooks
+# Confirmation messages
+# [INFO] Successfully set the pre-commit with command: yarn lint-staged
+# [INFO] Successfully set all git hooks
 ```
 
 * (3/3) Create a `.gitignore_global` and add `node_modules` to it.
