@@ -2,28 +2,19 @@
 <div align="center">
 
 # boonGUI <br>
-<!-- Development badges -->
-[![commits][commits-image]][commits-url]
-[![maintained][maintained-image]][commits-url]
-[![lint][lint-image]][lint-url]
 
-[commits-image]: https://img.shields.io/github/commits-since/LangLangBart/boonGUI/latest/main?label=Commits%20ahead%20of%20Release&style=flat-square
-[commits-url]: https://github.com/LangLangBart/boonGUI
-[maintained-image]: https://img.shields.io/maintenance/yes/2022?label=Maintained&style=flat-square
-[lint-image]: https://img.shields.io/github/workflow/status/LangLangBart/boonGUI/Lint/main?label=ESLint&style=flat-square
-[lint-url]: https://github.com/LangLangBart/boonGUI/actions/workflows/lint.yml
+<p>
+<a href="https://github.com/LangLangBart/boonGUI/releases"><img src="https://img.shields.io/github/release/LangLangBart/boonGUI.svg?style=for-the-badge&color=gold&label=Version" height="20"></a>
+<a href="https://play0ad.com/download/"><img src="https://img.shields.io/badge/Compatibility-Alpha25%3A%20Yaunā-gold?style=for-the-badge" height="20"></a>
+<a href="https://wildfiregames.com/forum/topic/37147-boongui/"><img src="https://img.shields.io/github/downloads/LangLangBart/boonGUI/total.svg?color=gold&amp&label=%E2%88%91%20Downloads&amp&style=for-the-badge" height="20"></a>
+<a href="https://wildfiregames.com/forum/topic/37147-boongui/"><img src="https://img.shields.io/badge/Discussion-Forum-gold?style=for-the-badge" height="20"></a>
+</p>
 
-<!-- General badges -->
-[![release][release-image]][release-url]
-[![compatibility][compatibility-image]][compatibility-url]
-[![forum][forum-image]][forum-url]
-
-[release-image]: https://img.shields.io/github/release/LangLangBart/boonGUI.svg?style=flat-square&color=gold&label=Latest%20Release
-[release-url]: https://github.com/LangLangBart/boonGUI/releases/latest
-[compatibility-image]: https://img.shields.io/badge/dynamic/json?style=flat-square&color=green&label=Compatibility&query=dependencies&url=https%3A%2F%2Fraw.githubusercontent.com%2FLangLangBart%2FboonGUI%2Fmain%2Fmod.json
-[compatibility-url]: https://play0ad.com/download/
-[forum-image]: https://img.shields.io/badge/Discussion-Forum-orange?style=flat-square
-[forum-url]: https://wildfiregames.com/forum/topic/37147-boongui-mod-compatible-with-a25
+<p>
+<a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commits-since/LangLangBart/boonGUI/latest/main?style=for-the-badge" height="20"></a>
+<a href="https://github.com/LangLangBart/boonGUI/actions/workflows/lint.yml"><img src="https://img.shields.io/github/workflow/status/LangLangBart/boonGUI/Lint/main?label=ESLint&style=for-the-badge" height="20"></a>
+<a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commit-activity/m/LangLangBart/boonGUI?style=for-the-badge" height="20"></a>
+</p>
 
 User interface **mod** for the RTS game **0 A.D.**
 
@@ -42,12 +33,20 @@ User interface **mod** for the RTS game **0 A.D.**
 
 ---
 
+### Featured v2.4
+<p>
+<a href="https://www.youtube.com/channel/UC5Sf1aQufzzWATg9TJzg7mQ"><img src="https://img.shields.io/static/v1?label=Channel&message=0AD%20Newbie%20Rush&logo=YouTube&color=FF0000&style=for-the-badge" height="20"></a>
+<a href="https://www.youtube.com/watch?v=CA2ZaEsDkiA"><img src="https://img.shields.io/youtube/views/CA2ZaEsDkiA?color=FF0000&logo=youtube&style=for-the-badge" height="20"></a>
+</p>
+<p align="center">
+<a href="http://www.youtube.com/watch?v=CA2ZaEsDkiA"><img src="http://img.youtube.com/vi/CA2ZaEsDkiA/0.jpg" width="400"></a>
+</p>
 
 ### Featured v2.4
 
 <p>
-<a href="https://www.youtube.com/channel/UCnpCp_OvNm0_FgD_5rSrxbw"><img src="https://img.shields.io/badge/Channel-Plan&Go:%200%20A.D.-green?logo=youtube&style=social" height="20"></a>
- <a href="https://www.youtube.com/watch?v=PhdbEN6UoG4"><img src="https://img.shields.io/youtube/views/PhdbEN6UoG4?style=social" height="20"></a>
+<a href="https://www.youtube.com/channel/UCnpCp_OvNm0_FgD_5rSrxbw"><img src="https://img.shields.io/static/v1?label=Channel&message=Plan%26Go:%200%20%20A.D.&logo=YouTube&color=FF0000&style=for-the-badge" height="20"></a>
+ <a href="https://www.youtube.com/watch?v=PhdbEN6UoG4"><img src="https://img.shields.io/youtube/views/PhdbEN6UoG4?color=FF0000&logo=youtube&style=for-the-badge" height="20"></a>
 </p>
 <p align="center">
 <a href="https://www.youtube.com/watch?v=PhdbEN6UoG4"><img src="http://img.youtube.com/vi/PhdbEN6UoG4/0.jpg" width="400"></a>
@@ -55,21 +54,12 @@ User interface **mod** for the RTS game **0 A.D.**
 
 ### Featured v2.2
 <p>
-<a href="https://www.youtube.com/channel/UC1VT4fBC8ZWmT61-x5sR9TA"><img src="https://img.shields.io/badge/Channel-Zephyr%20Amethyst-green?logo=youtube&style=social" height="20"></a>
-<a href="https://www.youtube.com/watch?v=FT8DDQEU8YA"><img src="https://img.shields.io/youtube/views/FT8DDQEU8YA?style=social" height="20"></a>
+<a href="https://www.youtube.com/channel/UC1VT4fBC8ZWmT61-x5sR9TA"><img src="https://img.shields.io/static/v1?label=Channel&message=Zephyr%20Amethyst&logo=YouTube&color=FF0000&style=for-the-badge" height="20"></a>
+<a href="https://www.youtube.com/watch?v=FT8DDQEU8YA"><img src="https://img.shields.io/youtube/views/FT8DDQEU8YA?color=FF0000&logo=youtube&style=for-the-badge" height="20"></a>
 </p>
 <p align="center">
 <a href="http://www.youtube.com/watch?v=FT8DDQEU8YA"><img src="http://img.youtube.com/vi/FT8DDQEU8YA/0.jpg" width="400"></a>
 </p>
-
-### Featured v2.0.2
-<p>
-<a href="https://www.youtube.com/channel/UC5Sf1aQufzzWATg9TJzg7mQ"><img src="https://img.shields.io/badge/Channel-0AD%20Newbie%20Rush-green?logo=youtube&style=social" height="20"></a>
-<a href="https://www.youtube.com/watch?v=nt3HSmRc7ss"><img src="https://img.shields.io/youtube/views/nt3HSmRc7ss?style=social" height="20"></a>
-</p>
-<p align="center">
-<a href="http://www.youtube.com/watch?v=nt3HSmRc7ss"><img src="http://img.youtube.com/vi/nt3HSmRc7ss/0.jpg" width="400"></a>
-</p>;
 
 </div>
 
@@ -108,7 +98,7 @@ User interface **mod** for the RTS game **0 A.D.**
 
 ---
 
-## Installation
+## Install
 ```
 git clone https://github.com/LangLangBart/boonGUI.git
 ```
@@ -199,12 +189,19 @@ When working with XML files, I use the default settings of the [VSCode XML Tools
 </details>
 
 ### Contributors
-Motivation for this mod was the desire to learn javascript and create a tool for @mysticjim to help him create his YouTube videos. Since then many people have contributed to this mod, to all of those I wanted to say thank you.
+Motivation for this mod was the desire to learn JavaScript by creating a tool for @mysticjim to help him with his YouTube videos. Since then many people have contributed to this mod and I would like to thank them here.
 * A complete makeover of the stats overlay was done thanks to @Islan.
 * Thanks to @Effervescent, @mysticjim, @Nobbi, @Palaiologos and @seeh for constantly testing and giving feedback.
 * Providing code and helping with problems: @andy5995, @kaaduu, @maroder, @Nescio, @Pretuer and @Schweini.
-* Thanks to @badosu, @ffffff, @ffm2, @nani, @The Undying Nephalim and @wowgetoffyourcellphone for creating the following mods: Prodmod, fGod, ffm_visibility, Autociv, Hyrule Conquest and Delenda Est.
-* Being good lads @elexis, @bb, @Imarok, @wraitii, @Freagarach, @vladislavbelov, @Silier and @Stan` pointed me in the right direction on the IRC #0ad channel when I got stuck.
+* Thanks to other modders:
+  * @nani - [Autociv](https://github.com/nanihadesuka/autociv)
+  * @wowgetoffyourcellphone - [Delenda Est](https://github.com/JustusAvramenko/delenda_est)
+  * @ffm2 - [ffm_visibility](https://wildfiregames.com/forum/topic/27124-ffm_visibility-mod/)
+  * @ffffff - [fGod](https://github.com/fraizy22/fgodmod)
+  * @badosu - [Prodmod](https://github.com/badosu/prodmod)
+  * @The Undying Nephalim - [Hyrule Conquest](https://www.moddb.com/mods/hyrule-conquest)
+  * @wraitii - [ui_mod](https://github.com/wraitii/ui_mod)
+* Being good lads @elexis, @bb, @Imarok, @wraitii, @Freagarach, @vladislavbelov, @Silier and @Stan` pointed me in the right direction on the IRC #0ad/#0ad-dev channel when I got stuck.
 
 <br>
 
