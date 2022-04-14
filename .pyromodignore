@@ -5,7 +5,5 @@
 /.pyromodignore
 /package.json
 *.ts
-/tsconfig.json
-/gui/tsconfig.json
-/simulation/tsconfig.json
+/**/tsconfig.json
 /yarn.lock
