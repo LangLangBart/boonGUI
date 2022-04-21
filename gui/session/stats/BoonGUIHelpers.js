@@ -102,15 +102,16 @@ function focusHouse(move, state)
 
 /**
  * When a fully constructed farmstead exits, the camera is focused at it. If no farmstead is present, a sound is played.
- * @param  {boolean} move
+ If no farmstead is present, the camera is focused the CC or play a sound. * @param  {boolean} move
  * @param  {Object} state
  */
 function focusFarmstead(move, state)
 {
 	 if (state == null || state.farmstead.length <= 0)
 	 {
-		 Engine.PlayUISound("audio/interface/alarm/alarm_invalid_building_placement_01.ogg", false);
-		 return;
+		return focusCC(move,state)
+		 // Engine.PlayUISound("audio/interface/alarm/alarm_invalid_building_placement_01.ogg", false);
+		 // return;
 	 }
 	 if (!Engine.HotkeyIsPressed("selection.add"))
 		 g_Selection.reset();
