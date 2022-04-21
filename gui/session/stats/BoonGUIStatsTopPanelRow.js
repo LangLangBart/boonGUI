@@ -64,6 +64,7 @@ class BoonGUIStatsTopPanelRow
 		this.infantry = Engine.GetGUIObjectByName(`${PREFIX}_infantry`);
 
 		this.cavalryHighlight = Engine.GetGUIObjectByName(`${PREFIX}_cavalryHighlight`);
+		this.cavalryHighlight.onPress = () => focusStable(true, this.state);
 		this.cavalry = Engine.GetGUIObjectByName(`${PREFIX}_cavalry`);
 
 		this.ecoTechHighlight = Engine.GetGUIObjectByName(`${PREFIX}_ecoTechHighlight`);

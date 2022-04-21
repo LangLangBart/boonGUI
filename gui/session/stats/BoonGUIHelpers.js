@@ -151,6 +151,33 @@ function focusBarrack(move, state)
 	 }
 }
 
+
+/**
+ * When a fully constructed Stable exits, the camera is focused at it.
+ * If no Stable is present, the camera is focused the CC or play a sound.
+ * @param  {boolean} move
+ * @param  {Object} state
+ */
+function focusStable(move, state)
+{
+	 if (state == null || state.stables.length <= 0)
+	 {
+		 return focusCC(move,state);
+		 // Engine.PlayUISound("audio/interface/alarm/alarm_invalid_building_placement_01.ogg", false);
+		 // return;
+	 }
+	 if (!Engine.HotkeyIsPressed("selection.add"))
+		 g_Selection.reset();
+
+	 g_Selection.addList(state.stables);
+
+	 if (move)
+	 {
+		 const entState = GetEntityState(state.stables[0]);
+		 Engine.CameraMoveTo(entState.position.x, entState.position.z);
+	 }
+}
+
 /**
  *
  * @param {string} civName
