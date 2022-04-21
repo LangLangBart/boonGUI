@@ -343,14 +343,6 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 					{
 						cached.houses.push(entity);
 					}
-					// if (classesList.includes("Houses"))
-					// {
-					// 	cached.houses.push(entity);
-					// }
-					// if (classesList.includes("Civic"))
-					// {
-					// 	cached.houses.push(entity);
-					// }
 
 					if (classesList.includes("Structure"))
 					{
