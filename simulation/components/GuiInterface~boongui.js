@@ -200,6 +200,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 			cached.civCentres = [];
 			cached.farmstead = [];
 			cached.barracks = [];
+			cached.houses = [];
 			cached.queue = new CustomQueue();
 			cached.resourcesGathered = cmpPlayerStatisticsTracker?.resourcesGathered || {};
 			cached.percentMapExplored = cmpPlayerStatisticsTracker?.GetPercentMapExplored() ?? 0;
@@ -338,6 +339,18 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 					{
 						cached.barracks.push(entity);
 					}
+					if (classesList.includes("House"))
+					{
+						cached.houses.push(entity);
+					}
+					// if (classesList.includes("Houses"))
+					// {
+					// 	cached.houses.push(entity);
+					// }
+					// if (classesList.includes("Civic"))
+					// {
+					// 	cached.houses.push(entity);
+					// }
 
 					if (classesList.includes("Structure"))
 					{
@@ -414,6 +427,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 		player.civCentres = cached.civCentres;
 		player.farmstead = cached.farmstead;
 		player.barrack = cached.barracks;
+		player.house = cached.houses;
 		player.queue = cached.queue.toArray();
 
 		return player;

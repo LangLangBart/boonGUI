@@ -36,6 +36,10 @@ class BoonGUIStatsTopPanelRow
 		this.popCount = Engine.GetGUIObjectByName(`${PREFIX}_popCount`);
 		this.popLimit = Engine.GetGUIObjectByName(`${PREFIX}_popLimit`);
 
+		this.femaleCitizenHighlight = Engine.GetGUIObjectByName(`${PREFIX}_popHighlight`);
+		this.femaleCitizenHighlight.onPress = () => focusHouse(true, this.state);
+
+
 		this.resource = {
 			"counts": {},
 			"gatherers": {},

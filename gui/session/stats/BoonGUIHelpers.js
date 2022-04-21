@@ -76,6 +76,31 @@ function focusCC(move, state)
 }
 
 /**
+ * When a fully constructed House exits, the camera is focused at it. If no House is present, a sound is played.
+ * @param  {boolean} move
+ * @param  {Object} state
+ */
+function focusHouse(move, state)
+{
+	 if (state == null || state.house.length <= 0)
+	 {
+		 Engine.PlayUISound("audio/interface/alarm/alarm_invalid_building_placement_01.ogg", false);
+		 return;
+	 }
+	 if (!Engine.HotkeyIsPressed("selection.add"))
+		 g_Selection.reset();
+
+	 g_Selection.addList(state.house);
+
+	 if (move)
+	 {
+		 const entState = GetEntityState(state.house[0]);
+		 Engine.CameraMoveTo(entState.position.x, entState.position.z);
+	 }
+}
+
+
+/**
  * When a fully constructed farmstead exits, the camera is focused at it. If no farmstead is present, a sound is played.
  * @param  {boolean} move
  * @param  {Object} state
