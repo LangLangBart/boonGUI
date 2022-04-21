@@ -202,6 +202,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 			cached.storehouse = [];
 			cached.barracks = [];
 			cached.stables = [];
+			cached.forges = [];
 			cached.houses = [];
 			cached.queue = new CustomQueue();
 			cached.resourcesGathered = cmpPlayerStatisticsTracker?.resourcesGathered || {};
@@ -353,6 +354,10 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 					{
 						cached.stables.push(entity);
 					}
+					if (classesList.includes("Forge"))
+					{
+						cached.forges.push(entity);
+					}
 
 					if (classesList.includes("Structure"))
 					{
@@ -431,6 +436,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 		player.storehouse = cached.storehouse;
 		player.barrack = cached.barracks;
 		player.stables = cached.stables;
+		player.forges = cached.forges;
 		player.house = cached.houses;
 		player.queue = cached.queue.toArray();
 

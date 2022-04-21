@@ -74,8 +74,11 @@ class BoonGUIStatsTopPanelRow
 		this.cavalry = Engine.GetGUIObjectByName(`${PREFIX}_cavalry`);
 
 		this.ecoTechHighlight = Engine.GetGUIObjectByName(`${PREFIX}_ecoTechHighlight`);
+		this.ecoTechHighlight.onPress = () => focusStorehouse(true, this.state);
+
 		this.ecoTechCount = Engine.GetGUIObjectByName(`${PREFIX}_ecoTechCount`);
 		this.milTechHighlight = Engine.GetGUIObjectByName(`${PREFIX}_milTechHighlight`);
+		this.milTechHighlight.onPress = () => focusForge(true, this.state);
 		this.milTechCount = Engine.GetGUIObjectByName(`${PREFIX}_milTechCount`);
 
 		this.killDeathRatioHighlight = Engine.GetGUIObjectByName(`${PREFIX}_killDeathRatioHighlight`);

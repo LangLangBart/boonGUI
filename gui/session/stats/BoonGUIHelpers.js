@@ -197,6 +197,30 @@ function focusStable(move, state)
 }
 
 /**
+ * When a fully constructed Forge exits, the camera is focused at it.
+ * If no Forge is present, the camera is focused the CC or play a sound.
+ * @param  {boolean} move
+ * @param  {Object} state
+ */
+function focusForge(move, state)
+{
+	 if (state == null || state.forges.length <= 0)
+	 {
+		 return focusCC(move,state);
+	 }
+	 if (!Engine.HotkeyIsPressed("selection.add"))
+		 g_Selection.reset();
+
+	 g_Selection.addList(state.forges);
+
+	 if (move)
+	 {
+		 const entState = GetEntityState(state.forges[0]);
+		 Engine.CameraMoveTo(entState.position.x, entState.position.z);
+	 }
+}
+
+/**
  *
  * @param {string} civName
  */
