@@ -198,6 +198,8 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 		if (updateCache)
 		{
 			cached.civCentres = [];
+			cached.farmstead = [];
+			cached.barrack = [];
 			cached.queue = new CustomQueue();
 			cached.resourcesGathered = cmpPlayerStatisticsTracker?.resourcesGathered || {};
 			cached.percentMapExplored = cmpPlayerStatisticsTracker?.GetPercentMapExplored() ?? 0;

@@ -74,6 +74,55 @@ function focusCC(move, state)
 		Engine.CameraMoveTo(entState.position.x, entState.position.z);
 	}
 }
+
+/**
+ * When a fully constructed farmstead exits, the camera is focused at it. If no farmstead is present, a sound is played.
+ * @param  {boolean} move
+ * @param  {Object} state
+ */
+function focusFarmstead(move, state)
+{
+	 if (state == null || state.farmstead.length <= 0)
+	 {
+		 Engine.PlayUISound("audio/interface/alarm/alarm_invalid_building_placement_01.ogg", false);
+		 return;
+	 }
+	 if (!Engine.HotkeyIsPressed("selection.add"))
+		 g_Selection.reset();
+
+	 g_Selection.addList(state.farmstead);
+
+	 if (move)
+	 {
+		 const entState = GetEntityState(state.farmstead[0]);
+		 Engine.CameraMoveTo(entState.position.x, entState.position.z);
+	 }
+}
+
+/**
+ * When a fully constructed Barrack exits, the camera is focused at it. If no Barrack is present, a sound is played.
+ * @param  {boolean} move
+ * @param  {Object} state
+ */
+function focusBarrack(move, state)
+{
+	 if (state == null || state.barrack.length <= 0)
+	 {
+		 Engine.PlayUISound("audio/interface/alarm/alarm_invalid_building_placement_01.ogg", false);
+		 return;
+	 }
+	 if (!Engine.HotkeyIsPressed("selection.add"))
+		 g_Selection.reset();
+
+	 g_Selection.addList(state.barrack);
+
+	 if (move)
+	 {
+		 const entState = GetEntityState(state.barrack[0]);
+		 Engine.CameraMoveTo(entState.position.x, entState.position.z);
+	 }
+}
+
 /**
  *
  * @param {string} civName

@@ -51,8 +51,10 @@ class BoonGUIStatsTopPanelRow
 		}
 
 		this.femaleCitizenHighlight = Engine.GetGUIObjectByName(`${PREFIX}_femaleCitizenHighlight`);
+		this.femaleCitizenHighlight.onPress = () => focusFarmstead(true, this.state);
 		this.femaleCitizen = Engine.GetGUIObjectByName(`${PREFIX}_femaleCitizen`);
 		this.infantryHighlight = Engine.GetGUIObjectByName(`${PREFIX}_infantryHighlight`);
+		this.infantryHighlight.onPress = () => focusBarrack(true, this.state);
 		this.infantry = Engine.GetGUIObjectByName(`${PREFIX}_infantry`);
 		this.cavalryHighlight = Engine.GetGUIObjectByName(`${PREFIX}_cavalryHighlight`);
 		this.cavalry = Engine.GetGUIObjectByName(`${PREFIX}_cavalry`);
