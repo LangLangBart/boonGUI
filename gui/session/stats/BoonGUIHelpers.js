@@ -110,8 +110,6 @@ function focusStorehouse(move, state)
 	 if (state == null || state.storehouse.length <= 0)
 	 {
 		return focusCC(move,state)
-		 // Engine.PlayUISound("audio/interface/alarm/alarm_invalid_building_placement_01.ogg", false);
-		 // return;
 	 }
 	 if (!Engine.HotkeyIsPressed("selection.add"))
 		 g_Selection.reset();
@@ -136,8 +134,6 @@ function focusFarmstead(move, state)
 	 if (state == null || state.farmstead.length <= 0)
 	 {
 		return focusCC(move,state)
-		 // Engine.PlayUISound("audio/interface/alarm/alarm_invalid_building_placement_01.ogg", false);
-		 // return;
 	 }
 	 if (!Engine.HotkeyIsPressed("selection.add"))
 		 g_Selection.reset();
@@ -162,8 +158,6 @@ function focusBarrack(move, state)
 	 if (state == null || state.barrack.length <= 0)
 	 {
 		 return focusCC(move,state);
-		 // Engine.PlayUISound("audio/interface/alarm/alarm_invalid_building_placement_01.ogg", false);
-		 // return;
 	 }
 	 if (!Engine.HotkeyIsPressed("selection.add"))
 		 g_Selection.reset();
@@ -189,8 +183,6 @@ function focusStable(move, state)
 	 if (state == null || state.stables.length <= 0)
 	 {
 		 return focusCC(move,state);
-		 // Engine.PlayUISound("audio/interface/alarm/alarm_invalid_building_placement_01.ogg", false);
-		 // return;
 	 }
 	 if (!Engine.HotkeyIsPressed("selection.add"))
 		 g_Selection.reset();
