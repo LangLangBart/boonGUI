@@ -199,6 +199,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 		{
 			cached.civCentres = [];
 			cached.farmstead = [];
+			cached.storehouse = [];
 			cached.barracks = [];
 			cached.stables = [];
 			cached.houses = [];
@@ -340,6 +341,10 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 					{
 						cached.farmstead.push(entity);
 					}
+					if (classesList.includes("Storehouse"))
+					{
+						cached.storehouse.push(entity);
+					}
 					if (classesList.includes("Barracks"))
 					{
 						cached.barracks.push(entity);
@@ -423,6 +428,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 
 		player.civCentres = cached.civCentres;
 		player.farmstead = cached.farmstead;
+		player.storehouse = cached.storehouse;
 		player.barrack = cached.barracks;
 		player.stables = cached.stables;
 		player.house = cached.houses;

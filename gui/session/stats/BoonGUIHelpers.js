@@ -101,6 +101,32 @@ function focusHouse(move, state)
 
 
 /**
+ * When a fully constructed storehouse exits, the camera is focused at it. If no storehouse is present, a sound is played.
+ If no storehouse is present, the camera is focused the CC or play a sound. * @param  {boolean} move
+ * @param  {Object} state
+ */
+function focusStorehouse(move, state)
+{
+	 if (state == null || state.storehouse.length <= 0)
+	 {
+		return focusCC(move,state)
+		 // Engine.PlayUISound("audio/interface/alarm/alarm_invalid_building_placement_01.ogg", false);
+		 // return;
+	 }
+	 if (!Engine.HotkeyIsPressed("selection.add"))
+		 g_Selection.reset();
+
+	 g_Selection.addList(state.storehouse);
+
+	 if (move)
+	 {
+		 const entState = GetEntityState(state.storehouse[0]);
+		 Engine.CameraMoveTo(entState.position.x, entState.position.z);
+	 }
+}
+
+
+/**
  * When a fully constructed farmstead exits, the camera is focused at it. If no farmstead is present, a sound is played.
  If no farmstead is present, the camera is focused the CC or play a sound. * @param  {boolean} move
  * @param  {Object} state

@@ -49,6 +49,9 @@ class BoonGUIStatsTopPanelRow
 		for (const resType of g_BoonGUIResTypes)
 		{
 			this.resource[resType] = Engine.GetGUIObjectByName(`${PREFIX}_${resType}Highlight`);
+			this.resource[resType].onPress = () => focusStorehouse(true, this.state);
+
+
 			this.resource.counts[resType] = Engine.GetGUIObjectByName(`${PREFIX}_${resType}Counts`);
 			this.resource.gatherers[resType] = Engine.GetGUIObjectByName(`${PREFIX}_${resType}Gatherers`);
 			this.resource.rates[resType] = Engine.GetGUIObjectByName(`${PREFIX}_${resType}Rates`);
