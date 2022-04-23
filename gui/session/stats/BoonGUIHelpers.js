@@ -56,7 +56,7 @@ function BoonGUIGetColSize(index, width, rtl = false)
  * @param  {boolean} move
  * @param  {Object} state
  */
-function focusCC(move, state)
+function focusCivic(move, state)
 {
 	if (state == null || state.civCentres.length <= 0)
 	{
