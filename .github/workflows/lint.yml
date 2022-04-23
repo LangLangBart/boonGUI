@@ -1,15 +1,12 @@
-name: Lint
+name: Lint-Autofix
 
 on:
-  # Trigger the workflow on push or pull request,
-  # but only for the main branch
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'push' && github.head_ref || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   run-linters:
@@ -18,40 +15,27 @@ jobs:
     if: ${{ github.actor != 'dependabot[bot]' }}
 
     steps:
-      - name: Check out Git repository
+      - name: Check out repository
         uses: actions/checkout@v3
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 12
+          cache: "yarn"
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - name: Set up cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-      # ESLint and Prettier must be in `package.json`
-      - name: Install Node.js dependencies
+      - name: Install dependencies
         run: yarn install
 
       - name: Run linters
         uses: wearerequired/lint-action@v1
         with:
-          eslint: true
-          # ESLint checks should fail even if there are no errors and only warnings.
-          eslint_args: "--max-warnings 0"
-          # Normally Prettier is for formatting and Linters is for tracking down errors, but I use the .eslintrc.json file from 0ad and don't want to set up an extra format configuration for Prettier. Therefore it is off for now, might change it in the future.
-          prettier: false
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           # Whether the workflow run should also fail when linter failures are detected.
           continue_on_error: false
+          # ESLint checks should fail even if there are no errors and only warnings.
+          eslint_args: "--max-warnings 0"
+          eslint: true
+          prettier: false
           # Whether linters should try to fix code style issues automatically. If some issues can be fixed, the action will commit and push the changes to the corresponding branch.
           auto_fix: true
-
-

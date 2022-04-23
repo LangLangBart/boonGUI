@@ -143,11 +143,9 @@ zsh -c "$(curl -fsSL https://raw.githubusercontent.com/LangLangBart/boonGUI/main
 <p>
 
 #### Javacript
-It is not necessary to set up a linter when you make a pull request. A GitHub action has been set up to automatically adjust your code to the rules. You can also lint your code locally, see instructions below.
-
 Mirroring the linting process from 0 A.D. by using [ESLint](https://eslint.org) and an adopted set of rules defined in the [eslintrc.json](../.eslintrc.json) file.
 
-* (1/3) install `node.js` e.g. via Homebrew and after that install the `yarn` package globally.
+* (1/3) install `node.js` e.g. via Homebrew (macOS) and after that install the `yarn` package globally.
 
 ```zsh
 brew install node
@@ -175,7 +173,7 @@ node_modules
 
 * The `.vscode` settings have been set up to automatically adjust your code to the rules when you save the document.
 * An optional installation of the [VSCode ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) will run eslint on each file and display warnings/errors immediately.
-* You can also lint and correct your entire repository with the following commands.
+* Alternatively, you can skip all the steps above and just lint and correct your entire repository with the following commands.
 
 ```zsh
 npx eslint .
