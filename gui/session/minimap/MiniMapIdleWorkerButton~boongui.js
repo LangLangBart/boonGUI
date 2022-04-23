@@ -1,4 +1,3 @@
-let lastBeepTime = 1;
 MiniMapIdleWorkerButton.prototype.rebuild = function()
 {
 	const totalNumberIdleWorkers = Engine.GuiInterfaceCall("FindIdleUnits", {
@@ -7,14 +6,15 @@ MiniMapIdleWorkerButton.prototype.rebuild = function()
 		"excludeUnits": []
 	}).length;
 	this.idleWorkerButton.enabled = totalNumberIdleWorkers > 0;
-	const nowTime = Date.now();
-	const waitedTime = nowTime - lastBeepTime;
-	if(this.idleWorkerButton.enabled) {
-		const multiplier = (totalNumberIdleWorkers > 9) ? 9 : totalNumberIdleWorkers;
-		if( waitedTime * multiplier > 500) {
-			Engine.PlayUISound("audio/interface/alarm/alarm_invalid_building_placement_01.ogg", false);
-			lastBeepTime = Date.now();
-		}
+
+	const waitedTime = Date.now() - this.lastBeepTime;
+	if(this.idleWorkerButton.enabled && waitedTime * Math.min(totalNumberIdleWorkers, 5) > 10000)
+	{
+		Engine.PlayUISound("audio/interface/alarm/alarm_no_idle_unit_01.ogg", false);
+		this.lastBeepTime = Date.now();
 	}
+
 	Engine.GetGUIObjectByName("totalNumberIdleWorkers").caption = this.idleWorkerButton.enabled ? totalNumberIdleWorkers : "";
 };
+
+MiniMapIdleWorkerButton.prototype.lastBeepTime = 0;
