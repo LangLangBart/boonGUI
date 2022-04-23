@@ -1,0 +1,51 @@
+name: Lint-PR
+# see issue: https://github.com/wearerequired/lint-action/issues/13
+
+on:
+  pull_request_target:
+  workflow_dispatch:
+
+# Limit permissions of the token
+# When running an untrusted fork, we don't want to give write permissions
+# See https://securitylab.github.com/research/github-actions-preventing-pwn-requests/
+permissions:
+  checks: write # Allows the creation of annotations on forks
+  contents: read # Don't allow untrusted forks write access
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request_target' && github.head_ref || github.ref }}
+  cancel-in-progress: true
+  concurrency:
+
+jobs:
+  run-linters-pull-request:
+    name: Run linters for pull requests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 12
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run linters
+        uses: wearerequired/lint-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # ESLint checks should fail even if there are no errors and only warnings.
+          eslint_args: "--max-warnings 0"
+          eslint: true
+          prettier: false
+          # auto_fix must be set to false for the moment  https://github.com/wearerequired/lint-action/issues/13
+          auto_fix: false
+
+
