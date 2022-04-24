@@ -7,6 +7,8 @@ MiniMapIdleWorkerButton.prototype.rebuild = function()
 	}).length;
 	this.idleWorkerButton.enabled = totalNumberIdleWorkers > 0;
 
+
+	
 	if(Engine.ConfigDB_GetValue("user", "boongui.showduration") == "true") {
 		const waitedTime = Date.now() - this.lastBeepTime;
 		if (this.idleWorkerButton.enabled && waitedTime * Math.min(totalNumberIdleWorkers, 5) > 10000) {
