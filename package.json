@@ -4,7 +4,7 @@
   "description": "---",
   "private": true,
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.17.0",
+    "@typescript-eslint/eslint-plugin": "^5.21.0",
     "@typescript-eslint/parser": "^5.17.0",
     "eslint": "^8.12.0",
     "eslint-plugin-brace-rules": "^0.1.6",
