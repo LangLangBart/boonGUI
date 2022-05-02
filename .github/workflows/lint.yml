@@ -28,7 +28,7 @@ jobs:
         run: yarn install
 
       - name: Run linters
-        uses: wearerequired/lint-action@v1
+        uses: wearerequired/lint-action@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # Whether the workflow run should also fail when linter failures are detected.
