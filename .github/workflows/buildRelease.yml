@@ -38,3 +38,4 @@ jobs: # A workflow run is made up of one or more jobs that can run sequentially 
           files: |
             ${{ env.PYROMOD_PYROMOD_FILE_PATH }}
             ${{ env.PYROMOD_ZIP_FILE_PATH }}
+          generate_release_notes: true

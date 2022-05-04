@@ -13,6 +13,7 @@ body:
     attributes:
       label: Problem
       description: Please add a clear and concise description of the problem you are seeking to solve with this feature request.
+      # The pipe "|" let's you effectively declare a multi-line yaml string, see https://yaml-multiline.info/.
       placeholder: |
         Description
   - type: textarea

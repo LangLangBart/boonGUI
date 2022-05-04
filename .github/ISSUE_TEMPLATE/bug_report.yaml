@@ -22,6 +22,7 @@ body:
     attributes:
       label: Description
       description: A clear and concise description of the bug and, if possible, steps to reproduce the problem consistently. If applicable, add screenshots to help explain the bug.
+      # The pipe "|" let's you effectively declare a multi-line yaml string, see https://yaml-multiline.info/.
       placeholder: |
         Short description
 
