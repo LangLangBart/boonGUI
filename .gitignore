@@ -1,0 +1,8 @@
+# if we don't have any dependencies which are bundled
+# we can safely ignore lockfiles
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# node
+node_modules

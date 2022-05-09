@@ -4,16 +4,16 @@
 # boonGUI <br>
 
 <p>
-<a href="https://github.com/LangLangBart/boonGUI/releases"><img src="https://img.shields.io/github/release/LangLangBart/boonGUI.svg?style=for-the-badge&color=gold&label=Version" height="20"></a>
-<a href="https://play0ad.com/download/"><img src="https://img.shields.io/badge/Compatibility-Alpha25%3A%20Yaunā-gold?style=for-the-badge" height="20"></a>
-<a href="https://wildfiregames.com/forum/topic/37147-boongui/"><img src="https://img.shields.io/github/downloads/LangLangBart/boonGUI/total.svg?color=gold&amp&label=%E2%88%91%20Downloads&amp&style=for-the-badge" height="20"></a>
-<a href="https://wildfiregames.com/forum/topic/37147-boongui/"><img src="https://img.shields.io/badge/Discussion-Forum-gold?style=for-the-badge" height="20"></a>
+<a href="https://github.com/LangLangBart/boonGUI/releases"><img src="https://img.shields.io/github/release/LangLangBart/boonGUI.svg?style=for-the-badge&color=gold&label=Version" height="15"></a>
+<a href="https://play0ad.com/download/"><img src="https://img.shields.io/badge/Compatibility-Alpha25%3A%20Yaunā-gold?style=for-the-badge" height="15"></a>
+<a href="https://wildfiregames.com/forum/topic/37147-boongui/"><img src="https://img.shields.io/github/downloads/LangLangBart/boonGUI/total.svg?color=gold&amp&label=%E2%88%91%20Downloads&amp&style=for-the-badge" height="15"></a>
+<a href="https://wildfiregames.com/forum/topic/37147-boongui/"><img src="https://img.shields.io/badge/Discussion-Forum-gold?style=for-the-badge" height="15"></a>
 </p>
 
 <p>
-<a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commits-since/LangLangBart/boonGUI/latest/main?style=for-the-badge" height="20"></a>
-<a href="https://github.com/LangLangBart/boonGUI/actions/workflows/lint.yml"><img src="https://img.shields.io/github/workflow/status/LangLangBart/boonGUI/Lint/main?label=ESLint&style=for-the-badge" height="20"></a>
-<a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commit-activity/m/LangLangBart/boonGUI?style=for-the-badge" height="20"></a>
+<a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commits-since/LangLangBart/boonGUI/latest/main?style=for-the-badge" height="15"></a>
+<a href="https://github.com/LangLangBart/boonGUI/actions/workflows/lint.yml"><img src="https://img.shields.io/github/workflow/status/LangLangBart/boonGUI/Lint/main?label=ESLint&style=for-the-badge" height="15"></a>
+<a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commit-activity/m/LangLangBart/boonGUI?style=for-the-badge" height="15"></a>
 </p>
 
 User interface **mod** for the RTS game **0 A.D.**
@@ -35,103 +35,70 @@ User interface **mod** for the RTS game **0 A.D.**
 
 ### Featured v2.4
 <p>
-<a href="https://www.youtube.com/channel/UC5Sf1aQufzzWATg9TJzg7mQ"><img src="https://img.shields.io/static/v1?label=Channel&message=0AD%20Newbie%20Rush&logo=YouTube&color=FF0000&style=for-the-badge" height="20"></a>
-<a href="https://www.youtube.com/watch?v=CA2ZaEsDkiA"><img src="https://img.shields.io/youtube/views/CA2ZaEsDkiA?color=FF0000&logo=youtube&style=for-the-badge" height="20"></a>
+<a href="https://www.youtube.com/channel/UC5Sf1aQufzzWATg9TJzg7mQ"><img src="https://img.shields.io/static/v1?label=Channel&message=0AD%20Newbie%20Rush&logo=YouTube&color=FF0000&style=for-the-badge" height="15"></a>
+<a href="https://www.youtube.com/watch?v=CA2ZaEsDkiA"><img src="https://img.shields.io/youtube/views/CA2ZaEsDkiA?color=FF0000&logo=youtube&style=for-the-badge" height="15"></a>
 </p>
 <p align="center">
-<a href="http://www.youtube.com/watch?v=CA2ZaEsDkiA"><img src="http://img.youtube.com/vi/CA2ZaEsDkiA/0.jpg" width="400"></a>
+<a href="http://www.youtube.com/watch?v=CA2ZaEsDkiA"><img src="http://img.youtube.com/vi/CA2ZaEsDkiA/0.jpg" width="250"></a>
 </p>
-
-### Featured v2.4
 
 <p>
-<a href="https://www.youtube.com/channel/UCnpCp_OvNm0_FgD_5rSrxbw"><img src="https://img.shields.io/static/v1?label=Channel&message=Plan%26Go:%200%20%20A.D.&logo=YouTube&color=FF0000&style=for-the-badge" height="20"></a>
- <a href="https://www.youtube.com/watch?v=PhdbEN6UoG4"><img src="https://img.shields.io/youtube/views/PhdbEN6UoG4?color=FF0000&logo=youtube&style=for-the-badge" height="20"></a>
+<a href="https://www.youtube.com/channel/UCnpCp_OvNm0_FgD_5rSrxbw"><img src="https://img.shields.io/static/v1?label=Channel&message=Plan%26Go:%200%20%20A.D.&logo=YouTube&color=FF0000&style=for-the-badge" height="15"></a>
+ <a href="https://www.youtube.com/watch?v=PhdbEN6UoG4"><img src="https://img.shields.io/youtube/views/PhdbEN6UoG4?color=FF0000&logo=youtube&style=for-the-badge" height="15"></a>
 </p>
 <p align="center">
-<a href="https://www.youtube.com/watch?v=PhdbEN6UoG4"><img src="http://img.youtube.com/vi/PhdbEN6UoG4/0.jpg" width="400"></a>
-</p>
-
-### Featured v2.2
-<p>
-<a href="https://www.youtube.com/channel/UC1VT4fBC8ZWmT61-x5sR9TA"><img src="https://img.shields.io/static/v1?label=Channel&message=Zephyr%20Amethyst&logo=YouTube&color=FF0000&style=for-the-badge" height="20"></a>
-<a href="https://www.youtube.com/watch?v=FT8DDQEU8YA"><img src="https://img.shields.io/youtube/views/FT8DDQEU8YA?color=FF0000&logo=youtube&style=for-the-badge" height="20"></a>
-</p>
-<p align="center">
-<a href="http://www.youtube.com/watch?v=FT8DDQEU8YA"><img src="http://img.youtube.com/vi/FT8DDQEU8YA/0.jpg" width="400"></a>
+<a href="https://www.youtube.com/watch?v=PhdbEN6UoG4"><img src="http://img.youtube.com/vi/PhdbEN6UoG4/0.jpg" width="250"></a>
 </p>
 
 </div>
 
 ---
 
-## Features
-* **Main menu**
-  * Cheat codes accessible through the game manual.
-  * New background image
-* **Camera**
-  * Enter the view of a unit via a hotkey.
-  * Change the camera settings in the options.
-* **In-Game**
-  * All fruits are more vivid and easier to see due to the increased saturation and brightness, some have also had their hue changed.
-  * Chicken are 50% larger and fish were colored red.
-  * Increased the size of weapon projectiles and the garrison flag on buildings.
-  * All player colors are more vivid and easier to see on the minimap.
-  * Larger buttons in the selection panel.
-  * Larger and redesigned round minimap. The idle button displays the total number of idle workers.
-  * Additional ingame stats about the players.
+## ✨ Features
+### 🕹 In-Game
+  * Large round round minimap
   * Rally points are displayed for observers.
-  * Timestamp notifications for players moving up a phase or completing one.
+  * Bigger buttons for the construction panel
+  * Additional ingame stats about the players
+  * All player colors and fruits have more vivid colors.
+  * Increased weapon projectiles, chickens and garrison flag on buildings.
   * The HUD in the centre shows the values of the individual units. Relics show their auras and treasures their contents.
-  * Option to skip the summary screen after a game ends.
-  * All civilian houses/apartments have a garrison flag.
   * All heroes have a large visible object flowing over their head, making them easier to see on the battlefield.
-  * Sound notification for the death of a hero.
-* **Lobby**
-  * Quick access buttons below the chat input.
-  * Rating dependent icon & title for the profile.
-  * Layout rearrangements to improve the overall experience.
-* **Replay screen**
-  * Adding a button next to the replay file path to quickly open the directory.
-* **Summary screen**
-  * Increased the size, recommend to use a 1920x1080 display.
+
+### 🌊 Miscellaneous UI improvements
+  * **Camera:** Change the camera settings in the options.
+  * **Lobby:** Quick access buttons below the chat input.
+  * **Main menu:** New background image
+  * **Replays:** overview: Adding a button next to the replay file path to quickly open the directory.
+  * **Summary:** Increased the size, recommend to use a 1920x1080 display.
 
 ---
 
-## Install
+## ⬇️ Install
+Standard location for the `/0ad/mods/` folder
+* Linux: `~/.local/share/0ad/mods/`
+* macOS: `~/Library/Application\ Support/0ad/mods/`
+* Windows: `~\Documents\My Games\0ad\mods\`
+
+Choose your preferred method
+* **Github**
+  * Clone it in your `/0ad/mods/` folder:
 ```
 git clone https://github.com/LangLangBart/boonGUI.git
 ```
-* Place it in your `/0ad/mods/` folder:
-  * Linux: `~/.local/share/0ad/mods/`
-  * macOS: `~/Library/Application\ Support/0ad/mods/`
-  * Windows: `~\Documents\My Games\0ad\mods\`
+
+* **Pyromod**
+  * Drag and drop the file over the 0ad start icon or double click it.
+  * The mod will be unpacked and placed automatically in your `/0ad/mods/` folder.
+* **ZIP**
+  * Unpack it it in your `/0ad/mods/` folder.
+
 * Launch 0 A.D., click `Settings` and `Mod Selection`.
 * Double-click `boonGUI`, click `Save Configuration` and `Start Mods`.
 
-### Convenient installation
-<details>
- <summary><b>Arch and Manjaro Linux users</b></summary>
-<p>
-
-You can skip the above steps and install the <a href="https://aur.archlinux.org/packages/0ad-boongui/">boonGUI package from the AUR</a>.
-</p>
-</details>
-
-<details>
- <summary><b>macOS Installer</b></summary>
-<p>
-
-Paste it into your macOS terminal and press enter. The mod will be downloaded and placed in the correct 0ad mods folder.
-```zsh
-zsh -c "$(curl -fsSL https://raw.githubusercontent.com/LangLangBart/boonGUI/main/.github/build_scripts/macOS_installer.sh)"
-```
-</p>
-</details>
-
 ---
 
-## Contributing
+## 💪 Contributing
 1. Fork it.
 2. Create a new feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git add .` and `git commit -m 'Add some feature'`
@@ -145,14 +112,14 @@ zsh -c "$(curl -fsSL https://raw.githubusercontent.com/LangLangBart/boonGUI/main
 #### Javacript
 Mirroring the linting process from 0 A.D. by using [ESLint](https://eslint.org) and an adopted set of rules defined in the [eslintrc.json](../.eslintrc.json) file.
 
-* (1/3) install `node.js` e.g. via Homebrew (macOS) and after that install the `yarn` package globally.
+* (1/2) install `node.js` e.g. via Homebrew (macOS) and after that install the `yarn` package globally.
 
 ```zsh
 brew install node
 npm install -g yarn
 ```
 
-* (2/3) The dependencies are defined in the `package.json` file and can be simply installed by running:
+* (2/2) The dependencies are defined in the `package.json` file and can be simply installed by running:
 
 ```zsh
 yarn install
@@ -161,14 +128,6 @@ npx simple-git-hooks
 # Confirmation messages
 # [INFO] Successfully set the pre-commit with command: yarn lint-staged
 # [INFO] Successfully set all git hooks
-```
-
-* (3/3) Create a `.gitignore_global` and add `node_modules` to it.
-
-```zsh
-git config --global core.excludesfile ~/.gitignore_global
-nano ~/.gitignore_global
-node_modules
 ```
 
 * The `.vscode` settings have been set up to automatically adjust your code to the rules when you save the document.
