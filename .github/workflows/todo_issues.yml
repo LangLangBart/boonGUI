@@ -8,8 +8,7 @@ jobs:
   todo_issues:
 
     runs-on: "ubuntu-latest"
-      permissions:
-        issues: write
+# TODO Check if the fix worked
 
     steps:
       - uses: "alstr/todo-to-issue-action@v4.5"
