@@ -1,0 +1,24 @@
+# https://github.com/alstr/todo-to-issue-action
+name: Create TODO issues
+on:
+  push:
+    branches:
+      - main
+jobs:
+  todo_issues:
+
+    runs-on: "ubuntu-latest"
+      permissions:
+        issues: write
+
+    steps:
+      - uses: "alstr/todo-to-issue-action@v4.5"
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          # The path to the repository where the action will be used, e.g. 'alstr/my-repo' (automatically set)
+          REPO: ${{ github.repository }}
+          # The SHA of the last pushed commit (automatically set)
+          BEFORE: ${{ github.event.before }}
+          # The SHA of the latest commit (automatically set)
+          SHA: ${{ github.sha }}
+          AUTO_ASSIGN: true

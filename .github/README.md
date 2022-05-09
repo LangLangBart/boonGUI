@@ -4,16 +4,16 @@
 # boonGUI <br>
 
 <p>
-<a href="https://github.com/LangLangBart/boonGUI/releases"><img src="https://img.shields.io/github/release/LangLangBart/boonGUI.svg?style=for-the-badge&color=gold&label=Version" height="15"></a>
-<a href="https://play0ad.com/download/"><img src="https://img.shields.io/badge/Compatibility-Alpha25%3A%20Yaunā-gold?style=for-the-badge" height="15"></a>
-<a href="https://wildfiregames.com/forum/topic/37147-boongui/"><img src="https://img.shields.io/github/downloads/LangLangBart/boonGUI/total.svg?color=gold&amp&label=%E2%88%91%20Downloads&amp&style=for-the-badge" height="15"></a>
-<a href="https://wildfiregames.com/forum/topic/37147-boongui/"><img src="https://img.shields.io/badge/Discussion-Forum-gold?style=for-the-badge" height="15"></a>
+<a href="https://github.com/LangLangBart/boonGUI/releases"><img src="https://img.shields.io/github/release/LangLangBart/boonGUI.svg?style=for-the-badge&color=gold&label=Version" height="18"></a>
+<a href="https://play0ad.com/download/"><img src="https://img.shields.io/badge/Compatibility-Alpha25%3A%20Yaunā-gold?style=for-the-badge" height="18"></a>
+<a href="https://wildfiregames.com/forum/topic/37147-boongui/"><img src="https://img.shields.io/github/downloads/LangLangBart/boonGUI/total.svg?color=gold&amp&label=%E2%88%91%20Downloads&amp&style=for-the-badge" height="18"></a>
+<a href="https://wildfiregames.com/forum/topic/37147-boongui/"><img src="https://img.shields.io/badge/Discussion-Forum-gold?style=for-the-badge" height="18"></a>
 </p>
 
 <p>
-<a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commits-since/LangLangBart/boonGUI/latest/main?style=for-the-badge" height="15"></a>
-<a href="https://github.com/LangLangBart/boonGUI/actions/workflows/lint.yml"><img src="https://img.shields.io/github/workflow/status/LangLangBart/boonGUI/Lint/main?label=ESLint&style=for-the-badge" height="15"></a>
-<a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commit-activity/m/LangLangBart/boonGUI?style=for-the-badge" height="15"></a>
+<a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commits-since/LangLangBart/boonGUI/latest/main?style=for-the-badge" height="18"></a>
+<a href="https://github.com/LangLangBart/boonGUI/actions/workflows/lint.yml"><img src="https://img.shields.io/github/workflow/status/LangLangBart/boonGUI/Lint/main?label=ESLint&style=for-the-badge" height="18"></a>
+<a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commit-activity/m/LangLangBart/boonGUI?style=for-the-badge" height="18"></a>
 </p>
 
 User interface **mod** for the RTS game **0 A.D.**
@@ -35,19 +35,19 @@ User interface **mod** for the RTS game **0 A.D.**
 
 ### Featured v2.4
 <p>
-<a href="https://www.youtube.com/channel/UC5Sf1aQufzzWATg9TJzg7mQ"><img src="https://img.shields.io/static/v1?label=Channel&message=0AD%20Newbie%20Rush&logo=YouTube&color=FF0000&style=for-the-badge" height="15"></a>
-<a href="https://www.youtube.com/watch?v=CA2ZaEsDkiA"><img src="https://img.shields.io/youtube/views/CA2ZaEsDkiA?color=FF0000&logo=youtube&style=for-the-badge" height="15"></a>
+<a href="https://www.youtube.com/channel/UC5Sf1aQufzzWATg9TJzg7mQ"><img src="https://img.shields.io/static/v1?label=Channel&message=0AD%20Newbie%20Rush&logo=YouTube&color=FF0000&style=for-the-badge" height="18"></a>
+<a href="https://www.youtube.com/watch?v=CA2ZaEsDkiA"><img src="https://img.shields.io/youtube/views/CA2ZaEsDkiA?color=FF0000&logo=youtube&style=for-the-badge" height="18"></a>
 </p>
 <p align="center">
-<a href="http://www.youtube.com/watch?v=CA2ZaEsDkiA"><img src="http://img.youtube.com/vi/CA2ZaEsDkiA/0.jpg" width="250"></a>
+<a href="http://www.youtube.com/watch?v=CA2ZaEsDkiA"><img src="http://img.youtube.com/vi/CA2ZaEsDkiA/0.jpg" width="325"></a>
 </p>
 
 <p>
-<a href="https://www.youtube.com/channel/UCnpCp_OvNm0_FgD_5rSrxbw"><img src="https://img.shields.io/static/v1?label=Channel&message=Plan%26Go:%200%20%20A.D.&logo=YouTube&color=FF0000&style=for-the-badge" height="15"></a>
- <a href="https://www.youtube.com/watch?v=PhdbEN6UoG4"><img src="https://img.shields.io/youtube/views/PhdbEN6UoG4?color=FF0000&logo=youtube&style=for-the-badge" height="15"></a>
+<a href="https://www.youtube.com/channel/UCnpCp_OvNm0_FgD_5rSrxbw"><img src="https://img.shields.io/static/v1?label=Channel&message=Plan%26Go:%200%20%20A.D.&logo=YouTube&color=FF0000&style=for-the-badge" height="18"></a>
+ <a href="https://www.youtube.com/watch?v=PhdbEN6UoG4"><img src="https://img.shields.io/youtube/views/PhdbEN6UoG4?color=FF0000&logo=youtube&style=for-the-badge" height="18"></a>
 </p>
 <p align="center">
-<a href="https://www.youtube.com/watch?v=PhdbEN6UoG4"><img src="http://img.youtube.com/vi/PhdbEN6UoG4/0.jpg" width="250"></a>
+<a href="https://www.youtube.com/watch?v=PhdbEN6UoG4"><img src="http://img.youtube.com/vi/PhdbEN6UoG4/0.jpg" width="325"></a>
 </p>
 
 </div>
