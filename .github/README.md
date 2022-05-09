@@ -19,7 +19,7 @@
 User interface **mod** for the RTS game **0 A.D.**
 
 <!-- 0 A.D. logo -->
-<a href="https://play0ad.com"><img src="Images/0ad_logo.png" width="300">
+<a href="https://play0ad.com"><img src="Images/0ad_logo.png" width="250">
 
 <h4>
   <a href="https://play0ad.com/re-release-of-0-a-d-alpha-25-yauna/">Website</a>
@@ -61,11 +61,11 @@ User interface **mod** for the RTS game **0 A.D.**
   * Bigger buttons for the construction panel
   * Additional ingame stats about the players
   * All player colors and fruits have more vivid colors.
-  * Increased weapon projectiles, chickens and garrison flag on buildings.
-  * The HUD in the centre shows the values of the individual units. Relics show their auras and treasures their contents.
+  * Increased size for all weapon projectiles, chickens and garrison flags on every building.
   * All heroes have a large visible object flowing over their head, making them easier to see on the battlefield.
+  * Individually selected units show attack and resistance values, relics show their auras and treasures show their contents.
 
-### 🌊 Miscellaneous UI improvements
+### 🎯 Miscellaneous UI improvements
   * **Camera:** Change the camera settings in the options.
   * **Lobby:** Quick access buttons below the chat input.
   * **Main menu:** New background image
@@ -74,7 +74,7 @@ User interface **mod** for the RTS game **0 A.D.**
 
 ---
 
-## ⬇️ Install
+## 👨‍💻 Install
 Standard location for the `/0ad/mods/` folder
 * Linux: `~/.local/share/0ad/mods/`
 * macOS: `~/Library/Application\ Support/0ad/mods/`
@@ -159,8 +159,6 @@ Motivation for this mod was the desire to learn JavaScript by creating a tool fo
   * @The Undying Nephalim - [Hyrule Conquest](https://www.moddb.com/mods/hyrule-conquest)
   * @wraitii - [ui_mod](https://github.com/wraitii/ui_mod)
 * Being good lads @elexis, @bb, @Imarok, @wraitii, @Freagarach, @vladislavbelov, @Silier and @Stan` pointed me in the right direction on the IRC #0ad/#0ad-dev channel when I got stuck.
-
-<br>
 
 <div align="center">
 

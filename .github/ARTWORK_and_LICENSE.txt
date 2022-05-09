@@ -57,11 +57,10 @@ ARTWORK & LICENSE
 	URL2: https://www.findsounds.com/ISAPI/search.dll?start=1&keywords=alert%20start&seed=49
 
 	File:
-		audio/actor/hero/death/15_ai_Portal_Sentry_Turret.ogg
-	Name: Made with 15.ai
-		Source: Portal, Character: Sentry Turret
-	License: It requires two things: display of the URL and no use of another TTS service for another part of this project. I did both, now everything should be fine.
-	URL: https://15.ai/
+		audio/actor/hero/death/coqui-ai_TTS_Hero_Death.ogg
+	Name: Made with coqui-ai/TTS (default voice, Text-to-Spectrogram model: tts_models/en/ljspeech/tacotron2-DDC, Vocoders model: vocoder_models/en/ljspeech/hifigan_v2)
+	License: Mozilla Public License 2.0
+	URL: https://github.com/coqui-ai/TTS
 
 
 <!-- SCRIPTING -->
