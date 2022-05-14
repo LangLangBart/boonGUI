@@ -320,6 +320,7 @@ class BoonGUIStats
 
 	durationReplay()
 	{
+		// TODO better is to calculate the length from the number of turns in the commands.txt file
 		const directory = Engine.GetCurrentReplayDirectory();
 		return Engine.HasReplayMetadata(directory) ? '  [icon="icon_duration" displace="1 3"] ' + timeToString(Engine.GetReplayMetadata(directory).timeElapsed) : "";
 	}
