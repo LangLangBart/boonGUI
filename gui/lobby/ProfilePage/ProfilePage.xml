@@ -17,7 +17,7 @@
 		</object>
 
 		<object name="viewProfileButton" type="button" style="ModernButtonRed" size="70%-25 25 100%-25 55">
-			<translatableAttribute id="caption">View Profile test</translatableAttribute>
+			<translatableAttribute id="caption">View Profile</translatableAttribute>
 		</object>
 
 		<object name="profileWindowPanel" size="25 65 70%-30 100%-60">
