@@ -124,8 +124,8 @@
 			},
 			{
 				"type": "boolean",
-				"label": "[color=\"220 185 70\"]beepIdle on/off",
-				"tooltip": "Decide if you want to hear the beep idle",
+				"label": "[color=\"220 185 70\"]beepIdle on at Game starts",
+				"tooltip": "Decide if you want to hear the beep idle at Game starts (disable by click at idle button)",
 				"config": "boongui.beepIdle"
 			},
 			{
