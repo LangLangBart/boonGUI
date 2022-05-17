@@ -56,7 +56,7 @@ User interface **mod** for the RTS game **0 A.D.**
 
 ## ✨ Features
 ### 🕹 In-Game
-  * Large round round minimap
+  * Large round minimap
   * Rally points are displayed for observers.
   * Bigger buttons for the construction panel
   * Additional ingame stats about the players

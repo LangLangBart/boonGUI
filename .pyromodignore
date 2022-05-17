@@ -6,4 +6,3 @@
 /package.json
 *.ts
 /**/tsconfig.json
-/yarn.lock
