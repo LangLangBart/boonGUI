@@ -23,32 +23,19 @@ User interface **mod** for the RTS game **0 A.D.**
 
 <h4>
   <a href="https://play0ad.com/re-release-of-0-a-d-alpha-25-yauna/">Website</a>
-  <span> | </span>
+  <span> · </span>
   <a href="https://github.com/0ad/0ad">GitHub</a>
-  <span> | </span>
+  <span> · </span>
   <a href="https://peertube.debian.social/videos/watch/7d134d11-0b25-42bc-92dd-13c496863e8e">Project Overview</a>
-  <span> | </span>
+  <span> · </span>
   <a href="https://trac.wildfiregames.com/wiki/FAQ">FAQ</a>
 </h4>
 
 ---
 
-### Featured v2.4
-<p>
-<a href="https://www.youtube.com/channel/UC5Sf1aQufzzWATg9TJzg7mQ"><img src="https://img.shields.io/static/v1?label=Channel&message=0AD%20Newbie%20Rush&logo=YouTube&color=FF0000&style=for-the-badge" height="18"></a>
-<a href="https://www.youtube.com/watch?v=CA2ZaEsDkiA"><img src="https://img.shields.io/youtube/views/CA2ZaEsDkiA?color=FF0000&logo=youtube&style=for-the-badge" height="18"></a>
-</p>
-<p align="center">
-<a href="http://www.youtube.com/watch?v=CA2ZaEsDkiA"><img src="http://img.youtube.com/vi/CA2ZaEsDkiA/0.jpg" width="325"></a>
-</p>
-
-<p>
-<a href="https://www.youtube.com/channel/UCnpCp_OvNm0_FgD_5rSrxbw"><img src="https://img.shields.io/static/v1?label=Channel&message=Plan%26Go:%200%20%20A.D.&logo=YouTube&color=FF0000&style=for-the-badge" height="18"></a>
- <a href="https://www.youtube.com/watch?v=PhdbEN6UoG4"><img src="https://img.shields.io/youtube/views/PhdbEN6UoG4?color=FF0000&logo=youtube&style=for-the-badge" height="18"></a>
-</p>
-<p align="center">
-<a href="https://www.youtube.com/watch?v=PhdbEN6UoG4"><img src="http://img.youtube.com/vi/PhdbEN6UoG4/0.jpg" width="325"></a>
-</p>
+| <a href="https://www.youtube.com/channel/UC5Sf1aQufzzWATg9TJzg7mQ"> <img src="https://img.shields.io/static/v1?label=Channel&message=0AD%20Newbie%20Rush&logo=YouTube&color=FF0000&style=for-the-badge" height="18"> <a href="https://www.youtube.com/watch?v=CA2ZaEsDkiA"><img src="https://img.shields.io/youtube/views/CA2ZaEsDkiA?color=FF0000&logo=youtube&style=for-the-badge" height="18"><br /> <a href="http://www.youtube.com/watch?v=CA2ZaEsDkiA" target="_blank"><img src="http://img.youtube.com/vi/CA2ZaEsDkiA/0.jpg" alt="Thumbnail" width="320" height="200" />| <a href="https://www.youtube.com/channel/UCnpCp_OvNm0_FgD_5rSrxbw"><img src="https://img.shields.io/static/v1?label=Channel&message=Plan%26Go:%200%20%20A.D.&logo=YouTube&color=FF0000&style=for-the-badge" height="18"> <a href="https://www.youtube.com/watch?v=PhdbEN6UoG4"><img src="https://img.shields.io/youtube/views/PhdbEN6UoG4?color=FF0000&logo=youtube&style=for-the-badge" height="18"><br /> <a href="https://www.youtube.com/watch?v=PhdbEN6UoG4" target="_blank"><img src="http://img.youtube.com/vi/PhdbEN6UoG4/0.jpg" alt="Thumbnail" width="320" height="200" /> |
+| :----: |:----: |
+| <a href="https://www.youtube.com/channel/UCjF60pN4P6ZwTjn4e0_f0nw"><img src="https://img.shields.io/static/v1?label=Channel&message=Kakutstha%200AD&logo=YouTube&color=FF0000&style=for-the-badge" height="18"> <a href="https://www.youtube.com/watch?v=aJBzP-UAMXI"><img src="https://img.shields.io/youtube/views/aJBzP-UAMXI?color=FF0000&logo=youtube&style=for-the-badge" height="18"><br /> <a href="https://www.youtube.com/watch?v=aJBzP-UAMXI" target="_blank"><img src="http://img.youtube.com/vi/aJBzP-UAMXI/0.jpg" alt="Thumbnail" width="320" height="200" /> | <a href="https://www.youtube.com/channel/UCS-SFei6NFRuGN8CKtAsYrA"><img src="https://img.shields.io/static/v1?label=Channel&message=Tom%200ad&logo=YouTube&color=FF0000&style=for-the-badge" height="18"> <a href="https://www.youtube.com/watch?v=_DP_-WOARXo"><img src="https://img.shields.io/youtube/views/_DP_-WOARXo?color=FF0000&logo=youtube&style=for-the-badge" height="18"><br /> <a href="https://www.youtube.com/watch?v=_DP_-WOARXo" target="_blank"><img src="http://img.youtube.com/vi/_DP_-WOARXo/0.jpg" alt="Thumbnail" width="320" height="200" /> |
 
 </div>
 

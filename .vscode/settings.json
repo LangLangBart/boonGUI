@@ -11,6 +11,7 @@
 	},
 	"files.exclude": {
 		"maps": true,
+		"yarn.lock":true,
 		"node_modules": true
 	}
 }
