@@ -6,6 +6,10 @@ on:
 
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
 
+# TODO "This action does not generate PKGBUILD for you, you must generate it yourself (e.g. by using actions before this action)."
+#  https://github.com/search?o=desc&q=github-actions-deploy-aur+language%3AYAML&s=indexed&type=Code
+#  labels: should have
+#  assignees: IlanFrumer
 jobs:
   aur-publish:
     runs-on: ubuntu-latest

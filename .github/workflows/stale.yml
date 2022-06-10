@@ -26,7 +26,7 @@ jobs:
           stale-issue-label: "stale"
           # Keep the stale label for closed issues
           remove-issue-stale-when-updated: false
-          exempt-issue-labels: "bug,nice to have,should have"
+          exempt-issue-labels: "bug,nice to have,should have,todo"
           days-before-issue-stale: 20
           days-before-issue-close: 10
 
@@ -37,6 +37,6 @@ jobs:
           stale-pr-label: "stale"
           # Keep the stale label for closed pull-requests
           remove-pr-stale-when-updated: false
-          exempt-pr-labels: "nice to have,should have"
+          exempt-pr-labels: "nice to have,should have,todo"
           days-before-pr-stale: 20
           days-before-pr-close: 10
