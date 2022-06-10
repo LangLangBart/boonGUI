@@ -6,3 +6,6 @@ pnpm-lock.yaml
 
 # node
 node_modules
+
+# Avoid map folder
+maps
