@@ -56,7 +56,7 @@ User interface **mod** for the RTS game **0 A.D.**
   * **Camera:** Change the camera settings in the options.
   * **Lobby:** Quick access buttons below the chat input.
   * **Main menu:** New background image
-  * **Replays:** overview: Adding a button next to the replay file path to quickly open the directory.
+  * **Replays overview:** Adding a button next to the replay file path to quickly open the directory.
   * **Summary:** Increased the size, recommend to use a 1920x1080 display.
 
 ---
