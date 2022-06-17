@@ -16,7 +16,7 @@
     "lint": "eslint ."
   },
   "simple-git-hooks": {
-    "pre-commit": "yarn lint-staged"
+    "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
     "*.{js,ts}": "eslint --fix"

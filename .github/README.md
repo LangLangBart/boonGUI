@@ -99,21 +99,20 @@ git clone https://github.com/LangLangBart/boonGUI.git
 #### Javacript
 Mirroring the linting process from 0 A.D. by using [ESLint](https://eslint.org) and an adopted set of rules defined in the [eslintrc.json](../.eslintrc.json) file.
 
-* (1/2) install `node.js` e.g. via Homebrew (macOS) and after that install the `yarn` package globally.
+* (1/2) install `node.js` e.g. via Homebrew (macOS).
 
 ```zsh
 brew install node
-npm install -g yarn
 ```
 
 * (2/2) The dependencies are defined in the `package.json` file and can be simply installed by running:
 
 ```zsh
-yarn install
+npm install
 # [Optional] A pre-commit hook to check your working copy for lint problems and fix them if possible is defined in the package.json file. To use it, run the following command once. If you make changes to the hook, run the command again.
 npx simple-git-hooks
 # Confirmation messages
-# [INFO] Successfully set the pre-commit with command: yarn lint-staged
+# [INFO] Successfully set the pre-commit with command: npx lint-staged
 # [INFO] Successfully set all git hooks
 ```
 
