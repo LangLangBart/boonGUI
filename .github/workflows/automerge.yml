@@ -8,10 +8,6 @@ permissions:
   pull-requests: write
   contents: write
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request_target' && github.head_ref || github.ref }}
-  cancel-in-progress: true
-
 jobs:
   dependabot:
     runs-on: ubuntu-latest
