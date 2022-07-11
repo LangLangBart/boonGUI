@@ -35,7 +35,7 @@ const g_BoonGUIResTypes = ["food", "wood", "stone", "metal"];
 function BoonGUIGetRowSize(index, height)
 {
 	const y1 = height * index;
-	const y2 = height * (index + 1)
+	const y2 = height * (index + 1
 	return `0 ${y1} 100% ${y2}`;
 }
 
