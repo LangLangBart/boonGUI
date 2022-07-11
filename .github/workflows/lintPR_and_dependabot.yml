@@ -1,0 +1,80 @@
+name: LintPR's & Dependabot
+
+on:
+  pull_request:
+
+# permissions:
+#   checks: write
+#   contents: read
+#   pull-requests: write
+
+# "When the permissions key is used, all unspecified permissions are set to no access."
+# https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  run-linters-pull-request:
+    name: Run linter for PR's
+    runs-on: ubuntu-latest
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run linters
+        uses: wearerequired/lint-action@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Errors will cause a failed workflow, warnings are okay, because they will be automatically fixed when the workflow gets merged into the main branch.
+          continue_on_error: false
+          eslint: true
+          # auto_fix must be set to false for the moment  https://github.com/wearerequired/lint-action/issues/13
+          auto_fix: false
+
+  auto-approve:
+    name: Dependabot auto-approve
+    runs-on: ubuntu-latest
+    # Not requiring successful prior job
+    if: ${{ always() && github.actor == 'dependabot[bot]' }}
+    needs: [run-linters-pull-request]
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v1.1.1
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Auto-approve PR
+        run: gh pr review --approve "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+  auto-merge:
+    name: Dependabot auto-merge
+    runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    needs: [auto-approve]
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v1.1.1
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Auto-merge PR
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
