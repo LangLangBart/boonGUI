@@ -1,20 +1,60 @@
-# DependaBot creates PR's and this file is to automatically merge them.
-name: DependaBot Automerge
+name: LintPR's & Dependabot automerge
+
 on:
   pull_request:
-    types: [opened, labeled]
-
-permissions:
-  pull-requests: write
-  contents: write
+  workflow_dispatch:
 
 jobs:
-  dependabot:
+  run-linters-pull-request:
+    name: Run linter for PR's
     runs-on: ubuntu-latest
-    if: ${{ github.actor == 'dependabot[bot]' }}
+    if: ${{ github.actor != 'dependabot[bot]' }}
+
     steps:
-      - name: Enable automerge for DependaBot PRs
-        run: gh pr merge --auto --rebase "$PR_URL"
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run linters
+        uses: wearerequired/lint-action@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          continue_on_error: false
+          eslint: true
+          auto_fix: false
+
+  auto-approve:
+    name: Auto approve
+    runs-on: ubuntu-latest
+    # Not requiring successful prior job
+    if: ${{ always() }}
+    needs: [run-linters-pull-request]
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: hmarr/auto-approve-action@v2
+        if: github.actor == 'dependabot[bot]'
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+  automerge:
+    name: Auto merge
+    runs-on: ubuntu-latest
+    # jobs run in parallel by default, automerge needs autoapprove as a prerequisite
+    needs: autoapprove
+    steps:
+      - uses: pascalgn/automerge-action@v0.15.3
+        if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]'
         env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_ACTIONS_TOKEN }}
+          # Merges those PRs labelled "dependencies" only
+          MERGE_LABELS: dependencies
+          MERGE_METHOD: rebase
