@@ -1,12 +1,11 @@
 name: "🐞 Bug Report"
 description: Report a bug
 title: "[Bug]: "
-labels: "Bug"
-assignees: "LangLangBart"
+labels: ["bug"]
 body:
   - type: checkboxes
     attributes:
-      label: Before You Submit Your Bug Report
+      label: Before submitting your Bug Report
       options:
         - label: I have searched the [issue tracker](https://github.com/LangLangBart/boonGUI/issues) for a bug report that matches the one I want to file, without success.
           required: true

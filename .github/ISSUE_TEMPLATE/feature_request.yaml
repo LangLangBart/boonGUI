@@ -1,11 +1,11 @@
 name: "✨ Feature Request"
 description: Request a feature for boonGUI which you would like to see in a future release.
 title: "[Feature]: "
-labels: "Nice to have"
+labels: ["feature-request"]
 body:
   - type: checkboxes
     attributes:
-      label: Before You Submit Your Feature Request
+      label: Before submitting your Feature Request
       options:
         - label: I have searched the [issue tracker](https://github.com/LangLangBart/boonGUI/issues) for a feature request that matches the one I want to file, without success.
           required: true
