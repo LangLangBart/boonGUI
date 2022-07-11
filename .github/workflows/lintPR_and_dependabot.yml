@@ -1,4 +1,4 @@
-name: LintPR's & Dependabot
+name: LintPR & Dependabot
 
 on:
   pull_request:
@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   run-linters-pull-request:
-    name: Run linter for PR's
+    name: Run linter for pull request
     runs-on: ubuntu-latest
     if: ${{ github.actor != 'dependabot[bot]' }}
     steps:

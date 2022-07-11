@@ -4,15 +4,13 @@ on:
   push:
     tags:
       - "*"
+  workflow_dispatch:
 
-  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
-
-jobs: # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-  buildRelease: # Job
+jobs:
+  buildRelease:
     name: Build Release
     runs-on: ubuntu-latest # The type of runner that the job will run on
     steps: # Steps represent a sequence of tasks that will be executed as part of the job
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Clone repo
         uses: actions/checkout@v3
 
@@ -39,3 +37,26 @@ jobs: # A workflow run is made up of one or more jobs that can run sequentially 
             ${{ env.PYROMOD_PYROMOD_FILE_PATH }}
             ${{ env.PYROMOD_ZIP_FILE_PATH }}
           generate_release_notes: true
+
+# TODO "This action does not generate PKGBUILD for you, you must generate it yourself (e.g. by using actions before this action)."
+#  https://github.com/search?o=desc&q=github-actions-deploy-aur+language%3AYAML&s=indexed&type=Code
+#  labels: should have
+#  assignees: IlanFrumer
+  aur-publish:
+    # https://aur.archlinux.org/packages/0ad-boongui
+    name: AUR Release
+    needs: [buildRelease]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Publish AUR package
+        uses: KSXGitHub/github-actions-deploy-aur@v2.3.0
+        with:
+          pkgname: 0ad-boongui
+          pkgbuild: ./PKGBUILD
+          commit_username: ${{ secrets.AUR_USERNAME }}
+          commit_email: ${{ secrets.AUR_EMAIL }}
+          ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
+          commit_message: Update AUR package
+          ssh_keyscan_types: rsa,dsa,ecdsa,ed25519
