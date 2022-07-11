@@ -59,7 +59,7 @@ function limitNumber(num)
 	{
 		return Number(num.toFixed(1));
 	}
-	return Math.round(num);
+	return Math.round(num)
 }
 
 // boonGUI: Colored Right-Click
