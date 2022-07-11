@@ -57,7 +57,7 @@ function limitNumber(num)
 {
 	if (num < 10)
 	{
-		return Number(num.toFixed(1))
+		return Number(num.toFixed(1));
 	}
 	return Math.round(num);
 }
