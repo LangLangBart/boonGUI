@@ -14,7 +14,7 @@ body:
   - type: input
     attributes:
       label: boonGUI Version
-      placeholder: Github, v2.4.1
+      placeholder: For example v2.4.1 or "latest release"; if using Github use the latest commit number.
     validations:
       required: true
   - type: textarea

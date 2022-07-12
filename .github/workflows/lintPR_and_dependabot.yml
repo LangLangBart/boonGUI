@@ -1,3 +1,5 @@
+# This workflow lints PR's and automerges Dependabot PR's
+
 name: LintPR & Dependabot
 
 on:
@@ -5,10 +7,11 @@ on:
 
 # permissions:
 #   checks: write
-#   contents: read
 #   pull-requests: write
+#   ....
 
 # "When the permissions key is used, all unspecified permissions are set to no access."
+# Make sure you know exactly all the permissions, otherwise errors will be persistently and disturbingly surface.
 # https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token
 
 concurrency:
@@ -32,7 +35,7 @@ jobs:
           node-version: 14
 
       - name: Install dependencies
-        run: yarn install
+        run: npm install
 
       - name: Run linters
         uses: wearerequired/lint-action@v2
@@ -63,6 +66,7 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
   auto-merge:
+    # maybe combine auto-approve and auto-merge
     name: Dependabot auto-merge
     runs-on: ubuntu-latest
     if: ${{ github.actor == 'dependabot[bot]' }}

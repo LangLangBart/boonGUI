@@ -1,4 +1,6 @@
-name: Lint & TODO's
+# Standard workflow for new commits for linting and creating issues when it find the TODO keyword in the newly pushed code.
+
+name: Lint & TODO issues
 
 on:
   push:
@@ -26,7 +28,7 @@ jobs:
           node-version: 14
 
       - name: Install dependencies
-        run: yarn install
+        run: npm install
 
       - name: Run linters
         uses: wearerequired/lint-action@v2
@@ -45,7 +47,7 @@ jobs:
     # https://github.com/alstr/todo-to-issue-action
     name: Create TODO issues
     # jobs run in parallel by default, but i like them sequentially
-    # jobs.<job_id>.needs - Not requiring successful "run-linters" job
+    # jobs.<job_id>.needs - with "always()" not requiring successful prior job
     if: ${{ always() }}
     needs: [run-linters]
     runs-on: "ubuntu-latest"
@@ -54,10 +56,9 @@ jobs:
       - uses: "alstr/todo-to-issue-action@v4.6.6"
         with:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # The path to the repository where the action will be used, e.g. 'alstr/my-repo' (automatically set)
           REPO: ${{ github.repository }}
-          # The SHA of the last pushed commit (automatically set)
+          # The SHA of the last pushed commit
           BEFORE: ${{ github.event.before }}
-          # The SHA of the latest commit (automatically set)
+          # The SHA of the latest commit
           SHA: ${{ github.sha }}
           AUTO_ASSIGN: true
