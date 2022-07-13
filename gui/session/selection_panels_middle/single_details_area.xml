@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Details panel for a single entity. -->
-<object name="detailsAreaSingle" size="4 4 100%-4 100%-2" type="image" sprite="edgedPanelShader">
+<object name="detailsAreaSingle" size="4 4 100%-4 100%-4" type="image" sprite="edgedPanelShader">
 
 	<!-- Big unit icon -->
 	<object size="0 0 100 100" type="button" name="iconBorder" sprite="iconBorder" tooltip_style="sessionToolTipLargerOffset">
@@ -112,7 +112,7 @@
 
 
 	<!-- Names and civilization emblem etc. (This must come before the attack and resistance icon to avoid clipping issues.) -->
-	<object size="0 135 100% 100%" name="statsArea" type="image" sprite="edgedPanelShader">
+	<object size="0 135 100% 100%" name="statsArea">
 
 		<!-- Primary and secondary names. -->
 		<object size="0 3 100% 37">

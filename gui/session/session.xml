@@ -87,6 +87,7 @@
 			size="50%-316 100%-166 50%-110 100%"
 			sprite="supplementalDetailsPanelAdjusted"
 			type="image"
+			z="20"
 		>
 			<include directory="gui/session/selection_panels_left/"/>
 		</object>
@@ -105,7 +106,7 @@
 			size="50%+110 100%-205 50%+572 100%"
 			sprite="unitCommandsPanelAdjusted"
 			type="image"
-			z="100"
+			z="20"
 		>
 			<include directory="gui/session/selection_panels_right/"/>
 		</object>
