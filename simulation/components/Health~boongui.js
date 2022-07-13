@@ -12,7 +12,6 @@ Health.prototype.HandleDeath = function()
 		cmpDeathDamage.CauseDeathDamage();
 
 	if (MatchesClassList(cmpIdentity.GetClassesList(), "Hero"))
-	// TODO Check whether this voice needs an additional instrumental sound, e.g. a gong.
 		cmpSoundManager.PlaySoundGroup("actor/hero/death/coqui-ai_TTS_Hero_Death.xml", this.entity);
 	PlaySound("death", this.entity);
 

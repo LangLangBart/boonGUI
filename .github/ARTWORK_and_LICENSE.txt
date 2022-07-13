@@ -61,6 +61,7 @@ ARTWORK & LICENSE
 	Name: Made with coqui-ai/TTS (default voice, Text-to-Spectrogram model: tts_models/en/ljspeech/tacotron2-DDC, Vocoders model: vocoder_models/en/ljspeech/hifigan_v2)
 	License: Mozilla Public License 2.0
 	URL: https://github.com/coqui-ai/TTS
+	Note: Using version 0.7.1 default settings
 
 
 <!-- SCRIPTING -->
