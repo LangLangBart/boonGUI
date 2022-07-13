@@ -349,7 +349,7 @@ class BoonGUIStatsTopPanelRow
 		tooltip += playerNick + "\n";
 		font = "sans-stroke-20";
 		tooltip += `${setStringTags("○", { color, font })} / ${setStringTags("●", { color, font })}\n`;
-		tooltip += "Full circle when cartography has been researched or when you are without mutual allies";
+		tooltip += "Full circle when cartography has been researched or when you are without mutual allies.";
 		this.los.tooltip = tooltip;
 	}
 }

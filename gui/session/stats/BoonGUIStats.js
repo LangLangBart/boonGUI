@@ -293,6 +293,9 @@ class BoonGUIStats
 		// The dev overlay should stay above the stats mode overlay
 		Engine.GetGUIObjectByName("devCommandsOverlay").z = 100;
 
+		Engine.GetGUIObjectByName("menuButton").z = 200;
+		Engine.GetGUIObjectByName("menuButtonPanel").z = 150;
+		Engine.GetGUIObjectByName("chatDialogPanel").z = 200;
 		// Game objectives panel
 		Engine.GetGUIObjectByName("objectivesPanel").z = 150;
 		Engine.GetGUIObjectByName("objectivesTitle").font = "sans-bold-16";

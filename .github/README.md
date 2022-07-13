@@ -11,8 +11,9 @@
 </p>
 
 <p>
+<!-- dev badges -->
 <a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commits-since/LangLangBart/boonGUI/latest/main?style=for-the-badge" height="18"></a>
-<a href="https://github.com/LangLangBart/boonGUI/actions/workflows/lint.yml"><img src="https://img.shields.io/github/workflow/status/LangLangBart/boonGUI/Lint/main?label=ESLint&style=for-the-badge" height="18"></a>
+<a href="https://github.com/LangLangBart/boonGUI/actions/workflows/lint_and_todos.yml"><img src="https://img.shields.io/github/workflow/status/LangLangBart/boonGUI/Lint%20&%20TODO%20issues/main?label=ESLint&style=for-the-badge" height="18"></a>
 <a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commit-activity/m/LangLangBart/boonGUI?style=for-the-badge" height="18"></a>
 </p>
 
