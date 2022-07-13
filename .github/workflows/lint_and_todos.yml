@@ -39,8 +39,9 @@ jobs:
           # ESLint checks should fail even if there are no errors and only warnings.
           eslint_args: "--max-warnings 0"
           eslint: true
-          prettier: false
-          # Whether linters should try to fix code style issues automatically. If some issues can be fixed, the action will commit and push the changes to the corresponding branch.
+          # https://github.community/t/github-linting-remote-rejected
+          # When auto_fix is enabled for the Lint workflow, no linter is allowed to modify the files in .github/workflows. To avoid a failed workflow, we limit the linter to js,ts files.
+          eslint_extensions: js,ts
           auto_fix: true
 
   todo_issues:

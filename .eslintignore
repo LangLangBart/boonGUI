@@ -1,3 +1,0 @@
-# https://github.community/t/github-linting-remote-rejected
-# When auto_fix is enabled for the Lint workflow, no linter is allowed to modify the files in .github/workflows. To avoid a failed workflow, this file is set up.
-.github

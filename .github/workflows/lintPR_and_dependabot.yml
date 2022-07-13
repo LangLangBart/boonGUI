@@ -44,6 +44,9 @@ jobs:
           # Errors will cause a failed workflow, warnings are okay, because they will be automatically fixed when the workflow gets merged into the main branch.
           continue_on_error: false
           eslint: true
+          # https://github.community/t/github-linting-remote-rejected
+          # When auto_fix is enabled for the Lint workflow, no linter is allowed to modify the files in .github/workflows. To avoid a failed workflow, we limit the linter to js,ts files.
+          # eslint_extensions: js,ts
           # auto_fix must be set to false for the moment  https://github.com/wearerequired/lint-action/issues/13
           auto_fix: false
 
