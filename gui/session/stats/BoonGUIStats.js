@@ -20,7 +20,7 @@ class BoonGUIStats
 
 		this.checkbox = Engine.GetGUIObjectByName("visibilityStatsModesPanel");
 		this.checkbox.tooltip = "Toggle the stats panel on the right side." + coloredText("\nLow performance gain when hidden.", "red");
-		this.checkbox.checked = Engine.ConfigDB_GetValue("user", this.configName[2]) == "true";
+		this.checkbox.checked = Engine.ConfigDB_GetValue("user", "boongui.statsmode") == "true";
 
 		playerViewControl.registerPlayerIDChangeHandler(this.updateLayout.bind(this));
 		playerViewControl.registerViewedPlayerChangeHandler(this.onViewedPlayerChange.bind(this));
@@ -35,26 +35,21 @@ class BoonGUIStats
 
 	configValues()
 	{
-		for (let i = 0; i < this.configName.length; i++)
-		{
-			if (Engine.ConfigDB_GetValue("user", this.configName[i]) === "")
-				Engine.ConfigDB_CreateAndWriteValueToFile("user", this.configName[i], "true", "config/user.cfg");
-		}
-		this.root.hidden = Engine.ConfigDB_GetValue("user", g_IsObserver ? this.configName[0] : this.configName[1]) == "false";
-		this.statsModes.root.hidden = Engine.ConfigDB_GetValue("user", this.configName[2]) == "false";
+		this.root.hidden = Engine.ConfigDB_GetValue("user", g_IsObserver ? "boongui.observer.toppanel" : "boongui.player.toppanel") == false;
+		this.statsModes.root.hidden = Engine.ConfigDB_GetValue("user", "boongui.statsmode") == false;
 	}
 
 	toggle()
 	{
 		this.root.hidden = !this.root.hidden;
-		toggleConfigBool(g_IsObserver ? BoonGUIStats.prototype.configName[0] : BoonGUIStats.prototype.configName[1]);
+		toggleConfigBool(g_IsObserver ? "boongui.observer.toppanel" : "boongui.player.toppanel");
 		this.shouldForceRender = true;
 	}
 
 	toggleCheckbox()
 	{
 		this.statsModes.root.hidden = !this.statsModes.root.hidden;
-		toggleConfigBool(this.configName[2]);
+		toggleConfigBool("boongui.statsmode");
 		this.shouldForceRender = true;
 	}
 
@@ -86,7 +81,7 @@ class BoonGUIStats
 	{
 		// if a player resigns always show it
 		this.root.hidden = false;
-		Engine.ConfigDB_CreateAndWriteValueToFile("user", this.configName[0], "true", "config/user.cfg");
+		Engine.ConfigDB_CreateAndWriteValueToFile("user", "boongui.observer.toppanel", "true", "config/user.cfg");
 		this.onViewedPlayerChange();
 	}
 
@@ -330,5 +325,3 @@ class BoonGUIStats
 }
 
 BoonGUIStats.prototype.IncomeRateBufferSize = 50;
-BoonGUIStats.prototype.configName = ["boongui.observer.toppanel", "boongui.player.toppanel", "boongui.statsmode"];
-

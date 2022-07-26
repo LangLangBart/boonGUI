@@ -172,10 +172,7 @@ class BoonGUIStatsTopPanelRow
 			this.phaseProgress.size = size;
 		}
 
-		value = "boongui.toppanel.coloredPlayerStatsBackground";
-		const configColoredPlayerStatsBackground = Math.floor(Engine.ConfigDB_GetValue("user", value));
-		if (!configColoredPlayerStatsBackground)
-			Engine.ConfigDB_CreateAndWriteValueToFile("user", value, "5", "config/user.cfg");
+		const configColoredPlayerStatsBackground = Math.floor(Engine.ConfigDB_GetValue("user", "boongui.toppanel.coloredPlayerStatsBackground"));
 
 		this.coloredPlayerStatsBackground.sprite = `backcolor: ${state.playerColor} ${configColoredPlayerStatsBackground}`;
 		this.coloredPlayerStatsBorder.sprite = `backcolor: ${state.playerColor} 85`;
@@ -228,10 +225,7 @@ class BoonGUIStatsTopPanelRow
 			this.resource.counts[resType].caption = setStringTags(caption, { color });
 			tooltip += setStringTags("Amount", { "color": value > 0 ? "white" : "dimmedWhite" }) + `${g_Indent}${g_Indent} ${this.resource.counts[resType].caption}\n`;
 
-			value = "boongui.toppanel.resourceGatherersRates";
-			const configResourceGatherersRates = Engine.ConfigDB_GetValue("user", value);
-			if (!configResourceGatherersRates)
-				Engine.ConfigDB_CreateAndWriteValueToFile("user", value, "Gatherers", "config/user.cfg");
+			const configResourceGatherersRates = Engine.ConfigDB_GetValue("user", "boongui.toppanel.resourceGatherersRates");
 
 			value = state.resourceGatherers[resType];
 			color = scales.getColor(`${resType}Gatherers`, value, 180);

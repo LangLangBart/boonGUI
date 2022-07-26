@@ -5,115 +5,115 @@
 			{
 				"type": "dropdown",
 				"label": "[color=\"220 185 70\"]Scroll[/color] speed",
-				"tooltip": "Set the speed at which you move across the map.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color][color=\"220 185 70\"]\nNormal represents 0 A.D.'s default value.[/color]",
+				"tooltip": "Set the speed at which you move across the map.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color]",
 				"config": "view.scroll.speed",
 				"list": [
-					{ "value": 50, "label": "50 - Very Slow" },
-					{ "value": 80, "label": "80 - Slow" },
-					{ "value": 120, "label": "120 - Normal" },
-					{ "value": 180, "label": "180 - Fast" },
-					{ "value": 250, "label": "250 - Very Fast" },
-					{ "value": 350, "label": "350 - Ultra Fast" }
+					{ "value": "50.0", "label": "50 - Very Slow" },
+					{ "value": "80.0", "label": "80 - Slow" },
+					{ "value": "120.0", "label": "[color=\"220 185 70\"]120 - Default[/color]" },
+					{ "value": "180.0", "label": "180 - Fast" },
+					{ "value": "250.0", "label": "250 - Very Fast" },
+					{ "value": "350.0", "label": "350 - Ultra Fast" }
 				]
 			},
 			{
 				"type": "dropdown",
 				"label": "[color=\"220 185 70\"]Rotation[/color] speed: Horizontal",
-				"tooltip": "Set the speed at which you rotate left/right.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color][color=\"220 185 70\"]\nNormal represents 0 A.D.'s default value.[/color]",
+				"tooltip": "Set the speed at which you rotate left/right.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color]",
 				"config": "view.rotate.x.speed",
 				"list": [
-					{ "value": 0.5, "label": "0.5 - Very Slow" },
-					{ "value": 0.8, "label": "0.8 - Slow" },
-					{ "value": 1.2, "label": "1.2 - Normal" },
-					{ "value": 1.8, "label": "1.8 - Fast" },
-					{ "value": 2.5, "label": "2.5 - Very Fast" },
-					{ "value": 3.5, "label": "3.5 - Ultra Fast" }
+					{ "value": "0.5", "label": "0.5 - Very Slow" },
+					{ "value": "0.8", "label": "0.8 - Slow" },
+					{ "value": "1.2", "label": "[color=\"220 185 70\"]1.2 - Default[/color]" },
+					{ "value": "1.8", "label": "1.8 - Fast" },
+					{ "value": "2.5", "label": "2.5 - Very Fast" },
+					{ "value": "3.5", "label": "3.5 - Ultra Fast" }
 				]
 			},
 			{
 				"type": "dropdown",
 				"label": "[color=\"220 185 70\"]Rotation[/color] speed: Vertical",
-				"tooltip": "Set the speed at which you rotate up/down.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color][color=\"220 185 70\"]\nNormal represents 0 A.D.'s default value.[/color]",
+				"tooltip": "Set the speed at which you rotate up/down.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color]",
 				"config": "view.rotate.y.speed",
 				"list": [
-					{ "value": 1.1, "label": "1.1 - Very Slow" },
-					{ "value": 1.8, "label": "1.8 - Slow" },
-					{ "value": 2, "label": "2 - Normal" },
-					{ "value": 4.1, "label": "3.9 - Fast" },
-					{ "value": 5.8, "label": "5.8 - Very Fast" },
-					{ "value": 8.2, "label": "8.2 - Ultra Fast" }
+					{ "value": "1.1", "label": "1.1 - Very Slow" },
+					{ "value": "1.8", "label": "1.8 - Slow" },
+					{ "value": "2.0", "label": "[color=\"220 185 70\"]2 - Default[/color]" },
+					{ "value": "4.1", "label": "3.9 - Fast" },
+					{ "value": "5.8", "label": "5.8 - Very Fast" },
+					{ "value": "8.2", "label": "8.2 - Ultra Fast" }
 				]
 			},
 			{
 				"type": "dropdown",
 				"label": "[color=\"220 185 70\"]Zoom[/color] speed: Hotkey",
-				"tooltip": "Set the speed at which you zoom in/out with your hotkeys.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color][color=\"220 185 70\"]\nNormal represents 0 A.D.'s default value.[/color]",
+				"tooltip": "Set the speed at which you zoom in/out with your hotkeys.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color]",
 				"config": "view.zoom.speed",
 				"list": [
-					{ "value": 150, "label": "150 - Very Slow" },
-					{ "value": 200, "label": "200 - Slow" },
-					{ "value": 256, "label": "256 - Normal" },
-					{ "value": 350, "label": "350 - Fast" },
-					{ "value": 500, "label": "500 - Very Fast" },
-					{ "value": 650, "label": "650 - Ultra Fast" }
+					{ "value": "150.0", "label": "150 - Very Slow" },
+					{ "value": "200.0", "label": "200 - Slow" },
+					{ "value": "256.0", "label": "[color=\"220 185 70\"]256 - Default[/color]" },
+					{ "value": "350.0", "label": "350 - Fast" },
+					{ "value": "500.0", "label": "500 - Very Fast" },
+					{ "value": "650.0", "label": "650 - Ultra Fast" }
 				]
 			},
 			{
 				"type": "dropdown",
 				"label": "[color=\"220 185 70\"]Zoom[/color] speed: Mouse wheel",
-				"tooltip": "Set the speed at which you zoom in/out with your mouse wheel.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color][color=\"220 185 70\"]\nNormal represents 0 A.D.'s default value.[/color]",
+				"tooltip": "Set the speed at which you zoom in/out with your mouse wheel.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color]",
 				"config": "view.zoom.speed.wheel",
 				"list": [
-					{ "value": 15, "label": "15 - Very Slow" },
-					{ "value": 25, "label": "25 - Slow" },
-					{ "value": 32, "label": "32 - Normal" },
-					{ "value": 50, "label": "50 - Fast" },
-					{ "value": 75, "label": "75 - Very Fast" },
-					{ "value": 100, "label": "100 - Ultra Fast" }
+					{ "value": "15.0", "label": "15 - Very Slow" },
+					{ "value": "25.0", "label": "25 - Slow" },
+					{ "value": "32.0", "label": "[color=\"220 185 70\"]32 - Default[/color]" },
+					{ "value": "50.0", "label": "50 - Fast" },
+					{ "value": "75.0", "label": "75 - Very Fast" },
+					{ "value": "100.0", "label": "100 - Ultra Fast" }
 				]
 			},
 			{
 				"type": "dropdown",
 				"label": "[color=\"220 185 70\"]Zoom[/color] out distance",
-				"tooltip": "Set how far you can zoom out.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color][color=\"220 185 70\"]\nNormal represents 0 A.D.'s default value.[/color]",
+				"tooltip": "Set how far you can zoom out.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color]",
 				"config": "view.zoom.max",
 				"list": [
-					{ "value": 200, "label": "200 - Normal" },
-					{ "value": 300, "label": "300 - Far" },
-					{ "value": 400, "label": "400 - Very Far" }
+					{ "value": "200.0", "label": "[color=\"220 185 70\"]200 - Default[/color]" },
+					{ "value": "300.0", "label": "300 - Far" },
+					{ "value": "400.0", "label": "400 - Very Far" }
 				]
 			},
 			{
 				"type": "dropdown",
 				"label": "[color=\"220 185 70\"]Zoom[/color] in distance",
-				"tooltip": "Set how close you can zoom in.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color][color=\"220 185 70\"]\nNormal represents 0 A.D.'s default value.[/color]",
+				"tooltip": "Set how close you can zoom in.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color]",
 				"config": "view.zoom.min",
 				"list": [
-					{ "value": 10, "label": "10 - Very Close" },
-					{ "value": 30, "label": "30 - Close" },
-					{ "value": 50, "label": "50 - Normal" }
+					{ "value": "10.0", "label": "10 - Very Close" },
+					{ "value": "30.0", "label": "30 - Close" },
+					{ "value": "50.0", "label": "[color=\"220 185 70\"]50 - Default[/color]" }
 				]
 			},
 			{
 				"type": "dropdown",
 				"label": "[color=\"220 185 70\"]Windowed mode[/color] screen width",
-				"tooltip": "Screen width in windowed mode.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color][color=\"220 185 70\"]\nDefault:1024[/color]",
+				"tooltip": "Screen width in windowed mode.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color][color=\"220 185 70\"]",
 				"config": "xres",
 				"list": [
-					{ "value": 1024, "label": "1024" },
-					{ "value": 1280, "label": "1280" },
-					{ "value": 1440, "label": "1440" }
+					{ "value": "1024", "label": "[color=\"220 185 70\"]1024 - Default[/color]" },
+					{ "value": "1280", "label": "1280" },
+					{ "value": "1440", "label": "1440" }
 				]
 			},
 			{
 				"type": "dropdown",
 				"label": "[color=\"220 185 70\"]Windowed mode[/color] screen height",
-				"tooltip": "Screen height in windowed mode.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color][color=\"220 185 70\"]\nDefault:768[/color]",
+				"tooltip": "Screen height in windowed mode.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color][color=\"220 185 70\"]",
 				"config": "yres",
 				"list": [
-					{ "value": 768, "label": "768" },
-					{ "value": 800, "label": "800" },
-					{ "value": 900, "label": "900" }
+					{ "value": "768", "label": "[color=\"220 185 70\"]768 - Default[/color]" },
+					{ "value": "800", "label": "800" },
+					{ "value": "900", "label": "900" }
 				]
 			},
 			{
@@ -128,7 +128,7 @@
 				"tooltip": "Specify what to display next to the resource count.\n\n[color=\"220 185 70\"]Gatherers:[/color] Total number of units currently gathering or on their way to gather this resource.\n[color=\"220 185 70\"]Income/10s:[/color] Total number of resources income over 10 seconds.",
 				"config": "boongui.toppanel.resourceGatherersRates",
 				"list": [
-					{ "value": "Gatherers", "label": "Gatherers" },
+					{ "value": "Gatherers", "label": "[color=\"220 185 70\"]Gatherers - Default[/color]" },
 					{ "value": "Rates", "label": "Income/10s"}
 				]
 			},
