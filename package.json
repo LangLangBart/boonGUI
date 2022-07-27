@@ -18,7 +18,7 @@
     "valesync": "vale sync"
   },
   "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
+    "pre-commit": "npx lint-staged && vale ."
   },
   "lint-staged": {
     "*.{js,ts}": "eslint --fix"

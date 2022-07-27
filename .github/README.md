@@ -134,9 +134,9 @@ npx eslint . --fix
 brew install vale
 ```
 
-1. Run `vale sync` to get all the dependencies and `vale .` to display warnings/erros for all defined cases in the [.vale.ini](../.vale.ini) file.
+2. Run `vale sync` to get all the dependencies and `vale .` to display warnings/erros for all defined cases in the [.vale.ini](../.vale.ini) file.
 
-* Compared to ESLint, Vale doesn't have a way to auto fix issues at the moment, this has to be done manually.
+* Unlike ESLint, Vale doesn't have a way to auto fix issues at the moment, this must be done manually.
 * An optional installation of the [Vale extension](https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server) to display warnings and errors at once.
 
 
