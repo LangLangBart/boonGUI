@@ -423,7 +423,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 
 GuiInterface.prototype.DisplayRallyPoint = function(player, cmd) {
 	// if selection did not change (cmd.watch == true)
-	// we need to update only remote rally points
+	// Limit updates to remote rally points
 
 	if (cmd.watch && this.ChangedRallyPoints.size == 0) return;
 	if (!cmd.watch) this.LocalRallyPoints.clear();
@@ -458,7 +458,7 @@ GuiInterface.prototype.DisplayRallyPoint = function(player, cmd) {
 		// Rally point should be displayed if one of the following is true:
 		// 1) It is owned by the player
 		// 2) The player is an observer
-		// 3) The player is a a mutual ally with shared LOS
+		// 3) The player is a mutual ally with shared LOS
 
 		if (cmpPlayer && cmpOwnership)
 		{
@@ -483,7 +483,7 @@ GuiInterface.prototype.DisplayRallyPoint = function(player, cmd) {
 
 		if (pos)
 		{
-			// Only update the position if we changed it (cmd.queued is set).
+			// Update position on changes (cmd.queued is set).
 			// Note that Add-/SetPosition take a CFixedVector2D which has X/Y components, not X/Z.
 			if ("queued" in cmd)
 			{

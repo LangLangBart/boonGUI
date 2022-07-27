@@ -178,7 +178,7 @@ function displaySingle(entState)
 	// Resource carrying
 	if (entState.resourceCarrying && entState.resourceCarrying.length)
 	{
-		// We should only be carrying one resource type at once, so just display the first
+		// Carrying one resource type at once, so just display the first
 		const carried = entState.resourceCarrying[0];
 		resourceCarryingIcon.sprite = "stretched:session/icons/resources/" + carried.type + ".png";
 		resourceCarryingText.caption = sprintf(translate("%(amount)s / %(max)s"), { "amount": carried.amount, "max": carried.max });

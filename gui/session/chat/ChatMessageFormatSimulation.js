@@ -150,7 +150,7 @@ ChatMessageFormatSimulation.playerstate = class
 
 /**
  * Optionally show all tributes sent in observer mode and tributes sent between allied players.
- * Otherwise, only show tributes sent directly to us, and tributes that we send.
+ * Otherwise, it will show the posts sent directly to us and the posts sent by us.
  */
 ChatMessageFormatSimulation.tribute = class
 {

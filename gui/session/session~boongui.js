@@ -72,7 +72,7 @@ function endHome()
 	// Done here to keep EndGame small
 	if (!g_IsReplay)
 		Engine.AddReplayToCache(replayDirectory);
-	// There are 'g_IsController' for when your are the host, 'g_IsObserver' for just watching and 'g_IsNetworked' when connected via Multiplayer. This function is only for when connected to Multiplayer to properly quit the XmppClient and return to the MainPage.
+	// We have ''g_IsController'' if you are the host, ''g_IsObserver'' if you are just watching and ''g_IsNetworked'' if you are connected via multiplayer. This function is just for when you are connected via multiplayer to exit the XmppClient properly and return to the main page.
 	if (g_IsNetworked && Engine.HasXmppClient())
 	{
 		Engine.SendUnregisterGame();

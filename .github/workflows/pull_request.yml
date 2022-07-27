@@ -8,10 +8,10 @@ on:
 # permissions:
 #   checks: write
 #   pull-requests: write
-#   ....
+#   …
 
 # "When the permissions key is used, all unspecified permissions are set to no access."
-# Make sure you know exactly all the permissions, otherwise errors will be persistently and disturbingly surface.
+# Make sure you know all the permissions well, otherwise errors will keep popping up and bothering you.
 # https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token
 
 concurrency:

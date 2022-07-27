@@ -7,7 +7,7 @@ ARTWORK & LICENSE
 	Files:
 		art/textures/ui/session/icons_forum_ranks
 		art/textures/ui/pregame/backgrounds
-	Name: maroder
+	Name: Stefan R. F.
 	License: CC-BY-SA-3.0
 	URL: https://wildfiregames.com/forum/topic/45576-forum-changes/?tab=comments#comment-438350
 
@@ -43,7 +43,7 @@ ARTWORK & LICENSE
 		art/meshes/props/selector
 		art/textures/particles
 		art/textures/skins/props
-	Name: The Undying Nephalim
+	Name: TheUndyingNephalim
 	License: Permission granted via private message in the forum to use the hero selector.
 	Forum: https://wildfiregames.com/forum/topic/22638-hyrule-conquest/
 	Mod: https://www.moddb.com/mods/hyrule-conquest
@@ -51,14 +51,14 @@ ARTWORK & LICENSE
 <!-- AUDIO/ SOUNDS-->
 	File:
 		audio/interface/ui/switchToLoadingPage.ogg
-	Name: space sysstart
+	Name: Space SysStart.wav
 	License: none
 	URL1: http://thestablesbb.powweb.com/WAV%20FILES/wav_to_the_horse2.htm
 	URL2: https://www.findsounds.com/ISAPI/search.dll?start=1&keywords=alert%20start&seed=49
 
 	File:
 		audio/actor/hero/death/coqui-ai_TTS_Hero_Death.ogg
-	Name: Made with coqui-ai/TTS (default voice, Text-to-Spectrogram model: tts_models/en/ljspeech/tacotron2-DDC, Vocoders model: vocoder_models/en/ljspeech/hifigan_v2)
+	Name: Made with coqui-ai/TTS (default voice, Text-to-Spectrogram model: tts_models/en/ljspeech/tacotron2-DDC, Voice-coders model: vocoder_models/en/ljspeech/hifigan_v2)
 	License: Mozilla Public License 2.0
 	URL: https://github.com/coqui-ai/TTS
 	Note: Using version 0.7.1 default settings
@@ -71,12 +71,12 @@ ARTWORK & LICENSE
 <!-- Additional license(s) -->
 	MIT License
 
-Copyright (c) 2020 Phosphor Icons
+Copyright (©) 2020 Phosphor Icons
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+to use, copy, modify, merge, publish, distribute, sub-license, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 

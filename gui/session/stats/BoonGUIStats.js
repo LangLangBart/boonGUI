@@ -240,7 +240,7 @@ class BoonGUIStats
 		optionFollowPlayer.hidden = !(g_IsObserver && isPlayer);
 		optionFollowPlayer.size = "0 4 20 100%";
 
-		// Nice future project to show the menuButton only upon hovering over it and hide it otherwise
+		// Nice future project to show the menuButton upon hovering over it and hide it otherwise
 		// placeHoldermenuButton.onMouseEnter = function()
 		// {
 		// 	placeHoldermenuButton.hidden = true;

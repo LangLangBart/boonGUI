@@ -13,11 +13,11 @@
 <p>
 <!-- dev badges -->
 <a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commits-since/LangLangBart/boonGUI/latest/main?style=for-the-badge" height="18"></a>
-<a href="https://github.com/LangLangBart/boonGUI/actions/workflows/lint_and_todos.yml"><img src="https://img.shields.io/github/workflow/status/LangLangBart/boonGUI/Lint%20&%20TODO%20issues/main?label=ESLint&style=for-the-badge" height="18"></a>
+<a href="https://github.com/LangLangBart/boonGUI/actions/workflows/code_quality.yml"><img src="https://img.shields.io/github/workflow/status/LangLangBart/boonGUI/Code%20Quality/main?label=ESLint&style=for-the-badge" height="18"></a>
 <a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commit-activity/m/LangLangBart/boonGUI?style=for-the-badge" height="18"></a>
 </p>
 
-User interface **mod** for the RTS game **0 A.D.**
+User interface **mod** for the Real-Time-Strategy game **0 A.D.**
 
 <!-- 0 A.D. logo -->
 <a href="https://play0ad.com"><img src="Images/0ad_logo.png" width="250">
@@ -35,7 +35,7 @@ User interface **mod** for the RTS game **0 A.D.**
 ---
 
 | <a href="https://www.youtube.com/channel/UC5Sf1aQufzzWATg9TJzg7mQ"> <img src="https://img.shields.io/static/v1?label=Channel&message=0AD%20Newbie%20Rush&logo=YouTube&color=FF0000&style=for-the-badge" height="18"> <a href="https://www.youtube.com/watch?v=CA2ZaEsDkiA"><img src="https://img.shields.io/youtube/views/CA2ZaEsDkiA?color=FF0000&logo=youtube&style=for-the-badge" height="18"><br /> <a href="http://www.youtube.com/watch?v=CA2ZaEsDkiA" target="_blank"><img src="http://img.youtube.com/vi/CA2ZaEsDkiA/0.jpg" alt="Thumbnail" width="320" height="200" />| <a href="https://www.youtube.com/channel/UCnpCp_OvNm0_FgD_5rSrxbw"><img src="https://img.shields.io/static/v1?label=Channel&message=Plan%26Go:%200%20%20A.D.&logo=YouTube&color=FF0000&style=for-the-badge" height="18"> <a href="https://www.youtube.com/watch?v=PhdbEN6UoG4"><img src="https://img.shields.io/youtube/views/PhdbEN6UoG4?color=FF0000&logo=youtube&style=for-the-badge" height="18"><br /> <a href="https://www.youtube.com/watch?v=PhdbEN6UoG4" target="_blank"><img src="http://img.youtube.com/vi/PhdbEN6UoG4/0.jpg" alt="Thumbnail" width="320" height="200" /> |
-| :----: |:----: |
+| :----: | :----: |
 | <a href="https://www.youtube.com/channel/UCjF60pN4P6ZwTjn4e0_f0nw"><img src="https://img.shields.io/static/v1?label=Channel&message=Kakutstha%200AD&logo=YouTube&color=FF0000&style=for-the-badge" height="18"> <a href="https://www.youtube.com/watch?v=aJBzP-UAMXI"><img src="https://img.shields.io/youtube/views/aJBzP-UAMXI?color=FF0000&logo=youtube&style=for-the-badge" height="18"><br /> <a href="https://www.youtube.com/watch?v=aJBzP-UAMXI" target="_blank"><img src="http://img.youtube.com/vi/aJBzP-UAMXI/0.jpg" alt="Thumbnail" width="320" height="200" /> | <a href="https://www.youtube.com/channel/UCS-SFei6NFRuGN8CKtAsYrA"><img src="https://img.shields.io/static/v1?label=Channel&message=Tom%200ad&logo=YouTube&color=FF0000&style=for-the-badge" height="18"> <a href="https://www.youtube.com/watch?v=_DP_-WOARXo"><img src="https://img.shields.io/youtube/views/_DP_-WOARXo?color=FF0000&logo=youtube&style=for-the-badge" height="18"><br /> <a href="https://www.youtube.com/watch?v=_DP_-WOARXo" target="_blank"><img src="http://img.youtube.com/vi/_DP_-WOARXo/0.jpg" alt="Thumbnail" width="320" height="200" /> |
 
 </div>
@@ -44,10 +44,10 @@ User interface **mod** for the RTS game **0 A.D.**
 
 ## ✨ Features
 ### 🕹 In-Game
-  * Large round minimap
-  * Rally points are displayed for observers.
+  * Large round mini map
+  * Extra in-game stats about the players
+  * Rally points are visible for observers.
   * Bigger buttons for the construction panel
-  * Additional ingame stats about the players
   * All player colors and fruits have more vivid colors.
   * Increased size for all weapon projectiles, chickens and garrison flags on every building.
   * All heroes have a large visible object flowing over their head, making them easier to see on the battlefield.
@@ -57,8 +57,8 @@ User interface **mod** for the RTS game **0 A.D.**
   * **Camera:** Change the camera settings in the options.
   * **Lobby:** Quick access buttons below the chat input.
   * **Main menu:** New background image
-  * **Replays overview:** Adding a button next to the replay file path to quickly open the directory.
-  * **Summary:** Increased the size, recommend to use a 1920x1080 display.
+  * **Replays overview:** Adding a button next to the replay path for quick access to the directory.
+  * **Summary:** Increased the size, recommend to use a 1920×1080 display.
 
 ---
 
@@ -77,9 +77,9 @@ git clone https://github.com/LangLangBart/boonGUI.git
 
 * **Pyromod**
   * Drag and drop the file over the 0ad start icon or double click it.
-  * The mod will be unpacked and placed automatically in your `/0ad/mods/` folder.
+  * The mod gets unpacked and placed automatically in your `/0ad/mods/` folder.
 * **ZIP**
-  * Unpack it it in your `/0ad/mods/` folder.
+  * Unpack it in your `/0ad/mods/` folder.
 
 * Launch 0 A.D., click `Settings` and `Mod Selection`.
 * Double-click `boonGUI`, click `Save Configuration` and `Start Mods`.
@@ -97,16 +97,16 @@ git clone https://github.com/LangLangBart/boonGUI.git
  <summary><b>Setup for VSCode</b></summary>
 <p>
 
-#### Javacript
+#### JavaScript
 Mirroring the linting process from 0 A.D. by using [ESLint](https://eslint.org) and an adopted set of rules defined in the [eslintrc.json](../.eslintrc.json) file.
 
-* (1/2) install `node.js` e.g. via Homebrew (macOS).
+1. Install `node.js` for example via Homebrew.
 
 ```zsh
 brew install node
 ```
 
-* (2/2) The dependencies are defined in the `package.json` file and can be simply installed by running:
+2. Install all the dependencies from the `package.json` file.
 
 ```zsh
 npm install
@@ -117,39 +117,54 @@ npx simple-git-hooks
 # [INFO] Successfully set all git hooks
 ```
 
-* The `.vscode` settings have been set up to automatically adjust your code to the rules when you save the document.
-* An optional installation of the [VSCode ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) will run eslint on each file and display warnings/errors immediately.
-* Alternatively, you can skip all the steps above and just lint and correct your entire repository with the following commands.
+* The `.vscode` settings are set up to automatically adjust your code to the rules when you save the document.
+* An optional installation of the [VSCode ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) runs ESLint on each file and display warnings and errors at once.
+* The alternative to step 2 is to lint and auto fix your code with the following commands.
 
 ```zsh
 npx eslint .
 npx eslint . --fix
 ```
 
+#### Texts
+[Vale](https://github.com/errata-ai/vale) is a grammar, style, and word usage linter for the English language.
+1. Install `vale` for example via Homebrew.
+
+```zsh
+brew install vale
+```
+
+1. Run `vale sync` to get all the dependencies and `vale .` to display warnings/erros for all defined cases in the [.vale.ini](../.vale.ini) file.
+
+* Compared to ESLint, Vale doesn't have a way to auto fix issues at the moment, this has to be done manually.
+* An optional installation of the [Vale extension](https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server) to display warnings and errors at once.
+
+
 #### XML
-When working with XML files, I use the default settings of the [VSCode XML Tools extension](https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml).
+Default settings of the [VSCode XML Tools extension](https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml).
 
 </p>
 </details>
 
 ### Contributors
-Motivation for this mod was the desire to learn JavaScript by creating a tool for @mysticjim to help him with his YouTube videos. Since then many people have contributed to this mod and I would like to thank them here.
-* A complete makeover of the stats overlay was done thanks to @Islan.
+The motivation for this mod was a desire to learn JavaScript by creating a utility tool for @mysticjim. There were a legion of contributors who helped create the mod.
+* The statistics overlay was written by @Islan.
 * Thanks to @Effervescent, @mysticjim, @Nobbi, @Palaiologos and @seeh for constantly testing and giving feedback.
 * Providing code and helping with problems: @andy5995, @kaaduu, @maroder, @Nescio, @Pretuer and @Schweini.
+* The developers of the game can be reached via their IRC channel #0ad-dev, among them are the following who helped the project to succeed: @elexis, @bb, @Imarok, @wraitii, @Freagarach, @vladislavbelov, @Silier and @Stan`.
+<!-- vale off -->
 * Thanks to other modders:
   * @nani - [Autociv](https://github.com/nanihadesuka/autociv)
   * @wowgetoffyourcellphone - [Delenda Est](https://github.com/JustusAvramenko/delenda_est)
   * @ffm2 - [ffm_visibility](https://wildfiregames.com/forum/topic/27124-ffm_visibility-mod/)
   * @ffffff - [fGod](https://github.com/fraizy22/fgodmod)
   * @badosu - [Prodmod](https://github.com/badosu/prodmod)
-  * @The Undying Nephalim - [Hyrule Conquest](https://www.moddb.com/mods/hyrule-conquest)
+  * @TheUndyingNephalim - [Hyrule Conquest](https://www.moddb.com/mods/hyrule-conquest)
   * @wraitii - [ui_mod](https://github.com/wraitii/ui_mod)
-* Being good lads @elexis, @bb, @Imarok, @wraitii, @Freagarach, @vladislavbelov, @Silier and @Stan` pointed me in the right direction on the IRC #0ad/#0ad-dev channel when I got stuck.
 
 <div align="center">
 
 ### If you want to contribute, give feedback or make suggestions, go ahead.
 # ❤️
-
+<!-- vale on -->
 </div>

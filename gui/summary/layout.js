@@ -4,7 +4,7 @@
 var g_TabButtonWidth = 180;
 
 /**
- * Easily adjust all your layout settings, g_PlayerNameWidth moves the TitelHeadings (e.g. "Resoucres", g_multiplierWidths allows you to adjust the width of all columns and g_yStartHeightHead is useful for adjusting the heaadline for multiple columns in "Units, Structures and Resources". g_verticalOffsetAdjustCounters is used for adjusting the position of Counters and
+ * Adjusting your layout settings is simple, g_PlayerNameWidth moves the TitelHeadings (e.g. "Resoucres", g_multiplierWidths allows you to adjust the width of all columns and g_yStartHeightHead is useful for adjusting the heaadline for multiple columns in "Units, Structures and Resources". g_verticalOffsetAdjustCounters is used for adjusting the position of Counters and
  */
 var g_PlayerNameWidth = 232;
 var g_multiplierWidths = 1.83;

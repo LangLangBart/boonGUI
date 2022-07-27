@@ -13,19 +13,19 @@ body:
     attributes:
       label: Problem
       description: Please add a clear and concise description of the problem you are seeking to solve with this feature request.
-      # The pipe "|" let's you effectively declare a multi-line yaml string, see https://yaml-multiline.info/.
+      # The pipe "|" to declare a multi-line string, see https://yaml-multiline.info/.
       placeholder: |
         Description
   - type: textarea
     attributes:
       label: Feature/ Solution
-      description: Describe your feature/ solution and any alternative you've considered. If applicable, add screenshots/ videos or links about the feature here. References to games/ mods with this feature are very welcome.
+      description: Describe your function/solution and any alternatives you considered. If applicable, include screenshots/videos or links to the feature here. References to games/mods with this function are all welcome.
       placeholder: |
         Description
 
-        As an alternative I considered ...
+        As an alternative I considered …
 
-        A similar feature can be found in ...
+        A similar feature can be found in …
 
         Screenshots
     validations:

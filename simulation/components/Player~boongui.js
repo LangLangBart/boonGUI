@@ -2,8 +2,7 @@ Player.prototype.GetColor = function()
 {
 	// keep this in sync with tooltips~boongui.js
 	// GUIColor Properties r, g, b, a - The red/green/blue/alpha components of a colour, in the range 0.0 to 1.0.
-	// Use only even numbers after the decimal point, you cannot use an odd number, you would have to write it as a fraction, e.g. (179/255).
-
+	// Stick to even numbers after the decimal point, you cannot use an odd number, you would have to write it as a fraction, e.g. (179/255).
 	// changes -Player1- blue to vivid blue
 	if (this.color.r < 0.08236 && this.color.g < 0.21569 && this.color.b > 0.58430)
 	    return { "r": 0, "g": (160/255), "b": 1, "a": 1 };

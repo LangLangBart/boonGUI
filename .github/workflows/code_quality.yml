@@ -1,6 +1,6 @@
-# Standard workflow for new commits for linting and creating issues when it find the TODO keyword in the newly pushed code.
+# Standard workflow for new commits
 
-name: Lint & TODO issues
+name: Code Quality
 
 on:
   push:
@@ -14,7 +14,8 @@ concurrency:
 
 jobs:
   run-linters:
-    name: Run linters
+    # https://github.com/wearerequired/lint-action
+    name: Code linter
     runs-on: ubuntu-latest
     if: ${{ github.actor != 'dependabot[bot]' }}
 
@@ -36,7 +37,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # Whether the workflow run should also fail when linter failures are detected.
           continue_on_error: false
-          # ESLint checks should fail even if there are no errors and only warnings.
+          # ESLint checks should fail even if there are no errors, just warnings.
           eslint_args: "--max-warnings 0"
           eslint: true
           # https://github.community/t/github-linting-remote-rejected
@@ -44,15 +45,34 @@ jobs:
           eslint_extensions: js,ts
           auto_fix: true
 
+  vale:
+    # https://github.com/errata-ai/vale-action
+    name: Text linter
+    # Scope of file cases is set in .vale.ini
+    if: ${{ always() }}
+    needs: [run-linters]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Vale
+        uses: errata-ai/vale-action@reviewdog
+        with:
+          reporter: github-check
+          fail_on_error: false
+          # Filter results by added/modified file. i.e. reviewdog will report results as long as they are in added/modified file even if the results are not in actual diff.
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
   todo_issues:
     # https://github.com/alstr/todo-to-issue-action
     name: Create TODO issues
     # jobs run in parallel by default, but i like them sequentially
     # jobs.<job_id>.needs - with "always()" not requiring successful prior job
     if: ${{ always() }}
-    needs: [run-linters]
+    needs: [vale]
     runs-on: "ubuntu-latest"
-
     steps:
       - uses: "alstr/todo-to-issue-action@v4.6.6"
         with:
@@ -62,4 +82,5 @@ jobs:
           BEFORE: ${{ github.event.before }}
           # The SHA of the latest commit
           SHA: ${{ github.sha }}
+          IGNORE: ".github/vale_styles"
           AUTO_ASSIGN: true

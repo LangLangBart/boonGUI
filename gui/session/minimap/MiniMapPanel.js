@@ -45,7 +45,7 @@ class MiniMapPanel
 			this.hoverPanel.size = dimensionsHoverPanel;
 		}
 
-		// Testing for good dimensions, width&height should be the same or very close
+		// Check for good dimensions, width&height should be the same or close together.
 		// const testSizes = ["idleWorkerButton", "minimapPanel"];
 		// for (let i = 0; i < testSizes.length; i++)
 		// {

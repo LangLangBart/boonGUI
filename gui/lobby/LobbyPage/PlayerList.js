@@ -99,7 +99,7 @@ class PlayerList
 
 	/**
 	 * Do a full update of the player listing, including ratings from cached C++ information.
-	 * Important: This should only be performed once if
+	 * Important: This should be done just once if
 	 * there have been multiple messages received changing this list.
 	 */
 	rebuildPlayerList()

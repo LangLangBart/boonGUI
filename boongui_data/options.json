@@ -8,11 +8,11 @@
 				"tooltip": "Set the speed at which you move across the map.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color]",
 				"config": "view.scroll.speed",
 				"list": [
-					{ "value": "50.0", "label": "50 - Very Slow" },
+					{ "value": "50.0", "label": "50 - Slower" },
 					{ "value": "80.0", "label": "80 - Slow" },
 					{ "value": "120.0", "label": "[color=\"220 185 70\"]120 - Default[/color]" },
 					{ "value": "180.0", "label": "180 - Fast" },
-					{ "value": "250.0", "label": "250 - Very Fast" },
+					{ "value": "250.0", "label": "250 - Faster" },
 					{ "value": "350.0", "label": "350 - Ultra Fast" }
 				]
 			},
@@ -22,11 +22,11 @@
 				"tooltip": "Set the speed at which you rotate left/right.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color]",
 				"config": "view.rotate.x.speed",
 				"list": [
-					{ "value": "0.5", "label": "0.5 - Very Slow" },
+					{ "value": "0.5", "label": "0.5 - Slower" },
 					{ "value": "0.8", "label": "0.8 - Slow" },
 					{ "value": "1.2", "label": "[color=\"220 185 70\"]1.2 - Default[/color]" },
 					{ "value": "1.8", "label": "1.8 - Fast" },
-					{ "value": "2.5", "label": "2.5 - Very Fast" },
+					{ "value": "2.5", "label": "2.5 - Faster" },
 					{ "value": "3.5", "label": "3.5 - Ultra Fast" }
 				]
 			},
@@ -36,11 +36,11 @@
 				"tooltip": "Set the speed at which you rotate up/down.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color]",
 				"config": "view.rotate.y.speed",
 				"list": [
-					{ "value": "1.1", "label": "1.1 - Very Slow" },
+					{ "value": "1.1", "label": "1.1 - Slower" },
 					{ "value": "1.8", "label": "1.8 - Slow" },
 					{ "value": "2.0", "label": "[color=\"220 185 70\"]2 - Default[/color]" },
 					{ "value": "4.1", "label": "3.9 - Fast" },
-					{ "value": "5.8", "label": "5.8 - Very Fast" },
+					{ "value": "5.8", "label": "5.8 - Faster" },
 					{ "value": "8.2", "label": "8.2 - Ultra Fast" }
 				]
 			},
@@ -50,11 +50,11 @@
 				"tooltip": "Set the speed at which you zoom in/out with your hotkeys.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color]",
 				"config": "view.zoom.speed",
 				"list": [
-					{ "value": "150.0", "label": "150 - Very Slow" },
+					{ "value": "150.0", "label": "150 - Slower" },
 					{ "value": "200.0", "label": "200 - Slow" },
 					{ "value": "256.0", "label": "[color=\"220 185 70\"]256 - Default[/color]" },
 					{ "value": "350.0", "label": "350 - Fast" },
-					{ "value": "500.0", "label": "500 - Very Fast" },
+					{ "value": "500.0", "label": "500 - Faster" },
 					{ "value": "650.0", "label": "650 - Ultra Fast" }
 				]
 			},
@@ -64,11 +64,11 @@
 				"tooltip": "Set the speed at which you zoom in/out with your mouse wheel.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color]",
 				"config": "view.zoom.speed.wheel",
 				"list": [
-					{ "value": "15.0", "label": "15 - Very Slow" },
+					{ "value": "15.0", "label": "15 - Slower" },
 					{ "value": "25.0", "label": "25 - Slow" },
 					{ "value": "32.0", "label": "[color=\"220 185 70\"]32 - Default[/color]" },
 					{ "value": "50.0", "label": "50 - Fast" },
-					{ "value": "75.0", "label": "75 - Very Fast" },
+					{ "value": "75.0", "label": "75 - Faster" },
 					{ "value": "100.0", "label": "100 - Ultra Fast" }
 				]
 			},
@@ -80,7 +80,7 @@
 				"list": [
 					{ "value": "200.0", "label": "[color=\"220 185 70\"]200 - Default[/color]" },
 					{ "value": "300.0", "label": "300 - Far" },
-					{ "value": "400.0", "label": "400 - Very Far" }
+					{ "value": "400.0", "label": "400 - Further" }
 				]
 			},
 			{
@@ -89,7 +89,7 @@
 				"tooltip": "Set how close you can zoom in.[color=\"255 0 0\"]\nRESTART NECESSARY\nThis value is kept even if you disable the boonGUI mod.[/color]",
 				"config": "view.zoom.min",
 				"list": [
-					{ "value": "10.0", "label": "10 - Very Close" },
+					{ "value": "10.0", "label": "10 - Closer" },
 					{ "value": "30.0", "label": "30 - Close" },
 					{ "value": "50.0", "label": "[color=\"220 185 70\"]50 - Default[/color]" }
 				]
@@ -125,7 +125,7 @@
 			{
 				"type": "dropdown",
 				"label": "[color=\"220 185 70\"]Top Panel[/color] Gatheres or Income/10s",
-				"tooltip": "Specify what to display next to the resource count.\n\n[color=\"220 185 70\"]Gatherers:[/color] Total number of units currently gathering or on their way to gather this resource.\n[color=\"220 185 70\"]Income/10s:[/color] Total number of resources income over 10 seconds.",
+				"tooltip": "Specify what to display next to the resource count.\n\n[color=\"220 185 70\"]Gatherers:[/color] Total number of units that are gathering and on their way to gather this resource.\n[color=\"220 185 70\"]Income/10s:[/color] Total number of resources income over 10 seconds.",
 				"config": "boongui.toppanel.resourceGatherersRates",
 				"list": [
 					{ "value": "Gatherers", "label": "[color=\"220 185 70\"]Gatherers - Default[/color]" },

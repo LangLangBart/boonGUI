@@ -52,7 +52,7 @@ function formatKD(num)
 	}
 }
 
-// currently being used for limiting the attack/ speed numbers in the HUD
+// boonGUI: limit attack/speed numbers in HUD.
 function limitNumber(num)
 {
 	if (num < 10)
@@ -62,7 +62,7 @@ function limitNumber(num)
 	return Math.round(num);
 }
 
-// boonGUI: Colored Right-Click
+// boonGUI: colored right-click
 function showTemplateViewerOnRightClickTooltip()
 {
 	// Translation: Appears in a tooltip to indicate that right-clicking the corresponding GUI element will open the Template Details GUI page.

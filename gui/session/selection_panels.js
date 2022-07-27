@@ -340,8 +340,8 @@ g_SelectionPanels.Garrison = {
 		data.guiSelection.sprite = "color:" + g_DiplomacyColors.getPlayerColor(entState.player, 160);
 		data.button.sprite_disabled = data.button.sprite;
 
-		// Selection panel buttons only appear disabled if they
-		// also appear disabled to the owner of the structure.
+		// The buttons of the selection window appear disabled as
+		// long as they also appear disabled for the owner of the structure.
 		data.icon.sprite =
 			(canUngarrison || g_IsObserver ? "" : "grayscale:") +
 			"stretched:session/portraits/" + template.icon;
@@ -670,7 +670,7 @@ g_SelectionPanels.Research = {
 		// Start position (start at the bottom)
 		let position = data.i + data.rowLength;
 
-		// Only show the top button for pairs
+		// Set the top button of the pair
 		if (!data.item.tech.pair)
 			Engine.GetGUIObjectByName("unitResearchButton[" + data.i + "]").hidden = true;
 

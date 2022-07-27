@@ -162,7 +162,7 @@ function deleteReplayButtonPressed()
 		deleteReplay();
 }
 /**
- * BoonGUI function to correctly close the replay menu, depending if you are in the lobby or not.
+ * BoonGUI function to close the replay menu the correct way, depending on whether you are in the lobby or not.
  */
 function closeReplay()
 {
