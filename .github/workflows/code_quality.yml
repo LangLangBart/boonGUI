@@ -61,7 +61,6 @@ jobs:
         with:
           reporter: github-check
           fail_on_error: false
-          # Filter results by added/modified file. i.e. reviewdog will report results as long as they are in added/modified file even if the results are not in actual diff.
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 

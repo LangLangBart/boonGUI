@@ -76,12 +76,12 @@ git clone https://github.com/LangLangBart/boonGUI.git
 ```
 
 * **Pyromod**
-  * Drag and drop the file over the 0ad start icon or double click it.
+  * Drag the file over the 0ad start icon or double click it.
   * The mod gets unpacked and placed automatically in your `/0ad/mods/` folder.
 * **ZIP**
   * Unpack it in your `/0ad/mods/` folder.
 
-* Launch 0 A.D., click `Settings` and `Mod Selection`.
+* Start 0 A.D., click `Settings` and `Mod Selection`.
 * Double-click `boonGUI`, click `Save Configuration` and `Start Mods`.
 
 ---
@@ -100,7 +100,7 @@ git clone https://github.com/LangLangBart/boonGUI.git
 #### JavaScript
 Mirroring the linting process from 0 A.D. by using [ESLint](https://eslint.org) and an adopted set of rules defined in the [eslintrc.json](../.eslintrc.json) file.
 
-1. Install `node.js` for example via Homebrew.
+1. Install `node.js` for example through Homebrew.
 
 ```zsh
 brew install node
@@ -128,13 +128,13 @@ npx eslint . --fix
 
 #### Texts
 [Vale](https://github.com/errata-ai/vale) is a grammar, style, and word usage linter for the English language.
-1. Install `vale` for example via Homebrew.
+1. Install `vale` for example through Homebrew.
 
 ```zsh
 brew install vale
 ```
 
-2. Run `vale sync` to get all the dependencies and `vale .` to display warnings/erros for all defined cases in the [.vale.ini](../.vale.ini) file.
+2. Run `vale sync` to get all the dependencies and `vale .` to display warnings and errors for all defined cases in the [.vale.ini](../.vale.ini) file.
 
 * Unlike ESLint, Vale doesn't have a way to auto fix issues at the moment, this must be done manually.
 * An optional installation of the [Vale extension](https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server) to display warnings and errors at once.
@@ -147,11 +147,11 @@ Default settings of the [VSCode XML Tools extension](https://marketplace.visuals
 </details>
 
 ### Contributors
-The motivation for this mod was a desire to learn JavaScript by creating a utility tool for @mysticjim. There were a legion of contributors who helped create the mod.
+The motivation for this mod was to learn JavaScript by creating a utility tool for @mysticjim. There were a legion of contributors who helped create the mod.
 * The statistics overlay was written by @Islan.
 * Thanks to @Effervescent, @mysticjim, @Nobbi, @Palaiologos and @seeh for constantly testing and giving feedback.
 * Providing code and helping with problems: @andy5995, @kaaduu, @maroder, @Nescio, @Pretuer and @Schweini.
-* The developers of the game can be reached via their IRC channel #0ad-dev, among them are the following who helped the project to succeed: @elexis, @bb, @Imarok, @wraitii, @Freagarach, @vladislavbelov, @Silier and @Stan`.
+* The developers of the game can be reached through their IRC channel #0ad-dev, among them are the following who helped the project to succeed: @elexis, @bb, @Imarok, @wraitii, @Freagarach, @vladislavbelov, @Silier and @Stan`.
 <!-- vale off -->
 * Thanks to other modders:
   * @nani - [Autociv](https://github.com/nanihadesuka/autociv)

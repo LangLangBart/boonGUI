@@ -52,7 +52,7 @@ function formatKD(num)
 	}
 }
 
-// boonGUI: limit attack/speed numbers in HUD.
+// boonGUI: limit attack/speed numbers in the HUD
 function limitNumber(num)
 {
 	if (num < 10)
