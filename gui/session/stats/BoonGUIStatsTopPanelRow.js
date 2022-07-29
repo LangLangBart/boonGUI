@@ -36,6 +36,10 @@ class BoonGUIStatsTopPanelRow
 		this.popCount = Engine.GetGUIObjectByName(`${PREFIX}_popCount`);
 		this.popLimit = Engine.GetGUIObjectByName(`${PREFIX}_popLimit`);
 
+		this.femaleCitizenHighlight = Engine.GetGUIObjectByName(`${PREFIX}_popHighlight`);
+		this.femaleCitizenHighlight.onPress = () => focusHouse(true, this.state);
+
+
 		this.resource = {
 			"counts": {},
 			"gatherers": {},
@@ -45,21 +49,36 @@ class BoonGUIStatsTopPanelRow
 		for (const resType of g_BoonGUIResTypes)
 		{
 			this.resource[resType] = Engine.GetGUIObjectByName(`${PREFIX}_${resType}Highlight`);
+			if(resType == "food")
+				this.resource[resType].onPress = () => focusFarmstead(true, this.state);
+			else
+				this.resource[resType].onPress = () => focusStorehouse(true, this.state);
+
+
 			this.resource.counts[resType] = Engine.GetGUIObjectByName(`${PREFIX}_${resType}Counts`);
 			this.resource.gatherers[resType] = Engine.GetGUIObjectByName(`${PREFIX}_${resType}Gatherers`);
 			this.resource.rates[resType] = Engine.GetGUIObjectByName(`${PREFIX}_${resType}Rates`);
 		}
 
+
 		this.femaleCitizenHighlight = Engine.GetGUIObjectByName(`${PREFIX}_femaleCitizenHighlight`);
+		this.femaleCitizenHighlight.onPress = () => focusFarmstead(true, this.state);
 		this.femaleCitizen = Engine.GetGUIObjectByName(`${PREFIX}_femaleCitizen`);
+
 		this.infantryHighlight = Engine.GetGUIObjectByName(`${PREFIX}_infantryHighlight`);
+		this.infantryHighlight.onPress = () => focusBarrack(true, this.state);
 		this.infantry = Engine.GetGUIObjectByName(`${PREFIX}_infantry`);
+
 		this.cavalryHighlight = Engine.GetGUIObjectByName(`${PREFIX}_cavalryHighlight`);
+		this.cavalryHighlight.onPress = () => focusStable(true, this.state);
 		this.cavalry = Engine.GetGUIObjectByName(`${PREFIX}_cavalry`);
 
 		this.ecoTechHighlight = Engine.GetGUIObjectByName(`${PREFIX}_ecoTechHighlight`);
+		this.ecoTechHighlight.onPress = () => focusStorehouse(true, this.state);
+
 		this.ecoTechCount = Engine.GetGUIObjectByName(`${PREFIX}_ecoTechCount`);
 		this.milTechHighlight = Engine.GetGUIObjectByName(`${PREFIX}_milTechHighlight`);
+		this.milTechHighlight.onPress = () => focusForge(true, this.state);
 		this.milTechCount = Engine.GetGUIObjectByName(`${PREFIX}_milTechCount`);
 
 		this.killDeathRatioHighlight = Engine.GetGUIObjectByName(`${PREFIX}_killDeathRatioHighlight`);

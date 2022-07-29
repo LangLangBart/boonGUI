@@ -74,6 +74,152 @@ function focusCC(move, state)
 		Engine.CameraMoveTo(entState.position.x, entState.position.z);
 	}
 }
+
+/**
+ * When a fully constructed House exits, the camera is focused at it. If no House is present, a sound is played.
+ * @param  {boolean} move
+ * @param  {Object} state
+ */
+function focusHouse(move, state)
+{
+	 if (state == null || state.house.length <= 0)
+	 {
+		 Engine.PlayUISound("audio/interface/alarm/alarm_invalid_building_placement_01.ogg", false);
+		 return;
+	 }
+	 if (!Engine.HotkeyIsPressed("selection.add"))
+		 g_Selection.reset();
+
+	 g_Selection.addList(state.house);
+
+	 if (move)
+	 {
+		 const entState = GetEntityState(state.house[0]);
+		 Engine.CameraMoveTo(entState.position.x, entState.position.z);
+	 }
+}
+
+
+/**
+ * When a fully constructed storehouse exits, the camera is focused at it. If no storehouse is present, a sound is played.
+ If no storehouse is present, the camera is focused the CC or play a sound. * @param  {boolean} move
+ * @param  {Object} state
+ */
+function focusStorehouse(move, state)
+{
+	 if (state == null || state.storehouse.length <= 0)
+	 {
+		return focusCC(move,state)
+	 }
+	 if (!Engine.HotkeyIsPressed("selection.add"))
+		 g_Selection.reset();
+
+	 g_Selection.addList(state.storehouse);
+
+	 if (move)
+	 {
+		 const entState = GetEntityState(state.storehouse[0]);
+		 Engine.CameraMoveTo(entState.position.x, entState.position.z);
+	 }
+}
+
+
+/**
+ * When a fully constructed farmstead exits, the camera is focused at it. If no farmstead is present, a sound is played.
+ If no farmstead is present, the camera is focused the CC or play a sound. * @param  {boolean} move
+ * @param  {Object} state
+ */
+function focusFarmstead(move, state)
+{
+	 if (state == null || state.farmstead.length <= 0)
+	 {
+		return focusCC(move,state)
+	 }
+	 if (!Engine.HotkeyIsPressed("selection.add"))
+		 g_Selection.reset();
+
+	 g_Selection.addList(state.farmstead);
+
+	 if (move)
+	 {
+		 const entState = GetEntityState(state.farmstead[0]);
+		 Engine.CameraMoveTo(entState.position.x, entState.position.z);
+	 }
+}
+
+/**
+ * When a fully constructed Barrack exits, the camera is focused at it.
+ * If no Barrack is present, the camera is focused the CC or play a sound.
+ * @param  {boolean} move
+ * @param  {Object} state
+ */
+function focusBarrack(move, state)
+{
+	 if (state == null || state.barrack.length <= 0)
+	 {
+		 return focusCC(move,state);
+	 }
+	 if (!Engine.HotkeyIsPressed("selection.add"))
+		 g_Selection.reset();
+
+	 g_Selection.addList(state.barrack);
+
+	 if (move)
+	 {
+		 const entState = GetEntityState(state.barrack[0]);
+		 Engine.CameraMoveTo(entState.position.x, entState.position.z);
+	 }
+}
+
+
+/**
+ * When a fully constructed Stable exits, the camera is focused at it.
+ * If no Stable is present, the camera is focused the CC or play a sound.
+ * @param  {boolean} move
+ * @param  {Object} state
+ */
+function focusStable(move, state)
+{
+	 if (state == null || state.stables.length <= 0)
+	 {
+		 return focusCC(move,state);
+	 }
+	 if (!Engine.HotkeyIsPressed("selection.add"))
+		 g_Selection.reset();
+
+	 g_Selection.addList(state.stables);
+
+	 if (move)
+	 {
+		 const entState = GetEntityState(state.stables[0]);
+		 Engine.CameraMoveTo(entState.position.x, entState.position.z);
+	 }
+}
+
+/**
+ * When a fully constructed Forge exits, the camera is focused at it.
+ * If no Forge is present, the camera is focused the CC or play a sound.
+ * @param  {boolean} move
+ * @param  {Object} state
+ */
+function focusForge(move, state)
+{
+	 if (state == null || state.forges.length <= 0)
+	 {
+		 return focusCC(move,state);
+	 }
+	 if (!Engine.HotkeyIsPressed("selection.add"))
+		 g_Selection.reset();
+
+	 g_Selection.addList(state.forges);
+
+	 if (move)
+	 {
+		 const entState = GetEntityState(state.forges[0]);
+		 Engine.CameraMoveTo(entState.position.x, entState.position.z);
+	 }
+}
+
 /**
  *
  * @param {string} civName
