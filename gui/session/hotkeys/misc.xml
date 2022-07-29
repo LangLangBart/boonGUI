@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <object>
 	<object hotkey="cancel">
 		<action on="Press">closeOpenDialogs();</action>
@@ -17,7 +17,8 @@
 	</object>
 
 	<object hotkey="quicksave">
-		<action on="Press">if (!g_IsNetworked) Engine.QuickSave(getSavedGameData());</action>
+		<action
+            on="Press">if (!g_IsNetworked) Engine.QuickSave(getSavedGameData());</action>
 	</object>
 
 	<object hotkey="quickload">
@@ -25,7 +26,8 @@
 	</object>
 
 	<object hotkey="session.kill">
-		<action on="KeyDown">performCommand(g_Selection.toList().map(ent => GetEntityState(ent)), "delete");</action>
+		<action
+            on="KeyDown">performCommand(g_Selection.toList().map(ent => GetEntityState(ent)), "delete");</action>
 	</object>
 
 	<object hotkey="session.unload">
