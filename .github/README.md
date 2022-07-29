@@ -106,7 +106,7 @@ Mirroring the linting process from 0 A.D. by using [ESLint](https://eslint.org) 
 brew install node
 ```
 
-2. Install all the dependencies from the `package.json` file.
+2. Install all the dependencies from the [package.json](../package.json) file.
 
 ```zsh
 npm install
@@ -134,14 +134,14 @@ npx eslint . --fix
 brew install vale
 ```
 
-2. Run `vale sync` to get all the dependencies and `vale .` to display warnings and errors for all defined cases in the [.vale.ini](../.vale.ini) file.
+2. Run `vale sync` to get all the dependencies and `vale .` to display warnings and errors for all defined cases in the [vale.ini](../.vale.ini) file.
 
 * Unlike ESLint, Vale doesn't have a way to auto fix issues at the moment, this must be done manually.
 * An optional installation of the [Vale extension](https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server) to display warnings and errors at once.
 
 
 #### XML
-Default settings of the [VSCode XML Tools extension](https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml).
+Any XML file from the `./gui` folder will be validated with `xmllint` and formatted with [Prettier for XML](https://github.com/prettier/plugin-xml) through a GitHub action workflow.
 
 </p>
 </details>
