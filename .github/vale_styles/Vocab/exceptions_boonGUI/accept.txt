@@ -1,8 +1,8 @@
 boonGUI
 ESLint
 Java[Ss]cript
+monthly
 Pyromod
 (?i)TODO
 (?i)TO-DO
 VS[Cc]ode
-monthly

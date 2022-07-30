@@ -4,24 +4,28 @@
   "description": "---",
   "private": true,
   "devDependencies": {
+    "@prettier/plugin-xml": "^2.2.0",
     "@typescript-eslint/eslint-plugin": "^5.21.0",
     "@typescript-eslint/parser": "^5.21.0",
     "eslint": "^8.14.0",
     "eslint-plugin-brace-rules": "^0.1.6",
     "lint-staged": "^13.0.0",
+    "prettier": "^2.7.1",
     "simple-git-hooks": "^2.7.0",
     "typescript": "^4.6.4"
   },
   "scripts": {
-    "eslint": "eslint .",
+    "postinstall": "if type vale >/dev/null; then vale sync; fi",
     "vale": "vale .",
-    "valesync": "vale sync"
+    "valesync": "vale sync",
+    "xml": "./node_modules/.bin/prettier --write ./\\*\\*/\\*.xml"
   },
   "simple-git-hooks": {
-    "pre-commit": "npx lint-staged && vale ."
+    "pre-commit": "npx lint-staged && if type vale >/dev/null; then vale .; fi"
   },
   "lint-staged": {
-    "*.{js,ts}": "eslint --fix"
+    "*.{js,ts}": "eslint --fix",
+    "./**/*.xml": "./node_modules/.bin/prettier --write"
   },
   "repository": {
     "type": "git",

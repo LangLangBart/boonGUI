@@ -23,6 +23,28 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
+      - name: Vale Text Linter
+        # https://github.com/errata-ai/vale-action
+        uses: errata-ai/vale-action@reviewdog
+        with:
+          reporter: github-check
+          fail_on_error: false
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      # Validate the XML schema for gui files, might be extended to actor files as well
+      - name: Download rng
+        run: |
+          wget https://raw.githubusercontent.com/0ad/0ad/master/binaries/data/mods/mod/gui/gui.rng
+      - name: Install xmllint
+        run: |
+          sudo apt update
+          sudo apt install --no-install-recommends -y libxml2-utils
+      - name: Setup xmllint problem matcher
+        uses: korelstar/xmllint-problem-matcher@master
+      - name: Validate gui XML
+        run: find ./gui -name '*.xml' -mindepth 2 -exec xmllint --relaxng ./gui.rng --noout {} \;
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
@@ -31,38 +53,21 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run linters
+      - name: ESLint & Prettier (XML)
         uses: wearerequired/lint-action@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # Whether the workflow run should also fail when linter failures are detected.
-          continue_on_error: false
+          eslint: true
           # ESLint checks should fail even if there are no errors, just warnings.
           eslint_args: "--max-warnings 0"
-          eslint: true
           # https://github.community/t/github-linting-remote-rejected
           # When auto_fix is enabled for the Lint workflow, no linter is allowed to modify the files in .github/workflows. To avoid a failed workflow, we limit the linter to js,ts files.
           eslint_extensions: js,ts
+          prettier: true
+          prettier_extensions: xml
           auto_fix: true
-
-  vale:
-    # https://github.com/errata-ai/vale-action
-    name: Text linter
-    # Scope of file cases is set in .vale.ini
-    if: ${{ always() }}
-    needs: [run-linters]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Vale
-        uses: errata-ai/vale-action@reviewdog
-        with:
-          reporter: github-check
-          fail_on_error: false
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          continue_on_error: false
 
   todo_issues:
     # https://github.com/alstr/todo-to-issue-action
@@ -70,7 +75,7 @@ jobs:
     # jobs run in parallel by default, but i like them sequentially
     # jobs.<job_id>.needs - with "always()" not requiring successful prior job
     if: ${{ always() }}
-    needs: [vale]
+    needs: [run-linters]
     runs-on: "ubuntu-latest"
     steps:
       - uses: "alstr/todo-to-issue-action@v4.6.6"

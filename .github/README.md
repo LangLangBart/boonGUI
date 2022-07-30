@@ -93,33 +93,41 @@ git clone https://github.com/LangLangBart/boonGUI.git
 4. Push it to the branch: `git push origin my-new-feature`
 5. Submit a pull request.
 
-<details>
- <summary><b>Setup for VSCode</b></summary>
-<p>
+<br>
 
-#### JavaScript
-Mirroring the linting process from 0 A.D. by using [ESLint](https://eslint.org) and an adopted set of rules defined in the [eslintrc.json](../.eslintrc.json) file.
+### Git-Hook
+**JavaScript** linting/ formatting with `ESLint`, **Text** validation with `Vale` and **XML** formatting with `Prettier` will be taken care of automatically with [Simple Git Hooks](https://github.com/toplenboren/simple-git-hooks).
 
-1. Install `node.js` for example through Homebrew.
+1. Install `node.js` and `Vale` for example through Homebrew.
 
 ```zsh
-brew install node
+brew install node vale
 ```
 
-2. Install all the dependencies from the `package.json` file.
+2. Install all the dependencies from the [package.json](../package.json) file. The `vale` dependencies will also be post-installed if the command is found. If you decide to install `Vale` later, just run `vale sync`.
 
 ```zsh
 npm install
-# [Optional] A pre-commit hook to check your working copy for lint problems and fix them if possible is defined in the package.json file. To use it, run the following command once. If you make changes to the hook, run the command again.
+```
+
+3. To use the hook, run the following command once. If you make changes to the hook, run the command again.
+```zsh
 npx simple-git-hooks
 # Confirmation messages
 # [INFO] Successfully set the pre-commit with command: npx lint-staged
 # [INFO] Successfully set all git hooks
 ```
 
+<details>
+ <summary><b>Detailed code information</b></summary>
+<p>
+
+#### JavaScript
+Mirroring the linting process from 0 A.D. by using [ESLint](https://eslint.org) and an adopted set of rules defined in the [eslintrc.json](../.eslintrc.json) file.
+
 * The `.vscode` settings are set up to automatically adjust your code to the rules when you save the document.
 * An optional installation of the [VSCode ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) runs ESLint on each file and display warnings and errors at once.
-* The alternative to step 2 is to lint and auto fix your code with the following commands.
+* The alternative is to lint and auto fix your code with the following commands.
 
 ```zsh
 npx eslint .
@@ -128,23 +136,17 @@ npx eslint . --fix
 
 #### Texts
 [Vale](https://github.com/errata-ai/vale) is a grammar, style, and word usage linter for the English language.
-1. Install `vale` for example through Homebrew.
 
-```zsh
-brew install vale
-```
-
-2. Run `vale sync` to get all the dependencies and `vale .` to display warnings and errors for all defined cases in the [.vale.ini](../.vale.ini) file.
-
-* Unlike ESLint, Vale doesn't have a way to auto fix issues at the moment, this must be done manually.
+* Unlike ESLint, Vale doesn't have a way to auto fix issues at the moment, this must be done manually. To display warnings and errors for all defined cases in the [vale.ini](../.vale.ini) file run `vale .` .
 * An optional installation of the [Vale extension](https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server) to display warnings and errors at once.
 
-
 #### XML
-Default settings of the [VSCode XML Tools extension](https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml).
+* Any XML file will be formatted with [Prettier for XML](https://github.com/prettier/plugin-xml).
+* An optional installation of the [Prettier - Code formatter extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) formats the XML file when saving the file.
 
 </p>
 </details>
+<br>
 
 ### Contributors
 The motivation for this mod was to learn JavaScript by creating a utility tool for @mysticjim. There were a legion of contributors who helped create the mod.
