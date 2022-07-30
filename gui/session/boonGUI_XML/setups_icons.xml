@@ -1,90 +1,354 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <setup>
-	<!-- ================================  ================================ -->
-	<!-- Emblems -->
-	<!-- ================================  ================================ -->
-	<icon name="emblem_seleucids" sprite="stretched:session/portraits/emblems/emblem_seleucids.png" size="50 50" />
-	<icon name="emblem_ptolemies" sprite="stretched:session/portraits/emblems/emblem_ptolemies.png" size="50 50" />
-	<icon name="emblem_suebians" sprite="stretched:session/portraits/emblems/emblem_suebians.png" size="50 50" />
-	<icon name="emblem_britons" sprite="stretched:session/portraits/emblems/emblem_britons.png" size="50 50" />
-	<icon name="emblem_britons" sprite="stretched:session/portraits/emblems/emblem_britons.png" size="50 50" />
-	<icon name="emblem_mauryas" sprite="stretched:session/portraits/emblems/emblem_mauryas.png" size="50 50" />
-	<icon name="emblem_macedonians" sprite="stretched:session/portraits/emblems/emblem_macedonians.png" size="50 50" />
-	<icon name="emblem_thebans" sprite="stretched:session/portraits/emblems/emblem_thebans.png" size="50 50" />
-	<icon name="emblem_goths" sprite="stretched:session/portraits/emblems/emblem_goths.png" size="50 50" />
-	<icon name="emblem_principates" sprite="stretched:session/portraits/emblems/emblem_principates.png" size="50 50" />
-	<icon name="emblem_athenians" sprite="stretched:session/portraits/emblems/emblem_athenians.png" size="50 50" />
-	<icon name="emblem_scythians" sprite="stretched:session/portraits/emblems/emblem_scythians.png" size="50 50" />
-	<icon name="emblem_epirotes" sprite="stretched:session/portraits/emblems/emblem_epirotes.png" size="50 50" />
-	<icon name="emblem_zapotecs" sprite="stretched:session/portraits/emblems/emblem_zapotecs.png" size="50 50" />
-	<icon name="emblem_celts" sprite="stretched:session/portraits/emblems/emblem_celts.png" size="50 50" />
-	<icon name="emblem_iberians" sprite="stretched:session/portraits/emblems/emblem_iberians.png" size="50 50" />
-	<icon name="emblem_carthaginians" sprite="stretched:session/portraits/emblems/emblem_carthaginians.png" size="50 50" />
-	<icon name="emblem_nobas" sprite="stretched:session/portraits/emblems/emblem_nobas.png" size="50 50" />
-	<icon name="emblem_xiongnu" sprite="stretched:session/portraits/emblems/emblem_xiongnu.png" size="50 50" />
-	<icon name="emblem_celts" sprite="stretched:session/portraits/emblems/emblem_celts.png" size="50 50" />
-	<icon name="emblem_spartans" sprite="stretched:session/portraits/emblems/emblem_spartans.png" size="50 50" />
-	<icon name="emblem_romans" sprite="stretched:session/portraits/emblems/emblem_romans.png" size="50 50" />
-	<icon name="emblem_chinese" sprite="stretched:session/portraits/emblems/emblem_chinese.png" size="50 50" />
-	<icon name="emblem_kushites" sprite="stretched:session/portraits/emblems/emblem_kushites.png" size="50 50" />
-	<icon name="emblem_xiongnu" sprite="stretched:session/portraits/emblems/emblem_xiongnu.png" size="50 50" />
-	<icon name="emblem_persians" sprite="stretched:session/portraits/emblems/emblem_persians.png" size="50 50" />
+  <!-- ================================  ================================ -->
+  <!-- Emblems -->
+  <!-- ================================  ================================ -->
+  <icon
+    name="emblem_seleucids"
+    sprite="stretched:session/portraits/emblems/emblem_seleucids.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_ptolemies"
+    sprite="stretched:session/portraits/emblems/emblem_ptolemies.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_suebians"
+    sprite="stretched:session/portraits/emblems/emblem_suebians.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_britons"
+    sprite="stretched:session/portraits/emblems/emblem_britons.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_britons"
+    sprite="stretched:session/portraits/emblems/emblem_britons.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_mauryas"
+    sprite="stretched:session/portraits/emblems/emblem_mauryas.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_macedonians"
+    sprite="stretched:session/portraits/emblems/emblem_macedonians.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_thebans"
+    sprite="stretched:session/portraits/emblems/emblem_thebans.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_goths"
+    sprite="stretched:session/portraits/emblems/emblem_goths.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_principates"
+    sprite="stretched:session/portraits/emblems/emblem_principates.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_athenians"
+    sprite="stretched:session/portraits/emblems/emblem_athenians.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_scythians"
+    sprite="stretched:session/portraits/emblems/emblem_scythians.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_epirotes"
+    sprite="stretched:session/portraits/emblems/emblem_epirotes.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_zapotecs"
+    sprite="stretched:session/portraits/emblems/emblem_zapotecs.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_celts"
+    sprite="stretched:session/portraits/emblems/emblem_celts.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_iberians"
+    sprite="stretched:session/portraits/emblems/emblem_iberians.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_carthaginians"
+    sprite="stretched:session/portraits/emblems/emblem_carthaginians.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_nobas"
+    sprite="stretched:session/portraits/emblems/emblem_nobas.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_xiongnu"
+    sprite="stretched:session/portraits/emblems/emblem_xiongnu.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_celts"
+    sprite="stretched:session/portraits/emblems/emblem_celts.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_spartans"
+    sprite="stretched:session/portraits/emblems/emblem_spartans.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_romans"
+    sprite="stretched:session/portraits/emblems/emblem_romans.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_chinese"
+    sprite="stretched:session/portraits/emblems/emblem_chinese.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_kushites"
+    sprite="stretched:session/portraits/emblems/emblem_kushites.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_xiongnu"
+    sprite="stretched:session/portraits/emblems/emblem_xiongnu.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_persians"
+    sprite="stretched:session/portraits/emblems/emblem_persians.png"
+    size="50 50"
+  />
 
-	<!-- ================================  ================================ -->
-	<!-- Tech icons -->
-	<!-- ================================  ================================ -->
-	<icon name="icon_gather_farming_harvester" sprite="stretched:session/portraits/technologies/gallic_plow.png" size="25 25" />
-	<icon name="icon_gather_farming_fertilizer" sprite="stretched:session/portraits/technologies/olives.png" size="25 25" />
-	<icon name="icon_gather_animals_stockbreeding" sprite="stretched:session/portraits/technologies/meat.png" size="25 25" />
+  <!-- ================================  ================================ -->
+  <!-- Tech icons -->
+  <!-- ================================  ================================ -->
+  <icon
+    name="icon_gather_farming_harvester"
+    sprite="stretched:session/portraits/technologies/gallic_plow.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_gather_farming_fertilizer"
+    sprite="stretched:session/portraits/technologies/olives.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_gather_animals_stockbreeding"
+    sprite="stretched:session/portraits/technologies/meat.png"
+    size="25 25"
+  />
 
-	<icon name="icon_gather_capacity_basket" sprite="stretched:session/portraits/technologies/gather_basket_empty.png" size="25 25" />
-	<icon name="icon_gather_capacity_wheelbarrow" sprite="stretched:session/portraits/technologies/wheelbarrow_empty.png" size="25 25" />
-	<icon name="icon_gather_capacity_carts" sprite="stretched:session/portraits/technologies/handcart_empty.png" size="25 25" />
+  <icon
+    name="icon_gather_capacity_basket"
+    sprite="stretched:session/portraits/technologies/gather_basket_empty.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_gather_capacity_wheelbarrow"
+    sprite="stretched:session/portraits/technologies/wheelbarrow_empty.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_gather_capacity_carts"
+    sprite="stretched:session/portraits/technologies/handcart_empty.png"
+    size="25 25"
+  />
 
-	<icon name="icon_gather_lumbering_ironaxes" sprite="stretched:session/portraits/technologies/wood_axe_01.png" size="25 25" />
-	<icon name="icon_gather_lumbering_strongeraxes" sprite="stretched:session/portraits/technologies/wood_axe_02.png" size="25 25" />
-	<icon name="icon_gather_lumbering_sharpaxes" sprite="stretched:session/portraits/technologies/wood_axe_03.png" size="25 25" />
+  <icon
+    name="icon_gather_lumbering_ironaxes"
+    sprite="stretched:session/portraits/technologies/wood_axe_01.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_gather_lumbering_strongeraxes"
+    sprite="stretched:session/portraits/technologies/wood_axe_02.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_gather_lumbering_sharpaxes"
+    sprite="stretched:session/portraits/technologies/wood_axe_03.png"
+    size="25 25"
+  />
 
-	<icon name="icon_gather_mining_servants" sprite="stretched:session/portraits/technologies/mining_stone_01.png" size="25 25" />
-	<icon name="icon_gather_mining_serfs" sprite="stretched:session/portraits/technologies/mining_stone_02.png" size="25 25" />
-	<icon name="icon_gather_mining_slaves" sprite="stretched:session/portraits/technologies/mining_stone_03.png" size="25 25" />
+  <icon
+    name="icon_gather_mining_servants"
+    sprite="stretched:session/portraits/technologies/mining_stone_01.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_gather_mining_serfs"
+    sprite="stretched:session/portraits/technologies/mining_stone_02.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_gather_mining_slaves"
+    sprite="stretched:session/portraits/technologies/mining_stone_03.png"
+    size="25 25"
+  />
 
-	<icon name="icon_gather_mining_wedgemallet" sprite="stretched:session/portraits/technologies/mining_metal_01.png" size="25 25" />
-	<icon name="icon_gather_mining_shaftmining" sprite="stretched:session/portraits/technologies/mining_metal_02.png" size="25 25" />
-	<icon name="icon_gather_mining_silvermining" sprite="stretched:session/portraits/technologies/mining_metal_03.png" size="25 25" />
+  <icon
+    name="icon_gather_mining_wedgemallet"
+    sprite="stretched:session/portraits/technologies/mining_metal_01.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_gather_mining_shaftmining"
+    sprite="stretched:session/portraits/technologies/mining_metal_02.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_gather_mining_silvermining"
+    sprite="stretched:session/portraits/technologies/mining_metal_03.png"
+    size="25 25"
+  />
 
-	<icon name="icon_soldier_attack_melee_01" sprite="stretched:session/portraits/technologies/sword_01.png" size="25 25" />
-	<icon name="icon_soldier_attack_melee_02" sprite="stretched:session/portraits/technologies/sword_02.png" size="25 25" />
-	<icon name="icon_soldier_attack_melee_03" sprite="stretched:session/portraits/technologies/sword_03.png" size="25 25" />
-	<icon name="icon_soldier_attack_melee_03_variant" sprite="stretched:session/portraits/technologies/metalworker.png" size="25 25" />
+  <icon
+    name="icon_soldier_attack_melee_01"
+    sprite="stretched:session/portraits/technologies/sword_01.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_soldier_attack_melee_02"
+    sprite="stretched:session/portraits/technologies/sword_02.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_soldier_attack_melee_03"
+    sprite="stretched:session/portraits/technologies/sword_03.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_soldier_attack_melee_03_variant"
+    sprite="stretched:session/portraits/technologies/metalworker.png"
+    size="25 25"
+  />
 
-	<icon name="icon_soldier_attack_ranged_01" sprite="stretched:session/portraits/technologies/arrow_01.png" size="25 25" />
-	<icon name="icon_soldier_attack_ranged_02" sprite="stretched:session/portraits/technologies/arrow_02.png" size="25 25" />
-	<icon name="icon_soldier_attack_ranged_03" sprite="stretched:session/portraits/technologies/arrow_03.png" size="25 25" />
+  <icon
+    name="icon_soldier_attack_ranged_01"
+    sprite="stretched:session/portraits/technologies/arrow_01.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_soldier_attack_ranged_02"
+    sprite="stretched:session/portraits/technologies/arrow_02.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_soldier_attack_ranged_03"
+    sprite="stretched:session/portraits/technologies/arrow_03.png"
+    size="25 25"
+  />
 
-	<icon name="icon_soldier_resistance_hack_01" sprite="stretched:session/portraits/technologies/armor_leather.png" size="25 25" />
-	<icon name="icon_soldier_resistance_hack_02" sprite="stretched:session/portraits/technologies/armor_pteruges.png" size="25 25" />
-	<icon name="icon_soldier_resistance_hack_03" sprite="stretched:session/portraits/technologies/armor_chain.png" size="25 25" />
+  <icon
+    name="icon_soldier_resistance_hack_01"
+    sprite="stretched:session/portraits/technologies/armor_leather.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_soldier_resistance_hack_02"
+    sprite="stretched:session/portraits/technologies/armor_pteruges.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_soldier_resistance_hack_03"
+    sprite="stretched:session/portraits/technologies/armor_chain.png"
+    size="25 25"
+  />
 
-	<icon name="icon_soldier_resistance_pierce_01" sprite="stretched:session/portraits/technologies/shields_generic_wood.png" size="25 25" />
-	<icon name="icon_soldier_resistance_pierce_02" sprite="stretched:session/portraits/technologies/shields_generic_bronze.png" size="25 25" />
-	<icon name="icon_soldier_resistance_pierce_03" sprite="stretched:session/portraits/technologies/shields_generic_silver.png" size="25 25" />
+  <icon
+    name="icon_soldier_resistance_pierce_01"
+    sprite="stretched:session/portraits/technologies/shields_generic_wood.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_soldier_resistance_pierce_02"
+    sprite="stretched:session/portraits/technologies/shields_generic_bronze.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_soldier_resistance_pierce_03"
+    sprite="stretched:session/portraits/technologies/shields_generic_silver.png"
+    size="25 25"
+  />
 
-	<icon name="icon_attack_soldiers_will" sprite="stretched:session/portraits/technologies/clenched_fist.png" size="25 25" />
-	<icon name="icon_archery_tradition" sprite="stretched:session/portraits/technologies/archery_tradition.png" size="25 25" />
-	<icon name="icon_archer_attack_spread" sprite="stretched:session/portraits/technologies/archery_tradition.png" size="25 25" />
+  <icon
+    name="icon_attack_soldiers_will"
+    sprite="stretched:session/portraits/technologies/clenched_fist.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_archery_tradition"
+    sprite="stretched:session/portraits/technologies/archery_tradition.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_archer_attack_spread"
+    sprite="stretched:session/portraits/technologies/archery_tradition.png"
+    size="25 25"
+  />
 
-	<!-- ================================  ================================ -->
-	<!-- Observer mode -->
-	<!-- ================================  ================================ -->
-	<icon name="icon_alpha" sprite="grayscale:stretched:session/icons/0ad_alpha_logo.png" size="20 20" />
-	<icon name="icon_map" sprite="grayscale:stretched:session/icons/objectives.png" size="20 22" />
-	<icon name="icon_pop" sprite="grayscale:stretched:session/icons/population_special_adjustment_build_label.png" size="22 22" />
-	<icon name="icon_duration" sprite="grayscale:stretched:session/icons/icon_duration.png" size="22 22" />
-	<icon name="icon_rating" sprite="stretched:session/icons/bell_level1.png" size="22 22" />
+  <!-- ================================  ================================ -->
+  <!-- Observer mode -->
+  <!-- ================================  ================================ -->
+  <icon
+    name="icon_alpha"
+    sprite="grayscale:stretched:session/icons/0ad_alpha_logo.png"
+    size="20 20"
+  />
+  <icon
+    name="icon_map"
+    sprite="grayscale:stretched:session/icons/objectives.png"
+    size="20 22"
+  />
+  <icon
+    name="icon_pop"
+    sprite="grayscale:stretched:session/icons/population_special_adjustment_build_label.png"
+    size="22 22"
+  />
+  <icon
+    name="icon_duration"
+    sprite="grayscale:stretched:session/icons/icon_duration.png"
+    size="22 22"
+  />
+  <icon
+    name="icon_rating"
+    sprite="stretched:session/icons/bell_level1.png"
+    size="22 22"
+  />
 
-	<icon name="icon_gather_wicker_baskets" sprite="stretched:session/portraits/technologies/gather_basket.png" size="25 25" />
-	<icon name="icon_gather_farming_training" sprite="stretched:session/portraits/technologies/farming_training.png" size="25 25" />
-	<icon name="icon_gather_farming_plows" sprite="stretched:session/portraits/technologies/plow.png" size="25 25" />
-	<icon name="icon_focusattacked" sprite="stretched:session/icons/focus-attacked.png" size="14 14" />
+  <icon
+    name="icon_gather_wicker_baskets"
+    sprite="stretched:session/portraits/technologies/gather_basket.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_gather_farming_training"
+    sprite="stretched:session/portraits/technologies/farming_training.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_gather_farming_plows"
+    sprite="stretched:session/portraits/technologies/plow.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_focusattacked"
+    sprite="stretched:session/icons/focus-attacked.png"
+    size="14 14"
+  />
 </setup>

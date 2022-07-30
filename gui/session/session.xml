@@ -1,125 +1,153 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="UTF-8" ?>
 <objects>
+  <script directory="gui/common/" />
+  <script directory="gui/common/campaigns/" />
+  <script directory="gui/maps/" />
+  <script directory="gui/session/" />
+  <script directory="gui/session/campaigns/" />
+  <script directory="gui/session/chat/" />
+  <script directory="gui/session/developer_overlay/" />
+  <script directory="gui/session/diplomacy/" />
+  <script directory="gui/session/diplomacy/playercontrols/" />
+  <script directory="gui/session/lobby/" />
+  <script directory="gui/session/lobby/LobbyRatingReport/" />
+  <script directory="gui/session/message_box/" />
+  <script directory="gui/session/minimap/" />
+  <script directory="gui/session/objectives/" />
+  <script directory="gui/session/stats/" />
+  <script directory="gui/session/top_panel/" />
+  <script directory="gui/session/top_panel/IconButtons/" />
+  <script directory="gui/session/trade/" />
 
-<script directory="gui/common/"/>
-<script directory="gui/common/campaigns/"/>
-<script directory="gui/maps/"/>
-<script directory="gui/session/"/>
-<script directory="gui/session/campaigns/"/>
-<script directory="gui/session/chat/"/>
-<script directory="gui/session/developer_overlay/"/>
-<script directory="gui/session/diplomacy/"/>
-<script directory="gui/session/diplomacy/playercontrols/"/>
-<script directory="gui/session/lobby/"/>
-<script directory="gui/session/lobby/LobbyRatingReport/"/>
-<script directory="gui/session/message_box/"/>
-<script directory="gui/session/minimap/"/>
-<script directory="gui/session/objectives/"/>
-<script directory="gui/session/stats/"/>
-<script directory="gui/session/top_panel/"/>
-<script directory="gui/session/top_panel/IconButtons/"/>
-<script directory="gui/session/trade/"/>
+  <object name="session">
+    <action on="Tick">onTick();</action>
 
-<object name="session">
+    <action on="SavegameLoaded">restoreSavedGameData(arguments[0]);</action>
 
-	<action on="Tick">
-		onTick();
-	</action>
+    <action on="SimulationUpdate">onSimulationUpdate();</action>
 
-	<action on="SavegameLoaded">
-		restoreSavedGameData(arguments[0]);
-	</action>
+    <!-- Hotkeys won't work properly unless outside menu -->
+    <include directory="gui/session/hotkeys/" />
 
-	<action on="SimulationUpdate">
-		onSimulationUpdate();
-	</action>
+    <include file="gui/session/NetworkStatusOverlay.xml" />
+    <include file="gui/session/NetworkDelayOverlay.xml" />
+    <include file="gui/session/PauseOverlay.xml" />
+    <include file="gui/session/TimeNotificationOverlay.xml" />
 
-	<!-- Hotkeys won't work properly unless outside menu -->
-	<include directory="gui/session/hotkeys/"/>
+    <!-- Chat messages -->
+    <object name="chatPanel" size="0 131 100% 100%-240" z="0" absolute="true">
+      <object name="chatLines">
+        <repeat count="20">
+          <object
+            name="chatLine[n]"
+            size="3 0 100% 25"
+            type="button"
+            style="chatPanelStyle"
+            tooltip_style="sessionToolTipBottomBold"
+            ghost="true"
+            hidden="true"
+          />
+        </repeat>
+      </object>
+    </object>
 
-	<include file="gui/session/NetworkStatusOverlay.xml"/>
-	<include file="gui/session/NetworkDelayOverlay.xml"/>
-	<include file="gui/session/PauseOverlay.xml"/>
-	<include file="gui/session/TimeNotificationOverlay.xml"/>
+    <include directory="gui/session/chat/" />
+    <include directory="gui/session/developer_overlay/" />
+    <include directory="gui/session/dialogs/" />
+    <include directory="gui/session/diplomacy/" />
+    <include directory="gui/session/minimap/" />
+    <include directory="gui/session/objectives/" />
+    <include directory="gui/session/stats/" />
+    <include file="gui/session/GameSpeedControl.xml" />
+    <include file="gui/session/PanelEntities.xml" />
+    <include file="gui/session/ResearchProgress.xml" />
+    <include file="gui/session/TopPanel.xml" />
+    <include file="gui/session/trade/TradeDialog.xml" />
+    <include file="gui/session/tutorial_panel.xml" />
+    <include file="gui/session/Menu.xml" />
 
-	<!-- Chat messages -->
-	<object name="chatPanel" size="0 131 100% 100%-240" z="0" absolute="true">
-		<object name="chatLines">
-			<repeat count="20">
-				<object name="chatLine[n]" size="3 0 100% 25" type="button" style="chatPanelStyle" tooltip_style="sessionToolTipBottomBold" ghost="true" hidden="true"/>
-			</repeat>
-		</object>
-	</object>
+    <!-- Contains miscellanious objects s.a.: the technology research -->
+    <!-- progress, group selection icons, and the hero selection icon -->
+    <include directory="gui/session/session_objects/" />
 
-	<include directory="gui/session/chat/"/>
-	<include directory="gui/session/developer_overlay/"/>
-	<include directory="gui/session/dialogs/"/>
-	<include directory="gui/session/diplomacy/"/>
-	<include directory="gui/session/minimap/"/>
-	<include directory="gui/session/objectives/"/>
-	<include directory="gui/session/stats/"/>
-	<include file="gui/session/GameSpeedControl.xml"/>
-	<include file="gui/session/PanelEntities.xml"/>
-	<include file="gui/session/ResearchProgress.xml"/>
-	<include file="gui/session/TopPanel.xml"/>
-	<include file="gui/session/trade/TradeDialog.xml"/>
-	<include file="gui/session/tutorial_panel.xml"/>
-	<include file="gui/session/Menu.xml"/>
+    <!-- Information tooltip -->
+    <!-- Follows the mouse around if 'independent' is set to 'true'. -->
+    <object
+      name="informationTooltip"
+      type="tooltip"
+      independent="true"
+      style="informationTooltip"
+    />
 
-	<!-- Contains miscellanious objects s.a.: the technology research -->
-	<!-- progress, group selection icons, and the hero selection icon -->
-	<include directory="gui/session/session_objects/"/>
+    <!-- Structure placement info tooltip -->
+    <object
+      name="placementTooltip"
+      type="tooltip"
+      independent="true"
+      style="informationTooltip"
+    />
 
-	<!-- Information tooltip -->
-	<!-- Follows the mouse around if 'independent' is set to 'true'. -->
-	<object name="informationTooltip" type="tooltip" independent="true" style="informationTooltip"/>
+    <!-- START of BOTTOM PANEL -->
+    <!-- Limit to the minimal supported width of 1024 pixels. -->
+    <object size="50%-512 0 50%+512 100%">
+      <!-- Supplemental Details Panel (left). -->
+      <object
+        name="supplementalSelectionDetails"
+        size="50%-316 100%-166 50%-110 100%"
+        sprite="supplementalDetailsPanelAdjusted"
+        type="image"
+        z="20">
+        <include directory="gui/session/selection_panels_left/" />
+      </object>
 
-	<!-- Structure placement info tooltip -->
-	<object name="placementTooltip" type="tooltip" independent="true" style="informationTooltip"/>
+      <!-- Selection Details Panel (middle). -->
+      <object
+        name="selectionDetails"
+        size="50%-114 100%-205 50%+114 100%"
+        sprite="selectionDetailsPanelAdjusted"
+        type="image">
+        <include directory="gui/session/selection_panels_middle/" />
+      </object>
 
-	<!-- START of BOTTOM PANEL -->
-	<!-- Limit to the minimal supported width of 1024 pixels. -->
-	<object size="50%-512 0 50%+512 100%">
+      <!-- Commands Panel (right). -->
+      <object
+        name="unitCommands"
+        size="50%+110 100%-205 50%+572 100%"
+        sprite="unitCommandsPanelAdjusted"
+        type="image"
+        z="20">
+        <include directory="gui/session/selection_panels_right/" />
+      </object>
+    </object>
+    <!-- END OF BOTTOM PANEL -->
+  </object>
+  <!-- END OF SESSION OBJECT -->
 
-		<!-- Supplemental Details Panel (left). -->
-		<object name="supplementalSelectionDetails"
-			size="50%-316 100%-166 50%-110 100%"
-			sprite="supplementalDetailsPanelAdjusted"
-			type="image"
-			z="20"
-		>
-			<include directory="gui/session/selection_panels_left/"/>
-		</object>
+  <!-- Selection bandbox -->
+  <object
+    name="bandbox"
+    type="image"
+    sprite="bandbox"
+    ghost="true"
+    hidden="true"
+    z="200"
+  />
 
-		<!-- Selection Details Panel (middle). -->
-		<object name="selectionDetails"
-			size="50%-114 100%-205 50%+114 100%"
-			sprite="selectionDetailsPanelAdjusted"
-			type="image"
-		>
-			<include directory="gui/session/selection_panels_middle/"/>
-		</object>
-
-		<!-- Commands Panel (right). -->
-		<object name="unitCommands"
-			size="50%+110 100%-205 50%+572 100%"
-			sprite="unitCommandsPanelAdjusted"
-			type="image"
-			z="20"
-		>
-			<include directory="gui/session/selection_panels_right/"/>
-		</object>
-	</object><!-- END OF BOTTOM PANEL -->
-</object> <!-- END OF SESSION OBJECT -->
-
-<!-- Selection bandbox -->
-<object name="bandbox" type="image" sprite="bandbox" ghost="true" hidden="true" z="200"/>
-
-<!-- Cinema overlay -->
-<object name="cinemaOverlay" hidden="true" ghost="true">
-	<object name="cinemaBarTop" type="image" sprite="color:0 0 0 255" size="0 0 100% 100" ghost="true"/>
-	<object name="cinemaBarBottom" type="image" sprite="color:0 0 0 255" size="0 100%-100 100% 100%" ghost="true"/>
-</object>
-
+  <!-- Cinema overlay -->
+  <object name="cinemaOverlay" hidden="true" ghost="true">
+    <object
+      name="cinemaBarTop"
+      type="image"
+      sprite="color:0 0 0 255"
+      size="0 0 100% 100"
+      ghost="true"
+    />
+    <object
+      name="cinemaBarBottom"
+      type="image"
+      sprite="color:0 0 0 255"
+      size="0 100%-100 100% 100%"
+      ghost="true"
+    />
+  </object>
 </objects>

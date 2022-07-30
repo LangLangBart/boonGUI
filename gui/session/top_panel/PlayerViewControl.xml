@@ -1,19 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <object>
-	<object
-		size="85%-262 5 85%-62 31"
-		name="viewPlayer"
-		type="dropdown"
-		hidden="true"
-		z="50"
-		font="sans-bold-18"
-		style="ModernDropDown"
-		sprite="prettyBackgroundColor"
-		tooltip_style="sessionToolTipBold"
-		dropdown_size="500"
-	>
-		<translatableAttribute id="tooltip">Choose player to view</translatableAttribute>
-	</object>
-
-
+  <object
+    size="85%-262 5 85%-62 31"
+    name="viewPlayer"
+    type="dropdown"
+    hidden="true"
+    z="50"
+    font="sans-bold-18"
+    style="ModernDropDown"
+    sprite="prettyBackgroundColor"
+    tooltip_style="sessionToolTipBold"
+    dropdown_size="500">
+    <translatableAttribute id="tooltip">
+      Choose player to view
+    </translatableAttribute>
+  </object>
 </object>

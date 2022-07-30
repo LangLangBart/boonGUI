@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
-<object name="playersBox"
-	style="ModernSortedList"
-	selected_column="name"
-	selected_column_order="1"
-	type="olist"
-	sortable="true"
-	font="sans-bold-14"
->
-	<column id="buddy" width="14"/>
-	<column id="status" width="16">
-		<translatableAttribute id="heading"></translatableAttribute>
-	</column>
-	<column id="name" width="60%-32">
-		<translatableAttribute id="heading">Name</translatableAttribute>
-	</column>
-	<column id="rating" width="30%">
-		<translatableAttribute id="heading">Rating</translatableAttribute>
-	</column>
+<?xml version="1.0" encoding="utf-8" ?>
+<object
+  name="playersBox"
+  style="ModernSortedList"
+  selected_column="name"
+  selected_column_order="1"
+  type="olist"
+  sortable="true"
+  font="sans-bold-14">
+  <column id="buddy" width="14" />
+  <column id="status" width="16">
+    <translatableAttribute id="heading" />
+  </column>
+  <column id="name" width="60%-32">
+    <translatableAttribute id="heading">Name</translatableAttribute>
+  </column>
+  <column id="rating" width="30%">
+    <translatableAttribute id="heading">Rating</translatableAttribute>
+  </column>
 </object>

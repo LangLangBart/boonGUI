@@ -1,43 +1,43 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+<?xml version="1.0" encoding="utf-8" ?>
 <objects>
+  <script directory="gui/common/" />
+  <script directory="gui/msgbox/" />
 
-	<script directory="gui/common/"/>
-	<script directory="gui/msgbox/"/>
-
-	<!-- Fade out the background because it's non-interactable -->
-	<object sprite="ModernFade" type="image"/>
-	<object name="mbCancelHotkey" hotkey="cancel" />
-	<object name="mbMain"
-			style="ModernDialog"
-			type="image"
-	>
-	<object name="mbTitleBar"
-			style="ModernLabelText"
-			type="text"
-			size="50%-128 -18 50%+128 14"
-	/>
-	<object name="mbText"
-			type="text"
-			style="ModernLabelText"
-			size="18 18 100%-18 100%-64"
-	/>
-	<!-- The size of the following buttons is set dynamically in msgbox.js -->
-	<object name="mbButton1"
-			style="ModernButtonRed"
-			type="button"
-			hidden="true"
-	/>
-	<object name="mbButton2"
-			style="ModernButtonRed"
-			type="button"
-			hidden="true"
-	/>
-	<object name="mbButton3"
-			style="ModernButtonRed"
-			type="button"
-			hidden="true"
-			hotkey="confirm"
-	/>
-	</object>
+  <!-- Fade out the background because it's non-interactable -->
+  <object sprite="ModernFade" type="image" />
+  <object name="mbCancelHotkey" hotkey="cancel" />
+  <object name="mbMain" style="ModernDialog" type="image">
+    <object
+      name="mbTitleBar"
+      style="ModernLabelText"
+      type="text"
+      size="50%-128 -18 50%+128 14"
+    />
+    <object
+      name="mbText"
+      type="text"
+      style="ModernLabelText"
+      size="18 18 100%-18 100%-64"
+    />
+    <!-- The size of the following buttons is set dynamically in msgbox.js -->
+    <object
+      name="mbButton1"
+      style="ModernButtonRed"
+      type="button"
+      hidden="true"
+    />
+    <object
+      name="mbButton2"
+      style="ModernButtonRed"
+      type="button"
+      hidden="true"
+    />
+    <object
+      name="mbButton3"
+      style="ModernButtonRed"
+      type="button"
+      hidden="true"
+      hotkey="confirm"
+    />
+  </object>
 </objects>

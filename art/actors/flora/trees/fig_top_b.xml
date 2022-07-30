@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <actor version="1">
-  <castshadow/>
+  <castshadow />
   <group>
     <variant frequency="1" name="Fig Tree Foliage (B)">
       <mesh>gaia/tree_fig_top_b.dae</mesh>
@@ -8,13 +8,19 @@
   </group>
   <group>
     <variant frequency="1" name="leaf-color-a">
-      <textures><texture file="gaia/tree_fig_a.dds" name="baseTex"/></textures>
+      <textures>
+        <texture file="gaia/tree_fig_a.dds" name="baseTex" />
+      </textures>
     </variant>
     <variant frequency="1" name="leaf-color-b">
-      <textures><texture file="gaia/tree_fig_b.dds" name="baseTex"/></textures>
+      <textures>
+        <texture file="gaia/tree_fig_b.dds" name="baseTex" />
+      </textures>
     </variant>
     <variant frequency="1" name="leaf-color-c">
-      <textures><texture file="gaia/tree_fig_c.dds" name="baseTex"/></textures>
+      <textures>
+        <texture file="gaia/tree_fig_c.dds" name="baseTex" />
+      </textures>
     </variant>
   </group>
   <material>basic_trans_wind.xml</material>

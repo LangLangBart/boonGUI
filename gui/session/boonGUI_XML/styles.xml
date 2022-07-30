@@ -1,36 +1,175 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+<?xml version="1.0" encoding="utf-8" ?>
 <styles>
-	<!--  -->
-	<style name="researchTimeCounter" textcolor="white" font="sans-bold-stroke-18" ghost="true" text_align="center" text_valign="center" />
-	<style name="resourceIdleWorker" textcolor="red" font="sans-bold-stroke-20" ghost="true" text_align="center" text_valign="center" />
+  <!--  -->
+  <style
+    name="researchTimeCounter"
+    textcolor="white"
+    font="sans-bold-stroke-18"
+    ghost="true"
+    text_align="center"
+    text_valign="center"
+  />
+  <style
+    name="resourceIdleWorker"
+    textcolor="red"
+    font="sans-bold-stroke-20"
+    ghost="true"
+    text_align="center"
+    text_valign="center"
+  />
 
-	<!-- SINGLE DETAILS PANEL (middle) -->
-	<style name="statsTextLeft" font="sans-stroke-16" textcolor="white" text_align="left" text_valign="center" tooltip_style="sessionToolTipInstantly" />
-	<style name="statsTextCentered" font="sans-stroke-12" textcolor="white" text_align="center" text_valign="center" tooltip_style="sessionToolTipInstantly" />
-	<style name="statsTextRight" font="sans-stroke-12" textcolor="white" text_align="right" text_valign="center" tooltip_style="sessionToolTipInstantly" />
-	<style name="primaryNameCentered" font="sans-bold-stroke-16" textcolor="gold" text_align="center" text_valign="center" ghost="true" />
-	<style name="secondaryNameCentered" font="sans-stroke-14" textcolor="white" text_align="center" text_valign="center" ghost="true" />
+  <!-- SINGLE DETAILS PANEL (middle) -->
+  <style
+    name="statsTextLeft"
+    font="sans-stroke-16"
+    textcolor="white"
+    text_align="left"
+    text_valign="center"
+    tooltip_style="sessionToolTipInstantly"
+  />
+  <style
+    name="statsTextCentered"
+    font="sans-stroke-12"
+    textcolor="white"
+    text_align="center"
+    text_valign="center"
+    tooltip_style="sessionToolTipInstantly"
+  />
+  <style
+    name="statsTextRight"
+    font="sans-stroke-12"
+    textcolor="white"
+    text_align="right"
+    text_valign="center"
+    tooltip_style="sessionToolTipInstantly"
+  />
+  <style
+    name="primaryNameCentered"
+    font="sans-bold-stroke-16"
+    textcolor="gold"
+    text_align="center"
+    text_valign="center"
+    ghost="true"
+  />
+  <style
+    name="secondaryNameCentered"
+    font="sans-stroke-14"
+    textcolor="white"
+    text_align="center"
+    text_valign="center"
+    ghost="true"
+  />
 
-	<!-- NOTIFY  -->
-	<style name="chatPanelStyle" buffer_zone="4" font="sans-stroke-18" textcolor="white" text_align="left" text_valign="center" sprite="stretched:session/item-shading-right.png" />
-	<style name="notifiyPanel" buffer_zone="5" font="sans-bold-16" textcolor="white" text_align="center" text_valign="bottom" />
+  <!-- NOTIFY  -->
+  <style
+    name="chatPanelStyle"
+    buffer_zone="4"
+    font="sans-stroke-18"
+    textcolor="white"
+    text_align="left"
+    text_valign="center"
+    sprite="stretched:session/item-shading-right.png"
+  />
+  <style
+    name="notifiyPanel"
+    buffer_zone="5"
+    font="sans-bold-16"
+    textcolor="white"
+    text_align="center"
+    text_valign="bottom"
+  />
 
-	<!-- STATS TOP PANEL -->
-	<style name="overlayHeader" font="sans-bold-stroke-16" textcolor="white" text_align="right" text_valign="bottom" tooltip_style="sessionToolTipCircleWide" />
-	<style name="overlayBold" font="sans-bold-stroke-16" ghost="true" textcolor="230 230 230" text_align="left" text_valign="bottom" tooltip_style="sessionToolTipCircle" />
-	<style name="overlayBoldBig" font="sans-bold-stroke-19" ghost="true" textcolor="250 250 250" text_align="left" text_valign="center" tooltip_style="sessionToolTipCircle" />
-	<style name="overlayDefault" font="sans-stroke-20" ghost="true" textcolor="250 250 250" text_align="right" text_valign="center" tooltip_style="sessionToolTipCircle" />
-	<style name="overlayMedium" font="sans-stroke-16" ghost="true" textcolor="250 250 250" text_align="right" text_valign="center" tooltip_style="sessionToolTipCircle"/>
-	<style name="overlaySmall" font="sans-stroke-14" ghost="true" textcolor="250 250 250" text_align="right" text_valign="center" tooltip_style="sessionToolTipCircle"/>
-	<style name="playerInfoButton" sprite_over="simpleHighlighter" tooltip_style="sessionToolTipCircleWide" sound_pressed="audio/interface/ui/ui_button_click.ogg" />
-	<style name="statsHighlighter" sprite_over="simpleHighlighterBackground" tooltip_style="sessionToolTipCircle" />
-	<style name="iconButtonPhase" sprite_over="snIconPortraitOver" tooltip_style="sessionToolTipCircle" sound_pressed="audio/interface/ui/ui_button_click.ogg" />
-	<style name="infoGameLabels" textcolor="200 200 200" font="sans-stroke-18" ghost="true" text_align="center" text_valign="center"/>
+  <!-- STATS TOP PANEL -->
+  <style
+    name="overlayHeader"
+    font="sans-bold-stroke-16"
+    textcolor="white"
+    text_align="right"
+    text_valign="bottom"
+    tooltip_style="sessionToolTipCircleWide"
+  />
+  <style
+    name="overlayBold"
+    font="sans-bold-stroke-16"
+    ghost="true"
+    textcolor="230 230 230"
+    text_align="left"
+    text_valign="bottom"
+    tooltip_style="sessionToolTipCircle"
+  />
+  <style
+    name="overlayBoldBig"
+    font="sans-bold-stroke-19"
+    ghost="true"
+    textcolor="250 250 250"
+    text_align="left"
+    text_valign="center"
+    tooltip_style="sessionToolTipCircle"
+  />
+  <style
+    name="overlayDefault"
+    font="sans-stroke-20"
+    ghost="true"
+    textcolor="250 250 250"
+    text_align="right"
+    text_valign="center"
+    tooltip_style="sessionToolTipCircle"
+  />
+  <style
+    name="overlayMedium"
+    font="sans-stroke-16"
+    ghost="true"
+    textcolor="250 250 250"
+    text_align="right"
+    text_valign="center"
+    tooltip_style="sessionToolTipCircle"
+  />
+  <style
+    name="overlaySmall"
+    font="sans-stroke-14"
+    ghost="true"
+    textcolor="250 250 250"
+    text_align="right"
+    text_valign="center"
+    tooltip_style="sessionToolTipCircle"
+  />
+  <style
+    name="playerInfoButton"
+    sprite_over="simpleHighlighter"
+    tooltip_style="sessionToolTipCircleWide"
+    sound_pressed="audio/interface/ui/ui_button_click.ogg"
+  />
+  <style
+    name="statsHighlighter"
+    sprite_over="simpleHighlighterBackground"
+    tooltip_style="sessionToolTipCircle"
+  />
+  <style
+    name="iconButtonPhase"
+    sprite_over="snIconPortraitOver"
+    tooltip_style="sessionToolTipCircle"
+    sound_pressed="audio/interface/ui/ui_button_click.ogg"
+  />
+  <style
+    name="infoGameLabels"
+    textcolor="200 200 200"
+    font="sans-stroke-18"
+    ghost="true"
+    text_align="center"
+    text_valign="center"
+  />
 
-
-
-	<!-- STATS MODE PANEL -->
-	<style name="tabButtons" sprite="snIconPortrait" sprite_disabled="snIconPortraitEnabled" sprite_over="snIconPortraitStrongerHighlight" sound_pressed="audio/interface/ui/ui_button_click.ogg" />
-	<style name="tabButtonIndicator" sprite_over="statModeIndicatorHighlight" sound_pressed="audio/interface/ui/ui_button_click.ogg" />
+  <!-- STATS MODE PANEL -->
+  <style
+    name="tabButtons"
+    sprite="snIconPortrait"
+    sprite_disabled="snIconPortraitEnabled"
+    sprite_over="snIconPortraitStrongerHighlight"
+    sound_pressed="audio/interface/ui/ui_button_click.ogg"
+  />
+  <style
+    name="tabButtonIndicator"
+    sprite_over="statModeIndicatorHighlight"
+    sound_pressed="audio/interface/ui/ui_button_click.ogg"
+  />
 </styles>

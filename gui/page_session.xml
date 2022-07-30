@@ -1,30 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <page>
-	<include>common/modern/setup.xml</include>
-	<include>common/modern/styles.xml</include>
-	<include>common/modern/sprites.xml</include>
+  <include>common/modern/setup.xml</include>
+  <include>common/modern/styles.xml</include>
+  <include>common/modern/sprites.xml</include>
 
-	<include>common/resources/</include>
+  <include>common/resources/</include>
 
-	<include>common/global.xml</include>
-	<include>common/setup.xml</include>
-	<include>common/sprites.xml</include>
-	<include>common/styles.xml</include>
+  <include>common/global.xml</include>
+  <include>common/setup.xml</include>
+  <include>common/sprites.xml</include>
+  <include>common/styles.xml</include>
 
-	<include>session/setup.xml</include>
-	<include>session/sprites.xml</include>
-	<include>session/styles.xml</include>
+  <include>session/setup.xml</include>
+  <include>session/sprites.xml</include>
+  <include>session/styles.xml</include>
 
-	<!--
+  <!--
 	boonGUI's GUI_-_XML_Files
 	Try to put as much as possible in here and avoid adding the default XML files to the mod, makes it easier to maintain
 	https://trac.wildfiregames.com/wiki/GUI_-_XML_Files
 	-->
-	<include>session/boonGUI_XML/setups_icons.xml</include>
-	<include>session/boonGUI_XML/setups_misc.xml</include>
-	<include>session/boonGUI_XML/sprites.xml</include>
-	<!-- styles must come before session.xml -->
-	<include>session/boonGUI_XML/styles.xml</include>
+  <include>session/boonGUI_XML/setups_icons.xml</include>
+  <include>session/boonGUI_XML/setups_misc.xml</include>
+  <include>session/boonGUI_XML/sprites.xml</include>
+  <!-- styles must come before session.xml -->
+  <include>session/boonGUI_XML/styles.xml</include>
 
-	<include>session/session.xml</include>
+  <include>session/session.xml</include>
 </page>

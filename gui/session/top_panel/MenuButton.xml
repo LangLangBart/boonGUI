@@ -1,16 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- This object covers up the text on the menu
 buttons as they slide by so that you don't see
 them on top of the main menu button -->
-<object type="button"
-	name="menuButton"
-	hotkey="session.gui.menu.toggle"
-	size="100%-28 4 100% 32"
-	style="iconButton"
-	tooltip_style="sessionToolTip"
-	z="100">
-	<object size="5 5 100%-5 100%-5"
-		type="image"
-		sprite="stretched:session/phosphor/menu_button.png"
-		ghost="true" />
+<object
+  type="button"
+  name="menuButton"
+  hotkey="session.gui.menu.toggle"
+  size="100%-28 4 100% 32"
+  style="iconButton"
+  tooltip_style="sessionToolTip"
+  z="100">
+  <object
+    size="5 5 100%-5 100%-5"
+    type="image"
+    sprite="stretched:session/phosphor/menu_button.png"
+    ghost="true"
+  />
 </object>

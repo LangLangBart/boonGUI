@@ -1,16 +1,51 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<object name="unitUpgradePanel"
-	size="7 7 100% 100%"
->
-	<object>
-		<repeat count="9">
-			<object name="unitUpgradeButton[n]" hidden="true" style="iconButton" type="button" size="0 0 49 49" tooltip_style="sessionToolTipBottom">
-				<object name="unitUpgradeIcon[n]" type="image" ghost="true" size="3 3 46 46"/>
-				<object name="unitUpgradeUpgradeIcon[n]" type="image" ghost="true" size="3 3 46 46" sprite="stretched:session/icons/upgrade.png"/>
-				<object name="unitUpgradeProgressSlider[n]" type="image" sprite="queueProgressSlider" ghost="true" size="3 3 46 46" z="20"/>
-				<object name="unitUpgradeSelection[n]" hidden="true" type="image" ghost="true" size="3 3 46 46" sprite="stretched:session/icons/corners.png"/>
-				<object name="unitUpgradeCount[n]" ghost="true" style="groupIconsText" type="text" z="30"/>
-			</object>
-		</repeat>
-	</object>
+<?xml version="1.0" encoding="UTF-8" ?>
+<object name="unitUpgradePanel" size="7 7 100% 100%">
+  <object>
+    <repeat count="9">
+      <object
+        name="unitUpgradeButton[n]"
+        hidden="true"
+        style="iconButton"
+        type="button"
+        size="0 0 49 49"
+        tooltip_style="sessionToolTipBottom">
+        <object
+          name="unitUpgradeIcon[n]"
+          type="image"
+          ghost="true"
+          size="3 3 46 46"
+        />
+        <object
+          name="unitUpgradeUpgradeIcon[n]"
+          type="image"
+          ghost="true"
+          size="3 3 46 46"
+          sprite="stretched:session/icons/upgrade.png"
+        />
+        <object
+          name="unitUpgradeProgressSlider[n]"
+          type="image"
+          sprite="queueProgressSlider"
+          ghost="true"
+          size="3 3 46 46"
+          z="20"
+        />
+        <object
+          name="unitUpgradeSelection[n]"
+          hidden="true"
+          type="image"
+          ghost="true"
+          size="3 3 46 46"
+          sprite="stretched:session/icons/corners.png"
+        />
+        <object
+          name="unitUpgradeCount[n]"
+          ghost="true"
+          style="groupIconsText"
+          type="text"
+          z="30"
+        />
+      </object>
+    </repeat>
+  </object>
 </object>
