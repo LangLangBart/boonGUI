@@ -14,8 +14,7 @@ concurrency:
 
 jobs:
   run-linters:
-    # https://github.com/wearerequired/lint-action
-    name: Code linter
+    name: Code Quality
     runs-on: ubuntu-latest
     if: ${{ github.actor != 'dependabot[bot]' }}
 
@@ -41,6 +40,7 @@ jobs:
           sudo apt update
           sudo apt install --no-install-recommends -y libxml2-utils
       - name: Setup xmllint problem matcher
+        # https://github.com/korelstar/xmllint-problem-matcher
         uses: korelstar/xmllint-problem-matcher@master
       - name: Validate gui XML
         run: find ./gui -name '*.xml' -mindepth 2 -exec xmllint --relaxng ./gui.rng --noout {} \;
@@ -54,6 +54,7 @@ jobs:
         run: npm install
 
       - name: ESLint & Prettier (XML)
+        # https://github.com/wearerequired/lint-action
         uses: wearerequired/lint-action@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -69,16 +70,9 @@ jobs:
           auto_fix: true
           continue_on_error: false
 
-  todo_issues:
-    # https://github.com/alstr/todo-to-issue-action
-    name: Create TODO issues
-    # jobs run in parallel by default, but i like them sequentially
-    # jobs.<job_id>.needs - with "always()" not requiring successful prior job
-    if: ${{ always() }}
-    needs: [run-linters]
-    runs-on: "ubuntu-latest"
-    steps:
-      - uses: "alstr/todo-to-issue-action@v4.6.6"
+      - name: Check TODO issues
+        # https://github.com/alstr/todo-to-issue-action
+        uses: "alstr/todo-to-issue-action@v4.6.6"
         with:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
