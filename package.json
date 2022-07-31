@@ -15,7 +15,7 @@
     "typescript": "^4.6.4"
   },
   "scripts": {
-    "postinstall": "if type vale >/dev/null; then vale sync; fi",
+    "postinstall": "vale sync",
     "vale": "vale .",
     "valesync": "vale sync",
     "xml": "./node_modules/.bin/prettier --write ./\\*\\*/\\*.xml"

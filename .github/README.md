@@ -4,17 +4,17 @@
 # boonGUI <br>
 
 <p>
-<a href="https://github.com/LangLangBart/boonGUI/releases"><img src="https://img.shields.io/github/release/LangLangBart/boonGUI.svg?style=for-the-badge&color=gold&label=Version" height="18"></a>
-<a href="https://play0ad.com/download/"><img src="https://img.shields.io/badge/Compatibility-Alpha25%3A%20Yaunā-gold?style=for-the-badge" height="18"></a>
-<a href="https://wildfiregames.com/forum/topic/37147-boongui/"><img src="https://img.shields.io/github/downloads/LangLangBart/boonGUI/total.svg?color=gold&amp&label=%E2%88%91%20Downloads&amp&style=for-the-badge" height="18"></a>
-<a href="https://wildfiregames.com/forum/topic/37147-boongui/"><img src="https://img.shields.io/badge/Discussion-Forum-gold?style=for-the-badge" height="18"></a>
+<a href="https://github.com/LangLangBart/boonGUI/releases"><img src="https://img.shields.io/github/release/LangLangBart/boonGUI.svg?style=for-the-badge&color=gold&label=Version" height="20"></a>
+<a href="https://play0ad.com/download/"><img src="https://img.shields.io/badge/Compatibility-Alpha25%3A%20Yaunā-gold?style=for-the-badge" height="20"></a>
+<a href="https://wildfiregames.com/forum/topic/37147-boongui/"><img src="https://img.shields.io/github/downloads/LangLangBart/boonGUI/total.svg?color=gold&amp&label=%E2%88%91%20Downloads&amp&style=for-the-badge" height="20"></a>
+<a href="https://wildfiregames.com/forum/topic/37147-boongui/"><img src="https://img.shields.io/badge/Discussion-Forum-gold?style=for-the-badge" height="20"></a>
 </p>
 
 <p>
 <!-- dev badges -->
-<a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commits-since/LangLangBart/boonGUI/latest/main?style=for-the-badge" height="18"></a>
-<a href="https://github.com/LangLangBart/boonGUI/actions/workflows/code_quality.yml"><img src="https://img.shields.io/github/workflow/status/LangLangBart/boonGUI/Code%20Quality/main?label=ESLint&style=for-the-badge" height="18"></a>
-<a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commit-activity/m/LangLangBart/boonGUI?style=for-the-badge" height="18"></a>
+<a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commits-since/LangLangBart/boonGUI/latest/main?style=for-the-badge" height="20"></a>
+<a href="https://github.com/LangLangBart/boonGUI/actions/workflows/code_quality.yml"><img src="https://img.shields.io/github/workflow/status/LangLangBart/boonGUI/Code%20Quality/main?label=ESLint&style=for-the-badge" height="20"></a>
+<a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commit-activity/m/LangLangBart/boonGUI?style=for-the-badge" height="20"></a>
 </p>
 
 User interface **mod** for the Real-Time-Strategy game **0 A.D.**
@@ -34,9 +34,9 @@ User interface **mod** for the Real-Time-Strategy game **0 A.D.**
 
 ---
 
-| <a href="https://www.youtube.com/channel/UC5Sf1aQufzzWATg9TJzg7mQ"> <img src="https://img.shields.io/static/v1?label=Channel&message=0AD%20Newbie%20Rush&logo=YouTube&color=FF0000&style=for-the-badge" height="18"> <a href="https://www.youtube.com/watch?v=CA2ZaEsDkiA"><img src="https://img.shields.io/youtube/views/CA2ZaEsDkiA?color=FF0000&logo=youtube&style=for-the-badge" height="18"><br /> <a href="http://www.youtube.com/watch?v=CA2ZaEsDkiA" target="_blank"><img src="http://img.youtube.com/vi/CA2ZaEsDkiA/0.jpg" alt="Thumbnail" width="320" height="200" />| <a href="https://www.youtube.com/channel/UCnpCp_OvNm0_FgD_5rSrxbw"><img src="https://img.shields.io/static/v1?label=Channel&message=Plan%26Go:%200%20%20A.D.&logo=YouTube&color=FF0000&style=for-the-badge" height="18"> <a href="https://www.youtube.com/watch?v=PhdbEN6UoG4"><img src="https://img.shields.io/youtube/views/PhdbEN6UoG4?color=FF0000&logo=youtube&style=for-the-badge" height="18"><br /> <a href="https://www.youtube.com/watch?v=PhdbEN6UoG4" target="_blank"><img src="http://img.youtube.com/vi/PhdbEN6UoG4/0.jpg" alt="Thumbnail" width="320" height="200" /> |
+| <a href="https://www.youtube.com/channel/UC5Sf1aQufzzWATg9TJzg7mQ"> <img src="https://img.shields.io/static/v1?label=Channel&message=0AD%20Newbie%20Rush&logo=YouTube&color=B40000&style=for-the-badge" height="19"> <a href="https://www.youtube.com/watch?v=CA2ZaEsDkiA"><img src="https://img.shields.io/youtube/views/CA2ZaEsDkiA?color=B40000&logo=youtube&style=for-the-badge" height="19"><br /> <a href="http://www.youtube.com/watch?v=CA2ZaEsDkiA" target="_blank"><img src="http://img.youtube.com/vi/CA2ZaEsDkiA/0.jpg" alt="Thumbnail" width="320" height="200" />| <a href="https://www.youtube.com/channel/UCnpCp_OvNm0_FgD_5rSrxbw"><img src="https://img.shields.io/static/v1?label=Channel&message=Plan%26Go:%200%20%20A.D.&logo=YouTube&color=B40000&style=for-the-badge" height="19"> <a href="https://www.youtube.com/watch?v=PhdbEN6UoG4"><img src="https://img.shields.io/youtube/views/PhdbEN6UoG4?color=B40000&logo=youtube&style=for-the-badge" height="19"><br /> <a href="https://www.youtube.com/watch?v=PhdbEN6UoG4" target="_blank"><img src="http://img.youtube.com/vi/PhdbEN6UoG4/0.jpg" alt="Thumbnail" width="320" height="200" /> |
 | :----: | :----: |
-| <a href="https://www.youtube.com/channel/UCjF60pN4P6ZwTjn4e0_f0nw"><img src="https://img.shields.io/static/v1?label=Channel&message=Kakutstha%200AD&logo=YouTube&color=FF0000&style=for-the-badge" height="18"> <a href="https://www.youtube.com/watch?v=aJBzP-UAMXI"><img src="https://img.shields.io/youtube/views/aJBzP-UAMXI?color=FF0000&logo=youtube&style=for-the-badge" height="18"><br /> <a href="https://www.youtube.com/watch?v=aJBzP-UAMXI" target="_blank"><img src="http://img.youtube.com/vi/aJBzP-UAMXI/0.jpg" alt="Thumbnail" width="320" height="200" /> | <a href="https://www.youtube.com/channel/UCS-SFei6NFRuGN8CKtAsYrA"><img src="https://img.shields.io/static/v1?label=Channel&message=Tom%200ad&logo=YouTube&color=FF0000&style=for-the-badge" height="18"> <a href="https://www.youtube.com/watch?v=_DP_-WOARXo"><img src="https://img.shields.io/youtube/views/_DP_-WOARXo?color=FF0000&logo=youtube&style=for-the-badge" height="18"><br /> <a href="https://www.youtube.com/watch?v=_DP_-WOARXo" target="_blank"><img src="http://img.youtube.com/vi/_DP_-WOARXo/0.jpg" alt="Thumbnail" width="320" height="200" /> |
+| <a href="https://www.youtube.com/channel/UCjF60pN4P6ZwTjn4e0_f0nw"><img src="https://img.shields.io/static/v1?label=Channel&message=Kakutstha%200AD&logo=YouTube&color=B40000&style=for-the-badge" height="19"> <a href="https://www.youtube.com/watch?v=aJBzP-UAMXI"><img src="https://img.shields.io/youtube/views/aJBzP-UAMXI?color=B40000&logo=youtube&style=for-the-badge" height="19"><br /> <a href="https://www.youtube.com/watch?v=aJBzP-UAMXI" target="_blank"><img src="http://img.youtube.com/vi/aJBzP-UAMXI/0.jpg" alt="Thumbnail" width="320" height="200" /> | <a href="https://www.youtube.com/channel/UCS-SFei6NFRuGN8CKtAsYrA"><img src="https://img.shields.io/static/v1?label=Channel&message=Tom%200ad&logo=YouTube&color=B40000&style=for-the-badge" height="19"> <a href="https://www.youtube.com/watch?v=_DP_-WOARXo"><img src="https://img.shields.io/youtube/views/_DP_-WOARXo?color=B40000&logo=youtube&style=for-the-badge" height="19"><br /> <a href="https://www.youtube.com/watch?v=_DP_-WOARXo" target="_blank"><img src="http://img.youtube.com/vi/_DP_-WOARXo/0.jpg" alt="Thumbnail" width="320" height="200" /> |
 
 </div>
 
@@ -95,8 +95,8 @@ git clone https://github.com/LangLangBart/boonGUI.git
 
 <br>
 
-### Git-Hook
-**JavaScript** linting/ formatting with `ESLint`, **Text** validation with `Vale` and **XML** formatting with `Prettier` will be taken care of automatically with [Simple Git Hooks](https://github.com/toplenboren/simple-git-hooks).
+### 🔱 Git-Hook
+**JavaScript** linting & formatting with [ESLint](https://eslint.org), **Text** validation with [Vale](https://github.com/errata-ai/vale) and **XML** formatting with [Prettier for XML](https://github.com/prettier/plugin-xml) will be taken care of automatically with [Simple Git Hooks](https://github.com/toplenboren/simple-git-hooks).
 
 1. Install `node.js` and `Vale` for example through Homebrew.
 
@@ -104,51 +104,75 @@ git clone https://github.com/LangLangBart/boonGUI.git
 brew install node vale
 ```
 
-2. Install all the dependencies from the [package.json](../package.json) file. The `vale` dependencies will also be post-installed if the command is found. If you decide to install `Vale` later, just run `vale sync`.
+2. Install all the dependencies from the [package.json](../package.json) file. Done.
 
 ```zsh
 npm install
 ```
 
-3. To use the hook, run the following command once. If you make changes to the hook, run the command again.
+<br>
+
+The hook and all the `Vale` packages are set when you run the previous command. If you make changes to the hook or the `Vale` dependencies run the following commands again.
+
 ```zsh
 npx simple-git-hooks
 # Confirmation messages
 # [INFO] Successfully set the pre-commit with command: npx lint-staged
 # [INFO] Successfully set all git hooks
+
+vale sync
+# Downloading packages ...
 ```
+
+<br>
+
+### 💼 Workflow
+Code setup with `npm install` is purely optional and not required. A GitHub action workflow is run on every commit and does all the tasks for you.
+
+<br>
 
 <details>
  <summary><b>Detailed code information</b></summary>
 <p>
 
 #### JavaScript
-Mirroring the linting process from 0 A.D. by using [ESLint](https://eslint.org) and an adopted set of rules defined in the [eslintrc.json](../.eslintrc.json) file.
+Mirroring the linting process from 0 A.D. by using `ESLint` and an adopted set of rules defined in the [.eslintrc.json](../.eslintrc.json) file.
 
 * The `.vscode` settings are set up to automatically adjust your code to the rules when you save the document.
-* An optional installation of the [VSCode ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) runs ESLint on each file and display warnings and errors at once.
+* An optional installation of the [VSCode ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) runs `ESLint` on each file and display warnings and errors at once.
 * The alternative is to lint and auto fix your code with the following commands.
 
 ```zsh
-npx eslint .
-npx eslint . --fix
+./node_modules/.bin/prettier .
+./node_modules/.bin/prettier . --fix
 ```
 
 #### Texts
-[Vale](https://github.com/errata-ai/vale) is a grammar, style, and word usage linter for the English language.
+`Vale` is a grammar, style, and word usage linter for the English language. The rules are set in the [.vale.ini](../.vale.ini) file.
 
-* Unlike ESLint, Vale doesn't have a way to auto fix issues at the moment, this must be done manually. To display warnings and errors for all defined cases in the [vale.ini](../.vale.ini) file run `vale .` .
 * An optional installation of the [Vale extension](https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server) to display warnings and errors at once.
+* Unlike `ESLint`, `Vale` doesn't have a way to auto fix issues at the moment, this must be done manually. To display all warnings and errors run the following command.
+
+```zsh
+vale .
+```
 
 #### XML
-* Any XML file will be formatted with [Prettier for XML](https://github.com/prettier/plugin-xml).
-* An optional installation of the [Prettier - Code formatter extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) formats the XML file when saving the file.
+`Prettier for XML` formats the files according to the rules set in [.prettierrc.json](../.prettierrc.json).
+
+* An optional installation of the [Prettier - Code formatter extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) automatically formats the `XML` file upon saving or use the following command.
+
+```zsh
+./node_modules/.bin/prettier --write '**/*.xml'
+```
 
 </p>
 </details>
 <br>
 
-### Contributors
+---
+
+## 🏆 Contributors
 The motivation for this mod was to learn JavaScript by creating a utility tool for @mysticjim. There were a legion of contributors who helped create the mod.
 * The statistics overlay was written by @Islan.
 * Thanks to @Effervescent, @mysticjim, @Nobbi, @Palaiologos and @seeh for constantly testing and giving feedback.
