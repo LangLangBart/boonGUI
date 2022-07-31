@@ -96,7 +96,7 @@ git clone https://github.com/LangLangBart/boonGUI.git
 <br>
 
 ### 🔱 Git-Hook
-**JavaScript** linting & formatting with [ESLint](https://eslint.org), **Text** validation with [Vale](https://github.com/errata-ai/vale) and **XML** formatting with [Prettier for XML](https://github.com/prettier/plugin-xml) will be taken care of automatically with [Simple Git Hooks](https://github.com/toplenboren/simple-git-hooks).
+**JavaScript** linting & formatting with [ESLint](https://eslint.org), **Text** validation with [Vale](https://github.com/errata-ai/vale) and **XML** formatting with [Prettier for XML](https://github.com/prettier/plugin-xml) are done automatically with [Simple Git Hooks](https://github.com/toplenboren/simple-git-hooks).
 
 1. Install `node.js` and `Vale` for example through Homebrew.
 
