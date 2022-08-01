@@ -73,7 +73,7 @@ jobs:
 
       - name: Check TODO issues
         # https://github.com/alstr/todo-to-issue-action
-        uses: "alstr/todo-to-issue-action@v4.6.6"
+        uses: "alstr/todo-to-issue-action@v4.6.8"
         with:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
