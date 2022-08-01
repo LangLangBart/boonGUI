@@ -17,7 +17,7 @@
 <a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commit-activity/m/LangLangBart/boonGUI?style=for-the-badge" height="20"></a>
 </p>
 
-User interface **mod** for the Real-Time-Strategy game **0 A.D.**
+User interface **mod** for the RTS game **0 A.D.**
 
 <!-- 0 A.D. logo -->
 <a href="https://play0ad.com"><img src="Images/0ad_logo.png" width="250">
@@ -63,24 +63,21 @@ User interface **mod** for the Real-Time-Strategy game **0 A.D.**
 ---
 
 ## 👨‍💻 Install
-Standard location for the `/0ad/mods/` folder
-* Linux: `~/.local/share/0ad/mods/`
-* macOS: `~/Library/Application\ Support/0ad/mods/`
-* Windows: `~\Documents\My Games\0ad\mods\`
 
-Choose your preferred method
-* **Github**
-  * Clone it in your `/0ad/mods/` folder:
-```
-git clone https://github.com/LangLangBart/boonGUI.git
-```
+| System  | Default location for the `/0ad/mods/` folder |
+| ------- | -------------------------------------------- |
+| Linux   | `~/.local/share/0ad/mods/`                   |
+| macOS   | `~/Library/Application\ Support/0ad/mods/`   |
+| Windows | `~\Documents\My Games\0ad\mods\`             |
 
-* **Pyromod**
-  * Drag the file over the 0ad start icon or double click it.
-  * The mod gets unpacked and placed automatically in your `/0ad/mods/` folder.
-* **ZIP**
-  * Unpack it in your `/0ad/mods/` folder.
-
+* Pick one of three ways to install the mod
+  * **Github**
+    * Clone it in your `/0ad/mods/` folder.
+  * **Pyromod**
+    * Drag the file over the 0ad start icon or double click it.
+    * The mod gets unpacked and placed automatically in your `/0ad/mods/` folder.
+  * **ZIP**
+    * Unpack it in your `/0ad/mods/` folder.
 * Start 0 A.D., click `Settings` and `Mod Selection`.
 * Double-click `boonGUI`, click `Save Configuration` and `Start Mods`.
 
@@ -128,8 +125,6 @@ vale sync
 
 ### 💼 Workflow
 Code setup with `npm install` is purely optional and not required. A GitHub action workflow is run on every commit and does all the tasks for you.
-
-<br>
 
 <details>
  <summary><b>Detailed code information</b></summary>
