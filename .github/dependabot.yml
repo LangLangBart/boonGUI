@@ -2,14 +2,17 @@
 # You enable DependaBot version updates by checking a dependabot.yml configuration file in to your repository's .github directory.
 # https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates
 
+
+# IMPORTANT: If more than two PR's are made by dependabot, the third one fails, I don't know why. But I hate it when any workflows fail in my github action, the limit is set to 2 for open-pull-requests-limit and is checked weekly rather than monthly.
+# Maybe I just need to configure something in the settings, but I was annoyed and gave up.
 version: 2
 updates:
   # Configuration for github-actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: 'monthly'
-    open-pull-requests-limit: 1000000
+      interval: 'weekly'
+    open-pull-requests-limit: 2
     target-branch: "main"
     labels:
       - "dependencies"
@@ -19,8 +22,8 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: 'monthly'
-    open-pull-requests-limit: 1000000
+      interval: 'weekly'
+    open-pull-requests-limit: 2
     target-branch: "main"
     labels:
       - "dependencies"
