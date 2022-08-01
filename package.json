@@ -16,7 +16,7 @@
   },
   "scripts": {
     "postinstall": "vale sync",
-    "vale": "vale .",
+    "vale": "vale --minAlertLevel=suggestion .",
     "valesync": "vale sync",
     "xml": "./node_modules/.bin/prettier --write ./\\*\\*/\\*.xml"
   },
