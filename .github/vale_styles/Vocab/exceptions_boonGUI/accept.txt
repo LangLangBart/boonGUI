@@ -1,6 +1,8 @@
 boonGUI
 ESLint
 Java[Ss]cript
+daily
+weekly
 monthly
 Pyromod
 (?i)TODO
