@@ -8,9 +8,10 @@ on:
       - main
   workflow_dispatch:
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.event_name == 'push' && github.head_ref || github.ref }}
-  cancel-in-progress: true
+# Disable this part, dependabot.yml fails for multiple PR's
+# concurrency:
+#   group: ${{ github.workflow }}-${{ github.event_name == 'push' && github.head_ref || github.ref }}
+#   cancel-in-progress: true
 
 jobs:
   run-linters:
