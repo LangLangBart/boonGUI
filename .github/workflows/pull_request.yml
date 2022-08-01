@@ -69,7 +69,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Dependabot metadata
         id: metadata
-        uses: dependabot/fetch-metadata@v1.1.1
+        uses: dependabot/fetch-metadata@v1.3.3
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
       - name: Auto-approve PR
