@@ -43,7 +43,8 @@ jobs:
         # https://github.com/korelstar/xmllint-problem-matcher
         uses: korelstar/xmllint-problem-matcher@master
       - name: Validate gui XML
-        run: find ./gui -name '*.xml' -mindepth 2 -exec xmllint --relaxng ./gui.rng --noout {} \;
+        # https://github.com/korelstar/xmllint-problem-matcher/issues/5
+        run: find ./gui -name '*.xml' -mindepth 2 -print0 | while IFS= read -r -d '' file; do xmllint "$file" --relaxng ./gui.rng --noout; done
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
