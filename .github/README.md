@@ -70,15 +70,17 @@ User interface **mod** for the RTS game **0 A.D.**
 | macOS   | `~/Library/Application\ Support/0ad/mods/`   |
 | Windows | `~\Documents\My Games\0ad\mods\`             |
 
-* Pick one of three ways to install the mod
-  * **Github**
+* Pick one of four ways to install the mod
+  * **GitHub**
     * Clone it in your `/0ad/mods/` folder.
+  * **Arch Linux**
+    * On Arch, install the [0ad-boongui](https://aur.archlinux.org/packages/0ad-boongui) package.
   * **Pyromod**
     * Drag the file over the 0ad start icon or double click it.
     * The mod gets unpacked and placed automatically in your `/0ad/mods/` folder.
   * **ZIP**
     * Unpack it in your `/0ad/mods/` folder.
-* Start 0 A.D., click `Settings` and `Mod Selection`.
+* Start `0 A.D.`, click `Settings` and `Mod Selection`.
 * Double-click `boonGUI`, click `Save Configuration` and `Start Mods`.
 
 ---
@@ -87,7 +89,7 @@ User interface **mod** for the RTS game **0 A.D.**
 1. Fork it.
 2. Create a new feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git add .` and `git commit -m 'Add some feature'`
-4. Push it to the branch: `git push origin my-new-feature`
+4. Push it to the branch: `git push fork my-new-feature`
 5. Submit a pull request.
 
 <br>
@@ -101,15 +103,13 @@ User interface **mod** for the RTS game **0 A.D.**
 brew install node vale
 ```
 
-2. Install all the dependencies from the [package.json](../package.json) file. Done.
+2. Install the dependencies from the [package.json](../package.json) file. Done.
 
 ```zsh
 npm install
 ```
 
-<br>
-
-The hook and all the `Vale` packages are set when you run the previous command. If you make changes to the hook or the `Vale` dependencies run the following commands again.
+The hook and the `Vale` packages are set when you run the previous command. If you make changes to the hook or the `Vale` dependencies run the following commands again.
 
 ```zsh
 npx simple-git-hooks
@@ -121,25 +121,21 @@ vale sync
 # Downloading packages ...
 ```
 
-<br>
-
-### 💼 Workflow
-Code setup with `npm install` is purely optional and not required. A GitHub action workflow is run on every commit and does all the tasks for you.
 
 <details>
  <summary><b>Detailed code information</b></summary>
 <p>
 
 #### JavaScript
-Mirroring the linting process from 0 A.D. by using `ESLint` and an adopted set of rules defined in the [.eslintrc.json](../.eslintrc.json) file.
+Mirroring the linting process from `0 A.D.` by using `ESLint` and an adopted set of rules defined in the [.eslintrc.json](../.eslintrc.json) file.
 
 * The `.vscode` settings are set up to automatically adjust your code to the rules when you save the document.
 * An optional installation of the [VSCode ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) runs `ESLint` on each file and display warnings and errors at once.
 * The alternative is to lint and auto fix your code with the following commands.
 
 ```zsh
-./node_modules/.bin/prettier .
-./node_modules/.bin/prettier . --fix
+./node_modules/.bin/eslint .
+./node_modules/.bin/eslint . --fix
 ```
 
 #### Texts
@@ -164,6 +160,9 @@ vale .
 </p>
 </details>
 <br>
+
+### 💼 Workflow
+Code setup with `npm install` is merely optional and not required. A GitHub action workflow is run on every commit and does all the tasks for you.
 
 ---
 

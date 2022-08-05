@@ -279,7 +279,7 @@
           text_align="center"
           font="sans-stroke-16"
           textcolor="255 255 255 100">
-          <translatableAttribute id="caption">&lt;1000</translatableAttribute>
+          <translatableAttribute id="caption">under 1000</translatableAttribute>
           <translatableAttribute id="tooltip">n00b</translatableAttribute>
         </object>
         <!-- below1000 -->

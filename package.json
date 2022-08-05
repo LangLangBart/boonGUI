@@ -18,7 +18,7 @@
     "postinstall": "vale sync",
     "vale": "vale --minAlertLevel=suggestion .",
     "valesync": "vale sync",
-    "xml": "./node_modules/.bin/prettier --write ./\\*\\*/\\*.xml"
+    "xmlStyle": "find . -name '*.xml' -print0 | while IFS= read -r -d '' file; do xsltproc -o $file ./.github/build_scripts/*.xsl $file; done && ./node_modules/.bin/prettier --write ./\\*\\*/\\*.xml"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged && if type vale >/dev/null; then vale .; fi"

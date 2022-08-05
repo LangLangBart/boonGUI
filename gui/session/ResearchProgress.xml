@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <object name="researchStartedButtons" size="100%-48 40 100%-10 420">
   <repeat count="10">
     <object
