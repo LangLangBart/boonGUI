@@ -1,3 +1,4 @@
+---
 # This workflow handels the release of a new version.
 
 name: Publish Release
