@@ -51,7 +51,7 @@ User interface **mod** for the RTS game **0 A.D.**
   * All player colors and fruits have more vivid colors.
   * Increased size for all weapon projectiles, chickens and garrison flags on every building.
   * All heroes have a large visible object flowing over their head, making them easier to see on the battlefield.
-  * Individually selected units show attack and resistance values, relics show their auras and treaures show their contents.
+  * Individually selected units show attack and resistance values, relics show their auras and treasures show their contents.
 
 ### 🎯 Miscellaneous UI improvements
   * **Camera:** Change the camera settings in the options.
