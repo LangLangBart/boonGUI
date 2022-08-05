@@ -1,12 +1,25 @@
-# Standard workflow for new commits
+---
+# Standard workflow for push and PR commits
 
 name: Code Quality
 
 on:
   push:
     branches:
-      - main
+      - test
+  pull_request_target:
+    branches:
+      - test
   workflow_dispatch:
+
+# permissions:
+#   checks: write
+#   pull-requests: write
+#   …
+
+# "When the permissions key is used, all unspecified permissions are set to no access."
+# Make sure you know all the permissions well, otherwise errors will keep popping up and bothering you.
+# https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'push' && github.head_ref || github.ref }}
@@ -20,7 +33,15 @@ jobs:
 
     steps:
       - name: Check out repository
+        id: Check_Out_Repo_Push
+        if: ${{ github.event_name == 'push' }}
         uses: actions/checkout@v3
+
+      - name: Check out PR contributors
+        uses: actions/checkout@v3
+        if: ${{ steps.Check_Out_Repo_Push.conclusion == 'skipped' }}
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Vale Text Linter
         # https://github.com/errata-ai/vale-action
@@ -32,7 +53,8 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       # Validate the XML schema with rng files.
-      # IMPORTANT: The files are loaded from the master tag and not from the release tag (hopeing it's backward compatible even if changes are made to it).
+      # IMPORTANT: The files are loaded from the master tag and not from the release tag
+      # (hopeing it's backward compatible even if changes are made to it).
       - name : Download rng
         run: |
           PREFIX="https://raw.githubusercontent.com/0ad/0ad/master/binaries/data/mods"
@@ -84,8 +106,11 @@ jobs:
         run: npm install --ignore-scripts
 
       - name: ESLint & Prettier (XML)
+        id: ESLint_Push_Or_Owner
         # https://github.com/wearerequired/lint-action
         uses: wearerequired/lint-action@v2
+        # Limit lint action for push or pull_request events within the same repository.
+        if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.owner.login == github.repository_owner }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # Whether the workflow run should also fail when linter failures are detected.
@@ -93,16 +118,30 @@ jobs:
           # ESLint checks should fail even if there are no errors, just warnings.
           eslint_args: "--max-warnings 0"
           # https://github.community/t/github-linting-remote-rejected
-          # When auto_fix is enabled for the Lint workflow, no linter is allowed to modify the files in .github/workflows. To avoid a failed workflow, we limit the linter to js,ts files.
+          # When auto_fix is enabled for the Lint workflow, no linter is allowed to modify the files in .github/workflows.
+          # To avoid a failed workflow, we limit the linter to js,ts files.
           eslint_extensions: js,ts
           prettier: true
           prettier_extensions: xml
           auto_fix: true
           continue_on_error: false
 
+      - name: Check ESLint PR contributors
+        # auto_fix must be set to false for forks   https://github.com/wearerequired/lint-action/issues/13
+        uses: wearerequired/lint-action@v2
+        if: ${{ steps.ESLint_Push_Or_Owner.conclusion == 'skipped' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          eslint: true
+          eslint_extensions: js,ts
+          # prettier will do its job when merging
+          auto_fix: false
+          continue_on_error: false
+
       - name: Check TODO issues
         # https://github.com/alstr/todo-to-issue-action
         uses: "alstr/todo-to-issue-action@v4.6.8"
+        if: ${{ github.event_name == 'push' }}
         with:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
@@ -112,3 +151,29 @@ jobs:
           SHA: ${{ github.sha }}
           IGNORE: ".github/vale_styles"
           AUTO_ASSIGN: true
+
+  approve-merge:
+  # https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions#approve-a-pull-request
+    name: Dependabot approve&merge
+    runs-on: ubuntu-latest
+    # Not requiring successful prior job
+    if: ${{ always() && github.actor == 'dependabot[bot]' }}
+    needs: [run-linters]
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v1.3.3
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Auto-approve PR
+        id: Dependabot_Approve
+        run: gh pr review --approve "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Auto-merge PR
+        if: ${{ steps.Dependabot_Approve.conclusion == 'success' }}
+        run: gh pr merge --auto --rebase "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

@@ -1,4 +1,6 @@
+---
 # This workflow warns and then closes issues/ pull-requests that have had no activity for a specified amount of time.
+
 name: Stale Issues/ PRs
 
 on:
