@@ -10,7 +10,7 @@ class BoonGUIStatsModes
 		{ "type": "defensive_buildings", "icon": "shield-checkered", "title": "Defensive Buildings" },
 		{ "type": "economy_technologies", "icon": "lightbulb", "title": "Economy Upgrades" },
 		{ "type": "military_technologies", "icon": "lightning", "title": "Military Upgrades" },
-		{ "type": "other_technologies", "icon": "activity", "title": "Other Upgrades" },
+		{ "type": "other_technologies", "icon": "activity", "title": "Other Upgrades" }
 		// { type: "scores", icon: "trophy", title: "Scores" },
 	];
 
