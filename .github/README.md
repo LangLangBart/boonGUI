@@ -151,10 +151,11 @@ vale .
 #### XML
 `Prettier for XML` formats the files according to the rules set in [.prettierrc.json](../.prettierrc.json).
 
-* An optional installation of the [Prettier - Code formatter extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) automatically formats the `XML` file upon saving or use the following command.
+* An optional installation of the [Prettier - Code formatter extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) automatically formats the `XML` file upon saving.
+* The following command formats all `XML` files with `Prettier` and runs a simple [style sheet](../.github/build_scripts/stylesheet.xsl) over them to ensure that the `xsl:output attributes` have the correct case and form.
 
 ```zsh
-./node_modules/.bin/prettier --write '**/*.xml'
+npm run xmlStyle
 ```
 
 </p>

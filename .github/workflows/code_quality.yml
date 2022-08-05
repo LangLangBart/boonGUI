@@ -31,20 +31,49 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-      # Validate the XML schema for gui files, might be extended to actor files as well
-      - name: Download rng
+      # Validate the XML schema with rng files.
+      # IMPORTANT: The files are loaded from the master tag and not from the release tag (hopeing it's backward compatible even if changes are made to it).
+      - name : Download rng
         run: |
-          wget https://raw.githubusercontent.com/0ad/0ad/master/binaries/data/mods/mod/gui/gui.rng
+          PREFIX="https://raw.githubusercontent.com/0ad/0ad/master/binaries/data/mods"
+          wget "${PREFIX}"/public/art/actors/actor.rng
+          wget "${PREFIX}"/mod/gui/gui.rng
+          wget "${PREFIX}"/mod/gui/gui_page.rng
+          wget "${PREFIX}"/public/art/materials/material.rng
+          wget "${PREFIX}"/public/art/particles/particle.rng
+          wget "${PREFIX}"/mod/audio/sound_group.rng
+          wget "${PREFIX}"/public/simulation/data/territorymanager.rng
+          wget "${PREFIX}"/public/art/textures/texture.rng
       - name: Install xmllint
         run: |
           sudo apt update
           sudo apt install --no-install-recommends -y libxml2-utils
       - name: Setup xmllint problem matcher
         # https://github.com/korelstar/xmllint-problem-matcher
-        uses: korelstar/xmllint-problem-matcher@master
-      - name: Validate gui XML
         # https://github.com/korelstar/xmllint-problem-matcher/issues/5
-        run: find ./gui -name '*.xml' -mindepth 2 -print0 | while IFS= read -r -d '' file; do xmllint "$file" --relaxng ./gui.rng --noout; done
+        uses: korelstar/xmllint-problem-matcher@master
+      - name: XML validating actors
+        run: |
+          find ./art/actors -name '*.xml' -print0 | while IFS= read -r -d '' file; do xmllint "$file" --relaxng ./actor.rng --noout; done
+      - name: XML validating GUI files
+        run: |
+          find ./gui -name '*.xml' ! -name 'page_*.xml' -print0 | while IFS= read -r -d '' file; do xmllint "$file" --relaxng ./gui.rng --noout; done
+          find ./gui -name 'page_*.xml' -print0 | while IFS= read -r -d '' file; do xmllint "$file" --relaxng ./gui_page.rng --noout; done
+      - name: XML validating materials
+        run: |
+          find ./art/materials -name '*.xml' -print0 | while IFS= read -r -d '' file; do xmllint "$file" --relaxng ./material.rng --noout; done
+      - name: XML validating particles
+        run: |
+          find ./art/particles -name '*.xml' -print0 | while IFS= read -r -d '' file; do xmllint "$file" --relaxng ./particle.rng --noout; done
+      - name: XML validating soundgroups
+        run: |
+          find ./audio -name '*.xml' -print0 | while IFS= read -r -d '' file; do xmllint "$file" --relaxng ./sound_group.rng --noout; done
+      - name: XML validating territorymanager
+        run: |
+          find ./simulation/data -name 'territorymanager.xml' -print0 | while IFS= read -r -d '' file; do xmllint "$file" --relaxng ./territorymanager.rng --noout; done
+      - name: XML validating textures
+        run: |
+          find ./art/textures -name '*.xml' -print0 | while IFS= read -r -d '' file; do xmllint "$file" --relaxng ./texture.rng --noout; done
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
