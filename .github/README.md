@@ -13,7 +13,7 @@
 <p>
 <!-- dev badges -->
 <a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commits-since/LangLangBart/boonGUI/latest/main?style=for-the-badge" height="20"></a>
-<a href="https://github.com/LangLangBart/boonGUI/actions/workflows/code_quality.yml"><img src="https://img.shields.io/github/workflow/status/LangLangBart/boonGUI/Code%20Quality/main?label=ESLint&style=for-the-badge" height="20"></a>
+<a href="https://github.com/LangLangBart/boonGUI/graphs/contributors"><img src="https://img.shields.io/maintenance/yes/2022?style=for-the-badge" height="20"></a>
 <a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commit-activity/m/LangLangBart/boonGUI?style=for-the-badge" height="20"></a>
 </p>
 
@@ -95,7 +95,7 @@ User interface **mod** for the RTS game **0 A.D.**
 <br>
 
 ### 🔱 Git-Hook
-**JavaScript** linting & formatting with [ESLint](https://eslint.org), **Text** validation with [Vale](https://github.com/errata-ai/vale) and **XML** formatting with [Prettier for XML](https://github.com/prettier/plugin-xml) are done automatically with [Simple Git Hooks](https://github.com/toplenboren/simple-git-hooks).
+**JavaScript** linting & formatting with [ESLint](https://eslint.org), **Text** validation with [Vale](https://github.com/errata-ai/vale) and **XML** formatting with [Prettier for XML](https://github.com/prettier/plugin-xml) are done automatically with a pre-commit hook (see [Simple Git Hooks](https://github.com/toplenboren/simple-git-hooks) for more details).
 
 1. Install `node.js` and `Vale` for example through Homebrew.
 
@@ -109,7 +109,7 @@ brew install node vale
 npm install
 ```
 
-The hook and the `Vale` packages are set when you run the previous command. If you make changes to the hook or the `Vale` dependencies run the following commands again.
+The pre-commit hook and the `Vale` packages are set when you run the previous command. If you make changes to the hook or the `Vale` dependencies run the following commands again.
 
 ```zsh
 npx simple-git-hooks
@@ -131,7 +131,7 @@ Mirroring the linting process from `0 A.D.` by using `ESLint` and an adopted set
 
 * The `.vscode` settings are set up to automatically adjust your code to the rules when you save the document.
 * An optional installation of the [VSCode ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) runs `ESLint` on each file and display warnings and errors at once.
-* The alternative is to lint and auto fix your code with the following commands.
+* The alternative is to lint and auto fix all your code with the following commands.
 
 ```zsh
 ./node_modules/.bin/eslint .
@@ -146,6 +146,8 @@ Mirroring the linting process from `0 A.D.` by using `ESLint` and an adopted set
 
 ```zsh
 vale .
+# see even suggestions
+vale --minAlertLevel=suggestion .
 ```
 
 #### XML
@@ -163,7 +165,8 @@ npm run xmlStyle
 <br>
 
 ### 💼 Workflow
-Code setup with `npm install` is merely optional and not required. A GitHub action workflow is run on every commit and does all the tasks for you.
+Also, each commit triggers a GitHub action workflow that does the linting, formatting, and validation for you.
+By default, newly committed TODO comments are converted to GitHub issues when pushed and closed when the TODOs are removed in a future commit (see [TODO to Issue Action](https://github.com/alstr/todo-to-issue-action) for more details).
 
 ---
 

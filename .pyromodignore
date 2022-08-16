@@ -1,8 +1,4 @@
-/.eslintrc.json
-/.eslintignore
-/.git
-/.github
-/.pyromodignore
+/.*
 /package.json
 *.ts
 /**/tsconfig.json
