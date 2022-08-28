@@ -153,19 +153,6 @@ jobs:
           IGNORE: ".github/vale_styles"
           AUTO_ASSIGN: true
 
-      - name: Update repo visualization
-      # https://github.com/githubocto/repo-visualizer
-      # More details: https://githubnext.com/projects/repo-visualization
-        uses: githubocto/repo-visualizer@main
-        if: ${{ github.event_name == 'push' }}
-        with:
-          output_file: .github/Images/boonGUI_visualization.svg
-          commit_message: "Update repo visualization image"
-          excluded_paths: ".github,node_modules"
-          excluded_globs: ".*"
-          # BUG https://github.com/githubocto/repo-visualizer/issues/51
-          file_colors: '{"dae":"#FD8D0E","png":"#55C7FF","props":"#929292","js":"#FECF0F","json":"#8162BE","ts":"#106BFF","txt":"#30D33B","xml":"#424242"}'
-
   approve-merge:
     # https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions#approve-a-pull-request
     name: Dependabot approve&merge

@@ -95,7 +95,7 @@ User interface **mod** for the RTS game **0 A.D.**
 <br>
 
 ### 👁 Code structure
-The following image shows at a glance the structure of the entire code base. Click on it to interact.
+The following `SVG` shows at a glance the structure of the entire code base (created with [RepoVisualize](https://github.com/githubocto/repo-visualizer). Click on it to interact.
 [![image](Images/boonGUI_visualization.svg)](https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=LangLangBart%2FboonGUI)
 
 ### 🔱 Git-Hook
@@ -170,7 +170,7 @@ npm run xmlStyle
 
 ### 💼 Workflow
 Also, each commit triggers a GitHub action workflow that does the linting, formatting, and validation for you.
-By default, newly committed TODO comments are converted to GitHub issues when pushed and closed when the TODOs are removed in a future commit (see [TODO to Issue Action](https://github.com/alstr/todo-to-issue-action)). In addition, a new `SVG` image is generated after each commit for a visual representation of the code (see [RepoVisualize](https://github.com/githubocto/repo-visualizer)).
+By default, newly committed TODO comments are converted to GitHub issues when pushed and closed when the TODOs are removed in a future commit (see [TODO to Issue Action](https://github.com/alstr/todo-to-issue-action)).
 
 ---
 
