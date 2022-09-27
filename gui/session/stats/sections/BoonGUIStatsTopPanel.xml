@@ -92,7 +92,7 @@
     <object
       type="text"
       style="overlayHeader"
-      size="642 0 675 100%"
+      size="642 0 679 100%"
       tooltip="Female Citizen">
       Fem
     </object>
@@ -359,7 +359,7 @@
 
         <object
           name="StatsTopPanelRow[n]_femaleCitizenHighlight"
-          size="642 0 675 100%"
+          size="642 0 677 100%"
           type="button"
           style="statsHighlighter">
           <object
