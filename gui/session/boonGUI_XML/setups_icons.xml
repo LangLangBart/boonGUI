@@ -114,8 +114,8 @@
     size="50 50"
   />
   <icon
-    name="emblem_chinese"
-    sprite="stretched:session/portraits/emblems/emblem_chinese.png"
+    name="emblem_han"
+    sprite="stretched:session/portraits/emblems/emblem_han.png"
     size="50 50"
   />
   <icon
@@ -350,5 +350,20 @@
     name="icon_focusattacked"
     sprite="stretched:session/icons/focus-attacked.png"
     size="14 14"
+  />
+  <icon
+    name="icon_gather_farming_seed_drill"
+    sprite="stretched:session/portraits/technologies/torsion_springs.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_gather_farming_water_weeding"
+    sprite="stretched:session/portraits/technologies/irrigation.png"
+    size="25 25"
+  />
+  <icon
+    name="icon_gather_farming_chain_pump"
+    sprite="stretched:session/portraits/technologies/flood_control.png"
+    size="25 25"
   />
 </setup>

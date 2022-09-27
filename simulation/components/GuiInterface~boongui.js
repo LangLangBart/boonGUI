@@ -27,6 +27,9 @@ const boongui_resources_techs = {
 	"food": [
 		"gather_wicker_baskets",
 		"gather_farming_plows",
+		"gather_farming_seed_drill",
+		"gather_farming_water_weeding",
+		"gather_farming_chain_pump",
 		"gather_farming_harvester",
 		"gather_farming_training",
 		"gather_farming_fertilizer",
@@ -144,10 +147,12 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 	const cmpPlayers = [];
 	for (let index = 0; index < numPlayers; ++index)
 	{
+		const playerEnt = cmpPlayerManager.GetPlayerByID(index);
 		const cmpPlayer = QueryPlayerIDInterface(index);
+		const cmpIdentity = Engine.QueryInterface(playerEnt, IID_Identity);
 		const state = cmpPlayer.GetState();
 		const hasSharedLos = cmpPlayer.HasSharedLos();
-		cmpPlayers.push({ index, state, hasSharedLos, cmpPlayer });
+		cmpPlayers.push({ index, state, hasSharedLos, cmpPlayer, cmpIdentity });
 	}
 
 	const cmpPlayerViewed = cmpPlayers[g_ViewedPlayer];
@@ -161,7 +166,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 		if (!cmpPlayerViewed.hasSharedLos || !cmpPlayer.IsMutualAlly(cmpPlayerViewed.index))
 			return false;
 		return true;
-	}).map(({ index, cmpPlayer, state, hasSharedLos }) => {
+	}).map(({ index, cmpPlayer, cmpIdentity, state, hasSharedLos }) => {
 		const cmpTechnologyManager = QueryPlayerIDInterface(index, IID_TechnologyManager);
 		const cmpPlayerStatisticsTracker = QueryPlayerIDInterface(index, IID_StatisticsTracker);
 
@@ -171,8 +176,8 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 			hasSharedLos,
 
 			// @cmpPlayer
-			"name": cmpPlayer.GetName(),
-			"civ": cmpPlayer.GetCiv(),
+			"name": cmpIdentity.GetName(),
+			"civ": cmpIdentity.GetCiv(),
 			"team": cmpPlayer.GetTeam(),
 			"trainingBlocked": cmpPlayer.IsTrainingBlocked(),
 			"popCount": cmpPlayer.GetPopulationCount(),
@@ -319,9 +324,8 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 		{
 			for (const entity of cmpRangeManager.GetEntitiesByPlayer(index))
 			{
-				const cmpIdentity = Engine.QueryInterface(entity, IID_Identity);
 				const cmpProductionQueue = Engine.QueryInterface(entity, IID_ProductionQueue);
-				const classesList = cmpIdentity?.classesList;
+				const classesList = Engine.QueryInterface(entity, IID_Identity)?.classesList;
 				if (classesList && !classesList.includes("Foundation"))
 				{
 					if (classesList.includes("CivCentre"))
@@ -361,27 +365,31 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 
 				if (cmpProductionQueue)
 				{
-					for (const q of cmpProductionQueue.queue)
+					for (const queue of cmpProductionQueue.queue)
 					{
-						if (!q.productionStarted) continue;
-						const { count, timeRemaining, timeTotal } = q;
-						const progress = (timeRemaining / timeTotal);
-
-						if (q.unitTemplate)
+						if (!queue.started || queue.paused) continue;
+						// TODO: where is timeRemaining ?
+						const { timeRemaining, timeTotal } = queue;
+						const progress = 1;
+						if (queue.originalItem)
 						{
-							const template = q.unitTemplate;
+							const template = queue.originalItem.templateName;
 							const mode = "production";
 							const templateType = "unit";
+							const count = queue.originalItem.count;
 							cached.queue.add({ mode, templateType, entity, template, count, progress });
 						}
 
-						if (q.technologyTemplate)
-						{
-							const mode = "production";
-							const templateType = "technology";
-							const template = q.technologyTemplate;
-							cached.queue.add({ mode, templateType, entity, template, count, progress });
-						}
+						// TODO: where is tech template ?
+						// if (queue.technology)
+						// {
+						// 	const mode = "production";
+						// 	const templateType = "technology";
+						// 	const template = queue.technologyTemplate;
+						// 	const count = 1;
+						// 	cached.queue.add({ mode, templateType, entity, template, count, progress });
+						// }
+
 					}
 				}
 

@@ -47,6 +47,14 @@
           type="text"
           z="20"
         />
+        <object
+          name="unitQueuePausedIcon[n]"
+          hidden="true"
+          ghost="true"
+          type="image"
+          sprite="stretched:session/icons/stop.png"
+          size="3 3 37 37"
+        />
       </object>
     </repeat>
   </object>

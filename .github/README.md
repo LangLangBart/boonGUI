@@ -5,7 +5,7 @@
 
 <p>
 <a href="https://github.com/LangLangBart/boonGUI/releases"><img src="https://img.shields.io/github/release/LangLangBart/boonGUI.svg?style=for-the-badge&color=gold&label=Version" height="20"></a>
-<a href="https://play0ad.com/download/"><img src="https://img.shields.io/badge/Compatibility-Alpha25%3A%20Yaunā-gold?style=for-the-badge" height="20"></a>
+<a href="https://play0ad.com/download/"><img src="https://img.shields.io/badge/Compatibility-Alpha26%3A%20​Zhuangzi-gold?style=for-the-badge" height="20"></a>
 <a href="https://wildfiregames.com/forum/topic/37147-boongui/"><img src="https://img.shields.io/github/downloads/LangLangBart/boonGUI/total.svg?color=gold&amp&label=%E2%88%91%20Downloads&amp&style=for-the-badge" height="20"></a>
 <a href="https://wildfiregames.com/forum/topic/37147-boongui/"><img src="https://img.shields.io/badge/Discussion-Forum-gold?style=for-the-badge" height="20"></a>
 </p>
