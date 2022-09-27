@@ -61,26 +61,23 @@ jobs:
             ${{ env.PYROMOD_ZIP_FILE_PATH }}
           generate_release_notes: true
 
-  # TODO "This action does not generate PKGBUILD for you, you must generate it yourself (e.g. by using actions before this action)."
-  #  https://github.com/search?o=desc&q=github-actions-deploy-aur+language%3AYAML&s=indexed&type=Code
-  #  labels: should have
-  #  assignees: IlanFrumer
-  aur-publish:
-    # https://aur.archlinux.org/packages/0ad-boongui
-    name: AUR Release
-    needs: [repoVisualize, buildRelease]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v3
+  # action does not generate PKGBUILD, results in failed workflow, Remove it for now!
+  # aur-publish:
+  #   # https://aur.archlinux.org/packages/0ad-boongui
+  #   name: AUR Release
+  #   needs: [repoVisualize, buildRelease]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Check out repository
+  #       uses: actions/checkout@v3
 
-      - name: Publish AUR package
-        uses: KSXGitHub/github-actions-deploy-aur@v2.5.0
-        with:
-          pkgname: 0ad-boongui
-          pkgbuild: ./PKGBUILD
-          commit_username: ${{ secrets.AUR_USERNAME }}
-          commit_email: ${{ secrets.AUR_EMAIL }}
-          ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
-          commit_message: Update AUR package
-          ssh_keyscan_types: rsa,dsa,ecdsa,ed25519
+  #     - name: Publish AUR package
+  #       uses: KSXGitHub/github-actions-deploy-aur@v2.5.0
+  #       with:
+  #         pkgname: 0ad-boongui
+  #         pkgbuild: ./PKGBUILD
+  #         commit_username: ${{ secrets.AUR_USERNAME }}
+  #         commit_email: ${{ secrets.AUR_EMAIL }}
+  #         ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
+  #         commit_message: Update AUR package
+  #         ssh_keyscan_types: rsa,dsa,ecdsa,ed25519

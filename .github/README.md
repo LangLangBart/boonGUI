@@ -73,8 +73,6 @@ User interface **mod** for the RTS game **0 A.D.**
 * Pick one of four ways to install the mod
   * **GitHub**
     * Clone it in your `/0ad/mods/` folder.
-  * **Arch Linux**
-    * On Arch, install the [0ad-boongui](https://aur.archlinux.org/packages/0ad-boongui) package.
   * **Pyromod**
     * Drag the file over the 0ad start icon or double click it.
     * The mod gets unpacked and placed automatically in your `/0ad/mods/` folder.
