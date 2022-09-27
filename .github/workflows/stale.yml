@@ -5,12 +5,12 @@ name: Stale Issues/ PRs
 
 on:
   schedule:
-  # At 06:00 on Monday - https://crontab.guru/
-  - cron: '0 6 * * 1'
+    # At 06:00 on Monday - https://crontab.guru/
+    - cron: "0 6 * * 1"
 
 jobs:
   stale:
-  # https://github.com/actions/stale
+    # https://github.com/actions/stale
     runs-on: ubuntu-latest
     permissions:
       issues: write
@@ -20,6 +20,9 @@ jobs:
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
+          # Reason to use when closing issues.
+          # https://github.blog/changelog/2022-05-19-the-new-github-issues-may-19th-update/
+          close-issue-reason: not_planned
           # Settings for Issues
           stale-issue-message: |
             [Stale workflow] adding `stale` label
