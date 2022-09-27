@@ -362,34 +362,29 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 					}
 
 				}
-
 				if (cmpProductionQueue)
 				{
 					for (const queue of cmpProductionQueue.queue)
 					{
+
+						const cmpTrainer = Engine.QueryInterface(queue.producer, IID_Trainer);
+						const cmpResearcher = Engine.QueryInterface(queue.producer, IID_Researcher);
+						const mode = "production";
 						if (!queue.started || queue.paused) continue;
-						// TODO: where is timeRemaining ?
-						const { timeRemaining, timeTotal } = queue;
-						const progress = 1;
-						if (queue.originalItem)
+						if (queue.entity)
 						{
-							const template = queue.originalItem.templateName;
-							const mode = "production";
+							const { count, progress, "unitTemplate": template } = cmpTrainer.GetBatch(queue.entity);
 							const templateType = "unit";
-							const count = queue.originalItem.count;
 							cached.queue.add({ mode, templateType, entity, template, count, progress });
 						}
 
-						// TODO: where is tech template ?
-						// if (queue.technology)
-						// {
-						// 	const mode = "production";
-						// 	const templateType = "technology";
-						// 	const template = queue.technologyTemplate;
-						// 	const count = 1;
-						// 	cached.queue.add({ mode, templateType, entity, template, count, progress });
-						// }
-
+						if (queue.technology)
+						{
+							const { progress, "templateName": template } = cmpResearcher.GetResearchingTechnology(queue.technology);
+							const templateType = "technology";
+							const count = 1;
+							cached.queue.add({ mode, templateType, entity, template, count, progress });
+						}
 					}
 				}
 
