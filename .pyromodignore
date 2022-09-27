@@ -1,4 +1,2 @@
 /.*
 /package.json
-*.ts
-/**/tsconfig.json

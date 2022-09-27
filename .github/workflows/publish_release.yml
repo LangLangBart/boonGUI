@@ -40,24 +40,3 @@ jobs:
             ${{ env.PYROMOD_PYROMOD_FILE_PATH }}
             ${{ env.PYROMOD_ZIP_FILE_PATH }}
           generate_release_notes: true
-
-  # action does not generate PKGBUILD, results in failed workflow, Remove it for now!
-  # aur-publish:
-  #   # https://aur.archlinux.org/packages/0ad-boongui
-  #   name: AUR Release
-  #   needs: [repoVisualize, buildRelease]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Check out repository
-  #       uses: actions/checkout@v3
-
-  #     - name: Publish AUR package
-  #       uses: KSXGitHub/github-actions-deploy-aur@v2.5.0
-  #       with:
-  #         pkgname: 0ad-boongui
-  #         pkgbuild: ./PKGBUILD
-  #         commit_username: ${{ secrets.AUR_USERNAME }}
-  #         commit_email: ${{ secrets.AUR_EMAIL }}
-  #         ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
-  #         commit_message: Update AUR package
-  #         ssh_keyscan_types: rsa,dsa,ecdsa,ed25519

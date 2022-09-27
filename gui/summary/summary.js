@@ -537,7 +537,7 @@ function initGUILabels()
 
 	Engine.GetGUIObjectByName("mapName").caption = sprintf(
 		translate("%(mapName)s - %(mapType)s"), {
-			"mapName": translate(g_GameData.sim.mapSettings.Name),
+			"mapName": translate(g_GameData.sim.mapSettings.mapName),
 			"mapType": mapSize ? mapSize.Name : (mapType ? mapType.Title : "")
 		});
 }
@@ -559,14 +559,9 @@ function initGUIButtons()
 	lobbyButton.size = lobbyButtonSize;
 
 	const allPanelsData = g_ScorePanelsData.concat(g_ChartPanelsData);
+	for (const tab in allPanelsData)
+		allPanelsData[tab].tooltip = sprintf(translate("Focus the %(name)s summary tab."), { "name": allPanelsData[tab].label });
 
-	// Tooltip turned off, I found it annoying
-	/**	for (let tab in allPanelsData)
-		allPanelsData[tab].tooltip =
-			sprintf(translate("Toggle the %(name)s summary tab."), { "name": allPanelsData[tab].label }) +
-			colorizeHotkey("\n" + translate("Use %(hotkey)s to move a summary tab right."), "tab.next") +
-			colorizeHotkey("\n" + translate("Use %(hotkey)s to move a summary tab left."), "tab.prev");
- */
 	placeTabButtons(
 		allPanelsData,
 		true,

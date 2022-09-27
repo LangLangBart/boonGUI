@@ -19,7 +19,7 @@ function displayReplayDetails()
 
 	const replay = g_ReplaysFiltered[selected];
 
-	Engine.GetGUIObjectByName("sgMapName").caption = translate(replay.attribs.settings.Name);
+	Engine.GetGUIObjectByName("sgMapName").caption = translate(replay.attribs.settings.mapName);
 	Engine.GetGUIObjectByName("sgMapSize").caption = translateMapSize(replay.attribs.settings.Size);
 	Engine.GetGUIObjectByName("sgMapType").caption = translateMapType(replay.attribs.mapType);
 	Engine.GetGUIObjectByName("sgVictory").caption = replay.attribs.settings.VictoryConditions.map(victoryConditionName =>

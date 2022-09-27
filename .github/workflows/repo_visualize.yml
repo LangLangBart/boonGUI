@@ -23,4 +23,4 @@ jobs:
           excluded_paths: ".github,node_modules"
           excluded_globs: ".*"
           # BUG https://github.com/githubocto/repo-visualizer/issues/51
-          file_colors: '{"dae":"#FD8D0E","png":"#55C7FF","props":"#929292","js":"#FECF0F","json":"#8162BE","ts":"#106BFF","txt":"#30D33B","xml":"#424242"}'
+          file_colors: '{"dae":"#FD8D0E","png":"#55C7FF","props":"#929292","js":"#FECF0F","json":"#8162BE","txt":"#30D33B","xml":"#424242"}'
