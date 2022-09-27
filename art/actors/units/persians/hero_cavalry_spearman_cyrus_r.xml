@@ -37,7 +37,7 @@
         <prop actor="props/hero_selectorA.xml" attachpoint="root" />
       </props>
       <textures>
-        <texture file="skeletal/pers_hero_cyrus.png" name="baseTex" />
+        <texture file="skeletal/pers/scale_05_01.png" name="baseTex" />
       </textures>
     </variant>
   </group>

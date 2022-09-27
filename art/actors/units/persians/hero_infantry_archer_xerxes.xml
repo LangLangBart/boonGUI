@@ -9,10 +9,7 @@
           actor="props/units/heads/new/head_pers_xerxes.xml"
           attachpoint="head"
         />
-        <prop
-          actor="props/units/helmets/old/pers_crown.xml"
-          attachpoint="helmet"
-        />
+        <prop actor="props/units/helmets/pers_crown.xml" attachpoint="helmet" />
         <prop
           actor="props/units/heads/pers_hair_xerxes.xml"
           attachpoint="helmet"
@@ -25,11 +22,11 @@
           actor="props/units/weapons/bow_recurve.xml"
           attachpoint="weapon_bow"
         />
-        <prop actor="props/units/pers_quiver_xerxes.xml" attachpoint="back" />
         <prop actor="props/hero_selectorA.xml" attachpoint="root" />
+        <prop actor="props/units/pers_quiver_xerxes.xml" attachpoint="back" />
       </props>
       <textures>
-        <texture file="skeletal/pers_hero_xerxes.png" name="baseTex" />
+        <texture file="skeletal/pers/robes_royal_01.png" name="baseTex" />
       </textures>
     </variant>
   </group>
@@ -38,6 +35,7 @@
     <variant file="biped/attack_ranged_archer.xml" />
     <variant file="biped/attack_slaughter.xml" />
     <variant file="biped/attack_capture.xml" />
+    <variant file="biped/gather_praise.xml" />
     <variant file="biped/death_infantry.xml" />
   </group>
   <material>player_trans.xml</material>

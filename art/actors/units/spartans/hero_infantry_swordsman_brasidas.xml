@@ -6,7 +6,7 @@
       <mesh>skeletal/new/m_armor_tunic_short.dae</mesh>
       <props>
         <prop
-          actor="props/units/helmets/hele_pilos_crested.xml"
+          actor="props/units/helmets/hele_pilos_crested_transversal.xml"
           attachpoint="helmet"
         />
         <prop
@@ -30,30 +30,26 @@
     </variant>
   </group>
   <group>
-    <variant frequency="1" name="brasidas-tunic-1">
+    <variant frequency="3" name="padded_brasidas_01">
       <textures>
-        <texture file="skeletal/hele_tunic_4_a.png" name="baseTex" />
+        <texture file="skeletal/spart/padded_brasidas_01.png" name="baseTex" />
       </textures>
     </variant>
-    <variant frequency="3" name="brasidas-armor-1">
+    <variant frequency="2" name="padded_brasidas_02">
       <textures>
-        <texture file="skeletal/spart_hero_brasidas_01.png" name="baseTex" />
-      </textures>
-    </variant>
-    <variant frequency="2" name="brasidas-armor-2">
-      <textures>
-        <texture file="skeletal/spart_hero_brasidas_02.png" name="baseTex" />
+        <texture file="skeletal/spart/padded_brasidas_02.png" name="baseTex" />
       </textures>
     </variant>
   </group>
   <group>
     <variant
-      file="biped/base_swordsman_shieldarm_relax.xml"
+      file="biped/base_swordsman_shield_fast.xml"
+      name="Swordsman-Shield-Relax-Fast"
       frequency="1"
-      name="Swordsman-Shieldarm-Relax"
     />
     <variant file="biped/attack_capture.xml" />
     <variant file="biped/attack_slaughter.xml" />
+    <variant file="biped/gather_praise.xml" />
     <variant file="biped/death_cape_long.xml" />
   </group>
   <material>player_trans.xml</material>

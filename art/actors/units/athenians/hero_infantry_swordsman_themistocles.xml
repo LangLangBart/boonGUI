@@ -35,12 +35,11 @@
         />
         <prop actor="props/hero_selectorA.xml" attachpoint="root" />
       </props>
-    </variant>
-  </group>
-  <group>
-    <variant frequency="1" name="cuirass">
       <textures>
-        <texture file="skeletal/athen_themistocles.png" name="baseTex" />
+        <texture
+          file="skeletal/athen/cuirass_themistocles_01.png"
+          name="baseTex"
+        />
       </textures>
     </variant>
   </group>

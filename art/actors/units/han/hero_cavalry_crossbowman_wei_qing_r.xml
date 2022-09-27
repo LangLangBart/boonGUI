@@ -22,6 +22,7 @@
           actor="props/units/weapons/sheath/han_jian_sheath_right_d.xml"
           attachpoint="sheath_R"
         />
+        <prop actor="props/hero_selectorA.xml" attachpoint="root" />
       </props>
     </variant>
   </group>
@@ -50,7 +51,11 @@
     <variant file="biped/rider/promotion_shield.xml" />
     <variant file="biped/rider/attack_slaughter_shield_hele.xml" />
     <variant file="biped/gather_meat.xml" />
-    <variant file="biped/rider/death_ranged.xml" />
+    <variant file="biped/rider/death_ranged.xml">
+      <props>
+        <prop actor="" attachpoint="root" />
+      </props>
+    </variant>
   </group>
   <material>player_trans_spec.xml</material>
 </actor>

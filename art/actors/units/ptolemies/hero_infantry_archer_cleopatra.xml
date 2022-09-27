@@ -21,7 +21,7 @@
         <prop actor="props/hero_selectorA.xml" attachpoint="root" />
       </props>
       <textures>
-        <texture file="skeletal/ptol_cleopatra.png" name="baseTex" />
+        <texture file="skeletal/ptol/dress_cleopatra.png" name="baseTex" />
       </textures>
     </variant>
   </group>

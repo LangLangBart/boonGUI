@@ -10,18 +10,18 @@
           actor="props/units/elephant/maur_hero_howdah.xml"
           attachpoint="turret"
         />
-        <prop actor="props/hero_selectorA.xml" attachpoint="turret" />
+        <prop actor="props/hero_selectorA.xml" attachpoint="root" />
       </props>
       <textures>
-        <texture file="skeletal/maur_elephant_hero.png" name="baseTex" />
-        <texture file="skeletal/maur_elephant_hero_spec.png" name="specTex" />
-        <texture file="skeletal/maur_elephant_hero_normal.png" name="normTex" />
+        <texture file="skeletal/maur/elephant_hero.png" name="baseTex" />
+        <texture file="skeletal/maur/elephant_hero_spec.png" name="specTex" />
+        <texture file="skeletal/maur/elephant_hero_normal.png" name="normTex" />
       </textures>
     </variant>
   </group>
   <group>
     <variant frequency="100" name="Idle" />
-    <variant file="quadraped/base_elephant_run.xml" />
+    <variant file="quadraped/base_elephant_death.xml" />
     <variant file="quadraped/base_elephant_death.xml">
       <props>
         <prop

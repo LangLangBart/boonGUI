@@ -6,7 +6,7 @@
       <mesh>skeletal/new/m_armor_tunic_long.dae</mesh>
       <props>
         <prop
-          actor="props/units/helmets/old/hele_alexander.xml"
+          actor="props/units/helmets/hele_alexander.xml"
           attachpoint="helmet"
         />
         <prop
@@ -21,7 +21,10 @@
         <prop actor="props/hero_selectorA.xml" attachpoint="root" />
       </props>
       <textures>
-        <texture file="skeletal/mace_hero_alexander.png" name="baseTex" />
+        <texture
+          file="skeletal/mace/linothorax_alexander_01.png"
+          name="baseTex"
+        />
       </textures>
     </variant>
   </group>

@@ -18,6 +18,7 @@
           actor="props/units/quivers/han_bolt_quiver.xml"
           attachpoint="back"
         />
+        <prop actor="props/hero_selectorA.xml" attachpoint="root" />
       </props>
     </variant>
   </group>

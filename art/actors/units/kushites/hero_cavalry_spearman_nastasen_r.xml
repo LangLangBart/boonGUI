@@ -24,9 +24,9 @@
         <prop actor="props/hero_selectorA.xml" attachpoint="root" />
       </props>
       <textures>
-        <texture file="skeletal/kush_hero_02.png" name="baseTex" />
-        <texture file="skeletal/kush_hero_02_spec.png" name="specTex" />
-        <texture file="skeletal/kush_hero_02_norm.png" name="normTex" />
+        <texture file="skeletal/kush/scale_royal_02.png" name="baseTex" />
+        <texture file="skeletal/kush/scale_royal_02_spec.png" name="specTex" />
+        <texture file="skeletal/kush/scale_royal_02_norm.png" name="normTex" />
       </textures>
     </variant>
   </group>
@@ -42,5 +42,5 @@
       </props>
     </variant>
   </group>
-  <material>player_trans_parallax_spec.xml</material>
+  <material>player_trans_norm_spec.xml</material>
 </actor>

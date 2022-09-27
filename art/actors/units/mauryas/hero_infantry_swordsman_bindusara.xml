@@ -2,30 +2,29 @@
 <actor version="1">
   <castshadow />
   <group>
-    <variant file="biped/base_archer_chariot_ready.xml">
+    <variant>
       <mesh>skeletal/new/m_tunic_long.dae</mesh>
       <props>
         <prop
-          actor="props/units/heads/new/head_maur_ashoka.xml"
+          actor="props/units/heads/new/head_chandragupta.xml"
           attachpoint="head"
+        />
+        <prop
+          actor="props/units/heads/maur_earrings_1.xml"
+          attachpoint="helmet"
         />
         <prop
           actor="props/units/heads/maur_hero_big_turban.xml"
           attachpoint="helmet"
         />
         <prop
-          actor="props/units/heads/maur_earrings_2.xml"
-          attachpoint="helmet"
-        />
-        <prop
-          actor="props/units/weapons/arrow_back.xml"
+          actor="props/units/weapons/longsword_mauryan.xml"
           attachpoint="weapon_R"
         />
         <prop
-          actor="props/units/weapons/bow_long_indian.xml"
-          attachpoint="weapon_L"
+          actor="props/units/shields/maur_bell_straight_b.xml"
+          attachpoint="shield"
         />
-        <prop actor="props/units/quiver_back_bamboo.xml" attachpoint="back" />
         <prop actor="props/hero_selectorA.xml" attachpoint="root" />
       </props>
       <textures>
@@ -35,15 +34,10 @@
     </variant>
   </group>
   <group>
-    <variant frequency="1" name="Idle" />
-    <variant file="biped/attack_ranged_archer.xml" />
+    <variant file="biped/base_swordsman_shield_relax_celt.xml" />
     <variant file="biped/attack_capture.xml" />
     <variant file="biped/gather_praise.xml" />
-    <variant file="biped/death_infantry.xml">
-      <props>
-        <prop actor="" attachpoint="root" />
-      </props>
-    </variant>
+    <variant file="biped/death_infantry.xml" />
   </group>
   <material>player_trans_spec.xml</material>
 </actor>

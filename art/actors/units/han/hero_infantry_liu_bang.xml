@@ -18,6 +18,7 @@
           actor="props/units/weapons/sheath/han_jian_sheath_left_a_e.xml"
           attachpoint="sheath_L"
         />
+        <prop actor="props/hero_selectorA.xml" attachpoint="root" />
       </props>
     </variant>
   </group>

@@ -6,7 +6,7 @@
       <mesh>skeletal/new/m_armor_tunic_long.dae</mesh>
       <props>
         <prop
-          actor="props/units/heads/new/head_hele_a.xml"
+          actor="props/units/heads/new/head_hele_b.xml"
           attachpoint="head"
         />
         <prop
@@ -25,8 +25,11 @@
         <prop actor="props/hero_selectorA.xml" attachpoint="root" />
       </props>
       <textures>
-        <texture file="skeletal/ptol_hero_cuirass_1_a.png" name="baseTex" />
-        <texture file="skeletal/mace_cuirass_vergina_spec.png" name="specTex" />
+        <texture file="skeletal/ptol/cuirass_gold_01.png" name="baseTex" />
+        <texture
+          file="skeletal/mace/cuirass_vergina_01_spec.png"
+          name="specTex"
+        />
       </textures>
     </variant>
   </group>
