@@ -1,6 +1,6 @@
 {
   "name": "boonGUI",
-  "version": "2.6",
+  "version": "2.6.1",
   "label": "boonGUI",
   "description": "Enhance the observer's experience with an additional stats overlay.",
   "ignoreInCompatibilityChecks": true,
