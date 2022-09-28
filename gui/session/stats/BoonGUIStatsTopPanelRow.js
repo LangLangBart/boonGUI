@@ -95,7 +95,7 @@ class BoonGUIStatsTopPanelRow
 		this.player.caption = caption;
 		this.playerHighlight.tooltip = setStringTags(state.name, { "color": state.playerColor });
 		this.playerHighlight.tooltip += state.team != -1 ? setStringTags("\nTeam " + this.team.caption, { "color": state.teamColor }) : "";
-		caption = `${translateAISettings(g_InitAttributes.settings.PlayerData[state.index])}`;
+		caption = Engine.IsAtlasRunning() ? "" : `${translateAISettings(g_InitAttributes.settings.PlayerData[state.index])}`;
 		if (caption)
 		{
 			this.playerHighlight.tooltip += setStringTags(`\n${caption}`, { "color": "210 210 210", "font": "sans-stroke-14" });
@@ -172,10 +172,7 @@ class BoonGUIStatsTopPanelRow
 			this.phaseProgress.size = size;
 		}
 
-		value = "boongui.toppanel.coloredPlayerStatsBackground";
-		const configColoredPlayerStatsBackground = Math.floor(Engine.ConfigDB_GetValue("user", value));
-		if (!configColoredPlayerStatsBackground)
-			Engine.ConfigDB_CreateAndWriteValueToFile("user", value, "5", "config/user.cfg");
+		const configColoredPlayerStatsBackground = Math.floor(Engine.ConfigDB_GetValue("user", "boongui.toppanel.coloredPlayerStatsBackground"));
 
 		this.coloredPlayerStatsBackground.sprite = `backcolor: ${state.playerColor} ${configColoredPlayerStatsBackground}`;
 		this.coloredPlayerStatsBorder.sprite = `backcolor: ${state.playerColor} 85`;
@@ -228,10 +225,7 @@ class BoonGUIStatsTopPanelRow
 			this.resource.counts[resType].caption = setStringTags(caption, { color });
 			tooltip += setStringTags("Amount", { "color": value > 0 ? "white" : "dimmedWhite" }) + `${g_Indent}${g_Indent} ${this.resource.counts[resType].caption}\n`;
 
-			value = "boongui.toppanel.resourceGatherersRates";
-			const configResourceGatherersRates = Engine.ConfigDB_GetValue("user", value);
-			if (!configResourceGatherersRates)
-				Engine.ConfigDB_CreateAndWriteValueToFile("user", value, "Gatherers", "config/user.cfg");
+			const configResourceGatherersRates = Engine.ConfigDB_GetValue("user", "boongui.toppanel.resourceGatherersRates");
 
 			value = state.resourceGatherers[resType];
 			color = scales.getColor(`${resType}Gatherers`, value, 180);
@@ -349,7 +343,7 @@ class BoonGUIStatsTopPanelRow
 		tooltip += playerNick + "\n";
 		font = "sans-stroke-20";
 		tooltip += `${setStringTags("○", { color, font })} / ${setStringTags("●", { color, font })}\n`;
-		tooltip += "Full circle when cartography has been researched or when you are without mutual allies";
+		tooltip += "Full circle when cartography has been researched or when you are without mutual allies.";
 		this.los.tooltip = tooltip;
 	}
 }

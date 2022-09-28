@@ -1,0 +1,41 @@
+name: "🐞 Bug Report"
+description: Report a bug
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: checkboxes
+    attributes:
+      label: Before submitting your Bug Report
+      options:
+        - label: I have searched the [issue tracker](https://github.com/LangLangBart/boonGUI/issues) for a bug report that matches the one I want to file, without success.
+          required: true
+        - label: "[Optional] After upgrading the mod to a newer version, errors/ warnings appeared. I deleted the existing boonGUI folder (see [wiki/GameDataPaths](https://trac.wildfiregames.com/wiki/GameDataPaths)) and tried reinstalling, but the problem persisted."
+          required: false
+  - type: input
+    attributes:
+      label: boonGUI Version
+      placeholder: For example v2.4.1 or "latest release"; if using GitHub use the latest commit number.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Description
+      description: A clear and concise description of the bug and, if possible, steps to reproduce the problem consistently. If applicable, add screenshots to help explain the bug.
+      # The pipe "|" to declare a multi-line string, see https://yaml-multiline.info/.
+      placeholder: |
+        Short description
+
+        1. Go to …
+        2. Click on …
+        3. Scroll down to …
+        4. See error
+
+        Screenshots
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log Output
+      description: If applicable, copy and paste all relevant log outputs. The logs for 0 A.D. are overwritten on every restart, as soon as any errors/ warnings occur, close the game and copy the contents of `interestinglog.html` (see [wiki/GameDataPaths](https://trac.wildfiregames.com/wiki/GameDataPaths)) into here. This will help to find the cause of the problem faster and require fewer follow-ups.
+      render: shell

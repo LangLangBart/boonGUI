@@ -52,7 +52,7 @@ function formatKD(num)
 	}
 }
 
-// currently being used for limiting the attack/ speed numbers in the HUD
+// boonGUI: limit attack/speed numbers in the HUD
 function limitNumber(num)
 {
 	if (num < 10)
@@ -62,7 +62,7 @@ function limitNumber(num)
 	return Math.round(num);
 }
 
-// boonGUI: Colored Right-Click
+// boonGUI: colored right-click
 function showTemplateViewerOnRightClickTooltip()
 {
 	// Translation: Appears in a tooltip to indicate that right-clicking the corresponding GUI element will open the Template Details GUI page.
@@ -109,16 +109,16 @@ function setupStatHUDAttackTooltip(template, projectiles)
 		}));
 	}
 
-	return sprintf(translate("%(label)s\n%(details)s"), {
-		"label": headerFont(translate("Attack per Second\nDetails:")),
-		"details": g_Indent + tooltips.join("\n" + g_Indent)
+	return sprintf(translate("%(label)s %(details)s"), {
+		"label": headerFont(translate("Damage per Second\n"+ g_Indent)),
+		"details": tooltips.join("\n" + g_Indent)
 	});
 }
 
 function setupStatHUDHackResistanceTooltip(template)
 {
 	return sprintf(translate("%(label)s %(resistance)s %(explaination)s\n%(info)s"), {
-		"label": headerFont(translate("Hack Resistance Level\nDetails:\n" + g_Indent)),
+		"label": headerFont(translate("Hack Resistance Level\n" + g_Indent)),
 		"resistance": resistanceLevelToPercentageString(template.resistance.Damage.Hack),
 		"explaination": unitFont(translate("Resistance against Hack Attacks")),
 		"info": "Hack damage is usually inflicted in close combat by infantry or cavalry units."
@@ -128,7 +128,7 @@ function setupStatHUDHackResistanceTooltip(template)
 function setupStatHUDPierceResistanceTooltip(template)
 {
 	return sprintf(translate("%(label)s %(resistance)s %(explaination)s\n%(info)s"), {
-		"label": headerFont(translate("Pierce Resistance Level\nDetails:\n" + g_Indent)),
+		"label": headerFont(translate("Pierce Resistance Level\n" + g_Indent)),
 		"resistance": resistanceLevelToPercentageString(template.resistance.Damage.Pierce),
 		"explaination": unitFont(translate("Resistance against Pierce Attacks")),
 		"info": "Pierce damage is dealt by ranged units e.g. archers, skirmishers or even special siege units such as bolt shooters."
@@ -139,7 +139,7 @@ function setupStatHUDPierceResistanceTooltip(template)
 function setupStatHUDCrushResistanceTooltip(template)
 {
 	return sprintf(translate("%(label)s %(resistance)s %(explaination)s\n%(info)s"), {
-		"label": headerFont(translate("Crush Resistance Level\nDetails:\n" + g_Indent)),
+		"label": headerFont(translate("Crush Resistance Level\n" + g_Indent)),
 		"resistance": resistanceLevelToPercentageString(template.resistance.Damage.Crush),
 		"explaination": unitFont(translate("Resistance against Crush Attacks")),
 		"info": "Crush damage is mostly caused by siege units such as catapults or rams."
@@ -156,7 +156,7 @@ function setupStatHUDSpeedTooltip(template)
 		return "";
 
 	return sprintf(translate("%(label)s %(speeds)s"), {
-		"label": headerFont(translate("Walk Speed\nDetails:\n" + g_Indent)),
+		"label": headerFont(translate("Walk Speed\n" + g_Indent)),
 		"speeds":
 			sprintf(translate("%(speed)s %(movementType)s"), {
 				"speed": walk,

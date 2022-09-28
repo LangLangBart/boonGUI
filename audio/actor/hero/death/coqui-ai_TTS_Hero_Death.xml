@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SoundGroup>
+  <Distanceless>1</Distanceless>
+  <HeardBy>owner</HeardBy>
+  <Gain>1</Gain>
+  <Priority>100</Priority>
+  <Threshold>5</Threshold>
+  <Path>audio/actor/hero/death/</Path>
+  <Sound>coqui-ai_TTS_Hero_Death.ogg</Sound>
+</SoundGroup>

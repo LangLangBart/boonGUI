@@ -4,22 +4,26 @@
   "description": "---",
   "private": true,
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.17.0",
-    "@typescript-eslint/parser": "^5.17.0",
-    "eslint": "^8.12.0",
+    "@prettier/plugin-xml": "^2.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.21.0",
+    "@typescript-eslint/parser": "^5.21.0",
+    "eslint": "^8.14.0",
     "eslint-plugin-brace-rules": "^0.1.6",
-    "lint-staged": "^12.3.7",
+    "lint-staged": "^13.0.0",
+    "prettier": "^2.7.1",
     "simple-git-hooks": "^2.7.0",
-    "typescript": "^4.6.3"
+    "typescript": "^4.6.4"
   },
   "scripts": {
-    "lint": "eslint ."
+    "postinstall": "vale sync",
+    "xmlStyle": "find . -name '*.xml' -print0 | while IFS= read -r -d '' file; do xsltproc -o $file ./.github/build_scripts/*.xsl $file; done && ./node_modules/.bin/prettier --write ./\\*\\*/\\*.xml"
   },
   "simple-git-hooks": {
-    "pre-commit": "yarn lint-staged"
+    "pre-commit": "npx lint-staged && if type vale >/dev/null; then vale .; fi"
   },
   "lint-staged": {
-    "*.{js,ts}": "eslint --fix"
+    "*.{js,ts}": "eslint --fix",
+    "./**/*.xml": "./node_modules/.bin/prettier --write"
   },
   "repository": {
     "type": "git",

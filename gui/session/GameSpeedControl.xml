@@ -1,14 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <object
-	name="gameSpeed"
-	type="dropdown"
-	font="sans-bold-16"
-	style="ModernDropDown"
-	size="100%-270 40 100%-100 65"
-	hidden="true"
-	z="200"
-	tooltip_style="sessionToolTip"
-	dropdown_size="500"
->
-	<translatableAttribute id="tooltip">Choose game speed</translatableAttribute>
+  name="gameSpeed"
+  type="dropdown"
+  font="sans-bold-16"
+  style="ModernDropDown"
+  size="100%-270 40 100%-100 65"
+  hidden="true"
+  z="200"
+  tooltip_style="sessionToolTip"
+  dropdown_size="500">
+  <translatableAttribute id="tooltip">Choose game speed</translatableAttribute>
 </object>

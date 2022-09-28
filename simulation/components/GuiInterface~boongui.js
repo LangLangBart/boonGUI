@@ -27,6 +27,9 @@ const boongui_resources_techs = {
 	"food": [
 		"gather_wicker_baskets",
 		"gather_farming_plows",
+		"gather_farming_seed_drill",
+		"gather_farming_water_weeding",
+		"gather_farming_chain_pump",
 		"gather_farming_harvester",
 		"gather_farming_training",
 		"gather_farming_fertilizer",
@@ -144,10 +147,12 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 	const cmpPlayers = [];
 	for (let index = 0; index < numPlayers; ++index)
 	{
+		const playerEnt = cmpPlayerManager.GetPlayerByID(index);
 		const cmpPlayer = QueryPlayerIDInterface(index);
+		const cmpIdentity = Engine.QueryInterface(playerEnt, IID_Identity);
 		const state = cmpPlayer.GetState();
 		const hasSharedLos = cmpPlayer.HasSharedLos();
-		cmpPlayers.push({ index, state, hasSharedLos, cmpPlayer });
+		cmpPlayers.push({ index, state, hasSharedLos, cmpPlayer, cmpIdentity });
 	}
 
 	const cmpPlayerViewed = cmpPlayers[g_ViewedPlayer];
@@ -161,7 +166,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 		if (!cmpPlayerViewed.hasSharedLos || !cmpPlayer.IsMutualAlly(cmpPlayerViewed.index))
 			return false;
 		return true;
-	}).map(({ index, cmpPlayer, state, hasSharedLos }) => {
+	}).map(({ index, cmpPlayer, cmpIdentity, state, hasSharedLos }) => {
 		const cmpTechnologyManager = QueryPlayerIDInterface(index, IID_TechnologyManager);
 		const cmpPlayerStatisticsTracker = QueryPlayerIDInterface(index, IID_StatisticsTracker);
 
@@ -171,8 +176,8 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 			hasSharedLos,
 
 			// @cmpPlayer
-			"name": cmpPlayer.GetName(),
-			"civ": cmpPlayer.GetCiv(),
+			"name": cmpIdentity.GetName(),
+			"civ": cmpIdentity.GetCiv(),
 			"team": cmpPlayer.GetTeam(),
 			"trainingBlocked": cmpPlayer.IsTrainingBlocked(),
 			"popCount": cmpPlayer.GetPopulationCount(),
@@ -319,9 +324,8 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 		{
 			for (const entity of cmpRangeManager.GetEntitiesByPlayer(index))
 			{
-				const cmpIdentity = Engine.QueryInterface(entity, IID_Identity);
 				const cmpProductionQueue = Engine.QueryInterface(entity, IID_ProductionQueue);
-				const classesList = cmpIdentity?.classesList;
+				const classesList = Engine.QueryInterface(entity, IID_Identity)?.classesList;
 				if (classesList && !classesList.includes("Foundation"))
 				{
 					if (classesList.includes("CivCentre"))
@@ -366,28 +370,29 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 					}
 
 				}
-
 				if (cmpProductionQueue)
 				{
-					for (const q of cmpProductionQueue.queue)
+					for (const queue of cmpProductionQueue.queue)
 					{
-						if (!q.productionStarted) continue;
-						const { count, timeRemaining, timeTotal } = q;
-						const progress = (timeRemaining / timeTotal);
 
-						if (q.unitTemplate)
+						const cmpTrainer = Engine.QueryInterface(queue.producer, IID_Trainer);
+						const cmpResearcher = Engine.QueryInterface(queue.producer, IID_Researcher);
+						const mode = "production";
+						if (!queue.started || queue.paused) continue;
+						if (queue.entity)
 						{
-							const template = q.unitTemplate;
-							const mode = "production";
+							const { count, "progress": reverseProgress, "unitTemplate": template } = cmpTrainer.GetBatch(queue.entity);
+							const progress = 1 - reverseProgress;
 							const templateType = "unit";
 							cached.queue.add({ mode, templateType, entity, template, count, progress });
 						}
 
-						if (q.technologyTemplate)
+						if (queue.technology)
 						{
-							const mode = "production";
+							const { "progress": reverseProgress, "templateName": template } = cmpResearcher.GetResearchingTechnology(queue.technology);
+							const progress = 1 - reverseProgress;
 							const templateType = "technology";
-							const template = q.technologyTemplate;
+							const count = 1;
 							cached.queue.add({ mode, templateType, entity, template, count, progress });
 						}
 					}
@@ -433,7 +438,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 
 GuiInterface.prototype.DisplayRallyPoint = function(player, cmd) {
 	// if selection did not change (cmd.watch == true)
-	// we need to update only remote rally points
+	// Limit updates to remote rally points
 
 	if (cmd.watch && this.ChangedRallyPoints.size == 0) return;
 	if (!cmd.watch) this.LocalRallyPoints.clear();
@@ -468,7 +473,7 @@ GuiInterface.prototype.DisplayRallyPoint = function(player, cmd) {
 		// Rally point should be displayed if one of the following is true:
 		// 1) It is owned by the player
 		// 2) The player is an observer
-		// 3) The player is a a mutual ally with shared LOS
+		// 3) The player is a mutual ally with shared LOS
 
 		if (cmpPlayer && cmpOwnership)
 		{
@@ -493,7 +498,7 @@ GuiInterface.prototype.DisplayRallyPoint = function(player, cmd) {
 
 		if (pos)
 		{
-			// Only update the position if we changed it (cmd.queued is set).
+			// Update position on changes (cmd.queued is set).
 			// Note that Add-/SetPosition take a CFixedVector2D which has X/Y components, not X/Z.
 			if ("queued" in cmd)
 			{

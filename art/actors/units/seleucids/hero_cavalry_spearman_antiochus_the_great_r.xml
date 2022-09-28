@@ -1,27 +1,46 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <actor version="1">
-  <castshadow/>
+  <castshadow />
   <group>
     <variant>
-      <mesh>skeletal/new/m_tunic_short.dae</mesh>
+      <mesh>skeletal/new/m_armor_tunic_short.dae</mesh>
       <props>
-        <prop actor="props/units/heads/new/head_hele_b.xml" attachpoint="head"/>
-        <prop actor="props/units/helmets/hele_thracian_romanized_b2_plume.xml" attachpoint="helmet"/>
-        <prop actor="props/units/helmets/props/sele_mask_bronze.xml" attachpoint="helmet"/>
-        <prop actor="props/units/weapons/spear_long.xml" attachpoint="weapon_R"/>
-        <prop actor="props/hero_selectorA.xml" attachpoint="root"/>
+        <prop
+          actor="props/units/heads/new/head_hele_b.xml"
+          attachpoint="head"
+        />
+        <prop
+          actor="props/units/helmets/hele_thracian_romanized_b2_plume.xml"
+          attachpoint="helmet"
+        />
+        <prop
+          actor="props/units/helmets/props/sele_mask_bronze.xml"
+          attachpoint="helmet"
+        />
+        <prop actor="props/units/weapons/sarissa.xml" attachpoint="weapon_R" />
+        <prop actor="props/hero_selectorA.xml" attachpoint="root" />
       </props>
       <textures>
-        <texture file="skeletal/sele_hero_antiochus.png" name="baseTex"/>
-        <texture file="skeletal/sele_hero_antiochus_spec.png" name="specTex"/>
+        <texture
+          file="skeletal/sele/cuirass_hero_antiochus.png"
+          name="baseTex"
+        />
+        <texture
+          file="skeletal/sele/cuirass_hero_antiochus_spec.png"
+          name="specTex"
+        />
       </textures>
     </variant>
   </group>
   <group>
-    <variant file="biped/rider/cavalry/base_spearman_2h_fast_relax.xml" name="Spearman-2h-Fast-Relax" frequency="1"/>
+    <variant
+      file="biped/rider/cavalry/base_spearman_2h_fast_relax.xml"
+      name="Spearman-2h-Fast-Relax"
+      frequency="1"
+    />
     <variant file="biped/rider/death_2h.xml">
       <props>
-        <prop actor="" attachpoint="root"/>
+        <prop actor="" attachpoint="root" />
       </props>
     </variant>
   </group>

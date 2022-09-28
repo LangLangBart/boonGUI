@@ -31,7 +31,7 @@ class BoonGUIStatsModesRow
 		}
 		tooltip += `[icon="${Emblem}" displace="2 5"] \n`;
 		tooltip += `${civ.Name}`;
-		const caption = `${translateAISettings(g_InitAttributes.settings.PlayerData[state.index])}`;
+		const caption = Engine.IsAtlasRunning() ? "" : `${translateAISettings(g_InitAttributes.settings.PlayerData[state.index])}`;
 		if (caption)
 		{
 			tooltip += setStringTags(`\n${caption}`, { "color": "210 210 210", "font": "sans-stroke-14" });

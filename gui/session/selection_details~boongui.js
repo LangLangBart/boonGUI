@@ -178,7 +178,7 @@ function displaySingle(entState)
 	// Resource carrying
 	if (entState.resourceCarrying && entState.resourceCarrying.length)
 	{
-		// We should only be carrying one resource type at once, so just display the first
+		// Carrying one resource type at once, so just display the first
 		const carried = entState.resourceCarrying[0];
 		resourceCarryingIcon.sprite = "stretched:session/icons/resources/" + carried.type + ".png";
 		resourceCarryingText.caption = sprintf(translate("%(amount)s / %(max)s"), { "amount": carried.amount, "max": carried.max });
@@ -345,8 +345,9 @@ function displaySingle(entState)
 		SetupStat("LHS", 1, "", "");
 
 	// Range
+	// TODO Show the real range including elevation and tech bonus, list them in the tooltip
 	if (!!entState?.attack?.Ranged)
-		SetupStat("LHS", 2, "session/icons/range.png", entState.attack.Ranged.maxRange || 0, "Attack Range");
+		SetupStat("LHS", 2, "session/icons/range.png", entState.attack.Ranged.maxRange || 0, headerFont("Attack Range"));
 	else
 		SetupStat("LHS", 2, "", "");
 

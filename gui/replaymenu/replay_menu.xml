@@ -1,271 +1,488 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+<?xml version="1.0" encoding="utf-8" ?>
 <objects>
+  <script directory="gui/common/" />
+  <script directory="gui/maps/" />
+  <script directory="gui/replaymenu/" />
 
-	<script directory="gui/common/"/>
-	<script directory="gui/maps/"/>
-	<script directory="gui/replaymenu/" />
+  <!-- Everything displayed in the replay menu. -->
+  <object type="image" style="ModernWindow" name="replayWindow">
+    <!-- Title -->
+    <object
+      style="ModernLabelText"
+      type="text"
+      size="50%-128 4 50%+128 36"
+      font="sans-bold-18">
+      <translatableAttribute id="caption">Replays</translatableAttribute>
+    </object>
 
-	<!-- Everything displayed in the replay menu. -->
-	<object type="image" style="ModernWindow" name="replayWindow">
+    <!-- Left Panel: Filters & Replay List -->
+    <object name="leftPanel" size="3% 5% 100%-255 100%-80">
+      <!-- Filters -->
+      <object name="filterPanel" size="0 0 100%-13 24">
+        <object
+          name="dateTimeFilter"
+          type="dropdown"
+          style="ModernDropDown"
+          size="0 0 12%-5 100%"
+          font="sans-bold-16">
+          <action on="SelectionChange">displayReplayList();</action>
+        </object>
 
-		<!-- Title -->
-		<object style="ModernLabelText" type="text" size="50%-128 4 50%+128 36" font="sans-bold-18">
-			<translatableAttribute id="caption">Replays</translatableAttribute>
-		</object>
+        <object
+          name="playersFilter"
+          type="input"
+          style="ModernInput"
+          size="12% 0 56%-5 100%"
+          font="sans-bold-16"
+          buffer_zone="7">
+          <action on="Press">displayReplayList();</action>
+          <action on="Tab">autoCompleteText(this, g_Playernames);</action>
+          <translatableAttribute id="placeholder_text">
+            Search for Player
+          </translatableAttribute>
+        </object>
 
-		<!-- Left Panel: Filters & Replay List -->
-		<object name="leftPanel" size="3% 5% 100%-255 100%-80">
+        <object
+          name="mapNameFilter"
+          type="dropdown"
+          style="ModernDropDown"
+          size="56% 0 70%-5 100%"
+          font="sans-bold-16">
+          <action on="SelectionChange">displayReplayList();</action>
+        </object>
 
-			<!-- Filters -->
-			<object name="filterPanel" size="0 0 100%-13 24">
+        <object
+          name="mapSizeFilter"
+          type="dropdown"
+          style="ModernDropDown"
+          size="70% 0 80%-5 100%"
+          font="sans-bold-16">
+          <action on="SelectionChange">displayReplayList();</action>
+        </object>
 
-				<object name="dateTimeFilter" type="dropdown" style="ModernDropDown" size="0 0 12%-5 100%" font="sans-bold-16">
-					<action on="SelectionChange">displayReplayList();</action>
-				</object>
+        <object
+          name="populationFilter"
+          type="dropdown"
+          style="ModernDropDown"
+          size="80% 0 90%-5 100%"
+          font="sans-bold-16">
+          <action on="SelectionChange">displayReplayList();</action>
+        </object>
 
-				<object name="playersFilter" type="input" style="ModernInput" size="12% 0 56%-5 100%" font="sans-bold-16" buffer_zone="7">
-					<action on="Press">displayReplayList();</action>
-					<action on="Tab">
-						autoCompleteText(this, g_Playernames);
-					</action>
-					<translatableAttribute id="placeholder_text">Search for Player</translatableAttribute>
-				</object>
+        <object
+          name="durationFilter"
+          type="dropdown"
+          style="ModernDropDown"
+          size="90% 0 100% 100%"
+          font="sans-bold-16">
+          <action on="SelectionChange">displayReplayList();</action>
+        </object>
+      </object>
 
-				<object name="mapNameFilter" type="dropdown" style="ModernDropDown" size="56% 0 70%-5 100%" font="sans-bold-16">
-					<action on="SelectionChange">displayReplayList();</action>
-				</object>
+      <!-- Replay List in that left panel -->
+      <object
+        name="replaySelection"
+        size="0 35 100% 100%-40"
+        type="olist"
+        style="ModernSortedList"
+        sortable="true"
+        selected_column="months"
+        selected_column_order="-1"
+        font="sans-stroke-16"
+        auto_scroll="true">
+        <action on="SelectionChange">displayReplayDetails();</action>
+        <action on="SelectionColumnChange">displayReplayList();</action>
+        <action on="MouseLeftDoubleClickItem">startReplay();</action>
 
-				<object name="mapSizeFilter" type="dropdown" style="ModernDropDown" size="70% 0 80%-5 100%" font="sans-bold-16">
-					<action on="SelectionChange">displayReplayList();</action>
-				</object>
+        <!-- Columns -->
+        <column id="months" color="172 172 212" width="12%">
+          <translatableAttribute id="heading" context="replay">
+            Date / Time
+          </translatableAttribute>
+        </column>
 
-				<object name="populationFilter" type="dropdown" style="ModernDropDown" size="80% 0 90%-5 100%" font="sans-bold-16">
-					<action on="SelectionChange">displayReplayList();</action>
-				</object>
+        <column id="players" color="192 192 192" width="44%">
+          <translatableAttribute id="heading" context="replay">
+            Players
+          </translatableAttribute>
+        </column>
 
-				<object name="durationFilter" type="dropdown" style="ModernDropDown" size="90% 0 100% 100%" font="sans-bold-16">
-					<action on="SelectionChange">displayReplayList();</action>
-				</object>
+        <column id="mapName" color="192 192 192" width="14%">
+          <translatableAttribute id="heading" context="replay">
+            Map Name
+          </translatableAttribute>
+        </column>
 
-			</object>
+        <column id="mapSize" color="192 192 192" width="10%">
+          <translatableAttribute id="heading" context="replay">
+            Size
+          </translatableAttribute>
+        </column>
 
-			<!-- Replay List in that left panel -->
-			<object name="replaySelection"
-				size="0 35 100% 100%-40"
-				type="olist"
-				style="ModernSortedList"
-				sortable="true"
-				selected_column="months"
-				selected_column_order="-1"
-				font="sans-stroke-16"
-				auto_scroll="true"
-			>
+        <column id="popCapacity" color="192 192 192" width="10%">
+          <translatableAttribute id="heading" context="replay">
+            Population
+          </translatableAttribute>
+        </column>
 
-				<action on="SelectionChange">displayReplayDetails();</action>
-				<action on="SelectionColumnChange">displayReplayList();</action>
-				<action on="MouseLeftDoubleClickItem">startReplay();</action>
+        <column id="duration" color="192 192 192" width="10%">
+          <translatableAttribute id="heading" context="replay">
+            Duration
+          </translatableAttribute>
+        </column>
+      </object>
 
-				<!-- Columns -->
-				<column id="months" color="172 172 212" width="12%">
-					<translatableAttribute id="heading" context="replay">Date / Time</translatableAttribute>
-				</column>
+      <!-- File path and buttons-->
+      <object size="0 100%-31 100% 100%">
+        <!-- Open button -->
+        <object
+          name="openReplayDirectoryButton"
+          type="button"
+          style="ModernButtonRed"
+          size="0 -2 44 100%+2">
+          <translatableAttribute id="tooltip">
+            Opens the file directory for the currently selected replay.
+          </translatableAttribute>
+          <action on="Press">openReplayDirectory();</action>
+          <object
+            size="9 3 34 30"
+            type="image"
+            sprite="stretched:pregame/icons/folder-simple.png"
+            ghost="true"
+          />
+        </object>
 
-				<column id="players" color="192 192 192" width="44%">
-					<translatableAttribute id="heading" context="replay">Players</translatableAttribute>
-				</column>
+        <!-- File path -->
+        <object
+          name="replayFilename"
+          type="input"
+          size="48 2 100% 100%-2"
+          style="ModernInput"
+          sprite_overlay="ModernDarkBoxGoldBorder"
+          readonly="true"
+          font="sans-stroke-18"
+          textcolor="208 174 132"
+          sprite="ReplayMenuFilenameBackground">
+          <translatableAttribute id="tooltip">
+            File path for the currently selected replay.
+          </translatableAttribute>
+        </object>
+      </object>
+    </object>
 
-				<column id="mapName" color="192 192 192" width="14%">
-					<translatableAttribute id="heading" context="replay">Map Name</translatableAttribute>
-				</column>
+    <!-- Right Panel: Compatibility Filter & Replay Details -->
+    <object name="rightPanel" size="100%-250 30 100%-20 100%-20">
+      <!-- Compatibility Filter Checkbox -->
+      <object
+        name="compatibilityFilter"
+        type="checkbox"
+        checked="true"
+        style="ModernTickBox"
+        size="0 4 20 100%">
+        <action on="Press">displayReplayList();</action>
+      </object>
 
-				<column id="mapSize" color="192 192 192" width="10%">
-					<translatableAttribute id="heading" context="replay">Size</translatableAttribute>
-				</column>
+      <!-- Compatibility Filter Label -->
+      <object
+        type="text"
+        size="20 2 100% 100%"
+        text_align="left"
+        textcolor="white">
+        <translatableAttribute id="caption">
+          Filter compatible replays
+        </translatableAttribute>
+      </object>
 
-				<column id="popCapacity" color="192 192 192" width="10%">
-					<translatableAttribute id="heading" context="replay">Population</translatableAttribute>
-				</column>
+      <!-- Single-player / Multiplayer Filter -->
+      <object
+        name="singleplayerFilter"
+        type="dropdown"
+        style="ModernDropDown"
+        size="0 30 100% 55"
+        font="sans-bold-16">
+        <action on="SelectionChange">displayReplayList();</action>
+      </object>
 
-				<column id="duration" color="192 192 192" width="10%">
-					<translatableAttribute id="heading" context="replay">Duration</translatableAttribute>
-				</column>
+      <!-- Victory Condition Filter -->
+      <object
+        name="victoryConditionFilter"
+        type="dropdown"
+        style="ModernDropDown"
+        size="0 60 100% 85"
+        font="sans-bold-16">
+        <action on="SelectionChange">displayReplayList();</action>
+      </object>
 
-			</object>
+      <!-- Rated Games Filter -->
+      <object
+        name="ratedGamesFilter"
+        type="dropdown"
+        style="ModernDropDown"
+        size="0 90 100% 115"
+        font="sans-bold-16">
+        <action on="SelectionChange">displayReplayList();</action>
+      </object>
 
-			<!-- File path and buttons-->
-			<object size="0 100%-31 100% 100%" >
-				<!-- Open button -->
-				<object name="openReplayDirectoryButton" type="button" style="ModernButtonRed" size="0 -2 44 100%+2">
-					<translatableAttribute id="tooltip">Opens the file directory for the currently selected replay.</translatableAttribute>
-					<action on="Press">openReplayDirectory();</action>
-					<object size="9 3 34 30" type="image" sprite="stretched:pregame/icons/folder-simple.png" ghost="true">
-					</object>
-				</object>
+      <!-- Placeholder to show if no replay is selected -->
+      <object
+        name="replayInfoEmpty"
+        size="0 120 100% 100%-60"
+        type="image"
+        sprite="ModernDarkBoxGold">
+        <object
+          name="logo"
+          size="50%-110 40 50%+110 140"
+          type="image"
+          sprite="logo"
+        />
+        <object
+          name="subjectBox"
+          type="image"
+          sprite="ModernDarkBoxWhite"
+          size="3% 180 97% 99%">
+          <object
+            name="subject"
+            size="5 5 100%-5 100%-5"
+            type="text"
+            style="ModernText"
+            text_align="center"
+          />
+        </object>
+      </object>
 
-				<!-- File path -->
-				<object name="replayFilename" type="input" size="48 2 100% 100%-2" style="ModernInput" sprite_overlay="ModernDarkBoxGoldBorder" readonly="true" font="sans-stroke-18" textcolor="208 174 132" sprite="ReplayMenuFilenameBackground">
-					<translatableAttribute id="tooltip">File path for the currently selected replay.</translatableAttribute>
-				</object>
-			</object>
+      <!-- Right panel: Replay details -->
+      <object
+        name="replayInfo"
+        size="0 120 100% 100%-60"
+        type="image"
+        sprite="ModernDarkBoxGold"
+        hidden="true">
+        <!-- Map Name Label -->
+        <object
+          name="sgMapName"
+          size="0 5 100% 20"
+          type="text"
+          style="ModernLabelText"
+        />
 
-		</object>
+        <!-- Map Preview Image -->
+        <object
+          name="sgMapPreview"
+          size="5 25 100%-5 190"
+          type="image"
+          sprite=""
+        />
 
-		<!-- Right Panel: Compatibility Filter & Replay Details -->
-		<object name="rightPanel" size="100%-250 30 100%-20 100%-20" >
+        <!-- Separator Line -->
+        <object
+          size="5 194 100%-5 195"
+          type="image"
+          sprite="ModernWhiteLine"
+          z="25"
+        />
 
-			<!-- Compatibility Filter Checkbox -->
-			<object name="compatibilityFilter" type="checkbox" checked="true" style="ModernTickBox" size="0 4 20 100%">
-					<action on="Press">displayReplayList();</action>
-			</object>
+        <!-- Map Type Caption -->
+        <object
+          size="5 195 50% 225"
+          type="image"
+          sprite="ModernItemBackShadeLeft">
+          <object
+            size="0 0 100%-10 100%"
+            type="text"
+            style="ModernRightLabelText">
+            <translatableAttribute id="caption">
+              Map Type:
+            </translatableAttribute>
+          </object>
+        </object>
 
-			<!-- Compatibility Filter Label -->
-			<object type="text" size="20 2 100% 100%" text_align="left" textcolor="white">
-				<translatableAttribute id="caption">Filter compatible replays</translatableAttribute>
-			</object>
+        <!-- Map Type Label -->
+        <object
+          size="50% 195 100%-5 225"
+          type="image"
+          sprite="ModernItemBackShadeRight">
+          <object name="sgMapType" type="text" style="ModernLeftLabelText" />
+        </object>
 
-			<!-- Single-player / Multiplayer Filter -->
-			<object name="singleplayerFilter" type="dropdown" style="ModernDropDown" size="0 30 100% 55" font="sans-bold-16">
-				<action on="SelectionChange">displayReplayList();</action>
-			</object>
+        <!-- Separator Line -->
+        <object
+          size="5 224 100%-5 225"
+          type="image"
+          sprite="ModernWhiteLine"
+          z="25"
+        />
 
-			<!-- Victory Condition Filter -->
-			<object name="victoryConditionFilter" type="dropdown" style="ModernDropDown" size="0 60 100% 85" font="sans-bold-16">
-				<action on="SelectionChange">displayReplayList();</action>
-			</object>
+        <!-- Map Size Caption -->
+        <object
+          size="5 225 50% 255"
+          type="image"
+          sprite="ModernItemBackShadeLeft">
+          <object
+            size="0 0 100%-10 100%"
+            type="text"
+            style="ModernRightLabelText">
+            <translatableAttribute id="caption">
+              Map Size:
+            </translatableAttribute>
+          </object>
+        </object>
 
-			<!-- Rated Games Filter -->
-			<object name="ratedGamesFilter" type="dropdown" style="ModernDropDown" size="0 90 100% 115" font="sans-bold-16">
-				<action on="SelectionChange">displayReplayList();</action>
-			</object>
+        <!-- Map Size Label -->
+        <object
+          size="50% 225 100%-5 255"
+          type="image"
+          sprite="ModernItemBackShadeRight">
+          <object name="sgMapSize" type="text" style="ModernLeftLabelText" />
+        </object>
 
-			<!-- Placeholder to show if no replay is selected -->
-			<object name="replayInfoEmpty" size="0 120 100% 100%-60" type="image" sprite="ModernDarkBoxGold">
-				<object name="logo" size="50%-110 40 50%+110 140" type="image" sprite="logo"/>
-				<object name="subjectBox" type="image" sprite="ModernDarkBoxWhite" size="3% 180 97% 99%">
-					<object name="subject" size="5 5 100%-5 100%-5" type="text" style="ModernText" text_align="center"/>
-				</object>
-			</object>
+        <!-- Separator Line -->
+        <object
+          size="5 254 100%-5 255"
+          type="image"
+          sprite="ModernWhiteLine"
+          z="25"
+        />
 
-			<!-- Right panel: Replay details -->
-			<object name="replayInfo" size="0 120 100% 100%-60" type="image" sprite="ModernDarkBoxGold" hidden="true">
+        <!-- Victory Condition Caption -->
+        <object
+          size="5 255 50% 295"
+          type="image"
+          sprite="ModernItemBackShadeLeft">
+          <object
+            size="0 0 100%-10 100%"
+            type="text"
+            style="ModernRightLabelText">
+            <translatableAttribute id="caption">Victory:</translatableAttribute>
+          </object>
+        </object>
 
-				<!-- Map Name Label -->
-				<object name="sgMapName" size="0 5 100% 20" type="text" style="ModernLabelText"/>
+        <!-- Victory Condition Label -->
+        <object
+          size="50% 255 100%-5 295"
+          type="image"
+          sprite="ModernItemBackShadeRight">
+          <object
+            name="sgVictory"
+            type="text"
+            style="ModernText"
+            font="sans-bold-stroke-14"
+          />
+        </object>
 
-				<!-- Map Preview Image -->
-				<object name="sgMapPreview" size="5 25 100%-5 190"  type="image" sprite=""/>
+        <!-- Separator Line -->
+        <object
+          size="5 294 100%-5 295"
+          type="image"
+          sprite="ModernWhiteLine"
+          z="25"
+        />
 
-				<!-- Separator Line -->
-				<object size="5 194 100%-5 195" type="image" sprite="ModernWhiteLine" z="25"/>
+        <!-- Map Description Text -->
+        <object
+          type="image"
+          sprite="ModernDarkBoxWhite"
+          size="5 300 100%-5 40%+170">
+          <object
+            name="sgMapDescription"
+            size="0 1 100% 100%-1"
+            type="text"
+            style="ModernText"
+            font="sans-14"
+          />
+        </object>
 
-				<!-- Map Type Caption -->
-				<object size="5 195 50% 225" type="image" sprite="ModernItemBackShadeLeft">
-					<object size="0 0 100%-10 100%" type="text" style="ModernRightLabelText">
-						<translatableAttribute id="caption">Map Type:</translatableAttribute>
-					</object>
-				</object>
+        <object
+          type="image"
+          sprite="ModernDarkBoxWhite"
+          size="5 40%+175 100%-5 100%-30">
+          <!-- Number of Players -->
+          <object
+            name="sgNbPlayers"
+            size="0 3 100% 18"
+            type="text"
+            style="ModernLabelText"
+          />
 
-				<!-- Map Type Label -->
-				<object size="50% 195 100%-5 225" type="image" sprite="ModernItemBackShadeRight">
-					<object name="sgMapType" type="text" style="ModernLeftLabelText"/>
-				</object>
+          <!-- Player Names -->
+          <object
+            name="sgPlayersNames"
+            size="0 19 100% 100%-1"
+            type="text"
+            style="MapPlayerList"
+          />
+        </object>
 
-				<!-- Separator Line -->
-				<object size="5 224 100%-5 225" type="image" sprite="ModernWhiteLine" z="25"/>
+        <!-- "Show Spoiler" Checkbox -->
+        <object
+          name="showSpoiler"
+          type="checkbox"
+          checked="false"
+          style="ModernTickBox"
+          size="10 100%-27 30 100%">
+          <action on="Press">displayReplayDetails();</action>
+        </object>
 
-				<!-- Map Size Caption -->
-				<object size="5 225 50% 255" type="image" sprite="ModernItemBackShadeLeft">
-					<object size="0 0 100%-10 100%" type="text" style="ModernRightLabelText">
-						<translatableAttribute id="caption">Map Size:</translatableAttribute>
-					</object>
-				</object>
+        <!-- "Show Spoiler" Label -->
+        <object
+          type="text"
+          size="30 100%-28 100% 100%"
+          text_align="left"
+          textcolor="white">
+          <translatableAttribute id="caption">Spoiler</translatableAttribute>
+        </object>
+      </object>
+    </object>
 
-				<!-- Map Size Label -->
-				<object size="50% 225 100%-5 255" type="image" sprite="ModernItemBackShadeRight">
-					<object name="sgMapSize" type="text" style="ModernLeftLabelText"/>
-				</object>
+    <!-- Bottom Panel: Buttons. -->
+    <object name="bottomPanel" size="40 100%-55 100%-20 100%-25">
+      <!-- Main Menu Button -->
+      <object type="button" style="ModernButtonRed" size="0 0 19% 100%">
+        <translatableAttribute id="caption">Back</translatableAttribute>
+        <action on="Press">closeReplay();</action>
+      </object>
 
-				<!-- Separator Line -->
-				<object size="5 254 100%-5 255" type="image" sprite="ModernWhiteLine" z="25"/>
+      <!-- Delete Button -->
+      <object
+        name="deleteReplayButton"
+        type="button"
+        style="ModernButtonRed"
+        size="20% 0 39% 100%"
+        hotkey="session.savedgames.delete">
+        <translatableAttribute id="caption">Delete</translatableAttribute>
+        <action on="Press">deleteReplayButtonPressed();</action>
+      </object>
 
-				<!-- Victory Condition Caption -->
-				<object size="5 255 50% 295" type="image" sprite="ModernItemBackShadeLeft">
-					<object size="0 0 100%-10 100%" type="text" style="ModernRightLabelText">
-						<translatableAttribute id="caption">Victory:</translatableAttribute>
-					</object>
-				</object>
+      <!-- Rebuild Cache Button -->
+      <object type="button" style="ModernButtonRed" size="40% 0 59% 100%">
+        <translatableAttribute id="caption">
+          Rebuild Cache
+        </translatableAttribute>
+        <translatableAttribute id="tooltip">
+          Rebuild the replay cache from scratch. Potentially slow!
+        </translatableAttribute>
+        <action on="Press">reloadCache(); displayReplayList();</action>
+      </object>
 
-				<!-- Victory Condition Label -->
-				<object size="50% 255 100%-5 295" type="image" sprite="ModernItemBackShadeRight">
-					<object name="sgVictory" type="text" style="ModernText" font="sans-bold-stroke-14"/>
-				</object>
+      <!-- Summary Button -->
+      <object
+        name="summaryButton"
+        type="button"
+        style="ModernButtonRed"
+        size="60% 0 79% 100%"
+        hotkey="summary">
+        <translatableAttribute id="caption">Summary</translatableAttribute>
+        <action on="Press">showReplaySummary();</action>
+      </object>
 
-				<!-- Separator Line -->
-				<object size="5 294 100%-5 295" type="image" sprite="ModernWhiteLine" z="25"/>
-
-				<!-- Map Description Text -->
-				<object type="image" sprite="ModernDarkBoxWhite" size="5 300 100%-5 40%+170">
-					<object name="sgMapDescription" size="0 1 100% 100%-1" type="text" style="ModernText" font="sans-14"/>
-				</object>
-
-				<object type="image" sprite="ModernDarkBoxWhite" size="5 40%+175 100%-5 100%-30">
-
-					<!-- Number of Players -->
-					<object name="sgNbPlayers" size="0 3 100% 18" type="text" style="ModernLabelText" />
-
-					<!-- Player Names -->
-					<object name="sgPlayersNames" size="0 19 100% 100%-1" type="text" style="MapPlayerList"/>
-				</object>
-
-				<!-- "Show Spoiler" Checkbox -->
-				<object name="showSpoiler" type="checkbox" checked="false" style="ModernTickBox" size="10 100%-27 30 100%">
-					<action on="Press">displayReplayDetails();</action>
-				</object>
-
-				<!-- "Show Spoiler" Label -->
-				<object type="text" size="30 100%-28 100% 100%" text_align="left" textcolor="white">
-					<translatableAttribute id="caption">Spoiler</translatableAttribute>
-				</object>
-
-			</object>
-		</object>
-
-
-		<!-- Bottom Panel: Buttons. -->
-		<object name="bottomPanel" size="40 100%-55 100%-20 100%-25" >
-
-			<!-- Main Menu Button -->
-			<object type="button" style="ModernButtonRed" size="0 0 19% 100%">
-				<translatableAttribute id="caption">Back</translatableAttribute>
-				<action on="Press">closeReplay();</action>
-			</object>
-
-			<!-- Delete Button -->
-			<object name="deleteReplayButton" type="button" style="ModernButtonRed" size="20% 0 39% 100%" hotkey="session.savedgames.delete">
-				<translatableAttribute id="caption">Delete</translatableAttribute>
-				<action on="Press">deleteReplayButtonPressed();</action>
-			</object>
-
-			<!-- Rebuild Cache Button -->
-			<object type="button" style="ModernButtonRed" size="40% 0 59% 100%">
-				<translatableAttribute id="caption">Rebuild Cache</translatableAttribute>
-				<translatableAttribute id="tooltip">Rebuild the replay cache from scratch. Potentially slow!</translatableAttribute>
-				<action on="Press">reloadCache(); displayReplayList();</action>
-			</object>
-
-			<!-- Summary Button -->
-			<object name="summaryButton" type="button" style="ModernButtonRed" size="60% 0 79% 100%" hotkey="summary">
-				<translatableAttribute id="caption">Summary</translatableAttribute>
-				<action on="Press">showReplaySummary();</action>
-			</object>
-
-			<!-- Start Replay Button -->
-			<object name="startReplayButton" type="button" style="ModernButtonRed" size="80% 0 99% 100%">
-				<translatableAttribute id="caption">Start Replay</translatableAttribute>
-				<action on="Press">startReplay();</action>
-			</object>
-
-		</object>
-	</object>
+      <!-- Start Replay Button -->
+      <object
+        name="startReplayButton"
+        type="button"
+        style="ModernButtonRed"
+        size="80% 0 99% 100%">
+        <translatableAttribute id="caption">Start Replay</translatableAttribute>
+        <action on="Press">startReplay();</action>
+      </object>
+    </object>
+  </object>
 </objects>

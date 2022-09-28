@@ -1,0 +1,7 @@
+{
+	"bracketSameLine": true,
+	"singleAttributePerLine": false,
+	"tabWidth": 2,
+	"xmlSelfClosingSpace": true,
+	"xmlWhitespaceSensitivity": "ignore"
+}

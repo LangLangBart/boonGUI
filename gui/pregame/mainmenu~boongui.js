@@ -1,4 +1,4 @@
-var configboongui = {
+var boonGUIConfig = {
 	"needsToSave": false,
 	"needsToReloadHotkeys": false,
 	"set": function(key, value)
@@ -28,22 +28,25 @@ function boongui_initCheck()
 		const settings = Engine.ReadJSONFile("boongui_data/default_config.json");
 
 		const allHotkeys = new Set(Object.keys(Engine.GetHotkeyMap()));
-		// Normal check. Check for entries missing
-
 		for (const key in settings)
 		{
-			if (!allHotkeys.has(key.substring("hotkey.".length)))
+			if (key.startsWith("hotkey."))
 			{
-				configboongui.set(key, settings[key]);
-				state.showMessage = true;
+				if (!allHotkeys.has(key.substring("hotkey.".length)))
+				{
+					boonGUIConfig.set(key, settings[key]);
+					state.showMessage = true;
+				}
 			}
+			else if (boonGUIConfig.get(key) == "")
+				boonGUIConfig.set(key, settings[key]);
+
+			else if ((key == "xres" || key == "yres") && boonGUIConfig.get(key) == "0")
+				boonGUIConfig.set(key, settings[key]);
 		}
-
-		configboongui.save();
-
+		boonGUIConfig.save();
 
 	}
-
 	if (state.showMessage)
 	{
 		function addReason(title, hotkey)

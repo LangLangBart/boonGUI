@@ -240,13 +240,13 @@ g_SelectionPanels.Formation = {
 		if (unitEntStates.some(state => !hasClass(state, "Unit")))
 			return [];
 
-		if (unitEntStates.every(state => !state.identity || !state.identity.hasSomeFormation))
+		if (unitEntStates.every(state => !state.unitAI || !state.unitAI.formations.length))
 			return [];
 
 		if (!g_AvailableFormations.has(unitEntStates[0].player))
 			g_AvailableFormations.set(unitEntStates[0].player, Engine.GuiInterfaceCall("GetAvailableFormations", unitEntStates[0].player));
 
-		return g_AvailableFormations.get(unitEntStates[0].player).filter(formation => unitEntStates.some(state => !!state.identity && state.identity.formations.indexOf(formation) != -1));
+		return g_AvailableFormations.get(unitEntStates[0].player).filter(formation => unitEntStates.some(state => !!state.unitAI && state.unitAI.formations.includes(formation)));
 	},
 	"setupButton": function(data)
 	{
@@ -332,16 +332,19 @@ g_SelectionPanels.Garrison = {
 
 		data.button.enabled = canUngarrison;
 
-		data.button.tooltip = (canUngarrison ? sprintf(translate("%(name)s"), { "name": getEntityNames(template) }) + "\n" + translate("Single-click to unload one.") + "\n" + colorizeHotkey("%(hotkey)s-click" + " ", "selection.add") + translate("to unload all of this type.") + "\n" + colorizeHotkey("%(hotkey)s" + " ", "session.unload") + translate("to unload all units.") :
-			getEntityNames(template)) + "\n" + coloredText(sprintf(translate("%(playername)s"), {
-			"playername": g_Players[entState.player].name
-		}), g_DiplomacyColors.getPlayerColor(entState.player));
+		data.button.tooltip = (canUngarrison ?
+			sprintf(translate("Unload %(name)s"), { "name": getEntityNames(template) }) + "\n" +
+			translate("Single-click to unload 1. Shift-click to unload all of this type.") :
+			getEntityNames(template)) + "\n" +
+			sprintf(translate("Player: %(playername)s"), {
+				"playername": g_Players[entState.player].name
+			});
 
 		data.guiSelection.sprite = "color:" + g_DiplomacyColors.getPlayerColor(entState.player, 160);
 		data.button.sprite_disabled = data.button.sprite;
 
-		// Selection panel buttons only appear disabled if they
-		// also appear disabled to the owner of the structure.
+		// The buttons of the selection window appear disabled as
+		// long as they also appear disabled for the owner of the structure.
 		data.icon.sprite =
 			(canUngarrison || g_IsObserver ? "" : "grayscale:") +
 			"stretched:session/portraits/" + template.icon;
@@ -564,10 +567,16 @@ g_SelectionPanels.Queue = {
 
 		data.countDisplay.caption = queuedItem.count > 1 ? queuedItem.count : "";
 
+		const progressSlider = Engine.GetGUIObjectByName("unitQueueProgressSlider[" + data.i + "]");
 		if (data.item.ghost)
 		{
 			data.button.enabled = false;
-			Engine.GetGUIObjectByName("unitQueueProgressSlider[" + data.i + "]").sprite="color:0 150 250 50";
+			progressSlider.sprite = "color:0 150 250 50";
+			const size = progressSlider.size;
+
+			// Buttons are assumed to be square, so left/right offsets can be used for top/bottom.
+			size.top = size.left;
+			progressSlider.size = size;
 		}
 		else
 		{
@@ -576,19 +585,30 @@ g_SelectionPanels.Queue = {
 				Engine.GetGUIObjectByName("queueTimeRemaining").caption =
 					Engine.FormatMillisecondsIntoDateStringGMT(queuedItem.timeRemaining, translateWithContext("countdown format", "m:ss"));
 
-			const guiObject = Engine.GetGUIObjectByName("unitQueueProgressSlider[" + data.i + "]");
-			guiObject.sprite = "queueProgressSlider";
-			const size = guiObject.size;
+			progressSlider.sprite = "queueProgressSlider";
+			const size = progressSlider.size;
 
 			// Buttons are assumed to be square, so left/right offsets can be used for top/bottom.
 			size.top = size.left + Math.round(queuedItem.progress * (size.right - size.left));
-			guiObject.size = size;
+			progressSlider.size = size;
 
 			data.button.enabled = controlsPlayer(data.player);
+
+			Engine.GetGUIObjectByName("unitQueuePausedIcon[" + data.i + "]").hidden = !queuedItem.paused;
+			if (queuedItem.paused)
+				// Translation: String displayed when the research is paused. E.g. by being garrisoned or when not the first item in the queue.
+				data.button.tooltip += "\n" + translate("This item is paused.");
 		}
 
 		if (template.icon)
-			data.icon.sprite = (data.item.ghost ? "grayscale:" : "") + "stretched:session/portraits/" + template.icon;
+		{
+			let modifier = "stretched:";
+			if (queuedItem.paused)
+				modifier += "color:0 0 0 127:grayscale:";
+			else if (data.item.ghost)
+				modifier += "grayscale:";
+			data.icon.sprite = modifier + "session/portraits/" + template.icon;
+		}
 
 
 		const showTemplateFunc = () => { showTemplateDetails(data.item.queuedItem.unitTemplate || data.item.queuedItem.technologyTemplate, data.playerState.civ); };
@@ -610,26 +630,34 @@ g_SelectionPanels.Research = {
 	{
 		let ret = [];
 		if (unitEntStates.length == 1)
-			return !unitEntStates[0].production || !unitEntStates[0].production.technologies ? ret :
-				unitEntStates[0].production.technologies.map(tech => ({
-					"tech": tech,
-					"techCostMultiplier": unitEntStates[0].production.techCostMultiplier,
-					"researchFacilityId": unitEntStates[0].id,
-					"isUpgrading": !!unitEntStates[0].upgrade && unitEntStates[0].upgrade.isUpgrading
-				}));
+		{
+			const entState = unitEntStates[0];
+			if (!entState?.researcher?.technologies)
+				return ret;
+			if (!entState.production)
+				warn("Researcher without ProductionQueue found: " + entState.id + ".");
+			return entState.researcher.technologies.map(tech => ({
+				"tech": tech,
+				"techCostMultiplier": entState.researcher.techCostMultiplier,
+				"researchFacilityId": entState.id,
+				"isUpgrading": !!entState.upgrade && entState.upgrade.isUpgrading
+			}));
+		}
 
 		const sortedEntStates = unitEntStates.sort((a, b) =>
 			(!b.upgrade || !b.upgrade.isUpgrading) - (!a.upgrade || !a.upgrade.isUpgrading) ||
 			(!a.production ? 0 : a.production.queue.length) - (!b.production ? 0 : b.production.queue.length)
-		 );
+		);
 
 		for (const state of sortedEntStates)
 		{
-			if (!state.production || !state.production.technologies)
+			if (!state.researcher || !state.researcher.technologies)
 				continue;
+			if (!state.production)
+				warn("Researcher without ProductionQueue found: " + state.id + ".");
 
 			// Remove the techs we already have in ret (with the same name and techCostMultiplier)
-			const filteredTechs = state.production.technologies.filter(
+			const filteredTechs = state.researcher.technologies.filter(
 				tech => tech != null && !ret.some(
 					item =>
 						(item.tech == tech ||
@@ -638,14 +666,14 @@ g_SelectionPanels.Research = {
 							item.tech.bottom == tech.bottom &&
 							item.tech.top == tech.top) &&
 						Object.keys(item.techCostMultiplier).every(
-							k => item.techCostMultiplier[k] == state.production.techCostMultiplier[k])
+							k => item.techCostMultiplier[k] == state.researcher.techCostMultiplier[k])
 				));
 
 			if (filteredTechs.length + ret.length <= this.getMaxNumberOfItems() &&
-			    getNumberOfRightPanelButtons() <= this.getMaxNumberOfItems() * (filteredTechs.some(tech => !!tech.pair) ? 1 : 2))
+				getNumberOfRightPanelButtons() <= this.getMaxNumberOfItems() * (filteredTechs.some(tech => !!tech.pair) ? 1 : 2))
 				ret = ret.concat(filteredTechs.map(tech => ({
 					"tech": tech,
-					"techCostMultiplier": state.production.techCostMultiplier,
+					"techCostMultiplier": state.researcher.techCostMultiplier,
 					"researchFacilityId": state.id,
 					"isUpgrading": !!state.upgrade && state.upgrade.isUpgrading
 				})));
@@ -670,7 +698,7 @@ g_SelectionPanels.Research = {
 		// Start position (start at the bottom)
 		let position = data.i + data.rowLength;
 
-		// Only show the top button for pairs
+		// Set the top button of the pair
 		if (!data.item.tech.pair)
 			Engine.GetGUIObjectByName("unitResearchButton[" + data.i + "]").hidden = true;
 
@@ -700,7 +728,7 @@ g_SelectionPanels.Research = {
 			}
 
 			for (const res in template.cost)
-				template.cost[res] *= data.item.techCostMultiplier[res];
+				template.cost[res] *= data.item.techCostMultiplier[res] !== undefined ? data.item.techCostMultiplier[res] : 1;
 
 			const neededResources = Engine.GuiInterfaceCall("GetNeededResources", {
 				"cost": template.cost,
@@ -888,17 +916,24 @@ g_SelectionPanels.Selection = {
 				resourceIcon(res) + data.carried[res]
 			).join(" ");
 		if (g_IsObserver)
-			tooltip += "\n" + coloredText(sprintf(translate("%(playername)s"), {
+			tooltip += "\n" + sprintf(translate("Player: %(playername)s"), {
 				"playername": g_Players[unitOwner].name
-			}), g_DiplomacyColors.getPlayerColor(unitOwner));
+			});
 		data.button.tooltip = tooltip;
 
 		data.guiSelection.sprite = "color:" + g_DiplomacyColors.getPlayerColor(unitOwner, 160);
+		data.guiSelection.hidden = !g_IsObserver;
 
 		data.countDisplay.caption = data.item.ents.length || "";
 
-		data.button.onPress = function() { changePrimarySelectionGroup(data.item.key, false); };
-		data.button.onPressRight = function() { changePrimarySelectionGroup(data.item.key, true); };
+		data.button.onPress = function()
+		{
+			if (Engine.HotkeyIsPressed("session.deselectgroup"))
+				removeFromSelectionGroup(data.item.key);
+			else
+				makePrimarySelectionGroup(data.item.key);
+		};
+		data.button.onPressRight = function() { removeFromSelectionGroup(data.item.key); };
 
 		if (template.icon)
 			data.icon.sprite = "stretched:session/portraits/" + template.icon;

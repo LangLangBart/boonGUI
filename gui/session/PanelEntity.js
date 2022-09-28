@@ -1,7 +1,7 @@
 /**
  * This class sets up a shortcut to a specific entity in the GUI panel.
  * The button shows the portrait a tooltip with state information and a health and/or capture bar.
- * Clicking the button selects and jumps to to the entity.
+ * Clicking the button selects and jumps to the entity.
  */
 class PanelEntity
 {

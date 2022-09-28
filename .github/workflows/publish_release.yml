@@ -1,0 +1,42 @@
+---
+# This workflow handels the release of a new version.
+
+name: Publish Release
+
+on:
+  push:
+    tags:
+      - "*"
+  workflow_dispatch:
+
+jobs:
+  buildRelease:
+    name: Build Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v3
+
+      - name: Setup Python enviroment
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.8.5
+
+      - name: Install python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install gitignore_parser
+
+      - name: Create pyromod and zip files
+        run: |
+          python .github/build_scripts/make_pyromod.py
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: ${{ env.PYROMOD_MOD_NAME }} v${{ env.PYROMOD_MOD_VERSION }}
+          tag_name: v${{ env.PYROMOD_MOD_VERSION }}
+          files: |
+            ${{ env.PYROMOD_PYROMOD_FILE_PATH }}
+            ${{ env.PYROMOD_ZIP_FILE_PATH }}
+          generate_release_notes: true

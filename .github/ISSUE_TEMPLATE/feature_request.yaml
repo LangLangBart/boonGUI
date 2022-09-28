@@ -1,0 +1,32 @@
+name: "✨ Feature Request"
+description: Request a feature for boonGUI which you would like to see in a future release.
+title: "[Feature]: "
+labels: ["feature-request"]
+body:
+  - type: checkboxes
+    attributes:
+      label: Before submitting your Feature Request
+      options:
+        - label: I have searched the [issue tracker](https://github.com/LangLangBart/boonGUI/issues) for a feature request that matches the one I want to file, without success.
+          required: true
+  - type: textarea
+    attributes:
+      label: Problem
+      description: Please add a clear and concise description of the problem you are seeking to solve with this feature request.
+      # The pipe "|" to declare a multi-line string, see https://yaml-multiline.info/.
+      placeholder: |
+        Description
+  - type: textarea
+    attributes:
+      label: Feature/ Solution
+      description: Describe your function/solution and any alternatives you considered. If applicable, include screenshots/videos or links to the feature here. References to games/mods with this function are all welcome.
+      placeholder: |
+        Description
+
+        As an alternative I considered …
+
+        A similar feature can be found in …
+
+        Screenshots
+    validations:
+      required: true

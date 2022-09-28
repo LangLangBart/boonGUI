@@ -245,7 +245,7 @@ class BoonGUIStats
 		optionFollowPlayer.hidden = !(g_IsObserver && isPlayer);
 		optionFollowPlayer.size = "0 4 20 100%";
 
-		// Nice future project to show the menuButton only upon hovering over it and hide it otherwise
+		// Nice future project to show the menuButton upon hovering over it and hide it otherwise
 		// placeHoldermenuButton.onMouseEnter = function()
 		// {
 		// 	placeHoldermenuButton.hidden = true;
@@ -293,6 +293,9 @@ class BoonGUIStats
 		// The dev overlay should stay above the stats mode overlay
 		Engine.GetGUIObjectByName("devCommandsOverlay").z = 100;
 
+		Engine.GetGUIObjectByName("menuButton").z = 200;
+		Engine.GetGUIObjectByName("menuButtonPanel").z = 150;
+		Engine.GetGUIObjectByName("chatDialogPanel").z = 200;
 		// Game objectives panel
 		Engine.GetGUIObjectByName("objectivesPanel").z = 150;
 		Engine.GetGUIObjectByName("objectivesTitle").font = "sans-bold-16";
@@ -306,7 +309,7 @@ class BoonGUIStats
 		this.mapCache = new MapCache();
 		this.shortGameInfoLabel.caption = Engine.IsAtlasRunning() ? "" : sprintf("%(icon_alpha)s %(AlphaText)s  %(icon_map)s %(mapName)s%(mapSize)s%(biome)s  %(icon_pop)s %(pop)s%(duration)s%(rating)s", {
 			"icon_alpha": '[icon="icon_alpha" displace="1 5"]',
-			"AlphaText": "Alpha XXV",
+			"AlphaText": "Alpha XXVI",
 			"icon_map": '[icon="icon_map" displace="2 6"]',
 			"mapName": this.mapCache.translateMapName(this.mapCache.getTranslatableMapName(g_InitAttributes.mapType, g_InitAttributes.map)),
 			"mapSize": g_InitAttributes.mapType == "random" ? " - " + g_MapSizes.Name[g_MapSizes.Tiles.indexOf(g_InitAttributes.settings.Size)] : "",
@@ -320,6 +323,7 @@ class BoonGUIStats
 
 	durationReplay()
 	{
+		// TODO better is to calculate the length from the number of turns in the commands.txt file
 		const directory = Engine.GetCurrentReplayDirectory();
 		return Engine.HasReplayMetadata(directory) ? '  [icon="icon_duration" displace="1 3"] ' + timeToString(Engine.GetReplayMetadata(directory).timeElapsed) : "";
 	}

@@ -1,42 +1,52 @@
-# This workflow warns and then closes issues and pull-requests that have had no activity for a specified amount of time.
+---
+# This workflow warns and then closes issues/ pull-requests that have had no activity for a specified amount of time.
+
 name: Stale Issues/ PRs
 
 on:
   schedule:
-  - cron: '0 6 * * 1'
+    # At 06:00 on Monday - https://crontab.guru/
+    - cron: "0 6 * * 1"
 
 jobs:
   stale:
-
+    # https://github.com/actions/stale
     runs-on: ubuntu-latest
     permissions:
       issues: write
       pull-requests: write
-
     steps:
-      - uses: actions/stale@v4
+      - uses: actions/stale@v6
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-          # Settings for issues
+          # Reason to use when closing issues.
+          # https://github.blog/changelog/2022-05-19-the-new-github-issues-may-19th-update/
+          close-issue-reason: not_planned
+          # Settings for Issues
           stale-issue-message: |
-            A `stale` label has been added to this issue because it has been open for a while. To keep this issue open, add a comment within 10 days.
+            [Stale workflow] adding `stale` label
+            To keep this Issue open, add a comment within 10 days.
           close-issue-message: |
-            This issue was closed because it has been stalled for a month with no activity.
-          stale-issue-label: "Stale"
-          # Keep the stale label for closed issues
+            [Stale workflow] closing Issue
+            There was no recent interaction.
+          stale-issue-label: "stale"
+          # Keep the stale label for closed Issues
           remove-issue-stale-when-updated: false
-          exempt-issue-labels: "Bug,Critical,Nice to have,Should have"
+          exempt-issue-labels: "bug,should have,todo"
           days-before-issue-stale: 20
           days-before-issue-close: 10
 
-          # Settings for pull-request
+          # Settings for Pull-Requests
           stale-pr-message: |
-            A `stale` label has been added to this pull-request because it has been open for a while. To keep this PR open, add a comment or push a commit within 10 days.
-          close-pr-message: This pull-request was closed because it has been stalled for a month with no activity.
-          stale-pr-label: "Stale"
-          # Keep the stale label for closed pull-requests
+            [Stale workflow] adding `stale` label
+            To keep this PR open, add a comment or push a commit within 10 days.
+          close-pr-message: |
+            [Stale workflow] closing Pull-Request
+            There was no recent interaction.
+          stale-pr-label: "stale"
+          # Keep the stale label for closed Pull-Requests
           remove-pr-stale-when-updated: false
-          exempt-pr-labels: "Waiting for review"
+          exempt-pr-labels: "should have,todo"
           days-before-pr-stale: 20
           days-before-pr-close: 10

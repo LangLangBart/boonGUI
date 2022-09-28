@@ -13,5 +13,13 @@
 	"hotkey.boongui.session.stats.mode.7": "Z+7",
 	"hotkey.boongui.session.stats.mode.8": "Z+8",
 	"hotkey.boongui.session.stats.mode.9": "Z+9",
-	"hotkey.boongui.session.stats.mode.10": "Z+0"
+	"hotkey.boongui.session.stats.mode.10": "Z+0",
+	"xres": "1024",
+	"yres": "768",
+	"boongui.observer.toppanel":true,
+	"boongui.player.toppanel": true,
+	"boongui.statsmode": true,
+	"boongui.showduration": true,
+	"boongui.toppanel.resourceGatherersRates": "Gatherers",
+	"boongui.toppanel.coloredPlayerStatsBackground": "25"
 }

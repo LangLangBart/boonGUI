@@ -4,7 +4,7 @@
 var g_TabButtonWidth = 180;
 
 /**
- * Easily adjust all your layout settings, g_PlayerNameWidth moves the TitelHeadings (e.g. "Resoucres", g_multiplierWidths allows you to adjust the width of all columns and g_yStartHeightHead is useful for adjusting the heaadline for multiple columns in "Units, Structures and Resources". g_verticalOffsetAdjustCounters is used for adjusting the position of Counters and
+ * Adjusting your layout settings is simple, g_PlayerNameWidth moves the TitelHeadings (e.g. "Resoucres", g_multiplierWidths allows you to adjust the width of all columns and g_yStartHeightHead is useful for adjusting the heaadline for multiple columns in "Units, Structures and Resources". g_verticalOffsetAdjustCounters is used for adjusting the position of Counters and
  */
 var g_PlayerNameWidth = 232;
 var g_multiplierWidths = 1.83;
@@ -90,11 +90,10 @@ var getScorePanelsData = () => [
 		],
 		"titleHeadings": [
 			{
-				"caption": sprintf(translate("Unit Statistics (%(trained)s / %(killed)s / %(captured)s / %(lost)s)"),
+				"caption": sprintf(translate("Unit Statistics (%(trained)s / %(killed)s / %(lost)s)"),
 					{
 						"trained": getColoredTypeTranslation("trained"),
 						"killed": getColoredTypeTranslation("killed"),
-						"captured": getColoredTypeTranslation("captured"),
 						"lost": getColoredTypeTranslation("lost")
 					}),
 				"yStart": 16 + g_yStartHeightHead,
@@ -102,13 +101,13 @@ var getScorePanelsData = () => [
 			}	// width = 785
 		],
 		"counters": [
-			{ "width": 105 * g_multiplierWidths, "fn": calculateUnitsWithCaptured, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
+			{ "width": 105 * g_multiplierWidths, "fn": calculateUnits, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
 			{ "width": 95 * g_multiplierWidths, "fn": calculateUnits, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
 			{ "width": 95 * g_multiplierWidths, "fn": calculateUnits, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
 			{ "width": 85 * g_multiplierWidths, "fn": calculateUnits, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
 			{ "width": 85 * g_multiplierWidths, "fn": calculateUnits, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
 			{ "width": 85 * g_multiplierWidths, "fn": calculateUnits, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
-			{ "width": 85 * g_multiplierWidths, "fn": calculateUnitsWithCaptured, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
+			{ "width": 85 * g_multiplierWidths, "fn": calculateUnits, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
 			{ "width": 85 * g_multiplierWidths, "fn": calculateUnits, "verticalOffset": 3 + g_verticalOffsetAdjustCounters },
 			{ "width": 85 * g_multiplierWidths, "fn": calculateUnits, "verticalOffset": 3 + g_verticalOffsetAdjustCounters }
 		],
