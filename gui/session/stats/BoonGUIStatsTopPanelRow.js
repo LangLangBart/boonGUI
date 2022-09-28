@@ -95,7 +95,7 @@ class BoonGUIStatsTopPanelRow
 		this.player.caption = caption;
 		this.playerHighlight.tooltip = setStringTags(state.name, { "color": state.playerColor });
 		this.playerHighlight.tooltip += state.team != -1 ? setStringTags("\nTeam " + this.team.caption, { "color": state.teamColor }) : "";
-		caption = `${translateAISettings(g_InitAttributes.settings.PlayerData[state.index])}`;
+		caption = Engine.IsAtlasRunning() ? "" : `${translateAISettings(g_InitAttributes.settings.PlayerData[state.index])}`;
 		if (caption)
 		{
 			this.playerHighlight.tooltip += setStringTags(`\n${caption}`, { "color": "210 210 210", "font": "sans-stroke-14" });
