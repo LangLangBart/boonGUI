@@ -373,14 +373,16 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 						if (!queue.started || queue.paused) continue;
 						if (queue.entity)
 						{
-							const { count, progress, "unitTemplate": template } = cmpTrainer.GetBatch(queue.entity);
+							const { count, "progress": reverseProgress, "unitTemplate": template } = cmpTrainer.GetBatch(queue.entity);
+							const progress = 1 - reverseProgress;
 							const templateType = "unit";
 							cached.queue.add({ mode, templateType, entity, template, count, progress });
 						}
 
 						if (queue.technology)
 						{
-							const { progress, "templateName": template } = cmpResearcher.GetResearchingTechnology(queue.technology);
+							const { "progress": reverseProgress, "templateName": template } = cmpResearcher.GetResearchingTechnology(queue.technology);
+							const progress = 1 - reverseProgress;
 							const templateType = "technology";
 							const count = 1;
 							cached.queue.add({ mode, templateType, entity, template, count, progress });
