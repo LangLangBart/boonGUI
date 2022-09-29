@@ -6,7 +6,6 @@ ARTWORK & LICENSE
 
 	Files:
 		art/textures/ui/session/icons_forum_ranks
-		art/textures/ui/pregame/backgrounds
 	Name: Stefan R. F.
 	License: CC-BY-SA-3.0
 	URL: https://wildfiregames.com/forum/topic/45576-forum-changes/?tab=comments#comment-438350
