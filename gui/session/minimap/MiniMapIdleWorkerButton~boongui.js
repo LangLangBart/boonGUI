@@ -1,10 +1,4 @@
-// let beepIdleOn = (beepIdleOn === null) ? Engine.ConfigDB_GetValue("user", "boongui.showduration") == "true" : beepIdleOn ;
-//if(beepIdleOn === null){
 let beepIdleOn = Engine.ConfigDB_GetValue("user", "boongui.beepIdleDefault") == "true";
-	// Engine.ConfigDB_GetValue("user", "boongui.showduration") == "true"
-//}
-
-
 
 MiniMapIdleWorkerButton.prototype.rebuild = function()
 {
@@ -15,9 +9,9 @@ MiniMapIdleWorkerButton.prototype.rebuild = function()
 	}).length;
 	this.idleWorkerButton.enabled = totalNumberIdleWorkers > 0;
 
-	if(Engine.ConfigDB_GetValue("user", "boongui.showduration") == "true") {
+	if(Engine.ConfigDB_GetValue("user", "boongui.showduration") == "true") 
+	{
 		const waitedTime = Date.now() - this.lastBeepTime;
-		// this.idleWorkerButton.enabled &&
 		if ( beepIdleOn && waitedTime * Math.min(totalNumberIdleWorkers, 5) > 1000) {
 			Engine.PlayUISound("audio/interface/alarm/beep_idle_02.ogg", false);
 			this.lastBeepTime = Date.now();
