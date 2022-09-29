@@ -137,7 +137,8 @@ class BoonGUIStats
 		this.shortGameInfoLabel.hidden = !g_IsObserver && !this.playerViewControl.changePerspective;
 		const shortGameInfoLabelPAD = this.shortGameInfoLabel.hidden ? "" : this.shortGameInfoLabel.size.bottom;
 		let y = (26 * (length + 1) + shortGameInfoLabelPAD);
-		this.statsTopPanel.root.size = `0 ${shortGameInfoLabelPAD} 935 ${y}`;
+		const shortGameInfoLabel_width = Engine.GetGUIObjectByName("shortGameInfoLabel").size.right;
+		this.statsTopPanel.root.size = `0 ${shortGameInfoLabelPAD} ${shortGameInfoLabel_width} ${y}`;
 		y = this.statsTopPanel.root.size.bottom + PAD;
 
 		const panelEntityButtons = Engine.GetGUIObjectByName("panelEntityButtons");
@@ -185,7 +186,7 @@ class BoonGUIStats
 	getPlayersStates()
 	{
 		return Engine.GuiInterfaceCall("boongui_GetOverlay", {
-			g_IsObserver, g_ViewedPlayer, g_LastTickTime
+			g_IsObserver, g_ViewedPlayer, g_LastTickTime, g_boonGUI_WorkerTypes
 		}).players ?? [];
 	}
 

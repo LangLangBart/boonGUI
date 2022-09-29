@@ -127,7 +127,7 @@ let boongui_fullupdate_last = 0;
 /**
  * Opimitzed stats function for boonGUI stats overlay
  */
-GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_ViewedPlayer, g_LastTickTime }) {
+GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_ViewedPlayer, g_LastTickTime, g_boonGUI_WorkerTypes }) {
 	const ret = {
 		"players": []
 	};
@@ -183,6 +183,11 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 			"popCount": cmpPlayer.GetPopulationCount(),
 			"popLimit": cmpPlayer.GetPopulationLimit(),
 			"popMax": cmpPlayer.GetMaxPopulation(),
+			"idleUnits": this.FindIdleUnits(index, {
+				"viewedPlayer": g_ViewedPlayer,
+				"idleClasses": g_boonGUI_WorkerTypes,
+				"excludeUnits": []
+			}).length,
 			"resourceCounts": cmpPlayer.GetResourceCounts(),
 			"resourceGatherers": cmpPlayer.GetResourceGatherers(),
 

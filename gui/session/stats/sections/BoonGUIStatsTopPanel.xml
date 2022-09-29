@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <object name="StatsTopPanel" type="image" hidden="true" z="80">
-  <object type="image" size="236 0 314 100%" sprite="statTopPanelDivideLight" />
-  <object type="image" size="314 0 316 100%" sprite="statTopPanelDivide" />
-  <object type="image" size="395 0 397 100%" sprite="statTopPanelDivide" />
-  <object type="image" size="476 0 478 100%" sprite="statTopPanelDivide" />
-  <object type="image" size="557 0 559 100%" sprite="statTopPanelDivide" />
-  <object type="image" size="638 0 640 100%" sprite="statTopPanelDivide" />
-  <object type="image" size="751 0 753 100%" sprite="statTopPanelDivide" />
-  <object type="image" size="821 0 823 100%" sprite="statTopPanelDivide" />
+  <object type="image" size="236 0 342 100%" sprite="statTopPanelDivideLight" />
+  <object type="image" size="342 0 344 100%" sprite="statTopPanelDivide" />
+  <object type="image" size="423 0 425 100%" sprite="statTopPanelDivide" />
+  <object type="image" size="504 0 506 100%" sprite="statTopPanelDivide" />
+  <object type="image" size="585 0 587 100%" sprite="statTopPanelDivide" />
+  <object type="image" size="666 0 668 100%" sprite="statTopPanelDivide" />
+  <object type="image" size="781 0 783 100%" sprite="statTopPanelDivide" />
+  <object type="image" size="851 0 853 100%" sprite="statTopPanelDivide" />
 
   <object name="StatsTopPanelHeader">
     <object
@@ -30,8 +30,8 @@
     <object
       type="text"
       style="overlayHeader"
-      size="237 0 312 100%"
-      tooltip="Population Current/Limit">
+      size="237 0 340 100%"
+      tooltip="Population">
       <object
         size="50%-17 -4 50%+18 28"
         type="image"
@@ -43,7 +43,7 @@
     <object
       type="text"
       style="overlayHeader"
-      size="318 0 393 100%"
+      size="346 0 421 100%"
       tooltip="Food">
       <object
         size="27%+3 -4 77%+1 30"
@@ -55,7 +55,7 @@
     <object
       type="text"
       style="overlayHeader"
-      size="399 0 474 100%"
+      size="427 0 502 100%"
       tooltip="Wood">
       <object
         size="27%+3 -5 77%+2 30"
@@ -67,7 +67,7 @@
     <object
       type="text"
       style="overlayHeader"
-      size="480 0 555 100%"
+      size="508 0 583 100%"
       tooltip="Stone">
       <object
         size="27%+3 -2 77% 30"
@@ -79,7 +79,7 @@
     <object
       type="text"
       style="overlayHeader"
-      size="561 0 636 100%"
+      size="589 0 664 100%"
       tooltip="Metal">
       <object
         size="27%+3 -4 77%+1 30"
@@ -92,7 +92,7 @@
     <object
       type="text"
       style="overlayHeader"
-      size="642 0 679 100%"
+      size="670 0 707 100%"
       tooltip="Female Citizen">
       Fem
     </object>
@@ -100,7 +100,7 @@
     <object
       type="text"
       style="overlayHeader"
-      size="679 0 712 100%"
+      size="713 0 744 100%"
       tooltip="Infantry">
       Inf
     </object>
@@ -108,7 +108,7 @@
     <object
       type="text"
       style="overlayHeader"
-      size="716 0 749 100%"
+      size="748 0 781 100%"
       tooltip="Cavalry">
       Cav
     </object>
@@ -116,7 +116,7 @@
     <object
       type="text"
       style="overlayHeader"
-      size="755 0 819 100%"
+      size="787 0 851 100%"
       text_align="center"
       tooltip="Economy | Military Upgrades">
       <object
@@ -143,7 +143,7 @@
       type="text"
       style="overlayHeader"
       text_align="center"
-      size="825 0 915 100%"
+      size="857 0 947 100%"
       tooltip="Kill/Death Ratio">
       <object
         size="27%+4 -4 77%-3 29"
@@ -247,22 +247,39 @@
           <object
             name="StatsTopPanelRow[n]_popCount"
             type="text"
-            size="0 0 59% 100%"
+            size="0 0 61% 100%"
             text_align="right"
             style="overlayBoldBig"
           />
           <object
             name="StatsTopPanelRow[n]_popLimit"
             type="text"
-            size="59%-4 0 100% 85%"
+            size="61%-7 0 100% 85%"
             text_align="left"
             style="overlayBold"
           />
         </object>
+        <object
+          name="StatsTopPanelRow[n]_idleUnitsHighlight"
+          size="314 0 340 100%"
+          type="button"
+          style="statsHighlighter">
+          <object
+            name="StatsTopPanelRow[n]_idleRedIndicatorOverlay"
+            type="image"
+            ghost="true"
+            size="1 2 100%-1 100%-3">
+            <object
+              name="StatsTopPanelRow[n]_idleUnitsCount"
+              type="text"
+              style="overlayBoldMedium"
+            />
+          </object>
+        </object>
 
         <object
           name="StatsTopPanelRow[n]_foodHighlight"
-          size="318 0 393 100%"
+          size="346 0 421 100%"
           type="button"
           style="statsHighlighter">
           <object
@@ -286,7 +303,7 @@
         </object>
         <object
           name="StatsTopPanelRow[n]_woodHighlight"
-          size="399 0 474 100%"
+          size="427 0 502 100%"
           type="button"
           style="statsHighlighter">
           <object
@@ -310,7 +327,7 @@
         </object>
         <object
           name="StatsTopPanelRow[n]_stoneHighlight"
-          size="480 0 555 100%"
+          size="508 0 583 100%"
           type="button"
           style="statsHighlighter">
           <object
@@ -334,7 +351,7 @@
         </object>
         <object
           name="StatsTopPanelRow[n]_metalHighlight"
-          size="561 0 636 100%"
+          size="589 0 664 100%"
           type="button"
           style="statsHighlighter">
           <object
@@ -359,7 +376,7 @@
 
         <object
           name="StatsTopPanelRow[n]_femaleCitizenHighlight"
-          size="642 0 677 100%"
+          size="670 0 705 100%"
           type="button"
           style="statsHighlighter">
           <object
@@ -370,7 +387,7 @@
         </object>
         <object
           name="StatsTopPanelRow[n]_infantryHighlight"
-          size="679 0 712 100%"
+          size="709 0 742 100%"
           type="button"
           style="statsHighlighter">
           <object
@@ -381,7 +398,7 @@
         </object>
         <object
           name="StatsTopPanelRow[n]_cavalryHighlight"
-          size="716 0 749 100%"
+          size="746 0 779 100%"
           type="button"
           style="statsHighlighter">
           <object
@@ -393,7 +410,7 @@
 
         <object
           name="StatsTopPanelRow[n]_ecoTechHighlight"
-          size="755 0 785 100%"
+          size="785 0 815 100%"
           type="button"
           style="statsHighlighter">
           <object
@@ -404,7 +421,7 @@
         </object>
         <object
           name="StatsTopPanelRow[n]_milTechHighlight"
-          size="789 0 819 100%"
+          size="819 0 849 100%"
           type="button"
           style="statsHighlighter">
           <object
@@ -416,7 +433,7 @@
 
         <object
           name="StatsTopPanelRow[n]_killDeathRatioHighlight"
-          size="825 0 915 100%"
+          size="855 0 945 100%"
           type="button"
           style="statsHighlighter">
           <object
@@ -434,14 +451,14 @@
           />
           <object
             name="StatsTopPanelRow[n]_unitsLostTotal"
-            size="29%+1 10% 61% 100%"
+            size="29%+1 10% 60% 100%"
             type="text"
             style="overlaySmall"
             text_align="left"
           />
           <object
             name="StatsTopPanelRow[n]_killDeathRatio"
-            size="63% 0 98% 100%"
+            size="62% 0 98% 100%"
             type="text"
             style="overlayDefault"
           />
@@ -452,7 +469,7 @@
           text_align="center"
           font="sans-bold-20"
           type="text"
-          size="920 0 930 100%"
+          size="950 0 960 100%"
           tooltip_style="sessionToolTipCircle"
         />
       </object>

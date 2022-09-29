@@ -31,26 +31,6 @@
   </object>
   <!-- Hover panel below the minimap -->
   <object name="hoverPanel" type="image" sprite="minimapHoverPanel">
-    <!-- Idle Worker Button -->
-    <object
-      name="idleWorkerButton"
-      type="button"
-      size="84% 6% 98% 60%+1"
-      tooltip_style="sessionToolTipCircleBottom"
-      hotkey="selection.idleworker"
-      sprite="stretched:session/minimap-idle.png"
-      sprite_over="stretched:session/minimap-idle-highlight.png"
-      sprite_disabled="stretched:session/minimap-idle-disabled.png"
-      mouse_event_mask="texture:session/minimap-idle.png"
-      sound_pressed="audio/interface/ui/ui_button_click.ogg">
-      <!-- Total number of idle workers -->
-      <object
-        name="totalNumberIdleWorkers"
-        type="text"
-        style="resourceIdleWorker"
-        z="0"
-      />
-    </object>
     <!-- Flare Button -->
     <object
       name="flareButton"
