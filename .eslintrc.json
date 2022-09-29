@@ -102,6 +102,7 @@
 			"warn",
 			"always"
 		],
+		"space-infix-ops":1,
 		"no-class-assign": 1,
 		"no-const-assign": 1,
 		"no-dupe-class-members": 1,

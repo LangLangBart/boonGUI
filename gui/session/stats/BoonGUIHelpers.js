@@ -118,7 +118,7 @@ function limitPlayerName(name, limit1 = 1, limit2 = 2)
 {
 	const isUpperCase = (name.match(/[A-Z]/g) || []).length;
 	const limit = isUpperCase > 3 ? limit1 : limit2;
-	return 	name.length <= limit ? name : name.substr(0, limit-1) + "…";
+	return 	name.length <= limit ? name : name.substr(0, limit - 1) + "…";
 }
 
 function normalizeResourceCount(value)

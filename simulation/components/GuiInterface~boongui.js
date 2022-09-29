@@ -127,7 +127,7 @@ let boongui_fullupdate_last = 0;
 /**
  * Opimitzed stats function for boonGUI stats overlay
  */
-GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_ViewedPlayer, g_LastTickTime }) {
+GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_ViewedPlayer, g_LastTickTime, g_boonGUI_WorkerTypes }) {
 	const ret = {
 		"players": []
 	};
@@ -183,6 +183,11 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 			"popCount": cmpPlayer.GetPopulationCount(),
 			"popLimit": cmpPlayer.GetPopulationLimit(),
 			"popMax": cmpPlayer.GetMaxPopulation(),
+			"idleUnits": this.FindIdleUnits(index, {
+				"viewedPlayer": g_ViewedPlayer,
+				"idleClasses": g_boonGUI_WorkerTypes,
+				"excludeUnits": []
+			}).length,
 			"resourceCounts": cmpPlayer.GetResourceCounts(),
 			"resourceGatherers": cmpPlayer.GetResourceGatherers(),
 
@@ -374,11 +379,10 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 				{
 					for (const queue of cmpProductionQueue.queue)
 					{
-
+						if (!queue.started || queue.paused) continue;
 						const cmpTrainer = Engine.QueryInterface(queue.producer, IID_Trainer);
 						const cmpResearcher = Engine.QueryInterface(queue.producer, IID_Researcher);
 						const mode = "production";
-						if (!queue.started || queue.paused) continue;
 						if (queue.entity)
 						{
 							const { count, "progress": reverseProgress, "unitTemplate": template } = cmpTrainer.GetBatch(queue.entity);
@@ -426,8 +430,8 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 	if (cmpPlayers[g_ViewedPlayer])
 	{
 		const sortedViewedPlayerAtTop = function(a, b) {
-			if ((a.name === cmpPlayerViewed.cmpPlayer.name) != (b.name === cmpPlayerViewed.cmpPlayer.name))
-				return a.name === cmpPlayerViewed.cmpPlayer.name ? -1 : 1;
+			if ((a.name === cmpPlayerViewed.cmpIdentity.name) != (b.name === cmpPlayerViewed.cmpIdentity.name))
+				return a.name === cmpPlayerViewed.cmpIdentity.name ? -1 : 1;
 			return a.team - b.team;
 		};
 		ret.players.sort(sortedViewedPlayerAtTop);

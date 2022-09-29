@@ -596,5 +596,5 @@ function initTeamData()
 	// Erase teams data if teams are not displayed
 	if (!g_Teams)
 		for (let p = 0; p < g_PlayerCount; ++p)
-			g_GameData.sim.playerStates[p+1].team = -1;
+			g_GameData.sim.playerStates[p + 1].team = -1;
 }

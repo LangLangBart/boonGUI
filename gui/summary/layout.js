@@ -370,7 +370,7 @@ function updateGeneralPanelTeams()
 		if (i == -1)
 			continue;
 
-		const teamBox = Engine.GetGUIObjectByName("teamBoxt["+i+"]");
+		const teamBox = Engine.GetGUIObjectByName("teamBoxt[" + i + "]");
 		teamBox.hidden = false;
 		const teamBoxSize = teamBox.size;
 		teamBoxSize.top = yStart;

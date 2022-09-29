@@ -4,7 +4,7 @@
   <object
     name="shortGameInfoLabel"
     type="text"
-    size="0 -10 935 25"
+    size="0 -10 965 25"
     sprite="prettyBackgroundColor"
     style="infoGameLabels"
   />

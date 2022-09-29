@@ -65,13 +65,13 @@ class GameDetails
 			if (stanza.startTime)
 			{
 				this.gameStartArgs.time =
-				Math.round((Date.now() - stanza.startTime*1000)/(1000*60));
+				Math.round((Date.now() - stanza.startTime * 1000) / (1000 * 60));
 				txt += sprintf(this.GameStartFormat, this.gameStartArgs);
 			}
 
 			this.sgGame.caption = setStringTags(txt, this.isCompatible ? Game.prototype.IncompatibleTags : Game.prototype.StateTags[stanza.state]);
 
-			const textHeight = this.sgGame.getTextSize().height +12;
+			const textHeight = this.sgGame.getTextSize().height + 12;
 
 			const sgGameSize = this.sgGame.size;
 			sgGameSize.bottom = textHeight;

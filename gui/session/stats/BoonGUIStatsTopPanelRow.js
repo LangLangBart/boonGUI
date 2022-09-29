@@ -35,6 +35,11 @@ class BoonGUIStatsTopPanelRow
 		this.popHighlight = Engine.GetGUIObjectByName(`${PREFIX}_popHighlight`);
 		this.popCount = Engine.GetGUIObjectByName(`${PREFIX}_popCount`);
 		this.popLimit = Engine.GetGUIObjectByName(`${PREFIX}_popLimit`);
+		this.idleUnitsHighlight = Engine.GetGUIObjectByName(`${PREFIX}_idleUnitsHighlight`);
+		// TODO, in observer mode the idle button is disabled, it shouldn't be.
+		this.idleUnitsHighlight.onPress = () => findIdleUnit(g_boonGUI_WorkerTypes);
+		this.idleUnitsCount = Engine.GetGUIObjectByName(`${PREFIX}_idleUnitsCount`);
+		this.idleRedIndicatorOverlay = Engine.GetGUIObjectByName(`${PREFIX}_idleRedIndicatorOverlay`);
 
 		this.resource = {
 			"counts": {},
@@ -86,7 +91,7 @@ class BoonGUIStatsTopPanelRow
 		this.coloredTeamBackground.sprite = `backcolor: ${state.teamColor} 115`;
 		this.coloredPlayerInfoBackground.sprite = `backcolor: ${state.playerColor} 115`;
 		this.coloredTeamBackground.hidden = state.team == -1;
-		// why doesn't this.coloredPlayerInfoBackground.size.left work ?
+
 		this.coloredPlayerInfoBackground.size = state.team != -1 ? "18 0 235 100%" : "0 0 235 100%";
 		this.team.caption = state.team != -1 ? `${state.team + 1}` : "";
 
@@ -96,10 +101,9 @@ class BoonGUIStatsTopPanelRow
 		this.playerHighlight.tooltip = setStringTags(state.name, { "color": state.playerColor });
 		this.playerHighlight.tooltip += state.team != -1 ? setStringTags("\nTeam " + this.team.caption, { "color": state.teamColor }) : "";
 		caption = Engine.IsAtlasRunning() ? "" : `${translateAISettings(g_InitAttributes.settings.PlayerData[state.index])}`;
+		font = "sans-stroke-14";
 		if (caption)
-		{
-			this.playerHighlight.tooltip += setStringTags(`\n${caption}`, { "color": "210 210 210", "font": "sans-stroke-14" });
-		}
+			this.playerHighlight.tooltip += setStringTags(`\n${caption}`, { "color": "210 210 210", font });
 
 		this.team.tooltip = this.playerHighlight.tooltip;
 		this.rating.tooltip = this.playerHighlight.tooltip;
@@ -114,7 +118,6 @@ class BoonGUIStatsTopPanelRow
 		tooltip += playerNick + "\n\n";
 		tooltip += `[icon="${Emblem}" displace="12 0"] \n`;
 		tooltip += `${civ.Name.padEnd(8)}\n`;
-		font = "sans-stroke-14";
 		tooltip += setStringTags(this.civIconHotkeyTooltip, { font });
 		this.civHighlight.tooltip = tooltip;
 
@@ -195,20 +198,41 @@ class BoonGUIStatsTopPanelRow
 		{
 			value = state.popCount;
 			color = scales.getColor("popCount", state.popCount);
-			this.popCount.caption = setStringTags(value, { "color": color }) + "/";
+			this.popCount.caption = setStringTags(normalizeValue(value), { "color": color }) + "/";
 			value = state.popLimit;
-			color = scales.getColor("popLimit", state.popCount);
-			this.popLimit.caption = setStringTags(value, { "color": color });
+			color = scales.getColor("popLimit", state.popLimit);
+			this.popLimit.caption = setStringTags(normalizeValue(value), { "color": color });
 		}
-		tooltip += "Pop" + g_Indent + g_Indent + " " +`${this.popCount.caption} ${this.popLimit.caption}\n`;
-		tooltip += "Max" + g_Indent + g_Indent + state.popMax;
+		tooltip += "Pop" + g_Indent + g_Indent + " " + `${this.popCount.caption} ${this.popLimit.caption}\n`;
+		tooltip += "Max" + g_Indent + g_Indent + normalizeValue(state.popMax);
 
 		this.popHighlight.tooltip = tooltip;
+
+		tooltip = "";
+		tooltip += playerNick + "\n";
+		value = state.idleUnits;
+		this.idleUnitsHighlight.enabled = g_ViewedPlayer == state.index;
+
+		this.idleRedIndicatorOverlay.sprite = "color:255 0 0 " + (Math.min(value, 18) * 10);
+		color = value > 0 ? "255 100 100" : "dimmedWhite";
+		font = value > 0 ? value > 99 ? "sans-bold-stroke-14" : "sans-bold-stroke-16" : "sans-stroke-14";
+		this.idleUnitsCount.caption = setStringTags(normalizeValue(value), { color, font });
+
+		tooltip += "Idle Worker" + g_Indent + g_Indent + " " + setStringTags(value, { color }) + "\n\n";
+		tooltip += "Counting:\n";
+		font = "sans-stroke-14";
+		for (const i in g_boonGUI_WorkerTypes)
+		{
+			tooltip += setStringTags(`- ${g_boonGUI_WorkerTypes[i]}\n`, { font });
+		}
+
+		tooltip += "\n" + setStringTags(this.idleUnitsTooltip, { font });
+		this.idleUnitsHighlight.tooltip = tooltip;
+
 
 		for (const resType of g_BoonGUIResTypes)
 		{
 			tooltip = "";
-			tooltip += playerNick + "\n";
 			tooltip += resourceNameFirstWord(resType) + " " + resourceIcon(resType) + "\n";
 
 			if (state.resourcesTechs[resType].length > 0)
@@ -228,7 +252,7 @@ class BoonGUIStatsTopPanelRow
 			const configResourceGatherersRates = Engine.ConfigDB_GetValue("user", "boongui.toppanel.resourceGatherersRates");
 
 			value = state.resourceGatherers[resType];
-			color = scales.getColor(`${resType}Gatherers`, value, 180);
+			color = scales.getColor(`${resType}Gatherers`, value, false, 180);
 			caption = isNaN(value) || value <= 0 ? setStringTags("0", { "color": "dimmedWhite" }) : value;
 			// For single lines, the gathering rates are displayed in the player color.
 			colorSingleRow = setStringTags(caption, (g_stats.lastPlayerLength > 1) ? { color } : { "color": state.playerColor });
@@ -236,7 +260,7 @@ class BoonGUIStatsTopPanelRow
 			tooltip += setStringTags("Gatherers", { "color": value > 0 ? "white" : "dimmedWhite" }) + `${g_Indent}${g_Indent}${colorSingleRow}\n`;
 
 			value = state.resourceRates[resType];
-			color = scales.getColor(`${resType}Rates`, value, 180);
+			color = scales.getColor(`${resType}Rates`, value, false, 180);
 			caption = isNaN(value) || value <= 0 ? setStringTags("+0", { "color": "dimmedWhite" }) : `+${normalizeValue(value)}`;
 			colorSingleRow = setStringTags(caption, (g_stats.lastPlayerLength > 1) ? { color } : { "color": state.playerColor });
 			this.resource.rates[resType].caption = configResourceGatherersRates === "Rates" ? colorSingleRow : "";
@@ -247,7 +271,7 @@ class BoonGUIStatsTopPanelRow
 
 		value = state.classCounts.FemaleCitizen ?? 0;
 		color = scales.getColor("femaleCitizen", value);
-		this.femaleCitizen.caption = setStringTags(value, { color });
+		this.femaleCitizen.caption = setStringTags(normalizeValue(value), { color });
 		tooltip = "";
 		tooltip += playerNick + "\n";
 		tooltip += "Female Citizen" + g_Indent + this.femaleCitizen.caption;
@@ -255,7 +279,7 @@ class BoonGUIStatsTopPanelRow
 
 		value = state.classCounts.Infantry ?? 0;
 		color = scales.getColor("infantry", value);
-		this.infantry.caption = setStringTags(value, { color });
+		this.infantry.caption = setStringTags(normalizeValue(value), { color });
 		tooltip = "";
 		tooltip += playerNick + "\n";
 		tooltip += "Infantry" + g_Indent + this.infantry.caption;
@@ -263,7 +287,7 @@ class BoonGUIStatsTopPanelRow
 
 		value = state.classCounts.Cavalry ?? 0;
 		color = scales.getColor("cavalry", value);
-		this.cavalry.caption = setStringTags(value, { color });
+		this.cavalry.caption = setStringTags(normalizeValue(value), { color });
 		tooltip = "";
 		tooltip += playerNick + "\n";
 		tooltip += "Cavalry" + g_Indent + this.cavalry.caption;
@@ -323,13 +347,13 @@ class BoonGUIStatsTopPanelRow
 			color = scales.getColor("enemyUnitsKilledTotal", value);
 			this.enemyUnitsKilledTotal.caption = setStringTags(normalizeValue(value), { color });
 			value = state.unitsLostTotal;
-			color = scales.getColor("unitsLostTotal", value);
+			color = scales.getColor("unitsLostTotal", value, true);
 			this.unitsLostTotal.caption = setStringTags(normalizeValue(value), { color });
 			this.divideSign.caption = "|";
 
 			tooltip += "Kills " + g_Indent + g_Indent + g_Indent + `${this.enemyUnitsKilledTotal.caption}\n`;
 			tooltip += "Deaths " + g_Indent + g_Indent + `${this.unitsLostTotal.caption}\n`;
-			tooltip += "K/D Ratio" + g_Indent +`${this.killDeathRatio.caption}`;
+			tooltip += "K/D Ratio" + g_Indent + `${this.killDeathRatio.caption}`;
 		}
 		else
 			tooltip += "Cowards do not count in battle; they are there, but not in it. Euripides";
@@ -354,3 +378,6 @@ BoonGUIStatsTopPanelRow.prototype.civInfo = {
 	"civ": "",
 	"page": "page_structree.xml"
 };
+
+BoonGUIStatsTopPanelRow.prototype.idleUnitsTooltip = markForTranslation("Cycle through the idle workers of the player being viewed.\n" + colorizeHotkey("%(hotkey)s" + " ", "selection.idleworker"));
+

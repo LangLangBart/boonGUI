@@ -66,6 +66,10 @@
     <action on="KeyDown">findIdleUnit(g_MilitaryTypes);</action>
   </object>
 
+  <object hotkey="selection.idleworker">
+    <action on="KeyDown">findIdleUnit(g_boonGUI_WorkerTypes);</action>
+  </object>
+
   <object hotkey="selection.idleunit">
     <action on="KeyDown">findIdleUnit(["!Domestic"]);</action>
   </object>
