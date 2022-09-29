@@ -12,7 +12,7 @@ MiniMapIdleWorkerButton.prototype.rebuild = function()
 	if(Engine.ConfigDB_GetValue("user", "boongui.showduration") == "true") 
 	{
 		const waitedTime = Date.now() - this.lastBeepTime;
-		if ( beepIdleOn && waitedTime * Math.min(totalNumberIdleWorkers, 5) > 1000) {
+		if ( beepIdleOn && waitedTime * Math.min(totalNumberIdleWorkers, 5) > 1000){
 			Engine.PlayUISound("audio/interface/alarm/beep_idle_02.ogg", false);
 			this.lastBeepTime = Date.now();
 		}
@@ -27,13 +27,11 @@ if(Engine.ConfigDB_GetValue("user", "boongui.beepIdleDefault") == "true")
 		Engine.PlayUISound("audio/interface/alarm/beep_idle_01.ogg", false); // not really needet
 		beepIdleOn = !beepIdleOn;
 		if(beepIdleOn)
-			Engine.ConfigDB_GetValue("user", "boongui.beepIdle") == "true";
+			Engine.ConfigDB_GetValue("user", "boongui.beepIdle") = "true";
 		else
-			Engine.ConfigDB_GetValue("user", "boongui.beepIdle") == "false"
+			Engine.ConfigDB_GetValue("user", "boongui.beepIdle") = "false";
 	};
-};
-
-
+}
 
 MiniMapIdleWorkerButton.prototype.lastBeepTime = 0;
 if(beepIdleOn)
