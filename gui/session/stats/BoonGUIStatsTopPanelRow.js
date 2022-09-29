@@ -200,7 +200,7 @@ class BoonGUIStatsTopPanelRow
 			color = scales.getColor("popLimit", state.popCount);
 			this.popLimit.caption = setStringTags(value, { "color": color });
 		}
-		tooltip += "Pop" + g_Indent + g_Indent + " " +`${this.popCount.caption} ${this.popLimit.caption}\n`;
+		tooltip += "Pop" + g_Indent + g_Indent + " " + `${this.popCount.caption} ${this.popLimit.caption}\n`;
 		tooltip += "Max" + g_Indent + g_Indent + state.popMax;
 
 		this.popHighlight.tooltip = tooltip;
@@ -329,7 +329,7 @@ class BoonGUIStatsTopPanelRow
 
 			tooltip += "Kills " + g_Indent + g_Indent + g_Indent + `${this.enemyUnitsKilledTotal.caption}\n`;
 			tooltip += "Deaths " + g_Indent + g_Indent + `${this.unitsLostTotal.caption}\n`;
-			tooltip += "K/D Ratio" + g_Indent +`${this.killDeathRatio.caption}`;
+			tooltip += "K/D Ratio" + g_Indent + `${this.killDeathRatio.caption}`;
 		}
 		else
 			tooltip += "Cowards do not count in battle; they are there, but not in it. Euripides";

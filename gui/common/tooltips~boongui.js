@@ -110,7 +110,7 @@ function setupStatHUDAttackTooltip(template, projectiles)
 	}
 
 	return sprintf(translate("%(label)s %(details)s"), {
-		"label": headerFont(translate("Damage per Second\n"+ g_Indent)),
+		"label": headerFont(translate("Damage per Second\n" + g_Indent)),
 		"details": tooltips.join("\n" + g_Indent)
 	});
 }
