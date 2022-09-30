@@ -377,7 +377,9 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 						const mode = "production";
 						if (queue.entity)
 						{
-							const { count, "progress": reverseProgress, "unitTemplate": template } = cmpTrainer.GetBatch(queue.entity);
+							const { count, "progress": reverseProgress, "unitTemplate": template, neededSlots } = cmpTrainer.GetBatch(queue.entity);
+							//  Limit units to actual production and not list training of an unit that is blocked.
+							if (neededSlots > 0) continue;
 							const progress = 1 - reverseProgress;
 							const templateType = "unit";
 							cached.queue.add({ mode, templateType, entity, template, count, progress });
