@@ -5,5 +5,5 @@
   "description": "Enhance the observer's experience with an additional stats overlay.",
   "ignoreInCompatibilityChecks": true,
   "dependencies": ["0ad=0.0.26"],
-  "url": "https://wildfiregames.com/forum/topic/37147-boongui-mod-compatible-with-a25"
+  "url": "https://github.com/LangLangBart/boonGUI"
 }
