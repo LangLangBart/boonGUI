@@ -139,6 +139,19 @@
 				"config": "boongui.toppanel.coloredPlayerStatsBackground",
 				"min": 5,
 				"max": 50
+			},
+			{
+				"type": "dropdown",
+				"label": "[color=\"220 185 70\"]beep idle[/color] from the start time of a game.",
+				"tooltip": "if used, the idle button can NOT be used anymore to find people who are idling. \n\nThe Button then is for toggle the beep sound, throughout the total playing time.\n\n the hotkeys to find idles, of course, still working.",
+				"config": "boongui.beepIdlePopMax",
+				"list": [
+					{ "value": "0.0", "label": "no beep alerts for idles" },
+					{ "value": "50.0", "label": "< 50 alerts only until 50 population" },
+					{ "value": "100.0", "label": "< 100 alerts only until 100 population" },
+					{ "value": "200.0", "label": "< 200 alerts only until 300 population" },
+					{ "value": "300.0", "label": "< 300 alerts only until 300 population" }
+				]
 			}
 		]
 	}

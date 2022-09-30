@@ -37,9 +37,24 @@ class BoonGUIStatsTopPanelRow
 		this.popLimit = Engine.GetGUIObjectByName(`${PREFIX}_popLimit`);
 		this.idleUnitsHighlight = Engine.GetGUIObjectByName(`${PREFIX}_idleUnitsHighlight`);
 		// TODO, in observer mode the idle button is disabled, it shouldn't be.
-		this.idleUnitsHighlight.onPress = () => findIdleUnit(g_boonGUI_WorkerTypes);
+		this.beepIdlePopMax = parseInt(Engine.ConfigDB_GetValue("user", "boongui.beepIdlePopMax"));
+		if( this.beepIdlePopMax > 0)
+		{
+			this.idleUnitsHighlight.onPress = () => {
+				Engine.PlayUISound("audio/interface/alarm/beep_idle_01.ogg", false);
+				this.beepIdle = !this.beepIdle;
+			}
+		}
+		else
+		{
+			this.idleUnitsHighlight.onPress = () => findIdleUnit(g_boonGUI_WorkerTypes);
+		}
+
 		this.idleUnitsCount = Engine.GetGUIObjectByName(`${PREFIX}_idleUnitsCount`);
 		this.idleRedIndicatorOverlay = Engine.GetGUIObjectByName(`${PREFIX}_idleRedIndicatorOverlay`);
+		this.beepIdle = this.beepIdlePopMax > 0;
+		this.lastBeepTime = 0;
+		this.idleUnitsCountInteger = 0;
 
 		this.resource = {
 			"counts": {},
@@ -211,8 +226,8 @@ class BoonGUIStatsTopPanelRow
 		tooltip = "";
 		tooltip += playerNick + "\n";
 		value = state.idleUnits;
+		this.idleUnitsCountInteger = value;
 		this.idleUnitsHighlight.enabled = g_ViewedPlayer == state.index;
-
 		this.idleRedIndicatorOverlay.sprite = "color:255 0 0 " + (Math.min(value, 18) * 10);
 		color = value > 0 ? "255 100 100" : "dimmedWhite";
 		font = value > 0 ? value > 99 ? "sans-bold-stroke-14" : "sans-bold-stroke-16" : "sans-stroke-14";
@@ -228,7 +243,14 @@ class BoonGUIStatsTopPanelRow
 
 		tooltip += "\n" + setStringTags(this.idleUnitsTooltip, { font });
 		this.idleUnitsHighlight.tooltip = tooltip;
+		this.waitedTime = Date.now() - this.lastBeepTime;
 
+		let popCount = this.popCount.caption.match(/\d+/)[0];
+		if (this.beepIdle && popCount < this.beepIdlePopMax 
+			&& this.waitedTime * Math.min(this.idleUnitsCountInteger, 5) > 1000){
+			Engine.PlayUISound("audio/interface/alarm/beep_idle_02.ogg", false);
+			this.lastBeepTime = Date.now();
+		}
 
 		for (const resType of g_BoonGUIResTypes)
 		{
@@ -379,5 +401,12 @@ BoonGUIStatsTopPanelRow.prototype.civInfo = {
 	"page": "page_structree.xml"
 };
 
-BoonGUIStatsTopPanelRow.prototype.idleUnitsTooltip = markForTranslation("Cycle through the idle workers of the player being viewed.\n" + colorizeHotkey("%(hotkey)s" + " ", "selection.idleworker"));
+if( this.beepIdlePopMax  > 0)
+{
+	BoonGUIStatsTopPanelRow.prototype.idleUnitsTooltip = markForTranslation("beepIdle toggle \(On/Off)\n", "selection.idleworker");
+}
+else
+{
+	BoonGUIStatsTopPanelRow.prototype.idleUnitsTooltip = markForTranslation("Cycle through the idle workers of the player being viewed.\n" + colorizeHotkey("%(hotkey)s" + " ", "selection.idleworker"));
+}
 
