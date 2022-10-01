@@ -88,7 +88,7 @@ class CustomQueue extends Map {
 	static RegexHouse = /^(units\/.+)_house$/;
 	static RegexStructures = /^(structures\/)(.+\/)/;
 
-	add({ mode, templateType, entity, template, count, progress }) {
+	add({ mode, templateType, entity, template, count, progress, classesList }) {
 		template = boongui_template_keys[template] ?? template;
 		template = template
 			.replace(CustomQueue.RegexRank, "_b")
@@ -110,7 +110,8 @@ class CustomQueue extends Map {
 				template,
 				progress,
 				"entity": entity != null ? [entity] : [],
-				templateType
+				templateType,
+				classesList
 			});
 		}
 	}
@@ -121,13 +122,13 @@ class CustomQueue extends Map {
 }
 
 const boongui_players_weakmap = new WeakMap();
-const boongui_fullupdate_interval = 1000;
+const boongui_fullupdate_interval = 1200;
 let boongui_fullupdate_last = 0;
 
 /**
  * Opimitzed stats function for boonGUI stats overlay
  */
-GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_ViewedPlayer, g_LastTickTime, g_boonGUI_WorkerTypes }) {
+GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_ViewedPlayer, g_LastTickTime }) {
 	const ret = {
 		"players": []
 	};
@@ -183,11 +184,6 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 			"popCount": cmpPlayer.GetPopulationCount(),
 			"popLimit": cmpPlayer.GetPopulationLimit(),
 			"popMax": cmpPlayer.GetMaxPopulation(),
-			"idleUnits": this.FindIdleUnits(index, {
-				"viewedPlayer": g_ViewedPlayer,
-				"idleClasses": g_boonGUI_WorkerTypes,
-				"excludeUnits": []
-			}).length,
 			"resourceCounts": cmpPlayer.GetResourceCounts(),
 			"resourceGatherers": cmpPlayer.GetResourceGatherers(),
 
@@ -209,14 +205,14 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 		{
 			cached.civCentres = [];
 			cached.queue = new CustomQueue();
+			// cached.percentMapExplored = cmpPlayerStatisticsTracker?.GetPercentMapExplored() ?? 0;
+			// cached.totalEconomyScore = 0;
+			// cached.totalMilitaryScore = 0;
+			// cached.totalExplorationScore = 0;
+			// cached.totalScore = 0;
 			cached.resourcesGathered = cmpPlayerStatisticsTracker?.resourcesGathered || {};
-			cached.percentMapExplored = cmpPlayerStatisticsTracker?.GetPercentMapExplored() ?? 0;
 			cached.enemyUnitsKilledTotal = cmpPlayerStatisticsTracker?.enemyUnitsKilled.total ?? 0;
 			cached.unitsLostTotal = cmpPlayerStatisticsTracker?.unitsLost.total ?? 0;
-			cached.totalEconomyScore = 0;
-			cached.totalMilitaryScore = 0;
-			cached.totalExplorationScore = 0;
-			cached.totalScore = 0;
 		}
 
 		// (1) Get Nickname and Rating
@@ -240,35 +236,35 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 		player.phase = phase;
 
 		// (3) Get Statistics
-		if (updateCache)
-		{
-			if (cmpPlayerStatisticsTracker)
-			{
-				for (const resType of boongui_resources_types)
-				{
-					cached.totalEconomyScore += cached.resourcesGathered[resType];
-				}
-				cached.totalEconomyScore += cmpPlayerStatisticsTracker.tradeIncome;
-				cached.totalEconomyScore = Math.round(cached.totalEconomyScore / 10);
-				cached.totalMilitaryScore += cmpPlayerStatisticsTracker.enemyUnitsKilledValue;
-				cached.totalMilitaryScore += cmpPlayerStatisticsTracker.enemyBuildingsDestroyedValue;
-				cached.totalMilitaryScore += cmpPlayerStatisticsTracker.unitsCapturedValue;
-				cached.totalMilitaryScore += cmpPlayerStatisticsTracker.buildingsCapturedValue;
-				cached.totalMilitaryScore = Math.round(cached.totalMilitaryScore / 10);
-				cached.totalExplorationScore += cached.percentMapExplored;
-				cached.totalExplorationScore *= 10;
-				cached.totalScore = cached.totalEconomyScore + cached.totalMilitaryScore + cached.totalExplorationScore;
-			}
-		}
+		// if (updateCache)
+		// {
+		// 	if (cmpPlayerStatisticsTracker)
+		// 	{
+		// 		for (const resType of boongui_resources_types)
+		// 		{
+		// 			cached.totalEconomyScore += cached.resourcesGathered[resType];
+		// 		}
+		// 		cached.totalEconomyScore += cmpPlayerStatisticsTracker.tradeIncome;
+		// 		cached.totalEconomyScore = Math.round(cached.totalEconomyScore / 10);
+		// 		cached.totalMilitaryScore += cmpPlayerStatisticsTracker.enemyUnitsKilledValue;
+		// 		cached.totalMilitaryScore += cmpPlayerStatisticsTracker.enemyBuildingsDestroyedValue;
+		// 		cached.totalMilitaryScore += cmpPlayerStatisticsTracker.unitsCapturedValue;
+		// 		cached.totalMilitaryScore += cmpPlayerStatisticsTracker.buildingsCapturedValue;
+		// 		cached.totalMilitaryScore = Math.round(cached.totalMilitaryScore / 10);
+		// 		cached.totalExplorationScore += cached.percentMapExplored;
+		// 		cached.totalExplorationScore *= 10;
+		// 		cached.totalScore = cached.totalEconomyScore + cached.totalMilitaryScore + cached.totalExplorationScore;
+		// 	}
+		// }
 
+		// player.percentMapExplored = cached.percentMapExplored;
+		// player.totalEconomyScore = cached.totalEconomyScore;
+		// player.totalMilitaryScore = cached.totalMilitaryScore;
+		// player.totalExplorationScore = cached.totalExplorationScore;
+		// player.totalScore = cached.totalScore;
 		player.resourcesGathered = cached.resourcesGathered;
-		player.percentMapExplored = cached.percentMapExplored;
 		player.enemyUnitsKilledTotal = cached.enemyUnitsKilledTotal;
 		player.unitsLostTotal = cached.unitsLostTotal;
-		player.totalEconomyScore = cached.totalEconomyScore;
-		player.totalMilitaryScore = cached.totalMilitaryScore;
-		player.totalExplorationScore = cached.totalExplorationScore;
-		player.totalScore = cached.totalScore;
 		player.killDeathRatio = cached.enemyUnitsKilledTotal / cached.unitsLostTotal;
 
 		// (5) Get Number of allies
@@ -316,7 +312,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 
 			if (updateCache)
 			{
-				cached.queue.add({ mode, "count": 1, template, "progress": 1, "entity": null, "templateType": "technology" });
+				cached.queue.add({ mode, "count": 1, template, "progress": 1, "entity": null, "templateType": "technology", "classesList": null });
 			}
 		}
 
@@ -337,14 +333,6 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 					{
 						cached.civCentres.push(entity);
 					}
-					if (classesList.includes("Farmstead"))
-					{
-						cached.farmstead.push(entity);
-					}
-					if (classesList.includes("Barrack"))
-					{
-						cached.barrack.push(entity);
-					}
 
 					if (classesList.includes("Structure"))
 					{
@@ -360,7 +348,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 							}
 						}
 						const templateType = "unit";
-						cached.queue.add({ mode, templateType, entity, template, "count": 1, "progress": 0 });
+						cached.queue.add({ mode, templateType, entity, template, "count": 1, "progress": 0, "classesList": null });
 					}
 
 					if (classesList.includes("Unit") &&
@@ -371,10 +359,30 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 						const template = cmpTemplateManager.GetCurrentTemplateName(entity);
 						const mode = "units";
 						const templateType = "unit";
-						cached.queue.add({ mode, templateType, entity, template, "count": 1, "progress": 0 });
+						cached.queue.add({ mode, templateType, entity, template, "count": 1, "progress": 0, "classesList": null });
 					}
-
 				}
+
+				const cmpUnitAI = Engine.QueryInterface(entity, IID_UnitAI);
+				if (cmpUnitAI && cmpUnitAI.isIdle && !cmpUnitAI.isGarrisoned)
+				{
+					const cmpTurretable = Engine.QueryInterface(entity, IID_Turretable);
+					if (cmpTurretable && cmpTurretable.IsEjectable())
+						continue;
+					//  keep in sync with g_boonGUI_WorkerTypes
+					if ((classesList.includes("FemaleCitizen") ||
+						classesList.includes("Trader") ||
+						classesList.includes("FishingBoat") ||
+						classesList.includes("CitizenSoldier")) &&
+						!classesList.includes("Mercenary"))
+					{
+						const template = cmpTemplateManager.GetCurrentTemplateName(entity);
+						const mode = "idle";
+						const templateType = "unit";
+						cached.queue.add({ mode, templateType, entity, template, "count": 1, "progress": 0, classesList });
+					}
+				}
+
 				if (cmpProductionQueue)
 				{
 					for (const queue of cmpProductionQueue.queue)
@@ -385,10 +393,12 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 						const mode = "production";
 						if (queue.entity)
 						{
-							const { count, "progress": reverseProgress, "unitTemplate": template } = cmpTrainer.GetBatch(queue.entity);
+							const { count, "progress": reverseProgress, "unitTemplate": template, neededSlots } = cmpTrainer.GetBatch(queue.entity);
+							//  Limit units to actual production and not list training of an unit that is blocked.
+							if (neededSlots > 0) continue;
 							const progress = 1 - reverseProgress;
 							const templateType = "unit";
-							cached.queue.add({ mode, templateType, entity, template, count, progress });
+							cached.queue.add({ mode, templateType, entity, template, count, progress, "classesList": null });
 						}
 
 						if (queue.technology)
@@ -397,7 +407,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 							const progress = 1 - reverseProgress;
 							const templateType = "technology";
 							const count = 1;
-							cached.queue.add({ mode, templateType, entity, template, count, progress });
+							cached.queue.add({ mode, templateType, entity, template, count, progress, "classesList": null });
 						}
 					}
 				}
@@ -411,16 +421,12 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 					const count = 1;
 					const template = cmpFoundation.finalTemplateName;
 					const progress = 1 - (hitpoints / maxHitpoints);
-					cached.queue.add({ mode, templateType, entity, template, count, progress });
+					cached.queue.add({ mode, templateType, entity, template, count, progress, "classesList": null });
 				}
-
-				// const cmpUnitAI = Engine.QueryInterface(entity, IID_UnitAI);
 			}
 		}
 
 		player.civCentres = cached.civCentres;
-		player.farmstead = cached.farmstead;
-		player.barrack = cached.barrack;
 		player.queue = cached.queue.toArray();
 
 		return player;
@@ -553,5 +559,6 @@ autociv_patchApplyN(GuiInterface.prototype, "ScriptCall", function(target, that,
 
 	return target.apply(that, args);
 });
+
 
 Engine.ReRegisterComponentType(IID_GuiInterface, "GuiInterface", GuiInterface);

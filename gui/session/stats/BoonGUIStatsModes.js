@@ -4,6 +4,7 @@ class BoonGUIStatsModes
 	static Modes = [
 		{ "type": "production", "icon": "cpu", "title": "Production" },
 		{ "type": "units", "icon": "users-three", "title": "Units" },
+		{ "type": "idle", "icon": "bed", "title": "Idle Workers" },
 		{ "type": "civic_buildings", "icon": "house", "title": "Civic Buildings" },
 		{ "type": "military_buildings", "icon": "sword", "title": "Military Buildings" },
 		{ "type": "economic_buildings", "icon": "buildings", "title": "Economic Buildings" },

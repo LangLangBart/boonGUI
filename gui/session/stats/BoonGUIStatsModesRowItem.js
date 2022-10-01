@@ -77,7 +77,6 @@ class BoonGUIStatsModesRowItem {
 
 		this.progress.size = size;
 		this.progress.hidden = item.mode !== "production";
-
 		this.count.caption = item.count > 1 ? item.count : "";
 		this.icon.sprite = "stretched:session/portraits/" + template.icon;
 

@@ -186,7 +186,7 @@ class BoonGUIStats
 	getPlayersStates()
 	{
 		return Engine.GuiInterfaceCall("boongui_GetOverlay", {
-			g_IsObserver, g_ViewedPlayer, g_LastTickTime, g_boonGUI_WorkerTypes
+			g_IsObserver, g_ViewedPlayer, g_LastTickTime
 		}).players ?? [];
 	}
 
@@ -287,6 +287,7 @@ class BoonGUIStats
 		// some tiny adjustments that are so trivial, it would be wasteful to add the entire file
 		// top right corner for timer
 		Engine.GetGUIObjectByName("dataCounter").font = "sans-stroke-20";
+		Engine.GetGUIObjectByName("dataCounter").text_valign = "center";
 
 		// The history backlog of text in the chat panel
 		Engine.GetGUIObjectByName("chatHistoryText").font = "sans-stroke-16";

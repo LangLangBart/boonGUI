@@ -154,6 +154,7 @@ function setupStatHUDSpeedTooltip(template)
 
 	if (walk == 0 && run == 0)
 		return "";
+	const acceleration = template.speed.acceleration.toFixed(1);
 
 	return sprintf(translate("%(label)s %(speeds)s"), {
 		"label": headerFont(translate("Walk Speed\n" + g_Indent)),
@@ -166,6 +167,11 @@ function setupStatHUDSpeedTooltip(template)
 			sprintf(translate("%(speed)s %(movementType)s"), {
 				"speed": run,
 				"movementType": unitFont(translate("Run"))
+			}) +
+			commaFont(translate(", ")) +
+			sprintf(translate("%(speed)s %(movementType)s"), {
+				"speed": acceleration,
+				"movementType": unitFont(translate("Acceleration"))
 			})
 	});
 }

@@ -125,15 +125,6 @@
     tooltip_style="sessionToolTipCircle"
   />
   <style
-    name="overlayBoldMedium"
-    font="sans-bold-stroke-16"
-    ghost="true"
-    textcolor="250 250 250"
-    text_align="center"
-    text_valign="center"
-    tooltip_style="sessionToolTipCircle"
-  />
-  <style
     name="overlaySmall"
     font="sans-stroke-14"
     ghost="true"

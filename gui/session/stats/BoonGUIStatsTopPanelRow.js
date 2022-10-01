@@ -16,11 +16,6 @@ class BoonGUIStatsTopPanelRow
 		this.playerHighlight.onPress = () => focusCC(true, this.state);
 		this.team = Engine.GetGUIObjectByName(`${PREFIX}_team`);
 		this.player = Engine.GetGUIObjectByName(`${PREFIX}_player`);
-
-		this.itsMe;
-		this.playername_multiplayer = Engine.ConfigDB_GetValue("user", "playername.multiplayer");
-		this.playername_singleplayer = Engine.ConfigDB_GetValue("user", "playername.singleplayer");
-
 		this.rating = Engine.GetGUIObjectByName(`${PREFIX}_rating`);
 
 		this.civHighlight = Engine.GetGUIObjectByName(`${PREFIX}_civHighlight`);
@@ -40,27 +35,42 @@ class BoonGUIStatsTopPanelRow
 		this.popHighlight = Engine.GetGUIObjectByName(`${PREFIX}_popHighlight`);
 		this.popCount = Engine.GetGUIObjectByName(`${PREFIX}_popCount`);
 		this.popLimit = Engine.GetGUIObjectByName(`${PREFIX}_popLimit`);
-		this.idleUnitsHighlight = Engine.GetGUIObjectByName(`${PREFIX}_idleUnitsHighlight`);
+		this.idleWorkerHighlight = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerHighlight`);
 		// TODO, in observer mode the idle button is disabled, it shouldn't be.
 
-		this.beepIdlePopMax = parseInt(Engine.ConfigDB_GetValue("user", "boongui.beepIdlePopMax"));
+
+
 		if( this.beepIdlePopMax > 0)
 		{
-			this.idleUnitsHighlight.onPress = () => {
+			this.idleWorkerHighlight.onPress = () => {
 				Engine.PlayUISound("audio/interface/alarm/beep_idle_01.ogg", false);
 				this.beepIdle = !this.beepIdle;
 			}
 		}
 		else
 		{
-			this.idleUnitsHighlight.onPress = () => findIdleUnit(g_boonGUI_WorkerTypes);
+			this.idleWorkerHighlight.onPress = () => findIdleUnit(g_boonGUI_WorkerTypes);
 		}
 
-		this.idleUnitsCount = Engine.GetGUIObjectByName(`${PREFIX}_idleUnitsCount`);
-		this.idleRedIndicatorOverlay = Engine.GetGUIObjectByName(`${PREFIX}_idleRedIndicatorOverlay`);
-		this.beepIdle = this.beepIdlePopMax > 0;
+
+
+		this.idleWorkerCount = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerCount`);
+		this.idleWorkerAlphaMask = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerAlphaMask`);
+
+
+		// error('this.idleWorkerCount= ' + this.idleWorkerCount);
+
 		this.lastBeepTime = 0;
-		this.idleUnitsCountInteger = 0;
+
+		this.itsMe;
+		this.playername_multiplayer = Engine.ConfigDB_GetValue("user", "playername.multiplayer");
+		this.playername_singleplayer = Engine.ConfigDB_GetValue("user", "playername.singleplayer");
+		this.beepIdlePopMax = parseInt(Engine.ConfigDB_GetValue("user", "boongui.beepIdlePopMax"));
+		this.statPopCount = 0;
+
+
+
+
 
 		this.resource = {
 			"counts": {},
@@ -203,11 +213,17 @@ class BoonGUIStatsTopPanelRow
 
 		tooltip = "";
 		tooltip += playerNick + "\n";
-
 		tooltip += state.trainingBlocked ? coloredText("Training blocked\n", CounterPopulation.prototype.PopulationAlertColor) : "";
 		if (state.trainingBlocked && shouldBlink)
 		{
 			value = state.popCount;
+			this.statPopCount = value;
+
+
+			// this.statPopCount = state.popCount;
+
+
+
 			this.popCount.caption = setStringTags(value + "/", {
 				"color": CounterPopulation.prototype.PopulationAlertColor
 			});
@@ -219,6 +235,15 @@ class BoonGUIStatsTopPanelRow
 		else
 		{
 			value = state.popCount;
+
+
+			this.statPopCount = value;
+			// error(value);
+			// this.statPopCount = state.popCount;
+
+
+
+
 			color = scales.getColor("popCount", state.popCount);
 			this.popCount.caption = setStringTags(normalizeValue(value), { "color": color }) + "/";
 			value = state.popLimit;
@@ -232,42 +257,99 @@ class BoonGUIStatsTopPanelRow
 
 		tooltip = "";
 		tooltip += playerNick + "\n";
-		value = state.idleUnits;
-		this.idleUnitsCountInteger = value;
-		this.idleUnitsHighlight.enabled = g_ViewedPlayer == state.index;
-		this.idleRedIndicatorOverlay.sprite = "color:255 0 0 " + (Math.min(value, 18) * 10);
-		color = value > 0 ? "255 100 100" : "dimmedWhite";
-		font = value > 0 ? value > 99 ? "sans-bold-stroke-14" : "sans-bold-stroke-16" : "sans-stroke-14";
-		this.idleUnitsCount.caption = setStringTags(normalizeValue(value), { color, font });
+		value = 0;
+		for (let i = 0; i < state.queue.length; ++i)
+		{
+			if (state.queue[i].mode === "idle")
+				value += state.queue[i].count;
+		}
+		this.idleWorkerHighlight.enabled = g_ViewedPlayer == state.index;
 
-		tooltip += "Idle Worker" + g_Indent + g_Indent + " " + setStringTags(value, { color }) + "\n\n";
-		tooltip += "Counting:\n";
+
+		// Aim for dark red background and light red font color
+		this.idleWorkerAlphaMask.sprite = "color:200 0 0 " + (Math.min(value, 18) * 10);
+		color = value > 0 ? "lightRed" : "dimmedWhite";
+		font = value > 0 ? value > 99 ? "sans-bold-stroke-14" : "sans-bold-stroke-16" : "sans-stroke-16";
+		this.idleWorkerCount.caption = setStringTags(normalizeValue(value), { color, font });
+			
+		tooltip += "Idle Workers" + g_Indent + g_Indent + " " + setStringTags(value, { color }) + "\n";
 		font = "sans-stroke-14";
 		for (const i in g_boonGUI_WorkerTypes)
 		{
-			tooltip += setStringTags(`- ${g_boonGUI_WorkerTypes[i]}\n`, { font });
+			const className = g_boonGUI_WorkerTypes[i].match("^[A-Za-z]+")[0];
+			value = 0;
+			for (let j = 0; j < state.queue.length; ++j)
+			{
+				// Mercenaries are already filtered out
+				if (state.queue[j].mode === "idle" && state.queue[j].classesList.includes(className))
+					value += state.queue[j].count;
+			}
+			tooltip += setStringTags(`- ${className} ${value}\n`, { font, "color": value > 0 ? "lightRed" : "dimmedWhite" });
 		}
 
 		tooltip += "\n" + setStringTags(this.idleUnitsTooltip, { font });
-		this.idleUnitsHighlight.tooltip = tooltip;
-		this.waitedTime = Date.now() - this.lastBeepTime;
+		this.idleWorkerHighlight.tooltip = tooltip;
+
+
 
 		let playerNickShort = '';
 		if(playerNick)
 		try {
 			playerNickShort = playerNick.match(/.*\](\w+)\[/)[1];		
-		} catch (error) {
-			
-		}
+		} catch (error) { }
+	
+		
+
+		// error(playerNickShort);
+		// error(state.popCount);
+		// error(state.popCount);
+		// error(this.statPopCount);
+
+
+		this.beepIdle = this.beepIdlePopMax > 0;
+
 
 		this.itsMe = (playerNickShort == this.playername_multiplayer || playerNickShort == this.playername_singleplayer);
 
-		let popCount = this.popCount.caption.match(/\d+/)[0];
-		if (this.itsMe && this.beepIdle && popCount < this.beepIdlePopMax 
-			&& this.waitedTime * Math.min(this.idleUnitsCountInteger, 5) > 1000){
+		// let popCount = this.popCount.caption.match(/\d+/)[0];
+
+
+		// error(this.beepIdle);
+		// error(this.beepIdlePopMax);
+		// this.idleUnitsCountInteger = 9;
+		// error(this.idleUnitsCountInteger);
+		const waitedTime = Date.now() - this.lastBeepTime;
+		// error(waitedTime);
+		// error(this.idleWorkerCount);
+		
+
+		// error(this.idleWorkerCount.caption);
+		let idleCount = this.idleWorkerCount.caption.match(/.*\](\d+)\[/)[1];
+		// error(this.idleWorkerCount.caption);
+		// error('idleCount='+idleCount);
+
+		if (this.itsMe && this.beepIdle && this.statPopCount < this.beepIdlePopMax 
+			&& waitedTime * Math.min(idleCount, 5) > 1000){
 			Engine.PlayUISound("audio/interface/alarm/beep_idle_02.ogg", false);
 			this.lastBeepTime = Date.now();
 		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 		for (const resType of g_BoonGUIResTypes)
 		{
@@ -418,11 +500,5 @@ BoonGUIStatsTopPanelRow.prototype.civInfo = {
 	"page": "page_structree.xml"
 };
 
-if( this.beepIdlePopMax  > 0)
-{
-	BoonGUIStatsTopPanelRow.prototype.idleUnitsTooltip = markForTranslation("beepIdle toggle \(On/Off)\n", "selection.idleworker");
-}
-else
-{
-	BoonGUIStatsTopPanelRow.prototype.idleUnitsTooltip = markForTranslation("Cycle through the idle workers of the player being viewed.\n" + colorizeHotkey("%(hotkey)s" + " ", "selection.idleworker"));
-}
+BoonGUIStatsTopPanelRow.prototype.idleUnitsTooltip = markForTranslation("Cycle through idle workers of the viewed player.\n" + colorizeHotkey("%(hotkey)s" + " ", "selection.idleworker"));
+
