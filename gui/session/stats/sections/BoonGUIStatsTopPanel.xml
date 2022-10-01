@@ -15,9 +15,8 @@
       style="overlayHeader"
       text_align="left"
       size="0 0 20 100%"
-      tooltip="Team Number">
-      #
-    </object>
+      tooltip="Team Number"
+    />
     <object
       type="text"
       style="overlayHeader"

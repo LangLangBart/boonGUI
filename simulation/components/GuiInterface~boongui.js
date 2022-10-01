@@ -88,7 +88,7 @@ class CustomQueue extends Map {
 	static RegexHouse = /^(units\/.+)_house$/;
 	static RegexStructures = /^(structures\/)(.+\/)/;
 
-	add({ mode, templateType, entity, template, count, progress }) {
+	add({ mode, templateType, entity, template, count, progress, classesList }) {
 		template = boongui_template_keys[template] ?? template;
 		template = template
 			.replace(CustomQueue.RegexRank, "_b")
@@ -110,7 +110,8 @@ class CustomQueue extends Map {
 				template,
 				progress,
 				"entity": entity != null ? [entity] : [],
-				templateType
+				templateType,
+				classesList
 			});
 		}
 	}
@@ -311,7 +312,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 
 			if (updateCache)
 			{
-				cached.queue.add({ mode, "count": 1, template, "progress": 1, "entity": null, "templateType": "technology" });
+				cached.queue.add({ mode, "count": 1, template, "progress": 1, "entity": null, "templateType": "technology", "classesList": null });
 			}
 		}
 
@@ -347,7 +348,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 							}
 						}
 						const templateType = "unit";
-						cached.queue.add({ mode, templateType, entity, template, "count": 1, "progress": 0 });
+						cached.queue.add({ mode, templateType, entity, template, "count": 1, "progress": 0, "classesList": null });
 					}
 
 					if (classesList.includes("Unit") &&
@@ -358,7 +359,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 						const template = cmpTemplateManager.GetCurrentTemplateName(entity);
 						const mode = "units";
 						const templateType = "unit";
-						cached.queue.add({ mode, templateType, entity, template, "count": 1, "progress": 0 });
+						cached.queue.add({ mode, templateType, entity, template, "count": 1, "progress": 0, "classesList": null });
 					}
 				}
 
@@ -370,15 +371,15 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 						continue;
 					//  keep in sync with g_boonGUI_WorkerTypes
 					if ((classesList.includes("FemaleCitizen") ||
-					classesList.includes("Trader") ||
-					classesList.includes("FishingBoat") ||
-					classesList.includes("Citizen")) &&
-					!classesList.includes("Mercenary"))
+						classesList.includes("Trader") ||
+						classesList.includes("FishingBoat") ||
+						classesList.includes("CitizenSoldier")) &&
+						!classesList.includes("Mercenary"))
 					{
 						const template = cmpTemplateManager.GetCurrentTemplateName(entity);
 						const mode = "idle";
 						const templateType = "unit";
-						cached.queue.add({ mode, templateType, entity, template, "count": 1, "progress": 0 });
+						cached.queue.add({ mode, templateType, entity, template, "count": 1, "progress": 0, classesList });
 					}
 				}
 
@@ -397,7 +398,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 							if (neededSlots > 0) continue;
 							const progress = 1 - reverseProgress;
 							const templateType = "unit";
-							cached.queue.add({ mode, templateType, entity, template, count, progress });
+							cached.queue.add({ mode, templateType, entity, template, count, progress, "classesList": null });
 						}
 
 						if (queue.technology)
@@ -406,7 +407,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 							const progress = 1 - reverseProgress;
 							const templateType = "technology";
 							const count = 1;
-							cached.queue.add({ mode, templateType, entity, template, count, progress });
+							cached.queue.add({ mode, templateType, entity, template, count, progress, "classesList": null });
 						}
 					}
 				}
@@ -420,7 +421,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 					const count = 1;
 					const template = cmpFoundation.finalTemplateName;
 					const progress = 1 - (hitpoints / maxHitpoints);
-					cached.queue.add({ mode, templateType, entity, template, count, progress });
+					cached.queue.add({ mode, templateType, entity, template, count, progress, "classesList": null });
 				}
 			}
 		}

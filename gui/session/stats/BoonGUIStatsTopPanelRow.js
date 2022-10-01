@@ -225,12 +225,19 @@ class BoonGUIStatsTopPanelRow
 		font = value > 0 ? value > 99 ? "sans-bold-stroke-14" : "sans-bold-stroke-16" : "sans-stroke-16";
 		this.idleWorkerCount.caption = setStringTags(normalizeValue(value), { color, font });
 
-		tooltip += "Idle Workers" + g_Indent + g_Indent + " " + setStringTags(value, { color }) + "\n\n";
-		tooltip += "Counting:\n";
+		tooltip += "Idle Workers" + g_Indent + g_Indent + " " + setStringTags(value, { color }) + "\n";
 		font = "sans-stroke-14";
 		for (const i in g_boonGUI_WorkerTypes)
 		{
-			tooltip += setStringTags(`- ${g_boonGUI_WorkerTypes[i]}\n`, { font });
+			const className = g_boonGUI_WorkerTypes[i].match("^[A-Za-z]+")[0];
+			value = 0;
+			for (let j = 0; j < state.queue.length; ++j)
+			{
+				// Mercenaries are already filtered out
+				if (state.queue[j].mode === "idle" && state.queue[j].classesList.includes(className))
+					value += state.queue[j].count;
+			}
+			tooltip += setStringTags(`- ${className} ${value}\n`, { font, "color": value > 0 ? "lightRed" : "dimmedWhite" });
 		}
 
 		tooltip += "\n" + setStringTags(this.idleUnitsTooltip, { font });

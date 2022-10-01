@@ -78,16 +78,6 @@ class BoonGUIStatsModesRowItem {
 		this.progress.size = size;
 		this.progress.hidden = item.mode !== "production";
 		this.count.caption = item.count > 1 ? item.count : "";
-		if (item.mode === "idle")
-		{
-			this.count.caption = setStringTags(item.count, { "color": "lightRed" });
-			this.count.sprite = "color:200 0 0 50";
-		}
-		else
-		{
-			this.count.caption = item.count > 1 ? item.count : "";
-			this.count.sprite = "color:transparent";
-		}
 		this.icon.sprite = "stretched:session/portraits/" + template.icon;
 
 		this.root.tooltip = setStringTags(`${state.nick}\n`, { "color": state.playerColor, "font": "sans-stroke-18" });

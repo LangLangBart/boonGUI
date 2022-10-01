@@ -1,7 +1,8 @@
 let g_stats;
 
-// difference to 0AD's g_WorkerTypes is the exclusion of mercenaries
-var g_boonGUI_WorkerTypes = ["FemaleCitizen", "Trader", "FishingBoat", "Citizen+!Mercenary"];
+// keep in sync with GuiInterface~boongui.js
+// difference to 0AD's g_WorkerTypes is the exclusion of mercenaries and CitizenSoldier rather than Citizen
+var g_boonGUI_WorkerTypes = ["FemaleCitizen", "Trader", "FishingBoat", "CitizenSoldier+!Mercenary"];
 
 
 autociv_patchApplyN("init", function(target, that, args) {
