@@ -121,7 +121,7 @@ class CustomQueue extends Map {
 }
 
 const boongui_players_weakmap = new WeakMap();
-const boongui_fullupdate_interval = 1000;
+const boongui_fullupdate_interval = 1200;
 let boongui_fullupdate_last = 0;
 
 /**
@@ -183,11 +183,6 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 			"popCount": cmpPlayer.GetPopulationCount(),
 			"popLimit": cmpPlayer.GetPopulationLimit(),
 			"popMax": cmpPlayer.GetMaxPopulation(),
-			"idleUnits": this.FindIdleUnits(index, {
-				"viewedPlayer": g_ViewedPlayer,
-				"idleClasses": g_boonGUI_WorkerTypes,
-				"excludeUnits": []
-			}).length,
 			"resourceCounts": cmpPlayer.GetResourceCounts(),
 			"resourceGatherers": cmpPlayer.GetResourceGatherers(),
 
@@ -209,14 +204,14 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 		{
 			cached.civCentres = [];
 			cached.queue = new CustomQueue();
+			// cached.percentMapExplored = cmpPlayerStatisticsTracker?.GetPercentMapExplored() ?? 0;
+			// cached.totalEconomyScore = 0;
+			// cached.totalMilitaryScore = 0;
+			// cached.totalExplorationScore = 0;
+			// cached.totalScore = 0;
 			cached.resourcesGathered = cmpPlayerStatisticsTracker?.resourcesGathered || {};
-			cached.percentMapExplored = cmpPlayerStatisticsTracker?.GetPercentMapExplored() ?? 0;
 			cached.enemyUnitsKilledTotal = cmpPlayerStatisticsTracker?.enemyUnitsKilled.total ?? 0;
 			cached.unitsLostTotal = cmpPlayerStatisticsTracker?.unitsLost.total ?? 0;
-			cached.totalEconomyScore = 0;
-			cached.totalMilitaryScore = 0;
-			cached.totalExplorationScore = 0;
-			cached.totalScore = 0;
 		}
 
 		// (1) Get Nickname and Rating
@@ -240,35 +235,35 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 		player.phase = phase;
 
 		// (3) Get Statistics
-		if (updateCache)
-		{
-			if (cmpPlayerStatisticsTracker)
-			{
-				for (const resType of boongui_resources_types)
-				{
-					cached.totalEconomyScore += cached.resourcesGathered[resType];
-				}
-				cached.totalEconomyScore += cmpPlayerStatisticsTracker.tradeIncome;
-				cached.totalEconomyScore = Math.round(cached.totalEconomyScore / 10);
-				cached.totalMilitaryScore += cmpPlayerStatisticsTracker.enemyUnitsKilledValue;
-				cached.totalMilitaryScore += cmpPlayerStatisticsTracker.enemyBuildingsDestroyedValue;
-				cached.totalMilitaryScore += cmpPlayerStatisticsTracker.unitsCapturedValue;
-				cached.totalMilitaryScore += cmpPlayerStatisticsTracker.buildingsCapturedValue;
-				cached.totalMilitaryScore = Math.round(cached.totalMilitaryScore / 10);
-				cached.totalExplorationScore += cached.percentMapExplored;
-				cached.totalExplorationScore *= 10;
-				cached.totalScore = cached.totalEconomyScore + cached.totalMilitaryScore + cached.totalExplorationScore;
-			}
-		}
+		// if (updateCache)
+		// {
+		// 	if (cmpPlayerStatisticsTracker)
+		// 	{
+		// 		for (const resType of boongui_resources_types)
+		// 		{
+		// 			cached.totalEconomyScore += cached.resourcesGathered[resType];
+		// 		}
+		// 		cached.totalEconomyScore += cmpPlayerStatisticsTracker.tradeIncome;
+		// 		cached.totalEconomyScore = Math.round(cached.totalEconomyScore / 10);
+		// 		cached.totalMilitaryScore += cmpPlayerStatisticsTracker.enemyUnitsKilledValue;
+		// 		cached.totalMilitaryScore += cmpPlayerStatisticsTracker.enemyBuildingsDestroyedValue;
+		// 		cached.totalMilitaryScore += cmpPlayerStatisticsTracker.unitsCapturedValue;
+		// 		cached.totalMilitaryScore += cmpPlayerStatisticsTracker.buildingsCapturedValue;
+		// 		cached.totalMilitaryScore = Math.round(cached.totalMilitaryScore / 10);
+		// 		cached.totalExplorationScore += cached.percentMapExplored;
+		// 		cached.totalExplorationScore *= 10;
+		// 		cached.totalScore = cached.totalEconomyScore + cached.totalMilitaryScore + cached.totalExplorationScore;
+		// 	}
+		// }
 
+		// player.percentMapExplored = cached.percentMapExplored;
+		// player.totalEconomyScore = cached.totalEconomyScore;
+		// player.totalMilitaryScore = cached.totalMilitaryScore;
+		// player.totalExplorationScore = cached.totalExplorationScore;
+		// player.totalScore = cached.totalScore;
 		player.resourcesGathered = cached.resourcesGathered;
-		player.percentMapExplored = cached.percentMapExplored;
 		player.enemyUnitsKilledTotal = cached.enemyUnitsKilledTotal;
 		player.unitsLostTotal = cached.unitsLostTotal;
-		player.totalEconomyScore = cached.totalEconomyScore;
-		player.totalMilitaryScore = cached.totalMilitaryScore;
-		player.totalExplorationScore = cached.totalExplorationScore;
-		player.totalScore = cached.totalScore;
 		player.killDeathRatio = cached.enemyUnitsKilledTotal / cached.unitsLostTotal;
 
 		// (5) Get Number of allies
@@ -411,6 +406,16 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 				// const cmpUnitAI = Engine.QueryInterface(entity, IID_UnitAI);
 			}
 		}
+
+		// 11) Get idle units
+		if (updateCache)
+		{
+			cached.totalNumberIdleWorkers = this.FindIdleUnits(index, {
+				"idleClasses": g_boonGUI_WorkerTypes,
+				"excludeUnits": []
+			}).length;
+		}
+		player.totalNumberIdleWorkers = cached.totalNumberIdleWorkers;
 
 		player.civCentres = cached.civCentres;
 		player.queue = cached.queue.toArray();

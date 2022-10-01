@@ -210,7 +210,7 @@ class BoonGUIStatsTopPanelRow
 
 		tooltip = "";
 		tooltip += playerNick + "\n";
-		value = state.idleUnits;
+		value = state.totalNumberIdleWorkers;
 		this.idleUnitsHighlight.enabled = g_ViewedPlayer == state.index;
 
 		this.idleRedIndicatorOverlay.sprite = "color:255 0 0 " + (Math.min(value, 18) * 10);
