@@ -268,11 +268,13 @@
             name="StatsTopPanelRow[n]_idleWorkerAlphaMask"
             type="image"
             ghost="true"
-            size="1 2 100%-1 100%-3">
+            size="1 0 100%-1 100%-2">
             <object
               name="StatsTopPanelRow[n]_idleWorkerCount"
               type="text"
-              style="overlayBoldMedium"
+              text_align="center"
+              text_valign="center"
+              style="overlayMedium"
             />
           </object>
         </object>

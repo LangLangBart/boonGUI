@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <setup>
   <!--- SETUP - COLORS -->
+  <color name="lightRed">255 100 100</color>
   <color name="dimmedWhite">200 200 200</color>
 
   <!--- SETUP - TOOLTIPS -->

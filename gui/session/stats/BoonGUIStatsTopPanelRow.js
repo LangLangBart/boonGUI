@@ -221,11 +221,11 @@ class BoonGUIStatsTopPanelRow
 
 		// Aim for dark red background and light red font color
 		this.idleWorkerAlphaMask.sprite = "color:200 0 0 " + (Math.min(value, 18) * 10);
-		color = value > 0 ? "255 100 100" : "dimmedWhite";
-		font = value > 0 ? value > 99 ? "sans-bold-stroke-14" : "sans-bold-stroke-16" : "sans-stroke-14";
+		color = value > 0 ? "lightRed" : "dimmedWhite";
+		font = value > 0 ? value > 99 ? "sans-bold-stroke-14" : "sans-bold-stroke-16" : "sans-stroke-16";
 		this.idleWorkerCount.caption = setStringTags(normalizeValue(value), { color, font });
 
-		tooltip += "Idle Worker" + g_Indent + g_Indent + " " + setStringTags(value, { color }) + "\n\n";
+		tooltip += "Idle Workers" + g_Indent + g_Indent + " " + setStringTags(value, { color }) + "\n\n";
 		tooltip += "Counting:\n";
 		font = "sans-stroke-14";
 		for (const i in g_boonGUI_WorkerTypes)
@@ -386,5 +386,5 @@ BoonGUIStatsTopPanelRow.prototype.civInfo = {
 	"page": "page_structree.xml"
 };
 
-BoonGUIStatsTopPanelRow.prototype.idleUnitsTooltip = markForTranslation("Cycle through the idle workers of the player being viewed.\n" + colorizeHotkey("%(hotkey)s" + " ", "selection.idleworker"));
+BoonGUIStatsTopPanelRow.prototype.idleUnitsTooltip = markForTranslation("Cycle through idle workers of the viewed player.\n" + colorizeHotkey("%(hotkey)s" + " ", "selection.idleworker"));
 
