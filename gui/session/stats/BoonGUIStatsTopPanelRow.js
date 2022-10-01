@@ -16,6 +16,11 @@ class BoonGUIStatsTopPanelRow
 		this.playerHighlight.onPress = () => focusCC(true, this.state);
 		this.team = Engine.GetGUIObjectByName(`${PREFIX}_team`);
 		this.player = Engine.GetGUIObjectByName(`${PREFIX}_player`);
+
+		this.itsMe;
+		this.playername_multiplayer = Engine.ConfigDB_GetValue("user", "playername.multiplayer");
+		this.playername_singleplayer = Engine.ConfigDB_GetValue("user", "playername.singleplayer");
+
 		this.rating = Engine.GetGUIObjectByName(`${PREFIX}_rating`);
 
 		this.civHighlight = Engine.GetGUIObjectByName(`${PREFIX}_civHighlight`);
@@ -37,6 +42,7 @@ class BoonGUIStatsTopPanelRow
 		this.popLimit = Engine.GetGUIObjectByName(`${PREFIX}_popLimit`);
 		this.idleUnitsHighlight = Engine.GetGUIObjectByName(`${PREFIX}_idleUnitsHighlight`);
 		// TODO, in observer mode the idle button is disabled, it shouldn't be.
+
 		this.beepIdlePopMax = parseInt(Engine.ConfigDB_GetValue("user", "boongui.beepIdlePopMax"));
 		if( this.beepIdlePopMax > 0)
 		{
@@ -197,6 +203,7 @@ class BoonGUIStatsTopPanelRow
 
 		tooltip = "";
 		tooltip += playerNick + "\n";
+
 		tooltip += state.trainingBlocked ? coloredText("Training blocked\n", CounterPopulation.prototype.PopulationAlertColor) : "";
 		if (state.trainingBlocked && shouldBlink)
 		{
@@ -245,8 +252,18 @@ class BoonGUIStatsTopPanelRow
 		this.idleUnitsHighlight.tooltip = tooltip;
 		this.waitedTime = Date.now() - this.lastBeepTime;
 
+		let playerNickShort = '';
+		if(playerNick)
+		try {
+			playerNickShort = playerNick.match(/.*\](\w+)\[/)[1];		
+		} catch (error) {
+			
+		}
+
+		this.itsMe = (playerNickShort == this.playername_multiplayer || playerNickShort == this.playername_singleplayer);
+
 		let popCount = this.popCount.caption.match(/\d+/)[0];
-		if (this.beepIdle && popCount < this.beepIdlePopMax 
+		if (this.itsMe && this.beepIdle && popCount < this.beepIdlePopMax 
 			&& this.waitedTime * Math.min(this.idleUnitsCountInteger, 5) > 1000){
 			Engine.PlayUISound("audio/interface/alarm/beep_idle_02.ogg", false);
 			this.lastBeepTime = Date.now();
@@ -409,4 +426,3 @@ else
 {
 	BoonGUIStatsTopPanelRow.prototype.idleUnitsTooltip = markForTranslation("Cycle through the idle workers of the player being viewed.\n" + colorizeHotkey("%(hotkey)s" + " ", "selection.idleworker"));
 }
-
