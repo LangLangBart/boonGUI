@@ -35,11 +35,11 @@ class BoonGUIStatsTopPanelRow
 		this.popHighlight = Engine.GetGUIObjectByName(`${PREFIX}_popHighlight`);
 		this.popCount = Engine.GetGUIObjectByName(`${PREFIX}_popCount`);
 		this.popLimit = Engine.GetGUIObjectByName(`${PREFIX}_popLimit`);
-		this.idleUnitsHighlight = Engine.GetGUIObjectByName(`${PREFIX}_idleUnitsHighlight`);
+		this.idleWorkerHighlight = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerHighlight`);
 		// TODO, in observer mode the idle button is disabled, it shouldn't be.
-		this.idleUnitsHighlight.onPress = () => findIdleUnit(g_boonGUI_WorkerTypes);
-		this.idleUnitsCount = Engine.GetGUIObjectByName(`${PREFIX}_idleUnitsCount`);
-		this.idleRedIndicatorOverlay = Engine.GetGUIObjectByName(`${PREFIX}_idleRedIndicatorOverlay`);
+		this.idleWorkerHighlight.onPress = () => findIdleUnit(g_boonGUI_WorkerTypes);
+		this.idleWorkerCount = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerCount`);
+		this.idleWorkerAlphaMask = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerAlphaMask`);
 
 		this.resource = {
 			"counts": {},
@@ -210,13 +210,20 @@ class BoonGUIStatsTopPanelRow
 
 		tooltip = "";
 		tooltip += playerNick + "\n";
-		value = state.totalNumberIdleWorkers;
-		this.idleUnitsHighlight.enabled = g_ViewedPlayer == state.index;
+		value = 0;
+		for (let i = 0; i < state.queue.length; ++i)
+		{
+			if (state.queue[i].mode === "idle")
+				value += state.queue[i].count;
+		}
+		this.idleWorkerHighlight.enabled = g_ViewedPlayer == state.index;
 
-		this.idleRedIndicatorOverlay.sprite = "color:255 0 0 " + (Math.min(value, 18) * 10);
+
+		// Aim for dark red background and light red font color
+		this.idleWorkerAlphaMask.sprite = "color:200 0 0 " + (Math.min(value, 18) * 10);
 		color = value > 0 ? "255 100 100" : "dimmedWhite";
 		font = value > 0 ? value > 99 ? "sans-bold-stroke-14" : "sans-bold-stroke-16" : "sans-stroke-14";
-		this.idleUnitsCount.caption = setStringTags(normalizeValue(value), { color, font });
+		this.idleWorkerCount.caption = setStringTags(normalizeValue(value), { color, font });
 
 		tooltip += "Idle Worker" + g_Indent + g_Indent + " " + setStringTags(value, { color }) + "\n\n";
 		tooltip += "Counting:\n";
@@ -227,7 +234,7 @@ class BoonGUIStatsTopPanelRow
 		}
 
 		tooltip += "\n" + setStringTags(this.idleUnitsTooltip, { font });
-		this.idleUnitsHighlight.tooltip = tooltip;
+		this.idleWorkerHighlight.tooltip = tooltip;
 
 
 		for (const resType of g_BoonGUIResTypes)

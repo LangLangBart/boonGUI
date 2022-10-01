@@ -260,17 +260,17 @@
           />
         </object>
         <object
-          name="StatsTopPanelRow[n]_idleUnitsHighlight"
+          name="StatsTopPanelRow[n]_idleWorkerHighlight"
           size="314 0 340 100%"
           type="button"
           style="statsHighlighter">
           <object
-            name="StatsTopPanelRow[n]_idleRedIndicatorOverlay"
+            name="StatsTopPanelRow[n]_idleWorkerAlphaMask"
             type="image"
             ghost="true"
             size="1 2 100%-1 100%-3">
             <object
-              name="StatsTopPanelRow[n]_idleUnitsCount"
+              name="StatsTopPanelRow[n]_idleWorkerCount"
               type="text"
               style="overlayBoldMedium"
             />

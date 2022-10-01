@@ -186,7 +186,7 @@ class BoonGUIStats
 	getPlayersStates()
 	{
 		return Engine.GuiInterfaceCall("boongui_GetOverlay", {
-			g_IsObserver, g_ViewedPlayer, g_LastTickTime, g_boonGUI_WorkerTypes
+			g_IsObserver, g_ViewedPlayer, g_LastTickTime
 		}).players ?? [];
 	}
 

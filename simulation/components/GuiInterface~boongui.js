@@ -127,7 +127,7 @@ let boongui_fullupdate_last = 0;
 /**
  * Opimitzed stats function for boonGUI stats overlay
  */
-GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_ViewedPlayer, g_LastTickTime, g_boonGUI_WorkerTypes }) {
+GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_ViewedPlayer, g_LastTickTime }) {
 	const ret = {
 		"players": []
 	};
@@ -360,8 +360,24 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 						const templateType = "unit";
 						cached.queue.add({ mode, templateType, entity, template, "count": 1, "progress": 0 });
 					}
-
 				}
+				const cmpUnitAI = Engine.QueryInterface(entity, IID_UnitAI);
+				if (cmpUnitAI && cmpUnitAI.isIdle)
+				{
+					//  keep in sync with g_boonGUI_WorkerTypes
+					if ((classesList.includes("FemaleCitizen") ||
+					classesList.includes("Trader") ||
+					classesList.includes("FishingBoat") ||
+					classesList.includes("Citizen")) &&
+					!classesList.includes("Mercenary"))
+					{
+						const template = cmpTemplateManager.GetCurrentTemplateName(entity);
+						const mode = "idle";
+						const templateType = "unit";
+						cached.queue.add({ mode, templateType, entity, template, "count": 1, "progress": 0 });
+					}
+				}
+
 				if (cmpProductionQueue)
 				{
 					for (const queue of cmpProductionQueue.queue)
@@ -402,20 +418,8 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 					const progress = 1 - (hitpoints / maxHitpoints);
 					cached.queue.add({ mode, templateType, entity, template, count, progress });
 				}
-
-				// const cmpUnitAI = Engine.QueryInterface(entity, IID_UnitAI);
 			}
 		}
-
-		// 11) Get idle units
-		if (updateCache)
-		{
-			cached.totalNumberIdleWorkers = this.FindIdleUnits(index, {
-				"idleClasses": g_boonGUI_WorkerTypes,
-				"excludeUnits": []
-			}).length;
-		}
-		player.totalNumberIdleWorkers = cached.totalNumberIdleWorkers;
 
 		player.civCentres = cached.civCentres;
 		player.queue = cached.queue.toArray();
