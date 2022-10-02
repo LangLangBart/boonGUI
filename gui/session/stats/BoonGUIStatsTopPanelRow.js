@@ -38,8 +38,6 @@ class BoonGUIStatsTopPanelRow
 		this.idleWorkerHighlight = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerHighlight`);
 		// TODO, in observer mode the idle button is disabled, it shouldn't be.
 
-
-
 		if( this.beepIdlePopMax > 0)
 		{
 			this.idleWorkerHighlight.onPress = () => {
@@ -52,25 +50,14 @@ class BoonGUIStatsTopPanelRow
 			this.idleWorkerHighlight.onPress = () => findIdleUnit(g_boonGUI_WorkerTypes);
 		}
 
-
-
 		this.idleWorkerCount = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerCount`);
 		this.idleWorkerAlphaMask = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerAlphaMask`);
-
-
-		// error('this.idleWorkerCount= ' + this.idleWorkerCount);
-
 		this.lastBeepTime = 0;
-
 		this.itsMe;
 		this.playername_multiplayer = Engine.ConfigDB_GetValue("user", "playername.multiplayer");
 		this.playername_singleplayer = Engine.ConfigDB_GetValue("user", "playername.singleplayer");
 		this.beepIdlePopMax = parseInt(Engine.ConfigDB_GetValue("user", "boongui.beepIdlePopMax"));
 		this.statPopCount = 0;
-
-
-
-
 
 		this.resource = {
 			"counts": {},
@@ -218,12 +205,6 @@ class BoonGUIStatsTopPanelRow
 		{
 			value = state.popCount;
 			this.statPopCount = value;
-
-
-			// this.statPopCount = state.popCount;
-
-
-
 			this.popCount.caption = setStringTags(value + "/", {
 				"color": CounterPopulation.prototype.PopulationAlertColor
 			});
@@ -236,13 +217,7 @@ class BoonGUIStatsTopPanelRow
 		{
 			value = state.popCount;
 
-
 			this.statPopCount = value;
-			// error(value);
-			// this.statPopCount = state.popCount;
-
-
-
 
 			color = scales.getColor("popCount", state.popCount);
 			this.popCount.caption = setStringTags(normalizeValue(value), { "color": color }) + "/";
@@ -264,7 +239,6 @@ class BoonGUIStatsTopPanelRow
 				value += state.queue[i].count;
 		}
 		this.idleWorkerHighlight.enabled = g_ViewedPlayer == state.index;
-
 
 		// Aim for dark red background and light red font color
 		this.idleWorkerAlphaMask.sprite = "color:200 0 0 " + (Math.min(value, 18) * 10);
@@ -290,66 +264,21 @@ class BoonGUIStatsTopPanelRow
 		tooltip += "\n" + setStringTags(this.idleUnitsTooltip, { font });
 		this.idleWorkerHighlight.tooltip = tooltip;
 
-
-
 		let playerNickShort = '';
 		if(playerNick)
 		try {
 			playerNickShort = playerNick.match(/.*\](\w+)\[/)[1];		
 		} catch (error) { }
 	
-		
-
-		// error(playerNickShort);
-		// error(state.popCount);
-		// error(state.popCount);
-		// error(this.statPopCount);
-
-
 		this.beepIdle = this.beepIdlePopMax > 0;
-
-
 		this.itsMe = (playerNickShort == this.playername_multiplayer || playerNickShort == this.playername_singleplayer);
-
-		// let popCount = this.popCount.caption.match(/\d+/)[0];
-
-
-		// error(this.beepIdle);
-		// error(this.beepIdlePopMax);
-		// this.idleUnitsCountInteger = 9;
-		// error(this.idleUnitsCountInteger);
 		const waitedTime = Date.now() - this.lastBeepTime;
-		// error(waitedTime);
-		// error(this.idleWorkerCount);
-		
-
-		// error(this.idleWorkerCount.caption);
 		let idleCount = this.idleWorkerCount.caption.match(/.*\](\d+)\[/)[1];
-		// error(this.idleWorkerCount.caption);
-		// error('idleCount='+idleCount);
-
 		if (this.itsMe && this.beepIdle && this.statPopCount < this.beepIdlePopMax 
 			&& waitedTime * Math.min(idleCount, 5) > 1000){
 			Engine.PlayUISound("audio/interface/alarm/beep_idle_02.ogg", false);
 			this.lastBeepTime = Date.now();
 		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 		for (const resType of g_BoonGUIResTypes)
 		{
@@ -501,4 +430,3 @@ BoonGUIStatsTopPanelRow.prototype.civInfo = {
 };
 
 BoonGUIStatsTopPanelRow.prototype.idleUnitsTooltip = markForTranslation("Cycle through idle workers of the viewed player.\n" + colorizeHotkey("%(hotkey)s" + " ", "selection.idleworker"));
-
