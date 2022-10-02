@@ -1,34 +1,12 @@
-# dependabot.yml file with updates
-# You enable DependaBot version updates by checking a dependabot.yml configuration file in to your repository's .github directory.
-# https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-updates
-
-
-# IMPORTANT: I hate it when workflows fail, the open-pull-requests-limit is set to 1 and is checked weekly, not monthly. When multiple PRs are made by Dependabot at the same time, it gives an error saying: Pull request Protected branch rules not configured for this branch.
-# Maybe I just need to configure something in the settings, but after try to get it to work for hours I gave up.
-# This is just crappy software, in dependabot version 1 they had an automerge feature and removed it in version 2.
-# https://github.com/dependabot/dependabot-core/issues/1973#issuecomment-640918321
-
-# TODO: Drop dependabot for renovate (automerge feature)
-# https://docs.renovatebot.com/key-concepts/automerge/
 version: 2
 updates:
-  # Configuration for github-actions
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: 'weekly'
-    open-pull-requests-limit: 1
-    target-branch: "main"
-    labels:
-      - "dependencies"
-
-
-  # Configuration for npm
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: 'weekly'
-    open-pull-requests-limit: 1
-    target-branch: "main"
-    labels:
-      - "dependencies"
+      interval: "weekly"
+
+  - package-ecosystem: "github-actions"
+    # Look for a `Dockerfile` in the `root` directory
+    directory: "/"
+    schedule:
+      interval: "weekly"
