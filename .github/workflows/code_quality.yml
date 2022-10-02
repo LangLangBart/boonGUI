@@ -22,10 +22,6 @@ on:
 # Make sure you know all the permissions well, otherwise errors will keep popping up and bothering you.
 # https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.event_name == 'push' && github.head_ref || github.ref }}
-  cancel-in-progress: true
-
 jobs:
   run-linters:
     name: Code Quality
@@ -163,7 +159,7 @@ jobs:
     steps:
       - name: Dependabot metadata
         id: metadata
-        uses: dependabot/fetch-metadata@v1.3.3
+        uses: dependabot/fetch-metadata@v1.3.4
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
       - name: Auto-approve PR
