@@ -36,7 +36,7 @@ class BoonGUIStatsTopPanelRow
 		this.popCount = Engine.GetGUIObjectByName(`${PREFIX}_popCount`);
 		this.popLimit = Engine.GetGUIObjectByName(`${PREFIX}_popLimit`);
 		this.idleWorkerHighlight = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerHighlight`);
-		// TODO, in observer mode the idle button is disabled, it shouldn't be.
+		// TODO in observer mode the idle button is disabled, it shouldn't be.
 		this.idleWorkerHighlight.onPress = () => findIdleUnit(g_boonGUI_WorkerTypes);
 		this.idleWorkerCount = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerCount`);
 		this.idleWorkerAlphaMask = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerAlphaMask`);
@@ -227,6 +227,8 @@ class BoonGUIStatsTopPanelRow
 
 		tooltip += "Idle Workers" + g_Indent + g_Indent + " " + setStringTags(value, { color }) + "\n";
 		font = "sans-stroke-14";
+
+		// TODO: determine the values in 1x loop rather than 4x
 		for (const i in g_boonGUI_WorkerTypes)
 		{
 			const className = g_boonGUI_WorkerTypes[i].match("^[A-Za-z]+")[0];

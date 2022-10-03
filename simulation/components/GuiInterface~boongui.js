@@ -364,10 +364,10 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 				}
 
 				const cmpUnitAI = Engine.QueryInterface(entity, IID_UnitAI);
-				if (cmpUnitAI && cmpUnitAI.isIdle && !cmpUnitAI.isGarrisoned)
+				if (cmpUnitAI?.isIdle && !cmpUnitAI.isGarrisoned)
 				{
 					const cmpTurretable = Engine.QueryInterface(entity, IID_Turretable);
-					if (cmpTurretable && cmpTurretable.IsEjectable())
+					if (cmpTurretable?.IsEjectable())
 						continue;
 					//  keep in sync with g_boonGUI_WorkerTypes
 					if ((classesList.includes("FemaleCitizen") ||
@@ -413,7 +413,7 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 				}
 
 				const cmpFoundation = Engine.QueryInterface(entity, IID_Foundation);
-				if (cmpFoundation)
+				if (cmpFoundation?.committed)
 				{
 					const { hitpoints, maxHitpoints } = Engine.QueryInterface(entity, IID_Health);
 					const mode = "production";

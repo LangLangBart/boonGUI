@@ -285,11 +285,11 @@
           style="statsHighlighter">
           <object
             name="StatsTopPanelRow[n]_foodCounts"
-            size="0 0 58% 100%"
+            size="0 0 58%+3 100%"
             type="text"
             style="overlayDefault"
           />
-          <object type="text" size="58% 0 98% 95%" ghost="true">
+          <object type="text" size="58% 0 100%+2 95%" ghost="true">
             <object
               name="StatsTopPanelRow[n]_foodGatherers"
               type="text"
@@ -309,11 +309,11 @@
           style="statsHighlighter">
           <object
             name="StatsTopPanelRow[n]_woodCounts"
-            size="0 0 58% 100%"
+            size="0 0 58%+3 100%"
             type="text"
             style="overlayDefault"
           />
-          <object type="text" size="58% 0 98% 95%" ghost="true">
+          <object type="text" size="58% 0 100%+2 95%" ghost="true">
             <object
               name="StatsTopPanelRow[n]_woodGatherers"
               type="text"
@@ -333,11 +333,11 @@
           style="statsHighlighter">
           <object
             name="StatsTopPanelRow[n]_stoneCounts"
-            size="0 0 58% 100%"
+            size="0 0 58%+3 100%"
             type="text"
             style="overlayDefault"
           />
-          <object type="text" size="58% 0 98% 95%" ghost="true">
+          <object type="text" size="58% 0 100%+2 95%" ghost="true">
             <object
               name="StatsTopPanelRow[n]_stoneGatherers"
               type="text"
@@ -357,11 +357,11 @@
           style="statsHighlighter">
           <object
             name="StatsTopPanelRow[n]_metalCounts"
-            size="0 0 58% 100%"
+            size="0 0 58%+3 100%"
             type="text"
             style="overlayDefault"
           />
-          <object type="text" size="58% 0 98% 95%" ghost="true">
+          <object type="text" size="58% 0 100%+2 95%" ghost="true">
             <object
               name="StatsTopPanelRow[n]_metalGatherers"
               type="text"
@@ -452,7 +452,7 @@
           />
           <object
             name="StatsTopPanelRow[n]_unitsLostTotal"
-            size="29%+1 10% 60% 100%"
+            size="25% 10% 60% 100%"
             type="text"
             style="overlaySmall"
             text_align="left"
