@@ -210,14 +210,18 @@ class BoonGUIStatsTopPanelRow
 
 		tooltip = "";
 		tooltip += playerNick + "\n";
+
+		const filterIdleMode = [];
 		value = 0;
 		for (let i = 0; i < state.queue.length; ++i)
 		{
 			if (state.queue[i].mode === "idle")
+			{
+				filterIdleMode.push(state.queue[i]);
 				value += state.queue[i].count;
+			}
 		}
 		this.idleWorkerHighlight.enabled = g_ViewedPlayer == state.index;
-
 
 		// Aim for dark red background and light red font color
 		this.idleWorkerAlphaMask.sprite = "color:200 0 0 " + (Math.min(value, 18) * 10);
@@ -228,23 +232,21 @@ class BoonGUIStatsTopPanelRow
 		tooltip += "Idle Workers" + g_Indent + g_Indent + " " + setStringTags(value, { color }) + "\n";
 		font = "sans-stroke-14";
 
-		// TODO: determine the values in 1x loop rather than 4x
 		for (const i in g_boonGUI_WorkerTypes)
 		{
 			const className = g_boonGUI_WorkerTypes[i].match("^[A-Za-z]+")[0];
 			value = 0;
-			for (let j = 0; j < state.queue.length; ++j)
-			{
-				// Mercenaries are already filtered out
-				if (state.queue[j].mode === "idle" && state.queue[j].classesList.includes(className))
-					value += state.queue[j].count;
-			}
+			if (state.classCounts[className])
+				for (let j = 0; j < filterIdleMode.length; ++j)
+				{
+					if (filterIdleMode[j].classesList.includes(className))
+						value += filterIdleMode[j].count;
+				}
 			tooltip += setStringTags(`- ${className} ${value}\n`, { font, "color": value > 0 ? "lightRed" : "dimmedWhite" });
 		}
 
 		tooltip += "\n" + setStringTags(this.idleUnitsTooltip, { font });
 		this.idleWorkerHighlight.tooltip = tooltip;
-
 
 		for (const resType of g_BoonGUIResTypes)
 		{
