@@ -107,21 +107,38 @@ function storeCivInfoPage(data)
 		resumeGame();
 	}
 }
+
 /**
- *
- * @param {String} name Name of the player
- * @param {Number} limit1 shorter limit, uppercase letters need more space
- * @param {Number} limit2
- * @returns {String}
+ * @param {Object} objectPlayer
+ * @param {string} playerName
+ * @param {Object} objectRating
+ * @param {number} rating
+ * @param {number} smallSafteyMargin
+ * @returns abbreviated player name with an elipsses if too long
  */
-function limitPlayerName(name, limit1 = 1, limit2 = 2)
+function limitPlayerName(objectPlayer, playerName, objectRating, rating, smallSafteyMargin = 10)
 {
-	const isUpperCase = (name.match(/[A-Z]/g) || []).length;
-	const limit = isUpperCase > 3 ? limit1 : limit2;
-	return 	name.length <= limit ? name : name.substr(0, limit - 1) + "…";
+	const { "right": objectPlayertRight, "left": objectPlayertLeft } = objectPlayer.getComputedSize();
+	let widthBox = objectPlayertRight - objectPlayertLeft;
+	let playerNameLength = Engine.GetTextWidth(objectPlayer.font, playerName);
+	if(rating)
+	{
+		const { "right": objectRatingtRight, "left": objectRatingtLeft } = objectRating.getComputedSize();
+		widthBox -= (objectRatingtRight - objectRatingtLeft);
+		widthBox -= smallSafteyMargin;
+	}
+	let abbreviatedName = playerName;
+
+	for(let i = 1; playerNameLength > widthBox; i++)
+	{
+		abbreviatedName = playerName.slice(0, -i) + "…";
+		playerNameLength = Engine.GetTextWidth(objectPlayer.font, abbreviatedName);
+	}
+	return abbreviatedName;
 }
 
 function normalizeResourceCount(value)
+
 {
 	if (value >= 10000)
 	{

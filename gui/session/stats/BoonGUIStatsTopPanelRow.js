@@ -96,7 +96,7 @@ class BoonGUIStatsTopPanelRow
 		this.team.caption = state.team != -1 ? `${state.team + 1}` : "";
 
 		const playerNick = setStringTags(state.nick, { "color": state.playerColor });
-		caption = limitPlayerName(state.nick, 10, 13);
+		caption = limitPlayerName(this.player, state.nick, this.rating, state.rating);
 		this.player.caption = caption;
 		this.playerHighlight.tooltip = setStringTags(state.name, { "color": state.playerColor });
 		this.playerHighlight.tooltip += state.team != -1 ? setStringTags("\nTeam " + this.team.caption, { "color": state.teamColor }) : "";

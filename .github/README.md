@@ -93,7 +93,7 @@ User interface **mod** for the RTS game **0 A.D.**
 <br>
 
 ### 👁 Code structure
-The following `SVG` shows at a glance the structure of the entire code base (created with [RepoVisualize](https://github.com/githubocto/repo-visualizer). Click on it to interact.
+Created with [RepoVisualize](https://github.com/githubocto/repo-visualizer), click to interact.
 [![image](Images/boonGUI_visualization.svg)](https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=LangLangBart%2FboonGUI)
 
 ### 🔱 Git-Hook

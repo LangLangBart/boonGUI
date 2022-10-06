@@ -184,14 +184,14 @@
             name="StatsTopPanelRow[n]_player"
             type="text"
             style="overlayBold"
-            size="18 0% 162 100%"
+            size="18 0% 164 100%"
           />
           <object
             name="StatsTopPanelRow[n]_rating"
             type="text"
             text_align="center"
             style="overlayBold"
-            size="133 0% 164 100%"
+            size="130 0% 164 100%"
           />
         </object>
         <object
