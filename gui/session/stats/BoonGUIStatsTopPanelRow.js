@@ -38,6 +38,14 @@ class BoonGUIStatsTopPanelRow
 		this.idleWorkerHighlight = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerHighlight`);
 		// TODO, in observer mode the idle button is disabled, it shouldn't be.
 
+		this.idleWorkerCount = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerCount`);
+		this.idleWorkerAlphaMask = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerAlphaMask`);
+		this.lastBeepTime = 0;
+		this.itsMe;
+		this.playername_multiplayer = Engine.ConfigDB_GetValue("user", "playername.multiplayer");
+		this.playername_singleplayer = Engine.ConfigDB_GetValue("user", "playername.singleplayer");
+
+		this.beepIdlePopMax = parseInt(Engine.ConfigDB_GetValue("user", "boongui.beepIdlePopMax"));
 		if( this.beepIdlePopMax > 0)
 		{
 			this.idleWorkerHighlight.onPress = () => {
@@ -50,13 +58,9 @@ class BoonGUIStatsTopPanelRow
 			this.idleWorkerHighlight.onPress = () => findIdleUnit(g_boonGUI_WorkerTypes);
 		}
 
-		this.idleWorkerCount = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerCount`);
-		this.idleWorkerAlphaMask = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerAlphaMask`);
-		this.lastBeepTime = 0;
-		this.itsMe;
-		this.playername_multiplayer = Engine.ConfigDB_GetValue("user", "playername.multiplayer");
-		this.playername_singleplayer = Engine.ConfigDB_GetValue("user", "playername.singleplayer");
-		this.beepIdlePopMax = parseInt(Engine.ConfigDB_GetValue("user", "boongui.beepIdlePopMax"));
+
+
+
 		this.statPopCount = 0;
 
 		this.resource = {
@@ -270,7 +274,6 @@ class BoonGUIStatsTopPanelRow
 			playerNickShort = playerNick.match(/.*\](\w+)\[/)[1];		
 		} catch (error) { }
 	
-		this.beepIdle = this.beepIdlePopMax > 0;
 		this.itsMe = (playerNickShort == this.playername_multiplayer || playerNickShort == this.playername_singleplayer);
 		const waitedTime = Date.now() - this.lastBeepTime;
 		let idleCount = this.idleWorkerCount.caption.match(/.*\](\d+)\[/)[1];
