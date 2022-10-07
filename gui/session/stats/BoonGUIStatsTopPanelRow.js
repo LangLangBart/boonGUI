@@ -48,6 +48,7 @@ class BoonGUIStatsTopPanelRow
 		this.beepIdlePopMax = parseInt(Engine.ConfigDB_GetValue("user", "boongui.beepIdlePopMax"));
 		if( this.beepIdlePopMax > 0)
 		{
+			this.beepIdle = true;
 			this.idleWorkerHighlight.onPress = () => {
 				Engine.PlayUISound("audio/interface/alarm/beep_idle_01.ogg", false);
 				this.beepIdle = !this.beepIdle;
@@ -278,8 +279,8 @@ class BoonGUIStatsTopPanelRow
 		const waitedTime = Date.now() - this.lastBeepTime;
 		let idleCount = this.idleWorkerCount.caption.match(/.*\](\d+)\[/)[1];
 		if (this.itsMe && this.beepIdle && this.statPopCount < this.beepIdlePopMax 
-			&& waitedTime * Math.min(idleCount, 5) > 1000){
-			Engine.PlayUISound("audio/interface/alarm/beep_idle_02.ogg", false);
+			&& waitedTime * Math.min(idleCount, 5) > 8000){
+			Engine.PlayUISound("audio/interface/alarm/yawning-long.ogg", false);
 			this.lastBeepTime = Date.now();
 		}
 
