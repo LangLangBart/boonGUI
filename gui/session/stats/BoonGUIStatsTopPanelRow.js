@@ -40,27 +40,23 @@ class BoonGUIStatsTopPanelRow
 
 		this.idleWorkerCount = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerCount`);
 		this.idleWorkerAlphaMask = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerAlphaMask`);
-		this.lastBeepTime = 0;
+		this.lstYawningTime = 0;
 		this.itsMe;
 		this.playername_multiplayer = Engine.ConfigDB_GetValue("user", "playername.multiplayer");
 		this.playername_singleplayer = Engine.ConfigDB_GetValue("user", "playername.singleplayer");
 
-		this.beepIdlePopMax = parseInt(Engine.ConfigDB_GetValue("user", "boongui.beepIdlePopMax"));
-		if( this.beepIdlePopMax > 0)
+		if( parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningIdlePopMax")) > 0)
 		{
-			this.beepIdle = true;
+			this.yawningIdle = true;
 			this.idleWorkerHighlight.onPress = () => {
 				Engine.PlayUISound("audio/interface/alarm/beep_idle_01.ogg", false);
-				this.beepIdle = !this.beepIdle;
+				this.yawningIdle = !this.yawningIdle;
 			}
 		}
 		else
 		{
 			this.idleWorkerHighlight.onPress = () => findIdleUnit(g_boonGUI_WorkerTypes);
 		}
-
-
-
 
 		this.statPopCount = 0;
 
@@ -276,12 +272,13 @@ class BoonGUIStatsTopPanelRow
 		} catch (error) { }
 	
 		this.itsMe = (playerNickShort == this.playername_multiplayer || playerNickShort == this.playername_singleplayer);
-		const waitedTime = Date.now() - this.lastBeepTime;
+		const waitedTime = Date.now() - this.lstYawningTime;
 		let idleCount = this.idleWorkerCount.caption.match(/.*\](\d+)\[/)[1];
-		if (this.itsMe && this.beepIdle && this.statPopCount < this.beepIdlePopMax 
-			&& waitedTime * Math.min(idleCount, 5) > 8000){
-			Engine.PlayUISound("audio/interface/alarm/yawning-long.ogg", false);
-			this.lastBeepTime = Date.now();
+		if (this.itsMe && this.yawningIdle 
+			&& this.statPopCount < parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningIdlePopMax")) 
+			&& waitedTime * Math.min(idleCount, 5) > 1000 * parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningPauseMiliSeconds"))){
+			Engine.PlayUISound("audio/interface/alarm/" + Engine.ConfigDB_GetValue("user", "boongui.yawningAudioFile"), false);
+			this.lstYawningTime = Date.now();
 		}
 
 		for (const resType of g_BoonGUIResTypes)
@@ -433,4 +430,7 @@ BoonGUIStatsTopPanelRow.prototype.civInfo = {
 	"page": "page_structree.xml"
 };
 
-BoonGUIStatsTopPanelRow.prototype.idleUnitsTooltip = markForTranslation("Cycle through idle workers of the viewed player.\n" + colorizeHotkey("%(hotkey)s" + " ", "selection.idleworker"));
+if(parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningIdlePopMax")) > 0)
+	BoonGUIStatsTopPanelRow.prototype.idleUnitsTooltip = markForTranslation("switch on or of yawning sound. Use Hotkey to Cycle through idle workers of the viewed player.\n" + colorizeHotkey("%(hotkey)s" + " ", "selection.idleworker"));
+else
+	BoonGUIStatsTopPanelRow.prototype.idleUnitsTooltip = markForTranslation("Cycle through idle workers of the viewed player.\n" + colorizeHotkey("%(hotkey)s" + " ", "selection.idleworker"));
