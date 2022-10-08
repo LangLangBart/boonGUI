@@ -71,7 +71,8 @@ class ProfilePanel
 			this.roleText.caption = "Beep Boop";
 			return;
 		case "Stan`":
-			this.roleText.caption = "Project manager";
+		case "stanleysweet":
+			this.roleText.caption = "Project Manager";
 			return;
 		default:
 			this.roleText.caption = this.RoleNames[Engine.LobbyGetPlayerRole(playerName) || "participant"];

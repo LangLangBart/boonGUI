@@ -17,6 +17,12 @@ class PlayerList
 		this.nickList = [];
 		this.ratingList = [];
 
+		this.playersFilter = Engine.GetGUIObjectByName("playersFilter");
+		this.playersFilter.onPress = this.selectPlayer.bind(this);
+		this.playersFilter.onTab = this.autocomplete.bind(this);
+		this.playersFilter.placeholder_text = "";
+		this.playersFilter.tooltip = colorizeAutocompleteHotkey();
+
 		this.selectionChangeHandlers = new Set();
 		this.mouseLeftDoubleClickItemHandlers = new Set();
 
@@ -32,6 +38,20 @@ class PlayerList
 		this.registerMouseLeftDoubleClickItemHandler(buddyButton.onPress.bind(buddyButton));
 
 		this.rebuildPlayerList();
+	}
+
+	selectPlayer()
+	{
+		const index = this.playersBox.list.indexOf(this.playersFilter.caption);
+		if (index != -1)
+			this.playersBox.selected = index;
+	}
+
+	autocomplete()
+	{
+		autoCompleteText(
+			this.playersFilter,
+			Engine.GetPlayerList().map(player => player.name));
 	}
 
 	registerSelectionChangeHandler(handler)
@@ -99,7 +119,7 @@ class PlayerList
 
 	/**
 	 * Do a full update of the player listing, including ratings from cached C++ information.
-	 * Important: This should be done just once if
+	 * Important: This should only be performed once if
 	 * there have been multiple messages received changing this list.
 	 */
 	rebuildPlayerList()
@@ -120,6 +140,7 @@ class PlayerList
 
 		Engine.ProfileStart("prepareList");
 		const length = playerList.length;
+		this.playersFilter.placeholder_text = `Search for Player  (${length} online)`;
 		this.buddyStatusList.length = length;
 		this.playerList.length = length;
 		this.presenceList.length = length;

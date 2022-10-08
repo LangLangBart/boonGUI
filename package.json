@@ -17,6 +17,7 @@
   "scripts": {
     "testAssets": "pyrogenesis -mod=mod -mod=public -archivebuild=\"$PWD\" -archivebuild-output=/dev/null -archivebuild-compress",
     "postinstall": "vale sync",
+    "prettierXML": "./node_modules/.bin/prettier --write ./\\*\\*/\\*.xml",
     "xmlStyle": "find . -name '*.xml' -print0 | while IFS= read -r -d '' file; do xsltproc -o $file ./.github/build_scripts/*.xsl $file; done && ./node_modules/.bin/prettier --write ./\\*\\*/\\*.xml"
   },
   "simple-git-hooks": {
