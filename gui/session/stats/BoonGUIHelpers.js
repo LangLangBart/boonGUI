@@ -116,18 +116,18 @@ function storeCivInfoPage(data)
  * @param {number} smallSafteyMargin
  * @returns abbreviated player name with an elipsses if too long
  */
-function limitPlayerName(objectPlayer, playerName, objectRating, rating, smallSafteyMargin = 10)
+function limitPlayerName(objectPlayer, playerName, objectRating, rating, smallSafteyMargin = 8)
 {
 	const { "right": objectPlayertRight, "left": objectPlayertLeft } = objectPlayer.getComputedSize();
 	let widthBox = objectPlayertRight - objectPlayertLeft;
-	let playerNameLength = Engine.GetTextWidth(objectPlayer.font, playerName);
+	widthBox -= smallSafteyMargin;
 	if(rating)
 	{
 		const { "right": objectRatingtRight, "left": objectRatingtLeft } = objectRating.getComputedSize();
 		widthBox -= (objectRatingtRight - objectRatingtLeft);
-		widthBox -= smallSafteyMargin;
 	}
 	let abbreviatedName = playerName;
+	let playerNameLength = Engine.GetTextWidth(objectPlayer.font, abbreviatedName);
 
 	for(let i = 1; playerNameLength > widthBox; i++)
 	{

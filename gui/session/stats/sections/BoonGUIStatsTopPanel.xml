@@ -180,11 +180,12 @@
             style="overlayBold"
             size="0 0% 18 100%"
           />
+          <!-- type input, otherwise long names with a space inbetween, will be split on multiple lines -->
           <object
             name="StatsTopPanelRow[n]_player"
-            type="text"
-            style="overlayBold"
-            size="18 0% 164 100%"
+            type="input"
+            style="overlayBoldInputType"
+            size="18 2 164 100%"
           />
           <object
             name="StatsTopPanelRow[n]_rating"

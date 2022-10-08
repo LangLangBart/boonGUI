@@ -18,6 +18,8 @@
   <script directory="gui/session/top_panel/" />
   <script directory="gui/session/top_panel/IconButtons/" />
   <script directory="gui/session/trade/" />
+  <!-- Access to the alpha version string in observer mode -->
+  <script file="gui/pregame/ProjectInformation.js" />
 
   <object name="session">
     <action on="Tick">onTick();</action>

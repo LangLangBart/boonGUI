@@ -89,6 +89,15 @@
     tooltip_style="sessionToolTipCircleWide"
   />
   <style
+    name="overlayBoldInputType"
+    font="sans-bold-stroke-16"
+    ghost="true"
+    textcolor="230 230 230"
+    tooltip_style="sessionToolTipCircle"
+    readonly="true"
+    multiline="false"
+  />
+  <style
     name="overlayBold"
     font="sans-bold-stroke-16"
     ghost="true"
@@ -153,10 +162,10 @@
   <style
     name="infoGameLabels"
     textcolor="200 200 200"
-    font="sans-stroke-18"
-    ghost="true"
+    font="sans-stroke-16"
     text_align="center"
     text_valign="center"
+    tooltip_style="sessionToolTipCircleWide"
   />
 
   <!-- STATS MODE PANEL -->

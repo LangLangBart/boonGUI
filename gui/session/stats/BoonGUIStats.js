@@ -286,7 +286,7 @@ class BoonGUIStats
 
 		// some tiny adjustments that are so trivial, it would be wasteful to add the entire file
 		// top right corner for timer
-		Engine.GetGUIObjectByName("dataCounter").font = "sans-stroke-20";
+		Engine.GetGUIObjectByName("dataCounter").font = "sans-stroke-18";
 		Engine.GetGUIObjectByName("dataCounter").text_valign = "center";
 
 		// The history backlog of text in the chat panel
@@ -311,7 +311,7 @@ class BoonGUIStats
 		this.mapCache = new MapCache();
 		this.shortGameInfoLabel.caption = Engine.IsAtlasRunning() ? "" : sprintf("%(icon_alpha)s %(AlphaText)s  %(icon_map)s %(mapName)s%(mapSize)s%(biome)s  %(icon_pop)s %(pop)s%(duration)s%(rating)s", {
 			"icon_alpha": '[icon="icon_alpha" displace="1 5"]',
-			"AlphaText": "Alpha XXVI",
+			"AlphaText": g_ProjectInformation.productDescription.caption.match(/A[a-zA-Z ]+/),
 			"icon_map": '[icon="icon_map" displace="2 6"]',
 			"mapName": this.mapCache.translateMapName(this.mapCache.getTranslatableMapName(g_InitAttributes.mapType, g_InitAttributes.map)),
 			"mapSize": g_InitAttributes.mapType == "random" ? " - " + g_MapSizes.Name[g_MapSizes.Tiles.indexOf(g_InitAttributes.settings.Size)] : "",
@@ -321,6 +321,7 @@ class BoonGUIStats
 			"rating": g_InitAttributes.settings.RatingEnabled === true ? '  [icon="icon_rating" displace="-3 5"]' + coloredText("Rated", "red") : "",
 			"duration": Engine.ConfigDB_GetValue("user", "boongui.showduration") == "true" ? this.durationReplay() : ""
 		});
+		this.shortGameInfoLabel.tooltip = g_ProjectInformation.productDescription.caption;
 	}
 
 	durationReplay()

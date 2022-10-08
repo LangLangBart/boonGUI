@@ -234,7 +234,7 @@ class BoonGUIStatsTopPanelRow
 
 		for (const i in g_boonGUI_WorkerTypes)
 		{
-			const className = g_boonGUI_WorkerTypes[i].match("^[A-Za-z]+")[0];
+			const className = g_boonGUI_WorkerTypes[i].match(/^[A-Za-z]+/)?.pop();
 			value = 0;
 			if (state.classCounts[className])
 				for (let j = 0; j < filterIdleMode.length; ++j)
