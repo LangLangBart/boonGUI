@@ -308,27 +308,27 @@
   <icon
     name="icon_alpha"
     sprite="grayscale:stretched:session/icons/0ad_alpha_logo.png"
-    size="20 20"
+    size="18 18"
   />
   <icon
     name="icon_map"
     sprite="grayscale:stretched:session/icons/objectives.png"
-    size="20 22"
+    size="18 20"
   />
   <icon
     name="icon_pop"
     sprite="grayscale:stretched:session/icons/population_special_adjustment_build_label.png"
-    size="22 22"
+    size="18 18"
   />
   <icon
     name="icon_duration"
     sprite="grayscale:stretched:session/icons/icon_duration.png"
-    size="22 22"
+    size="18 18"
   />
   <icon
     name="icon_rating"
     sprite="stretched:session/icons/bell_level1.png"
-    size="22 22"
+    size="18 18"
   />
 
   <icon
