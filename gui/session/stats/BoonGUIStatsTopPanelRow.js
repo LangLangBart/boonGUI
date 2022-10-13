@@ -251,6 +251,7 @@ class BoonGUIStatsTopPanelRow
 		for (const resType of g_BoonGUIResTypes)
 		{
 			tooltip = "";
+			tooltip += playerNick + "\n";
 			tooltip += resourceNameFirstWord(resType) + " " + resourceIcon(resType) + "\n";
 
 			if (state.resourcesTechs[resType].length > 0)
