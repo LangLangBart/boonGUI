@@ -52,9 +52,16 @@ class ProfilePage
 
 	autocomplete()
 	{
-		autoCompleteText(
-			this.fetchInput,
-			Engine.GetPlayerList().map(player => player.name));
+		const listPlayerNames = Engine.GetPlayerList().map(player => escapeText(player.name));
+		// Remove duplicates with the board list. The board list has lower case names.
+		const listPlayerNamesLower = listPlayerNames.map(playerName => playerName.toLowerCase());
+		for (const entry of Engine.GetBoardList())
+		{
+			const escapedName = escapeText(entry.name);
+			if (!listPlayerNamesLower.includes(escapedName))
+				listPlayerNames.push(escapedName);
+		}
+		autoCompleteText(this.fetchInput, listPlayerNames);
 	}
 
 	onPressClose()
