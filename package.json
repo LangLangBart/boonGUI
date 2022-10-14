@@ -5,9 +5,9 @@
   "private": true,
   "devDependencies": {
     "@prettier/plugin-xml": "^2.2.0",
-    "@typescript-eslint/eslint-plugin": "^5.38.1",
-    "@typescript-eslint/parser": "^5.38.1",
-    "eslint": "^8.24.0",
+    "@typescript-eslint/eslint-plugin": "^5.40.0",
+    "@typescript-eslint/parser": "^5.40.0",
+    "eslint": "^8.25.0",
     "eslint-plugin-brace-rules": "^0.1.6",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
