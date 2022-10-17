@@ -353,7 +353,6 @@ GuiInterface.prototype.boongui_GetOverlay = function(_, { g_IsObserver, g_Viewed
 
 					if (classesList.includes("Unit") &&
                         !classesList.includes("Relic") &&
-                        !classesList.includes("Hero") &&
                         !classesList.includes("Domestic"))
 					{
 						const template = cmpTemplateManager.GetCurrentTemplateName(entity);
