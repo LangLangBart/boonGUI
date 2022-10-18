@@ -39,8 +39,13 @@ class BoonGUIStatsTopPanelRow
 		// TODO, in observer mode the idle button is disabled, it shouldn't be.
 
 		this.idleWorkerCount = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerCount`);
+		this.idleWorkerCount_prev = 0;
 		this.idleWorkerAlphaMask = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerAlphaMask`);
-		this.lstYawningTime = 0;
+		this.firstYawningTime = null;
+		this.lastYawningTime = 0;
+
+
+
 		this.itsMe;
 		this.playername_multiplayer = Engine.ConfigDB_GetValue("user", "playername.multiplayer");
 		this.playername_singleplayer = Engine.ConfigDB_GetValue("user", "playername.singleplayer");
@@ -272,13 +277,24 @@ class BoonGUIStatsTopPanelRow
 		} catch (error) { }
 	
 		this.itsMe = (playerNickShort == this.playername_multiplayer || playerNickShort == this.playername_singleplayer);
-		const waitedTime = Date.now() - this.lstYawningTime;
+		var t = new Date();
+		const waitedTime = t - this.lastYawningTime;
 		let idleCount = this.idleWorkerCount.caption.match(/.*\](\d+)\[/)[1];
-		if (this.itsMe && this.yawningIdle 
+		if (this.itsMe 
+			&& this.yawningIdle 
 			&& this.statPopCount < parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningIdlePopMax")) 
-			&& waitedTime * Math.min(idleCount, 5) > 1000 * parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningPauseMiliSeconds"))){
-			Engine.PlayUISound("audio/interface/alarm/" + Engine.ConfigDB_GetValue("user", "boongui.yawningAudioFile"), false);
-			this.lstYawningTime = Date.now();
+			&& waitedTime * Math.min(idleCount, 5) > 1000 * parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningPauseMiliSeconds")))
+			{
+
+			if( this.idleWorkerCount_prev != idleCount ){ 
+				this.firstYawningTime = t.setSeconds(t.getSeconds());
+				this.stopYawningTime = t.setSeconds(t.getSeconds() + 1);
+				this.idleWorkerCount_prev = idleCount;
+			}
+			if(t.setSeconds(t.getSeconds()) < this.stopYawningTime){
+				Engine.PlayUISound("audio/interface/alarm/" + Engine.ConfigDB_GetValue("user", "boongui.yawningAudioFile"), false);
+				this.lastYawningTime = Date.now();
+			}
 		}
 
 		for (const resType of g_BoonGUIResTypes)
