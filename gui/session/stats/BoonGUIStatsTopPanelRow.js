@@ -310,7 +310,11 @@ class BoonGUIStatsTopPanelRow
 			}
 
 			if(	t.setSeconds(t.getSeconds()) < this.stopYawningTime){
-				Engine.PlayUISound("audio/interface/alarm/" + Engine.ConfigDB_GetValue("user", "boongui.yawningAudioFile"), false);
+				let yawningAudioFile = Engine.ConfigDB_GetValue("user", "boongui.yawningAudioFile");
+				if(idleCount == 1 && yawningAudioFile == "we-are-ready-with-it.ogg") 
+					Engine.PlayUISound("audio/interface/alarm/i-ready-with-it.ogg");
+				else
+					Engine.PlayUISound("audio/interface/alarm/" + yawningAudioFile , false);
 				this.lastYawningTime = Date.now();
 			}else{
 				let yawningAginMuchLater = Engine.ConfigDB_GetValue("user", "boongui.yawningAginMuchLater");
