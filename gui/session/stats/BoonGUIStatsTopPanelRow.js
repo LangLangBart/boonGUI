@@ -277,7 +277,7 @@ class BoonGUIStatsTopPanelRow
 		} catch (error) { }
 	
 		this.itsMe = (playerNickShort == this.playername_multiplayer || playerNickShort == this.playername_singleplayer);
-		var t = new Date();
+		let t = new Date();
 		const waitedTime = t - this.lastYawningTime;
 		let idleCount = this.idleWorkerCount.caption.match(/.*\](\d+)\[/)[1];
 		if (this.itsMe 
@@ -285,13 +285,13 @@ class BoonGUIStatsTopPanelRow
 			&& this.statPopCount < parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningIdlePopMax")) 
 			&& waitedTime * Math.min(idleCount, 5) > 1000 * parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningPauseMiliSeconds")))
 			{
-
 			if( this.idleWorkerCount_prev != idleCount ){ 
+
 				this.firstYawningTime = t.setSeconds(t.getSeconds());
-				this.stopYawningTime = t.setSeconds(t.getSeconds() + 1);
+				this.stopYawningTime = t.setSeconds(t.getSeconds() + parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningDuration")) );
 				this.idleWorkerCount_prev = idleCount;
 			}
-			if(t.setSeconds(t.getSeconds()) < this.stopYawningTime){
+			if(	t.setSeconds(t.getSeconds()) < this.stopYawningTime){
 				Engine.PlayUISound("audio/interface/alarm/" + Engine.ConfigDB_GetValue("user", "boongui.yawningAudioFile"), false);
 				this.lastYawningTime = Date.now();
 			}
