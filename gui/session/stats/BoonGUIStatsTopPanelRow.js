@@ -285,15 +285,24 @@ class BoonGUIStatsTopPanelRow
 			&& this.statPopCount < parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningIdlePopMax")) 
 			&& waitedTime * Math.min(idleCount, 5) > 1000 * parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningPauseMiliSeconds")))
 			{
+
+
+
 			if( this.idleWorkerCount_prev != idleCount ){ 
 
 				this.firstYawningTime = t.setSeconds(t.getSeconds());
 				this.stopYawningTime = t.setSeconds(t.getSeconds() + parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningDuration")) );
 				this.idleWorkerCount_prev = idleCount;
 			}
+
 			if(	t.setSeconds(t.getSeconds()) < this.stopYawningTime){
 				Engine.PlayUISound("audio/interface/alarm/" + Engine.ConfigDB_GetValue("user", "boongui.yawningAudioFile"), false);
 				this.lastYawningTime = Date.now();
+			}else{
+				let yawningAginMuchLater = Engine.ConfigDB_GetValue("user", "boongui.yawningAginMuchLater");
+				if( t.setSeconds(t.getSeconds() + yawningAginMuchLater) < this.stopYawningTime){
+					this.idleWorkerCount_prev = idleCount;
+				}
 			}
 		}
 

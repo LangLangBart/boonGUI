@@ -159,11 +159,34 @@
 				"tooltip": "pause in seconds beetween in seconds",
 				"config": "boongui.yawningPauseMiliSeconds",
 				"list": [
-					{ "value": "1", "label": "about every 1 seconds" },
+					{ "value": "1", "label": "[color=\"220 185 70\"]about every 1 seconds - Default[/color]" },
 					{ "value": "2", "label": "about every 2 seconds" },
 					{ "value": "4", "label": "about every 4 seconds" },
 					{ "value": "6", "label": "about every 6 seconds" },
-					{ "value": "8", "label": "[color=\"220 185 70\"]about every 8 seconds - Default[/color]" }
+					{ "value": "8", "label": "about every 8 seconds" }
+				]
+			},
+			{
+				"type": "dropdown",
+				"label": "[color=\"220 185 70\"]yawning idle[/color] duration.",
+				"tooltip": "how long your idle shoud yawning",
+				"config": "boongui.yawningDuration",
+				"list": [
+					{ "value": "1", "label": "1 seconds[/color]" },
+					{ "value": "2", "label": "[color=\"220 185 70\"]2 seconds - Default[/color]" },
+					{ "value": "4", "label": "4 seconds" },
+					{ "value": "888888", "label": "always" }
+				]
+			},
+			{
+				"type": "dropdown",
+				"label": "[color=\"220 185 70\"]EXPERIMENTAL: yawning idle rememer again[/color] rememer you much later again.",
+				"tooltip": "if your idle stay very long, you have maybe forgot them, they could star yawning again",
+				"config": "boongui.yawningAginMuchLater",
+				"list": [
+					{ "value": "3", "label": "[color=\"220 185 70\"]in 3 seconds - Default[/color]" },
+					{ "value": "4", "label": "in 4 seconds" },
+					{ "value": "888888", "label": "newer" }
 				]
 			},
 			{
@@ -175,6 +198,7 @@
 					{ "value": "yawning-long.ogg", "label": "[color=\"220 185 70\"]yawning-long - Default[/color]" },
 					{ "value": "yawning.ogg", "label": "yawning" },
 					{ "value": "beep_idle_02.ogg", "label": "beep_idle_02" },
+					{ "value": "we-are-ready-with-it.ogg", "label": "we-are-ready-with-it" },
 					{ "value": "stretches-and-yawns2.ogg", "label": "stretches-and-yawns2" },
 					{ "value": "stretches-and-yawns.ogg", "label": "stretches-and-yawns2" }
 				]
