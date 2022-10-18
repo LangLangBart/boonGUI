@@ -38,6 +38,9 @@ class BoonGUIStatsTopPanelRow
 		this.idleWorkerHighlight = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerHighlight`);
 		// TODO, in observer mode the idle button is disabled, it shouldn't be.
 
+		this.gameStartTime = new Date();
+
+
 		this.idleWorkerCount = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerCount`);
 		this.idleWorkerCount_prev = 0;
 		this.idleWorkerAlphaMask = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerAlphaMask`);
@@ -282,6 +285,7 @@ class BoonGUIStatsTopPanelRow
 		let idleCount = this.idleWorkerCount.caption.match(/.*\](\d+)\[/)[1];
 		if (this.itsMe 
 			&& this.yawningIdle 
+			&& this.gameStartTime < t.setSeconds(t.getSeconds() - 5)
 			&& this.statPopCount < parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningIdlePopMax")) 
 			&& waitedTime * Math.min(idleCount, 5) > 1000 * parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningPauseMiliSeconds")))
 			{
@@ -293,6 +297,16 @@ class BoonGUIStatsTopPanelRow
 				this.firstYawningTime = t.setSeconds(t.getSeconds());
 				this.stopYawningTime = t.setSeconds(t.getSeconds() + parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningDuration")) );
 				this.idleWorkerCount_prev = idleCount;
+
+				// error(this.gameStartArgs.time);
+				// error(stanza.startTime);
+
+				// this.gameStartArgs.time =
+				// Math.round((Date.now() - stanza.startTime * 1000) / (1000 * 60));
+				// txt += sprintf(this.GameStartFormat, this.gameStartArgs);
+
+
+
 			}
 
 			if(	t.setSeconds(t.getSeconds()) < this.stopYawningTime){
