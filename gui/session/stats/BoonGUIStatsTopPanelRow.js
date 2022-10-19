@@ -283,6 +283,7 @@ class BoonGUIStatsTopPanelRow
 		let t = new Date();
 		const waitedTime = t - this.lastYawningTime;
 		let idleCount = this.idleWorkerCount.caption.match(/.*\](\d+)\[/)[1];
+		if(idleCount == 0)this.idleWorkerCount_prev = 0;
 		if (this.itsMe 
 			&& this.yawningIdle 
 			&& this.gameStartTime < t.setSeconds(t.getSeconds() - 5)
@@ -309,20 +310,27 @@ class BoonGUIStatsTopPanelRow
 
 			}
 
-			if(	t.setSeconds(t.getSeconds()) < this.stopYawningTime){
+			if(	t < this.stopYawningTime){
 				let yawningAudioFile = Engine.ConfigDB_GetValue("user", "boongui.yawningAudioFile");
-				if(idleCount == 1 && yawningAudioFile == "we-are-ready-with-it.ogg") 
-					Engine.PlayUISound("audio/interface/alarm/i-ready-with-it.ogg");
-				else
+				if(idleCount > 1) 
 					Engine.PlayUISound("audio/interface/alarm/" + yawningAudioFile , false);
+				else{
+					if(yawningAudioFile == "we-are-ready-with-it.ogg") 
+						Engine.PlayUISound("audio/interface/alarm/i-ready-with-it.ogg");
+					else if(yawningAudioFile == "we-did-it-yeah.ogg") 
+						Engine.PlayUISound("audio/interface/alarm/i-did-it-yeah.ogg");
+					else
+						Engine.PlayUISound("audio/interface/alarm/" + yawningAudioFile , false);
+				}
 				this.lastYawningTime = Date.now();
 			}else{
-				let yawningAginMuchLater = Engine.ConfigDB_GetValue("user", "boongui.yawningAginMuchLater");
-				if( t.setSeconds(t.getSeconds() + yawningAginMuchLater) < this.stopYawningTime){
+				let yawningAgainMuchLater = Engine.ConfigDB_GetValue("user", "boongui.yawningAgainMuchLater");
+				if( t.setSeconds(t.getSeconds() + yawningAgainMuchLater) < this.stopYawningTime){
 					this.idleWorkerCount_prev = idleCount;
 				}
 			}
-		}
+		} 
+			
 
 		for (const resType of g_BoonGUIResTypes)
 		{

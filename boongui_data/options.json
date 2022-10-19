@@ -198,7 +198,8 @@
 					{ "value": "yawning-long.ogg", "label": "yawning-long - Default" },
 					{ "value": "yawning.ogg", "label": "yawning" },
 					{ "value": "beep_idle_02.ogg", "label": "beep_idle_02" },
-					{ "value": "we-are-ready-with-it.ogg", "label": "[color=\"220 185 70\"]we-are-ready-with-it - Default[/color]" },
+					{ "value": "we-are-ready-with-it.ogg", "label": "we-are-ready-with-it" },
+					{ "value": "we-did-it-yeah.ogg", "label": "[color=\"220 185 70\"]we-did-it-yeah - Default[/color]" },
 					{ "value": "stretches-and-yawns2.ogg", "label": "stretches-and-yawns2" },
 					{ "value": "stretches-and-yawns.ogg", "label": "stretches-and-yawns2" }
 				]
