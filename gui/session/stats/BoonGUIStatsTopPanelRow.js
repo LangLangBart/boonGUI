@@ -284,7 +284,7 @@ class BoonGUIStatsTopPanelRow
 		const waitedTime = t - this.lastYawningTime;
 		let idleCount = this.idleWorkerCount.caption.match(/.*\](\d+)\[/)[1];
 		if(idleCount == 0)this.idleWorkerCount_prev = 0;
-		if (this.itsMe 
+		else if (this.itsMe 
 			&& this.yawningIdle 
 			&& this.gameStartTime < t.setSeconds(t.getSeconds() - 5)
 			&& this.statPopCount < parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningIdlePopMax")) 
