@@ -313,7 +313,11 @@ class BoonGUIStatsTopPanelRow
 			if(	t < this.stopYawningTime){
 				let yawningAudioFile = Engine.ConfigDB_GetValue("user", "boongui.yawningAudioFile");
 				if(idleCount > 1) 
-					Engine.PlayUISound("audio/interface/alarm/" + yawningAudioFile , false);
+					if(idleCount > 9 && yawningAudioFile == "we-did-it-yeah.ogg"){
+						Engine.PlayUISound("audio/interface/alarm/" + "we-did-it.ogg" , false);
+					}else{
+						Engine.PlayUISound("audio/interface/alarm/" + yawningAudioFile , false);
+					}
 				else{
 					if(yawningAudioFile == "we-are-ready-with-it.ogg") 
 						Engine.PlayUISound("audio/interface/alarm/i-ready-with-it.ogg");
