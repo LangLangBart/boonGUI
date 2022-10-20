@@ -172,8 +172,8 @@
 				"tooltip": "how long your idle shoud yawning",
 				"config": "boongui.yawningDuration",
 				"list": [
-					{ "value": "1", "label": "1 seconds[/color]" },
-					{ "value": "2", "label": "[color=\"220 185 70\"]2 seconds - Default[/color]" },
+					{ "value": "1", "label": "[color=\"220 185 70\"]1 seconds - Default[/color]" },
+					{ "value": "2", "label": "2 seconds" },
 					{ "value": "4", "label": "4 seconds" },
 					{ "value": "888888", "label": "always" }
 				]
@@ -198,8 +198,9 @@
 					{ "value": "yawning-long.ogg", "label": "yawning-long - Default" },
 					{ "value": "yawning.ogg", "label": "yawning" },
 					{ "value": "beep_idle_02.ogg", "label": "beep_idle_02" },
+					{ "value": "we-are-waiting.ogg", "label": "[color=\"220 185 70\"]we-are-waiting.ogg - Default[/color]" },
 					{ "value": "we-are-ready-with-it.ogg", "label": "we-are-ready-with-it" },
-					{ "value": "we-did-it-yeah.ogg", "label": "[color=\"220 185 70\"]we-did-it-yeah - Default[/color]" },
+					{ "value": "we-did-it-yeah.ogg", "label": "we-did-it-yeah[/color]" },
 					{ "value": "stretches-and-yawns2.ogg", "label": "stretches-and-yawns2" },
 					{ "value": "stretches-and-yawns.ogg", "label": "stretches-and-yawns2" }
 				]

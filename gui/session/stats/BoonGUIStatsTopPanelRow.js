@@ -313,18 +313,19 @@ class BoonGUIStatsTopPanelRow
 			if(	t < this.stopYawningTime){
 				let yawningAudioFile = Engine.ConfigDB_GetValue("user", "boongui.yawningAudioFile");
 				if(idleCount > 1) 
-					if(idleCount > 9 && yawningAudioFile == "we-did-it-yeah.ogg"){
+					if(idleCount > 9 && yawningAudioFile == "we-did-it-yeah.ogg")
 						Engine.PlayUISound("audio/interface/alarm/" + "we-did-it.ogg" , false);
-					}else{
-						Engine.PlayUISound("audio/interface/alarm/" + yawningAudioFile , false);
-					}
-				else{
-					if(yawningAudioFile == "we-are-ready-with-it.ogg") 
-						Engine.PlayUISound("audio/interface/alarm/i-ready-with-it.ogg");
-					else if(yawningAudioFile == "we-did-it-yeah.ogg") 
-						Engine.PlayUISound("audio/interface/alarm/i-did-it-yeah.ogg");
 					else
 						Engine.PlayUISound("audio/interface/alarm/" + yawningAudioFile , false);
+				else{
+					if(yawningAudioFile == "we-are-waiting.ogg")
+						Engine.PlayUISound("audio/interface/alarm/" + "iam-waiting.ogg", false);
+					else if(yawningAudioFile == "we-are-ready-with-it.ogg") 
+						Engine.PlayUISound("audio/interface/alarm/i-ready-with-it.ogg", false);
+					else if(yawningAudioFile == "we-did-it-yeah.ogg") 
+						Engine.PlayUISound("audio/interface/alarm/i-did-it-yeah.ogg", false);
+					else
+						Engine.PlayUISound("audio/interface/alarm/" + yawningAudioFile, false);
 				}
 				this.lastYawningTime = Date.now();
 			}else{
