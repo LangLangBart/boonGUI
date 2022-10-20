@@ -146,7 +146,7 @@
 				"tooltip": "if used, the idle button can NOT be used anymore to find people who are idling. \n\nThe Button then is for toggle the yawning sound, throughout the total playing time.\n\n the hotkeys to find idles, of course, still working.\n\nchange only has an effect from the next game",
 				"config": "boongui.yawningIdlePopMax",
 				"list": [
-					{ "value": "0.0", "label": "[color=\"220 185 70\"]no yawning for idles - Default[/color]" },
+					{ "value": "0.0", "label": "[color=\"220 185 70\"]no yawning for idles - recommended[/color]" },
 					{ "value": "50.0", "label": "< 50 yawning only until 50 population" },
 					{ "value": "100.0", "label": "< 100 yawning only until 100 population" },
 					{ "value": "200.0", "label": "< 200 yawning only until 300 population" },
@@ -159,7 +159,7 @@
 				"tooltip": "pause in seconds beetween in seconds",
 				"config": "boongui.yawningPauseMiliSeconds",
 				"list": [
-					{ "value": "1", "label": "[color=\"220 185 70\"]about every 1 seconds - Default[/color]" },
+					{ "value": "1", "label": "[color=\"220 185 70\"]about every 1 seconds - recommended[/color]" },
 					{ "value": "2", "label": "about every 2 seconds" },
 					{ "value": "4", "label": "about every 4 seconds" },
 					{ "value": "6", "label": "about every 6 seconds" },
@@ -172,7 +172,7 @@
 				"tooltip": "how long your idle shoud yawning",
 				"config": "boongui.yawningDuration",
 				"list": [
-					{ "value": "1", "label": "[color=\"220 185 70\"]1 seconds - Default[/color]" },
+					{ "value": "1", "label": "[color=\"220 185 70\"]1 seconds - recommended[/color]" },
 					{ "value": "2", "label": "2 seconds" },
 					{ "value": "4", "label": "4 seconds" },
 					{ "value": "888888", "label": "always" }
@@ -184,7 +184,7 @@
 				"tooltip": "if your idle stay very long, you have maybe forgot them, they could star yawning again",
 				"config": "boongui.yawningAginMuchLater",
 				"list": [
-					{ "value": "3", "label": "[color=\"220 185 70\"]in 3 seconds - Default[/color]" },
+					{ "value": "3", "label": "[color=\"220 185 70\"]in 3 seconds - recommended[/color]" },
 					{ "value": "4", "label": "in 4 seconds" },
 					{ "value": "888888", "label": "newer" }
 				]
@@ -195,10 +195,10 @@
 				"tooltip": "yawning Audio File",
 				"config": "boongui.yawningAudioFile",
 				"list": [
-					{ "value": "yawning-long.ogg", "label": "yawning-long - Default" },
+					{ "value": "yawning-long.ogg", "label": "yawning-long" },
 					{ "value": "yawning.ogg", "label": "yawning" },
 					{ "value": "beep_idle_02.ogg", "label": "beep_idle_02" },
-					{ "value": "we-are-waiting.ogg", "label": "[color=\"220 185 70\"]we-are-waiting.ogg - Default[/color]" },
+					{ "value": "we-are-waiting.ogg", "label": "[color=\"220 185 70\"]we-are-waiting.ogg - recommended[/color]" },
 					{ "value": "we-are-ready-with-it.ogg", "label": "we-are-ready-with-it" },
 					{ "value": "we-did-it-yeah.ogg", "label": "we-did-it-yeah[/color]" },
 					{ "value": "stretches-and-yawns2.ogg", "label": "stretches-and-yawns2" },
