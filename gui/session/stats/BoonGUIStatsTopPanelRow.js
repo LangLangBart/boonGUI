@@ -279,12 +279,15 @@ class BoonGUIStatsTopPanelRow
 			playerNickShort = playerNick.match(/.*\](\w+)\[/)[1];		
 		} catch (error) { }
 	
+		// Engine.ConfigDB_GetValue("user", "boongui.yawningHearAllPlayers")
 		this.itsMe = (playerNickShort == this.playername_multiplayer || playerNickShort == this.playername_singleplayer);
 		let t = new Date();
 		const waitedTime = t - this.lastYawningTime;
 		let idleCount = this.idleWorkerCount.caption.match(/.*\](\d+)\[/)[1];
 		if(idleCount == 0)this.idleWorkerCount_prev = 0;
-		else if (this.itsMe 
+		else if (true 
+			&& ( this.itsMe || Engine.ConfigDB_GetValue("user", "boongui.yawningHearAllPlayers") === "hearAll" ) // needet as observer we dont want hear the sound of each players together.
+			// && !g_IsObserver // i guess it also nice feature as observer to hear it maybe
 			&& this.yawningIdle 
 			&& this.gameStartTime < t.setSeconds(t.getSeconds() - 5)
 			&& this.statPopCount < parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningIdlePopMax")) 

@@ -204,6 +204,16 @@
 					{ "value": "stretches-and-yawns2.ogg", "label": "stretches-and-yawns2" },
 					{ "value": "stretches-and-yawns.ogg", "label": "stretches-and-yawns2" }
 				]
+			},
+			{
+				"type": "dropdown",
+				"label": "[color=\"220 185 70\"]yawning: Hear all Players[/color]",
+				"tooltip": "as an observer hear all players speak at the same time",
+				"config": "boongui.yawningHearAllPlayers",
+				"list": [
+					{ "value": "yawning-long.ogg", "label": "[color=\"220 185 70\"]Hear only myself[/color]" },
+					{ "value": "hearAll", "label": "Hear all Players" }
+				]
 			}
 		]
 	}
