@@ -275,79 +275,21 @@ class BoonGUIStatsTopPanelRow
 		tooltip += "\n" + setStringTags(this.idleUnitsTooltip, { font });
 		this.idleWorkerHighlight.tooltip = tooltip;
 
-		let playerNickShort = '';
-		if(playerNick)
-		try {
-			playerNickShort = playerNick.match(/.*\](\w+)\[/)[1];		
-		} catch (error) { }
-	
-		// Engine.ConfigDB_GetValue("user", "boongui.yawningHearAllPlayers")
-		this.itsMe = (playerNickShort == this.playername_multiplayer || playerNickShort == this.playername_singleplayer);
-		let t = new Date();
-		const waitedTime = t - this.lastYawningTime;
-		let idleCount = this.idleWorkerCount.caption.match(/.*\](\d+)\[/)[1];
-		if(idleCount == 0)this.idleWorkerCount_prev = 0;
-		// playerNickShort is empty if observer-mode and nobody selected? ???
-		else if (true 
-			&& playerNickShort
-			&& ( this.itsMe || Engine.ConfigDB_GetValue("user", "boongui.yawningHearAllPlayers") === "hearAll" ) // needet as observer we dont want hear the sound of each players together.
-			// && !g_IsObserver // i guess it also nice feature as observer to hear it maybe
-			&& this.yawningIdle 
-			&& this.gameStartTime < t.setSeconds(t.getSeconds() - 5)
-			&& this.statPopCount < parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningIdlePopMax")) 
-			&& waitedTime * Math.min(idleCount, 5) > 1000 * parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningPauseMiliSeconds")))
-			{
 
 
 
-			if( this.idleWorkerCount_prev != idleCount ){ 
-
-				this.firstYawningTime = t.setSeconds(t.getSeconds());
-				this.stopYawningTime = t.setSeconds(t.getSeconds() + parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningDuration")) );
-				this.idleWorkerCount_prev = idleCount;
-
-				this.yawningIdleCount++;
-
-				// playerNickShort is empty if observer-mode and nobody selected? 
-				if( playerNickShort && Engine.ConfigDB_GetValue("user", "boongui.yawningShowInterruptionsByIdle") === "showAllCount")
-					error("interruptions by Idle's:"+ playerNickShort + "=" + this.yawningIdleCount);
-				// error(this.gameStartArgs.time);
-				// error(stanza.startTime);
-
-				// this.gameStartArgs.time =
-				// Math.round((Date.now() - stanza.startTime * 1000) / (1000 * 60));
-				// txt += sprintf(this.GameStartFormat, this.gameStartArgs);
 
 
 
-			}
+		this.yawningWhenUpdate(playerNick); 
 
-			if(	t < this.stopYawningTime){
-				let yawningAudioFile = Engine.ConfigDB_GetValue("user", "boongui.yawningAudioFile");
-				if(idleCount > 1) 
-					if(idleCount > 9 && yawningAudioFile == "we-did-it-yeah.ogg")
-						Engine.PlayUISound("audio/interface/alarm/" + "we-did-it.ogg" , false);
-					else
-						Engine.PlayUISound("audio/interface/alarm/" + yawningAudioFile , false);
-				else{
-					if(yawningAudioFile == "we-are-waiting.ogg")
-						Engine.PlayUISound("audio/interface/alarm/" + "iam-waiting.ogg", false);
-					else if(yawningAudioFile == "we-are-ready-with-it.ogg") 
-						Engine.PlayUISound("audio/interface/alarm/i-ready-with-it.ogg", false);
-					else if(yawningAudioFile == "we-did-it-yeah.ogg") 
-						Engine.PlayUISound("audio/interface/alarm/i-did-it-yeah.ogg", false);
-					else
-						Engine.PlayUISound("audio/interface/alarm/" + yawningAudioFile, false);
-				}
-				this.lastYawningTime = Date.now();
-			}else{
-				let yawningAgainMuchLater = Engine.ConfigDB_GetValue("user", "boongui.yawningAgainMuchLater");
-				if( t.setSeconds(t.getSeconds() + yawningAgainMuchLater) < this.stopYawningTime){
-					this.idleWorkerCount_prev = idleCount;
-				}
-			}
-		} 
-			
+		
+
+
+
+
+
+
 
 		for (const resType of g_BoonGUIResTypes)
 		{
@@ -488,6 +430,82 @@ class BoonGUIStatsTopPanelRow
 		tooltip += `${setStringTags("○", { color, font })} / ${setStringTags("●", { color, font })}\n`;
 		tooltip += "Full circle when cartography has been researched or when you are without mutual allies.";
 		this.los.tooltip = tooltip;
+	}
+
+	yawningWhenUpdate(playerNick) {
+		let playerNickShort = '';
+		if (playerNick)
+			try {
+				playerNickShort = playerNick.match(/.*\](\w+)\[/)[1];
+			} catch (error) { }
+		// if(!playerNickShort) return;
+
+		// Engine.ConfigDB_GetValue("user", "boongui.yawningHearAllPlayers")
+		this.itsMe = (playerNickShort == this.playername_multiplayer || playerNickShort == this.playername_singleplayer);
+		let t = new Date();
+		const waitedTime = t - this.lastYawningTime;
+		let idleCount = this.idleWorkerCount.caption.match(/.*\](\d+)\[/)[1];
+		if (idleCount == 0)
+			this.idleWorkerCount_prev = 0;
+
+		// playerNickShort is empty if observer-mode and nobody selected? ???
+		else if (true
+			// && playerNickShort
+			&& (this.itsMe || Engine.ConfigDB_GetValue("user", "boongui.yawningHearAllPlayers") === "hearAll") // needet as observer we dont want hear the sound of each players together.
+
+			// && !g_IsObserver // i guess it also nice feature as observer to hear it maybe
+			&& this.yawningIdle
+			&& this.gameStartTime < t.setSeconds(t.getSeconds() - 5)
+			&& this.statPopCount < parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningIdlePopMax"))
+			&& waitedTime * Math.min(idleCount, 5) > 1000 * parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningPauseMiliSeconds"))) {
+
+
+
+			if (this.idleWorkerCount_prev != idleCount) {
+
+				this.firstYawningTime = t.setSeconds(t.getSeconds());
+				this.stopYawningTime = t.setSeconds(t.getSeconds() + parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningDuration")));
+				this.idleWorkerCount_prev = idleCount;
+
+				this.yawningIdleCount++;
+
+				// playerNickShort is empty if observer-mode and nobody selected? 
+				if (playerNickShort && Engine.ConfigDB_GetValue("user", "boongui.yawningShowInterruptionsByIdle") === "showAllCount")
+					error("interruptions by Idle's:" + playerNickShort + "=" + this.yawningIdleCount);
+				// error(this.gameStartArgs.time);
+				// error(stanza.startTime);
+				// this.gameStartArgs.time =
+				// Math.round((Date.now() - stanza.startTime * 1000) / (1000 * 60));
+				// txt += sprintf(this.GameStartFormat, this.gameStartArgs);
+			}
+
+			if (t < this.stopYawningTime) {
+				let yawningAudioFile = Engine.ConfigDB_GetValue("user", "boongui.yawningAudioFile");
+				if (idleCount > 1)
+					if (idleCount > 9 && yawningAudioFile == "we-did-it-yeah.ogg")
+						Engine.PlayUISound("audio/interface/alarm/" + "we-did-it.ogg", false);
+
+					else
+						Engine.PlayUISound("audio/interface/alarm/" + yawningAudioFile, false);
+				else {
+					if (yawningAudioFile == "we-are-waiting.ogg")
+						Engine.PlayUISound("audio/interface/alarm/" + "iam-waiting.ogg", false);
+					else if (yawningAudioFile == "we-are-ready-with-it.ogg")
+						Engine.PlayUISound("audio/interface/alarm/i-ready-with-it.ogg", false);
+					else if (yawningAudioFile == "we-did-it-yeah.ogg")
+						Engine.PlayUISound("audio/interface/alarm/i-did-it-yeah.ogg", false);
+
+					else
+						Engine.PlayUISound("audio/interface/alarm/" + yawningAudioFile, false);
+				}
+				this.lastYawningTime = Date.now();
+			} else {
+				let yawningAgainMuchLater = Engine.ConfigDB_GetValue("user", "boongui.yawningAgainMuchLater");
+				if (t.setSeconds(t.getSeconds() + yawningAgainMuchLater) < this.stopYawningTime) {
+					this.idleWorkerCount_prev = idleCount;
+				}
+			}
+		}
 	}
 }
 
