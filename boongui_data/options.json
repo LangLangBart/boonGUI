@@ -211,8 +211,18 @@
 				"tooltip": "as an observer hear all players speak at the same time",
 				"config": "boongui.yawningHearAllPlayers",
 				"list": [
-					{ "value": "yawning-long.ogg", "label": "[color=\"220 185 70\"]Hear only myself[/color]" },
+					{ "value": "", "label": "[color=\"220 185 70\"]Hear only myself[/color]" },
 					{ "value": "hearAll", "label": "Hear all Players" }
+				]
+			},
+			{
+				"type": "dropdown",
+				"label": "[color=\"220 185 70\"]yawning: count and show all interruptions by Idle[/color]",
+				"tooltip": "count and show all interruptions by Idle EXPERIMENTAL shows as error message",
+				"config": "boongui.yawningShowInterruptionsByIdle",
+				"list": [
+					{ "value": "", "label": "no text messages with interruptions statistic" },
+					{ "value": "showAllCount", "label": "show all" }
 				]
 			}
 		]

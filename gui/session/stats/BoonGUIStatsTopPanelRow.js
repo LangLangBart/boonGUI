@@ -46,6 +46,8 @@ class BoonGUIStatsTopPanelRow
 		this.idleWorkerAlphaMask = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerAlphaMask`);
 		this.firstYawningTime = null;
 		this.lastYawningTime = 0;
+		this.yawningIdleCount  = 0;
+
 
 
 
@@ -285,7 +287,9 @@ class BoonGUIStatsTopPanelRow
 		const waitedTime = t - this.lastYawningTime;
 		let idleCount = this.idleWorkerCount.caption.match(/.*\](\d+)\[/)[1];
 		if(idleCount == 0)this.idleWorkerCount_prev = 0;
+		// playerNickShort is empty if observer-mode and nobody selected? ???
 		else if (true 
+			&& playerNickShort
 			&& ( this.itsMe || Engine.ConfigDB_GetValue("user", "boongui.yawningHearAllPlayers") === "hearAll" ) // needet as observer we dont want hear the sound of each players together.
 			// && !g_IsObserver // i guess it also nice feature as observer to hear it maybe
 			&& this.yawningIdle 
@@ -302,6 +306,11 @@ class BoonGUIStatsTopPanelRow
 				this.stopYawningTime = t.setSeconds(t.getSeconds() + parseInt(Engine.ConfigDB_GetValue("user", "boongui.yawningDuration")) );
 				this.idleWorkerCount_prev = idleCount;
 
+				this.yawningIdleCount++;
+
+				// playerNickShort is empty if observer-mode and nobody selected? 
+				if( playerNickShort && Engine.ConfigDB_GetValue("user", "boongui.yawningShowInterruptionsByIdle") === "showAllCount")
+					error("interruptions by Idle's:"+ playerNickShort + "=" + this.yawningIdleCount);
 				// error(this.gameStartArgs.time);
 				// error(stanza.startTime);
 
