@@ -319,19 +319,27 @@ class BoonGUIStats
 			"icon_pop": '[icon="icon_pop" displace="2 5"]',
 			"pop": g_InitAttributes.settings.PopulationCap !== undefined ? g_PopulationCapacities.Title[g_PopulationCapacities.Population.indexOf(g_InitAttributes.settings.PopulationCap)] : g_WorldPopulationCapacities.Title[g_WorldPopulationCapacities.Population.indexOf(g_InitAttributes.settings.WorldPopulationCap)] + " (WP)",
 			"rating": g_InitAttributes.settings.RatingEnabled === true ? '  [icon="icon_rating" displace="-3 5"]' + coloredText("Rated", "red") : "",
-			"duration": Engine.ConfigDB_GetValue("user", "boongui.showduration") == "true" ? this.durationReplay() : ""
+			"duration": (Engine.ConfigDB_GetValue("user", "boongui.showduration") == "true" && g_IsReplay) ? '  [icon="icon_duration" displace="1 3"] ' + this.durationReplay() : ""
 		});
 		this.shortGameInfoLabel.tooltip = g_ProjectInformation.productDescription.caption;
 	}
 
 	durationReplay()
 	{
-		// TODO better is to calculate the length from the number of turns in the commands.txt file
+		// Retrieve the duration of a replay
+		// normal case: metadata.json is available.
+		// unusual case: commands.txt no metadata.json is available, but located in the "0ad replay" folder. The duration is stored in the user.cfg file at startup.
+		// edge case: replay is started from command line, replay is outside "0ad replay" folder or inside "0ad replay" folder but no metadata.json --> unknown.
 		const directory = Engine.GetCurrentReplayDirectory();
-		return Engine.HasReplayMetadata(directory) ? '  [icon="icon_duration" displace="1 3"] ' + timeToString(Engine.GetReplayMetadata(directory).timeElapsed) : "";
+		if (Engine.HasReplayMetadata(directory))
+			return timeToString(Engine.GetReplayMetadata(directory).timeElapsed);
+		else if (g_InitAttributes.matchID === Engine.ConfigDB_GetValue("user", this.replayConfigName[0]))
+			return timeToString(Engine.ConfigDB_GetValue("user", this.replayConfigName[1]) * 1000);
+		return "unknown";
 	}
 }
 
 BoonGUIStats.prototype.IncomeRateBufferSize = 50;
 BoonGUIStats.prototype.configName = ["boongui.observer.toppanel", "boongui.player.toppanel", "boongui.statsmode"];
+BoonGUIStats.prototype.replayConfigName = ["boongui.replay.matchID", "boongui.replay.duration"];
 

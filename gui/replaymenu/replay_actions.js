@@ -57,7 +57,11 @@ function startReplay()
 
 	var replay = g_ReplaysFiltered[selected];
 	if (isReplayCompatible(replay))
+	{
+		Engine.ConfigDB_CreateAndWriteValueToFile("user", "boongui.replay.matchID", replay.attribs.matchID, "config/user.cfg");
+		Engine.ConfigDB_CreateAndWriteValueToFile("user", "boongui.replay.duration", replay.duration, "config/user.cfg");
 		reallyStartVisualReplay(replay.directory);
+	}
 	else
 		displayReplayCompatibilityError(replay);
 }

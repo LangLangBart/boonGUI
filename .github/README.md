@@ -70,7 +70,7 @@ User interface **mod** for the RTS game **0 A.D.**
 | macOS   | `~/Library/Application\ Support/0ad/mods/`   |
 | Windows | `~\Documents\My Games\0ad\mods\`             |
 
-* Pick one of four ways to install the mod
+* Pick one of three ways to install the mod
   * **GitHub**
     * Clone it in your `/0ad/mods/` folder.
   * **Pyromod**
