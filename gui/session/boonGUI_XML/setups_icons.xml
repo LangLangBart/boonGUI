@@ -133,7 +133,21 @@
     sprite="stretched:session/portraits/emblems/emblem_persians.png"
     size="50 50"
   />
-
+  <icon
+    name="emblem_east"
+    sprite="stretched:session/portraits/emblems/emblem_east.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_west"
+    sprite="stretched:session/portraits/emblems/emblem_west.png"
+    size="50 50"
+  />
+  <icon
+    name="emblem_step"
+    sprite="stretched:session/portraits/emblems/emblem_step.png"
+    size="50 50"
+  />
   <!-- ================================  ================================ -->
   <!-- Tech icons -->
   <!-- ================================  ================================ -->
