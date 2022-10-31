@@ -137,7 +137,7 @@ jobs:
 
       - name: Check TODO issues
         # https://github.com/alstr/todo-to-issue-action
-        uses: "alstr/todo-to-issue-action@v4.8"
+        uses: "alstr/todo-to-issue-action@v4.9"
         if: ${{ github.event_name == 'push' }}
         with:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
