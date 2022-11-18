@@ -109,27 +109,22 @@ function limitPlayerName(objectPlayer, playerName, objectRating, rating, smallSa
 	return abbreviatedName;
 }
 
-function normalizeResourceCount(value)
+const normalizeResourceCount = value =>
+	// regex to avoid trailing zeros
+	value >= 1e6 ?
+		Math.floor(value / 1e6) + setStringTags("M", { "font": "sans-stroke-12" }) :
+		value >= 1e5 ?
+			Math.floor(value / 1e3) + setStringTags("k", { "font": "sans-stroke-12" }) :
+			value >= 1e3 ?
+				(value / 1e3).toFixed(1).replace(/\.0$/, "") + setStringTags("k", { "font": "sans-stroke-12" }) :
+			// for rounding number to its tenth
+				Math.floor(value / 10) * 10;
 
-{
-	if (value >= 10000)
-	{
-		return Math.floor(value / 1000) + setStringTags("k", { "font": "sans-stroke-12" });
-	}
-	// for rounding number to its tenth
-	return Math.floor(value / 10) * 10;
-}
 
-function normalizeValue(value)
-{
-	if (value >= 10000)
-	{
-		return Math.floor(value / 1000) + setStringTags("k", { "font": "mono-10" });
-	}
-	else if (value >= 1000)
-	{
-		return (value / 1000).toFixed(1) + setStringTags("k", { "font": "mono-10" });
-	}
-	return value;
-}
+const normalizeValue = value =>
+	value >= 1e4 ?
+		Math.floor(value / 1e3) + setStringTags("k", { "font": "mono-10" }) :
+		value >= 1e3 ?
+			(value / 1e3).toFixed(1).replace(/\.0$/, "") + setStringTags("k", { "font": "mono-10" }) :
+			value;
 
