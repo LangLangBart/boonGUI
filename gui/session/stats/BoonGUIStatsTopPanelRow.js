@@ -3,6 +3,7 @@ class BoonGUIStatsTopPanelRow
 
 	static Regex_Emblem = /^.+\/(.+)\.png$/;
 
+
 	constructor(row, index)
 	{
 		const PREFIX = row.name;
@@ -234,7 +235,11 @@ class BoonGUIStatsTopPanelRow
 
 		for (const i in g_boonGUI_WorkerTypes)
 		{
-			const className = g_boonGUI_WorkerTypes[i].match(/^[A-Za-z]+/)?.pop();
+			// experimant with Named capture groups
+			// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Backreferences
+			const className = g_boonGUI_WorkerTypes[i].match(/(?<classNameRegex>^\w+)/)?.groups?.classNameRegex;
+			if (!className) continue;
+
 			value = 0;
 			if (state.classCounts[className])
 				for (let j = 0; j < filterIdleMode.length; ++j)
