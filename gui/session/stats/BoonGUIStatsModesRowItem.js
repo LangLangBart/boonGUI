@@ -32,7 +32,8 @@ class BoonGUIStatsModesRowItem {
 		if (move)
 		{
 			const entState = GetEntityState(entities[0]);
-			Engine.CameraMoveTo(entState.position.x, entState.position.z);
+			if (entState)
+				Engine.CameraMoveTo(entState.position.x, entState.position.z);
 		}
 	}
 
