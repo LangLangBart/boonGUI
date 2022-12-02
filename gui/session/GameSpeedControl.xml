@@ -4,7 +4,7 @@
   type="dropdown"
   font="sans-bold-16"
   style="ModernDropDown"
-  size="100%-270 40 100%-100 65"
+  size="100%-280 40 100%-110 65"
   hidden="true"
   z="200"
   tooltip_style="sessionToolTip"
