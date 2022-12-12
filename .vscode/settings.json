@@ -8,6 +8,5 @@
 	],
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": true
-	},
-	"explorer.excludeGitIgnore": true
+	}
 }
