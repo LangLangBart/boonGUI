@@ -20,7 +20,7 @@ jobs:
       - name: Setup Python enviroment
         uses: actions/setup-python@v4
         with:
-          python-version: 3.8.5
+          python-version: 3.8.12
 
       - name: Install python dependencies
         run: |
