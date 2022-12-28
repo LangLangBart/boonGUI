@@ -129,7 +129,7 @@ vale sync
 <p>
 
 #### JavaScript
-Mirroring the linting process from `0 A.D.` by using `ESLint` and an adopted set of rules defined in the [.eslintrc.json](../.eslintrc.json) file.
+Mirroring the linting process from `0 A.D.` by using `ESLint` and an adopted set of rules defined in the [package.json](../package.json) file.
 
 * The `.vscode` settings are set up to automatically adjust your code to the rules when you save the document.
 * An optional installation of the [VSCode ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) runs `ESLint` on each file and display warnings and errors at once.
@@ -153,7 +153,7 @@ vale --minAlertLevel=suggestion .
 ```
 
 #### XML
-`Prettier for XML` formats the files according to the rules set in [.prettierrc.json](../.prettierrc.json).
+`Prettier for XML` formats the files according to the rules set in [package.json](../package.json).
 
 * An optional installation of the [Prettier - Code formatter extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) automatically formats the `XML` file upon saving.
 * The following command formats all `XML` files with `Prettier` and runs a simple [style sheet](../.github/build_scripts/stylesheet.xsl) over them to ensure that the `xsl:output attributes` have the correct case and form.
