@@ -12,4 +12,4 @@ maps
 
 # Style linter folders
 .github/vale_styles/*
-!.github/vale_styles/Vocab
+!/.github/vale_styles/Vocab

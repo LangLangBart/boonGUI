@@ -4,7 +4,6 @@
  * each resource and update if they change.
  */
 class BoonGUITradeButtonManager extends TradeButtonManager {
-
 	constructor()
 	{
 		super();
@@ -19,6 +18,7 @@ class BoonGUITradeButtonManager extends TradeButtonManager {
 		else
 			Engine.ConfigDB_CreateAndWriteValueToFile("user", "boongui.session.trade.probability", "", "config/user.cfg");
 	}
+
 	setTradingGoods()
 	{
 		// save the probability values as string, for example: "0,25,25,50"

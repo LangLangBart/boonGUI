@@ -8,3 +8,4 @@ Pyromod
 (?i)TODO
 (?i)TO-DO
 VS[Cc]ode
+Windows
