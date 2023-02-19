@@ -37,3 +37,29 @@ function autociv_patchApplyN()
 
 	prefix[method] = new Proxy(prefix[method], { "apply": patch });
 }
+// register global fuctions for the GUI
+global.debug = (...args) => warn(uneval([...args]));
+global.g_boonGUI_LastWarnGUI = 0;
+global.slowDebug = (msg = "note", milliSeconds = 2000) =>{
+	if (g_LastTickTime - g_boonGUI_LastWarn >= milliSeconds)
+	{
+		g_boonGUI_LastWarn = g_LastTickTime;
+		debug(msg);
+	}
+};
+global.stack = () => warn(new Error().stack);
+global.trueTypeOf = obj => warn(Object.prototype.toString.call(obj).slice(8, -1).toLowerCase());
+global.listProperty = (obj, prop = []) => obj == null ? `${obj} doesn't exist` : !Object.getPrototypeOf(obj) ?
+	debug([...new Set(prop)].sort()) :
+	listProperty(Object.getPrototypeOf(obj), prop.concat(Object.getOwnPropertyNames(obj)));
+global.timeTaken = (callback, count = 1) => {
+	const measure = [];
+	for (let i = 0; i < count; i++)
+	{
+		const startTime = Engine.GetMicroseconds();
+		callback();
+		measure.push(Engine.GetMicroseconds() - startTime);
+	}
+	const average = measure.reduce((acc, val) => acc + val, 0) / count;
+	warn(`${(average / 1000).toFixed(5)}ms ${count > 1 ? measure : ""}`);
+};

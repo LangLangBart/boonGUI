@@ -35,8 +35,8 @@ User interface **mod** for the RTS game **0 A.D.**
 ---
 
 | <a href="https://www.youtube.com/channel/UC5Sf1aQufzzWATg9TJzg7mQ"> <img src="https://img.shields.io/static/v1?label=Channel&message=0AD%20Newbie%20Rush&logo=YouTube&color=B40000&style=for-the-badge" height="19"> <a href="https://www.youtube.com/watch?v=CA2ZaEsDkiA"><img src="https://img.shields.io/youtube/views/CA2ZaEsDkiA?color=B40000&logo=youtube&style=for-the-badge" height="19"><br /> <a href="https://www.youtube.com/watch?v=CA2ZaEsDkiA" target="_blank"><img src="https://img.youtube.com/vi/CA2ZaEsDkiA/0.jpg" alt="Thumbnail" width="320" height="200" /> | <a href="https://www.youtube.com/channel/UCnpCp_OvNm0_FgD_5rSrxbw"><img src="https://img.shields.io/static/v1?label=Channel&message=Plan%26Go:%200%20%20A.D.&logo=YouTube&color=B40000&style=for-the-badge" height="19"> <a href="https://www.youtube.com/watch?v=PhdbEN6UoG4"><img src="https://img.shields.io/youtube/views/PhdbEN6UoG4?color=B40000&logo=youtube&style=for-the-badge" height="19"><br /> <a href="https://www.youtube.com/watch?v=PhdbEN6UoG4" target="_blank"><img src="https://img.youtube.com/vi/PhdbEN6UoG4/0.jpg" alt="Thumbnail" width="320" height="200" /> |
-| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|   <a href="https://www.youtube.com/channel/UCjF60pN4P6ZwTjn4e0_f0nw"><img src="https://img.shields.io/static/v1?label=Channel&message=Kakutstha%200AD&logo=YouTube&color=B40000&style=for-the-badge" height="19"> <a href="https://www.youtube.com/watch?v=aJBzP-UAMXI"><img src="https://img.shields.io/youtube/views/aJBzP-UAMXI?color=B40000&logo=youtube&style=for-the-badge" height="19"><br /> <a href="https://www.youtube.com/watch?v=aJBzP-UAMXI" target="_blank"><img src="https://img.youtube.com/vi/aJBzP-UAMXI/0.jpg" alt="Thumbnail" width="320" height="200" />   |        <a href="https://www.youtube.com/channel/UCS-SFei6NFRuGN8CKtAsYrA"><img src="https://img.shields.io/static/v1?label=Channel&message=Tom%200ad&logo=YouTube&color=B40000&style=for-the-badge" height="19"> <a href="https://www.youtube.com/watch?v=_DP_-WOARXo"><img src="https://img.shields.io/youtube/views/_DP_-WOARXo?color=B40000&logo=youtube&style=for-the-badge" height="19"><br /> <a href="https://www.youtube.com/watch?v=_DP_-WOARXo" target="_blank"><img src="https://img.youtube.com/vi/_DP_-WOARXo/0.jpg" alt="Thumbnail" width="320" height="200" />         |
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|   <a href="https://www.youtube.com/channel/UCjF60pN4P6ZwTjn4e0_f0nw"><img src="https://img.shields.io/static/v1?label=Channel&message=Kakutstha%200AD&logo=YouTube&color=B40000&style=for-the-badge" height="19"> <a href="https://www.youtube.com/watch?v=aJBzP-UAMXI"><img src="https://img.shields.io/youtube/views/aJBzP-UAMXI?color=B40000&logo=youtube&style=for-the-badge" height="19"><br /> <a href="https://www.youtube.com/watch?v=aJBzP-UAMXI" target="_blank"><img src="https://img.youtube.com/vi/aJBzP-UAMXI/0.jpg" alt="Thumbnail" width="320" height="200" />    |        <a href="https://www.youtube.com/channel/UCS-SFei6NFRuGN8CKtAsYrA"><img src="https://img.shields.io/static/v1?label=Channel&message=Tom%200ad&logo=YouTube&color=B40000&style=for-the-badge" height="19"> <a href="https://www.youtube.com/watch?v=_DP_-WOARXo"><img src="https://img.shields.io/youtube/views/_DP_-WOARXo?color=B40000&logo=youtube&style=for-the-badge" height="19"><br /> <a href="https://www.youtube.com/watch?v=_DP_-WOARXo" target="_blank"><img src="https://img.youtube.com/vi/_DP_-WOARXo/0.jpg" alt="Thumbnail" width="320" height="200" />         |
 
 </div>
 
@@ -96,6 +96,30 @@ User interface **mod** for the RTS game **0 A.D.**
 ### 👁 Code structure
 Created with [RepoVisualize](https://github.com/githubocto/repo-visualizer), click to interact.
 [![image](Images/boonGUI_visualization.svg)](https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=LangLangBart%2FboonGUI)
+
+### 🐛 Debug
+- Debugging is done by inserting [logging](https://trac.wildfiregames.com/wiki/Logging#Scripts) functions into the suspected problematic code.
+- Some custom logging functions are used so frequently in boonGUI that they have been added to the `global` object.
+
+```js
+// Print a debug message with several arguments.
+debug("test1", variable)
+debug("test1", g_HotkeyTags) // ["test1", {color:"255 251 131"}]
+// same as above, but the message is only emitted every 2 seconds (useful in a loop)
+slowDebug("test1", variable)
+// Create a stack trace of the JavaScript call stack at the moment that the Error object was created.
+stack()
+// similar to typeof, but also covers arrays and null
+trueTypeOf(variable)
+trueTypeOf(["arg1", "arg2"]) // array
+// return all properties of the specified object until you get to the "Object.prototype" itself
+listProperty(variable)
+listProperty(WeakMap.prototype) // ["constructor", "delete", "get", "has", "set"]
+// Measures the time taken by a function to execute. Optionally meassure the average time over n count.
+timeTaken(callback, count?)
+timeTaken(()=>Engine.GetGUIObjectByName("Stats")) // 0.021ms
+timeTaken(()=>Engine.GetGUIObjectByName("Stats"), 3) // 0.00833ms 21,2,2
+```
 
 ### 🔱 Git-Hook
 **JavaScript** linting & formatting with [ESLint](https://eslint.org), **Text** validation with [Vale](https://github.com/errata-ai/vale) and **XML** formatting with [Prettier for XML](https://github.com/prettier/plugin-xml) are done automatically with a pre-commit hook (see [Simple Git Hooks](https://github.com/toplenboren/simple-git-hooks) for more details).
