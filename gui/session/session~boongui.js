@@ -11,58 +11,6 @@ autociv_patchApplyN("init", function(target, that, args) {
 	return result;
 });
 
-function endGame(showSummary)
-{
-	// Before ending the game
-	const replayDirectory = Engine.GetCurrentReplayDirectory();
-	const simData = Engine.GuiInterfaceCall("GetReplayMetadata");
-	const playerID = Engine.GetPlayerID();
-
-	Engine.EndGame();
-
-	// After the replay file was closed in EndGame
-	// Done here to keep EndGame small
-	if (!g_IsReplay)
-		Engine.AddReplayToCache(replayDirectory);
-
-	if (g_IsController && Engine.HasXmppClient())
-		Engine.SendUnregisterGame();
-
-	const summaryData = {
-		"sim": simData,
-		"gui": {
-			"dialog": false,
-			"assignedPlayer": playerID,
-			"disconnected": g_Disconnected,
-			"isReplay": g_IsReplay,
-			"replayDirectory": !g_HasRejoined && replayDirectory,
-			"replaySelectionData": g_ReplaySelectionData
-		}
-	};
-
-	if (g_InitAttributes.campaignData)
-	{
-		const menu = g_CampaignSession.getMenu();
-		if (g_InitAttributes.campaignData.skipSummary)
-		{
-			Engine.SwitchGuiPage(menu);
-			return;
-		}
-		summaryData.campaignData = { "filename": g_InitAttributes.campaignData.run };
-		summaryData.nextPage = menu;
-	}
-
-	if (showSummary)
-		Engine.SwitchGuiPage("page_summary.xml", summaryData);
-	else if (g_InitAttributes.campaignData)
-		Engine.SwitchGuiPage(summaryData.nextPage, summaryData.campaignData);
-	else if (Engine.HasXmppClient())
-		Engine.SwitchGuiPage("page_lobby.xml", { "dialog": false });
-	else if (g_IsReplay)
-		Engine.SwitchGuiPage("page_replaymenu.xml");
-	else
-		Engine.SwitchGuiPage("page_pregame.xml");
-}
 
 function endHome()
 {
