@@ -103,20 +103,24 @@ Created with [RepoVisualize](https://github.com/githubocto/repo-visualizer), cli
 
 ```js
 // Print a debug message with several arguments.
-debug("test1", variable)
 debug("test1", g_HotkeyTags) // ["test1", {color:"255 251 131"}]
 // same as above, but the message is only emitted every 2 seconds (useful in a loop)
-slowDebug("test1", variable)
+debug.slow("test1", g_HotkeyTags) // ["test1", {color:"255 251 131"}]
+
 // Create a stack trace of the JavaScript call stack at the moment that the Error object was created.
 stack()
+
 // similar to typeof, but also covers arrays and null
-trueTypeOf(variable)
-trueTypeOf(["arg1", "arg2"]) // array
+trueTypeOf(["😀", "🤢", "💩", "🎃"]) // array
+trueTypeOf(Object.getPrototypeOf(Object.prototype)) // null
+
 // return all properties of the specified object until you get to the "Object.prototype" itself
-listProperty(variable)
 listProperty(WeakMap.prototype) // ["constructor", "delete", "get", "has", "set"]
+
+// shorthand for Object.prototype.hasOwnProperty.call(obj, prop)
+hasOwn(cmpTechnologyManager, "typeCountsByClass") // true
+
 // Measures the time taken by a function to execute. Optionally meassure the average time over n count.
-timeTaken(callback, count?)
 timeTaken(()=>Engine.GetGUIObjectByName("Stats")) // 0.021ms
 timeTaken(()=>Engine.GetGUIObjectByName("Stats"), 3) // 0.00833ms 21,2,2
 ```

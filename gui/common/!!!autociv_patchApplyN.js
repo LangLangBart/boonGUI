@@ -39,19 +39,21 @@ function autociv_patchApplyN()
 }
 // register global fuctions for the GUI
 global.debug = (...args) => warn(uneval([...args]));
-global.g_boonGUI_LastWarnGUI = 0;
-global.slowDebug = (msg = "note", milliSeconds = 2000) =>{
-	if (g_LastTickTime - g_boonGUI_LastWarn >= milliSeconds)
+global.g_boonGUI_LastWarn = 0;
+global.debug.slow = (...args) => {
+	if (g_LastTickTime - g_boonGUI_LastWarn >= 2000)
 	{
 		g_boonGUI_LastWarn = g_LastTickTime;
-		debug(msg);
+		warn(uneval([...args]));
 	}
 };
 global.stack = () => warn(new Error().stack);
 global.trueTypeOf = obj => warn(Object.prototype.toString.call(obj).slice(8, -1).toLowerCase());
-global.listProperty = (obj, prop = []) => obj == null ? `${obj} doesn't exist` : !Object.getPrototypeOf(obj) ?
-	debug([...new Set(prop)].sort()) :
+global.listProperty = (obj, prop = []) => obj == null ? warn(`${obj} doesn't exist`) : !Object.getPrototypeOf(obj) ?
+	debug(...[...new Set(prop)].sort()) :
 	listProperty(Object.getPrototypeOf(obj), prop.concat(Object.getOwnPropertyNames(obj)));
+// Object.hasOwn is shipping in Firefox 92, till then ...
+global.hasOwn = (obj, prop) => obj == null ? warn(`${obj} doesn't exist`) : warn(obj.hasOwnProperty(prop));
 global.timeTaken = (callback, count = 1) => {
 	const measure = [];
 	for (let i = 0; i < count; i++)

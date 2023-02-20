@@ -10,6 +10,11 @@ node_modules
 # Avoid map folder
 maps
 
+# Custom type definitions, most from "Autociv"
+# works great in VSCode with autosuggestion
+# https://github.com/nanihadesuka/autociv
+**/*.d.ts
+
 # Style linter folders
 .github/vale_styles/*
 !/.github/vale_styles/Vocab
