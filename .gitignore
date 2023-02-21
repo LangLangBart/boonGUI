@@ -14,6 +14,7 @@ maps
 # works great in VSCode with autosuggestion
 # https://github.com/nanihadesuka/autociv
 **/*.d.ts
+**/tsconfig.json
 
 # Style linter folders
 .github/vale_styles/*
