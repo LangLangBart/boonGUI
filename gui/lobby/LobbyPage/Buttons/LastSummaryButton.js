@@ -38,8 +38,8 @@ class LastSummaryButton
 		const gameMods = lastReplay.attribs.mods || [];
 		if (!isReplayCompatible)
 		{
-			messageBox(500, 200, translate("This summary needs a different sequence of mods:") + "\n\n" +
-			comparedModsString(gameMods, Engine.GetEngineInfo().mods), translate("Incompatible summary"));
+			messageBox(500, 200, `${translate("This summary needs a different sequence of mods:")}\n\n${
+				comparedModsString(gameMods, Engine.GetEngineInfo().mods)}`, translate("Incompatible summary"));
 			return;
 		}
 

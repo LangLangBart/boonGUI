@@ -148,6 +148,8 @@
       "no-const-assign": 1,
       "no-dupe-class-members": 1,
       "prefer-const": 1,
+      "prefer-template": 1,
+      "template-curly-spacing": 1,
       "quotes": [
         "warn",
         "double",

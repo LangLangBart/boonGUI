@@ -7,7 +7,7 @@ function autociv_patchApplyN()
 {
 	if (arguments.length < 2)
 	{
-		const error = new Error("Insufficient arguments to patch: " + arguments[0]);
+		const error = new Error(`Insufficient arguments to patch: ${arguments[0]}`);
 		warn(error.message);
 		warn(error.stack);
 		return;
@@ -29,7 +29,7 @@ function autociv_patchApplyN()
 
 	if (!(method in prefix))
 	{
-		const error = new Error("Function not defined: " + method);
+		const error = new Error(`Function not defined: ${method}`);
 		warn(error.message);
 		warn(error.stack);
 		return;

@@ -50,7 +50,7 @@ class GameDetails
 
 		if (stanza.mapType != this.lastGame.mapType || stanza.mapName != this.lastGame.mapName)
 		{
-			this.sgMapName.caption = displayData.mapType + "/" + displayData.mapName;
+			this.sgMapName.caption = `${displayData.mapType}/${displayData.mapName}`;
 			if (this.mapCache.checkIfExists(stanza.mapType, stanza.mapName))
 				this.sgMapPreview.sprite = this.mapCache.getMapPreview(stanza.mapType, stanza.mapName);
 			else
@@ -80,13 +80,13 @@ class GameDetails
 
 		{
 			// Victory condition, map type and size
-			let txt = setStringTags(this.VictoryConditionsFormat, this.CaptionTags) + " " +
-				(stanza.victoryConditions ?
+			let txt = `${setStringTags(this.VictoryConditionsFormat, this.CaptionTags)} ${
+				stanza.victoryConditions ?
 					stanza.victoryConditions.split(",").map(translateVictoryCondition).join(this.Comma) :
-					translateWithContext("victory condition", "Endless Game"));
+					translateWithContext("victory condition", "Endless Game")}`;
 
 			txt +=
-				"\n" + setStringTags(this.MapSizeFormat, this.CaptionTags) + " " + displayData.mapSize;
+				`\n${setStringTags(this.MapSizeFormat, this.CaptionTags)} ${displayData.mapSize}`;
 
 			// Player information
 			txt += "\n\n";
@@ -94,7 +94,7 @@ class GameDetails
 			this.playerCountArgs.total = escapeText(stanza.maxnbp);
 			txt += setStringTags(sprintf(this.PlayerCountFormat, this.playerCountArgs), this.CaptionTags) + setStringTags(sprintf(this.HostFormat, this.playernameArgs), this.HostFormatCaptionTags);
 
-			txt += "\n" + formatPlayerInfo(game.players);
+			txt += `\n${formatPlayerInfo(game.players)}`;
 
 			// Mod information
 			txt += "\n\n";
@@ -116,11 +116,11 @@ class GameDetails
 					modStr = setStringTags(coloredText(modStr, "180 180 180"), {
 						"tooltip": translate("This mod does not affect MP compatibility")
 					});
-				txt += "\n" + modStr;
+				txt += `\n${modStr}`;
 			}
 
 			// Map description
-			txt += "\n\n" + setStringTags(this.MapDescriptionFormat, this.CaptionTags) + "\n" + displayData.mapDescription;
+			txt += `\n\n${setStringTags(this.MapDescriptionFormat, this.CaptionTags)}\n${displayData.mapDescription}`;
 
 			this.sgDescription.caption = txt;
 

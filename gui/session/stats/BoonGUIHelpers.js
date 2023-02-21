@@ -103,7 +103,7 @@ function limitPlayerName(objectPlayer, playerName, objectRating, rating, smallSa
 
 	for(let i = 1; playerNameLength > widthBox; i++)
 	{
-		abbreviatedName = playerName.slice(0, -i) + "…";
+		abbreviatedName = `${playerName.slice(0, -i)}…`;
 		playerNameLength = Engine.GetTextWidth(objectPlayer.font, abbreviatedName);
 	}
 	return abbreviatedName;

@@ -31,7 +31,7 @@ Health.prototype.HandleDeath = function()
 		break;
 
 	default:
-		error("Invalid template.DeathType: " + this.template.DeathType);
+		error(`Invalid template.DeathType: ${this.template.DeathType}`);
 		break;
 	}
 

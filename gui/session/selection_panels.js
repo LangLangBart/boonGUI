@@ -141,7 +141,7 @@ g_SelectionPanels.Command = {
 
 		data.button.enabled = data.item.enabled == true;
 
-		data.icon.sprite = "stretched:session/icons/" + data.item.icon;
+		data.icon.sprite = `stretched:session/icons/${data.item.icon}`;
 
 		setPanelObjectPosition(data.button, data.i + 40, data.rowLength);
 		return true;
@@ -215,13 +215,13 @@ g_SelectionPanels.Construction = {
 		else if (neededResources)
 		{
 			data.button.enabled = false;
-			modifier += resourcesToAlphaMask(neededResources) + ":";
+			modifier += `${resourcesToAlphaMask(neededResources)}:`;
 		}
 		else
 			data.button.enabled = controlsPlayer(data.player);
 
 		if (template.icon)
-			data.icon.sprite = modifier + "stretched:session/portraits/" + template.icon;
+			data.icon.sprite = `${modifier}stretched:session/portraits/${template.icon}`;
 
 		setPanelObjectPosition(data.button, data.i + getNumberOfRightPanelButtons(), data.rowLength);
 		return true;
@@ -271,23 +271,23 @@ g_SelectionPanels.Formation = {
 
 		const isDefaultFormation = g_AutoFormation.isDefault(data.item);
 		if (data.item === NULL_FORMATION)
-			tooltip += "\n" + (isDefaultFormation ?
+			tooltip += `\n${isDefaultFormation ?
 				translate("Default formation is disabled.") :
-				translate("Right-click to disable the default formation feature."));
+				translate("Right-click to disable the default formation feature.")}`;
 		else
-			tooltip += "\n" + (isDefaultFormation ?
+			tooltip += `\n${isDefaultFormation ?
 				translate("This is the default formation, used for movement orders.") :
-				translate("Right-click to set this as the default formation."));
+				translate("Right-click to set this as the default formation.")}`;
 
 		if (!formationOk && formationInfo.tooltip)
-			tooltip += "\n" + coloredText(translate(formationInfo.tooltip), "red");
+			tooltip += `\n${coloredText(translate(formationInfo.tooltip), "red")}`;
 		data.button.tooltip = tooltip;
 
 		data.button.enabled = formationOk && controlsPlayer(data.player);
 		const grayscale = formationOk ? "" : "grayscale:";
 		data.guiSelection.hidden = !formationSelected;
 		data.countDisplay.hidden = !isDefaultFormation;
-		data.icon.sprite = "stretched:" + grayscale + "session/icons/" + formationInfo.icon;
+		data.icon.sprite = `stretched:${grayscale}session/icons/${formationInfo.icon}`;
 
 		setPanelObjectPosition(data.button, data.i, data.rowLength);
 		return true;
@@ -332,22 +332,22 @@ g_SelectionPanels.Garrison = {
 
 		data.button.enabled = canUngarrison;
 
-		data.button.tooltip = (canUngarrison ?
-			sprintf(translate("Unload %(name)s"), { "name": getEntityNames(template) }) + "\n" +
-			translate("Single-click to unload 1. Shift-click to unload all of this type.") :
-			getEntityNames(template)) + "\n" +
+		data.button.tooltip = `${canUngarrison ?
+			`${sprintf(translate("Unload %(name)s"), { "name": getEntityNames(template) })}\n${
+				translate("Single-click to unload 1. Shift-click to unload all of this type.")}` :
+			getEntityNames(template)}\n${
 			sprintf(translate("Player: %(playername)s"), {
 				"playername": g_Players[entState.player].name
-			});
+			})}`;
 
-		data.guiSelection.sprite = "color:" + g_DiplomacyColors.getPlayerColor(entState.player, 160);
+		data.guiSelection.sprite = `color:${g_DiplomacyColors.getPlayerColor(entState.player, 160)}`;
 		data.button.sprite_disabled = data.button.sprite;
 
 		// The buttons of the selection window appear disabled as
 		// long as they also appear disabled for the owner of the structure.
 		data.icon.sprite =
-			(canUngarrison || g_IsObserver ? "" : "grayscale:") +
-			"stretched:session/portraits/" + template.icon;
+			`${canUngarrison || g_IsObserver ? "" : "grayscale:"
+			}stretched:session/portraits/${template.icon}`;
 
 		setPanelObjectPosition(data.button, data.i, data.rowLength);
 
@@ -390,7 +390,7 @@ g_SelectionPanels.Gate = {
 		data.button.tooltip = data.item.tooltip;
 		data.button.enabled = controlsPlayer(data.player);
 		data.guiSelection.hidden = data.item.hidden;
-		data.icon.sprite = "stretched:" + data.item.icon;
+		data.icon.sprite = `stretched:${data.item.icon}`;
 
 		setPanelObjectPosition(data.button, data.i + getNumberOfRightPanelButtons(), data.rowLength);
 		return true;
@@ -546,7 +546,7 @@ g_SelectionPanels.Queue = {
 			template = GetTechnologyData(queuedItem.technologyTemplate, GetSimState().players[data.player].civ);
 		else
 		{
-			warning("Unknown production queue template " + uneval(queuedItem));
+			warning(`Unknown production queue template ${uneval(queuedItem)}`);
 			return false;
 		}
 		data.button.onPress = function() { removeFromProductionQueue(data.item.producingEnt, queuedItem.id); };
@@ -567,7 +567,7 @@ g_SelectionPanels.Queue = {
 
 		data.countDisplay.caption = queuedItem.count > 1 ? queuedItem.count : "";
 
-		const progressSlider = Engine.GetGUIObjectByName("unitQueueProgressSlider[" + data.i + "]");
+		const progressSlider = Engine.GetGUIObjectByName(`unitQueueProgressSlider[${data.i}]`);
 		if (data.item.ghost)
 		{
 			data.button.enabled = false;
@@ -594,10 +594,10 @@ g_SelectionPanels.Queue = {
 
 			data.button.enabled = controlsPlayer(data.player);
 
-			Engine.GetGUIObjectByName("unitQueuePausedIcon[" + data.i + "]").hidden = !queuedItem.paused;
+			Engine.GetGUIObjectByName(`unitQueuePausedIcon[${data.i}]`).hidden = !queuedItem.paused;
 			if (queuedItem.paused)
 				// Translation: String displayed when the research is paused. E.g. by being garrisoned or when not the first item in the queue.
-				data.button.tooltip += "\n" + translate("This item is paused.");
+				data.button.tooltip += `\n${translate("This item is paused.")}`;
 		}
 
 		if (template.icon)
@@ -607,7 +607,7 @@ g_SelectionPanels.Queue = {
 				modifier += "color:0 0 0 127:grayscale:";
 			else if (data.item.ghost)
 				modifier += "grayscale:";
-			data.icon.sprite = modifier + "session/portraits/" + template.icon;
+			data.icon.sprite = `${modifier}session/portraits/${template.icon}`;
 		}
 
 
@@ -635,7 +635,7 @@ g_SelectionPanels.Research = {
 			if (!entState?.researcher?.technologies)
 				return ret;
 			if (!entState.production)
-				warn("Researcher without ProductionQueue found: " + entState.id + ".");
+				warn(`Researcher without ProductionQueue found: ${entState.id}.`);
 			return entState.researcher.technologies.map(tech => ({
 				"tech": tech,
 				"techCostMultiplier": entState.researcher.techCostMultiplier,
@@ -654,7 +654,7 @@ g_SelectionPanels.Research = {
 			if (!state.researcher || !state.researcher.technologies)
 				continue;
 			if (!state.production)
-				warn("Researcher without ProductionQueue found: " + state.id + ".");
+				warn(`Researcher without ProductionQueue found: ${state.id}.`);
 
 			// Remove the techs we already have in ret (with the same name and techCostMultiplier)
 			const filteredTechs = state.researcher.technologies.filter(
@@ -682,10 +682,10 @@ g_SelectionPanels.Research = {
 	},
 	"hideItem": function(i, rowLength) // Called when no item is found
 	{
-		Engine.GetGUIObjectByName("unitResearchButton[" + i + "]").hidden = true;
+		Engine.GetGUIObjectByName(`unitResearchButton[${i}]`).hidden = true;
 		// We also remove the paired tech and the pair symbol
-		Engine.GetGUIObjectByName("unitResearchButton[" + (i + rowLength) + "]").hidden = true;
-		Engine.GetGUIObjectByName("unitResearchPair[" + i + "]").hidden = true;
+		Engine.GetGUIObjectByName(`unitResearchButton[${i + rowLength}]`).hidden = true;
+		Engine.GetGUIObjectByName(`unitResearchPair[${i}]`).hidden = true;
 	},
 	"setupButton": function(data)
 	{
@@ -700,10 +700,10 @@ g_SelectionPanels.Research = {
 
 		// Set the top button of the pair
 		if (!data.item.tech.pair)
-			Engine.GetGUIObjectByName("unitResearchButton[" + data.i + "]").hidden = true;
+			Engine.GetGUIObjectByName(`unitResearchButton[${data.i}]`).hidden = true;
 
 		// Set up the tech connector
-		const pair = Engine.GetGUIObjectByName("unitResearchPair[" + data.i + "]");
+		const pair = Engine.GetGUIObjectByName(`unitResearchPair[${data.i}]`);
 		pair.hidden = data.item.tech.pair == null;
 		setPanelObjectPosition(pair, data.i, data.rowLength);
 
@@ -722,7 +722,7 @@ g_SelectionPanels.Research = {
 			{
 				// One of the pair may still be researchable by the current civ,
 				// hence don't hide everything.
-				Engine.GetGUIObjectByName("unitResearchButton[" + data.i + "]").hidden = true;
+				Engine.GetGUIObjectByName(`unitResearchButton[${data.i}]`).hidden = true;
 				pair.hidden = true;
 				continue;
 			}
@@ -740,8 +740,8 @@ g_SelectionPanels.Research = {
 				"player": player
 			});
 
-			const button = Engine.GetGUIObjectByName("unitResearchButton[" + position + "]");
-			const icon = Engine.GetGUIObjectByName("unitResearchIcon[" + position + "]");
+			const button = Engine.GetGUIObjectByName(`unitResearchButton[${position}]`);
+			const icon = Engine.GetGUIObjectByName(`unitResearchIcon[${position}]`);
 
 			const tooltips = [
 				getEntityNamesFormatted,
@@ -787,9 +787,9 @@ g_SelectionPanels.Research = {
 						}));
 					}
 
-					tip += " " + sprintf(translate("Remaining: %(entityCounts)s"), {
+					tip += ` ${sprintf(translate("Remaining: %(entityCounts)s"), {
 						"entityCounts": entityCounts.join(translateWithContext("Separator for a list of entity counts", ", "))
-					});
+					})}`;
 				}
 				tooltips.push(tip);
 			}
@@ -812,7 +812,7 @@ g_SelectionPanels.Research = {
 			if (data.item.tech.pair)
 			{
 				// On mouse enter, show a cross over the other icon
-				const unchosenIcon = Engine.GetGUIObjectByName("unitResearchUnchosenIcon[" + (position + data.rowLength) % (2 * data.rowLength) + "]");
+				const unchosenIcon = Engine.GetGUIObjectByName(`unitResearchUnchosenIcon[${(position + data.rowLength) % (2 * data.rowLength)}]`);
 				button.onMouseEnter = function() {
 					unchosenIcon.hidden = false;
 				};
@@ -831,7 +831,7 @@ g_SelectionPanels.Research = {
 			else if (neededResources)
 			{
 				button.enabled = false;
-				modifier += resourcesToAlphaMask(neededResources) + ":";
+				modifier += `${resourcesToAlphaMask(neededResources)}:`;
 			}
 			else
 				button.enabled = controlsPlayer(data.player);
@@ -840,12 +840,12 @@ g_SelectionPanels.Research = {
 			{
 				button.enabled = false;
 				modifier += "color:0 0 0 127:grayscale:";
-				button.tooltip += "\n" + coloredText(translate("Cannot research while upgrading."), "red");
+				button.tooltip += `\n${coloredText(translate("Cannot research while upgrading."), "red")}`;
 
 			}
 
 			if (template.icon)
-				icon.sprite = modifier + "stretched:session/portraits/" + template.icon;
+				icon.sprite = `${modifier}stretched:session/portraits/${template.icon}`;
 
 			setPanelObjectPosition(button, position + data.rowLength, data.rowLength);
 
@@ -912,16 +912,16 @@ g_SelectionPanels.Selection = {
 		const unitOwner = GetEntityState(data.item.ents[0]).player;
 		let tooltip = getEntityNames(template);
 		if (data.carried)
-			tooltip += "\n" + Object.keys(data.carried).map(res =>
+			tooltip += `\n${Object.keys(data.carried).map(res =>
 				resourceIcon(res) + data.carried[res]
-			).join(" ");
+			).join(" ")}`;
 		if (g_IsObserver)
-			tooltip += "\n" + sprintf(translate("Player: %(playername)s"), {
+			tooltip += `\n${sprintf(translate("Player: %(playername)s"), {
 				"playername": g_Players[unitOwner].name
-			});
+			})}`;
 		data.button.tooltip = tooltip;
 
-		data.guiSelection.sprite = "color:" + g_DiplomacyColors.getPlayerColor(unitOwner, 160);
+		data.guiSelection.sprite = `color:${g_DiplomacyColors.getPlayerColor(unitOwner, 160)}`;
 		data.guiSelection.hidden = !g_IsObserver;
 
 		data.countDisplay.caption = data.item.ents.length || "";
@@ -936,7 +936,7 @@ g_SelectionPanels.Selection = {
 		data.button.onPressRight = function() { removeFromSelectionGroup(data.item.key); };
 
 		if (template.icon)
-			data.icon.sprite = "stretched:session/portraits/" + template.icon;
+			data.icon.sprite = `stretched:session/portraits/${template.icon}`;
 
 		setPanelObjectPosition(data.button, data.i, data.rowLength);
 		return true;
@@ -960,14 +960,14 @@ g_SelectionPanels.Stance = {
 		const unitIds = data.unitEntStates.map(state => state.id);
 		data.button.onPress = function() { performStance(unitIds, data.item); };
 
-		data.button.tooltip = getStanceDisplayName(data.item) + "\n" +
-			"[font=\"sans-13\"]" + getStanceTooltip(data.item) + "[/font]";
+		data.button.tooltip = `${getStanceDisplayName(data.item)}\n` +
+			`[font="sans-13"]${getStanceTooltip(data.item)}[/font]`;
 
 		data.guiSelection.hidden = !Engine.GuiInterfaceCall("IsStanceSelected", {
 			"ents": unitIds,
 			"stance": data.item
 		});
-		data.icon.sprite = "stretched:session/icons/stances/" + data.item + ".png";
+		data.icon.sprite = `stretched:session/icons/stances/${data.item}.png`;
 		data.button.enabled = controlsPlayer(data.player);
 
 		setPanelObjectPosition(data.button, data.i, data.rowLength);
@@ -1021,9 +1021,9 @@ g_SelectionPanels.Training = {
 		data.countDisplay.caption = trainNum > 1 ? trainNum : "";
 
 		let tooltips = [
-			"[font=\"sans-bold-16\"]" +
-				colorizeHotkey("%(hotkey)s", "session.queueunit." + (data.i + 1)) +
-				"[/font]" + " " + getEntityNamesFormatted(template),
+			`[font="sans-bold-16"]${
+				colorizeHotkey("%(hotkey)s", `session.queueunit.${data.i + 1}`)
+			}[/font] ${getEntityNamesFormatted(template)}`,
 			getVisibleEntityClassesFormatted(template),
 			getAurasTooltip(template),
 			getEntityTooltip(template),
@@ -1064,18 +1064,18 @@ g_SelectionPanels.Training = {
 		{
 			data.button.enabled = controlsPlayer(data.player);
 			if (neededResources)
-				modifier = resourcesToAlphaMask(neededResources) + ":";
+				modifier = `${resourcesToAlphaMask(neededResources)}:`;
 		}
 
 		if (data.unitEntStates.every(state => state.upgrade && state.upgrade.isUpgrading))
 		{
 			data.button.enabled = false;
 			modifier = "color:0 0 0 127:grayscale:";
-			data.button.tooltip += "\n" + coloredText(translate("Cannot train while upgrading."), "red");
+			data.button.tooltip += `\n${coloredText(translate("Cannot train while upgrading."), "red")}`;
 		}
 
 		if (template.icon)
-			data.icon.sprite = modifier + "stretched:session/portraits/" + template.icon;
+			data.icon.sprite = `${modifier}stretched:session/portraits/${template.icon}`;
 
 		const index = data.i + getNumberOfRightPanelButtons();
 		setPanelObjectPosition(data.button, index, data.rowLength);
@@ -1104,7 +1104,7 @@ g_SelectionPanels.Upgrade = {
 		if (!template)
 			return false;
 
-		const progressOverlay = Engine.GetGUIObjectByName("unitUpgradeProgressSlider[" + data.i + "]");
+		const progressOverlay = Engine.GetGUIObjectByName(`unitUpgradeProgressSlider[${data.i}]`);
 		progressOverlay.hidden = true;
 
 		let technologyEnabled = true;
@@ -1189,7 +1189,7 @@ g_SelectionPanels.Upgrade = {
 			else if (neededResources)
 			{
 				data.button.enabled = false;
-				modifier = resourcesToAlphaMask(neededResources) + ":";
+				modifier = `${resourcesToAlphaMask(neededResources)}:`;
 			}
 
 			data.countDisplay.caption = upgradableEntStates.length > 1 ? upgradableEntStates.length : "";
@@ -1228,8 +1228,8 @@ g_SelectionPanels.Upgrade = {
 		data.button.onPressRight = showTemplateFunc;
 		data.button.onPressRightDisabled = showTemplateFunc;
 
-		data.icon.sprite = modifier + "stretched:session/" +
-			(data.item.icon || "portraits/" + template.icon);
+		data.icon.sprite = `${modifier}stretched:session/${
+			data.item.icon || `portraits/${template.icon}`}`;
 
 		setPanelObjectPosition(data.button, data.i + getNumberOfRightPanelButtons(), data.rowLength);
 		return true;

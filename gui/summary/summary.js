@@ -183,7 +183,7 @@ function initGUIWindow()
 
 function selectPanelGUI(panel)
 {
-	adjustTabDividers(Engine.GetGUIObjectByName("tabButton[" + panel + "]").size);
+	adjustTabDividers(Engine.GetGUIObjectByName(`tabButton[${panel}]`).size);
 
 	const generalPanel = Engine.GetGUIObjectByName("generalPanel");
 	const chartsPanel = Engine.GetGUIObjectByName("chartsPanel");
@@ -216,14 +216,14 @@ function updateChartColorAndLegend()
 	{
 		const playerState = g_GameData.sim.playerStates[i];
 		playerColors.push(
-			Math.floor(playerState.color.r * 255) + " " +
-			Math.floor(playerState.color.g * 255) + " " +
-			Math.floor(playerState.color.b * 255) + " 255"
+			`${Math.floor(playerState.color.r * 255)} ${
+				Math.floor(playerState.color.g * 255)} ${
+				Math.floor(playerState.color.b * 255)} 255`
 		);
 	}
 
 	for (let i = 0; i < 2; ++i)
-		Engine.GetGUIObjectByName("chart[" + i + "]").series_color =
+		Engine.GetGUIObjectByName(`chart[${i}]`).series_color =
 			Engine.GetGUIObjectByName("toggleTeamBox").checked ?
 				g_Teams.filter(el => el !== null).map(players => playerColors[players[0] - 1]) :
 				playerColors;
@@ -264,7 +264,7 @@ function resizeDropdown(dropdown)
 
 function updateCategoryDropdown(number)
 {
-	const chartCategory = Engine.GetGUIObjectByName("chart[" + number + "]CategorySelection");
+	const chartCategory = Engine.GetGUIObjectByName(`chart[${number}]CategorySelection`);
 	chartCategory.list_data = g_ScorePanelsData.map((panel, idx) => idx);
 	chartCategory.list = g_ScorePanelsData.map(panel => panel.label);
 	chartCategory.onSelectionChange = function() {
@@ -285,7 +285,7 @@ function updateCategoryDropdown(number)
 
 function updateValueDropdown(number, category)
 {
-	const chartValue = Engine.GetGUIObjectByName("chart[" + number + "]ValueSelection");
+	const chartValue = Engine.GetGUIObjectByName(`chart[${number}]ValueSelection`);
 	const list = g_ScorePanelsData[category].headings.map(heading => heading.caption);
 	list.shift();
 	chartValue.list = list;
@@ -312,8 +312,8 @@ function updateTypeDropdown(number, category, item, itemNumber)
 	const testValue = g_ScorePanelsData[category].counters[itemNumber].fn(g_GameData.sim.playerStates[1], 0, item);
 	const hide = !g_ScorePanelsData[category].counters[itemNumber].fn ||
 		typeof testValue != "object" || Object.keys(testValue).length < 2;
-	Engine.GetGUIObjectByName("chart[" + number + "]TypeLabel").hidden = hide;
-	const chartType = Engine.GetGUIObjectByName("chart[" + number + "]TypeSelection");
+	Engine.GetGUIObjectByName(`chart[${number}]TypeLabel`).hidden = hide;
+	const chartType = Engine.GetGUIObjectByName(`chart[${number}]TypeSelection`);
 	chartType.hidden = hide;
 	if (hide)
 	{
@@ -337,9 +337,9 @@ function updateChart(number, category, item, itemNumber, type)
 {
 	if (!g_ScorePanelsData[category].counters[itemNumber].fn)
 		return;
-	const chart = Engine.GetGUIObjectByName("chart[" + number + "]");
+	const chart = Engine.GetGUIObjectByName(`chart[${number}]`);
 	chart.format_y = g_ScorePanelsData[category].headings[itemNumber + 1].format || "INTEGER";
-	Engine.GetGUIObjectByName("chart[" + number + "]XAxisLabel").caption = translate("Time elapsed");
+	Engine.GetGUIObjectByName(`chart[${number}]XAxisLabel`).caption = translate("Time elapsed");
 
 	const series = [];
 	if (Engine.GetGUIObjectByName("toggleTeamBox").checked)
@@ -409,29 +409,29 @@ function updatePanelData(panelInfo)
 			playerBoxesCounts[playerState.team + 1] += 1;
 
 		const positionObject = playerBoxesCounts[playerState.team + 1] - 1;
-		let rowPlayer = "playerBox[" + positionObject + "]";
-		let playerOutcome = "playerOutcome[" + positionObject + "]";
-		let playerNameColumn = "playerName[" + positionObject + "]";
-		let playerCivicBoxColumn = "civIcon[" + positionObject + "]";
-		let playerCounterValue = "valueData[" + positionObject + "]";
+		let rowPlayer = `playerBox[${positionObject}]`;
+		let playerOutcome = `playerOutcome[${positionObject}]`;
+		let playerNameColumn = `playerName[${positionObject}]`;
+		let playerCivicBoxColumn = `civIcon[${positionObject}]`;
+		let playerCounterValue = `valueData[${positionObject}]`;
 
 		if (playerState.team != -1)
 		{
-			rowPlayer = "playerBoxt[" + playerState.team + "][" + positionObject + "]";
-			playerOutcome = "playerOutcomet[" + playerState.team + "][" + positionObject + "]";
-			playerNameColumn = "playerNamet[" + playerState.team + "][" + positionObject + "]";
-			playerCivicBoxColumn = "civIcont[" + playerState.team + "][" + positionObject + "]";
-			playerCounterValue = "valueDataTeam[" + playerState.team + "][" + positionObject + "]";
+			rowPlayer = `playerBoxt[${playerState.team}][${positionObject}]`;
+			playerOutcome = `playerOutcomet[${playerState.team}][${positionObject}]`;
+			playerNameColumn = `playerNamet[${playerState.team}][${positionObject}]`;
+			playerCivicBoxColumn = `civIcont[${playerState.team}][${positionObject}]`;
+			playerCounterValue = `valueDataTeam[${playerState.team}][${positionObject}]`;
 		}
 
-		const colorString = "color: " +
-			Math.floor(playerState.color.r * 255) + " " +
-			Math.floor(playerState.color.g * 255) + " " +
-			Math.floor(playerState.color.b * 255);
+		const colorString = `color: ${
+			Math.floor(playerState.color.r * 255)} ${
+			Math.floor(playerState.color.g * 255)} ${
+			Math.floor(playerState.color.b * 255)}`;
 
 		const rowPlayerObject = Engine.GetGUIObjectByName(rowPlayer);
 		rowPlayerObject.hidden = false;
-		rowPlayerObject.sprite = colorString + " " + g_PlayerBoxAlpha;
+		rowPlayerObject.sprite = `${colorString} ${g_PlayerBoxAlpha}`;
 
 		const boxSize = rowPlayerObject.size;
 		boxSize.right = rowPlayerObjectWidth;
@@ -444,7 +444,7 @@ function updatePanelData(panelInfo)
 		playerNameColumn.tooltip = translateAISettings(g_GameData.sim.mapSettings.PlayerData[i + 1]);
 
 		const civIcon = Engine.GetGUIObjectByName(playerCivicBoxColumn);
-		civIcon.sprite = "stretched:" + g_CivData[playerState.civ].Emblem;
+		civIcon.sprite = `stretched:${g_CivData[playerState.civ].Emblem}`;
 		civIcon.tooltip = g_CivData[playerState.civ].Name;
 
 		updateCountersPlayer(playerState, panelInfo.counters, panelInfo.headings, playerCounterValue, index);

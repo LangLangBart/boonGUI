@@ -10,8 +10,8 @@ PlayerSettingControls.PlayerColor = class PlayerColor extends GameSettingControl
 
 	setControl()
 	{
-		this.dropdown = Engine.GetGUIObjectByName("playerColor[" + this.playerIndex + "]");
-		this.playerBackgroundColor = Engine.GetGUIObjectByName("playerBackgroundColor[" + this.playerIndex + "]");
+		this.dropdown = Engine.GetGUIObjectByName(`playerColor[${this.playerIndex}]`);
+		this.playerBackgroundColor = Engine.GetGUIObjectByName(`playerBackgroundColor[${this.playerIndex}]`);
 		this.playerColorHeading = Engine.GetGUIObjectByName("playerColorHeading");
 	}
 
@@ -25,7 +25,7 @@ PlayerSettingControls.PlayerColor = class PlayerColor extends GameSettingControl
 		this.playerColorHeading.hidden = hidden;
 
 		const value = makeColorsVivid(g_GameSettings.playerColor.get(this.playerIndex));
-		this.playerBackgroundColor.sprite = "color:" + rgbToGuiColor(value, 100);
+		this.playerBackgroundColor.sprite = `color:${rgbToGuiColor(value, 100)}`;
 
 		this.values = g_GameSettings.playerColor.available;
 		this.dropdown.list = this.values.map(color => coloredText(this.ColorIcon, rgbToGuiColor(makeColorsVivid(color))));

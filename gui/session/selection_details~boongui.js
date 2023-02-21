@@ -33,8 +33,8 @@ function displaySingle(entState)
 		const rankObj = GetTechnologyData(entState.identity.rankTechName, playerState.civ);
 		Engine.GetGUIObjectByName("rankIcon").tooltip = sprintf(translate("%(rank)s Rank"), {
 			"rank": translateWithContext("Rank", entState.identity.rank)
-		}) + (rankObj ? "\n" + rankObj.tooltip : "");
-		Engine.GetGUIObjectByName("rankIcon").sprite = "stretched:session/icons/ranks/" + entState.identity.rank + ".png";
+		}) + (rankObj ? `\n${rankObj.tooltip}` : "");
+		Engine.GetGUIObjectByName("rankIcon").sprite = `stretched:session/icons/ranks/${entState.identity.rank}.png`;
 		Engine.GetGUIObjectByName("rankIcon").hidden = false;
 	}
 	else
@@ -53,7 +53,7 @@ function displaySingle(entState)
 		{
 			const effect = entState.statusEffects[effectCode];
 			statusIcons[i].hidden = false;
-			statusIcons[i].sprite = "stretched:session/icons/status_effects/" + g_StatusEffectsMetadata.getIcon(effect.baseCode) + ".png";
+			statusIcons[i].sprite = `stretched:session/icons/status_effects/${g_StatusEffectsMetadata.getIcon(effect.baseCode)}.png`;
 			statusIcons[i].tooltip = getStatusEffectsTooltip(effect.baseCode, effect, false);
 			const size = statusIcons[i].size;
 			size.top = i * 18;
@@ -100,14 +100,14 @@ function displaySingle(entState)
 	{
 		const setCaptureBarPart = function(playerID, startSize)
 		{
-			const unitCaptureBar = Engine.GetGUIObjectByName("captureBar[" + playerID + "]");
+			const unitCaptureBar = Engine.GetGUIObjectByName(`captureBar[${playerID}]`);
 			const sizeObj = unitCaptureBar.size;
 			sizeObj.rleft = startSize;
 
 			const size = 100 * Math.max(0, Math.min(1, entState.capturePoints[playerID] / entState.maxCapturePoints));
 			sizeObj.rright = startSize + size;
 			unitCaptureBar.size = sizeObj;
-			unitCaptureBar.sprite = "color:" + g_DiplomacyColors.getPlayerColor(playerID, 200);
+			unitCaptureBar.sprite = `color:${g_DiplomacyColors.getPlayerColor(playerID, 200)}`;
 			unitCaptureBar.hidden = false;
 			return startSize + size;
 		};
@@ -138,13 +138,13 @@ function displaySingle(entState)
 
 		if (entState.promotion.curr < entState.promotion.req)
 			Engine.GetGUIObjectByName("experience").tooltip = sprintf(translate("%(experience)s %(current)s / %(required)s"), {
-				"experience": "[font=\"sans-bold-13\"]" + translate("Experience:") + "[/font]",
+				"experience": `[font="sans-bold-13"]${translate("Experience:")}[/font]`,
 				"current": Math.floor(entState.promotion.curr),
 				"required": Math.ceil(entState.promotion.req)
 			});
 		else
 			Engine.GetGUIObjectByName("experience").tooltip = sprintf(translate("%(experience)s %(current)s"), {
-				"experience": "[font=\"sans-bold-13\"]" + translate("Experience:") + "[/font]",
+				"experience": `[font="sans-bold-13"]${translate("Experience:")}[/font]`,
 				"current": Math.floor(entState.promotion.curr)
 			});
 	}
@@ -180,14 +180,14 @@ function displaySingle(entState)
 	{
 		// Carrying one resource type at once, so just display the first
 		const carried = entState.resourceCarrying[0];
-		resourceCarryingIcon.sprite = "stretched:session/icons/resources/" + carried.type + ".png";
+		resourceCarryingIcon.sprite = `stretched:session/icons/resources/${carried.type}.png`;
 		resourceCarryingText.caption = sprintf(translate("%(amount)s / %(max)s"), { "amount": carried.amount, "max": carried.max });
 		resourceCarryingIcon.tooltip = "";
 	}
 	// Use the same indicators for traders
 	else if (entState.trader && entState.trader.goods.amount)
 	{
-		resourceCarryingIcon.sprite = "stretched:session/icons/resources/" + entState.trader.goods.type + ".png";
+		resourceCarryingIcon.sprite = `stretched:session/icons/resources/${entState.trader.goods.type}.png`;
 		let totalGain = entState.trader.goods.amount.traderGain;
 		if (entState.trader.goods.amount.market1Gain)
 			totalGain += entState.trader.goods.amount.market1Gain;
@@ -235,7 +235,7 @@ function displaySingle(entState)
 	Engine.GetGUIObjectByName("player").caption = playerName;
 
 	Engine.GetGUIObjectByName("playerColorBackground").sprite =
-		"color:" + g_DiplomacyColors.getPlayerColor(entState.player, 128);
+		`color:${g_DiplomacyColors.getPlayerColor(entState.player, 128)}`;
 
 	const hideSecondary = !secondaryName || primaryName == secondaryName;
 
@@ -253,11 +253,11 @@ function displaySingle(entState)
 	secondaryObject.hidden = hideSecondary;
 
 	const isGaia = playerState.civ == "gaia";
-	Engine.GetGUIObjectByName("playerCivIcon").sprite = isGaia ? "" : "cropped:1.0, 0.15625 center:grayscale:" + civEmblem;
+	Engine.GetGUIObjectByName("playerCivIcon").sprite = isGaia ? "" : `cropped:1.0, 0.15625 center:grayscale:${civEmblem}`;
 	Engine.GetGUIObjectByName("player").tooltip = isGaia ? "" : civName;
 
 	// TODO: we should require all entities to have icons
-	Engine.GetGUIObjectByName("icon").sprite = template.icon ? ("stretched:session/portraits/" + template.icon) : "BackgroundBlack";
+	Engine.GetGUIObjectByName("icon").sprite = template.icon ? (`stretched:session/portraits/${template.icon}`) : "BackgroundBlack";
 	if (template.icon)
 		Engine.GetGUIObjectByName("iconBorder").onPressRight = () => {
 			showTemplateDetails(entState.template, playerState.civ);
@@ -274,7 +274,7 @@ function displaySingle(entState)
 			return;
 		}
 		panelItem.hidden = false;
-		panelIcon.sprite = "stretched:color:0 0 0 20:textureAsMask:" + icon;
+		panelIcon.sprite = `stretched:color:0 0 0 20:textureAsMask:${icon}`;
 		const size = panelItem.size;
 		size.top = 35 * i;
 		size.bottom = 35 * i + 24;
@@ -313,15 +313,15 @@ function displaySingle(entState)
 			// the last sentence containts the important stuff we would like to display
 			const auraSnippet = auraDescriptionCutInSentences.pop();
 			// some of the description contains line breaks, we get rid of it here.
-			text += coloredText("●", "orange") + auraSnippet.replace(/(\r\n|\n|\r)/gm, " ") + "\n";
+			text += `${coloredText("●", "orange") + auraSnippet.replace(/(\r\n|\n|\r)/gm, " ")}\n`;
 
 			const radius = +template.auras[nameOfAuras].radius;
 			if (radius)
-				text += sprintf("%(label)s %(val)s %(unit)s", {
+				text += `${sprintf("%(label)s %(val)s %(unit)s", {
 					"label": "Range:",
 					"val": radius,
 					"unit": unitFont("m")
-				}) + "\n";
+				})}\n`;
 
 		}
 		const font = text.length < 280 ? "sans-13" : "sans-12";

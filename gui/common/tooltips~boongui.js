@@ -66,14 +66,14 @@ function limitNumber(num)
 function showTemplateViewerOnRightClickTooltip()
 {
 	// Translation: Appears in a tooltip to indicate that right-clicking the corresponding GUI element will open the Template Details GUI page.
-	return translate(setStringTags("\\[Right-Click]", g_HotkeyTags) + " " + "to view more information.");
+	return translate(`${setStringTags("\\[Right-Click]", g_HotkeyTags)} to view more information.`);
 }
 
 // boonGUI: Colored Click
 function showTemplateViewerOnClickTooltip()
 {
 	// Translation: Appears in a tooltip to indicate that clicking the corresponding GUI element will open the Template Details GUI page.
-	return translate(setStringTags("\\[Click]", g_HotkeyTags) + " " + "to view more information.");
+	return translate(`${setStringTags("\\[Click]", g_HotkeyTags)} to view more information.`);
 }
 
 function setupStatHUDAttackTooltip(template, projectiles)
@@ -97,28 +97,28 @@ function setupStatHUDAttackTooltip(template, projectiles)
 		let statusEffectsDetails = [];
 		if (attackTypeTemplate.ApplyStatus)
 			for (const status in attackTypeTemplate.ApplyStatus)
-				statusEffectsDetails.push("\n" + g_Indent + g_Indent + getStatusEffectsTooltip(status, attackTypeTemplate.ApplyStatus[status], true));
+				statusEffectsDetails.push(`\n${g_Indent}${g_Indent}${getStatusEffectsTooltip(status, attackTypeTemplate.ApplyStatus[status], true)}`);
 		statusEffectsDetails = statusEffectsDetails.join("");
 
 		tooltips.push(sprintf(translate("%(attackLabel)s: %(effects)s, %(rate)s%(statusEffects)s%(splash)s"), {
 			"attackLabel": attackLabel,
 			"effects": attackEffectsDetails(attackTypeTemplate),
 			"rate": attackRateDetails(attackTypeTemplate.repeatTime, projectiles),
-			"splash": splashTemplate ? "\n" + g_Indent + g_Indent + splashDetails(splashTemplate) : "",
+			"splash": splashTemplate ? `\n${g_Indent}${g_Indent}${splashDetails(splashTemplate)}` : "",
 			"statusEffects": statusEffectsDetails
 		}));
 	}
 
 	return sprintf(translate("%(label)s %(details)s"), {
-		"label": headerFont(translate("Damage per Second\n" + g_Indent)),
-		"details": tooltips.join("\n" + g_Indent)
+		"label": headerFont(translate(`Damage per Second\n${g_Indent}`)),
+		"details": tooltips.join(`\n${g_Indent}`)
 	});
 }
 
 function setupStatHUDHackResistanceTooltip(template)
 {
 	return sprintf(translate("%(label)s %(resistance)s %(explaination)s\n%(info)s"), {
-		"label": headerFont(translate("Hack Resistance Level\n" + g_Indent)),
+		"label": headerFont(translate(`Hack Resistance Level\n${g_Indent}`)),
 		"resistance": resistanceLevelToPercentageString(template.resistance.Damage.Hack),
 		"explaination": unitFont(translate("Resistance against Hack Attacks")),
 		"info": "Hack damage is usually inflicted in close combat by infantry or cavalry units."
@@ -128,7 +128,7 @@ function setupStatHUDHackResistanceTooltip(template)
 function setupStatHUDPierceResistanceTooltip(template)
 {
 	return sprintf(translate("%(label)s %(resistance)s %(explaination)s\n%(info)s"), {
-		"label": headerFont(translate("Pierce Resistance Level\n" + g_Indent)),
+		"label": headerFont(translate(`Pierce Resistance Level\n${g_Indent}`)),
 		"resistance": resistanceLevelToPercentageString(template.resistance.Damage.Pierce),
 		"explaination": unitFont(translate("Resistance against Pierce Attacks")),
 		"info": "Pierce damage is dealt by ranged units e.g. archers, skirmishers or even special siege units such as bolt shooters."
@@ -139,7 +139,7 @@ function setupStatHUDPierceResistanceTooltip(template)
 function setupStatHUDCrushResistanceTooltip(template)
 {
 	return sprintf(translate("%(label)s %(resistance)s %(explaination)s\n%(info)s"), {
-		"label": headerFont(translate("Crush Resistance Level\n" + g_Indent)),
+		"label": headerFont(translate(`Crush Resistance Level\n${g_Indent}`)),
 		"resistance": resistanceLevelToPercentageString(template.resistance.Damage.Crush),
 		"explaination": unitFont(translate("Resistance against Crush Attacks")),
 		"info": "Crush damage is mostly caused by siege units such as catapults or rams."
@@ -157,7 +157,7 @@ function setupStatHUDSpeedTooltip(template)
 	const acceleration = template.speed.acceleration.toFixed(1);
 
 	return sprintf(translate("%(label)s %(speeds)s"), {
-		"label": headerFont(translate("Walk Speed\n" + g_Indent)),
+		"label": headerFont(translate(`Walk Speed\n${g_Indent}`)),
 		"speeds":
 			sprintf(translate("%(speed)s %(movementType)s"), {
 				"speed": walk,

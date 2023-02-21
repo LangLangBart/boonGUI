@@ -149,11 +149,11 @@ class PlayerList
 
 		playerList.forEach((player, i) => {
 			// TODO: COList.cpp columns should support horizontal center align
-			const rating = player.rating ? ("     " + player.rating).substr(-5) : "     -";
+			const rating = player.rating ? (`     ${player.rating}`).substr(-5) : "     -";
 
 			const presence = this.PlayerStatuses[player.presence] ? player.presence : "unknown";
 			if (presence == "unknown")
-				warn("Unknown presence:" + player.presence);
+				warn(`Unknown presence:${player.presence}`);
 
 			const statusTags = this.PlayerStatuses[presence].tags;
 			this.buddyStatusList[i] = player.isBuddy ? setStringTags(g_BuddySymbol, statusTags) : "";

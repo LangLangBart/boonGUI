@@ -7,7 +7,7 @@ class BoonGUIPanelEntity extends PanelEntity
 	constructor(selection, entityID, buttonID, orderKey)
 	{
 		super(selection, entityID, buttonID, orderKey);
-		this.panelEntityBackground = Engine.GetGUIObjectByName("panelEntityBackground[" + buttonID + "]");
+		this.panelEntityBackground = Engine.GetGUIObjectByName(`panelEntityBackground[${buttonID}]`);
 	}
 
 	update(i, reposition)
@@ -21,11 +21,11 @@ class BoonGUIPanelEntity extends PanelEntity
 		this.updateHitpointsBar(entityState);
 		this.updateCapturePointsBar(entityState);
 		this.panelEntityBackground.sprite =
-			"color:" + g_DiplomacyColors.getPlayerColor(entityState.player, 128);
+			`color:${g_DiplomacyColors.getPlayerColor(entityState.player, 128)}`;
 
 		this.panelEntButton.tooltip =
-			this.nameTooltip +
-			this.Tooltips.map(tooltip => tooltip(entityState)).filter(tip => tip).join("\n") + "\n" + getAurasTooltip(template);
+			`${this.nameTooltip +
+			this.Tooltips.map(tooltip => tooltip(entityState)).filter(tip => tip).join("\n")}\n${getAurasTooltip(template)}`;
 	}
 }
 PanelEntity = BoonGUIPanelEntity;

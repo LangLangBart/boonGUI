@@ -3,7 +3,7 @@ ResearchProgressButton.prototype.onResearchedProgress = function(offset, techNam
 	this.researcher = researchStatus.researcher;
 
 	const template = GetTechnologyData(techName, g_Players[g_ViewedPlayer].civ);
-	this.sprite.sprite = "stretched:" + this.PortraitDirectory + template.icon;
+	this.sprite.sprite = `stretched:${this.PortraitDirectory}${template.icon}`;
 
 	let size = this.button.size;
 

@@ -19,7 +19,7 @@ class BoonGUIStats
 		this.updateShortGameInfoLabel();
 
 		this.checkbox = Engine.GetGUIObjectByName("visibilityStatsModesPanel");
-		this.checkbox.tooltip = "Toggle the stats panel on the right side." + coloredText("\nLow performance gain when hidden.", "red");
+		this.checkbox.tooltip = `Toggle the stats panel on the right side.\n${coloredText("Low performance gain when hidden.", "red")}`;
 		this.checkbox.checked = Engine.ConfigDB_GetValue("user", this.configName[2]) == "true";
 
 		playerViewControl.registerPlayerIDChangeHandler(this.updateLayout.bind(this));
@@ -267,7 +267,7 @@ class BoonGUIStats
 
 		let remainingWidth = buttonName.reduce((v, c) => v + (c[0].hidden ? 0 : c[1]), 0);
 
-		topPanel.size = "100%-" + remainingWidth + " -3 100% 34";
+		topPanel.size = `100%-${remainingWidth} -3 100% 34`;
 
 		for (const els of buttonName)
 		{
@@ -303,7 +303,7 @@ class BoonGUIStats
 		Engine.GetGUIObjectByName("objectivesTitle").font = "sans-bold-16";
 		Engine.GetGUIObjectByName("gameDescriptionText").font = "sans-stroke-16";
 		for (let i = 0; i < 18; i++)
-			Engine.GetGUIObjectByName("dev_command_label[" + i + "]").font = "sans-stroke-18";
+			Engine.GetGUIObjectByName(`dev_command_label[${i}]`).font = "sans-stroke-18";
 	}
 
 	updateShortGameInfoLabel()
@@ -314,12 +314,12 @@ class BoonGUIStats
 			"AlphaText": g_ProjectInformation.productDescription.caption.match(/A[a-zA-Z ]+/),
 			"icon_map": '[icon="icon_map" displace="0 6"]',
 			"mapName": this.mapCache.translateMapName(this.mapCache.getTranslatableMapName(g_InitAttributes.mapType, g_InitAttributes.map)),
-			"mapSize": g_InitAttributes.mapType == "random" ? " - " + g_MapSizes.Name[g_MapSizes.Tiles.indexOf(g_InitAttributes.settings.Size)] : "",
-			"biome": g_InitAttributes.settings.Biome ? " - " + g_Settings.Biomes.find(b => b.Id == g_InitAttributes.settings.Biome).Title : "",
+			"mapSize": g_InitAttributes.mapType == "random" ? ` - ${g_MapSizes.Name[g_MapSizes.Tiles.indexOf(g_InitAttributes.settings.Size)]}` : "",
+			"biome": g_InitAttributes.settings.Biome ? ` - ${g_Settings.Biomes.find(b => b.Id == g_InitAttributes.settings.Biome).Title}` : "",
 			"icon_pop": '[icon="icon_pop" displace="2 5"]',
-			"pop": g_InitAttributes.settings.PopulationCap !== undefined ? g_PopulationCapacities.Title[g_PopulationCapacities.Population.indexOf(g_InitAttributes.settings.PopulationCap)] : g_WorldPopulationCapacities.Title[g_WorldPopulationCapacities.Population.indexOf(g_InitAttributes.settings.WorldPopulationCap)] + " (WP)",
-			"rating": g_InitAttributes.settings.RatingEnabled === true ? '  [icon="icon_rating" displace="-3 5"]' + coloredText("Rated", "red") : "",
-			"duration": (Engine.ConfigDB_GetValue("user", "boongui.showduration") == "true" && g_IsReplay) ? '  [icon="icon_duration" displace="1 3"] ' + this.durationReplay() : ""
+			"pop": g_InitAttributes.settings.PopulationCap !== undefined ? g_PopulationCapacities.Title[g_PopulationCapacities.Population.indexOf(g_InitAttributes.settings.PopulationCap)] : `${g_WorldPopulationCapacities.Title[g_WorldPopulationCapacities.Population.indexOf(g_InitAttributes.settings.WorldPopulationCap)]} (WP)`,
+			"rating": g_InitAttributes.settings.RatingEnabled === true ? `  [icon="icon_rating" displace="-3 5"]${coloredText("Rated", "red")}` : "",
+			"duration": (Engine.ConfigDB_GetValue("user", "boongui.showduration") == "true" && g_IsReplay) ? `  [icon="icon_duration" displace="1 3"] ${this.durationReplay()}` : ""
 		});
 		this.shortGameInfoLabel.tooltip = g_ProjectInformation.productDescription.caption;
 	}

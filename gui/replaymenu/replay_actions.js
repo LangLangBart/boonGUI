@@ -75,7 +75,7 @@ function reallyStartVisualReplay(replayDirectory)
 {
 	if (!Engine.StartVisualReplay(replayDirectory))
 	{
-		warn('Replay "' + escapeText(Engine.GetReplayDirectoryName(replayDirectory)) + '" not found! Please click on reload cache.');
+		warn(`Replay "${escapeText(Engine.GetReplayDirectoryName(replayDirectory))}" not found! Please click on reload cache.`);
 		return;
 	}
 
@@ -103,13 +103,13 @@ function displayReplayCompatibilityError(replay)
 	if (replayHasSameEngineVersion(replay))
 	{
 		const gameMods = replay.attribs.mods || [];
-		errMsg = translate("This replay needs a different sequence of mods:") + "\n" +
-			comparedModsString(gameMods, g_EngineInfo.mods);
+		errMsg = `${translate("This replay needs a different sequence of mods:")}\n${
+			comparedModsString(gameMods, g_EngineInfo.mods)}`;
 	}
 	else
 	{
-		errMsg = translate("This replay is not compatible with your version of the game!") + "\n";
-		errMsg += sprintf(translate("Your version: %(version)s"), { "version": g_EngineInfo.engine_version }) + "\n";
+		errMsg = `${translate("This replay is not compatible with your version of the game!")}\n`;
+		errMsg += `${sprintf(translate("Your version: %(version)s"), { "version": g_EngineInfo.engine_version })}\n`;
 		errMsg += sprintf(translate("Required version: %(version)s"), { "version": replay.attribs.engine_version });
 	}
 
@@ -191,8 +191,8 @@ function deleteReplay()
 
 	messageBox(
 		500, 200,
-		translate("Are you sure you want to delete this replay permanently?") + "\n" +
-			escapeText(Engine.GetReplayDirectoryName(replay.directory)),
+		`${translate("Are you sure you want to delete this replay permanently?")}\n${
+			escapeText(Engine.GetReplayDirectoryName(replay.directory))}`,
 		translate("Delete replay"),
 		[translate("No"), translate("Yes")],
 		[null, function() { reallyDeleteReplay(replay.directory); }]
