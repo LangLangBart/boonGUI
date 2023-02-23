@@ -10,8 +10,7 @@ node_modules
 # Avoid map folder
 maps
 
-# Custom type definitions, most from "Autociv"
-# works great in VSCode with autosuggestion
+# Custom type definitions, most are from "Autociv"
 # https://github.com/nanihadesuka/autociv
 **/*.d.ts
 **/tsconfig.json

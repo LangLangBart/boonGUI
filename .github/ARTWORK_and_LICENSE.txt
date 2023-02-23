@@ -1,7 +1,7 @@
 ARTWORK & LICENSE
 
 <!-- ART -->
-	Files in the art folder within this work are based on work and examples by Wildfire Games (http://www.wildfiregames.com/) and, which are released under the Creative Commons Attribution ShareAlike 3.0 license. Details may be found at http://creativecommons.org/licenses/by-sa/3.0/
+	Files in the art folder within this work are based on work and examples by Wildfire Games (https://www.wildfiregames.com/) and, which are released under the Creative Commons Attribution ShareAlike 3.0 license. Details may be found at https://creativecommons.org/licenses/by-sa/3.0/
 	Exceptions are listed below. For ease of review, files without licenses are also listed so I know where I got them from.
 
 	Files:
@@ -52,7 +52,7 @@ ARTWORK & LICENSE
 		audio/interface/ui/switchToLoadingPage.ogg
 	Name: Space SysStart.wav
 	License: none
-	URL1: http://thestablesbb.powweb.com/WAV%20FILES/wav_to_the_horse2.htm
+	URL1: https://thestablesbb.powweb.com/WAV%20FILES/wav_to_the_horse2.htm
 	URL2: https://www.findsounds.com/ISAPI/search.dll?start=1&keywords=alert%20start&seed=49
 
 	File:

@@ -3,7 +3,7 @@
  * Debugging is done by "hand" to ease the pain of JavaScript debugging this class
  * adds some often used logging methods.
  * Inspired by: Consul.js and log4javascript
- * http://www.adequatelygood.com/Consuljs-Simple-Logging-Abstraction.html
+ * https://www.adequatelygood.com/Consuljs-Simple-Logging-Abstraction.html
  * https://www.log4javascript.org/
  */
 class Debug
