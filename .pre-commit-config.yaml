@@ -1,3 +1,7 @@
+---
+# Define the hooks to be executed before each commit.
+# Documentation: https://pre-commit.com/index.html
+
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
@@ -12,6 +16,9 @@ repos:
   - repo: https://github.com/pre-commit/mirrors-eslint
     rev: v8.34.0
     hooks:
+      # https://github.com/pre-commit/pre-commit/issues/945
+      # binding the version numbers specified in ".pre-commit-config.yaml"
+      # to versions in "package.json" isn't supported
       - id: eslint
         additional_dependencies:
           - "@typescript-eslint/parser"

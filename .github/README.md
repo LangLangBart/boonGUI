@@ -14,6 +14,7 @@
 <!-- dev badges -->
 <a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commits-since/LangLangBart/boonGUI/latest/main?style=for-the-badge" height="20"></a>
 <a href="https://github.com/LangLangBart/boonGUI/graphs/contributors"><img src="https://img.shields.io/maintenance/yes/2023?style=for-the-badge" height="20"></a>
+<a href="https://github.com/pre-commit/pre-commit"><img src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?style=for-the-badge&logo=pre-commit" height="20"></a>
 <a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commit-activity/m/LangLangBart/boonGUI?style=for-the-badge" height="20"></a>
 </p>
 
@@ -150,6 +151,10 @@ Installing programs like eslint, typos-cli and vale is not necessary, [pre-commi
 # Optionally, review your changes before committing.
 git add .
 pre-commit run
+# Check all files
+pre-commit run --all-files
+# Update all hooks to the latest version
+pre-commit autoupdate
 ```
 
 <details>
