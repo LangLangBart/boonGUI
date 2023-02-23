@@ -99,30 +99,24 @@ Created with [RepoVisualize](https://github.com/githubocto/repo-visualizer), cli
 
 ### 🐛 Debug
 - Debugging is done by inserting [logging](https://trac.wildfiregames.com/wiki/Logging#Scripts) functions into the suspected problematic code.
-- Some custom logging functions are used so frequently in boonGUI that they have been added to the `global` object.
+- All custom methods are accessible through the `d` (debug) object.
 
 ```js
-// Print a debug message with several arguments.
-debug("test1", g_HotkeyTags) // ["test1", {color:"255 251 131"}]
-// same as above, but the message is only emitted every 2 seconds (useful in a loop)
-debug.slow("test1", g_HotkeyTags) // ["test1", {color:"255 251 131"}]
-
-// Create a stack trace of the JavaScript call stack at the moment that the Error object was created.
-stack()
-
-// similar to typeof, but also covers arrays and null
-trueTypeOf(["😀", "🤢", "💩", "🎃"]) // array
-trueTypeOf(Object.getPrototypeOf(Object.prototype)) // null
-
-// return all properties of the specified object until you get to the "Object.prototype" itself
-listProperty(WeakMap.prototype) // ["constructor", "delete", "get", "has", "set"]
-
-// shorthand for Object.prototype.hasOwnProperty.call(obj, prop)
-hasOwn(cmpTechnologyManager, "typeCountsByClass") // true
-
-// Measures the time taken by a function to execute. Optionally meassure the average time over n count.
-timeTaken(()=>Engine.GetGUIObjectByName("Stats")) // 0.021ms
-timeTaken(()=>Engine.GetGUIObjectByName("Stats"), 3) // 0.00833ms 21,2,2
+d.assert(Object.getPrototypeOf(Object.prototype)) // "ASSERT FAIL: null"
+d.group()     // +++++ groupStart +++++
+d.groupEnd()  // ----- groupEnd -----
+d.log("test1", g_HotkeyTags) // ["test1", {color:"255 251 131"}]
+d.hasOwn(cmpTechnologyManager, "typeCountsByClass") // true
+d.inter([1, 2, 3], [3, 4])   // [3]
+d.listProp(WeakMap.prototype) // ["constructor", "delete", "get", "has", "set"]
+d.slow("test1", g_HotkeyTags) // same as "debug", but interval is every 2s (useful in a loop)
+d.stack() // stack trace
+d.symDiff([1, 2, 3], [3, 4]) // [1, 2, 4]
+d.time("Math time")
+// Math.pow(295, 109)
+d.timeEnd("Math time")  // Math time: 0.048ms
+d.trueTypeOf(["😀", "🤢", "💩", "🎃"]) // array
+d.union([1, 2, 3], [3, 4])   // [1, 2, 3, 4]
 ```
 
 ### 🔱 Git-Hook
