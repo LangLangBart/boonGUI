@@ -122,7 +122,7 @@ d.union([1, 2, 3], [3, 4])   // [1, 2, 3, 4]
 ### 🔱 Git-Hook
 **JavaScript** linting & formatting with [ESLint](https://eslint.org), **Text** validation with [Typos](https://github.com/crate-ci/typos)/[Vale](https://github.com/errata-ai/vale) and **XML** formatting with [Prettier for XML](https://github.com/prettier/plugin-xml) are done automatically with a pre-commit hook (see [Simple Git Hooks](https://github.com/toplenboren/simple-git-hooks) for more details).
 
-1. Install `node.js` and `Vale` for example through Homebrew.
+1. Install `node`, `typos-cli` and `vale` for example through Homebrew.
 
 ```sh
 brew install node typos-cli vale
@@ -134,16 +134,13 @@ brew install node typos-cli vale
 npm install
 ```
 
-The pre-commit hook and the `Vale` packages are set when you run the previous command. If you make changes to the hook or the `Vale` dependencies run the following commands again.
+The pre-commit hook is set when you run the previous command. If you make changes to the hook run the following command.
 
 ```sh
 npx simple-git-hooks
 # Confirmation messages
-# [INFO] Successfully set the pre-commit with command: npx lint-staged
+# [INFO] Successfully set the pre-commit with command: npx lint-staged && if type typos >/dev/null; then typos ; fi && if type vale >/dev/null; then vale sync && vale .; fi
 # [INFO] Successfully set all git hooks
-
-vale sync
-# Downloading packages ...
 ```
 
 
