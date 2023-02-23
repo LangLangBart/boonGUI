@@ -78,7 +78,7 @@ with tempfile.TemporaryDirectory() as tempDir:
 
 
 def setEnvValue(key, value):
-    print(f"Setting env varaible: {key}={value}")
+    print(f"Setting env variable: {key}={value}")
     os.system(f"echo \"{key}={value}\" >> $GITHUB_ENV ")
 
 

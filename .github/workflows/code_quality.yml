@@ -55,7 +55,7 @@ jobs:
 
       # Validate the XML schema with rng files.
       # IMPORTANT: The files are loaded from the master tag and not from the release tag
-      # (hopeing it's backward compatible even if changes are made to it).
+      # (hoping it's backward compatible even if changes are made to it).
       - name: Download rng
         run: |
           PREFIX="https://raw.githubusercontent.com/0ad/0ad/master/binaries/data/mods"

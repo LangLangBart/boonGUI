@@ -163,7 +163,7 @@ Mirroring the linting process from `0 A.D.` by using `ESLint` and an adopted set
 #### Text validation
 - [Typos](https://github.com/crate-ci/typos)
   - Finding and correcting spelling mistakes in the source code.
-  - Rules can be set in a `typos.toml` file.
+  - Rules are set in the [.typos.toml](../.typos.toml) file.
   - Auto-fixing mistakes.
 - [Vale](https://github.com/errata-ai/vale)
   - Grammar, style, and word usage linter for the English language.
@@ -172,7 +172,7 @@ Mirroring the linting process from `0 A.D.` by using `ESLint` and an adopted set
 
 ```sh
 # Typos
-# Autofix obious typos
+# Autofix obvious typos
 typos -w
 
 # Vale

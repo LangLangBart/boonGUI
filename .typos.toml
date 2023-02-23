@@ -1,0 +1,10 @@
+[default.extend-words]
+# Words which shall not be changed.
+ret = "ret"
+
+[files]
+extend-exclude = ["node_modules", "vale_styles", ".git"]
+# Important files are located in ".github", which also need to be checked.
+ignore-hidden = false
+# There are some local ".d.ts" files that should be checked.
+ignore-files = false
