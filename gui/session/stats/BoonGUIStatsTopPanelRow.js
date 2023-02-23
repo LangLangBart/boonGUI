@@ -404,4 +404,3 @@ BoonGUIStatsTopPanelRow.prototype.civInfo = {
 };
 
 BoonGUIStatsTopPanelRow.prototype.idleUnitsTooltip = markForTranslation(`Cycle through idle workers of the viewed player.\n${colorizeHotkey("%(hotkey)s", "selection.idleworker")}`);
-

@@ -127,4 +127,3 @@ const normalizeValue = value =>
 		value >= 1e3 ?
 			(value / 1e3).toFixed(1).replace(/\.0$/, "") + setStringTags("k", { "font": "mono-10" }) :
 			value;
-

@@ -3,6 +3,7 @@ repos:
     rev: v4.4.0
     hooks:
       - id: end-of-file-fixer
+        exclude_types: [svg]
       - id: check-json
       - id: check-xml
       - id: check-yaml
@@ -27,6 +28,7 @@ repos:
           - "@prettier/plugin-xml"
         args: ["--plugin=@prettier/plugin-xml"]
         types: [xml]
+        exclude_types: [svg]
   - repo: https://github.com/crate-ci/typos
     rev: typos-dict-v0.9.17
     hooks:

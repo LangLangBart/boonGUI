@@ -342,4 +342,3 @@ class BoonGUIStats
 BoonGUIStats.prototype.IncomeRateBufferSize = 50;
 BoonGUIStats.prototype.configName = ["boongui.observer.toppanel", "boongui.player.toppanel", "boongui.statsmode"];
 BoonGUIStats.prototype.replayConfigName = ["boongui.replay.matchID", "boongui.replay.duration"];
-

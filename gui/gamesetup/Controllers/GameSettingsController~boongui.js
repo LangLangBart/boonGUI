@@ -6,4 +6,3 @@ GameSettingsController.prototype.switchToLoadingPage = function(attributes)
 	});
 	Engine.PlayUISound("audio/interface/ui/switchToLoadingPage.ogg", false);
 };
-

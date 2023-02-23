@@ -29,4 +29,3 @@ class BoonGUIPanelEntity extends PanelEntity
 	}
 }
 PanelEntity = BoonGUIPanelEntity;
-
