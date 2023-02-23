@@ -33,7 +33,7 @@ class BoonGUIStatsModes
 
 		this.forceRender = forceRender;
 
-		// initate selected tabz1
+		// initiate selected tabz1
 		this.selectMode(0);
 		this.setTopOffset(0);
 		g_OverlayCounterManager.registerResizeHandler(this.setTopOffset.bind(this));

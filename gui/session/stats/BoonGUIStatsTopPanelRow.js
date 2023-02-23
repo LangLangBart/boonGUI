@@ -20,7 +20,7 @@ class BoonGUIStatsTopPanelRow
 		this.rating = Engine.GetGUIObjectByName(`${PREFIX}_rating`);
 
 		this.civHighlight = Engine.GetGUIObjectByName(`${PREFIX}_civHighlight`);
-		this.civHighlight.onPress = () => openStrucTree(g_CivData[this.state.civ].Code);
+		this.civHighlight.onPress = () => openStructTree(g_CivData[this.state.civ].Code);
 		this.civIcon = Engine.GetGUIObjectByName(`${PREFIX}_civIcon`);
 
 		this.phaseHighlight = Engine.GetGUIObjectByName(`${PREFIX}_phaseHighlight`);
@@ -76,8 +76,8 @@ class BoonGUIStatsTopPanelRow
 
 		this.los = Engine.GetGUIObjectByName(`${PREFIX}_los`);
 
-		Engine.SetGlobalHotkey("structree", "Press", openStrucTree);
-		Engine.SetGlobalHotkey("civinfo", "Press", openStrucTree);
+		Engine.SetGlobalHotkey("structree", "Press", openStructTree);
+		Engine.SetGlobalHotkey("civinfo", "Press", openStructTree);
 	}
 
 	update(state, scales)
@@ -235,7 +235,7 @@ class BoonGUIStatsTopPanelRow
 
 		for (const i in g_boonGUI_WorkerTypes)
 		{
-			// experimant with Named capture groups
+			// experiment with Named capture groups
 			// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Backreferences
 			const className = g_boonGUI_WorkerTypes[i].match(/(?<classNameRegex>^\w+)/)?.groups?.classNameRegex;
 			if (!className) continue;

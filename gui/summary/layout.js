@@ -4,7 +4,7 @@
 var g_TabButtonWidth = 180;
 
 /**
- * Adjusting your layout settings is simple, g_PlayerNameWidth moves the TitelHeadings (e.g. "Resoucres", g_multiplierWidths allows you to adjust the width of all columns and g_yStartHeightHead is useful for adjusting the heaadline for multiple columns in "Units, Structures and Resources". g_verticalOffsetAdjustCounters is used for adjusting the position of Counters and
+ * Adjusting your layout settings is simple, g_PlayerNameWidth moves the TitleHeadings (e.g. "Resoucres", g_multiplierWidths allows you to adjust the width of all columns and g_yStartHeightHead is useful for adjusting the heaadline for multiple columns in "Units, Structures and Resources". g_verticalOffsetAdjustCounters is used for adjusting the position of Counters and
  */
 var g_PlayerNameWidth = 232;
 var g_multiplierWidths = 1.83;
@@ -167,7 +167,7 @@ var getScorePanelsData = () => [
 		"headings": [
 			{ "identifier": "playername", "caption": translate("Player name"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": g_PlayerNameWidth },
 			{ "identifier": "tradeIncome", "caption": translate("Trade income"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": 100 * g_multiplierWidths },
-			{ "identifier": "barterEfficency", "caption": translate("Barter efficiency"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": 100 * g_multiplierWidths, "format": "PERCENTAGE" },
+			{ "identifier": "barterEfficiency", "caption": translate("Barter efficiency"), "yStart": 16 + g_verticalOffsetAdjustHeadings, "width": 100 * g_multiplierWidths, "format": "PERCENTAGE" },
 			...g_ResourceData.GetResources().map(res => {
 				return {
 					"identifier": res.code,

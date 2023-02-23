@@ -7,7 +7,7 @@
   <object
     name="notificationText"
     type="text"
-    style="notifiyPanel"
+    style="notifyPanel"
     ghost="true"
     z="0"
   />

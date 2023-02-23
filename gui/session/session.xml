@@ -68,7 +68,7 @@
     <include file="gui/session/tutorial_panel.xml" />
     <include file="gui/session/Menu.xml" />
 
-    <!-- Contains miscellanious objects s.a.: the technology research -->
+    <!-- Contains miscellaneous objects s.a.: the technology research -->
     <!-- progress, group selection icons, and the hero selection icon -->
     <include directory="gui/session/session_objects/" />
 

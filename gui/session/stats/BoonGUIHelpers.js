@@ -50,7 +50,7 @@ function focusCC(move, state)
  *
  * @param {string} civName
  */
-function openStrucTree(civName)
+function openStructTree(civName)
 {
 	closeOpenDialogs();
 	g_PauseControl.implicitPause();
@@ -85,14 +85,14 @@ function storeCivInfoPage(data)
  * @param {string} playerName
  * @param {Object} objectRating
  * @param {number} rating
- * @param {number} smallSafteyMargin
+ * @param {number} smallSafetyMargin
  * @returns abbreviated player name with an elipsses if too long
  */
-function limitPlayerName(objectPlayer, playerName, objectRating, rating, smallSafteyMargin = 8)
+function limitPlayerName(objectPlayer, playerName, objectRating, rating, smallSafetyMargin = 8)
 {
 	const { "right": objectPlayertRight, "left": objectPlayertLeft } = objectPlayer.getComputedSize();
 	let widthBox = objectPlayertRight - objectPlayertLeft;
-	widthBox -= smallSafteyMargin;
+	widthBox -= smallSafetyMargin;
 	if(rating)
 	{
 		const { "right": objectRatingtRight, "left": objectRatingtLeft } = objectRating.getComputedSize();

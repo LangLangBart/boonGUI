@@ -117,20 +117,20 @@ function setupStatHUDAttackTooltip(template, projectiles)
 
 function setupStatHUDHackResistanceTooltip(template)
 {
-	return sprintf(translate("%(label)s %(resistance)s %(explaination)s\n%(info)s"), {
+	return sprintf(translate("%(label)s %(resistance)s %(explanation)s\n%(info)s"), {
 		"label": headerFont(translate(`Hack Resistance Level\n${g_Indent}`)),
 		"resistance": resistanceLevelToPercentageString(template.resistance.Damage.Hack),
-		"explaination": unitFont(translate("Resistance against Hack Attacks")),
+		"explanation": unitFont(translate("Resistance against Hack Attacks")),
 		"info": "Hack damage is usually inflicted in close combat by infantry or cavalry units."
 	});
 }
 
 function setupStatHUDPierceResistanceTooltip(template)
 {
-	return sprintf(translate("%(label)s %(resistance)s %(explaination)s\n%(info)s"), {
+	return sprintf(translate("%(label)s %(resistance)s %(explanation)s\n%(info)s"), {
 		"label": headerFont(translate(`Pierce Resistance Level\n${g_Indent}`)),
 		"resistance": resistanceLevelToPercentageString(template.resistance.Damage.Pierce),
-		"explaination": unitFont(translate("Resistance against Pierce Attacks")),
+		"explanation": unitFont(translate("Resistance against Pierce Attacks")),
 		"info": "Pierce damage is dealt by ranged units e.g. archers, skirmishers or even special siege units such as bolt shooters."
 
 	});
@@ -138,10 +138,10 @@ function setupStatHUDPierceResistanceTooltip(template)
 
 function setupStatHUDCrushResistanceTooltip(template)
 {
-	return sprintf(translate("%(label)s %(resistance)s %(explaination)s\n%(info)s"), {
+	return sprintf(translate("%(label)s %(resistance)s %(explanation)s\n%(info)s"), {
 		"label": headerFont(translate(`Crush Resistance Level\n${g_Indent}`)),
 		"resistance": resistanceLevelToPercentageString(template.resistance.Damage.Crush),
-		"explaination": unitFont(translate("Resistance against Crush Attacks")),
+		"explanation": unitFont(translate("Resistance against Crush Attacks")),
 		"info": "Crush damage is mostly caused by siege units such as catapults or rams."
 
 	});

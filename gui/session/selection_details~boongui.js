@@ -308,9 +308,9 @@ function displaySingle(entState)
 		let text = [];
 		for (const nameOfAuras in template.auras)
 		{
-			// we take the aura description and make an arry of sentences
+			// we take the aura description and make an array of sentences
 			const auraDescriptionCutInSentences = template.auras[nameOfAuras].description.match(/[^\.!\?]+[\.!\?]+/g);
-			// the last sentence containts the important stuff we would like to display
+			// the last sentence contains the important stuff we would like to display
 			const auraSnippet = auraDescriptionCutInSentences.pop();
 			// some of the description contains line breaks, we get rid of it here.
 			text += `${coloredText("●", "orange") + auraSnippet.replace(/(\r\n|\n|\r)/gm, " ")}\n`;

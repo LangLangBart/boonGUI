@@ -120,23 +120,23 @@ d.union([1, 2, 3], [3, 4])   // [1, 2, 3, 4]
 ```
 
 ### 🔱 Git-Hook
-**JavaScript** linting & formatting with [ESLint](https://eslint.org), **Text** validation with [Vale](https://github.com/errata-ai/vale) and **XML** formatting with [Prettier for XML](https://github.com/prettier/plugin-xml) are done automatically with a pre-commit hook (see [Simple Git Hooks](https://github.com/toplenboren/simple-git-hooks) for more details).
+**JavaScript** linting & formatting with [ESLint](https://eslint.org), **Text** validation with [Typos](https://github.com/crate-ci/typos)/[Vale](https://github.com/errata-ai/vale) and **XML** formatting with [Prettier for XML](https://github.com/prettier/plugin-xml) are done automatically with a pre-commit hook (see [Simple Git Hooks](https://github.com/toplenboren/simple-git-hooks) for more details).
 
 1. Install `node.js` and `Vale` for example through Homebrew.
 
-```zsh
-brew install node vale
+```sh
+brew install node typos-cli vale
 ```
 
 2. Install the dependencies from the [package.json](../package.json) file. Done.
 
-```zsh
+```sh
 npm install
 ```
 
 The pre-commit hook and the `Vale` packages are set when you run the previous command. If you make changes to the hook or the `Vale` dependencies run the following commands again.
 
-```zsh
+```sh
 npx simple-git-hooks
 # Confirmation messages
 # [INFO] Successfully set the pre-commit with command: npx lint-staged
@@ -158,18 +158,30 @@ Mirroring the linting process from `0 A.D.` by using `ESLint` and an adopted set
 * An optional installation of the [VSCode ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) runs `ESLint` on each file and display warnings and errors at once.
 * The alternative is to lint and auto fix all your code with the following commands.
 
-```zsh
+```sh
 ./node_modules/.bin/eslint .
 ./node_modules/.bin/eslint . --fix
 ```
 
-#### Texts
-`Vale` is a grammar, style, and word usage linter for the English language. The rules are set in the [.vale.ini](../.vale.ini) file.
+#### Text validation
+- [Typos](https://github.com/crate-ci/typos)
+  - Finding and correcting spelling mistakes in the source code.
+  - Rules can be set in a `typos.toml` file.
+  - Auto-fixing mistakes.
+- [Vale](https://github.com/errata-ai/vale)
+  - Grammar, style, and word usage linter for the English language.
+  - Rules are set in the [.vale.ini](../.vale.ini) file.
+  - No auto-fixing, this must be done manually.
 
-* An optional installation of the [Vale extension](https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server) to display warnings and errors at once.
-* Unlike `ESLint`, `Vale` doesn't have a way to auto fix issues at the moment, this must be done manually. To display all warnings and errors run the following command.
+```sh
+# Typos
+# Autofix obious typos
+typos -w
 
-```zsh
+# Vale
+# Downloading packages ...
+vale sync
+# check the repository
 vale .
 # see even suggestions
 vale --minAlertLevel=suggestion .
@@ -181,7 +193,7 @@ vale --minAlertLevel=suggestion .
 * An optional installation of the [Prettier - Code formatter extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) automatically formats the `XML` file upon saving.
 * The following command formats all `XML` files with `Prettier` and runs a simple [style sheet](../.github/build_scripts/stylesheet.xsl) over them to ensure that the `xsl:output attributes` have the correct case and form.
 
-```zsh
+```sh
 npm run xmlStyle
 ```
 

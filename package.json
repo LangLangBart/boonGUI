@@ -19,7 +19,7 @@
     "xmlStyle": "find . -name '*.xml' -print0 | while IFS= read -r -d '' file; do xsltproc -o $file ./.github/build_scripts/*.xsl $file; done && npm run prettierXML"
   },
   "simple-git-hooks": {
-    "pre-commit": "npx lint-staged && if type vale >/dev/null; then vale sync && vale .; fi"
+    "pre-commit": "npx lint-staged && if type typos >/dev/null; then typos ; fi && if type vale >/dev/null; then vale sync && vale .; fi"
   },
   "lint-staged": {
     "*.js": "eslint --fix",

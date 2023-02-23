@@ -71,7 +71,7 @@
     sprite="stretched:session/item-shading-right.png"
   />
   <style
-    name="notifiyPanel"
+    name="notifyPanel"
     buffer_zone="5"
     font="sans-bold-16"
     textcolor="white"
