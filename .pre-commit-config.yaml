@@ -1,0 +1,44 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: check-json
+      - id: check-xml
+      - id: check-yaml
+      - id: check-added-large-files
+      - id: trailing-whitespace
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: v8.34.0
+    hooks:
+      - id: eslint
+        additional_dependencies:
+          - "@typescript-eslint/parser"
+          - "@typescript-eslint/eslint-plugin"
+          - "eslint-plugin-brace-rules"
+        args: ["--fix"]
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    # this setup breaks with v3, there were some API changes and the plugin needs an update
+    rev: v2.7.1
+    hooks:
+      - id: prettier
+        name: prettierXML
+        additional_dependencies:
+          - "@prettier/plugin-xml"
+        args: ["--plugin=@prettier/plugin-xml"]
+        types: [xml]
+  - repo: https://github.com/crate-ci/typos
+    rev: typos-dict-v0.9.17
+    hooks:
+      - id: typos
+        args: ["--format", "brief", "--write-changes"]
+  - repo: https://github.com/errata-ai/vale
+    rev: v2.23.0
+    hooks:
+      # Setup: https://github.com/errata-ai/vale/issues/560
+      - id: vale
+        name: vale sync
+        pass_filenames: false
+        args: [sync]
+      - id: vale
+        args: [--output=line]

@@ -1,7 +1,9 @@
 /**
- * 0 A.D. does not have a debugger or any advanced developer tools as every modern browser.
- * Debugging is done by "hand" to ease the pain of JavaScript debugging this class
- * adds some often used logging methods.
+ * Unlike modern browsers, 0 A.D. does not have a debugger or
+ * other advanced development tools. Debugging is done by inserting
+ * logging functions into the suspected problematic code.
+ * To simplify JavaScript debugging, this class adds some
+ * commonly used logging methods.
  * Inspired by: Consul.js and log4javascript
  * https://www.adequatelygood.com/Consuljs-Simple-Logging-Abstraction.html
  * https://www.log4javascript.org/

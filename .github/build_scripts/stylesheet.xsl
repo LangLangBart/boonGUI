@@ -1,4 +1,4 @@
-<xsl:stylesheet xmlns:xsl="https://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <!-- Basic style sheet that ensures that xsl:output attributes have proper capitalization
   and form, e.g. utf-8 instead of UTF-8. Formatting is done with prettier.
   at this time not a part of the github action workflow only called from the package.json
