@@ -1,4 +1,10 @@
 ---
+ci:
+  autofix_commit_msg: 'fix: auto fixes pre-commit hooks'
+  autofix_prs: true
+  autoupdate_branch: ci
+  autoupdate_commit_msg: 'ci: pre-commit autoupdate'
+  autoupdate_schedule: weekly
 # Define the hooks to be executed before each commit.
 # Documentation: https://pre-commit.com/index.html
 default_stages: [commit]
