@@ -31,7 +31,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Typos check
         # https://github.com/crate-ci/typos
-        uses: crate-ci/typos@v1.13.10
+        uses: crate-ci/typos@v1.13.12
       - name: Vale Text Linter
         # https://github.com/errata-ai/vale-action
         uses: errata-ai/vale-action@reviewdog
