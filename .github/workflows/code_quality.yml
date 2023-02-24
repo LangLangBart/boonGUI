@@ -113,6 +113,7 @@ jobs:
         # Limit lint action for push or pull_request events within the same repository.
         if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.owner.login == github.repository_owner }}
         with:
+          commit_message: "fix: code style issues"
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # Whether the workflow run should also fail when linter failures are detected.
           eslint: true

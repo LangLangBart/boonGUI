@@ -129,7 +129,8 @@ d.union([1, 2, 3], [3, 4]); // [1, 2, 3, 4]
 
 ### 🔱 Git-Hook
 
-**JavaScript** linting & formatting with [ESLint](https://eslint.org), **Text** validation with [Typos](https://github.com/crate-ci/typos)/[Vale](https://github.com/errata-ai/vale) and **XML** formatting with [Prettier for XML](https://github.com/prettier/plugin-xml) are done automatically with a [pre-commit](https://github.com/pre-commit/pre-commit) hook. Rules are set in the [.pre-commit-config.yaml](../.pre-commit-config.yaml) file.
+**JavaScript** linting & formatting with [ESLint](https://eslint.org), **Text** validation with [Typos](https://github.com/crate-ci/typos)/[Vale](https://github.com/errata-ai/vale), **XML** formatting with [Prettier for XML](https://github.com/prettier/plugin-xml) and verification of commit messages with [Commitizen](https://github.com/commitizen-tools/commitizen) according to the [Conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) standard.
+are done automatically with a [pre-commit](https://github.com/pre-commit/pre-commit) hook. Rules are set in the [.pre-commit-config.yaml](../.pre-commit-config.yaml) file.
 
 1. Install `node` and `pre-commit` for example through Homebrew.
 

@@ -19,7 +19,7 @@ jobs:
         uses: githubocto/repo-visualizer@main
         with:
           output_file: .github/Images/boonGUI_visualization.svg
-          commit_message: "Update repo visualization image"
+          commit_message: "docs: Update repo visualization image"
           excluded_paths: ".github,node_modules"
           excluded_globs: ".*"
           # BUG https://github.com/githubocto/repo-visualizer/issues/51

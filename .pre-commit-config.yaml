@@ -1,7 +1,7 @@
 ---
 # Define the hooks to be executed before each commit.
 # Documentation: https://pre-commit.com/index.html
-
+default_stages: [commit]
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
@@ -13,6 +13,11 @@ repos:
       - id: check-yaml
       - id: check-added-large-files
       - id: trailing-whitespace
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v2.42.0
+    hooks:
+      - id: commitizen
+        stages: [commit-msg]
   - repo: https://github.com/pre-commit/mirrors-eslint
     rev: v8.34.0
     hooks:
@@ -37,7 +42,7 @@ repos:
         types: [xml]
         exclude_types: [svg]
   - repo: https://github.com/crate-ci/typos
-    rev: typos-dict-v0.9.17
+    rev: v1.13.12
     hooks:
       - id: typos
         args: ["--format", "brief", "--write-changes"]
