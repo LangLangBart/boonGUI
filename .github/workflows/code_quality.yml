@@ -1,49 +1,37 @@
 ---
 # Standard workflow for push and PR commits
-
 name: Code Quality
-
 on:
   push:
-    branches:
-      - main
-      - test*
+    branches: [main, test*]
   pull_request_target:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
-
 # permissions:
 #   checks: write
 #   pull-requests: write
 #   …
-
 # "When the permissions key is used, all unspecified permissions are set to no access."
 # Make sure you know all the permissions well, otherwise errors will keep popping up and bothering you.
 # https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token
-
 jobs:
   run-linters:
     name: Code Quality
     runs-on: ubuntu-latest
     if: ${{ github.actor != 'dependabot[bot]' }}
-
     steps:
       - name: Check out repository
         id: Check_Out_Repo_Push
         if: ${{ github.event_name == 'push' }}
         uses: actions/checkout@v3
-
       - name: Check out PR repository
         uses: actions/checkout@v3
         if: ${{ steps.Check_Out_Repo_Push.conclusion == 'skipped' }}
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-
       - name: Typos check
         # https://github.com/crate-ci/typos
         uses: crate-ci/typos@v1.13.10
-
       - name: Vale Text Linter
         # https://github.com/errata-ai/vale-action
         uses: errata-ai/vale-action@reviewdog
@@ -53,9 +41,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-      # Validate the XML schema with rng files.
-      # IMPORTANT: The files are loaded from the master tag and not from the release tag
-      # (hoping it's backward compatible even if changes are made to it).
+        # Validate the XML schema with rng files.
+        # IMPORTANT: The files are loaded from the master tag and not from the release tag
+        # (hoping it's backward compatible even if changes are made to it).
       - name: Download rng
         run: |
           PREFIX="https://raw.githubusercontent.com/0ad/0ad/master/binaries/data/mods"
@@ -97,63 +85,57 @@ jobs:
       - name: XML validating textures
         run: |
           find ./art/textures -name '*.xml' -print0 | while IFS= read -r -d '' file; do xmllint "$file" --relaxng ./texture.rng --noout; done
-
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 14
-
       - name: Install dependencies
         run: npm install --ignore-scripts
-
       - name: ESLint & Prettier (XML)
         id: ESLint_Push_Or_Owner
-        # https://github.com/wearerequired/lint-action
+          # https://github.com/wearerequired/lint-action
         uses: wearerequired/lint-action@v2
-        # Limit lint action for push or pull_request events within the same repository.
+          # Limit lint action for push or pull_request events within the same repository.
         if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.owner.login == github.repository_owner }}
         with:
-          commit_message: "fix: code style issues"
+          commit_message: 'fix: code style issues'
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # Whether the workflow run should also fail when linter failures are detected.
+            # Whether the workflow run should also fail when linter failures are detected.
           eslint: true
-          # ESLint checks should fail even if there are no errors, just warnings.
-          eslint_args: "--max-warnings 0"
-          # https://github.community/t/github-linting-remote-rejected
-          # When auto_fix is enabled for the Lint workflow, no linter is allowed to modify the files in .github/workflows.
-          # To avoid a failed workflow, we limit the linter to js,ts files.
+            # ESLint checks should fail even if there are no errors, just warnings.
+          eslint_args: --max-warnings 0
+            # https://github.community/t/github-linting-remote-rejected
+            # When auto_fix is enabled for the Lint workflow, no linter is allowed to modify the files in .github/workflows.
+            # To avoid a failed workflow, we limit the linter to js,ts files.
           eslint_extensions: js,ts
           prettier: true
           prettier_extensions: xml
           auto_fix: true
           continue_on_error: false
-
       - name: Check ESLint PR contributors
-        # auto_fix must be set to false for forks   https://github.com/wearerequired/lint-action/issues/13
+          # auto_fix must be set to false for forks   https://github.com/wearerequired/lint-action/issues/13
         uses: wearerequired/lint-action@v2
         if: ${{ steps.ESLint_Push_Or_Owner.conclusion == 'skipped' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           eslint: true
           eslint_extensions: js,ts
-          # prettier will do its job when merging
+            # prettier will do its job when merging
           auto_fix: false
           continue_on_error: false
-
       - name: Check TODO issues
-        # https://github.com/alstr/todo-to-issue-action
-        uses: "alstr/todo-to-issue-action@v4.10"
+          # https://github.com/alstr/todo-to-issue-action
+        uses: alstr/todo-to-issue-action@v4.10
         if: ${{ github.event_name == 'push' }}
         with:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
-          # The SHA of the last pushed commit
+            # The SHA of the last pushed commit
           BEFORE: ${{ github.event.before }}
-          # The SHA of the latest commit
+            # The SHA of the latest commit
           SHA: ${{ github.sha }}
-          IGNORE: ".github/vale_styles"
+          IGNORE: .github/vale_styles
           AUTO_ASSIGN: true
-
   approve-merge:
     # https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions#approve-a-pull-request
     name: Dependabot approve&merge
@@ -166,7 +148,7 @@ jobs:
         id: metadata
         uses: dependabot/fetch-metadata@v1.3.6
         with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Auto-approve PR
         id: Dependabot_Approve
         run: gh pr review --approve "$PR_URL"

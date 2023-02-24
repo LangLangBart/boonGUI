@@ -1,14 +1,10 @@
 ---
 # This workflow handles the release of a new version.
-
 name: Publish Release
-
 on:
   push:
-    tags:
-      - "*"
+    tags: ['*']
   workflow_dispatch:
-
 jobs:
   buildRelease:
     name: Build Release
@@ -16,21 +12,17 @@ jobs:
     steps:
       - name: Clone repo
         uses: actions/checkout@v3
-
       - name: Setup Python environment
         uses: actions/setup-python@v4
         with:
           python-version: 3.8.12
-
       - name: Install python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install gitignore_parser
-
       - name: Create pyromod and zip files
         run: |
           python .github/build_scripts/make_pyromod.py
-
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:

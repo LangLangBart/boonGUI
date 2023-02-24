@@ -3,21 +3,22 @@
 # Documentation: https://pre-commit.com/index.html
 default_stages: [commit]
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
-    hooks:
-      - id: end-of-file-fixer
-        exclude_types: [svg]
-      - id: check-json
-      - id: check-xml
-      - id: check-yaml
-      - id: check-added-large-files
-      - id: trailing-whitespace
   - repo: https://github.com/commitizen-tools/commitizen
     rev: v2.42.0
     hooks:
       - id: commitizen
         stages: [commit-msg]
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-docstring-first
+      - id: check-json
+      - id: check-xml
+      - id: check-yaml
+      - id: end-of-file-fixer
+        exclude_types: [svg]
+      - id: trailing-whitespace
   - repo: https://github.com/pre-commit/mirrors-eslint
     rev: v8.34.0
     hooks:
@@ -26,26 +27,24 @@ repos:
       # to versions in "package.json" isn't supported
       - id: eslint
         additional_dependencies:
-          - "@typescript-eslint/parser"
-          - "@typescript-eslint/eslint-plugin"
-          - "eslint-plugin-brace-rules"
-        args: ["--fix"]
+          - '@typescript-eslint/parser'
+          - '@typescript-eslint/eslint-plugin'
+          - eslint-plugin-brace-rules
+        args: [--fix]
   - repo: https://github.com/pre-commit/mirrors-prettier
-    # this setup breaks with v3, there were some API changes and the plugin needs an update
-    rev: v2.7.1
+    rev: v3.0.0-alpha.4
     hooks:
       - id: prettier
-        name: prettierXML
-        additional_dependencies:
-          - "@prettier/plugin-xml"
-        args: ["--plugin=@prettier/plugin-xml"]
+        name: Pretty format XML
+        additional_dependencies: ['@prettier/plugin-xml']
+        args: [--plugin=@prettier/plugin-xml]
         types: [xml]
         exclude_types: [svg]
   - repo: https://github.com/crate-ci/typos
     rev: v1.13.12
     hooks:
       - id: typos
-        args: ["--format", "brief", "--write-changes"]
+        args: [--format, brief, --write-changes]
   - repo: https://github.com/errata-ai/vale
     rev: v2.23.0
     hooks:
@@ -56,3 +55,13 @@ repos:
         args: [sync]
       - id: vale
         args: [--output=line]
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.21.0
+    hooks:
+      - id: check-dependabot
+      - id: check-github-actions
+      - id: check-github-workflows
+  - repo: https://github.com/lyz-code/yamlfix
+    rev: 1.9.0
+    hooks:
+      - id: yamlfix

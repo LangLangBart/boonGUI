@@ -1,13 +1,10 @@
 ---
 # This workflow warns and then closes issues/ pull-requests that have had no activity for a specified amount of time.
-
 name: Stale Issues/ PRs
-
 on:
   schedule:
     # At 06:00 on Monday - https://crontab.guru/
-    - cron: "0 6 * * 1"
-
+    - cron: 0 6 * * 1
 jobs:
   stale:
     # https://github.com/actions/stale
@@ -20,33 +17,33 @@ jobs:
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-          # Reason to use when closing issues.
-          # https://github.blog/changelog/2022-05-19-the-new-github-issues-may-19th-update/
+            # Reason to use when closing issues.
+            # https://github.blog/changelog/2022-05-19-the-new-github-issues-may-19th-update/
           close-issue-reason: not_planned
-          # Settings for Issues
+            # Settings for Issues
           stale-issue-message: |
             [Stale workflow] adding `stale` label
             To keep this Issue open, add a comment within 10 days.
           close-issue-message: |
             [Stale workflow] closing Issue
             There was no recent interaction.
-          stale-issue-label: "stale"
-          # Keep the stale label for closed Issues
+          stale-issue-label: stale
+            # Keep the stale label for closed Issues
           remove-issue-stale-when-updated: false
-          exempt-issue-labels: "bug,should have,todo"
+          exempt-issue-labels: bug,should have,todo
           days-before-issue-stale: 20
           days-before-issue-close: 10
 
-          # Settings for Pull-Requests
+            # Settings for Pull-Requests
           stale-pr-message: |
             [Stale workflow] adding `stale` label
             To keep this PR open, add a comment or push a commit within 10 days.
           close-pr-message: |
             [Stale workflow] closing Pull-Request
             There was no recent interaction.
-          stale-pr-label: "stale"
-          # Keep the stale label for closed Pull-Requests
+          stale-pr-label: stale
+            # Keep the stale label for closed Pull-Requests
           remove-pr-stale-when-updated: false
-          exempt-pr-labels: "should have,todo"
+          exempt-pr-labels: should have,todo
           days-before-pr-stale: 20
           days-before-pr-close: 10

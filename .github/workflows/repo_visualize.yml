@@ -1,26 +1,22 @@
 ---
 # Take a snapshot of the code base
-
 name: Repo visualization
-
 on:
   workflow_dispatch:
-
 jobs:
   repoVisualize:
     runs-on: ubuntu-latest
     steps:
       - name: Clone repo
         uses: actions/checkout@v3
-
       - name: Update repo visualization for new release
         # https://github.com/githubocto/repo-visualizer
         # More details: https://githubnext.com/projects/repo-visualization
         uses: githubocto/repo-visualizer@main
         with:
           output_file: .github/Images/boonGUI_visualization.svg
-          commit_message: "docs: Update repo visualization image"
-          excluded_paths: ".github,node_modules"
-          excluded_globs: ".*"
-          # BUG https://github.com/githubocto/repo-visualizer/issues/51
+          commit_message: 'docs: Update repo visualization image'
+          excluded_paths: .github,node_modules
+          excluded_globs: .*
+            # BUG https://github.com/githubocto/repo-visualizer/issues/51
           file_colors: '{"dae":"#FD8D0E","png":"#55C7FF","props":"#929292","js":"#FECF0F","json":"#8162BE","txt":"#30D33B","xml":"#424242"}'

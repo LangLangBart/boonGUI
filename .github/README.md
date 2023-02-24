@@ -107,7 +107,7 @@ Created with [RepoVisualize](https://github.com/githubocto/repo-visualizer), cli
 ### 🐛 Debug
 
 - Debugging is done by inserting [logging](https://trac.wildfiregames.com/wiki/Logging#Scripts) functions into the suspected problematic code.
-- All custom methods are accessible through the `d` (debug) object.
+- All custom debug methods of boonGUI are accessible through the `d` object.
 
 ```js
 d.assert(Object.getPrototypeOf(Object.prototype)); // "ASSERT FAIL: null"
@@ -129,8 +129,9 @@ d.union([1, 2, 3], [3, 4]); // [1, 2, 3, 4]
 
 ### 🔱 Git-Hook
 
-**JavaScript** linting & formatting with [ESLint](https://eslint.org), **Text** validation with [Typos](https://github.com/crate-ci/typos)/[Vale](https://github.com/errata-ai/vale), **XML** formatting with [Prettier for XML](https://github.com/prettier/plugin-xml) and verification of commit messages with [Commitizen](https://github.com/commitizen-tools/commitizen) according to the [Conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) standard.
-are done automatically with a [pre-commit](https://github.com/pre-commit/pre-commit) hook. Rules are set in the [.pre-commit-config.yaml](../.pre-commit-config.yaml) file.
+Time-consuming tasks like fixing Lint problems or searching for typos are eased by using the [pre-commit](https://github.com/pre-commit/pre-commit) hook and customizing it in the [.pre-commit-config.yaml](../.pre-commit-config.yaml).
+
+> *It is a multi-language package manager for pre-commit hooks. You specify a list of hooks you want and **pre-commit manages the installation and execution** of any hook written in any language before every commit. Source: [pre-commit introduction](https://pre-commit.com/#introduction)*
 
 1. Install `node` and `pre-commit` for example through Homebrew.
 
@@ -144,15 +145,13 @@ brew install node pre-commit
 npm install
 ```
 
-Installing programs like eslint, typos-cli and vale is not necessary, [pre-commit](https://github.com/pre-commit/pre-commit) does everything for you.
-
-> *It is a multi-language package manager for pre-commit hooks. You specify a list of hooks you want and **pre-commit manages the installation and execution** of any hook written in any language before every commit. Source: [pre-commit introduction](https://pre-commit.com/#introduction)*
-
 ```sh
-# Optionally, review your changes before committing.
+# Normal workflow
 git add .
-pre-commit run
-# Check all files
+git commit -m "message"
+# pre-commit is triggered and tests all modified files
+
+#Optionally, check all files
 pre-commit run --all-files
 # Update all hooks to the latest version
 pre-commit autoupdate
