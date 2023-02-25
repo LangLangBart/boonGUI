@@ -134,14 +134,16 @@ Trivial problems in the code are handled with the [pre-commit](https://github.co
 <div align="center">
 
 <p>
-<a href="https://github.com/pre-commit/pre-commit"><img src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&style=for-the-badge" height="20"></a>
-<a href="https://results.pre-commit.ci/latest/github/LangLangBart/boonGUI/main"><img src="https://results.pre-commit.ci/badge/github/LangLangBart/boonGUI/main.svg?style=for-the-badge" height="20"></a>
+<a href="https://github.com/pre-commit/pre-commit"><img src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit" height="20"></a>
+<a href="https://results.pre-commit.ci/latest/github/LangLangBart/boonGUI/main"><img src="https://results.pre-commit.ci/badge/github/LangLangBart/boonGUI/main.svg" height="20"></a>
 </p>
 
-> *It is a multi-language package manager for pre-commit hooks. You specify a list of hooks you want and **pre-commit manages the installation and execution** of any hook written in any language before every commit. Source: [pre-commit introduction](https://pre-commit.com/#introduction)*
+
+> *Pre-commit is a multi-language package manager for pre-commit hooks. You specify a list of hooks you want and **pre-commit manages the installation and execution** of any hook written in any language before every commit. Source: [pre-commit introduction](https://pre-commit.com/#introduction)*
+
+>  *Pre-commit.ci will automatically fix pull requests. Source: [pre-commit.ci](https://pre-commit.ci/#features)*
 
 </div>
-
 
 1. Install `node` and `pre-commit` for example through Homebrew.
 
@@ -227,11 +229,6 @@ npm run xmlStyle
 </p>
 </details>
 <br>
-
-### 💼 Workflow
-
-Also, each commit triggers a GitHub action workflow that does the linting, formatting, and validation for you.
-By default, newly committed TODO comments are converted to GitHub issues when pushed and closed when the TODOs are removed in a future commit (see [TODO to Issue Action](https://github.com/alstr/todo-to-issue-action)).
 
 ---
 

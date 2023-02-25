@@ -1,9 +1,9 @@
 ---
-# Standard workflow for push and PR commits
-name: Code Quality
+# Check for TODOs and merge PRs from Dependabot
+name: Servicing
 on:
   push:
-    branches: [main, test*]
+    branches: [main]
   pull_request_target:
     branches: [main]
   workflow_dispatch:
@@ -15,117 +15,13 @@ on:
 # Make sure you know all the permissions well, otherwise errors will keep popping up and bothering you.
 # https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token
 jobs:
-  run-linters:
-    name: Code Quality
+  to-do:
     runs-on: ubuntu-latest
     if: ${{ github.actor != 'dependabot[bot]' }}
     steps:
-      - name: Check out repository
-        id: Check_Out_Repo_Push
-        if: ${{ github.event_name == 'push' }}
-        uses: actions/checkout@v3
-      - name: Check out PR repository
-        uses: actions/checkout@v3
-        if: ${{ steps.Check_Out_Repo_Push.conclusion == 'skipped' }}
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-      - name: Typos check
-        # https://github.com/crate-ci/typos
-        uses: crate-ci/typos@v1.13.12
-      - name: Vale Text Linter
-        # https://github.com/errata-ai/vale-action
-        uses: errata-ai/vale-action@reviewdog
-        with:
-          reporter: github-check
-          fail_on_error: false
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-        # Validate the XML schema with rng files.
-        # IMPORTANT: The files are loaded from the master tag and not from the release tag
-        # (hoping it's backward compatible even if changes are made to it).
-      - name: Download rng
-        run: |
-          PREFIX="https://raw.githubusercontent.com/0ad/0ad/master/binaries/data/mods"
-          wget "${PREFIX}"/public/art/actors/actor.rng
-          wget "${PREFIX}"/mod/gui/gui.rng
-          wget "${PREFIX}"/mod/gui/gui_page.rng
-          wget "${PREFIX}"/public/art/materials/material.rng
-          wget "${PREFIX}"/public/art/particles/particle.rng
-          wget "${PREFIX}"/mod/audio/sound_group.rng
-          wget "${PREFIX}"/public/simulation/data/territorymanager.rng
-          wget "${PREFIX}"/public/art/textures/texture.rng
-      - name: Install xmllint
-        run: |
-          sudo apt update
-          sudo apt install --no-install-recommends -y libxml2-utils
-      - name: Setup xmllint problem matcher
-        # https://github.com/korelstar/xmllint-problem-matcher
-        # https://github.com/korelstar/xmllint-problem-matcher/issues/5
-        uses: korelstar/xmllint-problem-matcher@master
-      - name: XML validating actors
-        run: |
-          find ./art/actors -name '*.xml' -print0 | while IFS= read -r -d '' file; do xmllint "$file" --relaxng ./actor.rng --noout; done
-      - name: XML validating GUI files
-        run: |
-          find ./gui -name '*.xml' ! -name 'page_*.xml' -print0 | while IFS= read -r -d '' file; do xmllint "$file" --relaxng ./gui.rng --noout; done
-          find ./gui -name 'page_*.xml' -print0 | while IFS= read -r -d '' file; do xmllint "$file" --relaxng ./gui_page.rng --noout; done
-      - name: XML validating materials
-        run: |
-          find ./art/materials -name '*.xml' -print0 | while IFS= read -r -d '' file; do xmllint "$file" --relaxng ./material.rng --noout; done
-      - name: XML validating particles
-        run: |
-          find ./art/particles -name '*.xml' -print0 | while IFS= read -r -d '' file; do xmllint "$file" --relaxng ./particle.rng --noout; done
-      - name: XML validating soundgroups
-        run: |
-          find ./audio -name '*.xml' -print0 | while IFS= read -r -d '' file; do xmllint "$file" --relaxng ./sound_group.rng --noout; done
-      - name: XML validating territorymanager
-        run: |
-          find ./simulation/data -name 'territorymanager.xml' -print0 | while IFS= read -r -d '' file; do xmllint "$file" --relaxng ./territorymanager.rng --noout; done
-      - name: XML validating textures
-        run: |
-          find ./art/textures -name '*.xml' -print0 | while IFS= read -r -d '' file; do xmllint "$file" --relaxng ./texture.rng --noout; done
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14
-      - name: Install dependencies
-        run: npm install --ignore-scripts
-      - name: ESLint & Prettier (XML)
-        id: ESLint_Push_Or_Owner
-          # https://github.com/wearerequired/lint-action
-        uses: wearerequired/lint-action@v2
-          # Limit lint action for push or pull_request events within the same repository.
-        if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.owner.login == github.repository_owner }}
-        with:
-          commit_message: 'fix: code style issues'
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-            # Whether the workflow run should also fail when linter failures are detected.
-          eslint: true
-            # ESLint checks should fail even if there are no errors, just warnings.
-          eslint_args: --max-warnings 0
-            # https://github.community/t/github-linting-remote-rejected
-            # When auto_fix is enabled for the Lint workflow, no linter is allowed to modify the files in .github/workflows.
-            # To avoid a failed workflow, we limit the linter to js,ts files.
-          eslint_extensions: js,ts
-          prettier: true
-          prettier_extensions: xml
-          auto_fix: true
-          continue_on_error: false
-      - name: Check ESLint PR contributors
-          # auto_fix must be set to false for forks   https://github.com/wearerequired/lint-action/issues/13
-        uses: wearerequired/lint-action@v2
-        if: ${{ steps.ESLint_Push_Or_Owner.conclusion == 'skipped' }}
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          eslint: true
-          eslint_extensions: js,ts
-            # prettier will do its job when merging
-          auto_fix: false
-          continue_on_error: false
-      - name: Check TODO issues
+      - uses: actions/checkout@v3
           # https://github.com/alstr/todo-to-issue-action
-        uses: alstr/todo-to-issue-action@v4.10
+      - uses: alstr/todo-to-issue-action@v4.10
         if: ${{ github.event_name == 'push' }}
         with:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -136,13 +32,13 @@ jobs:
           SHA: ${{ github.sha }}
           IGNORE: .github/vale_styles
           AUTO_ASSIGN: true
-  approve-merge:
+  dependabot:
     # https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions#approve-a-pull-request
     name: Dependabot approve&merge
     runs-on: ubuntu-latest
     # Not requiring successful prior job
     if: ${{ always() && github.actor == 'dependabot[bot]' }}
-    needs: [run-linters]
+    needs: [to-do]
     steps:
       - name: Dependabot metadata
         id: metadata
