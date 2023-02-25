@@ -63,7 +63,7 @@ User interface **mod** for the RTS game **0 A.D.**
 - **Lobby:** Quick access buttons below the chat input.
 - **Main menu:** New background image
 - **Replays overview:** Adding a button next to the replay path for quick access to the directory.
-- **Summary:** Increased the size, recommend to use a 1920×1080 display.
+- **Summary:** Increased the szie, recommend to use a 1920×1080 display.
 - **Trade:** Store the trading probabilities for each resource.
 
 ---
