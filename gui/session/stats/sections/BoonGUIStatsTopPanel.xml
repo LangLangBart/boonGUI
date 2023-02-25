@@ -180,7 +180,7 @@
             style="overlayBold"
             size="0 0% 18 100%"
           />
-          <!-- type input, otherwise long names with a space inbetween, will be split on multiple lines -->
+          <!-- type input, otherwise long names with a space in between, will be split on multiple lines -->
           <object
             name="StatsTopPanelRow[n]_player"
             type="input"

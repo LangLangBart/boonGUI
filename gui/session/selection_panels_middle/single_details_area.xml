@@ -178,7 +178,7 @@
       </object>
     </repeat>
 
-    <!-- Resitance: Right-hand side -->
+    <!-- Resistance: Right-hand side -->
     <repeat count="3">
       <object name="RHS[n]" size="50%+10 60 100% 88">
         <object
