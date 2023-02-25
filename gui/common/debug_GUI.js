@@ -70,7 +70,7 @@ class Debug
 	}
 
 	/**
-	 * Object.hasOwn ships in SpiderMonkey 92 ...
+	 * Object.hasOwn ships in SpiderMonkey 92.
 	 * Short form for Object.prototype.hasOwnProperty.call(obj, prop).
 	 * True if the given object has the given property defined directly. Otherwise false
 	 * @param   {Object}  obj

@@ -5,7 +5,7 @@ on:
   push:
     branches: [main]
   pull_request_target:
-  # Dependabot: will be executed only if all filters are fulfilled
+  # Dependabot: will be executed if all filters are fulfilled
     branches: [main]
     types: [labeled]
     paths: ['**.json', '**.yml']

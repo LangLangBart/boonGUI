@@ -152,7 +152,7 @@ Trivial problems in the code are handled with the [pre-commit](https://github.co
 brew install node pre-commit
 ```
 
-2. Install the dependencies from the [package.json](../package.json) file. The pre-commit hooks will be set. Done.
+2. Install the dependencies from the [package.json](../package.json) file. The pre-commit hooks are also set up. Done.
 
 ```sh
 npm install
@@ -182,6 +182,18 @@ pre-commit autoupdate
 <details>
  <summary><b>Detailed code information</b></summary>
 <p>
+
+#### Conventions
+Commit message must conform with the [Conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) standard.
+
+```perl
+- ci       # CI config and automatic tests
+- chore    # Other changes
+- docs     # Documentation only
+- feat     # New feature
+- fix      # Bug fix
+- revert   # Revert commit
+```
 
 #### JavaScript
 
