@@ -11,7 +11,7 @@ class BoonGUIStats
 		this.resourcesBuffer = new Map();
 		this.lastPlayerLength = null;
 		this.shortGameInfoLabel = Engine.GetGUIObjectByName("shortGameInfoLabel");
-		this.resourceCounts = Engine.GetGUIObjectByName("resourceCounts");
+		this.resourceCounts = Engine.GetGUIObjectByName("resourceCounts")
 
 		this.playerViewControl = playerViewControl;
 		this.configValues();
