@@ -13,7 +13,6 @@
   "scripts": {
     "testAssets": "pyrogenesis -mod=mod -mod=public -archivebuild=\"$PWD\" -archivebuild-output=/dev/null -archivebuild-compress",
     "postinstall": "pre-commit install --hook-type commit-msg --hook-type pre-commit",
-    "prettierXML": "prettier --write ./\\*\\*/\\*.xml",
     "xmlStyle": "find . -name '*.xml' -print0 | while IFS= read -r -d '' file; do xsltproc -o $file ./.github/build_scripts/*.xsl $file; done && npm run prettierXML"
   },
   "prettier": {

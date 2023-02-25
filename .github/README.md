@@ -141,9 +141,10 @@ Trivial problems in the code are handled with the [pre-commit](https://github.co
 
 > *Pre-commit is a multi-language package manager for pre-commit hooks. You specify a list of hooks you want and **pre-commit manages the installation and execution** of any hook written in any language before every commit. Source: [pre-commit introduction](https://pre-commit.com/#introduction)*
 
->  *Pre-commit.ci will automatically fix pull requests. Source: [pre-commit.ci](https://pre-commit.ci/#features)*
+>  *Pre-commit.ci enforces that issues are discovered but also fixes the issues in pull requests automatically. Source: [pre-commit.ci](https://pre-commit.ci/#features)*
 
 </div>
+<br>
 
 1. Install `node` and `pre-commit` for example through Homebrew.
 
@@ -151,7 +152,7 @@ Trivial problems in the code are handled with the [pre-commit](https://github.co
 brew install node pre-commit
 ```
 
-2. Install the dependencies from the [package.json](../package.json) file. The pre-commit hook is also set. Done.
+2. Install the dependencies from the [package.json](../package.json) file. The pre-commit hooks will be set. Done.
 
 ```sh
 npm install
@@ -161,11 +162,20 @@ npm install
 # Normal workflow
 git add .
 git commit -m "message"
-# pre-commit is triggered and tests all modified files
+# check repo dirty.........................................................Passed
+# check for added large files..............................................Passed
+# check docstring is first.............................(no files to check)Skipped
+# check json...........................................(no files to check)Skipped
+# ...
 
-#Optionally, check all files
+# Additional commands
+# Installs the hook scripts alongside any existing git hooks.
+pre-commit install
+# Manually run all pre-commit hooks on a repository
 pre-commit run --all-files
-# Update all hooks to the latest version
+# To run individual hooks
+pre-commit run <hook_id>
+# Update the hooks to the latest tag on the default branch.
 pre-commit autoupdate
 ```
 
@@ -184,8 +194,11 @@ Mirroring the linting process from `0 A.D.` by using `ESLint` and an adopted set
 ```sh
 # ESLint
 brew install eslint
-# Auto-fix
 eslint . --fix
+
+# pre-commit
+brew install pre-commit
+pre-commit run --all-files eslint
 ```
 
 #### Text validation
@@ -228,7 +241,6 @@ npm run xmlStyle
 
 </p>
 </details>
-<br>
 
 ---
 
