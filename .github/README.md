@@ -14,7 +14,6 @@
 <!-- dev badges -->
 <a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commits-since/LangLangBart/boonGUI/latest/main?style=for-the-badge" height="20"></a>
 <a href="https://github.com/LangLangBart/boonGUI/graphs/contributors"><img src="https://img.shields.io/maintenance/yes/2023?style=for-the-badge" height="20"></a>
-<a href="https://github.com/pre-commit/pre-commit"><img src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?style=for-the-badge&logo=pre-commit" height="20"></a>
 <a href="https://github.com/LangLangBart/boonGUI/commits/main"><img src="https://img.shields.io/github/commit-activity/m/LangLangBart/boonGUI?style=for-the-badge" height="20"></a>
 </p>
 
@@ -129,9 +128,20 @@ d.union([1, 2, 3], [3, 4]); // [1, 2, 3, 4]
 
 ### 🔱 Git-Hook
 
-Time-consuming tasks like fixing Lint problems or searching for typos are eased by using the [pre-commit](https://github.com/pre-commit/pre-commit) hook and customizing it in the [.pre-commit-config.yaml](../.pre-commit-config.yaml).
+Trivial problems in the code are handled with the [pre-commit](https://github.com/pre-commit/pre-commit) hook, customizations are set in the [.pre-commit-config.yaml](../.pre-commit-config.yaml).
+
+
+<div align="center">
+
+<p>
+<a href="https://github.com/pre-commit/pre-commit"><img src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&style=for-the-badge" height="20"></a>
+<a href="https://results.pre-commit.ci/latest/github/LangLangBart/boonGUI/main"><img src="https://results.pre-commit.ci/badge/github/LangLangBart/boonGUI/main.svg?style=for-the-badge" height="20"></a>
+</p>
 
 > *It is a multi-language package manager for pre-commit hooks. You specify a list of hooks you want and **pre-commit manages the installation and execution** of any hook written in any language before every commit. Source: [pre-commit introduction](https://pre-commit.com/#introduction)*
+
+</div>
+
 
 1. Install `node` and `pre-commit` for example through Homebrew.
 
