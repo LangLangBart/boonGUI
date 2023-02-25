@@ -1,0 +1,36 @@
+---
+name: Pre-Commit CI
+on:
+  push:
+    branches: [pre-commit-ci, test*]
+  pull_request_target:
+    branches: [pre-commit-ci]
+  workflow_dispatch:
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+    # https://github.com/actions/checkout#usage
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install dependencies
+        run: npm install --global eslint prettier
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+      # Check files with changes.
+      - uses: pre-commit/action@v3.0.0
+        with:
+          extra_args: --from-ref origin/${{github.base_ref}} --to-ref HEAD
+      # Commit all changed files back to the repository
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          # Fix code style issues automatically in the same commit instead of adding a new one.
+          commit_options: --amend --no-edit
+          push_options: --force"
