@@ -155,6 +155,7 @@ brew install node pre-commit
 2. Install the dependencies from the [package.json](../package.json) file. The pre-commit hooks are also set up. Done.
 
 ```sh
+# Choose your favorite package manager: npm, pnpm or yarn
 npm install
 ```
 
