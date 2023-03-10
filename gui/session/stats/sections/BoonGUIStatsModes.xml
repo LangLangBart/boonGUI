@@ -33,7 +33,7 @@
     sprite="BackgroundSessionTooltip"
     font="sans-stroke-16"
     textcolor="white"
-    size="100%-350 -120 100%-190 26"
+    size="100%-400 -120 100%-190 26"
     hidden="true"
     ghost="true"
     z="150"

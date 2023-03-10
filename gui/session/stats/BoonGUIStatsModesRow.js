@@ -23,19 +23,17 @@ class BoonGUIStatsModesRow
 		const Emblem = civ.Emblem.replace(BoonGUIStatsTopPanelRow.Regex_Emblem, "$1");
 
 		tooltip = "";
-		const font = state.nick.length >= 17 ? "sans-stroke-16" : "sans-stroke-18";
-		tooltip += setStringTags(`${state.nick}\n`, { "color": state.playerColor, font });
+		let font = state.nick.length >= 17 ? "sans-stroke-16" : "sans-stroke-18";
+		tooltip += setStringTags(`${state.nick}\n`, { "color": state.brightenedPlayerColor, font });
 		if (state.team != -1)
-		{
-			tooltip += setStringTags(`Team ${state.team + 1}\n`, { "color": state.teamColor });
-		}
+			tooltip += setStringTags(`Team ${state.team + 1}\n`, { "color": state.brightenedTeamColor });
 		tooltip += `[icon="${Emblem}" displace="2 5"] \n`;
 		tooltip += `${civ.Name}`;
 		const caption = Engine.IsAtlasRunning() ? "" : `${translateAISettings(g_InitAttributes.settings.PlayerData[state.index])}`;
+		font = "sans-stroke-14";
 		if (caption)
-		{
-			tooltip += setStringTags(`\n${caption}`, { "color": "210 210 210", "font": "sans-stroke-14" });
-		}
+			tooltip += setStringTags(`\n${caption}`, { "color": "210 210 210", font });
+		tooltip += setStringTags(`\n${BoonGUIStatsTopPanelRow.prototype.jumpCivicCenterTooltip}`, { font });
 		return tooltip;
 	}
 

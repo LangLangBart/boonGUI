@@ -201,8 +201,10 @@ class BoonGUIStats
 		Engine.ProfileStart("BoonGUIStats:update:Calculations");
 		for (const state of playersStates)
 		{
-			state.teamColor = this.teamColor(state);
 			state.playerColor = this.playerColor(state);
+			state.teamColor = this.teamColor(state);
+			state.brightenedPlayerColor = brightenedColor(state.playerColor);
+			state.brightenedTeamColor = brightenedColor(state.teamColor);
 
 			this.calculateResourceRates(state);
 		}

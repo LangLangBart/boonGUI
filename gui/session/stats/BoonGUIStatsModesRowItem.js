@@ -81,12 +81,12 @@ class BoonGUIStatsModesRowItem {
 		this.count.caption = item.count > 1 ? item.count : "";
 		this.icon.sprite = `stretched:session/portraits/${template.icon}`;
 
-		this.root.tooltip = setStringTags(`${state.nick}\n`, { "color": state.playerColor, "font": "sans-stroke-18" });
+		this.root.tooltip = setStringTags(`${state.nick}\n`, { "color": state.brightenedPlayerColor, "font": "sans-stroke-18" });
 		this.root.tooltip += [
 			getEntityNamesFormatted(template),
 			getVisibleEntityClassesFormatted(template),
 			getEntityTooltip(template),
-			showTemplateViewerOnRightClickTooltip()
+			setStringTags(showTemplateViewerOnRightClickTooltip(), { "font": "sans-stroke-14" })
 		].filter(tip => tip).join("\n");
 	}
 }

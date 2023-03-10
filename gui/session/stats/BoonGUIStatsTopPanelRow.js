@@ -96,16 +96,17 @@ class BoonGUIStatsTopPanelRow
 		this.coloredPlayerInfoBackground.size = state.team != -1 ? "18 0 235 100%" : "0 0 235 100%";
 		this.team.caption = state.team != -1 ? `${state.team + 1}` : "";
 
-		const playerNick = setStringTags(state.nick, { "color": state.playerColor });
+
+		const playerNick = setStringTags(state.nick, { "color": state.brightenedPlayerColor });
 		caption = limitPlayerName(this.player, state.nick, this.rating, state.rating);
 		this.player.caption = caption;
-		this.playerHighlight.tooltip = setStringTags(state.name, { "color": state.playerColor });
-		this.playerHighlight.tooltip += state.team != -1 ? setStringTags(`\nTeam ${this.team.caption}`, { "color": state.teamColor }) : "";
+		this.playerHighlight.tooltip = setStringTags(state.name, { "color": state.brightenedPlayerColor });
+		this.playerHighlight.tooltip += state.team != -1 ? setStringTags(`\nTeam ${this.team.caption}`, { "color": state.brightenedTeamColor }) : "";
 		caption = Engine.IsAtlasRunning() ? "" : `${translateAISettings(g_InitAttributes.settings.PlayerData[state.index])}`;
 		font = "sans-stroke-14";
 		if (caption)
 			this.playerHighlight.tooltip += setStringTags(`\n${caption}`, { "color": "210 210 210", font });
-
+		this.playerHighlight.tooltip += setStringTags(`\n${this.jumpCivicCenterTooltip}`, { font });
 		this.team.tooltip = this.playerHighlight.tooltip;
 		this.rating.tooltip = this.playerHighlight.tooltip;
 		this.rating.caption = state.rating;
@@ -162,6 +163,7 @@ class BoonGUIStatsTopPanelRow
 		tooltip += progress ? g_Indent + Engine.FormatMillisecondsIntoDateStringGMT((phase_town || phase_city).timeRemaining, "m:ss") + g_Indent : "";
 		tooltip += techData.name.generic;
 		this.phaseHighlight.tooltip = tooltip;
+		this.phaseHighlight.tooltip += setStringTags(`\n${this.jumpCivicCenterTooltip}`, { font });
 
 		this.phaseIcon.sprite = `stretched:session/portraits/${techData.icon}`;
 		if (progress == null)
@@ -279,14 +281,14 @@ class BoonGUIStatsTopPanelRow
 			color = scales.getColor(`${resType}Gatherers`, value, false, 180);
 			caption = isNaN(value) || value <= 0 ? setStringTags("0", { "color": "dimmedWhite" }) : value;
 			// For single lines, the gathering rates are displayed in the player color.
-			colorSingleRow = setStringTags(caption, (g_stats.lastPlayerLength > 1) ? { color } : { "color": state.playerColor });
+			colorSingleRow = setStringTags(caption, (g_stats.lastPlayerLength > 1) ? { color } : { "color": state.brightenedPlayerColor });
 			this.resource.gatherers[resType].caption = configResourceGatherersRates === "Gatherers" ? colorSingleRow : "";
 			tooltip += `${setStringTags("Gatherers", { "color": value > 0 ? "white" : "dimmedWhite" })}${g_Indent}${g_Indent}${colorSingleRow}\n`;
 
 			value = state.resourceRates[resType];
 			color = scales.getColor(`${resType}Rates`, value, false, 180);
 			caption = isNaN(value) || value <= 0 ? setStringTags("+0", { "color": "dimmedWhite" }) : `+${normalizeValue(value)}`;
-			colorSingleRow = setStringTags(caption, (g_stats.lastPlayerLength > 1) ? { color } : { "color": state.playerColor });
+			colorSingleRow = setStringTags(caption, (g_stats.lastPlayerLength > 1) ? { color } : { "color": state.brightenedPlayerColor });
 			this.resource.rates[resType].caption = configResourceGatherersRates === "Rates" ? colorSingleRow : "";
 			tooltip += `${setStringTags("Income/10s", { "color": value > 0 ? "white" : "dimmedWhite" })}${g_Indent}${colorSingleRow}\n`;
 
@@ -386,7 +388,7 @@ class BoonGUIStatsTopPanelRow
 
 		const los = state.hasSharedLos || state.numberAllies == 1 ? "●" : "○";
 		this.los.caption = setStringTags(los, { "color": state.playerColor });
-		color = state.playerColor;
+		color = state.brightenedPlayerColor;
 		tooltip = "";
 		tooltip += `${playerNick}\n`;
 		font = "sans-stroke-20";
@@ -396,11 +398,14 @@ class BoonGUIStatsTopPanelRow
 	}
 }
 
-BoonGUIStatsTopPanelRow.prototype.civIconHotkeyTooltip = `\nView Civilization Overview / Structure Tree\n${colorizeHotkey("%(hotkey)s", "civinfo")}${colorizeHotkey("%(hotkey)s", "structree")}`;
+BoonGUIStatsTopPanelRow.prototype.jumpCivicCenterTooltip = `${setStringTags("\\[Click]", g_HotkeyTags)} jump to Civic Center.`;
+
+BoonGUIStatsTopPanelRow.prototype.civIconHotkeyTooltip = `\n${colorizeHotkey("%(hotkey)s", "civinfo")}${colorizeHotkey("%(hotkey)s", "structree")}\nView Civilization Overview / Structure Tree`;
+
 
 BoonGUIStatsTopPanelRow.prototype.civInfo = {
 	"civ": "",
 	"page": "page_structree.xml"
 };
 
-BoonGUIStatsTopPanelRow.prototype.idleUnitsTooltip = markForTranslation(`Cycle through idle workers of the viewed player.\n${colorizeHotkey("%(hotkey)s", "selection.idleworker")}`);
+BoonGUIStatsTopPanelRow.prototype.idleUnitsTooltip = markForTranslation(`${colorizeHotkey("%(hotkey)s", "selection.idleworker")}\nCycle through idle workers of the viewed player.`);

@@ -22,9 +22,8 @@
       style="overlayHeader"
       text_align="left"
       size="20 0 237 100%"
-      tooltip="Playername (Rating)\nTeam">
-      Player
-    </object>
+      tooltip="Playername (Rating)\nTeam"
+    />
 
     <object
       type="text"

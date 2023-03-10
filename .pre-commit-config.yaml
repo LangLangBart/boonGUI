@@ -67,10 +67,11 @@ repos:
     rev: v2.23.0
     hooks:
       # Setup: https://github.com/errata-ai/vale/issues/560
-      - id: vale
-        name: vale sync
-        pass_filenames: false
-        args: [sync]
+      # Vale synchronization is disabled for now because it takes too much time for too little benefit.
+      # - id: vale
+      #   name: vale sync
+      #   pass_filenames: false
+      #   args: [sync]
       - id: vale
         args: [--output=line, .]
   - repo: https://github.com/python-jsonschema/check-jsonschema
@@ -78,8 +79,6 @@ repos:
     hooks:
       - id: check-dependabot
         name: validate dependabot
-      - id: check-github-actions
-        name: validate github actions
       - id: check-github-workflows
         name: validate github workflows
   - repo: https://github.com/lyz-code/yamlfix
