@@ -168,16 +168,6 @@ git commit -m "message"
 # check docstring is first.............................(no files to check)Skipped
 # check json...........................................(no files to check)Skipped
 # ...
-
-# Additional commands
-# Installs the hook scripts alongside any existing git hooks.
-pre-commit install
-# Manually run all pre-commit hooks on a repository
-pre-commit run --all-files
-# To run individual hooks
-pre-commit run <hook_id>
-# Update the hooks to the latest tag on the default branch.
-pre-commit autoupdate
 ```
 
 <details>
@@ -212,6 +202,19 @@ eslint . --fix
 # pre-commit
 brew install pre-commit
 pre-commit run --all-files eslint
+```
+
+#### Pre-commit
+- Some additional commands
+```sh
+# Installs the hook scripts alongside any existing git hooks.
+pre-commit install
+# Manually run all pre-commit hooks on a repository
+pre-commit run --all-files
+# To run individual hooks
+pre-commit run <hook_id>
+# Update the hooks to the latest tag on the default branch.
+pre-commit autoupdate
 ```
 
 #### Text validation
