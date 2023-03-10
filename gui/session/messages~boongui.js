@@ -11,31 +11,16 @@ function colorizePlayernameHelper(username, playerID)
 }
 
 /**
- * Modified function: http://github.com/badosu/prodmod
+ * See gui/lobby/LobbyPage/PlayerColor.GetPlayerColor function for explanation
  * Some colors must become brighter so that they are readable on dark backgrounds.
- * @param   {string}  color  string of rgb color, e.g. "21 55 200" (dark-blue "Persian Blue")
- * @return  {string}         striing of rgb colors a brighter, e.g. "100 129 255" (blue/turquise "Blueberry")
+ * @param   {string}  color  string of rgb color, e.g. "10 10 190" ("Dark Blue")
+ * @return  {string}         string of brighter rgb colors, e.g. "61 61 245" ("Blue")
  */
 function brightenedColor(color)
 {
-	const threshold = 255.999;
-	let rgb = color.split(" ").map(x => +x);
-	let m = Math.max(...rgb);
-	const amount = m < 150 ? 100 : (m < 170 || rgb[2] >= 200) ? 60 : 0;
-	if (amount)
-		rgb = rgb.map(x => x + amount);
-	m = Math.max(...rgb);
-	if (m > threshold)
-	{
-		const total = rgb.reduce((acc, val) => acc + val, 0);
-		const x = (3 * threshold - total) / (3 * m - total);
-		if (total >= 3 * threshold)
-			rgb.fill(threshold);
-		else
-			for (const i in rgb)
-				rgb[i] = threshold - x * m + x * rgb[i];
-	}
-	return rgb.map(element => Math.floor(element)).join(" ");
+	const [r, g, b] = color.split(" ").map(x => +x);
+	const [h, s, l] = rgbToHsl(r, g, b);
+	return hslToRgb(h, s, Math.max(0.65, l)).join(" ");
 }
 
 function updateTutorial(notification)
