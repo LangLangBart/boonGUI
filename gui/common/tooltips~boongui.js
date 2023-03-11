@@ -1,7 +1,7 @@
 // keep this in sync with Player~boongui.js
 // used in Gamesetup to have the same colors as in the game
 var g_vividColorsGamesetup = {
-	"vividBlue": { "r": 0, "g": 0, "b": 255 },
+	"vividBlue": { "r": 10, "g": 10, "b": 190 },
 	"vividRed": { "r": 255, "g": 0, "b": 0 },
 	"vividGreen": { "r": 0, "g": 255, "b": 0 },
 	"vividYellow": { "r": 255, "g": 255, "b": 0 },

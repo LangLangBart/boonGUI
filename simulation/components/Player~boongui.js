@@ -5,7 +5,7 @@ Player.prototype.GetColor = function()
 	// Stick to even numbers after the decimal point, you cannot use an odd number, you would have to write it as a fraction, e.g. (179/255).
 	// changes -Player1- blue to vivid blue
 	if (this.color.r < 0.08236 && this.color.g < 0.21569 && this.color.b > 0.58430)
-		return { "r": 0, "g": 0, "b": 1, "a": 1 };
+		return { "r": (10 / 255), "g": (10 / 255), "b": (190 / 255), "a": 1 };
 	// changes -Player2- red to vivid red
 	if (this.color.r > 0.58823 && this.color.g < 0.07844 && this.color.b < 0.07844)
 		return { "r": 1, "g": 0, "b": 0, "a": 1 };
@@ -36,7 +36,7 @@ Player.prototype.GetDisplayedColor = function()
 	if (this.displayDiplomacyColor)
 		return this.diplomacyColor;
 	else if (this.color.r < 0.08236 && this.color.g < 0.21569 && this.color.b > 0.58430)
-		return { "r": 0, "g": 0, "b": 1, "a": 1 };
+		return { "r": (10 / 255), "g": (10 / 255), "b": (190 / 255), "a": 1 };
 	// changes -Player2- red to vivid red
 	else if (this.color.r > 0.58823 && this.color.g < 0.07844 && this.color.b < 0.07844)
 		return { "r": 1, "g": 0, "b": 0, "a": 1 };

@@ -107,12 +107,12 @@ ChatMessageFormatSimulation.phase = class
 		if (notifyPhase == "all")
 		{
 			if (msg.phaseState == "started")
-				message = coloredText(translate("%(time)s %(player)s started %(phaseName)s"), rgbToGuiColor(g_DiplomacyColors.displayedPlayerColors[msg.player]));
+				message = coloredText(translate("%(time)s %(player)s started %(phaseName)s"), brightenedColor(rgbToGuiColor(g_DiplomacyColors.displayedPlayerColors[msg.player])));
 			else if (msg.phaseState == "aborted")
 				message = translate("%(player)s aborted %(phaseName)s");
 		}
 		if (msg.phaseState == "completed")
-			message = coloredText(translate("%(time)s %(player)s reached %(phaseName)s"), rgbToGuiColor(g_DiplomacyColors.displayedPlayerColors[msg.player]));
+			message = coloredText(translate("%(time)s %(player)s reached %(phaseName)s"), brightenedColor(rgbToGuiColor(g_DiplomacyColors.displayedPlayerColors[msg.player])));
 
 		return {
 			"text": sprintf(message, {
