@@ -90,6 +90,10 @@ function storeCivInfoPage(data)
  */
 function limitPlayerName(objectPlayer, playerName, objectRating, rating, smallSafetyMargin = 8)
 {
+	// check if a cached version is already available
+	if(BoonGUIStatsTopPanelRow.prototype.abbreviatedPlayerNames[playerName])
+		return BoonGUIStatsTopPanelRow.prototype.abbreviatedPlayerNames[playerName];
+
 	const { "right": objectPlayertRight, "left": objectPlayertLeft } = objectPlayer.getComputedSize();
 	let widthBox = objectPlayertRight - objectPlayertLeft;
 	widthBox -= smallSafetyMargin;
@@ -106,7 +110,10 @@ function limitPlayerName(objectPlayer, playerName, objectRating, rating, smallSa
 		abbreviatedName = `${playerName.slice(0, -i)}…`;
 		playerNameLength = Engine.GetTextWidth(objectPlayer.font, abbreviatedName);
 	}
-	return abbreviatedName;
+
+	BoonGUIStatsTopPanelRow.prototype.abbreviatedPlayerNames[playerName] = abbreviatedName;
+	return BoonGUIStatsTopPanelRow.prototype.abbreviatedPlayerNames[playerName];
+
 }
 
 const normalizeResourceCount = value =>

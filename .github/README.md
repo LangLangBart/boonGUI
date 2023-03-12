@@ -60,10 +60,9 @@ User interface **mod** for the RTS game **0 A.D.**
 
 - **Camera:** Change the camera settings in the options.
 - **Lobby:** Quick access buttons below the chat input.
-- **Main menu:** New background image
 - **Replays overview:** Adding a button next to the replay path for quick access to the directory.
 - **Summary:** Increased the size, recommend to use a 1920×1080 display.
-- **Trade:** Store the trading probabilities for each resource.
+- **Trade:** The trading probabilities for all resources are saved.
 
 ---
 
@@ -205,14 +204,14 @@ pre-commit run --all-files eslint
 ```
 
 #### Pre-commit
-- Some additional commands
+- Some additional commands that are good to know, though also not often used.
 ```sh
 # Installs the hook scripts alongside any existing git hooks.
-pre-commit install
+pre-commit install --hook-type commit-msg --hook-type pre-push
 # Manually run all pre-commit hooks on a repository
 pre-commit run --all-files
 # To run individual hooks
-pre-commit run <hook_id>
+pre-commit run < hook_id >
 # Update the hooks to the latest tag on the default branch.
 pre-commit autoupdate
 ```

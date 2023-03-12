@@ -407,5 +407,6 @@ BoonGUIStatsTopPanelRow.prototype.civInfo = {
 	"civ": "",
 	"page": "page_structree.xml"
 };
-
 BoonGUIStatsTopPanelRow.prototype.idleUnitsTooltip = markForTranslation(`${colorizeHotkey("%(hotkey)s", "selection.idleworker")}\nCycle through idle workers of the viewed player.`);
+// hold the abbreviated player names, so they don't have to be computed on every update
+BoonGUIStatsTopPanelRow.prototype.abbreviatedPlayerNames = {};

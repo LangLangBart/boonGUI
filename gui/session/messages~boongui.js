@@ -1,3 +1,5 @@
+const boonGUI_ColorsSeenBefore = {};
+
 function colorizePlayernameByIDReturnNick(playerID)
 {
 	const username = splitRatingFromNick(g_Players[playerID] && escapeText(g_Players[playerID].name)).nick;
@@ -11,23 +13,30 @@ function colorizePlayernameHelper(username, playerID)
 }
 
 /**
- * Some colors must become brighter so that they are readable on dark backgrounds.
- * Modified version from gui/lobby/LobbyPage/PlayerColor.GetPlayerColor function
- * Additional check for "perceivedBrightness", if the color is already bright enough don't change it
+ * Some text colors must become brighter so that they are readable on dark backgrounds.
+ * Modified version from gui/lobby/LobbyPage/PlayerColor.GetPlayerColor
+ * Additional check for "perceived brightness", if the color is already bright enough don't change it,
+ * otherwise go up in small incremental steps till it is bright enough.
  * https://www.w3.org/TR/AERT/#color-contrast
- * @param   {string}  color  string of rgb color, e.g. "10 10 190" ("Dark Blue")
- * @return  {string}         string of brighter rgb color, e.g. "57 57 245" ("Blue")
+ * @param   {string}  color  				string of rgb color, e.g. "10 10 190" ("Dark Blue")
+ * @param   {number}  brightnessThreshold 	Value when a color is considered bright enough; Range:0-255
+ * @return  {string}        				string of brighter rgb color, e.g. "100 100 248" ("Blue")
  */
-function brightenedColor(color)
+function brightenedColor(color, brightnessThreshold = 115)
 {
-	const [r, g, b] = color.split(" ").map(x => +x);
-	const perceivedBrightness = ((r * 299) + (g * 587) + (b * 114)) / 1000;
-
-	if (perceivedBrightness > 75)
-		return color;
-	const [h, s, l] = rgbToHsl(r, g, b);
-	return hslToRgb(h, s, Math.min(l + 0.3, 0.65)).join(" ");
-
+	// check if a cached version is already available
+	if (boonGUI_ColorsSeenBefore[color])
+		return boonGUI_ColorsSeenBefore[color];
+	let [r, g, b] = color.split(" ").map(x => +x);
+	let i = 0;
+	while(r * 0.299 + g * 0.587 + b * 0.114 <= brightnessThreshold)
+	{
+		i += 0.001;
+		const [h, s, l] = rgbToHsl(r, g, b);
+		[r, g, b] = hslToRgb(h, s, l + i);
+	}
+	boonGUI_ColorsSeenBefore[color] = [r, g, b].join(" ");
+	return boonGUI_ColorsSeenBefore[color];
 }
 
 function updateTutorial(notification)
