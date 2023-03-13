@@ -466,13 +466,18 @@
         </object>
 
         <object
-          name="StatsTopPanelRow[n]_los"
-          text_align="center"
-          font="sans-bold-20"
-          type="text"
-          size="950 0 960 100%"
-          tooltip_style="sessionToolTipCircle"
-        />
+          name="StatsTopPanelRow[n]_losHighlight"
+          size="945 0 100% 100%"
+          type="button"
+          style="statsHighlighter">
+          <object
+            name="StatsTopPanelRow[n]_los"
+            size="20%-1 20%+1 80%+1 80%-1"
+            ghost="true"
+            type="image">
+            <object type="image" sprite="emptyGrayCircle" ghost="true" />
+          </object>
+        </object>
       </object>
     </repeat>
   </object>

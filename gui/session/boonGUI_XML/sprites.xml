@@ -290,4 +290,12 @@
       size="0 0 100% 100%"
     />
   </sprite>
+
+  <sprite name="emptyGrayCircle">
+    <effect add_color="95 95 95" />
+    <image
+      real_texture_placement="0 0 16 16"
+      texture="session/phosphor/circle-empty.png"
+    />
+  </sprite>
 </sprites>

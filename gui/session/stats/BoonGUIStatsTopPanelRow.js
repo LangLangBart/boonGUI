@@ -75,6 +75,7 @@ class BoonGUIStatsTopPanelRow
 		this.killDeathRatio = Engine.GetGUIObjectByName(`${PREFIX}_killDeathRatio`);
 
 		this.los = Engine.GetGUIObjectByName(`${PREFIX}_los`);
+		this.losHighlight = Engine.GetGUIObjectByName(`${PREFIX}_losHighlight`);
 
 		Engine.SetGlobalHotkey("structree", "Press", openStructTree);
 		Engine.SetGlobalHotkey("civinfo", "Press", openStructTree);
@@ -385,16 +386,18 @@ class BoonGUIStatsTopPanelRow
 			tooltip += "Cowards do not count in battle; they are there, but not in it. Euripides";
 
 		this.killDeathRatioHighlight.tooltip = tooltip;
+		// Ever present slightly gray coloured empty circle, defined in the xml part.
+		// Place a full circle in the player's color over the gray circle, the gray circle is slightly visible, this is good for contrast with dark colors.
+		if(state.hasSharedLos || state.numberAllies == 1)
+			this.los.sprite = `stretched:color:${state.playerColor}:textureAsMask:session/phosphor/circle-full.png`;
 
-		const los = state.hasSharedLos || state.numberAllies == 1 ? "●" : "○";
-		this.los.caption = setStringTags(los, { "color": state.playerColor });
 		color = state.brightenedPlayerColor;
-		tooltip = "";
-		tooltip += `${playerNick}\n`;
+		tooltip = `${playerNick}\n`;
 		font = "sans-stroke-20";
 		tooltip += `${setStringTags("○", { color, font })} / ${setStringTags("●", { color, font })}\n`;
 		tooltip += "Full circle when cartography has been researched or when you are without mutual allies.";
-		this.los.tooltip = tooltip;
+		this.losHighlight.tooltip = tooltip;
+
 	}
 }
 
