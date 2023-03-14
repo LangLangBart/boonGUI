@@ -9,14 +9,12 @@ class BoonGUITradeButtonManager extends TradeButtonManager {
 		super();
 		this.userDefinedPropb = Engine.ConfigDB_GetValue("user", "boongui.session.trade.probability").split(",");
 		// Check if the sum of the numbers is 100% and the number of elements is equal to the number of resources.
-		if (this.userDefinedPropb.reduce((acc, val) => +acc + +val, 0) === 100 && Object.values(this.tradingGoods).length === this.userDefinedPropb.length)
+		if (controlsPlayer(g_ViewedPlayer) && this.userDefinedPropb.reduce((acc, val) => +acc + +val, 0) === 100 && Object.values(this.tradingGoods).length === this.userDefinedPropb.length)
 		{
 			for (const resCode in this.tradingGoods)
 				this.tradingGoods[resCode] = +this.userDefinedPropb.shift();
 			this.setTradingGoods();
 		}
-		else
-			Engine.ConfigDB_CreateAndWriteValueToFile("user", "boongui.session.trade.probability", "", "config/user.cfg");
 	}
 
 	setTradingGoods()
