@@ -298,4 +298,9 @@
       texture="session/phosphor/circle-empty.png"
     />
   </sprite>
+
+  <sprite name="sleepSymbol">
+    <effect add_color="white" />
+    <image texture="session/phosphor/sleep.png" />
+  </sprite>
 </sprites>

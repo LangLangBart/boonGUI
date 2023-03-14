@@ -1,4 +1,4 @@
-const boonGUI_ColorsSeenBefore = {};
+const boonGUI_ColorsSeenBefore = new Map();
 
 function colorizePlayernameByIDReturnNick(playerID)
 {
@@ -25,18 +25,20 @@ function colorizePlayernameHelper(username, playerID)
 function brightenedColor(color, brightnessThreshold = 115)
 {
 	// check if a cached version is already available
-	if (boonGUI_ColorsSeenBefore[color])
-		return boonGUI_ColorsSeenBefore[color];
-	let [r, g, b] = color.split(" ").map(x => +x);
-	let i = 0;
-	while(r * 0.299 + g * 0.587 + b * 0.114 <= brightnessThreshold)
+	const key = `${color} ${brightnessThreshold}`;
+	if (!boonGUI_ColorsSeenBefore.has(key))
 	{
-		i += 0.001;
-		const [h, s, l] = rgbToHsl(r, g, b);
-		[r, g, b] = hslToRgb(h, s, l + i);
+		let [r, g, b] = color.split(" ").map(x => +x);
+		let i = 0;
+		while(r * 0.299 + g * 0.587 + b * 0.114 <= brightnessThreshold)
+		{
+			i += 0.001;
+			const [h, s, l] = rgbToHsl(r, g, b);
+			[r, g, b] = hslToRgb(h, s, l + i);
+		}
+		boonGUI_ColorsSeenBefore.set(key, [r, g, b].join(" "));
 	}
-	boonGUI_ColorsSeenBefore[color] = [r, g, b].join(" ");
-	return boonGUI_ColorsSeenBefore[color];
+	return boonGUI_ColorsSeenBefore.get(key);
 }
 
 function updateTutorial(notification)

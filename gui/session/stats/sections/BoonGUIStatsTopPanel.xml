@@ -29,11 +29,17 @@
       type="text"
       style="overlayHeader"
       size="237 0 340 100%"
-      tooltip="Population">
+      tooltip="Population | Idle Worker">
       <object
         size="50%-17 -4 50%+18 28"
         type="image"
         sprite="stretched:session/icons/resources/population.png"
+        ghost="true"
+      />
+      <object
+        size="50%+31 8 50%+47 24"
+        type="image"
+        sprite="sleepSymbol"
         ghost="true"
       />
     </object>
@@ -264,18 +270,12 @@
           type="button"
           style="statsHighlighter">
           <object
-            name="StatsTopPanelRow[n]_idleWorkerAlphaMask"
-            type="image"
-            ghost="true"
-            size="1 0 100%-1 100%-2">
-            <object
-              name="StatsTopPanelRow[n]_idleWorkerCount"
-              type="text"
-              text_align="center"
-              text_valign="center"
-              style="overlayMedium"
-            />
-          </object>
+            name="StatsTopPanelRow[n]_idleWorkerCount"
+            type="text"
+            size="0 0 100% 100%-2"
+            text_align="center"
+            style="overlaySmall"
+          />
         </object>
 
         <object

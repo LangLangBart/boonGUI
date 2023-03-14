@@ -40,7 +40,6 @@ class BoonGUIStatsTopPanelRow
 		// TODO in observer mode the idle button is disabled, it shouldn't be.
 		this.idleWorkerHighlight.onPress = () => findIdleUnit(g_boonGUI_WorkerTypes);
 		this.idleWorkerCount = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerCount`);
-		this.idleWorkerAlphaMask = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerAlphaMask`);
 
 		this.resource = {
 			"counts": {},
@@ -107,7 +106,7 @@ class BoonGUIStatsTopPanelRow
 		font = "sans-stroke-14";
 		if (caption)
 			this.playerHighlight.tooltip += setStringTags(`\n${caption}`, { "color": "210 210 210", font });
-		this.playerHighlight.tooltip += setStringTags(`\n${this.jumpCivicCenterTooltip}`, { font });
+		this.playerHighlight.tooltip += setStringTags(`\n\n${this.jumpCivicCenterTooltip}`, { font });
 		this.team.tooltip = this.playerHighlight.tooltip;
 		this.rating.tooltip = this.playerHighlight.tooltip;
 		this.rating.caption = state.rating;
@@ -164,7 +163,7 @@ class BoonGUIStatsTopPanelRow
 		tooltip += progress ? g_Indent + Engine.FormatMillisecondsIntoDateStringGMT((phase_town || phase_city).timeRemaining, "m:ss") + g_Indent : "";
 		tooltip += techData.name.generic;
 		this.phaseHighlight.tooltip = tooltip;
-		this.phaseHighlight.tooltip += setStringTags(`\n${this.jumpCivicCenterTooltip}`, { font });
+		this.phaseHighlight.tooltip += setStringTags(`\n\n${this.jumpCivicCenterTooltip}`, { font });
 
 		this.phaseIcon.sprite = `stretched:session/portraits/${techData.icon}`;
 		if (progress == null)
@@ -225,12 +224,10 @@ class BoonGUIStatsTopPanelRow
 				value += state.queue[i].count;
 			}
 		}
-		this.idleWorkerHighlight.enabled = g_ViewedPlayer == state.index;
 
-		// Aim for dark red background and light red font color
-		this.idleWorkerAlphaMask.sprite = `color:200 0 0 ${Math.min(value, 18) * 10}`;
-		color = value > 0 ? "lightRed" : "dimmedWhite";
+		color = value > 0 ? scales.getColor("idleWorker", value, true) : "dimmedWhite";
 		font = value > 0 ? value > 99 ? "sans-bold-stroke-14" : "sans-bold-stroke-16" : "sans-stroke-16";
+
 		this.idleWorkerCount.caption = setStringTags(normalizeValue(value), { color, font });
 
 		tooltip += `Idle Workers${g_Indent}${g_Indent} ${setStringTags(value, { color })}\n`;
@@ -252,8 +249,8 @@ class BoonGUIStatsTopPanelRow
 				}
 			tooltip += setStringTags(`- ${className} ${value}\n`, { font, "color": value > 0 ? "lightRed" : "dimmedWhite" });
 		}
-
-		tooltip += `\n${setStringTags(this.idleUnitsTooltip, { font })}`;
+		if(g_ViewedPlayer > 0)
+			tooltip += `\n${setStringTags(this.idleUnitsTooltip, { font })}`;
 		this.idleWorkerHighlight.tooltip = tooltip;
 
 		for (const resType of g_BoonGUIResTypes)
@@ -388,8 +385,8 @@ class BoonGUIStatsTopPanelRow
 		this.killDeathRatioHighlight.tooltip = tooltip;
 		// Ever present slightly gray coloured empty circle, defined in the xml part.
 		// Place a full circle in the player's color over the gray circle, the gray circle is slightly visible, this is good for contrast with dark colors.
-		if(state.hasSharedLos || state.numberAllies == 1)
-			this.los.sprite = `stretched:color:${state.playerColor}:textureAsMask:session/phosphor/circle-full.png`;
+
+		this.los.sprite = (state.hasSharedLos || state.numberAllies == 1) ? `stretched:color:${state.playerColor}:textureAsMask:session/phosphor/circle-full.png` : `stretched:color:${state.playerColor}:textureAsMask:session/phosphor/circle-empty.png`;
 
 		color = state.brightenedPlayerColor;
 		tooltip = `${playerNick}\n`;

@@ -18,6 +18,7 @@ class BoonGUIStatsTopPanel {
 		playersStates.forEach(state => {
 			this.scales.addValue("popCount", state.popCount);
 			this.scales.addValue("popLimit", state.popLimit);
+			this.scales.addValue("idleWorker", state.queue.filter(x => x.mode === "idle").reduce((acc, val) => acc + val.count, 0));
 
 			this.scales.addValue("economyTechsCount", state.economyTechsCount);
 			this.scales.addValue("militaryTechsCount", state.militaryTechsCount);
