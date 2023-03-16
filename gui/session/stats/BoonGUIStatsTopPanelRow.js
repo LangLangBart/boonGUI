@@ -37,6 +37,7 @@ class BoonGUIStatsTopPanelRow
 		this.popCount = Engine.GetGUIObjectByName(`${PREFIX}_popCount`);
 		this.popLimit = Engine.GetGUIObjectByName(`${PREFIX}_popLimit`);
 		this.idleWorkerHighlight = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerHighlight`);
+		this.idleWorkerHeader = Engine.GetGUIObjectByName("StatsTopPanelHeaderSleepSymbol");
 		// TODO in observer mode the idle button is disabled, it shouldn't be.
 		this.idleWorkerHighlight.onPress = () => findIdleUnit(g_boonGUI_WorkerTypes);
 		this.idleWorkerCount = Engine.GetGUIObjectByName(`${PREFIX}_idleWorkerCount`);
@@ -225,8 +226,8 @@ class BoonGUIStatsTopPanelRow
 			}
 		}
 
-		color = value > 0 ? scales.getColor("idleWorker", value, true) : "dimmedWhite";
-		font = value > 0 ? value > 99 ? "sans-bold-stroke-14" : "sans-bold-stroke-16" : "sans-stroke-16";
+		color = value ? g_stats.lastPlayerLength > 1 ? scales.getColor("idleWorker", value, true) : `220 0 0 ${Math.floor((155 * Math.pow(value, 2)) / (Math.pow(value, 2) + 20)) + 100}` : "dimmedWhite";
+		font = value ? value > 99 ? "sans-bold-stroke-14" : "sans-bold-stroke-16" : "sans-stroke-16";
 
 		this.idleWorkerCount.caption = setStringTags(normalizeValue(value), { color, font });
 
@@ -251,6 +252,8 @@ class BoonGUIStatsTopPanelRow
 		}
 		if(g_ViewedPlayer > 0)
 			tooltip += `\n${setStringTags(this.idleUnitsTooltip, { font })}`;
+
+		this.idleWorkerHeader.sprite = `streteched:color:${color}:textureAsMask:session/phosphor/sleep.png`;
 		this.idleWorkerHighlight.tooltip = tooltip;
 
 		for (const resType of g_BoonGUIResTypes)

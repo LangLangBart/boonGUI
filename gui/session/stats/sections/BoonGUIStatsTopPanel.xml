@@ -37,6 +37,7 @@
         ghost="true"
       />
       <object
+        name="StatsTopPanelHeaderSleepSymbol"
         size="50%+31 8 50%+47 24"
         type="image"
         sprite="sleepSymbol"

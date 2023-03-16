@@ -300,7 +300,7 @@
   </sprite>
 
   <sprite name="sleepSymbol">
-    <effect add_color="white" />
+    <effect add_color="dimmedWhite" />
     <image texture="session/phosphor/sleep.png" />
   </sprite>
 </sprites>
