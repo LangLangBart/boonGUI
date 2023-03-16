@@ -52,7 +52,6 @@ User interface **mod** for the RTS game **0 A.D.**
 - Rally points are visible for observers.
 - Bigger buttons for the construction panel
 - All player colors and fruits have more vivid colors.
-- Targeted entities over which the cursor hovers are highlighted.
 - Increased size for all weapon projectiles, chickens and garrison flags on every building.
 - All heroes have a large visible object flowing over their head, making them easier to see on the battlefield.
 - Individually selected units show attack and resistance values, relics show their auras and treasures show their contents.
