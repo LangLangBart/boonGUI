@@ -38,10 +38,11 @@
       size="72% 40%-1 86% 94%"
       tooltip_style="sessionToolTipCircleBottom"
       hotkey="session.flareactivate"
-      sprite="stretched:session/minimap-flare.png"
-      sprite_over="stretched:session/minimap-flare-highlight.png"
-      mouse_event_mask="texture:session/minimap-flare.png"
-      sprite_disabled="stretched:session/minimap-flare-disabled.png"
+      sprite="MinimapFlareButtonNormal"
+      sprite_pressed="MinimapFlareButtonNormal"
+      sprite_over="MinimapFlareButtonBright"
+      mouse_event_mask="texture:session/minimap_buttons/minimap-flare.png"
+      sprite_disabled="MinimapFlareButtonGrey"
       sound_pressed="audio/interface/ui/ui_button_click.ogg"
     />
     <!-- Score Button -->
@@ -50,9 +51,10 @@
       type="button"
       size="2%-1 6% 16%-1 60%+1"
       tooltip_style="sessionToolTipCircleBottom"
-      sprite="stretched:session/minimap-score.png"
-      sprite_over="stretched:session/minimap-score-highlight.png"
-      mouse_event_mask="texture:session/minimap-score.png"
+      sprite="MinimapScoreButtonNormal"
+      sprite_pressed="MinimapScoreButtonNormal"
+      sprite_over="MinimapScoreButtonBright"
+      mouse_event_mask="texture:session/minimap_buttons/minimap-score.png"
       sound_pressed="audio/interface/ui/ui_button_click.ogg">
       <action on="Press">g_stats.toggle();</action>
     </object>

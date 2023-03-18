@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <sprites>
-  <!-- Top Panel -->
+  <!-- Info: https://trac.wildfiregames.com/wiki/GUI_-_Sprites -->
+  <!--
+	==========================================
+	TOP PANEL
+	==========================================
+	-->
   <sprite name="topPanelTransparent">
     <image backcolor="transparent" size="0 0 100% 100%" />
   </sprite>
@@ -9,7 +14,11 @@
     <image texture="session/panel_shader_light.png" size="0 0 100% 100%" />
   </sprite>
 
-  <!-- Minimap Hover Panel -->
+  <!--
+	==========================================
+	MINI MAP
+	==========================================
+	-->
   <sprite name="minimapHoverPanel">
     <!-- sides -->
     <image
@@ -67,7 +76,77 @@
     />
   </sprite>
 
-  <!-- Bottom Left Panel -->
+  <!--
+	==========================================
+	MINI MAP BUTTONS
+	==========================================
+	-->
+  <!-- Flare -->
+  <sprite name="MinimapFlareButtonNormal">
+    <image texture="session/minimap_buttons/minimap-flare.png" />
+  </sprite>
+  <sprite name="MinimapFlareButtonBright">
+    <effect add_color="35 35 35" />
+    <image texture="session/minimap_buttons/minimap-flare.png" />
+  </sprite>
+  <sprite name="MinimapFlareButtonGrey">
+    <effect grayscale="" />
+    <image texture="session/minimap_buttons/minimap-flare.png" />
+  </sprite>
+  <!-- Idle -->
+  <sprite name="MinimapIdleButtonNormal">
+    <image texture="session/minimap_buttons/minimap-idle.png" />
+  </sprite>
+  <sprite name="MinimapIdleButtonBright">
+    <effect add_color="35 35 35" />
+    <image texture="session/minimap_buttons/minimap-idle.png" />
+  </sprite>
+  <sprite name="MinimapIdleButtonGrey">
+    <effect grayscale="" />
+    <image texture="session/minimap_buttons/minimap-idle.png" />
+  </sprite>
+  <!-- Score -->
+  <sprite name="MinimapScoreButtonNormal">
+    <image texture="session/minimap_buttons/minimap-score.png" />
+  </sprite>
+  <sprite name="MinimapScoreButtonBright">
+    <effect add_color="35 35 35" />
+    <image texture="session/minimap_buttons/minimap-score.png" />
+  </sprite>
+  <sprite name="MinimapScoreButtonGrey">
+    <effect grayscale="" />
+    <image texture="session/minimap_buttons/minimap-score.png" />
+  </sprite>
+  <!-- Diplomacy On -->
+  <sprite name="MinimapDiplomacyOnButtonNormal">
+    <image texture="session/minimap_buttons/minimap-diplomacy-on.png" />
+  </sprite>
+  <sprite name="MinimapDiplomacyOnButtonBright">
+    <effect add_color="35 35 35" />
+    <image texture="session/minimap_buttons/minimap-diplomacy-on.png" />
+  </sprite>
+  <sprite name="MinimapDiplomacyOnButtonGrey">
+    <effect grayscale="" />
+    <image texture="session/minimap_buttons/minimap-diplomacy-on.png" />
+  </sprite>
+  <!-- Diplomacy Off -->
+  <sprite name="MinimapDiplomacyOffButtonNormal">
+    <image texture="session/minimap_buttons/minimap-diplomacy-off.png" />
+  </sprite>
+  <sprite name="MinimapDiplomacyOffButtonBright">
+    <effect add_color="35 35 35" />
+    <image texture="session/minimap_buttons/minimap-diplomacy-off.png" />
+  </sprite>
+  <sprite name="MinimapDiplomacyOffButtonGrey">
+    <effect grayscale="" />
+    <image texture="session/minimap_buttons/minimap-diplomacy-off.png" />
+  </sprite>
+
+  <!--
+	==========================================
+	BOTTOM LEFT PANEL
+	==========================================
+	-->
   <sprite name="supplementalDetailsPanelAdjusted">
     <!-- sides -->
     <image
@@ -120,7 +199,11 @@
     />
   </sprite>
 
-  <!-- Bottom Middle Panel -->
+  <!--
+	==========================================
+	BOTTOM MIDDLE PANEL
+	==========================================
+	-->
   <sprite name="selectionDetailsPanelAdjusted">
     <!-- background -->
     <image
@@ -173,7 +256,11 @@
     />
   </sprite>
 
-  <!-- Bottom Right Panel -->
+  <!--
+	==========================================
+	BOTTOM RIGHT PANEL
+	==========================================
+	-->
   <sprite name="unitCommandsPanelAdjusted">
     <!-- sides -->
     <image
@@ -226,6 +313,11 @@
     />
   </sprite>
 
+  <!--
+	==========================================
+	MISCELLANEOUS
+	==========================================
+	-->
   <sprite name="healthForegroundDarker">
     <image backcolor="35 155 35" />
   </sprite>
