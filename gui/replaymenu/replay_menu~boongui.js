@@ -29,6 +29,10 @@ function displayReplayDetails()
 	Engine.GetGUIObjectByName("replayFilename").caption = Engine.GetReplayDirectoryName(replay.directory);
 
 	const metadata = Engine.GetReplayMetadata(replay.directory);
+
+	for (const i in replay.attribs.settings.PlayerData)
+		replay.attribs.settings.PlayerData[i].Color = guiToRgbColor(brightenedColor(rgbToGuiColor((replay.attribs.settings.PlayerData[i].Color))));
+
 	Engine.GetGUIObjectByName("sgPlayersNames").caption =
 		formatPlayerInfo(
 			replay.attribs.settings.PlayerData,

@@ -225,8 +225,8 @@ class BoonGUIStatsTopPanelRow
 				value += state.queue[i].count;
 			}
 		}
-
-		color = value ? g_stats.lastPlayerLength > 1 ? scales.getColor("idleWorker", value, true) : `220 0 0 ${Math.floor((155 * Math.pow(value, 2)) / (Math.pow(value, 2) + 20)) + 100}` : "dimmedWhite";
+		const redScale = `220 0 0 ${Math.floor((155 * Math.pow(value, 2)) / (Math.pow(value, 2) + 20)) + 100}`;
+		color = value ? g_stats.lastPlayerLength > 1 ? scales.getColor("idleWorker", value, true) : redScale : "dimmedWhite";
 		font = value ? value > 99 ? "sans-bold-stroke-14" : "sans-bold-stroke-16" : "sans-stroke-16";
 
 		this.idleWorkerCount.caption = setStringTags(normalizeValue(value), { color, font });
@@ -253,7 +253,7 @@ class BoonGUIStatsTopPanelRow
 		if(g_ViewedPlayer > 0)
 			tooltip += `\n${setStringTags(this.idleUnitsTooltip, { font })}`;
 
-		this.idleWorkerHeader.sprite = `streteched:color:${color}:textureAsMask:session/phosphor/sleep.png`;
+		this.idleWorkerHeader.sprite = `streteched:color:${(!value || g_stats.lastPlayerLength > 1) ? "dimmedWhite" : redScale}:textureAsMask:session/phosphor/sleep.png`;
 		this.idleWorkerHighlight.tooltip = tooltip;
 
 		for (const resType of g_BoonGUIResTypes)

@@ -541,22 +541,21 @@ GuiInterface.prototype.DisplayRallyPoint = function(player, cmd) {
 	}
 };
 
-// Original variable declaration is prefixed with let instead of var so we can't
-// just add new entries directly (global let declaration rules)
-var boongui_exposedFunctions = {
-	"boongui_GetOverlay": 1,
-	"DisplayRallyPoint": 1
-};
-
 GuiInterface.prototype.LocalRallyPoints = new Set();
 GuiInterface.prototype.ChangedRallyPoints = new Set();
 
-autociv_patchApplyN(GuiInterface.prototype, "ScriptCall", function(target, that, args) {
-	const [player, name, vargs] = args;
-	if (name in boongui_exposedFunctions)
-		return that[name](player, vargs);
+const boongui_exposedFunctions = {
+	"boongui_GetOverlay": 1
+};
 
-	return target.apply(that, args);
-});
+// Idea from @nani's autociv mod, makes it much easier to register additional GuiInterfaceCall functions.
+GuiInterface.prototype.ScriptCall = new Proxy(GuiInterface.prototype.ScriptCall,
+	{ apply(target, that, args){
+		const [player, name, vargs] = args;
+		if (name in boongui_exposedFunctions)
+			return that[name](player, vargs);
+
+		return target.apply(that, args);
+	} });
 
 Engine.ReRegisterComponentType(IID_GuiInterface, "GuiInterface", GuiInterface);
