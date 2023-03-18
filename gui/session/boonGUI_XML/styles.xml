@@ -64,7 +64,7 @@
   <style
     name="chatPanelStyle"
     buffer_zone="4"
-    font="sans-stroke-18"
+    font="sans-bold-stroke-16"
     textcolor="white"
     text_align="left"
     text_valign="center"

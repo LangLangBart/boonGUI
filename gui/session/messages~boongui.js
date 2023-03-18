@@ -1,4 +1,4 @@
-function colorizePlayernameByIDReturnNick(playerID)
+function colorizePlayernameByID(playerID)
 {
 	const username = splitRatingFromNick(g_Players[playerID] && escapeText(g_Players[playerID].name)).nick;
 	return colorizePlayernameHelper(username, playerID);

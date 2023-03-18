@@ -180,3 +180,30 @@ function setupStatHUDTreasureInfo(template)
 	const resourceAmount = resourceName.map(type => resources[type]);
 	return { resourceName, resourceAmount };
 }
+
+/**
+ * @param   {object}  resources  {wood:330}
+ * @param   {string}  color      color code, e.g. "200 0 0"
+ * @return  {string}             Colored amount and resource icon
+ */
+function getLocalizedResourceAmounts(resources, color = "255 255 255")
+{
+
+	color = brightenedColor(color);
+	const amounts = g_ResourceData.GetCodes()
+		.filter(type => !!resources[type])
+		.map(type => sprintf(translate("%(amount)s %(resourceType)s"), {
+			"amount": coloredText(resources[type], color),
+			"resourceType": resourceIcon(type)
+		}));
+
+	if (amounts.length < 2)
+		return amounts.join();
+
+	const lastAmount = amounts.pop();
+	return sprintf(translate("%(previousAmounts)s and %(lastAmount)s"), {
+		// Translation: This comma is used for separating first to penultimate elements in an enumeration.
+		"previousAmounts": coloredText(amounts.join(translate(", ")), color),
+		"lastAmount": coloredText(lastAmount, color)
+	});
+}
