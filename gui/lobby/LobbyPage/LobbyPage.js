@@ -2,11 +2,10 @@
  * This class stores the handlers for all GUI objects in the lobby page,
  * (excluding other pages in the same context such as leaderboard and profile page).
  */
-class LobbyPage_boonGUI extends LobbyPage
+class LobbyPage
 {
 	constructor(dialog, xmppMessages, leaderboardPage, profilePage)
 	{
-		super(dialog, xmppMessages, leaderboardPage, profilePage);
 		Engine.ProfileStart("Create LobbyPage");
 		const mapCache = new MapCache();
 		const buddyButton = new BuddyButton(xmppMessages);
@@ -47,5 +46,36 @@ class LobbyPage_boonGUI extends LobbyPage
 			this.setDialogStyle();
 		Engine.ProfileStop();
 	}
+
+	setDialogStyle()
+	{
+		{
+			const lobbyPage = Engine.GetGUIObjectByName("lobbyPage");
+			lobbyPage.sprite = "ModernDialog";
+
+			const size = lobbyPage.size;
+			size.left = this.WindowMargin;
+			size.top = this.WindowMargin;
+			size.right = -this.WindowMargin;
+			size.bottom = -this.WindowMargin;
+			lobbyPage.size = size;
+		}
+
+		{
+			const lobbyPageTitle = Engine.GetGUIObjectByName("lobbyPageTitle");
+			const size = lobbyPageTitle.size;
+			size.top -= this.WindowMargin / 2;
+			size.bottom -= this.WindowMargin / 2;
+			lobbyPageTitle.size = size;
+		}
+
+		{
+			const lobbyPanels = Engine.GetGUIObjectByName("lobbyPanels");
+			const size = lobbyPanels.size;
+			size.top -= this.WindowMargin / 2;
+			lobbyPanels.size = size;
+		}
+	}
 }
-LobbyPage = LobbyPage_boonGUI;
+
+LobbyPage.prototype.WindowMargin = 40;
