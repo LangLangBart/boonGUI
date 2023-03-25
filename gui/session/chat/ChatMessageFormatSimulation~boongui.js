@@ -77,12 +77,12 @@ ChatMessageFormatSimulation.tribute.prototype.parse = function(msg)
 	if (msg.targetPlayer == Engine.GetPlayerID())
 	{
 		message = translate("%(player)s has sent you %(amounts)s.");
-		color = "green";
+		color = "0 200 0";
 	}
 	else if (msg.sourcePlayer == Engine.GetPlayerID())
 	{
 		message = translate("You have sent %(player2)s %(amounts)s.");
-		color = "red";
+		color = "200 0 0";
 	}
 	else if (Engine.ConfigDB_GetValue("user", "gui.session.notifications.tribute") == "true" &&
 		(g_IsObserver || g_InitAttributes.settings.LockTeams &&
@@ -91,7 +91,7 @@ ChatMessageFormatSimulation.tribute.prototype.parse = function(msg)
 		message = translate("%(player)s has sent %(player2)s %(amounts)s.");
 
 	return {
-		"text": sprintf(message.replace(Regex_Period, ""), {
+		"text": sprintf(message?.replace(Regex_Period, ""), {
 			"player": colorizePlayernameByID(msg.sourcePlayer),
 			"player2": colorizePlayernameByID(msg.targetPlayer),
 			"amounts": getLocalizedResourceAmounts(msg.amounts, color)

@@ -253,7 +253,7 @@ class BoonGUIStatsTopPanelRow
 		if(g_ViewedPlayer > 0)
 			tooltip += `\n${setStringTags(this.idleUnitsTooltip, { font })}`;
 
-		this.idleWorkerHeader.sprite = `streteched:color:${(!value || g_stats.lastPlayerLength > 1) ? "dimmedWhite" : redScale}:textureAsMask:session/phosphor/sleep.png`;
+		this.idleWorkerHeader.sprite = `streteched:color:${(!value || g_stats.lastPlayerLength > 1) ? "dimmedWhite" : color}:textureAsMask:session/phosphor/sleep.png`;
 		this.idleWorkerHighlight.tooltip = tooltip;
 
 		for (const resType of g_BoonGUIResTypes)

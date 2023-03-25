@@ -188,7 +188,11 @@ function setupStatHUDTreasureInfo(template)
  */
 function getLocalizedResourceAmounts(resources, color = "255 255 255")
 {
-
+	if (/^[^0-9]/.test(color))
+	{
+		warn(`The received color input "${color}" cannot be processed. Falling back to the default color.`);
+		color = "255 255 255";
+	}
 	color = brightenedColor(color);
 	const amounts = g_ResourceData.GetCodes()
 		.filter(type => !!resources[type])
