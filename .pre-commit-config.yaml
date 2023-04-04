@@ -4,8 +4,6 @@ ci:
 # https://pre-commit.ci/
   autofix_commit_msg: 'fix: pre-commit.com hooks auto fixes'
   autofix_prs: true
-  autoupdate_commit_msg: 'chore: pre-commit autoupdate'
-  autoupdate_schedule: monthly
   skip:
     - vale
 # Define the hooks to be executed before each commit.
