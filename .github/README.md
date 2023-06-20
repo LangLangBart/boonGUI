@@ -140,8 +140,6 @@ Trivial problems in the code are handled with the [pre-commit](https://github.co
 
 > *Pre-commit is a multi-language package manager for pre-commit hooks. You specify a list of hooks you want and **pre-commit manages the installation and execution** of any hook written in any language before every commit. Source: [pre-commit introduction](https://pre-commit.com/#introduction)*
 
->  *Pre-commit.ci enforces that issues are discovered but also fixes the issues in pull requests automatically. Source: [pre-commit.ci](https://pre-commit.ci/#features)*
-
 </div>
 <br>
 

@@ -1,11 +1,4 @@
 ---
-# Good example: https://github.com/ansible/vscode-ansible
-ci:
-# https://pre-commit.ci/
-  autofix_commit_msg: 'fix: pre-commit.com hooks auto fixes'
-  autofix_prs: true
-  skip:
-    - vale
 # Define the hooks to be executed before each commit.
 # Documentation: https://pre-commit.com/index.html
 default_stages: [commit]
