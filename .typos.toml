@@ -3,7 +3,7 @@
 ret = "ret"
 
 [files]
-extend-exclude = ["node_modules", ".git"]
+extend-exclude = ["node_modules", ".git", "Images"]
 # There are some local ".d.ts" files that should be checked.
 ignore-files = false
 # Important files are located in ".github", which also need to be checked.
