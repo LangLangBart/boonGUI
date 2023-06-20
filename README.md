@@ -21,7 +21,7 @@ User interface **mod** for the RTS game **0 A.D.**
 
 <!-- 0 A.D. logo -->
 
-<a href="https://play0ad.com"><img src="Images/0ad_logo.png" width="250">
+<a href="https://play0ad.com"><img src=".github/Images/0ad_logo.png" width="250">
 
 <h4>
   <a href="https://play0ad.com/re-release-of-0-a-d-alpha-25-yauna/">Website</a>
