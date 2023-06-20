@@ -1,14 +1,14 @@
 var boonGUIConfig = {
 	"needsToSave": false,
 	"needsToReloadHotkeys": false,
-	"set": function(key, value)
+	set(key, value)
 	{
 		Engine.ConfigDB_CreateValue("user", key, value);
 		this.needsToSave = true;
 		this.needsToReloadHotkeys = this.needsToReloadHotkeys || key.startsWith("hotkey.");
 	},
-	"get": function(key) { return Engine.ConfigDB_GetValue("user", key); },
-	"save": function()
+	get(key) { return Engine.ConfigDB_GetValue("user", key); },
+	save()
 	{
 		if (this.needsToSave) Engine.ConfigDB_WriteFile("user", "config/user.cfg");
 		if (this.needsToReloadHotkeys) Engine.ReloadHotkeys();
@@ -32,7 +32,7 @@ function boongui_initCheck()
 		{
 			if (key.startsWith("hotkey."))
 			{
-				if (!allHotkeys.has(key.substring("hotkey.".length)))
+				if (!allHotkeys.has(key.slice("hotkey.".length)))
 				{
 					boonGUIConfig.set(key, settings[key]);
 					state.showMessage = true;
@@ -49,12 +49,8 @@ function boongui_initCheck()
 	}
 	if (state.showMessage)
 	{
-		function addReason(title, hotkey)
-		{
-			state.reasons.push(setStringTags(`${title}:`, { "font": "sans-bold-18" }));
-			state.reasons.push(colorizeHotkey(`%(hotkey)s`, hotkey));
-			state.reasons.push("");
-		}
+		const addReason = (title, hotkey) => state.reasons.push(setStringTags(`${title}:`, { "font": "sans-bold-18" }),
+			colorizeHotkey(`%(hotkey)s`, hotkey), "");
 
 		addReason("Take the view of a unit", "boongui.camera.follow.fps");
 		addReason("Toggle the stats overlay", "boongui.session.stats.toggle");
@@ -72,7 +68,7 @@ autociv_patchApplyN("init", function(target, that, args)
 	{
 		const message = state.reasons.join("\n");
 		const title = setStringTags("boonGUI hotkeys", { "font": "sans-bold-18" });
-		messageBox(450, 400, message, title, ["Ok"], [() => { }]);
+		messageBox(450, 400, message, title, ["Ok"], [() => {}]);
 	}
 
 	return target.apply(that, args);

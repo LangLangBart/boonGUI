@@ -91,13 +91,13 @@ function storeCivInfoPage(data)
 function limitPlayerName(objectPlayer, playerName, objectRating, rating, smallSafetyMargin = 8)
 {
 	// check if a cached version is already available
-	if(BoonGUIStatsTopPanelRow.prototype.abbreviatedPlayerNames[playerName])
+	if (BoonGUIStatsTopPanelRow.prototype.abbreviatedPlayerNames[playerName])
 		return BoonGUIStatsTopPanelRow.prototype.abbreviatedPlayerNames[playerName];
 
 	const { "right": objectPlayertRight, "left": objectPlayertLeft } = objectPlayer.getComputedSize();
 	let widthBox = objectPlayertRight - objectPlayertLeft;
 	widthBox -= smallSafetyMargin;
-	if(rating)
+	if (rating)
 	{
 		const { "right": objectRatingtRight, "left": objectRatingtLeft } = objectRating.getComputedSize();
 		widthBox -= (objectRatingtRight - objectRatingtLeft);
@@ -105,7 +105,7 @@ function limitPlayerName(objectPlayer, playerName, objectRating, rating, smallSa
 	let abbreviatedName = playerName;
 	let playerNameLength = Engine.GetTextWidth(objectPlayer.font, abbreviatedName);
 
-	for(let i = 1; playerNameLength > widthBox; i++)
+	for (let i = 1; playerNameLength > widthBox; i++)
 	{
 		abbreviatedName = `${playerName.slice(0, -i)}…`;
 		playerNameLength = Engine.GetTextWidth(objectPlayer.font, abbreviatedName);
@@ -126,7 +126,6 @@ const normalizeResourceCount = value =>
 				(value / 1e3).toFixed(1).replace(/\.0$/, "") + setStringTags("k", { "font": "sans-stroke-12" }) :
 			// for rounding number to its tenth
 				Math.floor(value / 10) * 10;
-
 
 const normalizeValue = value =>
 	value >= 1e4 ?

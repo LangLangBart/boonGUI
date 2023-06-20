@@ -1,3 +1,25 @@
+// wraitii's code for SetupStat
+function SetupStat(panel, index, icon, text, tooltip)
+{
+	const panelItem = Engine.GetGUIObjectByName(`${panel}[${index}]`);
+	const panelIcon = Engine.GetGUIObjectByName(`${panel}Icon[${index}]`);
+	const panelText = Engine.GetGUIObjectByName(`${panel}Text[${index}]`);
+	if (!text)
+	{
+		panelItem.hidden = true;
+		return;
+	}
+	panelItem.hidden = false;
+	panelIcon.sprite = `stretched:color:0 0 0 20:textureAsMask:${icon}`;
+	const size = panelItem.size;
+	size.top = 35 * index;
+	size.bottom = 35 * index + 24;
+	panelItem.size = size;
+	panelText.tooltip = tooltip;
+	panelIcon.tooltip = tooltip;
+	panelText.caption = text;
+}
+
 // Fills out information that most entities have
 function displaySingle(entState)
 {
@@ -263,27 +285,6 @@ function displaySingle(entState)
 			showTemplateDetails(entState.template, playerState.civ);
 		};
 
-	// wraitii's code for SetupStat
-	const SetupStat = (panel, i, icon, text, tooltip) => {
-		const panelItem = Engine.GetGUIObjectByName(`${panel}[${i}]`);
-		const panelIcon = Engine.GetGUIObjectByName(`${panel}Icon[${i}]`);
-		const panelText = Engine.GetGUIObjectByName(`${panel}Text[${i}]`);
-		if (!text)
-		{
-			panelItem.hidden = true;
-			return;
-		}
-		panelItem.hidden = false;
-		panelIcon.sprite = `stretched:color:0 0 0 20:textureAsMask:${icon}`;
-		const size = panelItem.size;
-		size.top = 35 * i;
-		size.bottom = 35 * i + 24;
-		panelItem.size = size;
-		panelText.tooltip = tooltip;
-		panelIcon.tooltip = tooltip;
-		panelText.caption = text;
-	};
-
 	// Left-hand side of the stats panel
 	// Attack per second
 	let projectiles = 1;
@@ -291,9 +292,11 @@ function displaySingle(entState)
 		projectiles = entState.buildingAI.arrowCount || entState.buildingAI.defaultArrowCount;
 	if (!!entState?.attack?.Melee || !!entState?.attack?.Ranged)
 	{
-		let attackPower = (entState?.attack?.Melee || entState?.attack?.Ranged)?.Damage;
-		attackPower = (attackPower?.Hack || 0) + (attackPower?.Pierce || 0) + (attackPower?.Crush || 0);
-		SetupStat("LHS", 0, "session/icons/attackPower.png", limitNumber(attackPower * projectiles / (entState?.attack?.Melee || entState?.attack?.Ranged).repeatTime * 1000), setupStatHUDAttackTooltip(entState, projectiles));
+		const attackType = entState?.attack?.Melee || entState?.attack?.Ranged;
+		if (!attackType)
+			warn(`The attackType for ${entState?.template} is undefined."`);
+		const attackPower = (attackType?.Damage?.Hack || 0) + (attackType?.Damage?.Pierce || 0) + (attackType?.Damage?.Crush || 0);
+		SetupStat("LHS", 0, "session/icons/attackPower.png", limitNumber(attackPower * projectiles / attackType.repeatTime * 1000), setupStatHUDAttackTooltip(entState, projectiles));
 		SetupStat("FullSpace", 0, "", "");
 	}
 	else if (!!template?.treasure)
@@ -309,7 +312,7 @@ function displaySingle(entState)
 		for (const nameOfAuras in template.auras)
 		{
 			// we take the aura description and make an array of sentences
-			const auraDescriptionCutInSentences = template.auras[nameOfAuras].description.match(/[^\.!\?]+[\.!\?]+/g);
+			const auraDescriptionCutInSentences = template.auras[nameOfAuras].description.match(/[^!.?]+[!.?]+/g);
 			// the last sentence contains the important stuff we would like to display
 			const auraSnippet = auraDescriptionCutInSentences.pop();
 			// some of the description contains line breaks, we get rid of it here.
@@ -346,13 +349,13 @@ function displaySingle(entState)
 
 	// Range
 	// TODO Show the real range including elevation and tech bonus, list them in the tooltip
-	if (!!entState?.attack?.Ranged)
+	if (entState?.attack?.Ranged)
 		SetupStat("LHS", 2, "session/icons/range.png", entState.attack.Ranged.maxRange || 0, headerFont("Attack Range"));
 	else
 		SetupStat("LHS", 2, "", "");
 
 	// Right-hand side -> resistances
-	if (!!entState?.resistance?.Damage)
+	if (entState?.resistance?.Damage)
 	{
 		SetupStat("RHS", 0, "session/icons/res_hack.png", entState.resistance.Damage?.Hack || 0, setupStatHUDHackResistanceTooltip(entState));
 		SetupStat("RHS", 1, "session/icons/res_pierce.png", entState.resistance.Damage?.Pierce || 0, setupStatHUDPierceResistanceTooltip(entState));
@@ -378,7 +381,7 @@ function displaySingle(entState)
 		getResourceTrickleTooltip,
 		getUpkeepTooltip,
 		getLootTooltip
-	].map(func => func(entState)).filter(tip => tip).join("\n");
+	].map(func => func(entState)).filter(Boolean).join("\n");
 	if (detailedTooltip)
 	{
 		// for the relic we need the space to display text in the HUD and therefore it should be hidden.
@@ -399,7 +402,7 @@ function displaySingle(entState)
 		showTemplateViewerOnRightClickTooltip
 	].map(func => func(template)));
 
-	Engine.GetGUIObjectByName("iconBorder").tooltip = iconTooltips.filter(tip => tip).join("\n");
+	Engine.GetGUIObjectByName("iconBorder").tooltip = iconTooltips.filter(Boolean).join("\n");
 
 	Engine.GetGUIObjectByName("detailsAreaSingle").hidden = false;
 	Engine.GetGUIObjectByName("detailsAreaMultiple").hidden = true;

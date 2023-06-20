@@ -1,20 +1,18 @@
-# if we don't have any dependencies which are bundled
-# we can safely ignore lockfiles
+# Cache
+.eslintcache
+
+# Node
+/node_modules/
+
+# no dependencies that are bundled ignore lockfiles
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
 
-# node
-node_modules
-
 # Avoid map folder
-maps
+/maps/
 
 # Custom type definitions, most are from "Autociv"
 # https://github.com/nanihadesuka/autociv
 **/*.d.ts
 **/tsconfig.json
-
-# Style linter folders
-.github/vale_styles/*
-!/.github/vale_styles/Vocab

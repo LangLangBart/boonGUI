@@ -5,17 +5,20 @@ default_stages: [commit]
 repos:
   - repo: local
     hooks:
-      - id: git-dirty
-        name: check repo dirty
-        entry: git diff --quiet
+      - id: eslint
+        name: eslint
+        entry: npm run eslint:fix
         language: system
+        types: [file, javascript]
         pass_filenames: false
-        always_run: true
-  - repo: https://github.com/commitizen-tools/commitizen
-    rev: v2.42.0
+  - repo: local
     hooks:
-      - id: commitizen
-        stages: [commit-msg]
+      - id: prettier
+        name: prettier XML
+        entry: npm run prettier:xml
+        language: system
+        types: [file, xml]
+        exclude_types: [svg]
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
     hooks:
@@ -27,52 +30,24 @@ repos:
       - id: end-of-file-fixer
         exclude_types: [svg]
       - id: trailing-whitespace
-  - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v8.34.0
-    hooks:
-      # https://github.com/pre-commit/pre-commit/issues/945
-      # binding the version numbers specified in ".pre-commit-config.yaml"
-      # to versions in "package.json" isn't supported
-      - id: eslint
-        additional_dependencies:
-          - eslint
-          - '@typescript-eslint/parser'
-          - '@typescript-eslint/eslint-plugin'
-          - eslint-plugin-brace-rules
-        args: [--fix]
-  - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.0.0-alpha.4
-    hooks:
-      - id: prettier
-        name: prettier XML
-        additional_dependencies: [prettier, '@prettier/plugin-xml']
-        args: [--plugin=@prettier/plugin-xml]
-        types: [xml]
-        exclude_types: [svg]
   - repo: https://github.com/crate-ci/typos
-    rev: v1.13.12
+    rev: v1.15.2
     hooks:
       - id: typos
         args: [--format, brief, --write-changes]
-  - repo: https://github.com/errata-ai/vale
-    rev: v2.23.0
-    hooks:
-      # Setup: https://github.com/errata-ai/vale/issues/560
-      # Vale synchronization is disabled for now because it takes too much time for too little benefit.
-      # - id: vale
-      #   name: vale sync
-      #   pass_filenames: false
-      #   args: [sync]
-      - id: vale
-        args: [--output=line, .]
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.21.0
+    rev: 0.23.2
     hooks:
       - id: check-dependabot
         name: validate dependabot
       - id: check-github-workflows
         name: validate github workflows
   - repo: https://github.com/lyz-code/yamlfix
-    rev: 1.9.0
+    rev: 1.11.0
     hooks:
       - id: yamlfix
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: 3.4.0
+    hooks:
+      - id: commitizen
+        stages: [commit-msg]

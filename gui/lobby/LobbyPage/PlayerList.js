@@ -81,7 +81,6 @@ class PlayerList
 		this.gameList.selectGameFromPlayername(this.selectedPlayer);
 	}
 
-
 	onPlayerListSelection()
 	{
 		if (this.playersBox.selected == this.playersBox.list.indexOf(this.selectedPlayer))

@@ -1,4 +1,3 @@
-
 ChatMessageEvents.ClientChat.prototype.colorizePlayernameByGUID = function(guid)
 {
 	// TODO: Controllers should have the moderator-prefix

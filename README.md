@@ -61,7 +61,6 @@ User interface **mod** for the RTS game **0 A.D.**
 - **Camera:** Change the camera settings in the options.
 - **Lobby:** Quick access buttons below the chat input.
 - **Replays overview:** Adding a button next to the replay path for quick access to the directory.
-- **Summary:** Increased the size, recommend to use a 1920×1080 display.
 - **Trade:** The trading probabilities for all resources are saved.
 
 ---
@@ -100,34 +99,34 @@ User interface **mod** for the RTS game **0 A.D.**
 ### 👁 Code structure
 
 Created with [RepoVisualize](https://github.com/githubocto/repo-visualizer), click to interact.
-[![image](Images/boonGUI_visualization.svg)](https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=LangLangBart%2FboonGUI)
+[![image](.github/Images/boonGUI_visualization.svg)](https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=LangLangBart%2FboonGUI)
 
 ### 🐛 Debug
 
 - Debugging is done by inserting [logging](https://trac.wildfiregames.com/wiki/Logging#Scripts) functions into the suspected problematic code.
-- All custom debug methods of boonGUI are accessible through the `d` object.
+- All custom debug methods of boonGUI are accessible through the `bd` object, see [globalscripts/bd.js](globalscripts/bd.js).
 
 ```js
-d.assert(Object.getPrototypeOf(Object.prototype)); // "ASSERT FAIL: null"
-d.group(); // +++++ groupStart +++++
-d.groupEnd(); // ----- groupEnd -----
-d.log("test1", g_HotkeyTags); // ["test1", {color:"255 251 131"}]
-d.hasOwn(cmpTechnologyManager, "typeCountsByClass"); // true
-d.inter([1, 2, 3], [3, 4]); // [3]
-d.listProp(WeakMap.prototype); // ["constructor", "delete", "get", "has", "set"]
-d.slow("test1", g_HotkeyTags); // same as "log", but the interval is every 2s (useful in a loop)
-d.stack(); // stack trace
-d.symDiff([1, 2, 3], [3, 4]); // [1, 2, 4]
-d.time("Math time");
+bd.assert(Object.getPrototypeOf(Object.prototype)); // "ASSERT FAIL: null"
+bd.group(); // +++++ groupStart +++++
+bd.groupEnd(); // ----- groupEnd -----
+bd.log("test1", g_HotkeyTags); // ["test1", {color:"255 251 131"}]
+bd.inter([1, 2, 3], [3, 4]); // [3]
+bd.listProp(WeakMap.prototype); // ["constructor", "delete", "get", "has", "set"]
+bd.slow("test1", g_HotkeyTags); // same as "log", but the interval is every 2s (useful in a loop)
+bd.stack(); // stack trace
+bd.symDiff([1, 2, 3], [3, 4]); // [1, 2, 4]
+bd.temp(9344); // ["cavalry_archer_b", 9344] template name for entity number
+bd.time("Math time");
 // Math.pow(295, 109)
-d.timeEnd("Math time"); // Math time: 0.048ms
-d.trueTypeOf(["😀", "🤢", "💩", "🎃"]); // array
-d.union([1, 2, 3], [3, 4]); // [1, 2, 3, 4]
+bd.timeEnd("Math time"); // Math time: 0.048ms
+bd.trueTypeOf(["😀", "🤢", "💩", "🎃"]); // array
+bd.union([1, 2, 3], [3, 4]); // [1, 2, 3, 4]
 ```
 
 ### 🔱 Git-Hook
 
-Trivial problems in the code are handled with the [pre-commit](https://github.com/pre-commit/pre-commit) hook, customizations are set in the [.pre-commit-config.yaml](../.pre-commit-config.yaml).
+Trivial problems in the code are handled with the [pre-commit](https://github.com/pre-commit/pre-commit) hook, customizations are set in the [.pre-commit-config.yaml](.pre-commit-config.yaml).
 
 
 <div align="center">
@@ -149,7 +148,7 @@ Trivial problems in the code are handled with the [pre-commit](https://github.co
 brew install node pre-commit
 ```
 
-2. Install the dependencies from the [package.json](../package.json) file. The pre-commit hooks are also set up. Done.
+2. Install the dependencies from the [package.json](package.json) file. The pre-commit hooks are also set up. Done.
 
 ```sh
 # Choose your favorite package manager: npm, pnpm or yarn
@@ -185,7 +184,7 @@ Commit message must conform with the [Conventional commits](https://www.conventi
 
 #### JavaScript
 
-Mirroring the linting process from `0 A.D.` by using `ESLint` and an adopted set of rules defined in the [package.json](../package.json) file.
+Mirroring the linting process from `0 A.D.` by using `ESLint` and an adopted set of rules defined in the [package.json](package.json) file.
 
 - The `.vscode` settings are set up to automatically adjust your code to the rules when you save the document.
 - An optional installation of the [VSCode ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) runs `ESLint` on each file and display warnings and errors at once.
@@ -218,35 +217,22 @@ pre-commit autoupdate
 
 - [Typos](https://github.com/crate-ci/typos)
   - Finding and correcting spelling mistakes in the source code.
-  - Rules are set in the [.typos.toml](../.typos.toml) file.
+  - Rules are set in the [.typos.toml](.typos.toml) file.
   - Auto-fix mistakes.
-- [Vale](https://github.com/errata-ai/vale)
-  - Grammar, style, and word usage linter for the English language.
-  - Rules are set in the [.vale.ini](../.vale.ini) file.
-  - No auto-fix, this must be done manually.
 
 ```sh
 # Typos
 brew install typos-cli
 # Auto-fix obvious typos
 typos -w
-
-# Vale
-brew install vale
-# Downloading packages ...
-vale sync
-# check the repository
-vale .
-# see even suggestions
-vale --minAlertLevel=suggestion .
 ```
 
 #### XML
 
-`Prettier for XML` formats the files according to the rules set in [package.json](../package.json).
+`Prettier for XML` formats the files according to the rules set in [package.json](package.json).
 
 - An optional installation of the [Prettier - Code formatter extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) automatically formats the `XML` file upon saving.
-- The following command formats all `XML` files with `Prettier` and runs a simple [style sheet](../.github/build_scripts/stylesheet.xsl) over them to ensure that the `xsl:output attributes` have the correct case and form.
+- The following command formats all `XML` files with `Prettier` and runs a simple [style sheet](.github/build_scripts/stylesheet.xsl) over them to ensure that the `xsl:output attributes` have the correct case and form.
 
 ```sh
 npm run xmlStyle
@@ -265,7 +251,7 @@ The motivation for this mod was to learn JavaScript by creating a utility tool f
 - Thanks to @Effervescent, @mysticjim, @Nobbi, @Palaiologos and @seeh for constantly testing and giving feedback.
 - Providing code and helping with problems: @andy5995, @kaaduu, @maroder, @Nescio, @Pretuer and @Schweini.
 - The developers of the game can be reached through their IRC channel #0ad-dev, among them are the following who helped the project to succeed: @elexis, @bb, @Imarok, @wraitii, @Freagarach, @vladislavbelov, @Silier and @Stan`.
-<!-- vale off -->
+
 - Thanks to other modders:
   - @nani - [Autociv](https://github.com/nanihadesuka/autociv)
   - @wowgetoffyourcellphone - [Delenda Est](https://github.com/JustusAvramenko/delenda_est)
@@ -282,5 +268,4 @@ The motivation for this mod was to learn JavaScript by creating a utility tool f
 
 # ❤️
 
-<!-- vale on -->
 </div>

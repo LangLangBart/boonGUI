@@ -1,4 +1,3 @@
-
 /**
  * Handle what happens when the entity dies.
  */

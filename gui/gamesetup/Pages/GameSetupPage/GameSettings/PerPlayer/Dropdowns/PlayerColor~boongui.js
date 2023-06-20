@@ -1,4 +1,3 @@
-
 PlayerSettingControls.PlayerColor.prototype.render = function()
 {
 	if (g_GameSettings.playerCount.nbPlayers < this.playerIndex + 1)

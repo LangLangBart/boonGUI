@@ -1,4 +1,3 @@
-
 /**
  * Print the shorthand identifier of a mod.
  */
@@ -9,7 +8,6 @@ function modToString(mod)
 		"version": mod.version
 	});
 }
-
 
 /**
  * --------------------------------------
@@ -24,7 +22,6 @@ const autociv_patchApplyN = (...args) => {
 	const [method, patch] = args;
 	global[method] = new Proxy(global[method], { "apply": patch });
 };
-
 
 const boonGUI_ColorsSeenBefore = new Map();
 
@@ -46,7 +43,7 @@ function brightenedColor(color, brightnessThreshold = 115)
 	{
 		let [r, g, b] = color.split(" ").map(x => +x);
 		let i = 0;
-		while(r * 0.299 + g * 0.587 + b * 0.114 <= brightnessThreshold)
+		while (r * 0.299 + g * 0.587 + b * 0.114 <= brightnessThreshold)
 		{
 			i += 0.001;
 			const [h, s, l] = rgbToHsl(r, g, b);

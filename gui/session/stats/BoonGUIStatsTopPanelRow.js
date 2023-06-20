@@ -3,7 +3,6 @@ class BoonGUIStatsTopPanelRow
 
 	static Regex_Emblem = /^.+\/(.+)\.png$/;
 
-
 	constructor(row, index)
 	{
 		const PREFIX = row.name;
@@ -96,7 +95,6 @@ class BoonGUIStatsTopPanelRow
 
 		this.coloredPlayerInfoBackground.size = state.team != -1 ? "18 0 235 100%" : "0 0 235 100%";
 		this.team.caption = state.team != -1 ? `${state.team + 1}` : "";
-
 
 		const playerNick = setStringTags(state.nick, { "color": state.brightenedPlayerColor });
 		caption = limitPlayerName(this.player, state.nick, this.rating, state.rating);
@@ -250,7 +248,7 @@ class BoonGUIStatsTopPanelRow
 				}
 			tooltip += setStringTags(`- ${className} ${value}\n`, { font, "color": value > 0 ? "lightRed" : "dimmedWhite" });
 		}
-		if(g_ViewedPlayer > 0)
+		if (g_ViewedPlayer > 0)
 			tooltip += `\n${setStringTags(this.idleUnitsTooltip, { font })}`;
 
 		this.idleWorkerHeader.sprite = `streteched:color:${(!value || g_stats.lastPlayerLength > 1) ? "dimmedWhite" : color}:textureAsMask:session/phosphor/sleep.png`;
@@ -404,7 +402,6 @@ class BoonGUIStatsTopPanelRow
 BoonGUIStatsTopPanelRow.prototype.jumpCivicCenterTooltip = `${setStringTags("\\[Click]", g_HotkeyTags)} jump to Civic Center.`;
 
 BoonGUIStatsTopPanelRow.prototype.civIconHotkeyTooltip = `\n${colorizeHotkey("%(hotkey)s", "civinfo")}${colorizeHotkey("%(hotkey)s", "structree")}\nView Civilization Overview / Structure Tree`;
-
 
 BoonGUIStatsTopPanelRow.prototype.civInfo = {
 	"civ": "",

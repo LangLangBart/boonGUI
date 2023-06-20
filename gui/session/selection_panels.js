@@ -196,7 +196,6 @@ g_SelectionPanels.Construction = {
 			showTemplateViewerOnRightClickTooltip(template)
 		);
 
-
 		const limits = getEntityLimitAndCount(data.playerState, data.item);
 		tooltips.push(
 			formatLimitString(limits.entLimit, limits.entCount, limits.entLimitChangers),
@@ -609,7 +608,6 @@ g_SelectionPanels.Queue = {
 				modifier += "grayscale:";
 			data.icon.sprite = `${modifier}session/portraits/${template.icon}`;
 		}
-
 
 		const showTemplateFunc = () => { showTemplateDetails(data.item.queuedItem.unitTemplate || data.item.queuedItem.technologyTemplate, data.playerState.civ); };
 		data.button.onPressRight = showTemplateFunc;

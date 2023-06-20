@@ -33,7 +33,6 @@ jobs:
           BEFORE: ${{ github.event.before }}
             # The SHA of the latest commit
           SHA: ${{ github.sha }}
-          IGNORE: .github/vale_styles
           AUTO_ASSIGN: true
   dependabot:
     # https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions#approve-a-pull-request

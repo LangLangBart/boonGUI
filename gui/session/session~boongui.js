@@ -4,13 +4,11 @@ let g_stats;
 // difference to 0AD's g_WorkerTypes is the exclusion of mercenaries and CitizenSoldier rather than Citizen
 var g_boonGUI_WorkerTypes = ["FemaleCitizen", "Trader", "FishingBoat", "CitizenSoldier+!Mercenary"];
 
-
 autociv_patchApplyN("init", function(target, that, args) {
 	const result = target.apply(that, args);
 	g_stats = new BoonGUIStats(g_PlayerViewControl);
 	return result;
 });
-
 
 function endHome()
 {

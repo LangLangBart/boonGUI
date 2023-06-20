@@ -15,7 +15,7 @@ var g_vividColorsGamesetup = {
 function makeColorsVivid(oldColor)
 {
 	for (let i = 0; i < Object.keys(g_vividColorsGamesetup).length; i++)
-		if(oldColor == g_Settings.PlayerDefaults[i + 1].Color)
+		if (oldColor == g_Settings.PlayerDefaults[i + 1].Color)
 			return g_vividColorsGamesetup[Object.keys(g_vividColorsGamesetup)[i]];
 	return oldColor;
 }
